@@ -1,0 +1,177 @@
+{
+  "id": "uk_skilled_worker",
+  "country": "GB",
+  "name": "Skilled Worker visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard salary route",
+      "requirements": [
+        {
+          "id": "std_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from a UK employer holding a valid sponsor licence, which you don't currently have.",
+          "fix_path": "Secure a job offer from an employer on the UK register of licensed sponsors.",
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "std_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 41700, "currency": "GBP", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least £41,700/year (or the occupation-specific going rate, whichever is higher), which your current offer doesn't meet.",
+          "fix_path": "Negotiate a higher salary, or apply via the new entrant / Immigration Salary List / PhD discount routes if eligible.",
+          "fix_time_months": null,
+          "source_id": "govuk_salary"
+        },
+        {
+          "id": "std_english",
+          "attribute": "language_proficiency",
+          "operator": ">=",
+          "value": { "language": "English", "framework": "CEFR", "level": "B2" },
+          "hard": true,
+          "blocker_text": "This requires English proficiency at CEFR level B2 (reading, writing, speaking, and listening), which you haven't yet evidenced.",
+          "fix_path": "Pass an approved English language test at B2 or above.",
+          "fix_time_months": 3,
+          "source_id": "govuk_english"
+        },
+        {
+          "id": "std_skill_level",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": { "lookup_ref": "uk_eligible_occupations_rqf6plus" },
+          "hard": true,
+          "blocker_text": "This requires a role at RQF level 6 or above (broadly degree-level) that appears on the eligible occupations list.",
+          "fix_path": "Confirm your SOC code and skill level against the published eligible occupations list.",
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        }
+      ]
+    },
+    {
+      "id": "new_entrant",
+      "name": "New entrant discount",
+      "requirements": [
+        {
+          "id": "ne_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from a UK employer holding a valid sponsor licence, which you don't currently have.",
+          "fix_path": "Secure a job offer from an employer on the UK register of licensed sponsors.",
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "ne_status",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["under_26", "recent_graduate_within_2_years", "student_or_graduate_visa_switch"],
+          "hard": true,
+          "blocker_text": "This discount requires being under 26, a recent graduate within the last 2 years, or switching from a Student/Graduate visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_salary"
+        },
+        {
+          "id": "ne_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 33400, "currency": "GBP", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least £33,400/year under the new entrant discount, which your current offer doesn't meet.",
+          "fix_path": "Negotiate a higher salary or reconsider the standard route.",
+          "fix_time_months": null,
+          "source_id": "govuk_salary"
+        },
+        {
+          "id": "ne_english",
+          "attribute": "language_proficiency",
+          "operator": ">=",
+          "value": { "language": "English", "framework": "CEFR", "level": "B2" },
+          "hard": true,
+          "blocker_text": "This requires English proficiency at CEFR level B2, which you haven't yet evidenced.",
+          "fix_path": "Pass an approved English language test at B2 or above.",
+          "fix_time_months": 3,
+          "source_id": "govuk_english"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Certificate of Sponsorship reference number",
+      "difficulty": "moderate",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Approved English test certificate (or degree taught in English)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Bank statement showing at least £1,270 held for 28 days",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    },
+    {
+      "document": "Tuberculosis test certificate (if from a listed country)",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no more than 180 days absent in any rolling 12-month period during the qualifying period",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/skilled-worker-visa",
+      "title": "Skilled Worker visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_salary",
+      "tier": 1,
+      "url": "https://www.gov.uk/skilled-worker-visa/eligibility",
+      "title": "Skilled Worker visa: Eligibility - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_english",
+      "tier": 1,
+      "url": "https://www.gov.uk/skilled-worker-visa/knowledge-of-english",
+      "title": "Skilled Worker visa: Knowledge of English - GOV.UK",
+      "accessed_at": "2026-08-07"
+    }
+  ],
+  "notes": "General threshold rose to £41,700 on 22 July 2025. Multiple 2026-dated third-party guides (including some marked 'updated' in 2026) still publish the superseded £38,700 figure — this is the flagship example for the counterfeit-test feature. English requirement rose from B1 to B2 for new applicants from 8 January 2026. This file covers the standard and new-entrant groups only; ISL and PhD discount groups are not yet encoded. switchable_to left empty until uk_ilr_skilled_worker is encoded as its own route file — the validator rejects references to routes that don't exist yet."
+}

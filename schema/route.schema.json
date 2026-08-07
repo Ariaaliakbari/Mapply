@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mapply.org/schema/route.schema.json",
+  "title": "Route",
+  "description": "One government-named immigration/relocation route.",
+  "type": "object",
+  "required": [
+    "id",
+    "country",
+    "name",
+    "category",
+    "status",
+    "verified_at",
+    "selection_method",
+    "requirement_groups",
+    "outcome",
+    "sources"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable unique identifier, e.g. 'uk_skilled_worker'",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "country": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code, e.g. 'GB'",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Official government name of the route, e.g. 'Skilled Worker visa'"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "visit",
+        "study",
+        "work_sponsored",
+        "work_independent",
+        "business",
+        "family",
+        "ancestry",
+        "humanitarian",
+        "settled"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["published", "draft"],
+      "description": "draft = not yet publicly shown; missing tier-1 sourcing or incomplete"
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this route's data was last checked against source. Fails validation past 180 days, warns past 90."
+    },
+    "duration_type": {
+      "type": "string",
+      "enum": ["fixed", "rolling_window", "per_entry", "indefinite"]
+    },
+    "selection_method": {
+      "type": "string",
+      "enum": [
+        "automatic",
+        "assessed",
+        "merit_ranked",
+        "lottery",
+        "first_come",
+        "nomination_required"
+      ]
+    },
+    "selection_odds": {
+      "type": ["object", "null"],
+      "properties": {
+        "approx_rate_percent": { "type": "number", "minimum": 0, "maximum": 100 },
+        "basis": { "type": "string", "description": "e.g. 'DV Lottery 2025 selectees / eligible entrants'" },
+        "source_id": { "type": "string" }
+      }
+    },
+    "application_window": {
+      "type": ["object", "null"],
+      "properties": {
+        "opens": { "type": "string" },
+        "closes": { "type": "string" },
+        "cap_type": { "type": "string", "enum": ["fixed_number", "budget", "none"] },
+        "typical_fill_time_days": { "type": ["number", "null"] }
+      }
+    },
+    "qualifying_event": {
+      "type": ["object", "null"],
+      "description": "For routes based on historical facts rather than testable current attributes (e.g. persecution-based citizenship restoration)",
+      "properties": {
+        "description": { "type": "string" },
+        "evidence_hint": { "type": "string" }
+      }
+    },
+    "prerequisites": {
+      "type": ["object", "null"],
+      "properties": {
+        "required_prior_route_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "minimum_months_held": { "type": ["number", "null"] },
+        "continuity_required": { "type": "boolean" }
+      }
+    },
+    "requirement_groups": {
+      "type": "array",
+      "description": "OR logic between groups. Each group is AND logic internally. One route can be qualified for via any one group.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "requirements"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "requirements": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/definitions/requirement" }
+          }
+        }
+      }
+    },
+    "evidence_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["document", "difficulty"],
+        "properties": {
+          "document": { "type": "string" },
+          "difficulty": { "type": "string", "enum": ["routine", "moderate", "hard", "often_impossible"] },
+          "typical_time_days": { "type": ["number", "null"] }
+        }
+      }
+    },
+    "outcome": { "$ref": "#/definitions/outcome" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/source" }
+    },
+    "notes": { "type": "string" }
+  },
+  "definitions": {
+    "requirement": {
+      "type": "object",
+      "required": ["id", "attribute", "operator", "value", "hard", "blocker_text", "source_id"],
+      "properties": {
+        "id": { "type": "string" },
+        "attribute": {
+          "type": "string",
+          "description": "Must be one of the closed list of ~26 applicant attributes, e.g. 'current_salary', 'age', 'nationality'"
+        },
+        "operator": {
+          "type": "string",
+          "enum": ["==", "!=", ">=", "<=", ">", "<", "in", "not_in"]
+        },
+        "value": {
+          "description": "Literal value, OR a formula reference to a NationalVariable/LookupTable, e.g. { \"formula_ref\": \"de_pension_ceiling\", \"ratio\": 1.1 }"
+        },
+        "hard": {
+          "type": "boolean",
+          "description": "true = disqualifying if not met. Hard requirements MUST cite a tier-1 source."
+        },
+        "blocker_text": {
+          "type": "string",
+          "description": "Plain-language explanation shown if this isn't met"
+        },
+        "fix_path": {
+          "type": ["string", "null"],
+          "description": "What would change this. null if unfixable (e.g. age, nationality)."
+        },
+        "fix_time_months": { "type": ["number", "null"] },
+        "source_id": { "type": "string" }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "required": ["duration_length", "renewable", "work_rights", "leads_to_pr", "leads_to_citizenship"],
+      "properties": {
+        "duration_length": { "type": "string", "description": "e.g. '5 years', 'indefinite'" },
+        "renewable": { "type": "boolean" },
+        "work_rights": { "type": "string", "enum": ["full", "restricted", "none"] },
+        "study_rights": { "type": "string", "enum": ["full", "restricted", "none"] },
+        "family_can_join": { "type": "boolean" },
+        "family_can_work": { "type": ["boolean", "null"] },
+        "leads_to_pr": { "type": "boolean" },
+        "pr_after_months": { "type": ["number", "null"] },
+        "leads_to_citizenship": { "type": "boolean" },
+        "citizenship_after_months": { "type": ["number", "null"] },
+        "dual_citizenship_allowed": { "type": ["boolean", "null"] },
+        "physical_presence_requirement": { "type": ["string", "null"] },
+        "switchable_to": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "route ids this can convert to in-country without leaving"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["id", "tier", "url", "title", "accessed_at"],
+      "properties": {
+        "id": { "type": "string" },
+        "tier": {
+          "type": "integer",
+          "enum": [1, 2, 3, 4],
+          "description": "1=government, 2=intergovernmental, 3=law firm, 4=other"
+        },
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "accessed_at": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}
