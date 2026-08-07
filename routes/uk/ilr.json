@@ -1,0 +1,242 @@
+{
+  "id": "uk_ilr",
+  "country": "GB",
+  "name": "Indefinite Leave to Remain",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-07",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["uk_skilled_worker", "uk_global_talent"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "via_skilled_worker",
+      "name": "Via Skilled Worker (or legacy Tier 2)",
+      "requirements": [
+        {
+          "id": "sw_current_route",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "uk_skilled_worker",
+          "hard": true,
+          "blocker_text": "This requires currently holding, or having continuously held, a Skilled Worker (or legacy Tier 2) visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "sw_months_held",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of continuous lawful residence on the Skilled Worker route.",
+          "fix_path": "Continue lawful residence and employment. No shortcut exists for this group.",
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "sw_absences",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "no_excess_absences",
+          "hard": true,
+          "blocker_text": "This requires not having spent more than 180 days outside the UK in any rolling 12-month period during the qualifying 5 years.",
+          "fix_path": "Keep future absences under the 180-day rolling limit for the remainder of the qualifying period.",
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "sw_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B1, evidenced by an approved test, a degree taught in English, or nationality from a majority English-speaking country.",
+          "fix_path": "Take an approved Secure English Language Test at B1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "sw_life_in_uk",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "life_in_uk_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the Life in the UK Test.",
+          "fix_path": "Book and pass the test — multiple-choice, based on the official handbook.",
+          "fix_time_months": 1,
+          "source_id": "govuk_life_in_uk_test"
+        },
+        {
+          "id": "sw_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Good character is assessed throughout the qualifying period — covers criminal convictions, immigration deception, and serious debt to public funds, not only a single conviction threshold.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_check"
+        }
+      ]
+    },
+    {
+      "id": "via_global_talent",
+      "name": "Via Global Talent (or legacy Tier 1)",
+      "requirements": [
+        {
+          "id": "gt_current_route",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["uk_global_talent"],
+          "hard": true,
+          "blocker_text": "This requires holding Global Talent or a legacy Tier 1 route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "gt_months_held",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This requires 3 years' continuous residence on Global Talent (shorter than Skilled Worker's 5 years, reflecting the higher evidential bar already cleared to get the underlying visa).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "gt_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B1.",
+          "fix_path": "Take an approved Secure English Language Test at B1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "gt_life_in_uk",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "life_in_uk_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the Life in the UK Test.",
+          "fix_path": "Book and pass the test.",
+          "fix_time_months": 1,
+          "source_id": "govuk_life_in_uk_test"
+        }
+      ]
+    },
+    {
+      "id": "long_residence",
+      "name": "10 years' continuous lawful residence, any basis",
+      "requirements": [
+        {
+          "id": "lr_months_in_country",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "This requires 10 years of continuous lawful residence in the UK, on any combination of valid visas — the fallback for anyone who doesn't qualify faster via a specific route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_long_residence"
+        },
+        {
+          "id": "lr_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B1.",
+          "fix_path": "Take an approved Secure English Language Test at B1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_ilr_check"
+        },
+        {
+          "id": "lr_life_in_uk",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "life_in_uk_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the Life in the UK Test.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_life_in_uk_test"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Life in the UK Test pass certificate",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "5 years of continuous residence evidence — payslips, tax records, travel history",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Approved English test at B1, unless exempt",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Biometric enrolment",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "Status can lapse after 2+ continuous years outside the UK, post-grant. During the qualifying period itself, no more than 180 days outside the UK in any rolling 12 months.",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govuk_ilr_check",
+      "tier": 1,
+      "url": "https://www.gov.uk/indefinite-leave-to-remain",
+      "title": "Check if you can get indefinite leave to remain - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_life_in_uk_test",
+      "tier": 1,
+      "url": "https://www.gov.uk/life-in-the-uk-test",
+      "title": "Life in the UK Test - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_long_residence",
+      "tier": 1,
+      "url": "https://www.gov.uk/long-residence",
+      "title": "Long residence - GOV.UK",
+      "accessed_at": "2026-08-07"
+    }
+  ],
+  "notes": "ARCHITECTURE CORRECTION (2026-08-07): this was initially built yesterday as a separate 'uk_ilr_skilled_worker' route with a single requirement group, which was wrong — the UK has one ILR, not one per feeder route. Rebuilt as a single route with 3 groups (Skilled Worker, Global Talent, long-residence fallback), matching the core schema rule that variation lives in RequirementGroups, not in route splitting. MAJOR LIVE POLICY RISK, do not treat the 5-year figure as stable: the Home Office ran an 'Earned Settlement' consultation (closed 12 February 2026, 200,000+ responses) proposing to move the standard qualifying period from 5 to 10 years, with adjustments based on income, employment history, and compliance — and explicitly signalled this could apply to people already mid-route, not just new applicants. gov.uk's own guidance as of this route's verification date still states the 5-year/3-year figures encoded here. This route should be re-verified monthly, not at the standard 180-day interval, until the reform lands or is confirmed shelved. English requirement is due to rise from B1 to B2 for ILR from 26 March 2027 (not yet in force). This is a genuine hub route: every prior route in this dataset with leads_to_pr resolves through this single route, not a parallel status per route family. Known schema gap (not yet fixed structurally): required months_held actually varies by requirement group (60 / 36 / 120), but prerequisites is bound to the Route, not the RequirementGroup, so top-level minimum_months_held is left null and the real numbers live in each group's requirements instead."
+}

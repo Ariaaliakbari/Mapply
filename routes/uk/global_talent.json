@@ -1,0 +1,132 @@
+{
+  "id": "uk_global_talent",
+  "country": "GB",
+  "name": "Global Talent visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "endorsement",
+      "name": "Endorsement from an approved body",
+      "requirements": [
+        {
+          "id": "endorse_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires being at least 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_gt_overview"
+        },
+        {
+          "id": "endorse_occupation",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["academia_research", "arts_culture", "digital_technology"],
+          "hard": true,
+          "blocker_text": "Endorsement is only available in academia/research, arts and culture, or digital technology.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_gt_overview"
+        },
+        {
+          "id": "endorse_qualifying_event",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "endorsement_from_approved_body",
+          "hard": true,
+          "blocker_text": "This requires a formal endorsement from the body matching your field — Royal Society, British Academy, Royal Academy of Engineering, or UKRI for academia/research; Arts Council England for arts and culture; Tech Nation for digital technology. This is a discretionary, evidence-based decision, not a checkable personal attribute.",
+          "fix_path": "Build an evidence portfolio against the specific endorsing body's published criteria and submit the Stage 1 endorsement application. This is the actual barrier — most unsuccessful applications fail here, not at the visa stage.",
+          "fix_time_months": 2,
+          "source_id": "govuk_gt_overview"
+        }
+      ]
+    },
+    {
+      "id": "prestigious_prize",
+      "name": "Named winner of a prestigious prize",
+      "requirements": [
+        {
+          "id": "prize_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires being at least 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_gt_overview"
+        },
+        {
+          "id": "prize_qualifying_event",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "named_winner_prestigious_prize",
+          "hard": true,
+          "blocker_text": "This requires being the named winner of a specific prize on the Home Office's published Global Talent prize list — other prizes from the same institution do not count.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_gt_prizes"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence portfolio against the endorsing body's published criteria (track record, letters of recommendation, evidence of impact)",
+      "difficulty": "hard",
+      "typical_time_days": 56
+    },
+    {
+      "document": "Reference letters from established figures in the applicant's field",
+      "difficulty": "moderate",
+      "typical_time_days": 28
+    },
+    {
+      "document": "Proof of named prize win (prize route only)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years, freely chosen at each renewal, no cap on total time before settling",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_gt_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/global-talent",
+      "title": "Apply for the Global Talent visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_gt_prizes",
+      "tier": 1,
+      "url": "https://www.gov.uk/government/publications/global-talent-eligible-prize-list",
+      "title": "Global Talent: eligible prize list - GOV.UK",
+      "accessed_at": "2026-08-07"
+    }
+  ],
+  "notes": "No sponsor, no salary threshold, no job offer required at any stage — the most unrestricted work route in the dataset so far, traded against the hardest evidential bar to clear. pr_after_months stored as 36 (the Exceptional Talent / prize track, the faster of two real figures) — Exceptional Promise endorsements (the emerging-leader tier, common in digital technology and arts and culture) require 60 months, the same as Skilled Worker. Which figure applies depends on which internal tier of endorsement was granted, not on the route as a whole — same known schema gap as uk_ilr (Outcome bound to Route, not RequirementGroup). Fee sources conflict sharply online: several 2026 guides cite £816 or an older £524+£623 split; gov.uk confirms £766 total, current as of the 3 August 2026 page update — flagged as a second live counterfeit-figure case alongside the UK Skilled Worker salary discrepancy."
+}
