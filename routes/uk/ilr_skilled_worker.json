@@ -1,0 +1,130 @@
+{
+  "id": "uk_ilr_skilled_worker",
+  "country": "GB",
+  "name": "Indefinite Leave to Remain (Skilled Worker route)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-07",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["uk_skilled_worker"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard 5-year settlement route",
+      "requirements": [
+        {
+          "id": "ilr_continuous_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 continuous years living in the UK on a qualifying visa, which you haven't yet reached.",
+          "fix_path": "Continue residing in the UK on a qualifying visa until you reach the 5-year mark.",
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_overview"
+        },
+        {
+          "id": "ilr_absences",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "no_excess_absences",
+          "hard": true,
+          "blocker_text": "This requires not having been outside the UK for more than 180 days in any rolling 12-month period during the qualifying 5 years.",
+          "fix_path": "Keep future absences under the 180-day rolling limit for the remainder of the qualifying period.",
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_overview"
+        },
+        {
+          "id": "ilr_sponsor_valid",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires your sponsor to still hold a valid sponsor licence and still need you in a role meeting the salary requirements at the time you apply.",
+          "fix_path": "Confirm continued sponsorship and role eligibility with your employer before applying.",
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_overview"
+        },
+        {
+          "id": "ilr_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "lookup_ref": "uk_going_rate_by_soc_code" },
+          "hard": true,
+          "blocker_text": "This requires your salary at the time of application to meet or exceed the going rate for your current occupation code.",
+          "fix_path": "Ensure salary meets the current going rate for your SOC code before applying.",
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_salary"
+        },
+        {
+          "id": "ilr_life_in_uk_test",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "note": "Life in the UK Test required for applicants aged 18-64" },
+          "hard": true,
+          "blocker_text": "This requires passing the Life in the UK Test (unless you're outside the 18-64 age range that requires it).",
+          "fix_path": "Book and pass the Life in the UK Test.",
+          "fix_time_months": 2,
+          "source_id": "govuk_ilr_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Life in the UK Test pass certificate",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employer/sponsor letter confirming continued need for the role and salary compliance",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Record of all absences from the UK during the qualifying period",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govuk_ilr_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa",
+      "title": "Indefinite leave to remain if you have a Skilled Worker, Health and Care Worker, T2 or Tier 2 visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_ilr_salary",
+      "tier": 1,
+      "url": "https://www.gov.uk/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa/eligibility",
+      "title": "Indefinite leave to remain if you have a Skilled Worker visa: Eligibility - GOV.UK",
+      "accessed_at": "2026-08-07"
+    }
+  ],
+  "notes": "English language requirement is NOT retested at ILR stage for Skilled Worker holders — it was already proven at initial visa stage, so no requirement entry for it here (this is a real, deliberate absence, not an oversight). This is the first route with a populated prerequisites block, referencing uk_skilled_worker. citizenship_after_months (12) is time held as ILR before naturalisation eligibility, not from route start."
+}
