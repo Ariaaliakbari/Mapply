@@ -1,0 +1,115 @@
+{
+  "id": "uk_bno",
+  "country": "GB",
+  "name": "British National (Overseas) visa",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bno_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires being 18 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "bno_status",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["bno_status_holder", "child_of_bno_born_on_or_after_1979_07_01"],
+          "hard": true,
+          "blocker_text": "This requires holding British National (Overseas) status, or being the child of a BNO status holder born on or after 1 July 1979 (able to apply independently of the parent).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "bno_residence",
+          "attribute": "current_location",
+          "operator": "in",
+          "value": ["hong_kong", "uk", "channel_islands", "isle_of_man"],
+          "hard": true,
+          "blocker_text": "This requires your permanent home to be in Hong Kong (if applying from outside the UK), or in the UK, Channel Islands, or Isle of Man (if applying while already in the UK).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "bno_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "note": "approx £2,000 single adult / £3,100 couple with 1 child / £4,600 couple with 3 children / £9,200 couple with 2 parents and 2 adult children — scales with family size, waived if applicant has lived in the UK 12+ months at time of application" },
+          "hard": true,
+          "blocker_text": "This requires showing enough money to cover housing and support for yourself and family for 6 months, scaling with family size — unless you've already lived in the UK for 12+ months.",
+          "fix_path": "Build the required savings or wait until the 12-month UK residence exemption applies.",
+          "fix_time_months": null,
+          "source_id": "govuk_cost"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Current or expired BNO passport (not mandatory, but speeds processing — status can otherwise be verified via HM Passport Office)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of ordinary residence in Hong Kong (or UK/Channel Islands/Isle of Man if applying in-country)",
+      "difficulty": "moderate",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Financial evidence scaled to family size",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years 6 months or 5 years, chosen at application; extendable any number of times",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/british-national-overseas-bno-visa",
+      "title": "British National (Overseas) visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_cost",
+      "tier": 1,
+      "url": "https://www.gov.uk/british-national-overseas-bno-visa/how-much-it-costs",
+      "title": "British National (Overseas) visa: How much it costs - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee £206 (2yr6m) / £285 (5yr) confirmed via direct fetch of gov.uk. Several secondary sources still cite the original January 2021 launch figures of £180/£250 — another clean counterfeit-figure case, and a persistent one given how many BNO-focused community sites and old news coverage still reference the launch pricing years later. IHS confirmed at £2,587.50/£5,175 per adult (2.5yr/5yr), £1,940/£3,880 per child — same brackets as uk_family_spouse, worth noting as a shared IHS scale across multiple routes rather than coincidence. GENUINE FINDING, not assumed: eligibility was expanded to adult children of BNO status holders born on or after 1 JULY 1979 (not 1997, which several secondary sources state, confusing this with the Hong Kong handover date) — confirmed directly on the gov.uk overview page, updated 2026-04-29. work_rights marked 'restricted' only because professional sportsperson/sports coach roles are excluded; otherwise this is close to unrestricted work, similar to uk_ancestry. Fee waiver exists for benefit recipients extending for 30 months (not 60) who can't afford the fee — a genuine conditional exemption not modeled as a separate requirement group, captured in notes only. work_rights and category placement under 'ancestry' is a judgment call: BNO status derives from historical UK sovereignty over Hong Kong rather than bloodline/grandparent ancestry like uk_ancestry, so this may deserve reconsideration as its own category in a future schema pass rather than being folded into 'ancestry' by default."
+}

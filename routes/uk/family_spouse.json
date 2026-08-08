@@ -1,0 +1,115 @@
+{
+  "id": "uk_family_spouse",
+  "country": "GB",
+  "name": "Family visa (partner)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fam_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires both partners being 18 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "fam_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "This requires being married to, the civil partner of, or having cohabited for 2+ years with, a British citizen or person settled in the UK — the relationship must be genuine and subsisting, with an intention to live together permanently.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "fam_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 29000, "currency": "GBP", "unit": "year", "note": "sponsor's income, or joint income/savings under the alternative financial requirement routes" },
+          "hard": true,
+          "blocker_text": "This requires the sponsoring partner to meet a minimum income requirement of £29,000/year, or the equivalent under the cash savings formula ((shortfall × 2.5) + £16,000), unless the sponsor receives a qualifying disability/carer benefit.",
+          "fix_path": "Meet the income threshold, build savings to the equivalent cash-savings formula, or wait for the sponsor to qualify for the adequate-maintenance exception.",
+          "fix_time_months": null,
+          "source_id": "govuk_income"
+        },
+        {
+          "id": "fam_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "A1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR A1 for the initial application (higher levels required at extension and settlement stages).",
+          "fix_path": "Take an approved Secure English Language Test at A1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/civil partnership certificate, or 2+ years' cohabitation evidence",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Sponsor's income evidence (payslips, tax records, or savings statements) for the financial requirement",
+      "difficulty": "moderate",
+      "typical_time_days": 28
+    },
+    {
+      "document": "Approved English test certificate at A1",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "33 months (apply outside UK) / 30 months (apply inside UK)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/uk-family-visa",
+      "title": "Family visas: Apply, extend or switch - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_income",
+      "tier": 1,
+      "url": "https://www.gov.uk/uk-family-visa/proof-income",
+      "title": "Family visas: Proving you can support your family - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee £2,064 (outside UK) / £1,407 (inside UK) per person including each dependant, confirmed via gov.uk. IHS scales with visa length: £2,587.50 (2yr6m) / £3,105 (2yr9m) / £5,175 (5yr) adult; £1,940 / £2,328 / £3,880 child. £29,000 minimum income requirement is current as of this verification — took effect 11 April 2024, replacing an earlier planned rise to £38,700 that was paused. citizenship_after_months uses the shorter 36-month spouse-of-British-citizen naturalisation path (see uk_citizenship 'via_spouse' group) rather than the general 60-month ILR-plus-12-months path, since this route's holder is by definition married to a British citizen. LIVE POLICY WATCH: the Migration Advisory Committee's Family Route Financial Requirements Review (published 10 June 2025) recommended AGAINST raising the threshold to £38,700, instead suggesting a band centred on £23,000-£25,000 — the £29,000 figure could move down, not up, unlike most other routes in this dataset where the live risk is an increase. If the financial requirement is not met, ILR shifts from 5 to 10 years — this conditional branch is not yet modeled as a separate requirement group, captured here in notes as an honest gap pending a second pass."
+}

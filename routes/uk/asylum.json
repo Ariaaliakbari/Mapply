@@ -1,0 +1,115 @@
+{
+  "id": "uk_asylum",
+  "country": "GB",
+  "name": "Claim asylum in the UK",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "asy_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_uk",
+          "hard": true,
+          "blocker_text": "This can only be claimed while physically in the UK — there is no route to apply for UK asylum from abroad or from a third country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "asy_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "This requires being unable to live safely in any part of your own country because of a well-founded fear of persecution based on race, religion, nationality, political opinion, or another characteristic (such as gender, gender identity, or sexual orientation) putting you at risk given your country's social, cultural, religious or political situation. If stateless, 'own country' means the country you usually live in.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "asy_no_home_protection",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "failed_to_obtain_home_country_protection",
+          "hard": true,
+          "blocker_text": "This requires having failed to get protection from authorities in your own country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "asy_no_safe_third_country",
+          "attribute": "prior_visa_refusal",
+          "operator": "!=",
+          "value": "connection_to_safe_third_country",
+          "hard": true,
+          "blocker_text": "This claim may not be considered if you're from an EU country, travelled to the UK through a 'safe third country', or otherwise have a connection to a safe third country where you could have claimed asylum instead.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution claim (documents, reports, membership records, or other corroborating material)",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at an asylum screening appointment (Asylum Intake Unit or at the border)",
+      "difficulty": "routine",
+      "typical_time_days": 5
+    },
+    {
+      "document": "Attendance at a substantive asylum interview",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "typically 5 years permission to stay if granted refugee status (this figure is under active policy review — see notes)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/claim-asylum",
+      "title": "Claim asylum in the UK: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_eligibility",
+      "tier": 1,
+      "url": "https://www.gov.uk/claim-asylum/eligibility",
+      "title": "Claim asylum in the UK: Eligibility - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Closes the last fully-empty category gap (humanitarian) in the UK dataset — categories now covered: visit, study, work_sponsored, work_independent, business, family, ancestry, settled, humanitarian (all 9). No application fee — asylum claims are free, a genuine structural difference from every other route in this dataset. work_rights is 'none' as the default position while a claim is pending; asylum seekers are usually not permitted to work except in narrow, specific circumstances set by the Home Office — not modeled as a separate requirement group here since it's a general prohibition rather than a qualifying condition. MAJOR LIVE POLICY RISK, more acute than any other flagged in this dataset: this route sits inside active, contested legislative reform. The Nationality and Borders Act 2022 previously created a two-tier 'Group 1' (5 years to settlement) / 'Group 2' (30 months on a 10-year path) differentiation based on how the claimant arrived and whether they claimed promptly; secondary sources report this differentiation was 'paused' from July 2023, but this could not be confirmed as current gov.uk policy during this research pass. Separately, in November 2025 the government proposed reforms that would change asylum support from a statutory entitlement ('must provide') to discretionary ('may provide'); as of this verification the draft legislation has been introduced to Parliament but has NOT become law. duration_length, leads_to_pr, and pr_after_months in this file assume the standard 5-year-to-settlement position that remains the current legal position pending those reforms — this entire route should be treated as higher-priority for re-verification than any other route in the dataset, including uk_ilr and uk_citizenship, given the number of live legislative threads touching it simultaneously. 'safe third country' inadmissibility rules were also tightened by recent legislative reform and are evolving; the requirement here is captured at the principle level rather than citing specific current safe-country lists, which change administratively without full Statement of Changes cycles."
+}

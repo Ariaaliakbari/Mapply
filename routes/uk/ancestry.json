@@ -1,0 +1,121 @@
+{
+  "id": "uk_ancestry",
+  "country": "GB",
+  "name": "UK Ancestry visa",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "anc_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 17,
+          "hard": true,
+          "blocker_text": "This requires being 17 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "anc_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["commonwealth_citizen", "boc", "botc", "bno", "zimbabwe"],
+          "hard": true,
+          "blocker_text": "This requires being a Commonwealth citizen, or holding British Overseas Citizen, British Overseas Territories Citizen, British National (Overseas), or Zimbabwean citizen status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "anc_grandparent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "grandparent_born_uk_channel_islands_isle_of_man",
+          "hard": true,
+          "blocker_text": "This requires at least one grandparent born in the UK, the Channel Islands, or the Isle of Man (or before 31 March 1922 in what is now Ireland, or on a UK-registered ship or aircraft). Adoption and unmarried parents/grandparents count; step-parents do not.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "anc_intent_to_work",
+          "attribute": "has_job_offer",
+          "operator": "exists",
+          "value": "able_and_planning_to_work",
+          "hard": true,
+          "blocker_text": "This requires being able and planning to work in the UK — no specific job offer is required, but genuine intent to work must be demonstrated.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "anc_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "outside_uk",
+          "hard": true,
+          "blocker_text": "This must be applied for from outside the UK — there is no in-country switching route onto UK Ancestry, except for former Ancestry visa holders returning.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Grandparent's UK/Channel Islands/Isle of Man birth certificate",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Full documented ancestry chain (birth/marriage certificates linking applicant to the qualifying grandparent)",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "5 years, extendable by a further 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/ancestry-visa",
+      "title": "UK Ancestry visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_eligibility",
+      "tier": 1,
+      "url": "https://www.gov.uk/ancestry-visa/eligibility",
+      "title": "UK Ancestry visa: Eligibility - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee £726 confirmed via gov.uk; secondary sources showing £637/£682 are stale — another clean counterfeit-figure case. Unrestricted work rights from day one (employed, self-employed, or voluntary, full or part-time) — genuinely unusual among sponsored/assessed routes in this dataset, closer to Global Talent's freedom than to a standard work-sponsored route, despite not requiring any endorsement. Confirmed via direct research: UK Ancestry does NOT have its own citizenship pathway — holders naturalise through the standard ILR route (uk_citizenship 'via_ilr_general' group), so citizenship_after_months here reflects the standard 5-year-residence-plus-12-month-ILR-hold total (72 months), not a shortcut. No in-country switching onto this route from any other visa — must apply from outside the UK, a genuine structural difference from most other routes encoded so far."
+}

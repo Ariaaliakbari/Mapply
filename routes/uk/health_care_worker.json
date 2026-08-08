@@ -1,0 +1,115 @@
+{
+  "id": "uk_health_care_worker",
+  "country": "GB",
+  "name": "Health and Care Worker visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "clinical_roles",
+      "name": "Clinical and eligible healthcare roles",
+      "requirements": [
+        {
+          "id": "hcw_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from an NHS, NHS-supplier, or registered healthcare/social work sector licensed sponsor, in an eligible clinical occupation code (doctors, nurses, physiotherapists, occupational therapists, speech and language therapists, radiographers, paramedics, pharmacists, and related roles).",
+          "fix_path": "Secure a job offer in an eligible occupation code from a licensed healthcare sponsor.",
+          "fix_time_months": null,
+          "source_id": "govuk_your_job"
+        },
+        {
+          "id": "hcw_occupation_excluded",
+          "attribute": "occupation",
+          "operator": "not_in",
+          "value": ["care_worker_soc_6135", "senior_care_worker_soc_6136"],
+          "hard": true,
+          "blocker_text": "This route is closed to NEW overseas applicants in the care worker and senior care worker occupation codes (SOC 6135/6136) from 22 July 2025 — these codes remain valid only for extend/switch/update applications from workers already sponsored before that date, under transitional arrangements running to 22 July 2028.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_your_job"
+        },
+        {
+          "id": "hcw_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 25000, "currency": "GBP", "unit": "year", "note": "or the occupation-specific going rate (national pay scale band/region for NHS roles), whichever is higher" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least £25,000/year, or the going rate for the occupation code, whichever is higher.",
+          "fix_path": "Negotiate a higher salary, or confirm the applicable NHS pay-scale going rate for the role.",
+          "fix_time_months": null,
+          "source_id": "govuk_your_job"
+        },
+        {
+          "id": "hcw_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B1.",
+          "fix_path": "Take an approved Secure English Language Test at B1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Certificate of Sponsorship reference number",
+      "difficulty": "moderate",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Professional registration evidence (e.g. GMC, NMC, HCPC as applicable to role)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Tuberculosis test certificate (if from a listed country)",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/health-care-worker-visa",
+      "title": "Health and Care Worker visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_your_job",
+      "tier": 1,
+      "url": "https://www.gov.uk/health-care-worker-visa/your-job",
+      "title": "Health and Care Worker visa: Your job - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee £324 (up to 3 years) / £628 (more than 3 years), same whether applying inside or outside the UK — confirmed via gov.uk. IHS EXEMPT for main applicant and dependants, a real and significant cost difference versus Skilled Worker that's easy to undersell without encoding it explicitly. Care worker and senior care worker closure (SOC 6135/6136) confirmed via Statement of Changes HC 997 following the May 2025 Immigration White Paper — new overseas entry-clearance applications on these codes refused from 22 July 2025, with transitional in-country extend/switch arrangements to 22 July 2028 requiring 3+ months' prior payroll with the sponsor. This is a genuinely split route (clinical roles open, care-worker roles closed to new entrants) — modeled here as a single requirement group with an explicit exclusion rather than two groups, since the 'closed' half has no viable qualifying path for new applicants to encode as an alternative. Should this closure lift or the transitional period matter operationally, revisit as a two-group split similar to uk_ilr's multi-path structure. Salary floor of £25,000 is a blanket minimum; actual going rates for NHS-banded roles are published separately and are often higher — same LookupTable gap already flagged on uk_skilled_worker (finding #11, first-route-findings.md)."
+}

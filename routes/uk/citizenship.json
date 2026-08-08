@@ -1,0 +1,254 @@
+{
+  "id": "uk_citizenship",
+  "country": "GB",
+  "name": "British citizenship by naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["uk_ilr"],
+    "minimum_months_held": 12,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "via_ilr_general",
+      "name": "General route (section 6(1))",
+      "requirements": [
+        {
+          "id": "gen_ilr_held",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "uk_ilr",
+          "hard": true,
+          "blocker_text": "This requires holding Indefinite Leave to Remain (or settled status) for at least 12 months before applying.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "govuk_ilr_route"
+        },
+        {
+          "id": "gen_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of lawful residence in the UK.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_route"
+        },
+        {
+          "id": "gen_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires being 18 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_british_citizenship"
+        },
+        {
+          "id": "gen_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires meeting the good character requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_british_citizenship"
+        },
+        {
+          "id": "gen_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B1, unless aged 65+ or medically exempt.",
+          "fix_path": "Take an approved Secure English Language Test at B1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_british_citizenship"
+        },
+        {
+          "id": "gen_life_in_uk",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "life_in_uk_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the Life in the UK Test, unless aged 65+ or medically exempt.",
+          "fix_path": "Book and pass the Life in the UK Test.",
+          "fix_time_months": 1,
+          "source_id": "govuk_life_in_uk_test"
+        },
+        {
+          "id": "gen_absences",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "no_excess_absences",
+          "hard": true,
+          "blocker_text": "This requires no more than 450 days outside the UK in the qualifying 5 years, and no more than 90 days in the final 12 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_ilr_route"
+        }
+      ]
+    },
+    {
+      "id": "via_spouse",
+      "name": "Married to (or civil partner of) a British citizen (section 6(2))",
+      "requirements": [
+        {
+          "id": "sp_ilr_held",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "uk_ilr",
+          "hard": true,
+          "blocker_text": "This requires holding Indefinite Leave to Remain (or settled status) — no 12-month wait is required on this route, unlike the general route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_spouse_citizenship"
+        },
+        {
+          "id": "sp_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This requires 3 years of lawful residence in the UK.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_spouse_citizenship"
+        },
+        {
+          "id": "sp_marriage",
+          "attribute": "marital_status",
+          "operator": "==",
+          "value": "married_to_or_civil_partner_of_british_citizen",
+          "hard": true,
+          "blocker_text": "This requires being married to, or the civil partner of, a British citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_spouse_citizenship"
+        },
+        {
+          "id": "sp_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires meeting the good character requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_spouse_citizenship"
+        },
+        {
+          "id": "sp_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B1, unless aged 65+ or medically exempt.",
+          "fix_path": "Take an approved Secure English Language Test at B1.",
+          "fix_time_months": 2,
+          "source_id": "govuk_spouse_citizenship"
+        },
+        {
+          "id": "sp_life_in_uk",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "life_in_uk_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the Life in the UK Test, unless aged 65+ or medically exempt.",
+          "fix_path": "Book and pass the Life in the UK Test.",
+          "fix_time_months": 1,
+          "source_id": "govuk_life_in_uk_test"
+        },
+        {
+          "id": "sp_absences",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "no_excess_absences",
+          "hard": true,
+          "blocker_text": "This requires no more than 270 days outside the UK across the qualifying 3 years, and no more than 90 days in the final 12 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_spouse_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Life in the UK Test pass certificate (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Approved English test at B1, unless exempt",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "5 (or 3) years of continuous residence evidence, including full absence history",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Citizenship ceremony attendance",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govuk_ilr_route",
+      "tier": 1,
+      "url": "https://www.gov.uk/apply-citizenship-indefinite-leave-to-remain",
+      "title": "Apply for citizenship if you have indefinite leave to remain or 'settled status' - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_spouse_citizenship",
+      "tier": 1,
+      "url": "https://www.gov.uk/apply-citizenship-spouse",
+      "title": "Apply for citizenship if your spouse is a British citizen - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_british_citizenship",
+      "tier": 1,
+      "url": "https://www.gov.uk/british-citizenship",
+      "title": "Check if you can become a British citizen - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_life_in_uk_test",
+      "tier": 1,
+      "url": "https://www.gov.uk/life-in-the-uk-test",
+      "title": "Life in the UK Test - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "This is the final link in the core Student → Graduate → Skilled Worker → ILR → Citizenship Journey. Fee is £1,839 total (£1,709 application + £130 ceremony), confirmed via gov.uk citizenship fees, updated 8 April 2026 — several secondary sources still show £1,344/£1,605/£1,735, another counterfeit-figure case. No IHS (citizenship is not a visa). Dual citizenship permitted by the UK regardless of route. MAJOR LIVE POLICY RISK, same class as uk_ilr: the November 2025 'Earned Settlement' consultation (closed 12 Feb 2026) could push the underlying ILR qualifying period from 5 to 10 years, which flows directly into this route's prerequisites; the May 2025 White Paper also signalled a possible longer residence requirement for naturalisation itself. Re-verify monthly alongside uk_ilr until this resolves. English requirement is B1 currently; watch for alignment with the ILR B1→B2 change from March 2027. Known schema gap: 'via_ancestry' is not a separate group here because UK Ancestry visa holders naturalise via the standard ILR route, not a distinct citizenship pathway — confirmed via direct research, not assumed."
+}

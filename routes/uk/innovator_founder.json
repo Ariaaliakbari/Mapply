@@ -1,0 +1,115 @@
+{
+  "id": "uk_innovator_founder",
+  "country": "GB",
+  "name": "Innovator Founder visa",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "if_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires being 18 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "if_endorsement",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "innovator_founder_endorsement",
+          "hard": true,
+          "blocker_text": "This requires endorsement from an approved endorsing body confirming your business idea is new, innovative, viable and scalable.",
+          "fix_path": "Apply to an approved endorsing body with a business plan meeting the innovation, viability and scalability criteria.",
+          "fix_time_months": 3,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "if_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 1270, "currency": "GBP" },
+          "hard": true,
+          "blocker_text": "This requires £1,270 held for 28 consecutive days (no separate minimum investment requirement for entry — that only applies to certain settlement criteria).",
+          "fix_path": "Hold the required funds continuously for 28 days before applying.",
+          "fix_time_months": 1,
+          "source_id": "govuk_eligibility"
+        },
+        {
+          "id": "if_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B2",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B2.",
+          "fix_path": "Take an approved Secure English Language Test at B2.",
+          "fix_time_months": 2,
+          "source_id": "govuk_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Endorsement letter from an approved endorsing body",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Business plan meeting innovation/viability/scalability criteria",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Bank statements showing £1,270 held for 28 consecutive days",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 years, unlimited 3-year extensions",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/innovator-founder-visa",
+      "title": "Innovator Founder visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_eligibility",
+      "tier": 1,
+      "url": "https://www.gov.uk/innovator-founder-visa/eligibility",
+      "title": "Innovator Founder visa: Eligibility - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Sole active endorsement-based entrepreneur route as of this verification — the old Start-up and Innovator visas both closed 13 April 2023, and Innovator Founder is their consolidated successor. Application fee £1,357 (outside UK) / £1,693 (in-UK switch/extend) confirmed via gov.uk; secondary sources showing £1,274/£1,590 are stale. Separate endorsement fee of £1,000 to the endorsing body, plus £500 per required contact-point meeting (minimum two, at 12 and 24 months) — these endorsing-body fees are NOT part of the gov.uk application fee and are paid directly to the endorsing body; not yet modeled as a distinct cost field, captured here in notes only pending a schema decision on whether third-party (non-government) mandatory fees need their own field. ILR after 3 years requires meeting settlement criteria (e.g. two of seven published success criteria) — not a flat time-served rule like most other routes, closer in shape to the Global Talent tiered-outcome gap already flagged on uk_global_talent and uk_ilr."
+}

@@ -1,0 +1,96 @@
+{
+  "id": "uk_graduate",
+  "country": "GB",
+  "name": "Graduate visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-07",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["uk_student"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grad_current_route",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "uk_student",
+          "hard": true,
+          "blocker_text": "This requires currently holding a Student visa (or legacy Tier 4 visa) at the time of application, and applying before it expires.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "grad_current_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_uk",
+          "hard": true,
+          "blocker_text": "This requires being physically in the UK at the time of application — the Graduate visa cannot be applied for from abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "grad_course_completion",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "eligible_course_completed_and_reported",
+          "hard": true,
+          "blocker_text": "This requires successful completion of an eligible bachelor's degree, postgraduate degree, PhD, or other approved course while holding the Student visa, and your education provider must have reported that completion to the Home Office.",
+          "fix_path": "Complete the eligible course and confirm with your institution that they've reported completion to the Home Office before applying.",
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Confirmation from education provider that course completion was reported to the Home Office",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Identity verification (via UKVI ID Check app or in-person biometric appointment)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years (apply on or before 31 Dec 2026), 18 months (apply on or after 1 Jan 2027), 3 years for PhD/doctoral graduates",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_skilled_worker"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/graduate-visa",
+      "title": "Graduate visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-07"
+    }
+  ],
+  "notes": "Fee confirmed at £937 via direct fetch of gov.uk (page shows updated_at 2026-08-03). Secondary sources scattered across four different figures during research (£700 old, £822, £880, £937) — the widest counterfeit-figure spread found in this dataset so far, worth flagging as a standout example for the counterfeit-test feature. Cannot be extended — this is a hard terminal route, must switch out before expiry (to Skilled Worker or another route) or leave the UK. family_can_join is true here but ONLY for partners/children who were already dependants on the applicant's Student visa — new dependants cannot be added at this stage. This is a real conditional the flat boolean can't express cleanly; same simplification flagged on uk_student. Route duration itself is a live-changing figure (2yr to 18mo cutover 1 Jan 2027) already captured in duration_length as a conditional string rather than a single number, consistent with the duration_type schema decision from the original Turkey stress test."
+}

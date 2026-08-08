@@ -1,0 +1,104 @@
+{
+  "id": "uk_scale_up",
+  "country": "GB",
+  "name": "Scale-up Worker visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "su_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from an approved scale-up business — either endorsed by an approved body, or one that grew at least 20%/year in employment or turnover over 3 years with 10+ employees at the start of that period. Sponsorship is only required for the first 6 months of the visa.",
+          "fix_path": "Secure a job offer from a qualifying scale-up sponsor.",
+          "fix_time_months": null,
+          "source_id": "govuk_your_job"
+        },
+        {
+          "id": "su_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 39100, "currency": "GBP", "unit": "year", "note": "or the occupation-specific going rate, whichever is higher" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least £39,100/year, or the going rate for the occupation code, whichever is higher, in a role at RQF Level 6 or above.",
+          "fix_path": "Negotiate a higher salary or confirm the applicable going rate for the occupation code.",
+          "fix_time_months": null,
+          "source_id": "govuk_your_job"
+        },
+        {
+          "id": "su_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B2",
+          "hard": true,
+          "blocker_text": "This requires English at CEFR B2 for new applicants from 8 January 2026 (B1 is retained only for those extending who held the visa before that date).",
+          "fix_path": "Take an approved Secure English Language Test at B2.",
+          "fix_time_months": 2,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Certificate of Sponsorship reference number",
+      "difficulty": "moderate",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Approved English test certificate at B2",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Bank statement showing at least £1,270 held for 28 days (unless exempt)",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years (outside UK) / up to 3 years (in-country), extendable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_ilr"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/scale-up-worker-visa",
+      "title": "Scale-up Worker visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "govuk_your_job",
+      "tier": 1,
+      "url": "https://www.gov.uk/scale-up-worker-visa/your-job",
+      "title": "Scale-up Worker visa: Your job - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee £937 confirmed via gov.uk 'how much it costs' page; a cached-looking £880 figure appears on some secondary sources — flagged as stale. Structurally distinct from every other work_sponsored route in this dataset: sponsorship is only required for the FIRST 6 MONTHS, after which the holder is fully unsponsored and can change jobs or become self-employed freely for the remainder of the visa. This does not fit cleanly into the current schema's single job_offer_status requirement, which implies sponsorship for the full duration — a real modeling gap worth flagging alongside the other known gaps (Outcome/prerequisites bound to Route not RequirementGroup). Dependant rules are NOT restricted the way Skilled Worker's July 2025 RQF-6 changes restricted dependants on some codes — Scale-up dependants can join without that constraint, a genuine differentiator worth surfacing in the 'by outcome' browse view once built."
+}

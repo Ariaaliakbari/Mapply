@@ -1,0 +1,131 @@
+{
+  "id": "uk_youth_mobility",
+  "country": "GB",
+  "name": "Youth Mobility Scheme visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": { "window_type": "annual", "opens": null, "closes": null, "typical_fill_time_days": null, "note": "annual country-specific quota ballots apply to some nationalities (e.g. Hong Kong SAR, Taiwan); others are first-come within an annual allocation" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "age_18_35_nationalities",
+      "name": "Australia, Canada, New Zealand, South Korea (age 18-35)",
+      "requirements": [
+        {
+          "id": "ym1_age",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "min": 18, "max": 35 },
+          "hard": true,
+          "blocker_text": "This requires being between 18 and 35 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "ym1_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["australia", "canada", "new_zealand", "south_korea"],
+          "hard": true,
+          "blocker_text": "This age band applies to nationals of Australia, Canada, New Zealand, and South Korea.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "ym1_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 2530, "currency": "GBP" },
+          "hard": true,
+          "blocker_text": "This requires £2,530 held for 28 consecutive days.",
+          "fix_path": "Hold the required funds continuously for 28 days before applying.",
+          "fix_time_months": 1,
+          "source_id": "govuk_overview"
+        }
+      ]
+    },
+    {
+      "id": "age_18_30_nationalities",
+      "name": "Andorra, Iceland, Japan, Monaco, San Marino, Uruguay, Hong Kong SAR (ballot), Taiwan (ballot), certain British nationality types (age 18-30)",
+      "requirements": [
+        {
+          "id": "ym2_age",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "min": 18, "max": 30 },
+          "hard": true,
+          "blocker_text": "This requires being between 18 and 30 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "ym2_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["andorra", "iceland", "japan", "monaco", "san_marino", "uruguay", "hong_kong_sar_ballot", "taiwan_ballot", "boc_botc_bno"],
+          "hard": true,
+          "blocker_text": "This age band applies to nationals of Andorra, Iceland, Japan, Monaco, San Marino, and Uruguay; Hong Kong (SAR passport) and Taiwan via an annual ballot; and holders of certain British nationality types (British Overseas Citizen, British Overseas Territories Citizen, British National (Overseas)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "ym2_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 2530, "currency": "GBP" },
+          "hard": true,
+          "blocker_text": "This requires £2,530 held for 28 consecutive days.",
+          "fix_path": "Hold the required funds continuously for 28 days before applying.",
+          "fix_time_months": 1,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Bank statements showing £2,530 held for 28 consecutive days",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    },
+    {
+      "document": "Ballot selection confirmation (Hong Kong SAR / Taiwan / India Young Professionals Scheme applicants only)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "24 months (+12-month extension for Australia/Canada/New Zealand only)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/youth-mobility-scheme-visa",
+      "title": "Youth Mobility Scheme visa - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee shown on gov.uk as £319 at time of verification — flagged as a genuinely live discrepancy, not a confidently-resolved counterfeit case: numerous 2026 secondary sources cite £340, some attributing it to Statement of Changes HC 1691 (5 March 2026). Unlike the other discrepancies in this dataset where gov.uk was clearly current and secondary sites were clearly stale, this one could not be fully resolved during research and needs a direct re-fetch of the 'how much it costs' sub-page before publishing with full confidence — encoded here as £319 per the gov.uk overview page but marked for priority re-verification. IHS £776/year. Does NOT lead to settlement and cannot be used twice — a genuine terminal route with no switchable_to targets, unlike every other route encoded so far. family_can_join is false: partners/children cannot be added to a YMS application: they must qualify independently. India uses a separate, structurally similar India Young Professionals Scheme (ballot-based) not yet encoded as its own route."
+}

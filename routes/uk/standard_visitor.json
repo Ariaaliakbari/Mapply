@@ -1,0 +1,92 @@
+{
+  "id": "uk_standard_visitor",
+  "country": "GB",
+  "name": "Standard Visitor visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vis_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave the UK at the end of your visit, and that you won't live in the UK for extended periods through frequent or successive visits.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "vis_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "note": "no fixed minimum published — must show ability to support self and dependants during the trip and pay for the return/onward journey, or have funding from someone else" },
+          "hard": true,
+          "blocker_text": "This requires being able to support yourself and any dependants during the trip, and pay for your return or onward journey — or have funding from someone else to do so.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "vis_no_work",
+          "attribute": "job_offer_status",
+          "operator": "!=",
+          "value": "uk_employment",
+          "hard": true,
+          "blocker_text": "This does not permit paid or unpaid work for a UK company or as a self-employed person, unless doing a permitted paid engagement or event.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of sufficient funds (bank statements, sponsor letter)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of ties to home country and intent to leave the UK (employment, property, family ties)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 6 months per visit",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "cannot live in the UK for extended periods through frequent or successive visits, or make the UK a main home",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/standard-visitor",
+      "title": "Visit the UK as a Standard Visitor: Overview - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee £135 confirmed via direct fetch of gov.uk (page updated 2026-08-04, i.e. 4 days before this verification) — several secondary sources still show £115 (pre-2025) or £127 (April 2025-March 2026), another clean counterfeit-figure case. This is the first 'visit' category route encoded in the dataset — deliberately closes that gap. Genuinely terminal: no switchable_to targets, cannot be extended or switched into another route from inside the UK, and does not count toward any settlement path — a real structural difference from every work/study/family route encoded so far, and the correct behavior, not a gap. Study rights marked 'restricted' because visitors may study for up to 30 days recreationally or take short courses/exams/placements, but cannot use this route for substantive study — that belongs to uk_student. duration_type is 'per_entry' rather than 'fixed' since each visit is capped independently at 6 months, not a single continuous grant like most other routes. Whether a visa is needed at all depends on nationality (visa national list vs ETA vs visa-free) — this file assumes the visa-required case; a genuinely complete model would need a NationalVariable-style lookup of visa-national status per country, not yet built."
+}

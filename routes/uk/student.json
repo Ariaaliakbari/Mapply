@@ -1,0 +1,143 @@
+{
+  "id": "uk_student",
+  "country": "GB",
+  "name": "Student visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "std_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 16,
+          "hard": true,
+          "blocker_text": "This requires being 16 or over. Under-18 applicants at independent schools should look at the Child Student visa instead.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "std_cas",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "course_offer_from_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a place on a course from a UK institution holding a valid student sponsor licence, confirmed via a CAS (Confirmation of Acceptance for Studies) reference.",
+          "fix_path": "Secure an offer from a licensed sponsor institution and obtain a CAS.",
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        },
+        {
+          "id": "std_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "note": "course fees (per CAS) plus £1,529/month (London) or £1,171/month (outside London), up to 9 months — waived if applicant has held a valid UK visa for 12+ months at time of application", "lookup_ref": "uk_student_maintenance_by_region" },
+          "hard": true,
+          "blocker_text": "This requires enough money held for 28 consecutive days to cover outstanding course fees plus maintenance at £1,529/month (London) or £1,171/month (outside London), for up to 9 months — unless exempt.",
+          "fix_path": "Hold the required funds continuously for 28 days before applying, or wait until you qualify for the 12-month UK residence exemption.",
+          "fix_time_months": 1,
+          "source_id": "govuk_money"
+        },
+        {
+          "id": "std_english",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "B2",
+          "hard": true,
+          "blocker_text": "This requires the ability to speak, read, write and understand English at the level required for your specific course — evidenced via an approved test, unless exempt (e.g. degree taught in English, majority English-speaking nationality).",
+          "fix_path": "Take an approved Secure English Language Test at the level required for your course.",
+          "fix_time_months": 2,
+          "source_id": "govuk_english"
+        },
+        {
+          "id": "std_parental_consent",
+          "attribute": "age",
+          "operator": "<",
+          "value": 18,
+          "hard": false,
+          "blocker_text": "If you're 16 or 17, this requires evidence of parental consent.",
+          "fix_path": "Obtain and provide written parental consent.",
+          "fix_time_months": null,
+          "source_id": "govuk_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "CAS (Confirmation of Acceptance for Studies) reference from sponsor institution",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Bank statements showing required funds held for 28 consecutive days (unless exempt)",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    },
+    {
+      "document": "Approved English test certificate (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Tuberculosis test certificate (if from a listed country)",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    },
+    {
+      "document": "ATAS certificate (if doing a postgraduate research course in certain sensitive science/engineering subjects)",
+      "difficulty": "moderate",
+      "typical_time_days": 20
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years (degree-level course), up to 2 years (below degree level)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_graduate", "uk_skilled_worker"]
+  },
+  "sources": [
+    {
+      "id": "govuk_overview",
+      "tier": 1,
+      "url": "https://www.gov.uk/student-visa",
+      "title": "Student visa: Overview - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_money",
+      "tier": 1,
+      "url": "https://www.gov.uk/student-visa/money",
+      "title": "Student visa: Money you need - GOV.UK",
+      "accessed_at": "2026-08-07"
+    },
+    {
+      "id": "govuk_english",
+      "tier": 1,
+      "url": "https://www.gov.uk/student-visa/knowledge-of-english",
+      "title": "Student visa: Knowledge of English - GOV.UK",
+      "accessed_at": "2026-08-07"
+    }
+  ],
+  "notes": "Fee confirmed at £558 via direct fetch of gov.uk (page itself shows updated_at 2026-08-07, i.e. today) — this is current, post the 8 April 2026 fee rise. Multiple 2026-dated secondary sources still show the pre-rise £490 figure; another counterfeit-figure case, same pattern as UK Skilled Worker's £38,700 vs £41,700. family_can_join is false as a blanket default here — this is a simplification flagged honestly: PhD/doctoral-research students and government-sponsored students on approved programmes CAN bring a partner and children, standard taught Masters/undergrad students cannot. The schema's boolean family_can_join can't express this conditional split cleanly; a fuller pass would need a RequirementGroup split (research vs. taught) rather than one flat answer, similar to the known Outcome-bound-to-Route gap seen on uk_global_talent and uk_ilr. Left as a single group for now rather than over-engineering before it's needed elsewhere. LIVE POLICY WATCH: Graduate visa duration drops from 2 years to 18 months for anyone applying on or after 1 January 2027 (confirmed on this same gov.uk page) — re-check this route and uk_graduate before that date."
+}
