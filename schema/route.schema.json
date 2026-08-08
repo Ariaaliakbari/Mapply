@@ -81,8 +81,8 @@
     "application_window": {
       "type": ["object", "null"],
       "properties": {
-        "opens": { "type": "string" },
-        "closes": { "type": "string" },
+        "opens": { "type": ["string", "null"] },
+        "closes": { "type": ["string", "null"] },
         "cap_type": { "type": "string", "enum": ["fixed_number", "budget", "none"] },
         "typical_fill_time_days": { "type": ["number", "null"] }
       }
@@ -156,7 +156,7 @@
         },
         "operator": {
           "type": "string",
-          "enum": ["==", "!=", ">=", "<=", ">", "<", "in", "not_in"]
+          "enum": ["==", "!=", ">=", "<=", ">", "<", "in", "not_in", "exists"]
         },
         "value": {
           "description": "Literal value, OR a formula reference to a NationalVariable/LookupTable, e.g. { \"formula_ref\": \"de_pension_ceiling\", \"ratio\": 1.1 }"
