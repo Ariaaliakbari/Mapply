@@ -1,0 +1,99 @@
+{
+  "id": "us_eb1",
+  "country": "US",
+  "name": "EB-1 (Extraordinary Ability / Outstanding Researcher-Professor / Multinational Manager-Executive)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "eb1a_extraordinary_ability",
+      "name": "EB-1A — Extraordinary ability (self-petition)",
+      "requirements": [
+        {
+          "id": "eb1a_criteria",
+          "attribute": "occupation",
+          "operator": ">=",
+          "value": { "note": "meet at least 3 of 10 regulatory criteria (Kazarian two-step), then a final merits determination of sustained national/international acclaim" },
+          "hard": true,
+          "blocker_text": "This requires meeting at least 3 of 10 regulatory criteria demonstrating sustained national or international acclaim, then passing a final merits determination — no job offer or employer sponsorship needed.",
+          "fix_path": "Build a documented record against the Kazarian criteria (awards, publications, media coverage, judging others' work, high salary, etc.).",
+          "fix_time_months": null,
+          "source_id": "uscis_eb1"
+        }
+      ]
+    },
+    {
+      "id": "eb1b_outstanding_researcher",
+      "name": "EB-1B — Outstanding researcher/professor",
+      "requirements": [
+        {
+          "id": "eb1b_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires an employer offer, at least 3 years' experience in the field, and international recognition as outstanding in the specific academic field.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_eb1"
+        }
+      ]
+    },
+    {
+      "id": "eb1c_multinational_manager",
+      "name": "EB-1C — Multinational manager/executive",
+      "requirements": [
+        {
+          "id": "eb1c_prior_employment",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "This requires a qualifying multinational employer relationship and at least 1 year of employment abroad in a managerial/executive capacity within the prior 3 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_eb1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Documented evidence portfolio against the applicable sub-category's criteria",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — leads directly to a green card (LPR status) on approval; no PERM required",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "uscis_eb1",
+      "tier": 1,
+      "url": "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-first-preference-eb-1",
+      "title": "Employment-Based Immigration: First Preference EB-1 - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE COUNTRY-OF-BIRTH BACKLOG confirmed as of the Aug 2026 Visa Bulletin (Final Action Dates): EB-1 China July 1, 2023; EB-1 India Oct 15, 2022 (State Dept warns EB-1 India 'may become unavailable in coming weeks' before FY2026 ends); all other countries Current. This means pr_after_months (0) is accurate ONLY for applicants not born in India or China — a real and consequential per-country variance the schema's single-figure outcome block can't fully capture; flagged here rather than glossed over. EB-1A is the only self-petition route encoded for the US with genuinely no job offer or PERM required, similar in spirit to UK Global Talent — the most portable, employer-independent US work-to-settlement route in this dataset."
+}

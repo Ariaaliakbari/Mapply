@@ -1,0 +1,92 @@
+{
+  "id": "pt_d7",
+  "country": "PT",
+  "name": "D7 Visa (Passive Income)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "d7_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 1.0, "resolved_amount": 920, "currency": "EUR", "unit": "month", "note": "passive income only — pensions, rental income, dividends, royalties, interest. +50% of RMMG for a spouse, +30% per child, handled as separate requirements below." },
+          "hard": true,
+          "blocker_text": "This requires passive income (pensions, rent, dividends, royalties, or interest) of at least €920/month (100% of the 2026 minimum wage), for the main applicant.",
+          "fix_path": "Increase passive income to the required level, or reduce the number of dependants included.",
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "d7_income_spouse",
+          "attribute": "dependents",
+          "operator": "exists",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 0.5, "resolved_amount": 460, "currency": "EUR", "unit": "month", "note": "additional passive income required per accompanying spouse/partner" },
+          "hard": false,
+          "blocker_text": "Each accompanying spouse or partner adds a further €460/month (50% of RMMG) to the required passive income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "d7_income_child",
+          "attribute": "dependents",
+          "operator": "exists",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 0.3, "resolved_amount": 276, "currency": "EUR", "unit": "month", "note": "additional passive income required per accompanying child or dependent" },
+          "hard": false,
+          "blocker_text": "Each accompanying child or dependent adds a further €276/month (30% of RMMG) to the required passive income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of passive income (pension statements, rental contracts, dividend/interest records)",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Portuguese bank account holding approximately 12 months of the required income (consular practice, not a hard statutory figure)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "residence permit valid 2 years, renewable for 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "vistos_mne",
+      "tier": 1,
+      "url": "https://vistos.mne.gov.pt",
+      "title": "Portal de Vistos - Ministério dos Negócios Estrangeiros - subsistence means criterion",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed: threshold is explicitly stated by vistos.mne.gov.pt as pegged to RMMG (minimum wage), not IAS — a genuinely high-risk stale-figure area, since Portugal has TWO similarly-named indexed reference figures (RMMG €920/month, IAS €537.13/month) and several tier-3 relocation sites incorrectly imply the D7 threshold is IAS-based. This is arguably the clearest and most consequential counterfeit-figure risk found across all four countries in this dataset — using the wrong reference value would understate the real threshold by nearly half. citizenship_after_months (84) reflects the NEW 7-year naturalisation clock under Lei Orgânica n.º 1/2026 (in force 19 May 2026) for CPLP/EU nationals — non-CPLP/EU applicants need 10 years (120 months); this route doesn't restrict by nationality so citizenship_after_months encodes the faster 7-year case with the slower case flagged here rather than forcing an inaccurate single number. MAJOR LIVE POLICY CONTEXT: Portugal's naturalisation clock was DOUBLED from 5 to 7/10 years by a law that took effect during this very research pass (19 May 2026) — any secondary source describing Portugal as a '5-year citizenship' country is now stale, a genuinely dramatic and recent change unlike the more gradual reforms seen in UK/Germany/Netherlands."
+}

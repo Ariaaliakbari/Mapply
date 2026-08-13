@@ -1,0 +1,106 @@
+{
+  "id": "us_h1b",
+  "country": "US",
+  "name": "H-1B Specialty Occupation Visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "lottery",
+  "selection_odds": { "basis": "Wage-weighted lottery from Feb 27, 2026 (DHS final rule, effective for FY2027 cap): each unique beneficiary entered multiple times by OEWS prevailing-wage level — Level IV=4 entries, Level III=3, Level II=2, Level I=1. Replaces the pure random lottery used through FY2026.", "source_id": "dhs_wage_weighted_rule" },
+  "application_window": { "window_type": "annual", "opens": "2026-03-04", "closes": "2026-03-19", "cap_type": "fixed_number", "typical_fill_time_days": 15, "note": "FY2027 registration window; petitions filed April 1 - June 30, 2026" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "h1b_cap",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "specialty_occupation_bachelors_or_higher",
+          "hard": true,
+          "blocker_text": "This requires a specialty occupation role requiring at least a bachelor's degree or equivalent, and selection in the cap lottery: 65,000 regular cap + 20,000 US-advanced-degree exemption, unless the employer is cap-exempt (higher-education institutions and affiliated nonprofits, nonprofit research organizations, governmental research organizations).",
+          "fix_path": "Secure a specialty-occupation job offer and be selected in the registration lottery, or find a cap-exempt employer.",
+          "fix_time_months": null,
+          "source_id": "uscis_h1b"
+        },
+        {
+          "id": "h1b_prevailing_wage",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "meets_dol_prevailing_wage_or_actual_wage",
+          "hard": true,
+          "blocker_text": "This requires the employer to pay the higher of the DOL-certified prevailing wage (four-level OEWS system) or the actual wage paid to similarly employed workers.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_h1b"
+        },
+        {
+          "id": "h1b_100k_fee",
+          "attribute": "current_location",
+          "operator": "!=",
+          "value": "outside_us_no_valid_h1b_visa",
+          "hard": false,
+          "blocker_text": "A $100,000 fee (Presidential Proclamation, effective Sept 21, 2025) applies to new H-1B petitions for beneficiaries outside the US who don't already hold a valid H-1B visa, or petitions requesting consular/port-of-entry notification. Change of status from F-1 while inside the US is exempt.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_100k_fee"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Labor Condition Application (LCA) certified by DOL",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    },
+    {
+      "document": "Degree evaluation confirming specialty-occupation qualification",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 years, extendable to 6 (beyond 6 with an approved I-140, or if PERM/I-140 has been pending 365+ days)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_eb1", "us_eb2", "us_eb3"]
+  },
+  "sources": [
+    {
+      "id": "uscis_h1b",
+      "tier": 1,
+      "url": "https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations",
+      "title": "H-1B Specialty Occupations - USCIS",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "dhs_wage_weighted_rule",
+      "tier": 1,
+      "url": "https://www.federalregister.gov",
+      "title": "Federal Register - Weighted Selection Process for H-1B Registrants, Dec 29, 2025 (doc 2025-23853)",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "uscis_100k_fee",
+      "tier": 1,
+      "url": "https://www.uscis.gov",
+      "title": "USCIS guidance on Presidential Proclamation restricting entry of certain nonimmigrant workers, Oct 20, 2025",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR STRUCTURAL CHANGE confirmed and in force: the H-1B selection moved from a pure random lottery to a wage-weighted lottery (DHS final rule, effective Feb 27, 2026, first used FY2027) — higher-wage-level job offers get proportionally more chances in the pool. selection_method changed from 'lottery' in spirit to a weighted variant; encoded here as 'lottery' with the weighting mechanic captured in selection_odds since the schema's selection_method enum doesn't have a dedicated weighted-lottery value — a minor schema-fit gap worth flagging. The $100,000 proclamation fee is modeled as a soft (non-hard) requirement since it's a cost condition rather than an eligibility gate, and its scope is genuinely narrow (excludes change-of-status, extensions, and previously-issued valid visas) — many secondary sources overstate its reach. Registration fee $215/beneficiary (non-refundable), confirmed for FY2027. pr_after_months/citizenship_after_months left null since these depend entirely on the underlying employment-based category and country of birth (see us_eb1/eb2/eb3's severe India/China backlogs) — a single figure would be misleading."
+}

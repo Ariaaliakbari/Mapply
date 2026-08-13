@@ -1,0 +1,159 @@
+{
+  "id": "nl_highly_skilled_migrant",
+  "country": "NL",
+  "name": "Highly Skilled Migrant permit (Kennismigrant)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_30_plus",
+      "name": "Standard, age 30 and over",
+      "requirements": [
+        {
+          "id": "hsm1_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from an employer registered as an IND-recognised sponsor. No labour market test is required.",
+          "fix_path": "Secure a job offer from an IND-recognised sponsor.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "hsm1_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 5942, "currency": "EUR", "unit": "month", "note": "gross per month, excluding 8% holiday allowance — the IND's standard framing" },
+          "hard": true,
+          "blocker_text": "This requires a gross salary of at least €5,942/month (excl. 8% holiday allowance), 2026 figure for applicants aged 30 and over.",
+          "fix_path": "Negotiate a higher salary, or check eligibility for the reduced graduate/Orientation Year threshold.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    },
+    {
+      "id": "under_30",
+      "name": "Under 30",
+      "requirements": [
+        {
+          "id": "hsm2_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from an IND-recognised sponsor.",
+          "fix_path": "Secure a job offer from an IND-recognised sponsor.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "hsm2_age",
+          "attribute": "age",
+          "operator": "<",
+          "value": 30,
+          "hard": true,
+          "blocker_text": "This threshold applies only to applicants under 30 at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "hsm2_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 4357, "currency": "EUR", "unit": "month", "note": "gross per month, excl. 8% holiday allowance" },
+          "hard": true,
+          "blocker_text": "This requires a gross salary of at least €4,357/month (excl. 8% holiday allowance), 2026 under-30 figure.",
+          "fix_path": "Negotiate a higher salary.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    },
+    {
+      "id": "reduced_graduate",
+      "name": "Reduced criterion — recent graduate or Orientation Year holder",
+      "requirements": [
+        {
+          "id": "hsm3_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from an IND-recognised sponsor.",
+          "fix_path": "Secure a job offer from an IND-recognised sponsor.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "hsm3_eligibility",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["nl_orientation_year", "nl_student", "recent_dutch_or_international_graduate_within_3_years"],
+          "hard": true,
+          "blocker_text": "This reduced threshold applies within 3 years of graduating, completing a PhD, or completing research in the Netherlands (or via a current Orientation Year permit).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "hsm3_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 3122, "currency": "EUR", "unit": "month", "note": "gross per month, excl. 8% holiday allowance" },
+          "hard": true,
+          "blocker_text": "This requires a gross salary of at least €3,122/month (excl. 8% holiday allowance), 2026 reduced figure.",
+          "fix_path": "Negotiate a higher salary.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract from an IND-recognised sponsor meeting the applicable salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of salary payment (bank statements or batch payment records) — new requirement from 1 January 2026, in addition to payslips",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "tied to employment contract, up to 5 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_eu_blue_card", "nl_self_employed", "nl_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "ind_required_amounts",
+      "tier": 1,
+      "url": "https://ind.nl/en/required-amounts-income-requirements",
+      "title": "Required amounts income requirements - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "The Netherlands' dominant work route — sponsor-driven with no labour market test, closest structural equivalent to UK Skilled Worker and Germany's EU Blue Card/general skilled-worker permits. Three salary bands confirmed directly from ind.nl: €5,942 (30+), €4,357 (under 30), €3,122 (reduced/graduate) — all gross/month EXCLUDING the 8% holiday allowance, which is the IND's own standard framing and a genuinely distinctive Dutch convention worth surfacing prominently, since third-party sites sometimes quote annual or holiday-allowance-inclusive figures that don't match. Live counterfeit-figure risk confirmed during research: multiple tier-3 sites showing prior-year figures (€2,801-€2,989 for the reduced rate, ~€4,752 for under-30) as if current for 2026 — same pattern as every other country in this dataset. FORMULA MODELING DECLINED DELIBERATELY: these thresholds ARE indexed annually (1 January) and the reduced/family/PR 'required amounts' also index a second time on 1 July, but IND does not publish them as an explicit ratio of a named reference variable the way Germany's Blue Card threshold is stated as a percentage of the pension ceiling — so encoding a formula_ref/ratio here would mean fabricating a relationship not actually confirmed at tier-1 precision. Literal values with a clear annual re-verification flag is the honest choice. citizenship_after_months set equal to pr_after_months (60) since NL naturalisation's standard residence requirement is also 5 years and PR is typically the qualifying status — dual_citizenship_allowed is false as the GENERAL rule (see nl_naturalisation for the real exemption list, which is substantial)."
+}

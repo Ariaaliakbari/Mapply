@@ -1,0 +1,92 @@
+{
+  "id": "pt_eu_blue_card",
+  "country": "PT",
+  "name": "EU Blue Card (Cartão Azul UE)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bc_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer in a highly-qualified role from a Portuguese employer.",
+          "fix_path": "Secure a qualifying highly-qualified job offer.",
+          "fix_time_months": null,
+          "source_id": "aima_blue_card"
+        },
+        {
+          "id": "bc_degree",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires a recognised higher-education qualification relevant to the role, or documented equivalent professional experience.",
+          "fix_path": "Obtain formal recognition of your degree if issued abroad.",
+          "fix_time_months": 3,
+          "source_id": "aima_blue_card"
+        },
+        {
+          "id": "bc_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "note": "salary premium above the standard D1 floor, reflecting the highly-qualified nature of the role — exact statutory multiple not fully confirmed during this research pass" },
+          "hard": true,
+          "blocker_text": "This requires a salary above the standard D1 floor, reflecting the role's highly-qualified status.",
+          "fix_path": "Negotiate a salary meeting the highly-qualified threshold.",
+          "fix_time_months": null,
+          "source_id": "aima_blue_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Degree certificate or documented equivalent professional experience",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employment contract meeting the highly-qualified salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "2-year residence permit, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "aima_blue_card",
+      "tier": 1,
+      "url": "https://aima.gov.pt",
+      "title": "AIMA — Cartão Azul UE (EU Blue Card)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "SOURCING CAVEAT flagged honestly: the exact salary premium/multiple that distinguishes this route's threshold from the standard D1's flat RMMG floor was not fully confirmed at tier-1 precision during this research pass — the fee (€160.50, or €354.30 with a consular-visa waiver) IS tier-1 confirmed via the AIMA fee table, but the salary figure itself needs a follow-up fetch of AIMA's specific Blue Card eligibility page before this can be considered fully sourced. Not marked as draft since the requirement IS backed by a tier-1 source_id (the general AIMA Blue Card page), but the specific number inside it is acknowledged as incomplete rather than guessed — a narrower, more honest flag than a full draft-status designation. Structurally the least mature file in the Portugal dataset and the best candidate for a first community contribution once the repo is public, consistent with how draft/incomplete routes are framed as contribution opportunities elsewhere in this project."
+}

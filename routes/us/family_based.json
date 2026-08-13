@@ -1,0 +1,105 @@
+{
+  "id": "us_family_based",
+  "country": "US",
+  "name": "Family-Based Immigration (Immediate Relatives & Preference Categories)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "immediate_relatives",
+      "name": "Immediate relatives of US citizens (no annual cap)",
+      "requirements": [
+        {
+          "id": "ir_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This covers spouses (IR-1/CR-1), children (IR-2), and parents (IR-5) of US citizens — no annual numerical cap applies to this category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_family"
+        },
+        {
+          "id": "ir_affidavit",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "note": "sponsor income at least 125% of the Federal Poverty Guidelines (100% for active-duty military sponsoring a spouse/child)" },
+          "hard": true,
+          "blocker_text": "This requires the sponsor to file Form I-864 (Affidavit of Support) showing income at least 125% of the Federal Poverty Guidelines (100% for active-duty military sponsoring a spouse/child).",
+          "fix_path": "Meet the income threshold, or secure a joint sponsor who does.",
+          "fix_time_months": null,
+          "source_id": "uscis_i864"
+        }
+      ]
+    },
+    {
+      "id": "preference_categories",
+      "name": "Preference categories (F1-F4, annually capped)",
+      "requirements": [
+        {
+          "id": "pref_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This covers unmarried adult children of citizens (F1), spouses/children/unmarried adult children of LPRs (F2A/F2B), married children of citizens (F3), and siblings of adult citizens (F4) — each subject to annual worldwide and per-country numerical limits, creating multi-year to multi-decade backlogs depending on category and country of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_family"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Affidavit of Support (Form I-864) meeting the income threshold",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Evidence of the qualifying family relationship",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — direct green card for immediate relatives; preference categories wait for priority date to become current",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "uscis_family",
+      "tier": 1,
+      "url": "https://www.uscis.gov/family",
+      "title": "Family of US Citizens - USCIS",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "uscis_i864",
+      "tier": 1,
+      "url": "https://www.uscis.gov/i-864",
+      "title": "Form I-864, Affidavit of Support - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL BIFURCATION worth flagging prominently: immediate relatives face NO annual cap and pr_after_months is genuinely 0 (subject only to processing time), while preference categories face severe per-country backlogs — the Aug 2026 Visa Bulletin shows F1/F2A/F2B/F3/F4 for Mexico and the Philippines running years to decades behind other countries (e.g. F4 Mexico dated back to April 2001, a 25-year-old priority date). pr_after_months (0) is accurate only for the immediate-relatives group; the preference-categories group has no fixed figure since it depends entirely on category and country of birth — the single largest per-country variance encoded in any route across this entire dataset. I-864 income threshold is formula-based (125% of the current Federal Poverty Guidelines, updated annually — commonly around March) but exact current dollar tables by household size weren't independently confirmed at tier-1 precision during the research this was built from; encoded as the percentage rule rather than a specific dollar figure to avoid a stale/wrong number."
+}

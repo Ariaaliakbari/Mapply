@@ -1,0 +1,94 @@
+{
+  "id": "nl_start_up",
+  "country": "NL",
+  "name": "Start-up residence permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "su_facilitator",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "rvo_approved_facilitator_agreement",
+          "hard": true,
+          "blocker_text": "This requires a cooperation agreement with an RVO-approved facilitator (mentor) who will guide the business.",
+          "fix_path": "Find and agree terms with an RVO-approved facilitator.",
+          "fix_time_months": 2,
+          "source_id": "business_gov_startup"
+        },
+        {
+          "id": "su_innovation",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "innovative_product_service_or_technology",
+          "hard": true,
+          "blocker_text": "This requires an innovative product, service, or working method, supported by a step-by-step business plan.",
+          "fix_path": "Develop a business plan demonstrating genuine innovation.",
+          "fix_time_months": 3,
+          "source_id": "business_gov_startup"
+        },
+        {
+          "id": "su_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_means_self_facilitator_or_third_party",
+          "hard": true,
+          "blocker_text": "This requires sufficient means to live, financed by yourself, the facilitator, or a third party.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "business_gov_startup"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Cooperation agreement with an RVO-approved facilitator",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Step-by-step business plan",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "1 year, not directly renewable",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "nl_self_employed"
+    ]
+  },
+  "sources": [
+    {
+      "id": "business_gov_startup",
+      "tier": 1,
+      "url": "https://business.gov.nl/starting-your-business/registering-your-business/residence-permit-for-foreign-startups/",
+      "title": "Residence permit for foreign startups - Business.gov.nl",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee €423 confirmed via ind.nl fee schedule. Duration confirmed as 1 year per Business.gov.nl official material — a blog claim of a 2-year term circulating on some tier-3 sites is NOT confirmed on official material as of this verification, flagged explicitly as an unresolved discrepancy rather than silently picking one figure. Deliberately terminal in this dataset (leads_to_pr: false, not renewable in place) — the real path forward is switching to nl_self_employed after year 1. The 'bypass' mechanism is now CONFIRMED at tier-1 level (see nl_self_employed's ind_scoring_system source, added 2026-08-08): a facilitator's written declaration confirming successful counseling earns an automatic 30-point bonus toward the Added Value category on the self-employed points assessment — not a full bypass of the points test, but a meaningful, concrete head start. Related but distinct: an 'essential start-up personnel' residence permit exists with its own 2026 income requirement of €3,122/month (excl. holiday allowance, tier-1 IND) — not encoded as a separate route here since it covers employees joining an existing start-up rather than founders, a scope decision rather than an oversight."
+}

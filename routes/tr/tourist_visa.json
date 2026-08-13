@@ -1,0 +1,82 @@
+{
+  "id": "tr_tourist_visa",
+  "country": "TR",
+  "name": "Tourist/Visitor Visa (e-Visa and Visa-Exempt)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_exempt",
+      "name": "Visa-exempt nationalities",
+      "requirements": [
+        {
+          "id": "ve_country",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_exempt_country",
+          "hard": true,
+          "blocker_text": "This covers roughly 80-88 nationalities entering visa-free for 90 days in any 180-day period, including — since a Presidential Decree of 23 December 2023 — the USA, Canada, UAE, Saudi Arabia, Bahrain, and Oman.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_visa_info"
+        }
+      ]
+    },
+    {
+      "id": "e_visa",
+      "name": "e-Visa (visa-required nationalities)",
+      "requirements": [
+        {
+          "id": "ev_application",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "e_visa_obtained_via_evisa_gov_tr",
+          "hard": true,
+          "blocker_text": "This requires obtaining an e-Visa via evisa.gov.tr before travel, with fees varying by nationality (roughly $50-90).",
+          "fix_path": "Apply for the e-Visa online.",
+          "fix_time_months": null,
+          "source_id": "mfa_visa_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "e-Visa confirmation (visa-required nationalities)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tr_short_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "mfa_visa_info",
+      "tier": 1,
+      "url": "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",
+      "title": "Visa Information for Foreigners - Ministry of Foreign Affairs of Türkiye",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE 2023 EXPANSION still shaping the current visa-exempt list: the USA, Canada, UAE, Saudi Arabia, Bahrain, and Oman became visa-exempt for 90 days per Presidential Decree published in the Resmî Gazete on 23 December 2023 — this simultaneously ABOLISHED the previous e-Visa fee for these nationalities (which had run up to $78.50), a genuine and dated liberalization worth flagging distinctly from Turkey's several tightening measures elsewhere in this dataset (closed neighbourhoods, work permit ratios). Some nationalities have shorter allowances than the standard 90 days (Russia 60 days, Belarus 30 days) — a real per-nationality variance not modeled as separate groups here given scope. Direct feeder into tr_short_term_residence for anyone pursuing property purchase or another qualifying purpose after arrival."
+}

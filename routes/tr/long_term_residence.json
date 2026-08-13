@@ -1,0 +1,85 @@
+{
+  "id": "tr_long_term_residence",
+  "country": "TR",
+  "name": "Long-Term Residence Permit (Uzun Dönem İkamet İzni)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["tr_short_term_residence", "tr_family_residence", "tr_student_residence", "tr_work_permit"],
+    "minimum_months_held": 96,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ltr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "This requires 8 years of continuous legal residence on a permit (student-permit time counts at half rate).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "goc_long_term_residence"
+        },
+        {
+          "id": "ltr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "sufficient_stable_income_no_social_assistance",
+          "hard": true,
+          "blocker_text": "This requires sufficient and stable income, no social assistance received in the past 3 years, valid health insurance, and no public-order/public-security threat.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "goc_long_term_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "8 years of continuous residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Income and health insurance evidence",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "absence from Turkey exceeding 1 continuous year (except for health/education/compulsory public service) can result in cancellation",
+    "switchable_to": ["tr_ordinary_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "goc_long_term_residence",
+      "tier": 1,
+      "url": "https://en.goc.gov.tr/residence-permit-types",
+      "title": "Long-Term Residence Permit - Presidency of Migration Management",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Turkey's genuine PR-hub route, holding indefinitely once granted and treated as equivalent to Turkish citizens for most purposes EXCEPT voting, being elected, public-service employment, compulsory military service, and vehicle-import customs exemptions — a real, specific, and generous set of rights short of citizenship worth flagging as one of the most substantively 'citizenship-adjacent' non-citizen statuses in this entire multi-country dataset. Refugees, conditional refugees, subsidiary-protection beneficiaries, temporary-protection holders, and other humanitarian-status holders are EXPLICITLY EXCLUDED from transferring to this route — a genuine and consequential structural exclusion, distinct from most other countries' asylum-to-PR pathways in this dataset, which typically DO allow protected persons to reach settlement status eventually. Re-applications after cancellation do not require the 8 years again and are prioritised — a real mitigating mechanic worth noting. citizenship_after_months (0) reflects that Turkey's naturalisation clock (5 years) runs INDEPENDENTLY of this route rather than being gated behind it — someone could naturalise via tr_ordinary_naturalisation without ever holding this status at all, the same structural pattern already flagged on Japan's naturalisation route in this dataset."
+}

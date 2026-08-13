@@ -1,0 +1,144 @@
+{
+  "id": "pt_ancestry_descent",
+  "country": "PT",
+  "name": "Citizenship by descent (child, grandchild, great-grandchild)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "child_of_portuguese",
+      "name": "Child of a Portuguese citizen",
+      "requirements": [
+        {
+          "id": "child_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_portuguese_citizen",
+          "hard": true,
+          "blocker_text": "This requires having a Portuguese citizen parent. Nationality is attributed automatically (nacionalidade originária) — no language requirement, no residence requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_organica_1_2026"
+        }
+      ]
+    },
+    {
+      "id": "grandchild_of_portuguese",
+      "name": "Grandchild of a Portuguese citizen",
+      "requirements": [
+        {
+          "id": "grand_grandparent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "grandparent_portuguese_citizen",
+          "hard": true,
+          "blocker_text": "This requires a Portuguese citizen grandparent, a formal declaration of intent, and proof of an effective connection to the Portuguese national community.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_organica_1_2026"
+        },
+        {
+          "id": "grand_language",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "language_and_culture_test_pending_regulation",
+          "hard": true,
+          "blocker_text": "This now requires a language/culture test and integration knowledge under the 2026 reform — the exact required level (commonly expected to be A2) is pending publication of the new Regulamento da Nacionalidade, so the precise standard cannot yet be stated with certainty.",
+          "fix_path": "Prepare for a Portuguese language and culture assessment once the exact standard is confirmed.",
+          "fix_time_months": 6,
+          "source_id": "lei_organica_1_2026"
+        }
+      ]
+    },
+    {
+      "id": "great_grandchild_of_portuguese",
+      "name": "Great-grandchild of a Portuguese citizen",
+      "requirements": [
+        {
+          "id": "greatgrand_ancestor",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "great_grandparent_portuguese_citizen",
+          "hard": true,
+          "blocker_text": "This requires a Portuguese citizen great-grandparent AND at least 5 years of legal residence IN Portugal — unlike the child/grandchild routes, this cannot be exercised purely from abroad.",
+          "fix_path": "Establish 5 years of legal residence in Portugal.",
+          "fix_time_months": 60,
+          "source_id": "lei_organica_1_2026"
+        }
+      ]
+    },
+    {
+      "id": "sephardic_jewish_closed",
+      "name": "Sephardic Jewish descent — CLOSED to new applicants",
+      "requirements": [
+        {
+          "id": "sephardic_closed_notice",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "route_closed_4_may_2026",
+          "hard": true,
+          "blocker_text": "This route closed to new applications on 4 May 2026, when the Jewish Community of Lisbon stopped accepting new certification submissions. Applications filed before that cutoff continue to be processed under the old rules; no new applications are possible.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irn_sephardic_closure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Documented descent chain (birth/marriage certificates linking applicant to the qualifying ancestor)",
+      "difficulty": "hard",
+      "typical_time_days": 120
+    },
+    {
+      "document": "Language/culture test certificate (grandchild and great-grandchild routes)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Proof of 5 years' legal residence in Portugal (great-grandchild route only)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lei_organica_1_2026",
+      "tier": 1,
+      "url": "https://diariodarepublica.pt",
+      "title": "Diário da República — Lei Orgânica n.º 1/2026, Art. 1 and Art. 6",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "irn_sephardic_closure",
+      "tier": 1,
+      "url": "https://irn.justica.gov.pt",
+      "title": "IRN (Instituto dos Registos e do Notariado) — clarification on Sephardic Jewish route closure, 11 May 2026",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "This route now models FOUR genuinely distinct groups, one of them explicitly closed — a real, confirmed use of the closed-status pattern at the requirement-group level rather than the whole-route level, since child/grandchild/great-grandchild remain fully open while Sephardic specifically closed. This is a new pattern not seen elsewhere in the dataset: a CLOSED sub-path coexisting with OPEN sub-paths on the same route, rather than an entire route closing (like uk_start_up) — the schema's route-level status/superseded_by fields don't capture this nuance, since only the whole route has a status field, not individual groups; flagged as a real, if minor, gap for a future schema pass. MAJOR GENUINE FINDING: the Sephardic Jewish citizenship route — which drew over 250,000 applications and 75,000+ approvals since 2013/2015 — is now PERMANENTLY CLOSED to new applicants as of 4 May 2026, confirmed directly by the Jewish Community of Lisbon and clarified by IRN on 11 May 2026. This is one of the most historically significant route closures in this entire dataset. SCHEMA GAP FLAGGED, not fabricated: the grandchild route's language/culture test level is widely EXPECTED to be A2 by practitioners, but the enacted statute only requires 'sufficient knowledge of the language...through test or certificate' without specifying CEFR level — the exact standard is pending the new Regulamento da Nacionalidade (expected ~mid-August 2026). This file deliberately does NOT hard-code 'A2' for the grandchild/great-grandchild language requirement, unlike how A2 is stated confidently for pt_naturalisation and pt_permanent_residence, since those ARE confirmed at statute level while this one genuinely isn't yet. The great-grandchild route is structurally different from child/grandchild in a way worth emphasizing: it is NOT a pure blood-attribution route exercisable from abroad — it requires actual Portuguese residence (5 years) and produces derived (adquirida) rather than original (originária) nationality, a real and consequential difference some tier-3 Brazilian consultancy sites reportedly get wrong."
+}

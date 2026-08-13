@@ -1,0 +1,61 @@
+{
+  "id": "sg_asylum",
+  "country": "SG",
+  "name": "Refugee/asylum status",
+  "category": "humanitarian",
+  "status": "closed",
+  "superseded_by": null,
+  "closed_date": null,
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "no_system",
+      "name": "No formal system exists",
+      "requirements": [
+        {
+          "id": "no_system_notice",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "no_formal_asylum_system_exists",
+          "hard": true,
+          "blocker_text": "Singapore is not a signatory to the 1951 Refugee Convention or its 1967 Protocol and has no formal domestic asylum system or refugee-status determination framework. Singapore does not use the term 'refugee' in its immigration framework and does not grant Convention rights. There is no route to apply for asylum in Singapore.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ica_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [],
+  "outcome": {
+    "duration_length": "n/a — no formal route exists",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ica_general",
+      "tier": 1,
+      "url": "https://www.ica.gov.sg",
+      "title": "Immigration & Checkpoints Authority — general immigration framework (absence of any refugee/asylum provisions confirmed by omission across all ICA policy pages)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "SAME STRUCTURAL PATTERN as uae_asylum (the only other 'no formal system' case in this dataset) — modeled here using status: closed with superseded_by explicitly null, since there is no successor route and never was an open one to close in the traditional sense; this is a deliberate reuse of the closed-status mechanism to represent 'this genuinely does not exist' rather than 'this existed and stopped,' consistent with how the schema's closed-status fields were designed to be flexible enough for exactly this case. Singapore is not a signatory to the 1951 Refugee Convention, structurally identical to the UAE's position, and does not maintain any parallel case-by-case humanitarian residency mechanism comparable to what was found for the UAE (which does host some UNHCR-registered individuals informally) — no equivalent informal accommodation was confirmed for Singapore during this research pass, a genuine and stark data point about Singapore's approach relative to every other country in this dataset, all of which have at least SOME humanitarian protection mechanism, however restrictive (compare Japan's sub-1% recognition rate, still a real functioning system, versus Singapore's complete absence of one)."
+}

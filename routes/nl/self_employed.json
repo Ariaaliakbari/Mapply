@@ -1,0 +1,134 @@
+{
+  "id": "nl_self_employed",
+  "country": "NL",
+  "name": "Self-employed / entrepreneur residence permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "points_based",
+      "name": "Points-based assessment (RVO)",
+      "requirements": [
+        {
+          "id": "se_points",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "rvo_points_assessment_90_or_more",
+          "hard": true,
+          "blocker_text": "This requires scoring at least 90 points across three RVO-assessed categories (each maxing at 300 total: Personal Experience, Business Plan, Added Value for the Netherlands) — either at least 30 points in each of the three categories, or at least 45 points in each of Personal Experience and Business Plan (in which case Added Value is automatically fixed at 30).",
+          "fix_path": "Strengthen the business plan and demonstrate personal experience and Dutch economic value before applying.",
+          "fix_time_months": 4,
+          "source_id": "ind_scoring_system"
+        },
+        {
+          "id": "se_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 1766.77,
+            "currency": "EUR",
+            "unit": "month",
+            "note": "gross profit, INCLUDING 8% holiday allowance — the self-employed required amount uses the opposite convention from the salaried thresholds"
+          },
+          "hard": true,
+          "blocker_text": "This requires gross business profit of at least €1,766.77/month (including holiday allowance, 2026 figure).",
+          "fix_path": "Grow business profit to the required level.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    },
+    {
+      "id": "treaty_exempt",
+      "name": "Treaty-exempt nationals (points test waived)",
+      "requirements": [
+        {
+          "id": "se2_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": [
+            "japan"
+          ],
+          "hard": true,
+          "blocker_text": "Japanese nationals are exempt from the RVO points test under the Dutch-Japanese Trade Treaty, and are assessed only on whether the business serves a Dutch economic interest. (US and Bolivian nationals have a similar exemption but typically use the dedicated nl_daft route or a separate treaty pathway instead of this group.)",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_scoring_system"
+        },
+        {
+          "id": "se2_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 1766.77,
+            "currency": "EUR",
+            "unit": "month"
+          },
+          "hard": true,
+          "blocker_text": "This requires gross business profit of at least €1,766.77/month (including holiday allowance, 2026 figure).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Detailed business plan for RVO assessment",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Evidence of personal/professional experience relevant to the business",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Financial projections and funding evidence",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "nl_permanent_residence"
+    ]
+  },
+  "sources": [
+    {
+      "id": "ind_required_amounts",
+      "tier": 1,
+      "url": "https://ind.nl/en/required-amounts-income-requirements",
+      "title": "Required amounts income requirements - IND",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "ind_scoring_system",
+      "tier": 1,
+      "url": "https://ind.nl/en/documents/07-2022/dutch-scoring-system-business-of-essential-interest.pdf",
+      "title": "Dutch scoring system business of essential interest - IND (official RVO points rubric)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "SCHEMA GAP CLOSED (2026-08-08): points structure now cites IND's own published scoring rubric PDF directly, replacing the earlier tier-3 Mynta Law citation. Status moved from draft to published. GENUINE NEW FINDING confirmed at tier-1 level: a Start-up visa holder (nl_start_up) with a written declaration from their facilitator confirming successful counseling gets an automatic 30-point bonus toward Added Value — this is the actual mechanism behind the 'facilitator evaluation bypass' that nl_start_up's notes flagged as unconfirmed; now confirmed directly from the IND document and worth cross-referencing in that file too. Distinctive convention worth flagging: this route's income figure is stated INCLUDING the 8% holiday allowance, the opposite of the salaried-employee thresholds (HSM, Blue Card) which are stated EXCLUDING it — a genuine trap for anyone comparing routes carelessly. Treaty-exempt nationals (US, Japan, Bolivia) skip the points test entirely; US nationals in practice typically use the dedicated nl_daft route instead of this general route, so the treaty_exempt group here only lists Japan explicitly to avoid overlapping/duplicating DAFT's more specific and more generous terms."
+}

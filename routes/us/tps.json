@@ -1,0 +1,76 @@
+{
+  "id": "us_tps",
+  "country": "US",
+  "name": "Temporary Protected Status (TPS)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tps_country_designation",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "currently_designated_tps_country",
+          "hard": true,
+          "blocker_text": "This requires being a national of a country with an ACTIVE TPS designation at the time of application — this list changes constantly; several designations were terminated in 2025-2026 (Afghanistan, Cameroon, Honduras, Nepal, Syria, Yemen, both Venezuela designations, Haiti) while others remain active (El Salvador, Ukraine, Lebanon).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_tps"
+        },
+        {
+          "id": "tps_continuous_presence",
+          "attribute": "months_in_country",
+          "operator": "exists",
+          "value": "continuous_residence_since_designation_date",
+          "hard": true,
+          "blocker_text": "This requires continuous residence in the US since the country's designation date, and no disqualifying criminal record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_tps"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of continuous US residence since the designation date",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "fixed per-country designation period (typically 6-18 months), renewable only while the designation remains active",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uscis_tps",
+      "tier": 1,
+      "url": "https://www.uscis.gov/humanitarian/temporary-protected-status",
+      "title": "Temporary Protected Status - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "THE FASTEST-MOVING SINGLE ROUTE encoded across this entire multi-country dataset — TPS country designations changed with genuinely extreme frequency in 2025-2026: Afghanistan terminated 14 July 2025; Cameroon 4 Aug 2025; Honduras 8 Sept 2025; Nepal Aug 2025; Syria 21 Nov 2025; Venezuela's 2021 designation ended 7 Nov 2025 (SCOTUS allowed the 2023 designation's termination 19 May 2025); Yemen 20 July 2026; Haiti's termination allowed by SCOTUS 25 June 2026, effective 27 July 2026. Deliberately terminal (leads_to_pr: false, no citizenship path, no family_can_join) — TPS is genuinely NOT itself a path to any settlement status, a confirmed design feature distinct from most other humanitarian routes in this dataset, which typically DO lead somewhere. Given how fast this list changes, the requirement is deliberately written as 'currently designated' rather than naming specific countries within the schema — any specific list encoded here would likely be stale within weeks; re-verify against the live USCIS TPS page before relying on this for any specific nationality."
+}

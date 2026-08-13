@@ -1,0 +1,109 @@
+{
+  "id": "nl_student",
+  "country": "NL",
+  "name": "Student residence permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "higher_education",
+      "name": "Higher professional education (hbo) or university",
+      "requirements": [
+        {
+          "id": "st1_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "unconditional_admission_confirmed",
+          "hard": true,
+          "blocker_text": "This requires unconditional admission to a recognised Dutch institution, which acts as your sponsor.",
+          "fix_path": "Secure unconditional admission from a recognised institution.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "st1_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 1130.77, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires proof of funds of at least €1,130.77/month for higher professional education or university study (2026 figure).",
+          "fix_path": "Arrange sufficient funds or a funding declaration.",
+          "fix_time_months": 1,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    },
+    {
+      "id": "secondary_vocational",
+      "name": "Secondary or vocational education (mbo)",
+      "requirements": [
+        {
+          "id": "st2_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "unconditional_admission_confirmed",
+          "hard": true,
+          "blocker_text": "This requires unconditional admission to a recognised secondary or vocational (mbo) institution.",
+          "fix_path": "Secure unconditional admission.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "st2_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 928.58, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires proof of funds of at least €928.58/month for secondary or vocational study (2026 figure).",
+          "fix_path": "Arrange sufficient funds or a funding declaration.",
+          "fix_time_months": 1,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Unconditional admission letter from the institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of funds meeting the applicable threshold",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the study program, renewable while enrolled",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_orientation_year", "nl_highly_skilled_migrant"]
+  },
+  "sources": [
+    {
+      "id": "ind_required_amounts",
+      "tier": 1,
+      "url": "https://ind.nl/en/required-amounts-income-requirements",
+      "title": "Required amounts income requirements - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee €254 confirmed via IND (up from €243 in 2025 — a real year-over-year change, not a stale-data case, since the 2025 figure was correct for 2025). Work rights: non-EU students may work max 16 hours/week during term OR full-time in June/July/August (not both) — employer needs a TWV (work permit) but there's no IND fee for it, only a UWV fee of approximately €66 paid by the employer. EU/EEA/Swiss students have unrestricted work rights. Self-employment (ZZP) is allowed without a TWV — a genuine flexibility not present on the equivalent UK or German student routes. Two-tier funds requirement (€1,130.77 hbo/university vs €928.58 secondary/mbo) is a real structural difference from UK and Germany, which both use a single flat funds figure regardless of study level. Direct feeder into nl_orientation_year, closing the Netherlands' version of the core Journey chain seen in all three countries now (Student → Graduate/Orientation Year → Skilled Worker → PR → Citizenship)."
+}

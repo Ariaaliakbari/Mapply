@@ -1,0 +1,76 @@
+{
+  "id": "us_k1",
+  "country": "US",
+  "name": "K-1 Fiancé(e) Visa",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "k1_petitioner",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "This requires the petitioner to be a US CITIZEN specifically — lawful permanent residents cannot file a K-1 petition.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_k1"
+        },
+        {
+          "id": "k1_met_in_person",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "met_in_person_within_2_years",
+          "hard": true,
+          "blocker_text": "This requires having met in person within the 2 years before filing, and intending to marry within 90 days of the fiancé(e)'s entry to the US.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_k1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of a genuine relationship and intent to marry",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "90 days to marry after entry; then must adjust status",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 3,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_family_based"]
+  },
+  "sources": [
+    {
+      "id": "uscis_k1",
+      "tier": 1,
+      "url": "https://www.uscis.gov/family/family-of-us-citizens/k-1-fiancee-visa",
+      "title": "K-1 Fiancé(e) Visa - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Genuinely time-pressured structure: 90 days to marry after entry, or the holder falls out of status entirely with no extension available — a real hard deadline distinct from most other family routes in this dataset. K-2 children (unmarried, under 21) must be listed on the same I-129F petition from the start; they cannot be added later. citizenship_after_months (36) uses the 3-year marriage-based track (married to and living with a US citizen), the faster of the two naturalisation timelines (see us_naturalisation)."
+}

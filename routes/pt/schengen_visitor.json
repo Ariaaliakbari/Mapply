@@ -1,0 +1,92 @@
+{
+  "id": "pt_schengen_visitor",
+  "country": "PT",
+  "name": "Schengen short-stay visa (Category C)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sv_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave the Schengen area at the end of your visit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "sv_insurance",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "travel_health_insurance_30000eur_minimum",
+          "hard": true,
+          "blocker_text": "This requires travel health insurance covering at least €30,000, valid across the Schengen area.",
+          "fix_path": "Purchase qualifying Schengen travel health insurance before applying.",
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "sv_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_for_the_trip",
+          "hard": true,
+          "blocker_text": "This requires showing sufficient funds to cover the visit and return journey.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Travel health insurance certificate (€30,000 minimum coverage)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of sufficient funds and intent to leave",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "valid throughout the Schengen area, not just Portugal; cannot be used to establish residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "vistos_mne",
+      "tier": 1,
+      "url": "https://vistos.mne.gov.pt",
+      "title": "Portal de Vistos - Ministério dos Negócios Estrangeiros",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee €90 (adult) / €45 (children 6-12) / €35 (visa-facilitation-agreement nationals) confirmed via vistos.mne.gov.pt — same €90 base figure as Germany's Schengen visitor route, consistent since both implement the same EU-wide fee regulation. Approximately 60 nationalities are visa-exempt (US, UK, Brazil, Canada, Australia among them). EES (Entry/Exit System) launched October 2025, replacing manual passport stamping — a genuine operational change relevant to how border crossings are now recorded, though it doesn't change visa eligibility itself. ETIAS (a €20 travel authorization for visa-exempt travellers, analogous to the US ESTA) is expected late 2026 — not yet in force at this verification date, flagged as an imminent rather than current requirement. Structurally identical to de_schengen_visitor in almost every respect since both are the same EU instrument — the main difference is which consulate/VFS centre processes the application, not the underlying rules."
+}

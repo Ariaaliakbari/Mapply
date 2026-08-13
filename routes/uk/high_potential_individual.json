@@ -8,7 +8,12 @@
   "duration_type": "fixed",
   "selection_method": "first_come",
   "selection_odds": null,
-  "application_window": { "window_type": "annual", "opens": "01-11", "closes": "31-10", "typical_fill_time_days": null },
+  "application_window": {
+    "window_type": "annual",
+    "opens": "01-11",
+    "closes": "31-10",
+    "typical_fill_time_days": null
+  },
   "qualifying_event": null,
   "prerequisites": null,
   "requirement_groups": [
@@ -31,7 +36,11 @@
           "id": "hpi_degree",
           "attribute": "education_level",
           "operator": "in",
-          "value": ["bachelors", "masters", "phd"],
+          "value": [
+            "bachelors",
+            "masters",
+            "phd"
+          ],
           "hard": true,
           "blocker_text": "This requires a bachelor's, master's, or PhD degree, awarded within the last 5 years, from a university on the gov.uk Global Universities List for the relevant graduation year.",
           "fix_path": null,
@@ -42,7 +51,10 @@
           "id": "hpi_funds",
           "attribute": "savings",
           "operator": ">=",
-          "value": { "amount": 1270, "currency": "GBP" },
+          "value": {
+            "amount": 1270,
+            "currency": "GBP"
+          },
           "hard": true,
           "blocker_text": "This requires £1,270 held for 28 consecutive days.",
           "fix_path": "Hold the required funds continuously for 28 days before applying.",
@@ -93,7 +105,9 @@
     "citizenship_after_months": null,
     "dual_citizenship_allowed": null,
     "physical_presence_requirement": null,
-    "switchable_to": ["uk_skilled_worker"]
+    "switchable_to": [
+      "uk_skilled_worker"
+    ]
   },
   "sources": [
     {
@@ -111,5 +125,15 @@
       "accessed_at": "2026-08-08"
     }
   ],
-  "notes": "Fee £880 confirmed via gov.uk (secondary sources show £715/£822, stale). Separate Ecctis verification fee £252 (incl. VAT), paid outside the gov.uk application fee — same undocumented-third-party-fee pattern flagged on uk_innovator_founder. No sponsor, no job offer, no salary threshold — eligibility rests entirely on the degree and its awarding institution. Time on this route does NOT count toward ILR — this is a genuine dead-end route unless the holder switches to something else (typically Skilled Worker) before the fixed term expires, which is why leads_to_pr is false despite being a substantial, real, non-trivial route. selection_method is 'first_come' because of the annual application-year cap (1 Nov-31 Oct) rather than individual assessment discretion — worth flagging as a borderline case for the selection_method enum, since it's really an eligibility-plus-cap route rather than a classic lottery or pure first-come queue; recorded as first_come as the closest fit."
+  "notes": "Fee £880 confirmed via gov.uk (secondary sources show £715/£822, stale). SCHEMA GAP FIXED (2026-08-08): Ecctis verification fee now formally captured via the new third_party_fees field, paid outside the gov.uk application fee. No sponsor, no job offer, no salary threshold — eligibility rests entirely on the degree and its awarding institution. Time on this route does NOT count toward ILR — this is a genuine dead-end route unless the holder switches to something else (typically Skilled Worker) before the fixed term expires, which is why leads_to_pr is false despite being a substantial, real, non-trivial route. selection_method is 'first_come' because of the annual application-year cap (1 Nov-31 Oct) rather than individual assessment discretion — worth flagging as a borderline case for the selection_method enum, since it's really an eligibility-plus-cap route rather than a classic lottery or pure first-come queue; recorded as first_come as the closest fit.",
+  "third_party_fees": [
+    {
+      "label": "Ecctis degree/institution verification",
+      "amount": 252,
+      "currency": "GBP",
+      "payable_to": "Ecctis",
+      "mandatory": true,
+      "note": "Includes VAT."
+    }
+  ]
 }

@@ -1,0 +1,100 @@
+{
+  "id": "tr_refugee_international_protection",
+  "country": "TR",
+  "name": "Refugee & International Protection (incl. Temporary Protection for Syrians)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": { "basis": "Turkey hosts approximately 2.35 million Syrians under Temporary Protection status — one of the world's largest refugee populations. Temporary Protection is a distinct status from International Protection and does not itself lead to long-term residence or citizenship.", "source_id": "goc_temporary_protection" },
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "temporary_protection_syrians",
+      "name": "Temporary Protection (Syrian nationals specifically)",
+      "outcome_override": {
+        "leads_to_pr": false,
+        "pr_after_months": null,
+        "leads_to_citizenship": false,
+        "citizenship_after_months": null
+      },
+      "requirements": [
+        {
+          "id": "tp_nationality",
+          "attribute": "nationality",
+          "operator": "==",
+          "value": "syria",
+          "hard": true,
+          "blocker_text": "This applies specifically to Syrian nationals (and some stateless Palestinians from Syria) under the Temporary Protection Regulation — a distinct status from standard International Protection under Law No. 6458, and does NOT itself lead to long-term residence or citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "goc_temporary_protection"
+        }
+      ]
+    },
+    {
+      "id": "international_protection",
+      "name": "International Protection (non-Syrian applicants)",
+      "requirements": [
+        {
+          "id": "ip_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_turkey",
+          "hard": true,
+          "blocker_text": "This requires being in Turkey and covers three statuses under Law No. 6458: refugee (persecution grounds, subject to Turkey's geographical limitation to the 1951 Convention covering European-origin applicants only), conditional refugee (non-European origin, typically resettled to a third country), and subsidiary protection (real risk of serious harm).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "goc_international_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Registration with the Presidency of Migration Management",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "varies by status — Temporary Protection is renewed on a rolling basis without a fixed end date; International Protection statuses are similarly indefinite pending resolution",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "goc_temporary_protection",
+      "tier": 1,
+      "url": "https://en.goc.gov.tr/temporary-protection-in-law-on-foreigners-and-international-protection",
+      "title": "Temporary Protection - Presidency of Migration Management",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "goc_international_protection",
+      "tier": 1,
+      "url": "https://en.goc.gov.tr",
+      "title": "International Protection - Presidency of Migration Management (Law No. 6458)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR STRUCTURAL FEATURE, one of the largest humanitarian populations encoded anywhere in this multi-country dataset: Turkey hosts approximately 2.35 million Syrians under Temporary Protection, a status GENUINELY DISTINCT from International Protection and — critically — one that does NOT itself lead to long-term residence or citizenship, captured via the outcome_override on that specific group. This mirrors the structural exclusion already flagged on tr_long_term_residence, where humanitarian-status holders generally cannot transfer to the long-term residence route. Turkey's geographical limitation to the 1951 Refugee Convention (recognising only European-origin refugees under the full Convention definition) is a genuinely distinctive and consequential legal feature — non-European asylum seekers use the 'conditional refugee' status instead, typically pending resettlement to a third country rather than integration in Turkey itself. pr_after_months/citizenship_after_months left null for the International Protection group since the realistic timeline genuinely depends on case-by-case resolution."
+}

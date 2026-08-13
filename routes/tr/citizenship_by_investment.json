@@ -1,0 +1,155 @@
+{
+  "id": "tr_citizenship_by_investment",
+  "country": "TR",
+  "name": "Citizenship by Investment (CBI)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate",
+      "name": "Real estate",
+      "requirements": [
+        {
+          "id": "cbi1_property",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "cbi_real_estate_threshold_2026", "ratio": 1.0, "resolved_amount": 400000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "This requires property valued at least $400,000, confirmed by an SPK-licensed appraisal, with a 3-year resale restriction annotated on the title deed. A single property or multiple title-deed properties can be combined to reach the threshold; for off-plan/notarized pre-sale contracts, the full $400,000 must sit within one notarized contract.",
+          "fix_path": "Acquire and register the qualifying property.",
+          "fix_time_months": 3,
+          "source_id": "invest_gov_tr"
+        }
+      ]
+    },
+    {
+      "id": "fixed_capital",
+      "name": "Fixed capital investment",
+      "requirements": [
+        {
+          "id": "cbi2_capital",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "cbi_other_categories_threshold_2026", "ratio": 1.0, "resolved_amount": 500000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "This requires a fixed capital investment of at least $500,000, attested by the Ministry of Industry and Technology, held for 3 years.",
+          "fix_path": "Secure and commit the required capital.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_tr"
+        }
+      ]
+    },
+    {
+      "id": "bank_deposit",
+      "name": "Bank deposit",
+      "requirements": [
+        {
+          "id": "cbi3_deposit",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "cbi_other_categories_threshold_2026", "ratio": 1.0, "resolved_amount": 500000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "This requires a bank deposit of at least $500,000, held for 3 years, attested by the Banking Regulation and Supervision Agency (BDDK).",
+          "fix_path": "Deposit and hold the required funds.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_tr"
+        }
+      ]
+    },
+    {
+      "id": "government_bonds",
+      "name": "Government bonds",
+      "requirements": [
+        {
+          "id": "cbi4_bonds",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "cbi_other_categories_threshold_2026", "ratio": 1.0, "resolved_amount": 500000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "This requires government bonds worth at least $500,000, held for 3 years, attested by the Ministry of Treasury and Finance.",
+          "fix_path": "Purchase and hold the required government bonds.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_tr"
+        }
+      ]
+    },
+    {
+      "id": "fund_shares",
+      "name": "REIT/venture-capital fund shares",
+      "requirements": [
+        {
+          "id": "cbi5_fund",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "cbi_other_categories_threshold_2026", "ratio": 1.0, "resolved_amount": 500000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "This requires shares in a Capital Markets Board (SPK)-regulated real-estate investment fund or venture-capital investment fund worth at least $500,000, held for 3 years.",
+          "fix_path": "Purchase and hold the required fund shares.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_tr"
+        }
+      ]
+    },
+    {
+      "id": "job_creation",
+      "name": "Job creation",
+      "requirements": [
+        {
+          "id": "cbi6_jobs",
+          "attribute": "investment_capacity",
+          "operator": "exists",
+          "value": "employs_50_turkish_citizens",
+          "hard": true,
+          "blocker_text": "This requires employing at least 50 Turkish citizens, attested by the Ministry of Labour and Social Security — no minimum capital figure attached to this category specifically.",
+          "fix_path": "Establish the business and create the required jobs.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_tr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "SPK-licensed appraisal (real estate) or the relevant regulator's attestation for other categories",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Foreign-exchange purchase certificate (DAB) confirming funds moved through Turkish banking channels",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — citizenship granted directly, no residence requirement",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "invest_gov_tr",
+      "tier": 1,
+      "url": "https://www.invest.gov.tr/en/investmentguide/pages/acquiring-property-and-citizenship.aspx",
+      "title": "Acquiring Property and Citizenship - Invest in Türkiye",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "FORMULA VALUES, tier-1 confirmed and unchanged for 2026: real estate at $400,000, all five other categories at $500,000. HIGH-CONFIDENCE STALE-DATA CATCH: the historical $250,000 real-estate figure still circulates on many CBI-marketing consultancy sites, which have a direct financial incentive to understate current thresholds. A SECOND, subtler confusion also confirmed: many sites blur the $400k (real estate specifically) with the $500k (every other category), presenting a single number as if it applied uniformly across all six routes — this file's six-group structure exists specifically to prevent that conflation. GENUINE PROCEDURAL FINDING: for notarized pre-sale (off-plan) property contracts, the full $400,000 must sit within a SINGLE notarized contract (a rule effective 1 January 2023) — splitting across multiple pre-sale contracts to reach the threshold does not work, though completed title-deed properties CAN be combined. Family included: spouse, children under 18, and disabled dependent children of any age — parents are explicitly NOT included, a real scope limitation worth flagging distinctly from routes elsewhere in this dataset with broader family inclusion. Dual citizenship confirmed permitted — no renunciation required. citizenship_after_months is 0 since CBI genuinely requires no residence period at all, one of the fastest routes to citizenship anywhere in this entire multi-country dataset."
+}

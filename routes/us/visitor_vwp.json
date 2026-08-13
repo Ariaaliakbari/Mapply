@@ -1,0 +1,89 @@
+{
+  "id": "us_visitor_vwp",
+  "country": "US",
+  "name": "B-1/B-2 Visitor Visa and Visa Waiver Program (ESTA)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "b1_b2",
+      "name": "B-1/B-2 Visitor Visa (visa-required nationalities)",
+      "requirements": [
+        {
+          "id": "b_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave the US at the end of your visit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "state_visitor_visa"
+        }
+      ]
+    },
+    {
+      "id": "vwp",
+      "name": "Visa Waiver Program (ESTA)",
+      "requirements": [
+        {
+          "id": "vwp_country",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "vwp_participating_country",
+          "hard": true,
+          "blocker_text": "This requires holding a passport from a Visa Waiver Program participating country and obtaining ESTA authorization before travel.",
+          "fix_path": "Apply for ESTA authorization online.",
+          "fix_time_months": null,
+          "source_id": "cbp_esta"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "ESTA authorization (VWP group) or MRV fee payment and DS-160 (B-1/B-2 group)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "B-1/B-2 typically valid up to 10 years, admission usually up to 6 months per visit; ESTA valid 2 years, admission up to 90 days per visit",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "state_visitor_visa",
+      "tier": 1,
+      "url": "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html",
+      "title": "Visitor Visa - US Department of State",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "cbp_esta",
+      "tier": 1,
+      "url": "https://esta.cbp.dhs.gov",
+      "title": "ESTA - US Customs and Border Protection",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MRV fee $185 (B-1/B-2 DS-160). ESTA fee $40, confirmed to include a not-less-than-$13 increase effective 1 Oct 2025, indexed to inflation from FY2026. ENACTED BUT NOT OPERATIONAL, flagged consistently with how this dataset treats similar cases: a $250 minimum Visa Integrity Fee was created by the One Big Beautiful Bill Act (Public Law 119-21, 4 July 2025) for most nonimmigrant visa issuances (exempt: ESTA/VWP travelers, Canadians, change-of-status applicants), indexed to CPI from FY2026 — but DHS/State had not finalized the collection mechanism as of this verification, and it was NOT yet being collected. This is genuinely the same 'enacted-not-operational' pattern seen on Portugal's skilled job-seeker visa and Japan's Ikusei Shuro program, the third instance of this case type across the full research pass — not encoded as an active fee requirement here since it isn't yet operative."
+}

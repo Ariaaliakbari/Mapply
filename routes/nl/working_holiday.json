@@ -1,0 +1,104 @@
+{
+  "id": "nl_working_holiday",
+  "country": "NL",
+  "name": "Working Holiday Programme/Scheme (WHP/WHS)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": { "window_type": "continuous", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "uncapped_countries",
+      "name": "Australia, Canada, New Zealand (no stated numerical cap)",
+      "requirements": [
+        {
+          "id": "wh1_age",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "min": 18, "max": 30 },
+          "hard": true,
+          "blocker_text": "This requires being between 18 and 30 at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_working_holiday"
+        },
+        {
+          "id": "wh1_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["australia", "canada", "new_zealand"],
+          "hard": true,
+          "blocker_text": "This group applies to nationals of Australia, Canada, and New Zealand.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_working_holiday"
+        }
+      ]
+    },
+    {
+      "id": "capped_countries",
+      "name": "Argentina, Hong Kong, Japan, South Korea, Taiwan, Uruguay (annual per-country cap)",
+      "requirements": [
+        {
+          "id": "wh2_age",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "min": 18, "max": 30 },
+          "hard": true,
+          "blocker_text": "This requires being between 18 and 30 at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_working_holiday"
+        },
+        {
+          "id": "wh2_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["argentina", "hong_kong", "japan", "south_korea", "taiwan", "uruguay"],
+          "hard": true,
+          "blocker_text": "This group applies to nationals of Argentina, Hong Kong, Japan, South Korea, Taiwan, and Uruguay, each subject to an annual per-country cap (100/year for Argentina, Uruguay, Hong Kong, Taiwan; 200/year for Japan, South Korea).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_working_holiday"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of sufficient funds and travel/health insurance",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "12 months",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ind_working_holiday",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/working-holiday-programme-scheme",
+      "title": "Residence permit for working holiday - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee €85 confirmed via IND ('Exchange' fee category). Genuinely terminal — no dependants permitted on the application, no switchable_to targets, cannot lead to settlement, same structural role as uk_youth_mobility. Work is permitted only as incidental to the holiday purpose, not as the primary activity — work_rights marked 'restricted' rather than 'full' to reflect this, distinct from UK Youth Mobility which allows genuinely unrestricted work within its 2-year term. The per-country annual caps (100 or 200 depending on country) make selection_method 'first_come' rather than a pure lottery — modeled the same way as uk_high_potential_individual's annual-cap mechanic, though here the cap is explicitly per-nationality rather than a single pooled number."
+}

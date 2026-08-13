@@ -1,0 +1,81 @@
+{
+  "id": "tr_work_permit",
+  "country": "TR",
+  "name": "Work Permit (Çalışma İzni)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "wp_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a job offer, generally after 6 months' prior residence in Turkey unless exempted, filed by the employer via the e-İzin system.",
+          "fix_path": "Secure a job offer and complete the e-İzin application.",
+          "fix_time_months": 6,
+          "source_id": "csgb_work_permit"
+        },
+        {
+          "id": "wp_employer_ratio",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "employer_meets_5_to_1_turkish_staff_ratio",
+          "hard": true,
+          "blocker_text": "This requires the employer to meet the 5:1 rule (at least 5 Turkish citizens per foreign employee), have paid-in capital of at least 500,000 TRY for newly established firms (or 8,000,000 TRY net sales / $150,000 exports for existing firms), unless exempted (firms with ≥50,000,000 TRY annual net sales may employ up to 5 foreigners without the ratio; a foreign partner with capital share ≥$100,000 is exempt from the ratio, capital, and staff rules).",
+          "fix_path": "Confirm the employer meets the applicable exemption or ratio requirement.",
+          "fix_time_months": null,
+          "source_id": "csgb_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Employer's compliance evidence for the 5:1 ratio or applicable exemption",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "initial up to 1 year, extendable to 2 then 3 years; also serves as a residence permit",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 96,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tr_turquoise_card", "tr_long_term_residence", "tr_ordinary_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "csgb_work_permit",
+      "tier": 1,
+      "url": "https://www.csgb.gov.tr/en",
+      "title": "Ministry of Labour and Social Security — International Labour Force Law No. 6735",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FINDING: the blocker isn't always the applicant — the 5:1 Turkish-staff ratio and capital/sales thresholds are conditions on the EMPLOYER, similar in spirit to the sponsor-side conditions flagged on several other countries' work routes in this dataset (e.g. Australia's Inländervorrang-style tests), but with a genuinely unusual numeric ratio mechanic (5 Turkish staff per foreign hire) not seen elsewhere in the full research pass. A foreign company partner with a capital share of at least $100,000 is EXEMPT from all three employer-side conditions (ratio, capital, staff count) — a real and consequential carve-out worth surfacing since it effectively creates a faster lane for foreign-invested businesses. A work permit itself also functions as a residence permit — no separate residence application is needed, a genuine administrative simplification distinct from most other countries in this dataset where work authorization and residence permission are separate documents/processes."
+}

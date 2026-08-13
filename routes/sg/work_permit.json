@@ -1,0 +1,92 @@
+{
+  "id": "sg_work_permit",
+  "country": "SG",
+  "name": "Work Permit (migrant worker)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "wp_sector",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["construction", "manufacturing", "marine_shipyard", "process", "services", "foreign_domestic_worker"],
+          "hard": true,
+          "blocker_text": "This is restricted to specific designated sectors: construction, manufacturing, marine/shipyard, process, services, and foreign domestic work.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_work_permit"
+        },
+        {
+          "id": "wp_source_country",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "approved_source_country_per_sector",
+          "hard": true,
+          "blocker_text": "This is restricted to nationals of an approved source country/region, which varies by sector.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_work_permit"
+        },
+        {
+          "id": "wp_quota_levy",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "employer_within_quota_pays_levy",
+          "hard": true,
+          "blocker_text": "This requires the employer to have available quota under the sector-specific Dependency Ratio Ceiling and to pay the applicable foreign-worker levy.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract with an employer in an approved sector",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Medical examination",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable subject to age limits and sector-specific caps on total years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_s_pass"]
+  },
+  "sources": [
+    {
+      "id": "mom_work_permit",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-worker",
+      "title": "Work Permit for foreign worker - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FLOOR of Singapore's work-pass hierarchy — deliberately terminal (leads_to_pr: false, no citizenship path, family_can_join: false), a real and confirmed policy design rather than an oversight, distinguishing it sharply from S Pass and Employment Pass above it. Restricted to nationals of approved source countries per sector — a genuine eligibility gate absent from every higher-tier Singapore pass in this dataset, meaning nationality itself is a hard predicate here in a way it isn't for EP/S Pass/ONE Pass. Foreign Domestic Worker permits are administered as a sub-category of this same Work Permit framework with their own distinct rules (levy concessions, mandatory rest days, employer eligibility criteria) — not modeled as a separate requirement group here given the scope of this research pass; flagged as a real simplification. This is the closest Singapore analogue to the lower-tier, non-settlement-track routes seen in other countries' datasets (e.g. UK/Netherlands seasonal-adjacent categories), though Singapore's version is structurally starker in explicitly foreclosing any path to settlement."
+}

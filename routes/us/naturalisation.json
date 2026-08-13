@@ -1,0 +1,112 @@
+{
+  "id": "us_naturalisation",
+  "country": "US",
+  "name": "Naturalization",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["us_eb1", "us_eb2", "us_eb3", "us_diversity_visa", "us_family_based"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General route",
+      "requirements": [
+        {
+          "id": "gen_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years as a lawful permanent resident, continuous residence throughout, and physical presence in the US for at least 30 months out of those 5 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_naturalisation"
+        },
+        {
+          "id": "gen_civics",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "civics_and_english_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing an English and civics test — the 2025 civics test (20 questions from a bank of 128, 12 correct to pass) applies to N-400s filed on/after Oct 20, 2025.",
+          "fix_path": "Prepare for and pass the civics and English test.",
+          "fix_time_months": 3,
+          "source_id": "uscis_civics_test"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_citizen",
+      "name": "Spouse of a US citizen",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "requirements": [
+        {
+          "id": "sp_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This requires 3 years as a permanent resident while married to and living with the same US citizen spouse, with physical presence of at least 18 months out of those 3 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Civics and English test pass",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "5 (or 3) years of continuous residence and physical-presence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uscis_naturalisation",
+      "tier": 1,
+      "url": "https://www.uscis.gov/citizenship/apply-for-citizenship",
+      "title": "Apply for Citizenship - USCIS",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "uscis_civics_test",
+      "tier": 1,
+      "url": "https://www.uscis.gov/citizenship/2025-civics-test",
+      "title": "2025 Civics Test - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Fee $760 paper / $710 online (biometrics bundled), $380 reduced fee at ≤400% Federal Poverty Guidelines — confirmed via Form G-1055 fee schedule. Dual citizenship genuinely tolerated but not formally 'recognized' by the US — no oath-based renunciation requirement in practice, a distinct legal posture from countries in this dataset that either explicitly permit (most of Europe) or explicitly prohibit (Japan, Singapore) dual nationality; the US occupies a genuinely ambiguous middle position worth flagging. PROPOSAL NOT YET LAW: DHS published a proposed rule June 23, 2026 that would raise N-400 fees to $1,330 paper/$1,280 online and eliminate the reduced fee — not in effect; current fees stand, encoded here as the operative figures rather than the proposed ones. Processing time: FY2025 official USCIS median ~5.7 months, though 2026 experience is reportedly running higher at many offices due to a fall-2025 filing surge — flagged as a realistic-vs-statutory gap consistent with how this is handled elsewhere in the dataset."
+}

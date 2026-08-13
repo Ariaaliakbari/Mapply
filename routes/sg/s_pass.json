@@ -1,0 +1,92 @@
+{
+  "id": "sg_s_pass",
+  "country": "SG",
+  "name": "S Pass",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sp_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a job offer from a Singapore employer for a mid-skilled role (associate professional, technician).",
+          "fix_path": "Secure a qualifying job offer.",
+          "fix_time_months": null,
+          "source_id": "mom_spass_eligibility"
+        },
+        {
+          "id": "sp_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 3300, "currency": "SGD", "unit": "month", "note": "age-tiered: rises progressively to S$4,800/month at age 45+; S$3,800 (rising to S$5,650) for financial services" },
+          "hard": true,
+          "blocker_text": "This requires a fixed monthly salary of at least S$3,300 (S$3,800 for financial services), rising by age band to S$4,800/S$5,650 at age 45 and above.",
+          "fix_path": "Negotiate a salary meeting the age-appropriate threshold.",
+          "fix_time_months": null,
+          "source_id": "mom_spass_eligibility"
+        },
+        {
+          "id": "sp_quota",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "employer_within_dependency_ratio_ceiling",
+          "hard": true,
+          "blocker_text": "This requires the employer to have available S Pass quota under the sector-specific Dependency Ratio Ceiling (e.g. 10% in services, 15% in manufacturing) relative to its local (LQS-qualifying) workforce.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_spass_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the age-tiered salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Relevant qualification or diploma",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years initially, renewable in cycles of up to 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_employment_pass", "sg_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mom_spass_eligibility",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/s-pass/eligibility",
+      "title": "S Pass eligibility - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FEATURE not present on the Employment Pass: a monthly foreign-worker LEVY (S$650/month as of this verification) paid by the employer directly to MOM for each S Pass holder, on top of salary — a real cost layer not modeled as a formal schema field here since it's borne by the employer rather than the applicant, but worth surfacing since it materially affects employer willingness to sponsor. Dependant sponsorship threshold is genuinely distinct from the base S Pass qualifying salary: an S Pass holder needs a salary of at least S$6,000/month specifically to sponsor a spouse/children on a Dependant's Pass — since the S Pass base salary floor is only S$3,300, MOST S Pass holders do NOT qualify to bring family, a real and consequential gap between 'qualifying for the pass' and 'qualifying to bring family' worth flagging prominently, distinct from every other work_sponsored route in this dataset where family rights are usually tied to the base salary threshold itself. Same live multi-year increase roadmap as sg_employment_pass: thresholds rise to S$3,600/S$4,000 for new applications from 1 January 2027, with renewals following from 1 January 2028 (staggered by expiry date) — genuinely more complex transition timing than most threshold changes elsewhere in this dataset. Same honest omission of pr_after_months/citizenship_after_months as the Employment Pass, for the same reason — no published formula exists."
+}

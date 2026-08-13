@@ -1,0 +1,76 @@
+{
+  "id": "nl_orientation_year",
+  "country": "NL",
+  "name": "Orientation Year permit (Zoekjaar)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "oy_eligibility",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["nl_student", "graduate_of_top_200_ranked_university", "former_highly_skilled_migrant", "phd_or_research_completion"],
+          "hard": true,
+          "blocker_text": "This requires being a graduate of a Dutch program, a PhD/research completion in the Netherlands, a graduate of a top-200 ranked international university (master's minimum for foreign graduates), or a former Highly Skilled Migrant.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_orientation_year"
+        },
+        {
+          "id": "oy_timing",
+          "attribute": "months_since_qualifying_event",
+          "operator": "<=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This must be applied for within 3 years of graduation, PhD completion, or research completion.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_orientation_year"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Degree certificate or PhD/research completion confirmation",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "12 months, one-time and non-renewable",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_highly_skilled_migrant", "nl_eu_blue_card", "nl_self_employed"]
+  },
+  "sources": [
+    {
+      "id": "ind_orientation_year",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/study/residence-permit-for-orientation-year",
+      "title": "Residence permit for orientation year - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "No sponsor, no salary threshold, full unrestricted work rights and may start a business — the most unrestricted route in this dataset alongside UK Global Talent and Germany's Chancenkarte (recognised-qualification path), but genuinely simpler than either since it requires no points and no funds test to sponsor family during the year. Fee €254 confirmed via ind.nl; €85 for Turkish nationals (Association Agreement standstill rights), free for San Marino/Israel — a genuinely unusual three-tier fee structure worth flagging. This route's real value isn't itself — it's unlocking the reduced HSM (€3,122) and reduced Blue Card (€4,754) salary thresholds for up to 3 years after the qualifying graduation/PhD/research event, which is why leads_to_pr is false but switchable_to is heavily populated. One-time and non-renewable: someone who used it once cannot use it again even if they later requalify."
+}

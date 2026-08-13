@@ -1,0 +1,97 @@
+{
+  "id": "pt_work_d1",
+  "country": "PT",
+  "name": "D1 Visa (Subordinate Work)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "d1_contract",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a signed employment contract or promise of contract for subordinate work of more than 12 months with a Portuguese employer.",
+          "fix_path": "Secure a qualifying employment contract.",
+          "fix_time_months": null,
+          "source_id": "aima_d1"
+        },
+        {
+          "id": "d1_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 1.0, "resolved_amount": 920, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least €920/month gross (the 2026 minimum wage).",
+          "fix_path": "Negotiate a higher salary or confirm the offer meets the current minimum wage.",
+          "fix_time_months": null,
+          "source_id": "aima_d1"
+        },
+        {
+          "id": "d1_labour_opinion",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "iefp_labour_market_opinion",
+          "hard": true,
+          "blocker_text": "This requires a favourable labour-market opinion from IEFP (the Portuguese employment agency), and — from mid-2026 — consular pre-authorization of the contract before booking a visa appointment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aima_d1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract or promise of contract",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "IEFP favourable labour-market opinion",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Consular contract pre-authorization/homologation code (new process from mid-2026)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "2-year residence permit, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence", "pt_eu_blue_card"]
+  },
+  "sources": [
+    {
+      "id": "aima_d1",
+      "tier": 1,
+      "url": "https://aima.gov.pt",
+      "title": "AIMA — D1 residence visa for subordinate work",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Portugal's direct equivalent to UK Skilled Worker, Germany's general skilled-worker permits, and NL Highly Skilled Migrant — the standard employer-sponsored route. GENUINE PROCESS CHANGE confirmed for 2026, not present in earlier research on this route: from mid-2026 a new consular pre-authorization step was added, requiring the employer to validate the contract with the consulate (obtaining a homologation code) BEFORE the worker can book a VFS Global appointment — this materially changes the practical sequence of the application compared to how the route worked even a year earlier, and is exactly the kind of process detail that goes stale fast on secondary sites. Salary floor is the flat RMMG (€920/month) with no occupation-specific 'going rate' table of the kind UK Skilled Worker uses — a genuine structural simplicity relative to UK's LookupTable-requiring salary system, worth surfacing in a cross-country comparison. family_can_join is subject to the same 2-year residence wait as pt_family_reunification generally, with exceptions for minor children — not re-stated as a separate conditional here to avoid duplicating that route's more detailed handling."
+}

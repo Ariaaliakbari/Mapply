@@ -1,0 +1,70 @@
+{
+  "id": "us_diversity_visa",
+  "country": "US",
+  "name": "Diversity Visa (DV) Lottery",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "lottery",
+  "selection_odds": { "basis": "Historically up to 55,000 visas/year (reduced to ~54,850 in some years by NACARA set-aside), 7% per-country cap. Program currently paused indefinitely — no DV-2027 registration has opened.", "source_id": "dhs_dv_pause" },
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (historical — program currently paused)",
+      "requirements": [
+        {
+          "id": "dv_country",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "qualifying_low_admission_country",
+          "hard": true,
+          "blocker_text": "This historically required a qualifying country of birth (countries with historically low rates of immigration to the US are eligible; high-admission countries are excluded).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dhs_dv_pause"
+        },
+        {
+          "id": "dv_education",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "high_school_equivalent_or_2yr_qualifying_work_experience",
+          "hard": true,
+          "blocker_text": "This historically required a high-school-equivalent education, or 2 years of qualifying work experience in an occupation requiring 2+ years of training.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dhs_dv_pause"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [],
+  "outcome": {
+    "duration_length": "indefinite — direct green card on selection and approval (when operational)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dhs_dv_pause",
+      "tier": 1,
+      "url": "https://www.uscis.gov",
+      "title": "USCIS/DHS — Diversity Visa program pause directive, Dec 18, 2025 (following the Brown University/MIT shooting investigation)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE NEW STATUS CASE for this dataset: 'paused' is distinct from both 'draft' (data incomplete) and 'closed' (permanently ended) as used elsewhere — the DV program is created by statute (INA §203(c)) and would require Congress to terminate permanently; this is an executive-branch pause, not a legal closure, and previously-issued DVs have not been revoked. Marked 'draft' as the closest fit in the current status enum (same limitation flagged on pt_job_seeker_skilled and jp_ikusei_shuro for different reasons) — this is the third distinct 'not fully operational despite not being closed' pattern found across this dataset, reinforcing that a dedicated 'paused' status value would be a worthwhile future schema addition. Paused Dec 18, 2025 following the Brown/MIT shooting investigation (the suspect had entered via DV-2017); DV-2026 selectees still face the statutory Sept 30, 2026 deadline; DV-2027 registration has NOT opened with no announced timeline; litigation ongoing (e.g. Ivanov v. Trump). A separate rule effective April 10, 2026 requires a valid passport bio-page scan and $1 fee for any future DV entries, layered on top of the pause itself."
+}

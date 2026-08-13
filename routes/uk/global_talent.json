@@ -15,6 +15,10 @@
     {
       "id": "endorsement",
       "name": "Endorsement from an approved body",
+      "outcome_override": {
+        "pr_after_months": 60,
+        "citizenship_after_months": 72
+      },
       "requirements": [
         {
           "id": "endorse_age",
@@ -54,6 +58,10 @@
     {
       "id": "prestigious_prize",
       "name": "Named winner of a prestigious prize",
+      "outcome_override": {
+        "pr_after_months": 36,
+        "citizenship_after_months": 48
+      },
       "requirements": [
         {
           "id": "prize_age",
@@ -128,5 +136,5 @@
       "accessed_at": "2026-08-07"
     }
   ],
-  "notes": "No sponsor, no salary threshold, no job offer required at any stage — the most unrestricted work route in the dataset so far, traded against the hardest evidential bar to clear. pr_after_months stored as 36 (the Exceptional Talent / prize track, the faster of two real figures) — Exceptional Promise endorsements (the emerging-leader tier, common in digital technology and arts and culture) require 60 months, the same as Skilled Worker. Which figure applies depends on which internal tier of endorsement was granted, not on the route as a whole — same known schema gap as uk_ilr (Outcome bound to Route, not RequirementGroup). Fee sources conflict sharply online: several 2026 guides cite £816 or an older £524+£623 split; gov.uk confirms £766 total, current as of the 3 August 2026 page update — flagged as a second live counterfeit-figure case alongside the UK Skilled Worker salary discrepancy."
+  "notes": "SCHEMA GAP PARTIALLY FIXED (2026-08-08): pr_after_months/citizenship_after_months now correctly vary by group via outcome_override — prestigious_prize uses 36/48 months (matches route-level default), endorsement uses 60/72 months. This resolves the original ambiguity where a single route-level Outcome couldn't express both real figures. REMAINING GAP, flagged honestly rather than hidden: the 'endorsement' group itself still conflates two real internal tiers — Exceptional Talent (established leader, faster path) and Exceptional Promise (emerging leader, common in digital technology and arts and culture, slower path) — which the endorsing body assigns as a discretionary outcome of the SAME application, not something the applicant can select in advance as a separate RequirementGroup. The 60-month figure encoded here is the Exceptional Promise figure, the more common and more conservative assumption; Exceptional Talent endorsees could reach PR in as little as 36 months, same as the prize route. A fully accurate model would need a third pseudo-group or a qualifying_event-level distinction most applicants can't self-assess before applying — deliberately not forced in, since fabricating a selectable predicate the applicant can't actually test against would be worse than the current honest approximation. No sponsor, no salary threshold, no job offer required at any stage — the most unrestricted work route in this dataset, traded against the hardest evidential bar to clear. Fee sources conflict sharply online: several 2026 guides cite £816 or an older £524+£623 split; gov.uk confirms £766 total, current as of the 3 August 2026 page update — flagged as a live counterfeit-figure case alongside the UK Skilled Worker salary discrepancy."
 }

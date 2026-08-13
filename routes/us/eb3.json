@@ -1,0 +1,76 @@
+{
+  "id": "us_eb3",
+  "country": "US",
+  "name": "EB-3 (Skilled Worker / Professional / Other Worker)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "eb3_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a permanent, full-time job offer and PERM labor certification.",
+          "fix_path": "Obtain PERM labor certification through the sponsoring employer.",
+          "fix_time_months": 12,
+          "source_id": "uscis_eb3"
+        },
+        {
+          "id": "eb3_category",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["skilled_worker_2yr_experience", "professional_bachelors_degree", "other_worker_unskilled"],
+          "hard": true,
+          "blocker_text": "This covers three sub-categories: skilled workers (2+ years experience/training), professionals (bachelor's degree required for the role), and 'other workers' (unskilled, non-temporary).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_eb3"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "PERM labor certification",
+      "difficulty": "hard",
+      "typical_time_days": 365
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — leads directly to a green card (LPR status) on approval",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "uscis_eb3",
+      "tier": 1,
+      "url": "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-third-preference-eb-3",
+      "title": "Employment-Based Immigration: Third Preference EB-3 - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Backlogs confirmed via Aug 2026 Visa Bulletin Final Action Dates: EB-3 China ~Jan 8, 2022; EB-3 India Jan 15, 2015 (genuinely the longest-standing backlog figure in this dataset — over a decade old); Philippines Jan 1, 2024; All Areas/Mexico Current. 'Other worker' sub-category has its own, typically slower-moving, numerically-capped allocation within EB-3 — a real internal complexity not modeled as a separate group here given scope. EB-2/EB-3 'porting' (switching categories when one moves faster) is common strategy — not a schema mechanic but a genuine practical link to us_eb2."
+}

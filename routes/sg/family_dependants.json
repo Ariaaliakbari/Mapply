@@ -1,0 +1,102 @@
+{
+  "id": "sg_family_dependants",
+  "country": "SG",
+  "name": "Dependant's Pass and Long-Term Visit Pass (family)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["sg_employment_pass", "sg_s_pass", "sg_one_pass", "sg_tech_pass"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "dependants_pass",
+      "name": "Dependant's Pass (spouse and children)",
+      "requirements": [
+        {
+          "id": "dp_sponsor_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 6000, "currency": "SGD", "unit": "month", "note": "sponsor's fixed monthly salary — genuinely higher than the base S Pass qualifying salary, meaning many S Pass holders cannot sponsor family even though they qualify for the pass itself" },
+          "hard": true,
+          "blocker_text": "This requires the sponsoring work-pass holder to earn a fixed monthly salary of at least S$6,000.",
+          "fix_path": "The sponsor must increase salary to the required threshold.",
+          "fix_time_months": null,
+          "source_id": "mom_dependants_pass"
+        },
+        {
+          "id": "dp_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This covers legally married spouses and unmarried children under 21 (including legally adopted children).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_dependants_pass"
+        }
+      ]
+    },
+    {
+      "id": "ltvp_parents",
+      "name": "Long-Term Visit Pass (parents)",
+      "requirements": [
+        {
+          "id": "ltvp_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent",
+          "hard": true,
+          "blocker_text": "This covers parents of eligible work-pass holders, at the sponsoring authority's discretion — no fixed statutory salary threshold is published for this specific category, unlike the Dependant's Pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_dependants_pass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage certificate or birth certificate proving family tie",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Sponsor's salary evidence meeting the applicable threshold",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "tracks the sponsor's work pass duration",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mom_dependants_pass",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/dependants-pass",
+      "title": "Dependant's Pass - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FEATURE confirmed and cross-referenced with sg_s_pass: the Dependant's Pass sponsor salary threshold (S$6,000/month) sits meaningfully ABOVE the S Pass's own base qualifying salary (S$3,300/month) — meaning a large share of S Pass holders qualify for their own work pass but cannot bring family, a real and consequential gap worth surfacing prominently in any 'can I bring my family' comparison view, and genuinely different from most other countries' family-sponsorship routes in this dataset where the family-sponsorship threshold is usually the SAME as (or only modestly above) the base work-permission salary. work_rights marked 'restricted' rather than 'full' since Dependant's Pass holders need a separate Letter of Consent (LOC) or their own work pass to work — not automatic, though the LOC process is described elsewhere as comparatively lightweight once the Dependant's Pass itself is held; not modeled as a full 'full' work-rights entry to avoid overstating the automaticity. Long-Term Visit Pass for parents is explicitly discretionary with no published salary formula — another instance of Singapore's broader pattern (see sg_permanent_residence, sg_naturalisation) of declining to publish fixed criteria for family-adjacent discretionary decisions."
+}

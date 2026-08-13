@@ -1,0 +1,70 @@
+{
+  "id": "sg_student_pass",
+  "country": "SG",
+  "name": "Student's Pass",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sst_enrolment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "full_time_enrolment_approved_institution",
+          "hard": true,
+          "blocker_text": "This requires full-time enrolment at an approved Singapore educational institution.",
+          "fix_path": "Secure admission to an approved institution.",
+          "fix_time_months": null,
+          "source_id": "ica_student_pass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission letter from an approved institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of financial support for tuition and living costs",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the course, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_employment_pass", "sg_s_pass"]
+  },
+  "sources": [
+    {
+      "id": "ica_student_pass",
+      "tier": 1,
+      "url": "https://www.ica.gov.sg/enter-depart/entry_requirements/student-pass",
+      "title": "Student's Pass - Immigration & Checkpoints Authority",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "SOURCING CAVEAT flagged honestly: work rights during study are genuinely restricted relative to most other countries' student routes in this dataset — Singapore permits work only in narrow, specific circumstances (certain approved institutions, capped hours, and often only during vacation periods) rather than a broad general entitlement, but the exact current hours-per-week figure and which institutions qualify for term-time work was not confirmed at tier-1 precision during this research pass. No dedicated post-study job-seeking visa/permit was confirmed as currently active, similar to the honest gap flagged on jp_student — Singapore graduates seeking to stay for work must secure a job offer meeting Employment Pass or S Pass thresholds before their Student's Pass expires, rather than having a separate bridging permit. Direct feeder into sg_employment_pass and sg_s_pass once a qualifying job offer is secured."
+}

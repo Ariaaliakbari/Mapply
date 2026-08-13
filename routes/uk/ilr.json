@@ -19,6 +19,10 @@
     {
       "id": "via_skilled_worker",
       "name": "Via Skilled Worker (or legacy Tier 2)",
+      "prerequisites_override": {
+        "required_prior_route_ids": ["uk_skilled_worker"],
+        "minimum_months_held": 60
+      },
       "requirements": [
         {
           "id": "sw_current_route",
@@ -91,6 +95,10 @@
     {
       "id": "via_global_talent",
       "name": "Via Global Talent (or legacy Tier 1)",
+      "prerequisites_override": {
+        "required_prior_route_ids": ["uk_global_talent"],
+        "minimum_months_held": 36
+      },
       "requirements": [
         {
           "id": "gt_current_route",
@@ -141,6 +149,10 @@
     {
       "id": "long_residence",
       "name": "10 years' continuous lawful residence, any basis",
+      "prerequisites_override": {
+        "required_prior_route_ids": [],
+        "minimum_months_held": 120
+      },
       "requirements": [
         {
           "id": "lr_months_in_country",
@@ -238,5 +250,5 @@
       "accessed_at": "2026-08-07"
     }
   ],
-  "notes": "ARCHITECTURE CORRECTION (2026-08-07): this was initially built yesterday as a separate 'uk_ilr_skilled_worker' route with a single requirement group, which was wrong — the UK has one ILR, not one per feeder route. Rebuilt as a single route with 3 groups (Skilled Worker, Global Talent, long-residence fallback), matching the core schema rule that variation lives in RequirementGroups, not in route splitting. MAJOR LIVE POLICY RISK, do not treat the 5-year figure as stable: the Home Office ran an 'Earned Settlement' consultation (closed 12 February 2026, 200,000+ responses) proposing to move the standard qualifying period from 5 to 10 years, with adjustments based on income, employment history, and compliance — and explicitly signalled this could apply to people already mid-route, not just new applicants. gov.uk's own guidance as of this route's verification date still states the 5-year/3-year figures encoded here. This route should be re-verified monthly, not at the standard 180-day interval, until the reform lands or is confirmed shelved. English requirement is due to rise from B1 to B2 for ILR from 26 March 2027 (not yet in force). This is a genuine hub route: every prior route in this dataset with leads_to_pr resolves through this single route, not a parallel status per route family. Known schema gap (not yet fixed structurally): required months_held actually varies by requirement group (60 / 36 / 120), but prerequisites is bound to the Route, not the RequirementGroup, so top-level minimum_months_held is left null and the real numbers live in each group's requirements instead."
+  "notes": "ARCHITECTURE CORRECTION (2026-08-07): this was initially built as a separate 'uk_ilr_skilled_worker' route with a single requirement group, which was wrong — the UK has one ILR, not one per feeder route. Rebuilt as a single route with 3 groups (Skilled Worker, Global Talent, long-residence fallback), matching the core schema rule that variation lives in RequirementGroups, not in route splitting. SCHEMA GAP FIXED (2026-08-08): each group now carries its own prerequisites_override (60/36/120 months respectively), resolving the original ambiguity where the flat route-level prerequisites.minimum_months_held couldn't express three different real figures. Route-level prerequisites.minimum_months_held remains null deliberately — it's the correct value for a field that's genuinely group-dependent, with the real numbers living in each override. MAJOR LIVE POLICY RISK, do not treat the 5-year figure as stable: the Home Office ran an 'Earned Settlement' consultation (closed 12 February 2026, 200,000+ responses) proposing to move the standard qualifying period from 5 to 10 years, with adjustments based on income, employment history, and compliance — and explicitly signalled this could apply to people already mid-route, not just new applicants. gov.uk's own guidance as of this route's verification date still states the 5-year/3-year figures encoded here. This route should be re-verified monthly, not at the standard 180-day interval, until the reform lands or is confirmed shelved. English requirement is due to rise from B1 to B2 for ILR from 26 March 2027 (not yet in force). This is a genuine hub route: every prior route in this dataset with leads_to_pr resolves through this single route, not a parallel status per route family."
 }

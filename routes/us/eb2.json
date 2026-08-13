@@ -1,0 +1,94 @@
+{
+  "id": "us_eb2",
+  "country": "US",
+  "name": "EB-2 (Advanced Degree / Exceptional Ability) including National Interest Waiver",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_eb2",
+      "name": "Standard EB-2 (job offer + PERM)",
+      "requirements": [
+        {
+          "id": "eb2_degree",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires an advanced degree (or bachelor's + 5 years progressive experience), or exceptional ability (meeting at least 3 of 6 regulatory criteria), plus a job offer and PERM labor certification.",
+          "fix_path": "Obtain PERM labor certification through the sponsoring employer.",
+          "fix_time_months": 12,
+          "source_id": "uscis_eb2"
+        }
+      ]
+    },
+    {
+      "id": "niw",
+      "name": "National Interest Waiver (self-petition, no job offer/PERM)",
+      "requirements": [
+        {
+          "id": "niw_dhanasar",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "dhanasar_three_prong_standard_met",
+          "hard": true,
+          "blocker_text": "This requires meeting the Matter of Dhanasar three-prong standard: (1) the proposed endeavor has substantial merit and national importance; (2) you are well-positioned to advance it; (3) on balance, waiving the job-offer/PERM requirement benefits the US.",
+          "fix_path": "Build a documented case against all three Dhanasar prongs.",
+          "fix_time_months": null,
+          "source_id": "uscis_niw"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "PERM labor certification (standard route only)",
+      "difficulty": "hard",
+      "typical_time_days": 365
+    },
+    {
+      "document": "Advanced degree certificate or documented exceptional-ability evidence",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — leads directly to a green card (LPR status) on approval",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "uscis_eb2",
+      "tier": 1,
+      "url": "https://www.uscis.gov/working-in-the-united-states/permanent-workers/employment-based-immigration-second-preference-eb-2",
+      "title": "Employment-Based Immigration: Second Preference EB-2 - USCIS",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "uscis_niw",
+      "tier": 1,
+      "url": "https://www.uscis.gov/policy-manual",
+      "title": "USCIS Policy Manual — National Interest Waiver, Matter of Dhanasar standard",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MOST SEVERE BACKLOG in this entire multi-country, multi-category dataset: Aug 2026 Visa Bulletin shows EB-2 India as UNAVAILABLE — all FY2026 numbers already allocated, meaning zero visas issuable in this category for India for the remainder of the fiscal year. Independent reporting (WorkVisa Guide, checked against the Visa Bulletin) estimates an Indian EB-2 filing today faces a queue to roughly 2038 — a ~12-year wait, dwarfing every other backlog figure encountered across this entire dataset (Portugal's AIMA delays, Spain's naturalisation delays, etc. are measured in months to low years, not over a decade). EB-2 China also backlogged to Sept 1, 2021. All other countries Current. pr_after_months (0) is accurate only for non-India/China applicants — same per-country caveat as us_eb1. NIW group is genuinely the most flexible route encoded for the US: no employer, no job offer, no PERM, fully self-directed — comparable in spirit to UK Global Talent and EB-1A, but with a notably lower evidentiary bar (Dhanasar's 3 prongs vs EB-1A's 'sustained acclaim' standard), making it the most accessible fully-independent US route in this dataset."
+}

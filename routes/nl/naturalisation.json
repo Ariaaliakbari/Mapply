@@ -1,0 +1,150 @@
+{
+  "id": "nl_naturalisation",
+  "country": "NL",
+  "name": "Naturalisation (Dutch citizenship)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["nl_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General route",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "requirements": [
+        {
+          "id": "gen_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of legal residence in the Netherlands. A previously-proposed increase to 10 years was dropped by the Jetten I coalition and is not law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "gen_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires a civic integration diploma or NT2 state exam at A2 level. A proposed increase to B1 is not yet law.",
+          "fix_path": "Take the civic integration diploma or NT2 state exam at A2.",
+          "fix_time_months": 6,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "gen_renunciation",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "willing_to_renounce_prior_nationality_or_exempt",
+          "hard": true,
+          "blocker_text": "This generally requires renouncing your prior nationality, unless you qualify for an exemption (e.g. married to/registered partner of a Dutch citizen, recognised refugee status, born in the Netherlands, a national of a country that legally forbids renunciation such as Morocco or Argentina, mandatory military service, or disproportionate financial loss).",
+          "fix_path": "Confirm exemption eligibility, or accept renunciation of your current nationality.",
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_dutch_citizen",
+      "name": "Spouse or registered partner of a Dutch citizen",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "prerequisites_override": {
+        "required_prior_route_ids": ["nl_family_reunification"],
+        "minimum_months_held": 36
+      },
+      "requirements": [
+        {
+          "id": "sp_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This requires 3 years of legal residence as the spouse or registered partner of a Dutch citizen (may also apply without residence in NL, or earlier, if married 3+ years to a Dutch national).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "sp_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires a civic integration diploma or NT2 state exam at A2 level.",
+          "fix_path": "Take the civic integration diploma or NT2 state exam at A2.",
+          "fix_time_months": 6,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "sp_renunciation_exempt",
+          "attribute": "marital_status",
+          "operator": "==",
+          "value": "married_to_or_registered_partner_of_dutch_citizen",
+          "hard": true,
+          "blocker_text": "Being married to or the registered partner of a Dutch citizen is itself one of the standard exemptions from the renunciation requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Civic integration diploma or NT2 state exam certificate at A2",
+      "difficulty": "moderate",
+      "typical_time_days": 180
+    },
+    {
+      "document": "5 (or 3) years of residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Naturalisation ceremony attendance and declaration of solidarity",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ind_naturalisation",
+      "tier": 1,
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-naturalisation",
+      "title": "Becoming a Dutch national through naturalisation - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT confirmed, not pending: a proposal to extend the standard residence requirement from 5 to 10 years was DROPPED by the Jetten I coalition (confirmed via DutchNews.nl, January 2026, citing immigration lawyer Jeremy Bierbach) — the 5-year rule stands, and this is explicitly stated in the general route's blocker_text so a user doesn't have to guess whether an old headline about the 10-year proposal is still relevant. A proposed A2→B1 language increase (IND published an implementation assessment in February 2026) is likewise NOT yet law — same treatment, stated explicitly rather than silently encoded as if settled. dual_citizenship_allowed is false as the GENERAL rule, but the exemption list is genuinely substantial (married to a Dutch citizen, refugees, nationals of renunciation-forbidding countries like Morocco and Argentina, NL-born, military service, disproportionate financial loss) — worth surfacing prominently, since many applicants likely qualify for an exemption without realizing it, similar to Germany's dual-citizenship position but reached via exemptions rather than a blanket 2024 policy change. Fee €1,139 single / €1,454 joint / €168 minor confirmed via IND fee schedule — a tier-3 site's '€970' figure is stale. Both groups' outcome_override set citizenship_after_months to 0 since this route itself directly grants citizenship — the route-level default of 0 already matches, so overrides here are technically redundant but included for explicitness and consistency with how uk_citizenship and de_naturalisation handle the same pattern."
+}

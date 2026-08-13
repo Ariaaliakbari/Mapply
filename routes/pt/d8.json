@@ -1,0 +1,92 @@
+{
+  "id": "pt_d8",
+  "country": "PT",
+  "name": "D8 Visa (Digital Nomad)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "residency_variant",
+      "name": "Residency visa (leads to permanent residence)",
+      "requirements": [
+        {
+          "id": "d8_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 4.0, "resolved_amount": 3680, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires remote income from foreign employers/clients of at least €3,680/month (4x the 2026 minimum wage).",
+          "fix_path": "Increase remote income to the required level.",
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "d8_savings",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 11040, "currency": "EUR", "note": "approximately 12 months of the RMMG-based threshold; consular practice, higher for accompanying dependents" },
+          "hard": true,
+          "blocker_text": "This requires savings of approximately €11,040 (roughly 12 months of the base threshold), consular practice rather than a fixed statutory figure.",
+          "fix_path": "Build savings to the expected level.",
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "d8_income_source",
+          "attribute": "current_location",
+          "operator": "!=",
+          "value": "portugal_based_income_source",
+          "hard": true,
+          "blocker_text": "This requires the income to come from clients or an employer based outside Portugal.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract or freelance client contracts showing foreign-sourced income",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Bank statements showing the required savings buffer",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "4-month entry visa, then 2-year residence permit, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "vistos_mne",
+      "tier": 1,
+      "url": "https://vistos.mne.gov.pt",
+      "title": "Portal de Vistos - Ministério dos Negócios Estrangeiros",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed: exactly 4x RMMG, same reference variable as pt_d7. IMPORTANT STRUCTURAL NOTE, not yet fully modeled: Portugal actually has TWO distinct D8 products — a temporary-stay visa (valid up to 1 year, renewable, does NOT count toward permanent residence or citizenship at all) and this residency-visa variant. This file encodes ONLY the residency variant, since it's the one with real long-term immigration value; the temporary-stay variant is a genuinely different product with a different outcome (leads_to_pr: false) that would need its own file for full accuracy — flagged as a scope decision, not an oversight, since the temporary variant is closer to an extended-tourism product than an immigration route. Anyone switching from a foreign employer to a Portuguese one must convert to a D1 work permit — D8 income must remain genuinely foreign-sourced throughout. Same 84-month citizenship figure and same CPLP/EU vs other-nationality caveat as pt_d7."
+}

@@ -1,0 +1,132 @@
+{
+  "id": "sg_permanent_residence",
+  "country": "SG",
+  "name": "Permanent Resident status",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["sg_employment_pass", "sg_s_pass", "sg_one_pass", "sg_tech_pass", "sg_entrepass"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "pts_scheme",
+      "name": "Professionals/Technical Personnel and Other Foreigners (PTS)",
+      "requirements": [
+        {
+          "id": "pts_pass",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["sg_employment_pass", "sg_s_pass", "sg_one_pass", "sg_tech_pass"],
+          "hard": true,
+          "blocker_text": "This requires holding an eligible work pass (Employment Pass, S Pass, ONE Pass, or Tech.Pass) — no fixed minimum holding period is published; assessment is holistic and criteria are not fully disclosed by ICA.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ica_pr"
+        }
+      ]
+    },
+    {
+      "id": "gip_option_a",
+      "name": "Global Investor Programme — Option A (business investment)",
+      "requirements": [
+        {
+          "id": "gipa_investment",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 10000000, "currency": "SGD" },
+          "hard": true,
+          "blocker_text": "This requires investing at least S$10,000,000 in a new or existing Singapore business entity, employing at least 30 workers (at least half Singaporean, at least 10 new hires), with at least 3 years' entrepreneurial track record.",
+          "fix_path": "Secure and commit the required capital and meet the employment-creation criteria.",
+          "fix_time_months": null,
+          "source_id": "edb_gip"
+        }
+      ]
+    },
+    {
+      "id": "gip_option_b",
+      "name": "Global Investor Programme — Option B (fund investment)",
+      "requirements": [
+        {
+          "id": "gipb_investment",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 25000000, "currency": "SGD" },
+          "hard": true,
+          "blocker_text": "This requires investing at least S$25,000,000 into an EDB-approved GIP-select fund that invests in Singapore-based companies.",
+          "fix_path": "Secure and commit the required capital.",
+          "fix_time_months": null,
+          "source_id": "edb_gip"
+        }
+      ]
+    },
+    {
+      "id": "gip_option_c",
+      "name": "Global Investor Programme — Option C (Single Family Office)",
+      "requirements": [
+        {
+          "id": "gipc_aum",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 200000000, "currency": "SGD", "note": "total assets under management" },
+          "hard": true,
+          "blocker_text": "This requires establishing a Singapore-based Single Family Office with at least S$200,000,000 in total assets under management, with at least S$50,000,000 deployed into EDB-specified local investments.",
+          "fix_path": "Establish the qualifying Single Family Office structure.",
+          "fix_time_months": null,
+          "source_id": "edb_gip"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment pass history and income tax records (PTS route)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Audited financial statements and investment evidence (GIP route)",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite; Re-Entry Permit (travel document) renewed every 5 or 10 years",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "GIP holders must maintain genuine Singapore presence (commonly cited as at least 50% of the year) and continued business/investment substance to retain the Re-Entry Permit, though PR status itself may continue even if the permit lapses",
+    "switchable_to": ["sg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ica_pr",
+      "tier": 1,
+      "url": "https://www.ica.gov.sg/reside/PR/introduction",
+      "title": "Applying for permanent residence - Immigration & Checkpoints Authority",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "edb_gip",
+      "tier": 1,
+      "url": "https://www.edb.gov.sg/en/how-we-help/global-investor-programme.html",
+      "title": "Global Investor Programme - Singapore Economic Development Board",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR STRUCTURAL FINDING, one of the largest confirmed threshold jumps in this entire multi-country dataset by proportional scale: the Global Investor Programme's fund-route (Option B) threshold rose from S$2,500,000 to S$25,000,000 — a TEN-FOLD increase — with the business-investment route (Option A) set at S$10,000,000. Multiple current sources explicitly flag the old S$2.5M figure as 'obsolete' and 'still circulating online,' confirming this is a genuine, live, high-confidence counterfeit-figure case comparable in significance to Japan's Business Manager visa 6x jump. GIP application fee confirmed at S$20,000 (from May 2025) — a real, distinctive non-refundable application cost not seen on other countries' investor routes in this dataset at this scale relative to the investment itself. HONEST GAP, flagged deliberately rather than papered over: the PTS group's requirement genuinely has no disclosed minimum holding period, salary threshold, or points formula — ICA assesses holistically on undisclosed criteria including salary, qualifications, age, family profile, and economic contribution, and Singapore is well-known for NOT publishing PR approval criteria the way most other countries in this dataset do. This is a materially different situation from routes elsewhere in this dataset with a genuine sourcing gap (like Portugal's Blue Card salary) — here the opacity is a deliberate government policy choice, not a research shortfall, and this file states that honestly rather than inventing a plausible-sounding number. citizenship_after_months (24) reflects the commonly-cited approximate 2-year PR-to-citizenship-eligibility figure, itself also not a fixed guarantee — actual naturalisation remains discretionary (see sg_naturalisation)."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "tr_student_residence",
+  "country": "TR",
+  "name": "Student Residence Permit (Öğrenci İkamet İzni)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_enrolment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "enrolment_associate_bachelor_master_doctorate_or_specialty",
+          "hard": true,
+          "blocker_text": "This requires enrolment in an associate, bachelor's, master's, doctorate, or TUS/DUS specialty programme (or, for younger students, primary/secondary schooling without a family permit).",
+          "fix_path": "Secure admission to a qualifying programme.",
+          "fix_time_months": null,
+          "source_id": "goc_residence_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission letter",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Health insurance (SGK if requested within 3 months of enrolment, otherwise private)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "period of study; 1-year renewable for primary/secondary",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 96,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tr_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "goc_residence_permits",
+      "tier": 1,
+      "url": "https://en.goc.gov.tr/residence-permit-types",
+      "title": "Residence Permit Types - Presidency of Migration Management",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE PARTIAL-CREDIT MECHANIC confirmed, worth flagging distinctly: only HALF of student-permit time counts toward the 8-year long-term-residence clock — a real, specific discount not present on most other countree's student-to-PR pathways in this dataset (which typically either count fully or not at all, rather than at a fractional rate). Work rights limited: associate/undergraduate students can start work ONLY after completing the first year of study, and a work permit is still required even then — genuinely more restrictive than several other countries' student work-rights defaults in this dataset. A student can sponsor only spouse and children on this route, not other relatives. A 6-month post-graduation short-term permit bridges to work — the practical mechanism linking this route to tr_work_permit, closing Turkey's version of the core Journey chain seen throughout this dataset."
+}

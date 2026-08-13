@@ -1,0 +1,88 @@
+{
+  "id": "nl_asylum",
+  "country": "NL",
+  "name": "Asylum (Asielzoeker)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "asy_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_netherlands",
+          "hard": true,
+          "blocker_text": "This can only be claimed while physically in the Netherlands or at a Dutch border.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_asylum"
+        },
+        {
+          "id": "asy_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_status_or_subsidiary_protection",
+          "hard": true,
+          "blocker_text": "This requires meeting one of two protection categories: refugee status (A status — personal persecution based on race, religion, nationality, political opinion, or membership of a social group) or subsidiary protection (B status — risk of serious harm, including from war or generalized violence).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at IND screening and asylum interview",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 years (reduced from 5 years by the reforms effective 12 June 2026), renewal subject to a country-safety re-examination",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "ind_asylum",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/asylum/apply-for-asylum-in-the-netherlands",
+      "title": "Apply for asylum in the Netherlands - IND",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "ind_migration_pact",
+      "tier": 1,
+      "url": "https://ind.nl/en/news",
+      "title": "IND news — EU Migration Pact and national asylum reform implementation",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT already in force, not pending: the EU Migration Pact plus two Dutch national laws — the Two-Status System Act (formalizing the A/B status distinction) and the Asylum Emergency Measures Act (Senate vote 21 April 2026) — took effect 12 June 2026. Confirmed changes per IND: (1) permanent asylum residence permits are NO LONGER ISSUED from that date (existing holders keep theirs); (2) new asylum permits are valid 3 years, cut from 5, with a mandatory country-safety re-examination before each renewal; (3) family reunification is now limited to the NUCLEAR family only (married partner and minor biological/adopted children under 18) — unmarried partners, adult children, and foster children are no longer eligible, and this applies RETROACTIVELY to over 19,000 applications submitted before 12 June that were still awaiting a decision at that date. This is the most significant confirmed-in-force policy change encoded in this dataset across all three countries so far — most other flagged risks (UK Earned Settlement, Germany's fast-track abolition) are either proposals or single-dimension changes; this one changes duration, renewal mechanics, and family rights simultaneously and retroactively. family_can_join marked true here reflects the NEW narrower nuclear-family-only definition, not the old broader one — a real accuracy correction versus how this route would have been encoded before 12 June 2026. duration_length is deliberately written as a full sentence rather than a bare number, since the reduction from 5 to 3 years and the new renewal mechanic are both load-bearing facts a flat number would lose."
+}

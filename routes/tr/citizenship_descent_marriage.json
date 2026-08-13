@@ -1,0 +1,87 @@
+{
+  "id": "tr_citizenship_descent_marriage",
+  "country": "TR",
+  "name": "Citizenship by Descent and by Marriage",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "descent",
+      "name": "Descent",
+      "requirements": [
+        {
+          "id": "desc_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_turkish_citizen_in_or_out_of_wedlock",
+          "hard": true,
+          "blocker_text": "This requires a Turkish mother or father (in or out of wedlock, with paternity established for out-of-wedlock cases). Citizenship is attributed automatically at birth. A child born stateless in Turkey also acquires citizenship. Jus soli alone (mere birth in Turkey) does NOT confer citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nvi_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "marriage",
+      "name": "Marriage to a Turkish citizen",
+      "requirements": [
+        {
+          "id": "mar_duration",
+          "attribute": "marital_status",
+          "operator": "exists",
+          "value": "married_3_years_genuine_ongoing_union",
+          "hard": true,
+          "blocker_text": "This requires being married to a Turkish citizen for at least 3 years, with the marriage continuing and a genuine family union — not automatic on marriage itself, and the applicant must not pose a security/public-order risk. Provincial citizenship examination commissions assess authenticity through interviews and shared documentation. No fixed statutory language test is codified for this route.",
+          "fix_path": "Maintain the marriage for the required period and prepare for the authenticity assessment.",
+          "fix_time_months": 36,
+          "source_id": "nvi_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and evidence of the parent's Turkish citizenship (descent group)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Marriage certificate and evidence of a genuine, ongoing family union (marriage group)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nvi_citizenship_law",
+      "tier": 1,
+      "url": "https://www.nvi.gov.tr",
+      "title": "Directorate General of Population and Citizenship Affairs — Turkish Citizenship Law No. 5901, Arts. 7-8, 16",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "descent group: selection_method genuinely 'automatic' at birth, structurally identical to France's droit du sang and Japan's descent rule — no application needed for the initial attribution itself. marriage group: EXPLICITLY NOT automatic on marriage — a genuinely important distinction some secondary sources blur, since Turkey requires 3 years of continued, genuine union before eligibility, assessed by provincial commissions specifically screening for marriage-of-convenience fraud. No fixed statutory language test exists for the marriage-based route — a real and confirmed absence, distinct from most other countries' marriage-based citizenship routes in this dataset (UK, Germany, Portugal, Spain, France all specify a CEFR level for spousal naturalisation). Dual citizenship confirmed permitted for both groups, consistent with Turkey's broader dual-citizenship-friendly posture across every route in this dataset."
+}

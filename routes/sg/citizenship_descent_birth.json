@@ -1,0 +1,87 @@
+{
+  "id": "sg_citizenship_descent_birth",
+  "country": "SG",
+  "name": "Citizenship by descent and by registration of birth",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_singapore",
+      "name": "Born in Singapore to at least one citizen or PR parent",
+      "requirements": [
+        {
+          "id": "bis_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_citizen_or_pr_at_birth",
+          "hard": true,
+          "blocker_text": "This requires being born in Singapore with at least one parent who was a Singapore citizen or permanent resident at the time of birth — Singapore does not have unconditional jus soli; birth in Singapore alone, to two non-resident foreign parents, does not confer citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ica_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_to_citizen_parent",
+      "name": "Born abroad to a Singapore citizen parent",
+      "requirements": [
+        {
+          "id": "boa_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_singapore_citizen_at_birth",
+          "hard": true,
+          "blocker_text": "This requires at least one parent being a Singapore citizen at the time of your birth abroad. Registration with ICA is required — citizenship by descent is not automatically recorded without it.",
+          "fix_path": "Register the birth with ICA.",
+          "fix_time_months": 3,
+          "source_id": "ica_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and evidence of the qualifying parent's citizenship or PR status at the time of birth",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "ICA birth registration",
+      "difficulty": "routine",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ica_citizenship",
+      "tier": 1,
+      "url": "https://www.ica.gov.sg/reside/citizenship/introduction",
+      "title": "Citizenship - Immigration & Checkpoints Authority",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL CONTRAST with several other countries in this dataset: Singapore does NOT have unconditional jus soli — being born on Singapore soil to two non-citizen, non-PR foreign parents does not itself confer citizenship, a materially more restrictive position than France's or Japan's automatic parent-based attribution, and closer in spirit to Ireland's post-2005 reformed birthright rules (fr_droit_du_sang_et_du_sol notes the contrast; ie_ prior research flagged Ireland's similar 2005 tightening) than to the more permissive historical Anglo-American jus soli tradition. Dual citizenship is not permitted upon reaching adulthood — children who acquire another nationality alongside Singapore citizenship at birth must formally renounce the other by age 21, the same structural pattern as Japan's age-25 choice-of-nationality requirement (jp_citizenship_descent) but with a different, earlier age cutoff — a genuine cross-country comparison point worth surfacing. No confirmed generational limit beyond the direct parent-child link — like France and Japan, Singapore's descent rule applies based on a PARENT's citizenship specifically, not extended to grandparents the way Portugal's or UK Ancestry's routes reach further back."
+}

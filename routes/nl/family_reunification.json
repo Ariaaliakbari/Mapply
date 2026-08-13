@@ -1,0 +1,115 @@
+{
+  "id": "nl_family_reunification",
+  "country": "NL",
+  "name": "Family reunification / family formation (partner)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fam_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires both partners being 18 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "fam_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "This requires being married to, the registered partner of, or in a durable relationship with, a Dutch citizen or a person legally resident in the Netherlands.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "fam_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 2294.40, "currency": "EUR", "unit": "month", "note": "gross SV-wage excl. holiday allowance, rate for Jan-Jun 2026; rises to €2,337.00 from 1 Jul 2026" },
+          "hard": true,
+          "blocker_text": "This requires the sponsor to have independent, sufficient, and sustainable (12+ months) income of at least €2,294.40/month (excl. holiday allowance, Jan-Jun 2026 rate).",
+          "fix_path": "Increase sponsor income to the required threshold and sustain it for 12+ months.",
+          "fix_time_months": 12,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "fam_civic_exam_abroad",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "civic_integration_exam_abroad_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the civic integration exam abroad (Basisexamen inburgering buitenland) at A1 level before an MVV is issued, unless exempt (under 18, state pension age, or a national of the EU/EEA, Australia, Canada, Japan, Monaco, New Zealand, Vatican, UK, US, South Korea, or Switzerland).",
+          "fix_path": "Book and pass the 3-part exam (Knowledge of Dutch Society, Speaking, Reading) at the nearest embassy or consulate.",
+          "fix_time_months": 3,
+          "source_id": "ind_civic_integration_abroad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/registered partnership certificate or evidence of a durable relationship",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Civic integration exam abroad pass certificate (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Sponsor's income evidence sustained over 12+ months",
+      "difficulty": "moderate",
+      "typical_time_days": 28
+    }
+  ],
+  "outcome": {
+    "duration_length": "dependent permit, tracks sponsor status",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "ind_required_amounts",
+      "tier": 1,
+      "url": "https://ind.nl/en/required-amounts-income-requirements",
+      "title": "Required amounts income requirements - IND",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "ind_civic_integration_abroad",
+      "tier": 1,
+      "url": "https://ind.nl/en/civic-integration-exam-abroad",
+      "title": "Civic integration exam abroad - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee €254 adult / €85 child confirmed via IND. The civic integration exam abroad (A1, €150, paid to DUO) is a genuinely distinctive Dutch requirement not present on the equivalent UK or German family routes — worth surfacing as a real cross-country difference in a comparison view. Exemption list is broad (11 named nationalities plus age exemptions) and consequential, same pattern as Germany's A1-exemption list on the spouse route — many applicants likely qualify without realizing it. Income figure is LIVE-DUAL-DATED: €2,294.40 applies Jan-Jun 2026, rising to €2,337.00 from 1 Jul 2026 — this is the first route in the dataset to explicitly need a mid-year value change, distinct from the annual-only cadence seen in UK/Germany fee updates; flagged as a case that would benefit from the national-variables/formula mechanism if a future pass confirms the exact indexation link to the statutory minimum wage. citizenship_after_months (36) reflects the shorter naturalisation path available to spouses of Dutch citizens; a non-spouse durable-relationship partner would use the standard 60-month path instead — same class of within-route conditional variance flagged on other family routes across this dataset."
+}

@@ -1,0 +1,138 @@
+{
+  "id": "pt_golden_visa",
+  "country": "PT",
+  "name": "Golden Visa (Autorização de Residência para Investimento / ARI)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "investment_fund",
+      "name": "Investment/venture-capital fund subscription",
+      "requirements": [
+        {
+          "id": "gv1_amount",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "EUR" },
+          "hard": true,
+          "blocker_text": "This requires subscribing at least €500,000 to a CMVM-regulated investment/venture-capital fund with a maturity of at least 5 years from the date of investment, at least 60% of which must be invested in Portuguese-seated commercial companies. This fund route does NOT qualify for the low-density discount that applies to other Golden Visa categories.",
+          "fix_path": "Secure and commit the required investment.",
+          "fix_time_months": null,
+          "source_id": "aima_ari"
+        }
+      ]
+    },
+    {
+      "id": "scientific_research",
+      "name": "Scientific/technological research support",
+      "requirements": [
+        {
+          "id": "gv2_amount",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "EUR", "note": "€400,000 in eligible low-density interior territories, a 20% discount" },
+          "hard": true,
+          "blocker_text": "This requires at least €500,000 (or €400,000 in a designated low-density interior territory) invested in scientific or technological research through a public or private institution within the national science system.",
+          "fix_path": "Secure and commit the required investment.",
+          "fix_time_months": null,
+          "source_id": "aima_ari"
+        }
+      ]
+    },
+    {
+      "id": "cultural_heritage",
+      "name": "Cultural/artistic heritage support or donation",
+      "requirements": [
+        {
+          "id": "gv3_amount",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 250000, "currency": "EUR", "note": "€200,000 in eligible low-density interior territories, a 20% discount" },
+          "hard": true,
+          "blocker_text": "This requires at least €250,000 (or €200,000 in a designated low-density interior territory) in support of artistic production or maintenance/recovery of national cultural heritage.",
+          "fix_path": "Secure and commit the required investment.",
+          "fix_time_months": null,
+          "source_id": "aima_ari"
+        }
+      ]
+    },
+    {
+      "id": "company_creation",
+      "name": "Company creation or capital reinforcement plus job creation",
+      "requirements": [
+        {
+          "id": "gv4_amount",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "EUR", "note": "€400,000 in eligible low-density interior territories" },
+          "hard": true,
+          "blocker_text": "This requires at least €500,000 (or €400,000 in a designated low-density interior territory) to create a new company, or reinforce the share capital of an existing one, creating or maintaining at least 5 permanent jobs (8 in low-density areas) for at least 3 years.",
+          "fix_path": "Secure and commit the required investment and job creation plan.",
+          "fix_time_months": null,
+          "source_id": "aima_ari"
+        }
+      ]
+    },
+    {
+      "id": "job_creation_only",
+      "name": "Job creation alone (no capital minimum)",
+      "requirements": [
+        {
+          "id": "gv5_jobs",
+          "attribute": "investment_capacity",
+          "operator": "exists",
+          "value": { "note": "10 permanent jobs created (8 in eligible low-density interior territories), no minimum capital amount attached" },
+          "hard": true,
+          "blocker_text": "This requires creating at least 10 permanent jobs (8 in a designated low-density interior territory) — no minimum capital investment is attached to this category specifically.",
+          "fix_path": "Establish the business and create the required permanent jobs.",
+          "fix_time_months": null,
+          "source_id": "aima_ari"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of investment (fund subscription certificate, capital transfer records, or job-creation payroll evidence depending on category)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Clean criminal record certificate",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "2-year residence permit, renewed in 2-year cycles",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "minimum 7 days in Portugal in year 1, minimum 14 days in each subsequent 2-year period — one of the lowest physical presence requirements of any route in this entire dataset",
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "aima_ari",
+      "tier": 1,
+      "url": "https://aima.gov.pt",
+      "title": "AIMA — Autorização de Residência para Investimento (ARI), Art. 90.º-A and consolidated Lei n.º 23/2007 Art. 3(1)(d)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "MAJOR STRUCTURAL CORRECTION vs the route's own reputation: the real-estate acquisition and capital-transfer investment categories were ABOLISHED for new applicants on 7 October 2023 (Lei n.º 56/2023, Art. 42) — this is the single most consequential 'the internet still describes an old version of this route' case in the entire dataset. Many people (and some outdated tier-3 guides) still think of Portugal's Golden Visa as fundamentally a real-estate route; it no longer is, for anyone applying now. Existing real-estate-route holders from before the reform can still renew under the old terms — not encoded here since this file represents the current NEW-applicant path only, same pattern as uk_start_up's closed-status handling. Fee structure is genuinely steep and recently increased: reception/analysis €842.80, grant €8,418.90, renewal €4,210.30 (effective 1 March 2026) — by far the highest fees of any route across all four countries in this dataset, consistent with this being an investment-migration product rather than a standard visa. The 20% low-density discount applies to research/cultural/company/jobs categories but explicitly NOT to the investment-fund route, which stays flat at €500,000 regardless of location — modeled correctly per-group here rather than as a single blanket discount. Physical presence requirement (7 days year 1, 14 days per 2-year cycle thereafter) is dramatically lower than any work/family/study route in this dataset — the core structural trade-off of investment migration, worth surfacing prominently in any comparison view. Realistic processing time (12-36 months per tier-3 estimates, given AIMA's backlog) is far longer than the 90-day statutory target — flagged honestly rather than only stating the statutory figure."
+}

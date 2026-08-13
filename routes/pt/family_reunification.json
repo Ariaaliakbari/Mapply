@@ -1,0 +1,146 @@
+{
+  "id": "pt_family_reunification",
+  "country": "PT",
+  "name": "Family Reunification (Reagrupamento Familiar)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "spouse_standard",
+      "name": "Spouse/partner — standard 2-year wait",
+      "requirements": [
+        {
+          "id": "fam1_sponsor_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires the sponsor to have held a valid Portuguese residence permit for at least 2 years.",
+          "fix_path": "Wait until the sponsor reaches 2 years of residence.",
+          "fix_time_months": 24,
+          "source_id": "lei_61_2025"
+        },
+        {
+          "id": "fam1_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "This requires a valid marriage or registered partnership recognised under Portuguese law (no minor, forced, or polygamous marriages).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_61_2025"
+        },
+        {
+          "id": "fam1_income_housing",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "sufficient_income_and_adequate_housing",
+          "hard": true,
+          "blocker_text": "This requires the sponsor to show sufficient income and adequate housing.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_61_2025"
+        },
+        {
+          "id": "fam1_integration",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "portuguese_integration_measures",
+          "hard": false,
+          "blocker_text": "Nationals of non-Portuguese-speaking countries must complete Portuguese-language and civic/constitutional-values integration measures — CPLP nationals, including Brazilians, are exempt from this.",
+          "fix_path": "Complete the required integration measures.",
+          "fix_time_months": 6,
+          "source_id": "lei_61_2025"
+        }
+      ]
+    },
+    {
+      "id": "spouse_reduced_wait",
+      "name": "Spouse/partner — reduced 15-month wait with prior union proof",
+      "requirements": [
+        {
+          "id": "fam2_sponsor_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 15,
+          "hard": true,
+          "blocker_text": "This requires the sponsor to have held a valid Portuguese residence permit for at least 15 months, PLUS proof of at least 18 months of prior stable union with the applicant before the sponsor's arrival in Portugal.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_61_2025"
+        }
+      ]
+    },
+    {
+      "id": "minor_dependent_children",
+      "name": "Minor or dependent incapacitated children — no waiting period",
+      "requirements": [
+        {
+          "id": "fam3_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child",
+          "hard": true,
+          "blocker_text": "This requires being the minor child, or dependent incapacitated child, of a Portuguese resident — no minimum sponsor residence period applies.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_61_2025"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/partnership certificate or evidence of prior stable union",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Sponsor's income and housing evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Integration measures completion certificate (unless CPLP-exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 180
+    }
+  ],
+  "outcome": {
+    "duration_length": "tracks the sponsor's residence permit",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "lei_61_2025",
+      "tier": 1,
+      "url": "https://diariodarepublica.pt",
+      "title": "Diário da República — Lei n.º 61/2025 (Lei de Estrangeiros), Art. 98 family reunification provisions",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT already in force, not pending: Lei n.º 61/2025 (in force 23 October 2025) materially tightened family reunification — the prior regime allowed reunification essentially upon establishing residence; the new law imposes a 2-year wait for spouses/partners (with a 15-month reduced-wait exception given sufficient prior-union proof), while minor/dependent children remain exempt from any waiting period. The decision window itself was also extended from 3 to 9 months — a genuine processing-time change worth surfacing distinctly from the eligibility waiting period, since they're two different clocks that could easily be conflated. A transitional 180-day window (until approximately April 2026) allowed family members already legally in Portugal to regularise under different terms — not encoded as a separate group here since that window has now closed. CPLP exemption from the language/integration-measures requirement is consistent with the broader CPLP preferential pattern seen across pt_student and pt_cplp. citizenship_after_months (84) uses the CPLP/EU 7-year figure as the more favorable case, same convention as other Portugal routes in this dataset — non-CPLP/EU sponsors' family members would use the 10-year (120-month) figure instead."
+}

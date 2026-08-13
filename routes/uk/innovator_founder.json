@@ -11,6 +11,23 @@
   "application_window": null,
   "qualifying_event": null,
   "prerequisites": null,
+  "third_party_fees": [
+    {
+      "label": "Endorsing body assessment fee",
+      "amount": 1000,
+      "currency": "GBP",
+      "payable_to": "endorsing body",
+      "mandatory": true
+    },
+    {
+      "label": "Contact-point meeting fee (per meeting, minimum 2 required at 12 and 24 months)",
+      "amount": 500,
+      "currency": "GBP",
+      "payable_to": "endorsing body",
+      "mandatory": true,
+      "note": "At least 2 meetings required over the visa period, so minimum £1,000 total across the term."
+    }
+  ],
   "requirement_groups": [
     {
       "id": "standard",
@@ -42,7 +59,10 @@
           "id": "if_funds",
           "attribute": "savings",
           "operator": ">=",
-          "value": { "amount": 1270, "currency": "GBP" },
+          "value": {
+            "amount": 1270,
+            "currency": "GBP"
+          },
           "hard": true,
           "blocker_text": "This requires £1,270 held for 28 consecutive days (no separate minimum investment requirement for entry — that only applies to certain settlement criteria).",
           "fix_path": "Hold the required funds continuously for 28 days before applying.",
@@ -93,7 +113,9 @@
     "citizenship_after_months": 48,
     "dual_citizenship_allowed": true,
     "physical_presence_requirement": null,
-    "switchable_to": ["uk_ilr"]
+    "switchable_to": [
+      "uk_ilr"
+    ]
   },
   "sources": [
     {
@@ -111,5 +133,5 @@
       "accessed_at": "2026-08-08"
     }
   ],
-  "notes": "Sole active endorsement-based entrepreneur route as of this verification — the old Start-up and Innovator visas both closed 13 April 2023, and Innovator Founder is their consolidated successor. Application fee £1,357 (outside UK) / £1,693 (in-UK switch/extend) confirmed via gov.uk; secondary sources showing £1,274/£1,590 are stale. Separate endorsement fee of £1,000 to the endorsing body, plus £500 per required contact-point meeting (minimum two, at 12 and 24 months) — these endorsing-body fees are NOT part of the gov.uk application fee and are paid directly to the endorsing body; not yet modeled as a distinct cost field, captured here in notes only pending a schema decision on whether third-party (non-government) mandatory fees need their own field. ILR after 3 years requires meeting settlement criteria (e.g. two of seven published success criteria) — not a flat time-served rule like most other routes, closer in shape to the Global Talent tiered-outcome gap already flagged on uk_global_talent and uk_ilr."
+  "notes": "SCHEMA GAP FIXED (2026-08-08): endorsing-body fees now formally captured via the new third_party_fees field, rather than only being described in prose. Sole active endorsement-based entrepreneur route as of this verification — the old Start-up and Innovator visas both closed 13 April 2023 (see uk_start_up, now encoded with status:closed), and Innovator Founder is their consolidated successor. Application fee £1,357 (outside UK) / £1,693 (in-UK switch/extend) confirmed via gov.uk; secondary sources showing £1,274/£1,590 are stale. ILR after 3 years requires meeting settlement criteria (e.g. two of seven published success criteria) — not a flat time-served rule like most other routes, closer in shape to the Global Talent tiered-outcome gap already addressed on uk_global_talent via outcome_override."
 }

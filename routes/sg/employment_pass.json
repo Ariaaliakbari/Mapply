@@ -1,0 +1,99 @@
+{
+  "id": "sg_employment_pass",
+  "country": "SG",
+  "name": "Employment Pass (EP)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ep_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a job offer from a Singapore-registered company for a managerial, executive, or specialist role.",
+          "fix_path": "Secure a qualifying job offer.",
+          "fix_time_months": null,
+          "source_id": "mom_ep_eligibility"
+        },
+        {
+          "id": "ep_salary_stage1",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 5600, "currency": "SGD", "unit": "month", "note": "age-tiered: rises progressively to S$10,700/month at age 45+; S$6,200 (rising to S$11,800) for financial services. Figures apply to new applications from 1 Jan 2025 and renewals from 1 Jan 2026." },
+          "hard": true,
+          "blocker_text": "This requires a fixed monthly salary of at least S$5,600 (S$6,200 for financial services) — Stage 1 of a two-stage assessment — with the exact threshold rising by age band up to S$10,700/S$11,800 at age 45 and above.",
+          "fix_path": "Negotiate a salary meeting the age-appropriate threshold.",
+          "fix_time_months": null,
+          "source_id": "mom_ep_eligibility"
+        },
+        {
+          "id": "ep_compass",
+          "attribute": "occupation",
+          "operator": ">=",
+          "value": { "note": "COMPASS (Complementarity Assessment Framework): minimum 40 points across 4 foundational criteria (salary vs local PMET benchmark, qualifications, nationality diversity, local PMET employment share at the firm) plus optional bonus points (shortage occupation list, strategic economic priorities). Exempt if fixed monthly salary is S$22,500+, for overseas intra-corporate transferees, or employment under 1 month." },
+          "hard": true,
+          "blocker_text": "This requires at least 40 points on the COMPASS points-based assessment (Stage 2) — unless exempt via a fixed salary of S$22,500+/month or as a short-term/intra-corporate case.",
+          "fix_path": "Improve COMPASS-scoring factors: negotiate higher salary relative to local benchmarks, qualification from a top-tier institution, or target a shortage occupation.",
+          "fix_time_months": null,
+          "source_id": "mom_compass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the age-tiered salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Degree certificate or professional qualification from a recognised institution (institution ranking affects COMPASS score)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years initially, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_personalised_employment_pass", "sg_one_pass", "sg_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mom_ep_eligibility",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+      "title": "Employment Pass eligibility - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "mom_compass",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/compass",
+      "title": "COMPASS - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT confirmed: a further salary increase was announced under Singapore's 2026 foreign workforce policy — the general EP minimum will rise from S$5,600 to S$6,000/month, and financial services from S$6,200 to S$6,600, applying to new applications from 1 January 2027 and renewals for passes expiring from 1 January 2028. This is a genuinely multi-stage, multi-year increase roadmap (2023 COMPASS introduction → 2025 salary rise → 2027 further rise), the fastest-moving single threshold across this entire research pass for Singapore — any secondary source not explicitly dating its salary figures should be treated with caution. pr_after_months and citizenship_after_months are deliberately left null (not a specific figure) — MOM and ICA do not publish a guaranteed timeline or formula for EP-to-PR progression; approval is holistic and undisclosed-criteria, and this dataset's existing convention of asserting a specific month count would be a false-precision claim Singapore's own system doesn't support. Tied to a single named employer — changing jobs requires an entirely new EP application, a genuinely more rigid structure than most work_sponsored routes elsewhere in this dataset which at least allow renewal with the same employer without a full new assessment. Institution-ranking list for COMPASS qualifications scoring was refreshed November 2025, effective for new applications from January 2026 — a real, dated update worth flagging since 'my degree qualifies' can change year to year independent of the applicant's own circumstances."
+}

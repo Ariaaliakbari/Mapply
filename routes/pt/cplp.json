@@ -1,0 +1,88 @@
+{
+  "id": "pt_cplp",
+  "country": "PT",
+  "name": "CPLP Mobility Residence Permit (AR CPLP)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cplp_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["angola", "brazil", "cape_verde", "guinea_bissau", "equatorial_guinea", "mozambique", "sao_tome_and_principe", "timor_leste"],
+          "hard": true,
+          "blocker_text": "This requires being a national of a CPLP (Community of Portuguese Language Countries) member state other than Portugal itself.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_pt_cplp"
+        },
+        {
+          "id": "cplp_visa",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "prior_consular_visa_and_security_screening",
+          "hard": true,
+          "blocker_text": "This now requires obtaining a consular visa in the country of origin before travel, plus security screening — the earlier in-country channel for CPLP nationals has effectively closed.",
+          "fix_path": "Apply for the consular visa from your country of origin.",
+          "fix_time_months": 3,
+          "source_id": "lei_9_2025"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of CPLP member-state nationality",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Security screening clearance",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "physical card valid 2 years, renewable for successive 3-year periods",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_pt_cplp",
+      "tier": 1,
+      "url": "https://www.gov.pt",
+      "title": "gov.pt — Acordo sobre a Mobilidade CPLP (Luanda, 17 Jul 2021), transposed by Lei n.º 18/2022",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "lei_9_2025",
+      "tier": 1,
+      "url": "https://diariodarepublica.pt",
+      "title": "Diário da República — Lei n.º 9/2025 (13 Feb 2025), CPLP mobility reform",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "CATEGORY JUDGMENT CALL, flagged honestly same as Germany's BNO route: this is nationality-based community mobility between Portuguese-speaking countries rooted in shared colonial-era history and language, not literal bloodline descent — 'ancestry' is the closest fit among the current 9 categories but arguably deserves its own bucket in a future schema pass, exactly the same open question flagged on uk_bno. GENUINE STRUCTURAL UPGRADE confirmed for 2026: the AR CPLP now grants Schengen free movement to its holders (previously CPLP-permit holders could NOT move freely within Schengen) — a real and significant rights expansion. GENUINE STRUCTURAL TIGHTENING also confirmed simultaneously: what was once a genuinely simplified/preferential in-country regularisation channel (manifestação de interesse style) now requires a prior consular visa obtained from the country of origin plus security screening — the 'previously not requiring...' framing many secondary sources still use is stale. gov.pt's own materials still advertise a '72-hour online issuance' for some cases, but the practical 2026 route is consular-visa-first — flagged as a live discrepancy between official marketing copy and the operative process, an unusual case of a government's OWN site containing outdated framing rather than a third-party site being stale."
+}

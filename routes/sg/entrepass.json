@@ -1,0 +1,81 @@
+{
+  "id": "sg_entrepass",
+  "country": "SG",
+  "name": "EntrePass",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ent_business",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "innovative_venture_backed_or_deep_tech",
+          "hard": true,
+          "blocker_text": "This requires meeting at least one of: being funded by a recognised venture capitalist/business angel/accelerator; holding a patent for the business idea; being an incubatee at a recognised incubator; having significant business/entrepreneurial track record; or being in a deep-tech field.",
+          "fix_path": "Secure qualifying funding, a patent, or incubator acceptance for the business.",
+          "fix_time_months": 4,
+          "source_id": "mom_entrepass"
+        },
+        {
+          "id": "ent_incorporation",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "singapore_registered_private_limited_company",
+          "hard": true,
+          "blocker_text": "This requires incorporating a Singapore-registered private limited company, under 6 months old at application (or not yet incorporated), with paid-up capital of at least S$50,000.",
+          "fix_path": "Incorporate the qualifying company structure.",
+          "fix_time_months": 1,
+          "source_id": "mom_entrepass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Business plan and evidence of the qualifying innovation criterion (funding, patent, incubator acceptance)",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Company incorporation documents showing paid-up capital",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable for 2-year periods subject to milestones (jobs created, business spending)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_employment_pass", "sg_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mom_entrepass",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/entrepass",
+      "title": "EntrePass - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Genuinely merit/backing-based rather than capital-based at entry — no minimum personal investment threshold to APPLY (unlike Singapore's own Global Investor Programme, or comparable entrepreneur routes elsewhere in this dataset like Germany's Business Manager visa's ¥30M-equivalent capital bar); the S$50,000 paid-up capital requirement is a company-incorporation formality, not a personal wealth test. Renewal is milestone-based (job creation, local business spending) rather than time-based alone — a genuinely results-oriented structure worth flagging distinctly from most other business routes in this dataset, which mostly just require maintaining the original business without escalating targets. Same honest omission of pr_after_months/citizenship_after_months as Singapore's other routes — no published formula exists for EntrePass-to-PR timing."
+}

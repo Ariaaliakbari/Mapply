@@ -1,0 +1,76 @@
+{
+  "id": "sg_visitor",
+  "country": "SG",
+  "name": "Visit Pass / Tourist visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (visa-required nationalities)",
+      "requirements": [
+        {
+          "id": "v_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave Singapore at the end of your visit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ica_visitor"
+        },
+        {
+          "id": "v_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_for_the_trip",
+          "hard": true,
+          "blocker_text": "This requires showing sufficient funds for the visit and return journey.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ica_visitor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of sufficient funds and intent to leave",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 30 or 90 days depending on nationality, at immigration officer's discretion",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ica_visitor",
+      "tier": 1,
+      "url": "https://www.ica.gov.sg/enter-depart/entry_requirements/visa_requirements",
+      "title": "Visa requirements - Immigration & Checkpoints Authority",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Many nationalities (including most countries already covered in this dataset) are visa-exempt for short visits, only needing an application if their nationality requires a visa. Duration granted (30 vs 90 days) is genuinely at the discretion of the immigration officer at entry, not a fixed guaranteed figure by nationality alone — worth flagging as a real element of uncertainty distinct from the more codified duration rules seen on most other countries' visitor routes in this dataset. No single-bloc equivalent to the Schengen system — each visit to Singapore is assessed on Singapore's own terms, the same structural point already flagged on Australia's and Japan's visitor routes relative to the European Schengen model."
+}

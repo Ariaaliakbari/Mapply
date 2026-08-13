@@ -1,0 +1,96 @@
+{
+  "id": "nl_ict",
+  "country": "NL",
+  "name": "Intra-Corporate Transfer (ICT) permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 3,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Manager or specialist transfer",
+      "requirements": [
+        {
+          "id": "ict_prior_employment",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "This requires at least 3 months' prior employment with the same corporate group before the transfer.",
+          "fix_path": null,
+          "fix_time_months": 3,
+          "source_id": "ind_ict"
+        },
+        {
+          "id": "ict_role",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["manager", "specialist", "trainee_employee"],
+          "hard": true,
+          "blocker_text": "This requires transferring as a manager, specialist, or trainee employee.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_ict"
+        },
+        {
+          "id": "ict_salary",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "market_conform_benchmarked_against_hsm_thresholds",
+          "hard": true,
+          "blocker_text": "This requires a market-conform salary — IND benchmarks this against the Highly Skilled Migrant thresholds rather than publishing a separate statutory figure.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_ict"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Assignment letter confirming intra-group transfer terms and duration",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Proof of 3+ months' prior employment within the group",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years (managers/specialists), up to 1 year (trainees), cannot be extended beyond that",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ind_ict",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/work/intra-corporate-transfer-ict",
+      "title": "Intra-corporate transfer (ICT) - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Directly comparable to Germany's de_ict_card and structurally similar in outcome — deliberately terminal (leads_to_pr false, switchable_to empty, not renewable beyond the cap), since this implements the same EU ICT Directive (2014/66/EU) as Germany's version, just via a different national implementing statute. Prior-employment requirement is shorter here (3 months) than Germany's (6 months) — a genuine, confirmed cross-country difference worth surfacing in a comparison view. 6-month cooling-off before a new ICT permit, same as Germany. EU short-term mobility (up to 90 days in other member states by notification) and long-term mobility to other Directive-adopting states (not Denmark/Ireland) apply, same pattern as the German route."
+}

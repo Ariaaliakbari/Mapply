@@ -1,0 +1,92 @@
+{
+  "id": "nl_daft",
+  "country": "NL",
+  "name": "Dutch-American Friendship Treaty (DAFT) residence permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "daft_nationality",
+          "attribute": "nationality",
+          "operator": "==",
+          "value": "united_states",
+          "hard": true,
+          "blocker_text": "This route is available only to US citizens, under the Dutch-American Friendship Treaty.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_daft"
+        },
+        {
+          "id": "daft_investment",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 4500, "currency": "EUR" },
+          "hard": true,
+          "blocker_text": "This requires a minimum investment of €4,500 in equity, maintained in the Dutch business for the duration of the permit.",
+          "fix_path": "Secure and invest the required capital.",
+          "fix_time_months": null,
+          "source_id": "ind_daft"
+        },
+        {
+          "id": "daft_ownership",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "note": "at least 25% ownership of the business" },
+          "hard": true,
+          "blocker_text": "This requires owning at least 25% of the business.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_daft"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "KVK (Dutch Chamber of Commerce) business registration",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Proof of €4,500 capital investment in the business",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years initially, extendable up to 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "ind_daft",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/work/self-employed-persons/dutch-american-friendship-treaty",
+      "title": "Dutch-American Friendship Treaty - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "The lowest capital bar and simplest process of any business/investment route encoded in this dataset so far across all three countries — no RVO points test, no business plan assessment, no minimum salary or profit threshold, just the €4,500 investment and 25% ownership. Since 1 April 2024, IND runs a faster pilot workflow: approval WITHOUT upfront proof of KVK registration and capital, checked retroactively around 6 months post-approval — a genuinely distinctive process worth surfacing, since it changes the practical order of operations compared to every other route in this dataset (apply first, prove compliance later, rather than prove-then-apply). No MVV/civic-integration-exam-abroad requirement for US nationals specifically on this route. A parallel Dutch-Japanese Trade Treaty gives similar rights to Japanese nationals but through nl_self_employed's treaty_exempt group rather than a dedicated route file, since the Japan case doesn't have DAFT's distinctive simplified/deferred-verification process."
+}

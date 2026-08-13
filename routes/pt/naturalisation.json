@@ -1,0 +1,143 @@
+{
+  "id": "pt_naturalisation",
+  "country": "PT",
+  "name": "Naturalisation (Nacionalidade Portuguesa por Naturalização)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["pt_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "cplp_eu",
+      "name": "CPLP or EU nationals",
+      "requirements": [
+        {
+          "id": "ce_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "This requires 7 years of legal residence, counted from the date your first residence card was issued (waiting/manifestação time no longer counts). This is the new figure under Lei Orgânica n.º 1/2026 — the previous requirement was 5 years for everyone.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_organica_1_2026"
+        },
+        {
+          "id": "ce_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires Portuguese at A2 (CIPLE) — CPLP nationals and those born in a country whose official language is Portuguese are presumed to meet this requirement.",
+          "fix_path": "Take the CIPLE exam at A2, unless presumed to meet it.",
+          "fix_time_months": 3,
+          "source_id": "lei_organica_1_2026"
+        },
+        {
+          "id": "ce_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires a clean serious-criminal record and a declaration of adherence to democratic principles.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_organica_1_2026"
+        }
+      ]
+    },
+    {
+      "id": "other_nationalities",
+      "name": "Non-CPLP, non-EU nationals",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "requirements": [
+        {
+          "id": "on_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "This requires 10 years of legal residence, counted from the date your first residence card was issued. This is the new figure under Lei Orgânica n.º 1/2026 — the previous requirement was 5 years for everyone.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_organica_1_2026"
+        },
+        {
+          "id": "on_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires Portuguese at A2 (CIPLE).",
+          "fix_path": "Take the CIPLE exam at A2.",
+          "fix_time_months": 3,
+          "source_id": "lei_organica_1_2026"
+        },
+        {
+          "id": "on_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires a clean serious-criminal record and a declaration of adherence to democratic principles.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_organica_1_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "CIPLE certificate at A2 (unless presumed exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "7 or 10 years of continuous legal residence evidence, dated from the first residence card",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Clean criminal record certificate",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lei_organica_1_2026",
+      "tier": 1,
+      "url": "https://diariodarepublica.pt",
+      "title": "Diário da República — Lei Orgânica n.º 1/2026 (11th amendment to Lei n.º 37/81, Nationality Law)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT, the single most dramatic confirmed change across all four countries in this dataset: Lei Orgânica n.º 1/2026 (in force 19 May 2026 — during the same window as this research) DOUBLED the naturalisation residence requirement, from a flat 5 years for everyone to 7 years (CPLP/EU) / 10 years (everyone else). Portugal's reputation as having one of the fastest EU citizenship paths at 5 years is now OUT OF DATE for anyone applying after 19 May 2026 — any source still describing '5-year Portuguese citizenship' is stale, and this is a much larger, more recent, and more confirmed change than any other naturalisation-timeline risk flagged elsewhere in this dataset (UK's Earned Settlement consultation and Germany's fast-track abolition are both smaller in scope or still proposals at various points). TRANSITIONAL RULE, genuinely important: applications PENDING on 19 May 2026 are decided under the OLD 5-year law — this route as encoded reflects the NEW law for anyone applying now, but historical pending cases follow different rules, a real nuance not captured in this file's forward-looking structure. The residence clock now counts from ISSUANCE OF THE RESIDENCE CARD specifically, explicitly excluding any waiting/manifestação time that used to count — another genuine tightening. Dual citizenship remains permitted. Sephardic Jewish route is fully covered in pt_ancestry_descent rather than here, since it was structurally a descent-based route, not a residence-based naturalisation path."
+}

@@ -1,0 +1,94 @@
+{
+  "id": "us_birthright_descent_citizenship",
+  "country": "US",
+  "name": "Citizenship by Birth (14th Amendment) and by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "jus_soli",
+      "name": "Born on US soil (14th Amendment jus soli)",
+      "requirements": [
+        {
+          "id": "js_birth",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "born_in_the_united_states",
+          "hard": true,
+          "blocker_text": "This requires being born on US soil. Citizenship is attributed automatically regardless of the parents' immigration status. An executive order (EO 14160, Jan 2025) attempting to restrict this NEVER took legal effect anywhere and was struck down 6-3 by the Supreme Court on 30 June 2026 (Trump v. Barbara) — this remains fully in force, unchanged constitutional law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "scotus_trump_v_barbara"
+        }
+      ]
+    },
+    {
+      "id": "descent",
+      "name": "Born abroad to a US citizen parent",
+      "requirements": [
+        {
+          "id": "desc_physical_presence",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "citizen_parent_5yr_physical_presence_2_after_age_14",
+          "hard": true,
+          "blocker_text": "This requires the US-citizen parent (with a non-citizen other parent) to have been physically present in the US for at least 5 years before your birth, at least 2 of which were after age 14 (for births on/after 14 Nov 1986; a 10-year/5-after-14 rule applies to earlier births).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ina_301"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate (jus soli group)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of the citizen parent's physical presence in the US before the birth (descent group)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "scotus_trump_v_barbara",
+      "tier": 1,
+      "url": "https://www.supremecourt.gov",
+      "title": "Supreme Court of the United States — Trump v. Barbara, decided 30 June 2026, 6-3 (opinion by Chief Justice Roberts)",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "ina_301",
+      "tier": 1,
+      "url": "https://uscode.house.gov",
+      "title": "Immigration and Nationality Act §301(g), citizenship by descent physical-presence requirement",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR LIVE CONSTITUTIONAL EVENT, arguably the single most legally significant finding across this entire multi-country dataset: birthright citizenship under the 14th Amendment REMAINS FULLY IN EFFECT. Trump's Jan 20, 2025 Executive Order 14160 sought to deny citizenship to children of undocumented or temporary-status parents born after Feb 19, 2025 — every lower court that reviewed it blocked it, and it NEVER took effect anywhere, at any point, for any birth. The Supreme Court then struck it down 6-3 in Trump v. Barbara (decided 30 June 2026), a final, non-appealable ruling. Any source suggesting birthright citizenship was ever suspended, restricted, or is currently in legal limbo is simply wrong — it has been continuously, unbroken constitutional law throughout. SEPARATE LIVE ITEM, explicitly NOT encoded as law: two new, narrower executive orders signed 6 August 2026 ('Continuing to Protect the Meaning and Value of American Citizenship' and 'Ending Birth Tourism') had NOT been implemented as of this verification and face expected litigation — these are proposals, not operative law, and this route deliberately does not reflect them, consistent with how this dataset treats proposal-stage items elsewhere (e.g. France's pre-2026 B1 language rule, Netherlands' B1 PR proposal). selection_method 'automatic' for both groups — structurally similar to France's droit du sang and Japan's descent rule (automatic attribution, no application needed for the initial grant itself), in contrast to Australia's assessed-application descent model."
+}

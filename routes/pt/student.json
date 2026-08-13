@@ -1,0 +1,120 @@
+{
+  "id": "pt_student",
+  "country": "PT",
+  "name": "D4 Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "admission_to_portuguese_institution",
+          "hard": true,
+          "blocker_text": "This requires admission to a Portuguese higher-education institution or course.",
+          "fix_path": "Secure admission from a recognised Portuguese institution.",
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 1.0, "resolved_amount": 920, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires subsistence funds of at least €920/month (RMMG) for 12 months or the course duration — waived for CPLP nationals (including Brazilians) who provide a termo de responsabilidade instead.",
+          "fix_path": "Arrange sufficient funds, or confirm eligibility for the CPLP exemption.",
+          "fix_time_months": 1,
+          "source_id": "vistos_mne"
+        }
+      ]
+    },
+    {
+      "id": "cplp_exempt",
+      "name": "CPLP nationals (subsistence proof exempted)",
+      "requirements": [
+        {
+          "id": "st2_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "admission_to_portuguese_institution",
+          "hard": true,
+          "blocker_text": "This requires admission to a Portuguese higher-education institution or course.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "st2_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["cplp_member_state"],
+          "hard": true,
+          "blocker_text": "This exemption applies to nationals of CPLP member states (including Brazil).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "st2_responsibility",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "termo_de_responsabilidade",
+          "hard": true,
+          "blocker_text": "This requires a termo de responsabilidade (declaration of responsibility) instead of standard subsistence proof.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission letter from the Portuguese institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of subsistence funds, or a termo de responsabilidade for CPLP nationals",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the study programme, renewable while enrolled",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_work_d1", "pt_job_seeker_skilled"]
+  },
+  "sources": [
+    {
+      "id": "vistos_mne",
+      "tier": 1,
+      "url": "https://vistos.mne.gov.pt",
+      "title": "Portal de Vistos - Ministério dos Negócios Estrangeiros",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "CPLP exemption from subsistence proof is a genuinely distinctive feature not present on any UK, German, or Dutch student route — worth surfacing as a real cross-country difference, and consistent with the CPLP preferential treatment pattern that runs through several Portugal routes in this dataset. LIVE PROCESS WATCH: from late 2026, in-country conversion from tourist status to student status is being closed off — applicants are expected to apply from their country of origin going forward, a genuine procedural tightening worth flagging even though it wasn't as fully confirmed as the D1 consular-preauthorization change. switchable_to includes pt_job_seeker_skilled despite that route currently being non-operational (see its own notes) — the link is structurally correct per the statute even though the practical path is blocked pending the Portaria."
+}

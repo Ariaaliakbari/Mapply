@@ -1,0 +1,105 @@
+{
+  "id": "us_asylum_refugee",
+  "country": "US",
+  "name": "Asylum and Refugee Status",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": { "window_type": "annual", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null, "note": "Refugee admissions are capped by an annual Presidential Determination — FY2026 ceiling set at 7,500, later raised to 17,500 via emergency determination" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "affirmative_asylum",
+      "name": "Affirmative asylum (inside the US)",
+      "requirements": [
+        {
+          "id": "aa_deadline",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_united_states",
+          "hard": true,
+          "blocker_text": "This requires filing Form I-589 within 1 year of arrival in the US.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_asylum"
+        },
+        {
+          "id": "aa_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "This requires a well-founded fear of persecution based on race, religion, nationality, political opinion, or membership of a particular social group.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uscis_asylum"
+        }
+      ]
+    },
+    {
+      "id": "refugee_resettlement",
+      "name": "Refugee resettlement (from abroad)",
+      "requirements": [
+        {
+          "id": "rr_referral",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "unhcr_or_us_embassy_referral",
+          "hard": true,
+          "blocker_text": "This requires referral into the US Refugee Admissions Program (USRAP), typically via UNHCR or a US embassy, and falling within the annual Presidential Determination ceiling and allocated categories.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "state_refugee_ceiling"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at USCIS asylum interview or refugee resettlement processing",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite once granted",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "uscis_asylum",
+      "tier": 1,
+      "url": "https://www.uscis.gov/humanitarian/refugees-and-asylum/asylum",
+      "title": "Asylum - USCIS",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "state_refugee_ceiling",
+      "tier": 1,
+      "url": "https://www.federalregister.gov",
+      "title": "Presidential Determination on Refugee Admissions for FY2026, signed 30 Sept 2025, published 31 Oct 2025; Emergency Presidential Determination 2026-14, 21 May 2026",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT confirmed: the FY2026 refugee ceiling was initially set at 7,500 — the LOWEST in the 45-year history of the US refugee resettlement program — and later raised via emergency determination to 17,500, with the additional 10,000 slots allocated specifically to Afrikaners from South Africa under Executive Order 14204. USRAP has been suspended since late Jan 2025 (EO 14163) except for specific exceptions; FY2026 admissions totaled only 7,730 as of 30 June 2026, well behind even the raised ceiling. Asylum court backlog is severe (tier-3/TRAC figures cited in underlying research: over 3.1 million total immigration-court backlog, over 2.3 million with formal asylum applications filed) — affirmative and defensive waits commonly run 4-7 years, flagged as tier-3 sourced. Asylees MAY apply for a green card 1 year after grant; refugees are REQUIRED to apply 1 year after admission — a real distinction in obligation, not just terminology, between the two groups despite both feeding into pr_after_months (12) here."
+}

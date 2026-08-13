@@ -1,0 +1,115 @@
+{
+  "id": "fr_droit_du_sang_et_du_sol",
+  "country": "FR",
+  "name": "Citizenship by descent (droit du sang) and by birth in France (droit du sol)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "child_of_french_citizen",
+      "name": "Child of a French citizen (droit du sang)",
+      "requirements": [
+        {
+          "id": "dds_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_french_citizen_at_birth",
+          "hard": true,
+          "blocker_text": "This requires having at least one parent who was a French citizen at the time of your birth. Citizenship is attributed automatically at birth, regardless of where you were born.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legifrance_code_civil"
+        }
+      ]
+    },
+    {
+      "id": "double_droit_du_sol",
+      "name": "Double droit du sol",
+      "requirements": [
+        {
+          "id": "ddds_criteria",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "born_in_france_to_a_parent_also_born_in_france",
+          "hard": true,
+          "blocker_text": "This requires being born in France to a parent who was themselves also born in France (regardless of that parent's own citizenship status) — citizenship is attributed automatically at birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legifrance_code_civil"
+        }
+      ]
+    },
+    {
+      "id": "standard_droit_du_sol",
+      "name": "Standard droit du sol (born and raised in France)",
+      "requirements": [
+        {
+          "id": "sdds_birth",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "born_in_france",
+          "hard": true,
+          "blocker_text": "This requires having been born in France to non-French parents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legifrance_code_civil"
+        },
+        {
+          "id": "sdds_residence",
+          "attribute": "months_in_country",
+          "operator": "exists",
+          "value": "habitual_residence_in_france_since_age_11_confirmed_at_18",
+          "hard": true,
+          "blocker_text": "This requires habitual residence in France for a continuous or discontinuous period of at least 5 years since age 11, confirmed at majority (age 18) — citizenship is then automatic, unless an anticipated declaration was already made from age 13 (with parental consent) or age 16 (independently), both requiring similar residence evidence.",
+          "fix_path": "Maintain and document the required residence period in France.",
+          "fix_time_months": null,
+          "source_id": "legifrance_code_civil"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and proof of parent's French citizenship or birth in France, as applicable to the group",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Residence evidence since age 11 (standard droit du sol group)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "legifrance_code_civil",
+      "tier": 1,
+      "url": "https://www.legifrance.gouv.fr",
+      "title": "Légifrance — Code civil Art. 18-19-4 (droit du sang and droit du sol provisions)",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "France's ancestry/birthright route, structurally quite different from the ancestry routes encoded elsewhere in this dataset (UK Ancestry, Portugal's descent tiers, Germany's §116(2) restoration) in one key respect: droit du sang here is attribution AT BIRTH by a French parent, with no generational limit, no test, and no application process — genuinely the simplest and most automatic citizenship-by-descent mechanism in the entire dataset, in sharp contrast to Portugal's 2026 reform which imposed exactly the parent/grandparent generational cap France does NOT have. 'Double droit du sol' is a genuinely distinctive French mechanism with no direct equivalent elsewhere in this dataset — citizenship transmitted through a GRANDPARENT'S birthplace via an intervening parent also born in France, regardless of either parent's actual nationality, which can produce French citizenship for people with no French ancestry in the conventional sense at all. Standard droit du sol (born in France to non-French parents, residence-conditioned) is closer in spirit to birthright-citizenship debates seen in other countries but is NOT unconditional — it requires demonstrated habitual residence since age 11, confirmed at 18, with earlier anticipated-declaration options from age 13/16. This entire route category is automatic/declarative rather than assessed/discretionary in the way most other routes in this dataset are — selection_method 'automatic' reflects that meeting the predicate IS the grant, with no administrative discretion involved, a genuine structural outlier worth noting when comparing selection_method values across the whole dataset."
+}

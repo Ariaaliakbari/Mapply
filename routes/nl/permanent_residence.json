@@ -1,0 +1,101 @@
+{
+  "id": "nl_permanent_residence",
+  "country": "NL",
+  "name": "Permanent residence permit (incl. EU long-term resident status)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["nl_highly_skilled_migrant", "nl_eu_blue_card", "nl_self_employed", "nl_daft", "nl_family_reunification"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 continuous years of legal residence on a non-temporary residence purpose.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_permanent_residence"
+        },
+        {
+          "id": "pr_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 1635.90, "currency": "EUR", "unit": "month", "note": "excl. holiday allowance; €1,766.77 incl. holiday allowance — IND publishes both framings for this specific requirement" },
+          "hard": true,
+          "blocker_text": "This requires independent and sustainable income of at least €1,635.90/month (excl. holiday allowance, 2026 figure).",
+          "fix_path": "Ensure income meets the required threshold at time of application.",
+          "fix_time_months": null,
+          "source_id": "ind_permanent_residence"
+        },
+        {
+          "id": "pr_civic_integration",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "civic_integration_exam_pass_a2",
+          "hard": true,
+          "blocker_text": "This requires having passed the civic integration exam (inburgering) at A2 level, unless exempt (EU/EEA/Swiss nationals need no integration exam).",
+          "fix_path": "Book and pass the civic integration exam at A2.",
+          "fix_time_months": 6,
+          "source_id": "ind_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Civic integration diploma or NT2 state exam certificate at A2 (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 180
+    },
+    {
+      "document": "5 years of continuous residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Income evidence meeting the required amount",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nl_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ind_permanent_residence",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/permanent-residence-permit",
+      "title": "Permanent residence permit - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Netherlands' ILR/Niederlassungserlaubnis-equivalent hub route, same structural role as uk_ilr and de_niederlassungserlaubnis — one route most feeder routes resolve through. Two parallel legal types exist (national permanent residence permit and EU long-term resident permit), which IND checks automatically for the applicant — modeled here as a single route since the practical qualifying conditions and outcome are the same, with the EU long-term variant's main added value (easier intra-EU mobility) not separately captured, a scope decision. LANGUAGE LEVEL FLAGGED AS GENUINELY CONDITIONAL, not a simple constant: A2 remains the operative level in 2026 for most applicants, but expats who obtained their Dutch BSN after 1 January 2022 and are pursuing PR without naturalising may face a B1 requirement under the Wet inburgering 2021, depending on individual timeline — this route encodes the more common A2 case and flags the B1 sub-case honestly rather than silently picking one. Fee €254 adult / €85 for EU/EEA/Swiss nationals (who also skip the integration exam entirely) confirmed via IND. Income requirement is stated with BOTH holiday-allowance conventions by IND itself (€1,635.90 excl. / €1,766.77 incl.) — genuinely unusual, most other Dutch routes in this dataset use only one convention consistently."
+}

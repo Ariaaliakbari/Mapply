@@ -1,0 +1,81 @@
+{
+  "id": "us_f1_opt",
+  "country": "US",
+  "name": "F-1 Student Visa + Optional Practical Training (OPT)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "f1_enrolment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "sevp_certified_school_enrolment",
+          "hard": true,
+          "blocker_text": "This requires full-time enrolment at an SEVP-certified school.",
+          "fix_path": "Secure admission to an SEVP-certified institution.",
+          "fix_time_months": null,
+          "source_id": "uscis_f1"
+        },
+        {
+          "id": "f1_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_for_tuition_and_living",
+          "hard": true,
+          "blocker_text": "This requires demonstrating sufficient funds to cover tuition and living costs for the program duration.",
+          "fix_path": "Arrange sufficient funds or a funding declaration.",
+          "fix_time_months": null,
+          "source_id": "uscis_f1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Form I-20 from the SEVP-certified school",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "SEVIS I-901 fee payment ($350) confirmation",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of study, plus 12 months standard OPT (36 months total with the STEM OPT extension for STEM-field graduates)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["us_h1b", "us_eb2"]
+  },
+  "sources": [
+    {
+      "id": "uscis_f1",
+      "tier": 1,
+      "url": "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students",
+      "title": "Optional Practical Training (OPT) for F-1 Students - USCIS",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "SEVIS fee CONFIRMED at $350 (not the $540 figure some sources cite, which applies only to terminated/reactivated SEVIS records — a genuine stale-figure risk worth flagging). STEM OPT extension (+24 months) requires an E-Verify employer and a Form I-983 training plan — total possible OPT time 36 months for STEM graduates vs 12 for non-STEM, a real structural fork worth surfacing. Cap-gap provision extends F-1 status and work authorization to the start of the fiscal year (traditionally Oct 1) if a timely, selected H-1B change-of-status petition is filed — a genuine bridge mechanic linking this route directly to us_h1b. GENUINE UPCOMING STRUCTURAL CHANGE, not yet in force: DHS published a final rule July 17, 2026 establishing a fixed period of admission (replacing 'duration of status'/D/S) for F, J, and I nonimmigrants — implementation timeline and mechanics were not fully confirmed during the research pass this was built from; flagged as a live item to re-verify, not yet encoded as a hard change since the effective date wasn't confirmed."
+}

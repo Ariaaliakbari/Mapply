@@ -1,0 +1,81 @@
+{
+  "id": "sg_tech_pass",
+  "country": "SG",
+  "name": "Tech.Pass",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": { "window_type": "closing_date", "opens": null, "closes": "2027-01-28", "cap_type": "none", "typical_fill_time_days": null, "note": "EDB confirmed no new or renewal Tech.Pass applications will be accepted from 28 January 2027; existing holders keep their pass until expiry" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tp_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 22500, "currency": "SGD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires a fixed monthly salary of at least S$22,500 (raised from an earlier S$20,000 figure).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "edb_tech_pass"
+        },
+        {
+          "id": "tp_experience",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 5,
+          "hard": true,
+          "blocker_text": "This requires at least 5 cumulative years, within the past 10 years, in a leading role (senior management or senior technical leadership) at either a qualifying tech company or a qualifying tech venture-capital firm.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "edb_tech_pass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Salary evidence meeting S$22,500/month",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Documented 5+ years in a qualifying leadership role at a tech company or tech VC firm",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sg_one_pass", "sg_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "edb_tech_pass",
+      "tier": 1,
+      "url": "https://www.edb.gov.sg/en/incentives-and-programmes/incentives-and-facilitation-programmes/tech-pass.html",
+      "title": "Tech.Pass - Singapore Economic Development Board",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE 'ACTIVE BUT SCHEDULED FOR REPLACEMENT' CASE, a new pattern for this dataset — distinct from Portugal's job-seeker visa (enacted-in-law but never yet operational) and distinct from a fully closed route like Spain's Golden Visa (status: closed): Tech.Pass is FULLY OPERATIONAL RIGHT NOW and remains the correct route to encode as 'published' for anyone applying before its confirmed closing date, even though its replacement (ONE Pass AI and Tech track, see sg_one_pass) has already been publicly announced with a specific future effective date. Modeled here using the application_window field's closing_date mechanic to capture this precisely — EDB confirms no new or renewal applications accepted from 28 January 2027, existing holders keep their pass until natural expiry. Administered by EDB rather than MOM (unlike every other Singapore work pass in this dataset) — a genuine institutional split worth noting, since EDB tends to run more individually-negotiated, discretionary programmes (also true of the Global Investor Programme within sg_permanent_residence) versus MOM's more standardised, criteria-based passes. Not employer-tied — holder can pursue multiple economic activities and companies simultaneously, similar flexibility to ONE Pass, which is precisely why the successor track sits under the ONE Pass umbrella rather than being a wholly new instrument."
+}

@@ -1,0 +1,96 @@
+{
+  "id": "tr_ordinary_naturalisation",
+  "country": "TR",
+  "name": "Citizenship by Ordinary Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["tr_short_term_residence", "tr_family_residence", "tr_work_permit", "tr_long_term_residence"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nat_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 continuous years of legal residence in Turkey — this clock runs INDEPENDENTLY of the 8-year long-term residence permit; you do NOT need to hold long-term residence first.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nvi_citizenship_law"
+        },
+        {
+          "id": "nat_language",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "sufficient_spoken_turkish_no_fixed_cefr_level",
+          "hard": true,
+          "blocker_text": "This requires being able to speak Turkish 'sufficiently' — the statute specifies no fixed CEFR level; assessed by the naturalisation commission.",
+          "fix_path": "Improve spoken Turkish ability to a level the commission accepts as sufficient.",
+          "fix_time_months": 6,
+          "source_id": "nvi_citizenship_law"
+        },
+        {
+          "id": "nat_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "sufficient_income_or_profession",
+          "hard": true,
+          "blocker_text": "This requires sufficient income or a profession, good moral character, no public-health-threatening disease, and no national-security/public-order obstacle.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nvi_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "5 years of continuous residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Evidence of sufficient spoken Turkish ability",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nvi_citizenship_law",
+      "tier": 1,
+      "url": "https://www.nvi.gov.tr",
+      "title": "Directorate General of Population and Citizenship Affairs — Turkish Citizenship Law No. 5901, Art. 11",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE, CONFIRMED LANGUAGE-STANDARD GAP worth flagging clearly: the statute specifies NO fixed CEFR level for the language requirement — only 'sufficient spoken Turkish' assessed by commission discretion. Some tier-3 sites assert a fixed 'A2' requirement; this OVERSTATES the actual law, which sets no codified level at all. Residence-clock independence is a genuine structural feature shared with only Japan among the countries in this dataset: naturalisation (5 years) runs on its own clock, NOT gated behind the 8-year long-term residence permit. Dual citizenship confirmed permitted, consistent with every other route in this dataset's Turkey country set. Absences generally must not exceed roughly 180 days over the qualifying period or the clock restarts, per tier-3 practitioner sources — not independently confirmed at tier-1 precision, flagged as a gap rather than asserted with false confidence."
+}

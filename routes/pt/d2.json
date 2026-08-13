@@ -1,0 +1,104 @@
+{
+  "id": "pt_d2",
+  "country": "PT",
+  "name": "D2 Visa (Entrepreneur / Independent Worker)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "d2_plan",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "viable_business_plan_or_self_employment_activity",
+          "hard": true,
+          "blocker_text": "This requires a viable business plan (for company founders/investors) or documented qualifications and client contracts (for self-employed professionals/freelancers) — assessed case-by-case, with no fixed statutory minimum investment.",
+          "fix_path": "Develop a business plan or secure qualifying client contracts.",
+          "fix_time_months": 3,
+          "source_id": "aima_d2"
+        },
+        {
+          "id": "d2_subsistence",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "rmmg_2026", "ratio": 1.0, "resolved_amount": 920, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires demonstrating subsistence means of at least €920/month (RMMG), on top of business launch capital — approximately €11,040 in liquid savings per applicant is common consular practice, though not a fixed statutory figure.",
+          "fix_path": "Build sufficient savings.",
+          "fix_time_months": null,
+          "source_id": "vistos_mne"
+        },
+        {
+          "id": "d2_registration",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "nif_and_portuguese_business_registration",
+          "hard": true,
+          "blocker_text": "This requires a Portuguese tax number (NIF) and registration of the company or self-employment activity.",
+          "fix_path": "Obtain a NIF and complete business/self-employment registration.",
+          "fix_time_months": 1,
+          "source_id": "aima_d2"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Business plan (company route) or qualifications and client contracts (self-employed route)",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "NIF (Portuguese tax number) and business/self-employment registration",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Bank statements showing sufficient savings",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "2-year residence permit, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "aima_d2",
+      "tier": 1,
+      "url": "https://aima.gov.pt",
+      "title": "AIMA — D2 residence visa for entrepreneurs and independent workers",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "vistos_mne",
+      "tier": 1,
+      "url": "https://vistos.mne.gov.pt",
+      "title": "Portal de Vistos - Ministério dos Negócios Estrangeiros",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "No statutory minimum investment — genuinely distinct from pt_golden_visa's fixed thresholds, closer in spirit to Germany's Freiberufler/self-employment route or the Netherlands' RVO points assessment, but with less formal scoring than either (case-by-case viability review rather than a points rubric). LIVE POLICY WATCH, not yet fully modeled as a separate route: Lei n.º 61/2025 created a new residence route specifically for entrepreneurs/innovative-project holders integrated into certified business incubators — its implementing details weren't fully confirmed during this research pass and it may warrant its own route file once its regulation is published, similar to how pt_job_seeker_skilled is being tracked as pending its own Portaria. Subsistence requirement formula-linked to RMMG, same reference variable as pt_d7/pt_d8/pt_d1."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "pt_asylum",
+  "country": "PT",
+  "name": "International Protection (Proteção Internacional)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "asy_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_portugal_or_at_border",
+          "hard": true,
+          "blocker_text": "This can only be claimed while on Portuguese territory or at a border post — no applications from abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_27_2008"
+        },
+        {
+          "id": "asy_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_status_or_subsidiary_protection",
+          "hard": true,
+          "blocker_text": "This requires meeting one of two protection categories: refugee status (persecution under the Geneva Convention grounds) or subsidiary protection (risk of serious harm, including from war or generalized violence, if returned).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_27_2008"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at AIMA/CNAR screening and interview",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "refugee status: 5 years, renewable; subsidiary protection: 3 years, renewable subject to country-of-origin reassessment",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "lei_27_2008",
+      "tier": 1,
+      "url": "https://diariodarepublica.pt",
+      "title": "Diário da República — Lei n.º 27/2008 (Asylum Law) and Constitution Art. 33",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "No application fee, same as every other country's asylum route in this dataset. Two protection statuses with genuinely different durations (refugee: 5 years; subsidiary: 3 years, subject to a country-of-origin safety re-examination at renewal) — same structural pattern as Germany's asylum route, modeled as a single group for the same reason (the schema can't cleanly express 'either of two tests with different downstream durations' without fragmenting the route). Statutory decision target ~6 months, but this figure should be read against the AIMA backlog context documented across every other Portugal route in this dataset — asylum claims specifically compete for the same overwhelmed processing capacity, and realistic timelines are likely to exceed the statutory target by a wide margin, though this wasn't independently quantified for asylum specifically during this research pass. Dublin Regulation transfers apply, same EU-wide mechanic relevant to all Schengen-area asylum routes, not separately modeled as a requirement here."
+}

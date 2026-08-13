@@ -1,0 +1,153 @@
+{
+  "id": "nl_eu_blue_card",
+  "country": "NL",
+  "name": "EU Blue Card",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard threshold",
+      "requirements": [
+        {
+          "id": "bc1_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer — unlike Highly Skilled Migrant, the employer does NOT need IND-recognised sponsor status for a Blue Card application.",
+          "fix_path": "Secure a qualifying job offer.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "bc1_degree",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": [
+            "bachelors",
+            "masters",
+            "phd"
+          ],
+          "hard": true,
+          "blocker_text": "This requires a diploma from a higher-education programme of at least 3 years (evaluated by Nuffic if foreign), OR at least 5 years of relevant work experience at higher-education level — for IT managers/specialists, only 3 years of relevant experience within the preceding 7 years is needed.",
+          "fix_path": "Obtain formal recognition of your degree via Nuffic, or document qualifying professional experience.",
+          "fix_time_months": 3,
+          "source_id": "ind_blue_card"
+        },
+        {
+          "id": "bc1_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 5942,
+            "currency": "EUR",
+            "unit": "month",
+            "note": "gross per month, excl. 8% holiday allowance"
+          },
+          "hard": true,
+          "blocker_text": "This requires a gross salary of at least €5,942/month (excl. 8% holiday allowance), 2026 standard figure.",
+          "fix_path": "Negotiate a higher salary, or check eligibility for the reduced recent-graduate threshold.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    },
+    {
+      "id": "reduced_graduate",
+      "name": "Reduced threshold — recent graduate",
+      "requirements": [
+        {
+          "id": "bc2_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "bc2_recent_grad",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "graduated_within_3_years_or_extending_within_24_months_of_first_blue_card",
+          "hard": true,
+          "blocker_text": "This reduced threshold applies within 3 years of graduation, or when extending within 24 months of first holding a Blue Card.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        },
+        {
+          "id": "bc2_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 4754,
+            "currency": "EUR",
+            "unit": "month"
+          },
+          "hard": true,
+          "blocker_text": "This requires a gross salary of at least €4,754/month (excl. 8% holiday allowance), 2026 reduced figure.",
+          "fix_path": "Negotiate a higher salary.",
+          "fix_time_months": null,
+          "source_id": "ind_required_amounts"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Nuffic/IDW degree evaluation, or documented professional experience",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employment contract meeting the applicable salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "contract duration + 3 months, up to approximately 4 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "nl_permanent_residence"
+    ]
+  },
+  "sources": [
+    {
+      "id": "ind_required_amounts",
+      "tier": 1,
+      "url": "https://ind.nl/en/required-amounts-income-requirements",
+      "title": "Required amounts income requirements - IND",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "ind_blue_card",
+      "tier": 1,
+      "url": "https://ind.nl/en/residence-permits/work/european-blue-card-residence-permit",
+      "title": "European Blue Card residence permit - IND",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "SCHEMA GAP CLOSED (2026-08-08): degree-eligibility requirement now cites ind.nl directly (page updated 15 June 2026), replacing the earlier tier-2 EU Immigration Portal citation. Status moved from draft to published. GENUINE NEW FINDING surfaced during the tier-1 re-check, not previously known: Blue Card holders can sometimes reach permanent residence after 2 years instead of the standard 5 (ind.nl 'Exceptions to 5-year term for permanent residency') — not yet modeled as a separate outcome_override since the exact qualifying conditions for the 2-year exception weren't fully detailed on this page and need a follow-up fetch of that specific sub-page before encoding as a hard figure; flagged here rather than guessed. Also confirmed: unemployment search period is 3 months normally, extending to 6 months once the Blue Card has been held 2+ years — a genuine tenure-based benefit not previously captured. Key differentiator from Highly Skilled Migrant, worth surfacing prominently in any comparison view: intra-EU mobility after 12 months, and the employer does NOT need IND-recognised sponsor status — a real practical advantage for smaller/newer employers who haven't gone through sponsor recognition. For under-30 applicants without a degree the HSM route is usually preferable (lower €4,357 threshold, no degree requirement); Blue Card wins specifically where EU-wide mobility matters, or where the 2-year PR exception applies once its exact conditions are confirmed. Same formula-modeling decision as nl_highly_skilled_migrant — literal 2026 values, no fabricated ratio."
+}

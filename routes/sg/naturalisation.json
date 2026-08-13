@@ -1,0 +1,96 @@
+{
+  "id": "sg_naturalisation",
+  "country": "SG",
+  "name": "Citizenship by registration (naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["sg_permanent_residence"],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nat_pr_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This commonly requires around 2 years of PR status (shorter for spouses of citizens), though the exact required period and outcome are discretionary and not guaranteed by meeting any published minimum.",
+          "fix_path": null,
+          "fix_time_months": 24,
+          "source_id": "ica_citizenship"
+        },
+        {
+          "id": "nat_ns",
+          "attribute": "age",
+          "operator": "exists",
+          "value": "national_service_obligation_for_male_applicants",
+          "hard": true,
+          "blocker_text": "Male applicants become liable for National Service (typically 2 years full-time, plus annual reservist obligations to age 40 for enlisted personnel/50 for officers) upon becoming a citizen or permanent resident and reaching registration age — a significant, distinctive obligation not present on most other countries' naturalisation routes in this dataset.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ica_citizenship"
+        },
+        {
+          "id": "nat_renunciation",
+          "attribute": "nationality",
+          "operator": "==",
+          "value": "willing_to_renounce_prior_nationality",
+          "hard": true,
+          "blocker_text": "This requires renouncing your prior nationality — Singapore does not permit dual citizenship for adults.",
+          "fix_path": "Complete renunciation procedures with your country of prior nationality.",
+          "fix_time_months": 6,
+          "source_id": "ica_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "PR status evidence and residence history",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Proof of renunciation of, or process to renounce, prior nationality",
+      "difficulty": "hard",
+      "typical_time_days": 180
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ica_citizenship",
+      "tier": 1,
+      "url": "https://www.ica.gov.sg/reside/citizenship/introduction",
+      "title": "Citizenship - Immigration & Checkpoints Authority",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FEATURE with no direct equivalent elsewhere in this dataset: the National Service (NS) obligation for male citizens/PRs — a real, significant, legally mandatory commitment (full-time enlistment plus long-tail reservist duty) that materially affects the practical decision to naturalise for male applicants and their sons, worth surfacing prominently rather than treating naturalisation as a purely administrative/paperwork decision the way most other countries' routes in this dataset can be. dual_citizenship_allowed is FALSE — Singapore's mandatory-renunciation policy places it alongside Japan in this dataset as one of the more restrictive positions on dual nationality, in contrast to the more permissive stance taken by most European and Commonwealth countries covered elsewhere. HONEST GAP, same class as sg_permanent_residence's PTS group: the exact PR-tenure requirement and approval likelihood are genuinely discretionary and not published as a fixed rule by ICA — the commonly-cited approximate 2-year figure is treated here as indicative rather than guaranteed, consistent with Singapore's broader pattern of opaque, holistic assessment across its immigration system. Naturalisation is by REGISTRATION (a Minister-level discretionary grant), not an automatic entitlement even when commonly-cited timelines are met — similar in spirit to Japan's naturalisation-by-permission structure (jp_naturalisation), another Asian jurisdiction in this dataset with discretionary rather than entitlement-based citizenship grants."
+}

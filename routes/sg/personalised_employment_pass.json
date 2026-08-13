@@ -1,0 +1,82 @@
+{
+  "id": "sg_personalised_employment_pass",
+  "country": "SG",
+  "name": "Personalised Employment Pass (PEP)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "existing_ep_holders",
+      "name": "Existing Employment Pass holders",
+      "requirements": [
+        {
+          "id": "pep1_ep_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 22500, "currency": "SGD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires currently holding an Employment Pass with a fixed monthly salary of at least S$22,500.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_pep"
+        }
+      ]
+    },
+    {
+      "id": "overseas_professionals",
+      "name": "Overseas foreign professionals",
+      "requirements": [
+        {
+          "id": "pep2_overseas_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 22500, "currency": "SGD", "unit": "month", "note": "last drawn fixed monthly salary overseas" },
+          "hard": true,
+          "blocker_text": "This requires a last-drawn fixed monthly salary overseas of at least S$22,500.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mom_pep"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Salary evidence meeting the S$22,500/month threshold (current EP payslips, or last-drawn overseas salary evidence)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 years, not renewable — must switch to another pass before expiry",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "must not remain outside Singapore for more than 6 continuous months",
+    "switchable_to": ["sg_employment_pass", "sg_one_pass", "sg_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mom_pep",
+      "tier": 1,
+      "url": "https://www.mom.gov.sg/passes-and-permits/personalised-employment-pass",
+      "title": "Personalised Employment Pass - Ministry of Manpower",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FEATURE, the whole point of this route: NOT tied to a single employer, unlike sg_employment_pass — a PEP holder can take up to 6 months between jobs while remaining in Singapore to search for new employment, a real and meaningful flexibility advantage over the standard EP's 'lose the job, lose the pass immediately' structure. Genuinely terminal duration (3 years, explicitly not renewable) is a real design constraint — must transition to another pass (typically standard EP with the new employer, or ONE Pass if qualifying) before the 3 years run out, distinct from most other 'terminal' routes in this dataset which are terminal because they're entry-level/temporary rather than because a genuinely strong route has a hard cap. COMPASS-exempt (same S$22,500 threshold that exempts standard EP applicants) — no separate points assessment required, since the salary bar itself is the qualifying test."
+}

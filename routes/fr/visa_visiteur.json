@@ -1,0 +1,81 @@
+{
+  "id": "fr_visa_visiteur",
+  "country": "FR",
+  "name": "Visa Visiteur (passive income / retirement)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vv_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "smic_2026_monthly", "ratio": 1.0, "resolved_amount": 1867.02, "currency": "EUR", "unit": "month", "note": "passive income at least equal to SMIC, consular practice" },
+          "hard": true,
+          "blocker_text": "This requires passive income (pensions, investments, savings) of at least the SMIC level, assessed by consular practice.",
+          "fix_path": "Increase passive income or savings to the required level.",
+          "fix_time_months": null,
+          "source_id": "france_visas"
+        },
+        {
+          "id": "vv_no_work",
+          "attribute": "job_offer_status",
+          "operator": "!=",
+          "value": "france_employment",
+          "hard": true,
+          "blocker_text": "This does not permit any employed or self-employed work in France.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "france_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of passive income or savings",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Health insurance",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fr_carte_resident"]
+  },
+  "sources": [
+    {
+      "id": "france_visas",
+      "tier": 1,
+      "url": "https://france-visas.gouv.fr",
+      "title": "France-Visas — Visa de long séjour visiteur",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "SOURCING CAVEAT flagged honestly, same class of caveat as Italy's Elective Residency route: France's Visa Visiteur has no single codified statutory minimum income figure the way Portugal's D7 (RMMG-pegged) or Spain's NLV (IPREM-pegged) do — consular practice commonly references the SMIC level as a benchmark, but this is discretionary rather than a hard legal figure. Encoded here as a formula referencing SMIC for consistency with the dataset's pattern, but flagged as consular-practice-based rather than statutorily fixed, distinct from the truly codified formula thresholds elsewhere in this file (e.g. fr_talent_salarie_qualifie's arrêté-fixed figure). family_can_work is explicitly false since dependants on this route inherit the same no-work restriction as the principal applicant — a genuine difference from every other family_can_work:true route in this dataset, worth flagging since it's easy to assume family members always get work rights by default."
+}

@@ -1,0 +1,61 @@
+{
+  "id": "uk_start_up",
+  "country": "GB",
+  "name": "Start-up visa",
+  "category": "business",
+  "status": "closed",
+  "superseded_by": "uk_innovator_founder",
+  "closed_date": "2023-04-13",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "closed",
+      "name": "Closed — no longer accepting applications",
+      "requirements": [
+        {
+          "id": "closed_notice",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "route_permanently_closed",
+          "hard": true,
+          "blocker_text": "This route closed to new applicants on 13 April 2023 and has been replaced by the Innovator Founder visa. No new applications are possible under any circumstances.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govuk_start_up_closure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [],
+  "outcome": {
+    "duration_length": "n/a — route closed",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uk_innovator_founder"]
+  },
+  "sources": [
+    {
+      "id": "govuk_start_up_closure",
+      "tier": 1,
+      "url": "https://www.gov.uk/start-up-visa",
+      "title": "Start-up visa (closed to new applicants) - GOV.UK",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "SCHEMA GAP FIXED (2026-08-08): first real use of the new 'closed' status value, superseded_by, and closed_date fields — this route was deliberately excluded from the dataset entirely when UK was first completed, on the grounds that the schema had no way to represent 'closed' honestly. Per schema-v1.md's own open-decisions list ('Closed routes — keep visible with status: closed? Argument for: nobody else archives, and people search for routes that no longer exist'), that argument wins: someone researching UK options may well search for 'Start-up visa' having seen it referenced elsewhere, and finding nothing is worse than finding a clearly-marked closed route pointing to its actual successor. Existing holders of Start-up visas already granted are unaffected by the closure and can still extend/settle under transitional rules not encoded here, since this file represents the closed NEW-APPLICATION path only."
+}

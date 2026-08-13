@@ -1,0 +1,87 @@
+{
+  "id": "tr_short_term_residence",
+  "country": "TR",
+  "name": "Short-Term Residence Permit (Kısa Dönem İkamet İzni)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "property_based",
+      "name": "Property-based (residence only, distinct from CBI)",
+      "requirements": [
+        {
+          "id": "str1_property",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "residence_only_property_threshold_2026", "ratio": 1.0, "resolved_amount": 200000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "This requires a dwelling used as a house valued at least $200,000, and the property must not be located in a designated 'closed' neighbourhood where foreign-resident concentration exceeds 20%.",
+          "fix_path": "Acquire qualifying property outside a closed neighbourhood.",
+          "fix_time_months": null,
+          "source_id": "goc_residence_permits"
+        }
+      ]
+    },
+    {
+      "id": "other_purposes",
+      "name": "Other qualifying purposes",
+      "requirements": [
+        {
+          "id": "str2_purpose",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "scientific_research_business_medical_or_other_documented_purpose",
+          "hard": true,
+          "blocker_text": "This covers scientific research, business/commercial connections, on-the-job training, student exchange, tourism, medical treatment, judicial/administrative stay, and Turkish-language courses (max twice) — a documented purpose is required.",
+          "fix_path": "Document the specific qualifying purpose.",
+          "fix_time_months": null,
+          "source_id": "goc_residence_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Property valuation and title deed (property group), or documentation of the specific qualifying purpose (other group)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Health insurance and declared Turkish address",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years each time (investors and TRNC citizens up to 5 years)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 96,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tr_long_term_residence", "tr_ordinary_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "goc_residence_permits",
+      "tier": 1,
+      "url": "https://en.goc.gov.tr/residence-permit-types",
+      "title": "Residence Permit Types - Presidency of Migration Management",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "FORMULA VALUE, distinctly separate from tr_citizenship_by_investment's $400,000 real-estate threshold: this residence-ONLY property route requires only $200,000 and yields residence, not citizenship — the clearest and most consequential figure-conflation risk in the entire Turkey dataset, since both are property-based and easily confused. GENUINE, VOLATILE GEOGRAPHIC RESTRICTION: the Ministry of Interior lowered the foreign-resident concentration cap from 25% to 20% effective 1 July 2022, and the Presidency of Migration Management raised the closed-neighbourhood count to 1,169 mahalles across 62 provinces at that time; more recent reporting (single-source, not independently confirmed at tier-1 precision) suggests most closures were reversed by mid-2026, leaving Istanbul's Fatih and Esenyurt as notable remaining closures. This restriction is modeled as a hard requirement here but is explicitly flagged as dynamic — re-verify against the live PMM closed-neighbourhood list before relying on this for any specific location. pr_after_months (96) reflects the standard 8-year Long-Term Residence clock; citizenship_after_months (60) reflects the independent 5-year ordinary-naturalisation clock, which in Turkey does NOT require holding long-term residence first — a genuine structural feature shared with Japan among the countries in this dataset."
+}

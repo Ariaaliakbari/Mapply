@@ -1,0 +1,123 @@
+{
+  "id": "pt_permanent_residence",
+  "country": "PT",
+  "name": "Permanent Residence (Autorização de Residência Permanente)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["pt_d7", "pt_d8", "pt_golden_visa", "pt_d2", "pt_work_d1", "pt_eu_blue_card", "pt_family_reunification", "pt_cplp"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of temporary residence — this requirement was NOT changed by the 2026 nationality reform, unlike the naturalisation timeline, which is a genuinely important distinction to keep straight.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aima_pr"
+        },
+        {
+          "id": "pr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires Portuguese at A2 (CIPLE) — CPLP nationals are exempt.",
+          "fix_path": "Take the CIPLE exam at A2, unless CPLP-exempt.",
+          "fix_time_months": 3,
+          "source_id": "aima_pr"
+        },
+        {
+          "id": "pr_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires no serious criminal convictions in the last 5 years (cumulatively exceeding 1 year in prison).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aima_pr"
+        },
+        {
+          "id": "pr_absences",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "no_excess_absences",
+          "hard": true,
+          "blocker_text": "This requires not exceeding 6 months' absence in any single year, or 12 consecutive months overall, during the qualifying period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aima_pr"
+        },
+        {
+          "id": "pr_tax_status",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "up_to_date_tax_and_social_security",
+          "hard": true,
+          "blocker_text": "This requires being up to date on tax and social security obligations, plus demonstrated subsistence means.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aima_pr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "CIPLE certificate at A2 (unless CPLP-exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "5 years of continuous residence evidence, including full absence history",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Up-to-date tax and social security records",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "aima_pr",
+      "tier": 1,
+      "url": "https://aima.gov.pt",
+      "title": "AIMA — Autorização de Residência Permanente, Art. 80.º",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Portugal's ILR/Niederlassungserlaubnis-equivalent hub route, same structural role as uk_ilr, de_niederlassungserlaubnis, and nl_permanent_residence — every major feeder route in this dataset resolves through here. GENUINE, IMPORTANT DISTINCTION worth surfacing prominently: the 5-year PR residence requirement was NOT touched by the 2026 nationality reform — only the SEPARATE naturalisation-specific clock was extended to 7/10 years. This means someone can reach Portuguese permanent residence at 5 years exactly as before, but then must wait an ADDITIONAL 2 years (CPLP/EU) or 5 years (others) beyond that before naturalising — citizenship_after_months here is set to 24 (the CPLP/EU case) rather than 0, unlike every other country's PR-hub route in this dataset (UK ILR, Germany's Niederlassungserlaubnis, NL's permanent residence permit) where reaching PR and being naturalisation-eligible are effectively the same moment. This is a genuinely distinctive two-stage structure worth highlighting in any 'time to citizenship' comparison view — Portugal looks fast on paper (5-year PR) but the REAL total time to citizenship (84 months / 7 years minimum) is now comparable to or slower than some of the other three countries, a finding that directly contradicts Portugal's popular reputation as Europe's fastest citizenship route. Fee (grant €351.10 / renewal-equivalent data change €61.90) confirmed via the AIMA fee table."
+}
