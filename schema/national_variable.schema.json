@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mapply.org/schema/national_variable.schema.json",
+  "title": "NationalVariable set",
+  "description": "Per-country reference values that formula-valued requirements peg to (e.g. Germany's pension contribution ceiling, which Blue Card salary thresholds are a percentage of). One file per country. Storing the value once here means an annual update corrects every dependent route automatically, instead of hand-editing each route file. First proposed in schema-v1.md / stress-test-2 (Portugal D7 minimum-wage case), first implemented for Germany's EU Blue Card.",
+  "type": "object",
+  "required": ["country", "variables"],
+  "properties": {
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "variables": {
+      "type": "object",
+      "description": "Keyed by variable id (referenced from requirement.value.formula_ref in route files).",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["value", "currency", "effective_year", "source_id", "update_cadence"],
+        "properties": {
+          "value": { "type": "number" },
+          "currency": { "type": "string" },
+          "effective_year": { "type": "integer" },
+          "source_id": { "type": "string" },
+          "update_cadence": {
+            "type": "string",
+            "description": "e.g. 'annual_january', 'annual_march' — when this figure typically re-baselines, used to flag routes for re-verification"
+          },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "tier", "url", "title", "accessed_at"],
+        "properties": {
+          "id": { "type": "string" },
+          "tier": { "type": "integer", "enum": [1, 2, 3, 4] },
+          "url": { "type": "string", "format": "uri" },
+          "title": { "type": "string" },
+          "accessed_at": { "type": "string", "format": "date" }
+        }
+      }
+    }
+  }
+}

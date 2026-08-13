@@ -47,8 +47,17 @@
     },
     "status": {
       "type": "string",
-      "enum": ["published", "draft"],
-      "description": "draft = not yet publicly shown; missing tier-1 sourcing or incomplete"
+      "enum": ["published", "draft", "closed"],
+      "description": "draft = not yet publicly shown, missing tier-1 sourcing or incomplete. closed = route no longer accepts new applicants; kept in the dataset for historical/search reference rather than deleted."
+    },
+    "superseded_by": {
+      "type": ["string", "null"],
+      "description": "Route id of the successor route, if status is 'closed' and a direct successor exists. Required (may be null) when status is 'closed'."
+    },
+    "closed_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the route stopped accepting new applicants. Required when status is 'closed'."
     },
     "verified_at": {
       "type": "string",
@@ -106,6 +115,26 @@
         "continuity_required": { "type": "boolean" }
       }
     },
+    "third_party_fees": {
+      "type": "array",
+      "description": "Mandatory fees payable to a non-government party (endorsing bodies, degree-verification services, etc.) as a condition of the route. Separate from government application fees, which are not yet a formal schema field and live in notes.",
+      "items": {
+        "type": "object",
+        "required": ["label", "amount", "currency", "payable_to"],
+        "properties": {
+          "label": { "type": "string" },
+          "amount": { "type": "number" },
+          "currency": { "type": "string" },
+          "payable_to": { "type": "string", "description": "e.g. 'endorsing body', 'Ecctis', 'chamber of commerce'" },
+          "mandatory": { "type": "boolean", "default": true },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "sponsorship_duration_months": {
+      "type": ["number", "null"],
+      "description": "null = sponsorship (if any) required for the full route duration, the normal case. A number means sponsorship is only required for the first N months, after which the holder is unsponsored (e.g. UK Scale-up: 6). This is a partial fix for routes whose sponsorship model doesn't fit a single job_offer_status requirement cleanly."
+    },
     "requirement_groups": {
       "type": "array",
       "description": "OR logic between groups. Each group is AND logic internally. One route can be qualified for via any one group.",
@@ -120,6 +149,25 @@
             "type": "array",
             "minItems": 1,
             "items": { "$ref": "#/definitions/requirement" }
+          },
+          "outcome_override": {
+            "type": ["object", "null"],
+            "description": "Partial Outcome fields that differ for applicants qualifying via THIS group specifically, overriding the route-level Outcome. Only include fields that actually differ; unlisted fields inherit the route-level value. This is the fix for the recurring gap where Outcome was bound to Route when it actually varies by RequirementGroup (first surfaced on uk_global_talent and uk_ilr).",
+            "properties": {
+              "pr_after_months": { "type": ["number", "null"] },
+              "citizenship_after_months": { "type": ["number", "null"] },
+              "switchable_to": { "type": "array", "items": { "type": "string" } },
+              "work_rights": { "type": "string", "enum": ["full", "restricted", "none"] },
+              "duration_length": { "type": "string" }
+            }
+          },
+          "prerequisites_override": {
+            "type": ["object", "null"],
+            "description": "Partial prerequisites fields that differ for this group specifically, overriding the route-level prerequisites.",
+            "properties": {
+              "required_prior_route_ids": { "type": "array", "items": { "type": "string" } },
+              "minimum_months_held": { "type": ["number", "null"] }
+            }
           }
         }
       }
@@ -159,7 +207,7 @@
           "enum": ["==", "!=", ">=", "<=", ">", "<", "in", "not_in", "exists"]
         },
         "value": {
-          "description": "Literal value, OR a formula reference to a NationalVariable/LookupTable, e.g. { \"formula_ref\": \"de_pension_ceiling\", \"ratio\": 1.1 }"
+          "description": "EITHER a literal value (string/number/array/object for simple cases), OR a formula object referencing a NationalVariable for values that are a ratio of a periodically-updated reference figure (e.g. Germany's Blue Card salary threshold, pegged to the pension contribution ceiling). Formula shape: { \"value_type\": \"formula\", \"formula_ref\": \"<national_variable id>\", \"ratio\": <number>, \"resolved_amount\": <number, the current computed value for display>, \"currency\": \"<ISO code>\" }. The validator cross-checks resolved_amount against formula_ref/ratio if a matching national-variables file exists for the route's country."
         },
         "hard": {
           "type": "boolean",
