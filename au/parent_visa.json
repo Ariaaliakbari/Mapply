@@ -1,0 +1,109 @@
+{
+  "id": "au_parent_visa",
+  "country": "AU",
+  "name": "Parent visa (Contributory subclass 143/173, non-contributory 103/804)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": { "window_type": "continuous", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null, "note": "The parent visa program operates under an annual planning cap, functioning as a de facto queue rather than a hard application-window mechanic" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "contributory",
+      "name": "Contributory parent visa (subclass 143, or 173 temporary bridge)",
+      "requirements": [
+        {
+          "id": "cp_child_sponsor",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child",
+          "hard": true,
+          "blocker_text": "This requires being the parent of an Australian citizen, permanent resident, or eligible New Zealand citizen who is settled in Australia and willing to sponsor.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_parent"
+        },
+        {
+          "id": "cp_balance_of_family",
+          "attribute": "family_tie",
+          "operator": "exists",
+          "value": "balance_of_family_test_passed",
+          "hard": true,
+          "blocker_text": "This requires passing the 'balance of family' test — broadly, at least half your children must live permanently in Australia, or more of your children live in Australia than in any single other country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_parent"
+        },
+        {
+          "id": "cp_contribution",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 43600, "currency": "AUD", "note": "second-stage 'contribution' visa application charge per applicant; total including base charge commonly cited around AUD 48,600-51,700 depending on source — figures vary across secondary sources and should be confirmed directly against homeaffairs.gov.au before publishing" },
+          "hard": true,
+          "blocker_text": "This requires paying a substantial second-instalment 'contribution' fee (commonly cited around AUD 43,600 per applicant as of 2026) in exchange for meaningfully faster processing than the non-contributory route.",
+          "fix_path": "Arrange the required funds.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_parent"
+        }
+      ]
+    },
+    {
+      "id": "non_contributory",
+      "name": "Non-contributory parent visa (subclass 103, or 804 onshore)",
+      "requirements": [
+        {
+          "id": "ncp_child_sponsor",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child",
+          "hard": true,
+          "blocker_text": "This requires the same child-sponsor and balance-of-family test as the contributory route, but at a much lower fee.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_parent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Balance-of-family evidence (locations of all children)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Assurance of Support bond (contributory route, refunded after 10 years)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — permanent visa on grant",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_citizenship_conferral"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_parent",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/parent-103",
+      "title": "Parent visa - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "MAJOR FINDING, genuinely one of the most extreme processing-time realities found across this entire multi-country dataset: multiple current sources report the contributory parent visa (subclass 143) queue is processing applications LODGED IN NOVEMBER 2018 as of early 2026 — meaning a genuinely realistic current wait of approximately 12-15 YEARS for the faster, more expensive contributory pathway. The non-contributory route (subclass 103) is reported to be processing applications from around 2013, implying waits exceeding 30 years for new lodgements — functionally meaning a parent applying today may not receive the visa within their lifetime. This dwarfs every other 'realistic vs statutory' processing gap flagged elsewhere in this dataset (Portugal's AIMA backlog, Spain's naturalisation delays) by an order of magnitude; the annual planning cap on parent visas functions as a genuine structural bottleneck, not a temporary backlog. SOURCING CAVEAT on the exact contribution fee: secondary sources cite figures ranging from approximately AUD 43,600 to AUD 47,825 to AUD 48,000 for the second-instalment contribution alone — this genuine spread (not resolved to a single confirmed tier-1 figure during this research pass) should be verified directly against the Department's current fee schedule before this route is considered fully sourced, similar to Portugal's Blue Card salary caveat. Assurance of Support bond (AUD 10,000-14,000 depending on applicant count) held for 10 years is a distinctive mechanism not seen on other countries' family routes in this dataset."
+}

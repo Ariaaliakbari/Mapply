@@ -1,0 +1,108 @@
+{
+  "id": "au_student_500",
+  "country": "AU",
+  "name": "Student visa (subclass 500)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_coe",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "confirmation_of_enrolment",
+          "hard": true,
+          "blocker_text": "This requires an electronic Confirmation of Enrolment (eCoE) from a CRICOS-registered institution.",
+          "fix_path": "Secure enrolment and obtain a CoE.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_500"
+        },
+        {
+          "id": "st_genuine_student",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "genuine_student_requirement_met",
+          "hard": true,
+          "blocker_text": "This requires meeting the Genuine Student (GS) requirement — an assessed written statement and supporting evidence about study intentions, which replaced the older Genuine Temporary Entrant (GTE) requirement on 23 March 2024.",
+          "fix_path": "Prepare a strong, specific Genuine Student statement.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_500"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 29710, "currency": "AUD", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires demonstrating living costs of at least $29,710 AUD/year for the primary applicant, plus tuition and return travel — plus $10,394/year for an accompanying spouse and $4,449/year per dependent child.",
+          "fix_path": "Arrange sufficient verifiable, liquid funds.",
+          "fix_time_months": 1,
+          "source_id": "homeaffairs_500"
+        },
+        {
+          "id": "st_oshc",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "overseas_student_health_cover",
+          "hard": true,
+          "blocker_text": "This requires Overseas Student Health Cover (OSHC) for the full visa duration.",
+          "fix_path": "Purchase qualifying OSHC.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_500"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Confirmation of Enrolment (eCoE)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Genuine Student written statement and supporting evidence",
+      "difficulty": "moderate",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Verifiable, genuinely-accessible funds evidence — the Department applies heightened scrutiny to illiquid assets (property, land, business valuations)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the course, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_temporary_graduate_485", "au_skills_in_demand_482"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_500",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500",
+      "title": "Student visa (subclass 500) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL FINDING confirmed during research: the financial requirement rose from AUD 24,505 to AUD 29,710/year in May 2024, explicitly pegged to '75% of the national minimum wage' — a real, confirmed formula relationship, though not modeled as a formula-type value here since Australia's own minimum wage isn't otherwise used as a national-variable in this dataset and the exact indexation mechanism/cadence wasn't independently confirmed at tier-1 precision. Multiple secondary sources still cite the pre-2024 figure (AUD 24,505) as current — a clean, confirmed stale-figure case, the same pattern as every other country in this dataset. Visa application charge increased to AUD 2,000 from 1 July 2025 (up from AUD 1,600) — another case where an older, lower fee circulates on unrefreshed secondary sites. Work rights: 48 hours/fortnight during term, unlimited during scheduled course breaks — a fortnightly rather than weekly cap, a genuinely distinctive convention not seen on any other country's student route in this dataset (all others use weekly or annual-hours caps). Genuine Student (GS) requirement replacing the older Genuine Temporary Entrant (GTE) test on 23 March 2024 is a real, confirmed, dated policy change — GTE explicitly required demonstrating intent to LEAVE Australia, while GS is framed more neutrally around genuine study intent, a meaningful philosophical shift worth surfacing since it changes what evidence actually helps an application."
+}

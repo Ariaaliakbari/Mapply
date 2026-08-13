@@ -1,0 +1,81 @@
+{
+  "id": "au_partner_visa",
+  "country": "AU",
+  "name": "Partner visa (subclass 820/801 onshore, 309/100 offshore)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pv_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "This requires being the spouse or de facto partner (12+ months cohabitation, or registered relationship) of an Australian citizen, permanent resident, or eligible New Zealand citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_partner"
+        },
+        {
+          "id": "pv_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "approved_partner_sponsor",
+          "hard": true,
+          "blocker_text": "This requires the Australian partner to be an approved sponsor, including a character (police) check on the sponsor themselves — a genuinely distinctive requirement not present on most other countries' family routes in this dataset.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_partner"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Extensive relationship evidence (joint finances, cohabitation, social recognition, commitment) — genuinely more evidentiary-intensive than most partner-route requirements in this dataset",
+      "difficulty": "hard",
+      "typical_time_days": null
+    },
+    {
+      "document": "Sponsor character/police check",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "temporary stage (820/309) followed by permanent stage (801/100), assessed roughly 2 years after the temporary stage application unless earlier grant criteria are met",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_citizenship_conferral"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_partner",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore",
+      "title": "Partner visa - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "PROCESSING-TIME CAVEAT flagged honestly, same class of caveat as Portugal's AIMA backlog and Spain's naturalisation backlog: Australian partner visas are widely reported to face very long real-world processing times, sometimes well beyond 2 years for the permanent-stage decision — the statutory two-stage design (temporary then permanent) doesn't itself specify a hard processing deadline, and the realistic wait was not independently confirmed at a specific tier-1 figure during this research pass, an honest gap rather than a fabricated number. Sponsor-side character check is a genuine structural feature not seen on most other countries' family routes in this dataset — Australia vets the SPONSOR's character, not just the applicant's, worth flagging as a real difference. Two-stage temporary-then-permanent structure (820→801 onshore, 309→100 offshore) is closer to the European partner-visa pattern than Australia's points-tested skilled routes, which grant permanence immediately — a genuine internal inconsistency within Australia's own visa system worth surfacing."
+}

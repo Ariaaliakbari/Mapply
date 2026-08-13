@@ -1,0 +1,98 @@
+{
+  "id": "au_protection_visa_866",
+  "country": "AU",
+  "name": "Protection visa (subclass 866, onshore) / Refugee and Humanitarian Program (offshore)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": { "window_type": "annual", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null, "note": "The offshore Humanitarian Program operates under an annual planning level (places), distinct from the uncapped onshore protection visa process" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "onshore_protection",
+      "name": "Onshore Protection visa (subclass 866)",
+      "requirements": [
+        {
+          "id": "op_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_australia",
+          "hard": true,
+          "blocker_text": "This requires being physically in Australia at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_protection"
+        },
+        {
+          "id": "op_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_status_or_complementary_protection",
+          "hard": true,
+          "blocker_text": "This requires meeting the refugee definition (Geneva Convention grounds) or complementary protection criteria (real risk of significant harm if returned).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_protection"
+        }
+      ]
+    },
+    {
+      "id": "offshore_humanitarian",
+      "name": "Offshore Refugee and Humanitarian Program",
+      "requirements": [
+        {
+          "id": "oh_referral",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "unhcr_referral_or_special_humanitarian_proposal",
+          "hard": true,
+          "blocker_text": "This requires a UNHCR referral (Refugee visa) or an eligible proposer in Australia (Community Support Program / Woman at Risk / other humanitarian streams).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at Department interview/assessment",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — permanent visa on grant",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_citizenship_conferral"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_protection",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/protection-866",
+      "title": "Protection visa (subclass 866) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Consistent with the same permanent-on-grant pattern seen throughout Australia's skilled visa system in this dataset (189, 190, 186, 858) — both onshore Protection visas and most offshore Humanitarian Program visas grant PERMANENT residence directly, unlike the temporary-then-permanent staged approach used by most European asylum routes in this dataset (Germany's 3/5-year staged permits, Netherlands' 5-year permit, Portugal's 3-year permit). This is a genuinely favourable structural feature worth surfacing prominently: a successful humanitarian applicant in Australia reaches the same permanent status as a successful skilled migrant, immediately, rather than facing a multi-year renewal/reassessment cycle first. No application fee for onshore Protection visa applications, consistent with the no-fee pattern seen on every other country's asylum route in this dataset."
+}

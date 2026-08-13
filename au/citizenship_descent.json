@@ -1,0 +1,76 @@
+{
+  "id": "au_citizenship_descent",
+  "country": "AU",
+  "name": "Citizenship by descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cd_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_australian_citizen_at_birth",
+          "hard": true,
+          "blocker_text": "This requires at least one parent who was an Australian citizen (by birth, descent, conferral, or adoption) at the time of your birth outside Australia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_citizenship_descent"
+        },
+        {
+          "id": "cd_application",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "citizenship_by_descent_application_approved",
+          "hard": true,
+          "blocker_text": "This requires a formal application — citizenship by descent is not automatic at birth the way it is in some other countries in this dataset (e.g. France's droit du sang); it must be applied for and approved.",
+          "fix_path": "Submit the citizenship by descent application with supporting documentation.",
+          "fix_time_months": 6,
+          "source_id": "homeaffairs_citizenship_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and evidence of the parent's Australian citizenship at the time of your birth",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_citizenship_descent",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/citizenship/become-a-citizen/by-descent",
+      "title": "Department of Home Affairs — Australian citizenship by descent",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL CONTRAST with France's droit du sang (fr_droit_du_sang_et_du_sol), worth surfacing directly in a comparison view: France attributes citizenship AUTOMATICALLY at birth to any child of a French citizen parent, with no application process required at all. Australia requires the SAME underlying fact (an Australian citizen parent at time of birth) but still requires a formal, approved APPLICATION for citizenship by descent to be recognised — selection_method is 'assessed' here rather than 'automatic', a real and confirmed difference in how two countries implement what looks like the same basic jus sanguinis principle. No confirmed generational limit found during this research pass (i.e. no equivalent to Portugal's 2025 parent/grandparent cap) — citizenship by descent in Australia applies based on a PARENT's citizenship specifically, not extended further to grandparents, which is itself a form of generational limit, just a tighter one (one generation) than most ancestry routes in this dataset."
+}

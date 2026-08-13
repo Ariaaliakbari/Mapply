@@ -1,0 +1,104 @@
+{
+  "id": "ae_retirement_visa",
+  "country": "AE",
+  "name": "Retirement Visa (5-year)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "assets",
+      "name": "Property + savings route",
+      "requirements": [
+        {
+          "id": "ret1_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 55,
+          "hard": true,
+          "blocker_text": "This requires being at least 55, with at least 15 years' work history (inside or outside the UAE).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uae_gov_retirement_visa"
+        },
+        {
+          "id": "ret1_assets",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 1000000, "currency": "AED", "note": "plus AED 1,000,000 in property, both required together" },
+          "hard": true,
+          "blocker_text": "This requires owning property/properties worth at least AED 1,000,000 AND financial savings of at least AED 1,000,000.",
+          "fix_path": "Build sufficient property and savings holdings.",
+          "fix_time_months": null,
+          "source_id": "uae_gov_retirement_visa"
+        }
+      ]
+    },
+    {
+      "id": "income",
+      "name": "Income route",
+      "requirements": [
+        {
+          "id": "ret2_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 55,
+          "hard": true,
+          "blocker_text": "This requires being at least 55, with at least 15 years' work history.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uae_gov_retirement_visa"
+        },
+        {
+          "id": "ret2_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 180000, "currency": "AED", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires an annual income of at least AED 180,000, from inside or outside the UAE.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uae_gov_retirement_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Property valuation, savings statement, or income evidence matching the applicable group",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable if criteria are maintained",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uae_gov_retirement_visa",
+      "tier": 1,
+      "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/residence-visa-for-the-retired",
+      "title": "Residence visa for the retired - The Official Portal of the UAE Government",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "work_rights marked 'restricted' rather than 'none' since holders may hold investments, rental income, and shareholdings, but may not take up salaried employment — a genuine middle position worth distinguishing from a pure no-work retiree route. Dubai's own 'Retire in Dubai' programme (GDRFA) offers a slightly different variant with some figure conflicts across sources (one reported Dubai-specific threshold cites AED 2,000,000 property + AED 20,000/month income rather than the federal AED 1,000,000+AED 1,000,000 or AED 180,000/year figures) — flagged as an emirate-level variance requiring direct confirmation before treating any single figure as universal, consistent with how this dataset generally handles cross-emirate variation. Same structural ceiling as every UAE route in this dataset: no PR, no citizenship path."
+}

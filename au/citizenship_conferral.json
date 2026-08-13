@@ -1,0 +1,107 @@
+{
+  "id": "au_citizenship_conferral",
+  "country": "AU",
+  "name": "Citizenship by conferral (naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["au_skilled_independent_189", "au_skilled_nominated_190", "au_employer_nomination_186", "au_national_innovation_858", "au_partner_visa", "au_parent_visa"],
+    "minimum_months_held": 12,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cc_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "This requires 4 years of lawful residence in Australia immediately before applying, including the last 12 months as a permanent resident, with no more than 12 months total absence in that 4-year period and no more than 90 days absence in the final year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_citizenship"
+        },
+        {
+          "id": "cc_pr_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "This requires having held permanent residence for at least the final 12 months of that 4-year residence period.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "homeaffairs_citizenship"
+        },
+        {
+          "id": "cc_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "citizenship_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the Australian citizenship test — a computer-based multiple-choice test on Australian values, history, and government, plus a values statement.",
+          "fix_path": "Prepare for and pass the citizenship test.",
+          "fix_time_months": 2,
+          "source_id": "homeaffairs_citizenship"
+        },
+        {
+          "id": "cc_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires meeting the good character requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Citizenship test pass result",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "4 years of residence evidence, including full absence history",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_citizenship",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/citizenship",
+      "title": "Department of Home Affairs — Australian citizenship by conferral",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Dual citizenship generally permitted, confirmed since a 2002 reform — Australia's position matches the more permissive end of the countries in this dataset (Germany since 2024, UK, Netherlands via exemptions), rather than the more restrictive general-renunciation-required position seen in Spain or the pre-2024 German system. 4-year residence requirement with only the FINAL 12 months needing to be as a permanent resident is a genuinely favourable structure for anyone who spent time on temporary visas (482, 500, 485) before reaching a permanent visa — the temporary time counts toward the 4-year clock even though it doesn't count toward the 12-month PR-specific requirement, worth surfacing clearly since it's easy to assume only PR time counts at all. PROCESSING REALITY CAVEAT: Australia has well-documented citizenship application backlogs; a specific realistic-vs-statutory processing time gap was not independently confirmed at a precise figure during this research pass, flagged as an honest gap rather than guessed, consistent with how similar backlogs are handled for other countries in this dataset (e.g. Spain's naturalisation delays)."
+}

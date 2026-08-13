@@ -1,0 +1,102 @@
+{
+  "id": "au_temporary_graduate_485",
+  "country": "AU",
+  "name": "Temporary Graduate visa (subclass 485)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["au_student_500"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "post_study_work",
+      "name": "Post-Study Work stream (bachelor's degree or higher)",
+      "requirements": [
+        {
+          "id": "psw_qualification",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires having completed a bachelor's degree, master's degree, or doctorate from an Australian institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_485"
+        },
+        {
+          "id": "psw_age",
+          "attribute": "age",
+          "operator": "<",
+          "value": 35,
+          "hard": true,
+          "blocker_text": "This requires being under 35 at the time of application — a genuine age-limit reform introduced as part of recent policy changes.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_485"
+        }
+      ]
+    },
+    {
+      "id": "graduate_work",
+      "name": "Graduate Work stream (vocational qualification, occupation-linked)",
+      "requirements": [
+        {
+          "id": "gw_qualification",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "vocational_qualification_linked_to_occupation_list",
+          "hard": true,
+          "blocker_text": "This requires a qualification linked to an occupation on the relevant skilled occupation list, plus a positive skills assessment.",
+          "fix_path": "Obtain a positive skills assessment.",
+          "fix_time_months": 3,
+          "source_id": "homeaffairs_485"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Degree certificate from the Australian institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Skills assessment (Graduate Work stream only)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration varies by qualification level (commonly 18 months to 2-4 years for Post-Study Work stream depending on degree level; 18 months for Graduate Work stream) — recent reforms shortened some durations and added the age-35 limit",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_skills_in_demand_482", "au_skilled_independent_189", "au_skilled_nominated_190"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_485",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485",
+      "title": "Temporary Graduate visa (subclass 485) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "SOURCING CAVEAT flagged honestly: recent reforms shortened Post-Study Work stream durations for some qualification levels and introduced a new age-35 cap (down from an older, higher limit) — the exact current duration-by-degree-level table was not fully confirmed at tier-1 precision during this research pass and should be re-verified against the current immi.homeaffairs.gov.au page before treating the duration_length figures here as final. Full, unrestricted work rights during the visa period — genuinely more generous than several other countries' post-study routes in this dataset. Direct feeder into Australia's skilled-visa ecosystem (482, 189, 190), closing Australia's version of the core Journey chain, though notably NOT itself leading to PR/citizenship — matching the terminal, must-convert-before-expiry pattern seen in UK Graduate, Germany's Job Seeker permit, and the Netherlands' Orientation Year."
+}

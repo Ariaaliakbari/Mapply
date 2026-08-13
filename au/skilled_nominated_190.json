@@ -1,0 +1,92 @@
+{
+  "id": "au_skilled_nominated_190",
+  "country": "AU",
+  "name": "Skilled Nominated visa (subclass 190)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": { "window_type": "multiple_rounds", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sn_nomination",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "state_or_territory_nomination",
+          "hard": true,
+          "blocker_text": "This requires nomination by an Australian state or territory government, which adds 5 points to the points test but also commits the applicant to living in that state/territory for a period.",
+          "fix_path": "Apply for nomination through the relevant state/territory's own skilled migration program.",
+          "fix_time_months": 3,
+          "source_id": "homeaffairs_190"
+        },
+        {
+          "id": "sn_occupation",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "mltssl_or_stsol_listed_occupation",
+          "hard": true,
+          "blocker_text": "This requires an occupation on the MLTSSL or STSOL (Short-term Skilled Occupation List), plus a positive skills assessment.",
+          "fix_path": "Obtain a positive skills assessment for a qualifying occupation.",
+          "fix_time_months": 4,
+          "source_id": "homeaffairs_190"
+        },
+        {
+          "id": "sn_points",
+          "attribute": "age",
+          "operator": ">=",
+          "value": { "note": "65-point minimum including the +5 state nomination bonus" },
+          "hard": true,
+          "blocker_text": "This requires at least 65 points including the +5 points added by state nomination.",
+          "fix_path": "Improve points-test factors before applying.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_190"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "State/territory nomination approval",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Positive skills assessment",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — permanent visa on grant",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_citizenship_conferral"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_190",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-nominated-190",
+      "title": "Skilled Nominated visa (subclass 190) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Broader occupation list than subclass 189 (STSOL as well as MLTSSL) and a real points advantage (+5), making this genuinely more accessible for many applicants than 189 — worth surfacing as the practical fallback when someone doesn't have a 189-eligible MLTSSL occupation or can't reach a competitive independent points score. Same permanent-on-grant structure as 189, same citizenship timeline logic. State nomination processes vary meaningfully by state/territory (each runs its own program with its own occupation priorities and sometimes its own points thresholds) — not modeled as separate requirement groups here given the number of jurisdictions involved, a real scope simplification flagged honestly."
+}

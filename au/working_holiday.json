@@ -1,0 +1,116 @@
+{
+  "id": "au_working_holiday",
+  "country": "AU",
+  "name": "Working Holiday visa (subclass 417) / Work and Holiday visa (subclass 462)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "subclass_417",
+      "name": "Working Holiday visa (417) — reciprocal arrangement countries",
+      "requirements": [
+        {
+          "id": "wh417_age",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "min": 18, "max": 30, "note": "up to 35 for a small number of eligible countries including Canada, France, Ireland" },
+          "hard": true,
+          "blocker_text": "This requires being between 18 and 30 (up to 35 for a small number of eligible countries) at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_417"
+        },
+        {
+          "id": "wh417_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_for_the_stay",
+          "hard": true,
+          "blocker_text": "This requires sufficient funds to support yourself for the initial part of the stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_417"
+        }
+      ]
+    },
+    {
+      "id": "subclass_462",
+      "name": "Work and Holiday visa (462) — other partner countries",
+      "requirements": [
+        {
+          "id": "wh462_age",
+          "attribute": "age",
+          "operator": "in",
+          "value": { "min": 18, "max": 30, "note": "up to 35 for a small number of eligible countries including Argentina, Chile" },
+          "hard": true,
+          "blocker_text": "This requires being between 18 and 30 (up to 35 for a small number of eligible countries) at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_462"
+        },
+        {
+          "id": "wh462_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_for_the_stay",
+          "hard": true,
+          "blocker_text": "This requires sufficient funds to support yourself for the initial part of the stay, and typically a letter of support from your home government for eligible nationalities requiring one.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_462"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of sufficient funds",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "3 months' specified work in a regional area (for second/third-year extension eligibility)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "12 months, extendable to a 2nd and 3rd year with specified regional work completed each year",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_417",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+      "title": "Working Holiday visa (subclass 417) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    },
+    {
+      "id": "homeaffairs_462",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-and-holiday-462",
+      "title": "Work and Holiday visa (subclass 462) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL OUTLIER worth flagging prominently: unlike every other country's working holiday route in this dataset (UK Youth Mobility, Netherlands Working Holiday), Australia's version can be extended to a SECOND and even THIRD year — but only by completing specified work (commonly agricultural/regional work) for at least 3 months in a designated regional area each qualifying year. This makes it structurally closer to a genuine multi-year working-visa pathway than the strictly single-year, non-extendable versions seen elsewhere in this dataset, while still remaining fully terminal (leads_to_pr: false, no switchable_to targets) — it never converts into a settlement route regardless of how many years are completed. Two parallel visa subclasses (417 for one set of reciprocal-arrangement countries, 462 for a separate set of partner countries) exist for essentially the same purpose — modeled as two groups under one route rather than two separate files, since the functional product (a working holiday) is identical even though the specific eligible-country lists and administrative subclass numbers differ."
+}

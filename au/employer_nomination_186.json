@@ -1,0 +1,109 @@
+{
+  "id": "au_employer_nomination_186",
+  "country": "AU",
+  "name": "Employer Nomination Scheme (subclass 186)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "direct_entry",
+      "name": "Direct Entry stream",
+      "requirements": [
+        {
+          "id": "de_nomination",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires nomination by an approved Australian employer for a position on the eligible occupation list.",
+          "fix_path": "Secure a nomination from an approved employer.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_186"
+        },
+        {
+          "id": "de_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "csit_2026", "ratio": 1.0, "resolved_amount": 79423, "currency": "AUD", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires an annual salary of at least $79,423 AUD (2026 Core Skills Income Threshold) or the Annual Market Salary Rate for the role, whichever is higher.",
+          "fix_path": "Negotiate a salary meeting the threshold.",
+          "fix_time_months": null,
+          "source_id": "homeaffairs_186"
+        },
+        {
+          "id": "de_age",
+          "attribute": "age",
+          "operator": "<",
+          "value": 45,
+          "hard": true,
+          "blocker_text": "This requires being under 45, unless a specific exemption applies (e.g. high income in 2 of the last 3 years).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_186"
+        }
+      ]
+    },
+    {
+      "id": "temporary_residence_transition",
+      "name": "Temporary Residence Transition stream",
+      "requirements": [
+        {
+          "id": "trt_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires having worked for the nominating employer on a Skills in Demand (subclass 482) visa for at least 2 years (streams vary by exact tenure), with continued nomination.",
+          "fix_path": null,
+          "fix_time_months": 24,
+          "source_id": "homeaffairs_186"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employer nomination approval",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Skills assessment where required by occupation",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — permanent visa on grant",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["au_citizenship_conferral"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_186",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186",
+      "title": "Employer Nomination Scheme visa (subclass 186) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Formula-linked to the same CSIT national variable as au_skills_in_demand_482 — a genuinely clean cross-route formula relationship, similar to how Germany's and Spain's Blue Card/general-work-permit thresholds share a common reference figure. Permanent on grant, same structural pattern as 189/190 — Australia's employer-sponsored PERMANENT route (186) is meaningfully different from its employer-sponsored TEMPORARY route (482), which is provisional and requires a further step to reach permanence, the same distinction seen between 189/190 (direct-permanent) and 491 (provisional) among the points-tested routes. Temporary Residence Transition stream is the natural conversion path from au_skills_in_demand_482 after 2+ years — the direct structural link between Australia's two main employer-sponsored routes, worth surfacing prominently in a Journey view."
+}

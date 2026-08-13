@@ -1,0 +1,82 @@
+{
+  "id": "ae_domestic_worker",
+  "country": "AE",
+  "name": "Domestic Worker Sponsorship",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tadbeer_sponsored",
+      "name": "Tadbeer-sponsored",
+      "requirements": [
+        {
+          "id": "tad_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "sponsor_income_sufficient_for_tadbeer_sponsorship",
+          "hard": true,
+          "blocker_text": "This requires sponsorship through an MOHRE-licensed Tadbeer centre, covering 19 worker categories (maids, nannies, drivers, cooks, caregivers, etc.).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mohre_domestic_workers"
+        }
+      ]
+    },
+    {
+      "id": "private_sponsorship",
+      "name": "Private (direct) sponsorship",
+      "requirements": [
+        {
+          "id": "priv_married",
+          "attribute": "marital_status",
+          "operator": "exists",
+          "value": "married_for_private_sponsorship",
+          "hard": true,
+          "blocker_text": "This requires the sponsoring individual to be married (a 2026 tightening restricts private sponsorship for unmarried sponsors to Tadbeer-mediated, case-by-case MOHRE approval only).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mohre_domestic_workers"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Sponsor income evidence and household details",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mohre_domestic_workers",
+      "tier": 1,
+      "url": "https://u.ae/en/information-and-services/jobs/domestic-workers",
+      "title": "Domestic workers - The Official Portal of the UAE Government (Federal Decree-Law No. 9 of 2022)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL DISTINCTION worth flagging: this is a personal-sponsorship route, sponsored by a natural person/household rather than a company — a genuinely different category from every other UAE work route in this dataset (all employer-company-sponsored). All processing runs through MOHRE-supervised Tadbeer centres, covering 19 distinct worker categories. LIVE 2026 TIGHTENING confirmed: private (non-Tadbeer) sponsorship is now restricted to married sponsors, with unmarried individuals requiring Tadbeer-mediated, case-by-case MOHRE approval — a real, dated eligibility change worth surfacing. Sponsor income thresholds reportedly differ meaningfully between private sponsorship (~AED 25,000/month per tier-3 sources) and Tadbeer-sponsored (~AED 10,000/month) — not independently confirmed at tier-1 precision, flagged as a gap. Same structural ceiling as every UAE route: no PR, no citizenship path for the worker."
+}

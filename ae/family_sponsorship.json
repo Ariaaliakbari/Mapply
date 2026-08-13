@@ -1,0 +1,85 @@
+{
+  "id": "ae_family_sponsorship",
+  "country": "AE",
+  "name": "Family Sponsorship (Spouse & Children)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ae_standard_employment_visa", "ae_green_visa", "ae_business_formation"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fam_sponsor_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 4000, "currency": "AED", "unit": "month", "note": "or AED 3,000 + employer-provided accommodation" },
+          "hard": true,
+          "blocker_text": "This requires the sponsor to earn at least AED 4,000/month, or AED 3,000/month plus employer-provided accommodation.",
+          "fix_path": "Meet the income threshold.",
+          "fix_time_months": null,
+          "source_id": "icp_family_sponsorship"
+        },
+        {
+          "id": "fam_dependant_age",
+          "attribute": "dependents",
+          "operator": "exists",
+          "value": "spouse_unmarried_daughters_any_age_sons_under_25",
+          "hard": true,
+          "blocker_text": "This covers spouse, unmarried daughters (no age limit), sons under 25, and children with special needs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "icp_family_sponsorship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/birth certificate proving family tie",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Sponsor's income evidence meeting the threshold",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "tracks the sponsor's visa duration",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "icp_family_sponsorship",
+      "tier": 1,
+      "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/residence-visa-for-family-members",
+      "title": "Residence visa for family members - The Official Portal of the UAE Government (updated 27 Feb 2026)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Job-title restrictions on the AED 4,000 threshold were removed in the 2019/2022 reform — the same figure applies regardless of the sponsor's occupation. Six-month grace period on the sponsor's cancellation/expiry, giving dependants time to secure independent status. Sponsored spouse may work with their OWN separate work permit — sponsorship status itself doesn't need to change for the spouse to be employed, a genuine flexibility worth surfacing. A UAE citizen's foreign spouse/parent/child can get a 5-year residence visa without working; a foreign widow/divorcee who is mother of a UAE citizen can be sponsored by her oldest child — narrow but real special-case provisions not modeled as separate groups here given scope. Emirate variation flagged: female-sponsor income thresholds reportedly differ (Dubai AED 4,000 vs higher figures in Abu Dhabi per some tier-3 sources) — not independently confirmed at tier-1 precision, flagged as a gap rather than guessed."
+}

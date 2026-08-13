@@ -1,0 +1,99 @@
+{
+  "id": "ae_green_visa",
+  "country": "AE",
+  "name": "Green Visa (5-year self-sponsored residence)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "skilled_employee",
+      "name": "Skilled employees",
+      "requirements": [
+        {
+          "id": "gr1_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 15000, "currency": "AED", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires a UAE employment contract, MoHRE occupational level 1, 2, or 3, a bachelor's degree or equivalent, and a salary of at least AED 15,000/month.",
+          "fix_path": "Negotiate a salary meeting the threshold, or confirm occupational level classification.",
+          "fix_time_months": null,
+          "source_id": "mohre_green_visa"
+        }
+      ]
+    },
+    {
+      "id": "freelancer",
+      "name": "Freelancers / self-employed",
+      "requirements": [
+        {
+          "id": "gr2_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 360000, "currency": "AED", "note": "over the previous 2 years" },
+          "hard": true,
+          "blocker_text": "This requires an MoHRE freelance/self-employment permit, a bachelor's degree or specialised diploma, and self-employment income of at least AED 360,000 over the previous 2 years (or proof of financial solvency).",
+          "fix_path": "Build the required income history or demonstrate financial solvency.",
+          "fix_time_months": 24,
+          "source_id": "mohre_green_visa"
+        }
+      ]
+    },
+    {
+      "id": "investor_partner",
+      "name": "Investors/partners",
+      "requirements": [
+        {
+          "id": "gr3_investment",
+          "attribute": "investment_capacity",
+          "operator": "exists",
+          "value": "shares_or_investment_in_uae_commercial_project",
+          "hard": true,
+          "blocker_text": "This requires shares or investment in a UAE commercial project, approved by the competent local authorities.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mohre_green_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract, freelance permit, or investment evidence matching the applicable group",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ae_golden_visa"]
+  },
+  "sources": [
+    {
+      "id": "mohre_green_visa",
+      "tier": 1,
+      "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/green-visa",
+      "title": "Green Visa - The Official Portal of the UAE Government / Ministry of Human Resources and Emiratisation",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Self-sponsored — confirmed, no employer or national sponsor required, a genuine structural advantage over ae_standard_employment_visa. Family sponsorship rights are broader than the standard employment visa: Green Visa holders may sponsor first-degree relatives, still subject to the same standard sponsorship income rules (AED 4,000/month, or AED 3,000 + accommodation) seen on ae_family_sponsorship. Six-month grace period after expiry/cancellation — genuinely more generous than most work-tied visas in this dataset, which typically leave the holder with 30 days or less. Same structural ceiling as every UAE route: leads_to_pr and leads_to_citizenship are FALSE — renewable indefinitely, no settlement pipeline."
+}

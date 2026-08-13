@@ -1,0 +1,98 @@
+{
+  "id": "au_skilled_work_regional_491",
+  "country": "AU",
+  "name": "Skilled Work Regional (Provisional) visa (subclass 491)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": { "window_type": "multiple_rounds", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "state_nominated",
+      "name": "State/territory nominated",
+      "requirements": [
+        {
+          "id": "swr_nomination",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "regional_state_or_territory_nomination",
+          "hard": true,
+          "blocker_text": "This requires nomination by a state or territory government specifically for a designated regional area.",
+          "fix_path": "Apply for regional nomination through the relevant state/territory program.",
+          "fix_time_months": 3,
+          "source_id": "homeaffairs_491"
+        },
+        {
+          "id": "swr_occupation",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "mltssl_stsol_or_rol_listed_occupation",
+          "hard": true,
+          "blocker_text": "This requires an occupation on the MLTSSL, STSOL, or Regional Occupation List (ROL) — the broadest occupation eligibility of any points-tested skilled visa.",
+          "fix_path": "Obtain a positive skills assessment for a qualifying occupation.",
+          "fix_time_months": 4,
+          "source_id": "homeaffairs_491"
+        }
+      ]
+    },
+    {
+      "id": "family_sponsored",
+      "name": "Sponsored by an eligible family member in a designated regional area",
+      "requirements": [
+        {
+          "id": "swr_family_sponsor",
+          "attribute": "family_tie",
+          "operator": "exists",
+          "value": "eligible_relative_in_designated_regional_area",
+          "hard": true,
+          "blocker_text": "This requires sponsorship by an eligible relative who lives in a designated regional area of Australia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "homeaffairs_491"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Regional nomination or family sponsorship approval",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Positive skills assessment",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "5 years, provisional (not permanent)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "must live, work, and study in a designated regional area for the qualifying period",
+    "switchable_to": ["au_citizenship_conferral"]
+  },
+  "sources": [
+    {
+      "id": "homeaffairs_491",
+      "tier": 1,
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-work-regional-provisional-491",
+      "title": "Skilled Work Regional (Provisional) visa (subclass 491) - Department of Home Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL OUTLIER within Australia's own points-tested visa family: unlike 189 and 190, this route is explicitly PROVISIONAL (not permanent on grant) — the holder must live and work in a designated regional area for at least 3 years and meet a minimum taxable income before becoming eligible to apply for the Permanent Residence (Skilled Regional) visa (subclass 191), which then grants actual permanent residence. This makes 491 structurally closer to the temporary-then-permanent two-step pattern used throughout the European datasets, in contrast to 189/190's direct-to-permanent grant — worth flagging as the one Australian skilled route that follows the more familiar international pattern. pr_after_months (36) and citizenship_after_months (48) reflect this two-step structure. The subclass 191 conversion visa itself is not separately encoded here — folded into this route's outcome as the mechanical next step, a scope simplification consistent with how post-study/conversion visas are sometimes folded into their feeder route elsewhere in this dataset. Broadest occupation list of any Australian skilled route (adds the Regional Occupation List on top of MLTSSL/STSOL) — a real accessibility advantage for occupations that don't qualify for 189/190."
+}
