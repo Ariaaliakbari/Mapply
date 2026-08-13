@@ -1,0 +1,69 @@
+{
+  "id": "ie_stamp_4",
+  "country": "IE",
+  "name": "Stamp 4 (Long-Term Residence)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ie_critical_skills_employment_permit", "ie_general_employment_permit", "ie_start_up_entrepreneur_programme", "ie_family_reunification"],
+    "minimum_months_held": 21,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (nine qualifying pathways)",
+      "requirements": [
+        {
+          "id": "s4_qualifying_route",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "one_of_nine_listed_qualifying_pathways",
+          "hard": true,
+          "blocker_text": "This requires falling into one of nine listed qualifying pathways: 21 months on CSEP; 57 months on other employment permits; 21 months as a researcher on a Hosting Agreement; joining an Irish spouse/civil/de-facto partner; family member of an EU citizen; refugee/subsidiary protection; parent of an Irish citizen child; the (now-closed) Investor/Entrepreneur programmes; or Long Term Residence (60 months on employment permits, applied for by post, with an additional €500 permission fee). Student and temporary Stamp 1/3 time does NOT count.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isd_stamp_4"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence matching the specific qualifying pathway",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "typically issued for 2 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ie_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "isd_stamp_4",
+      "tier": 1,
+      "url": "https://www.irishimmigration.ie/what-we-do/stamp-4/",
+      "title": "Stamp 4 - Immigration Service Delivery",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Ireland's genuine PR-hub route, full labour-market access, no employment permit needed, can start a business — but genuinely NOT reached simply by accumulating years of residence, unlike most other countries' PR-hub routes in this dataset. Must fall into one of nine SPECIFIC listed pathways, each with its own qualifying period. IIP and STEP are both listed as qualifying routes, though IIP is now closed to new applicants (see ie_immigrant_investor_programme) — this route file still lists it since existing IIP holders retain the pathway. A SEPARATE, distinct 'Long Term Residence' pathway exists WITHIN this same Stamp 4 framework requiring 60 months specifically on employment permits, applied for by post with an ADDITIONAL €500 fee on top of the standard €300 IRP registration fee — a genuinely confusing naming overlap (Stamp 4 broadly vs. the 'Long Term Residence' sub-route specifically) worth flagging for anyone building a UI around this data. Fee: €300 IRP registration (with broad exemptions — minors, spouse/widow(er)/civil-partner of an Irish citizen, EU-national family, and various protection-status holders pay nothing). SCOPE NOTE: 'Stamp 5' (without condition as to time, reached after roughly 8 years, effectively permanent with no further renewal) exists as a further status beyond Stamp 4 but is not separately modeled as its own route file here — Stamp 4 already carries full labour-market access and the practical outcome fields (work/study rights, PR, citizenship path) are materially identical between Stamp 4 and Stamp 5, so this was treated as a within-route distinction rather than a separate node, a scope simplification flagged honestly rather than fabricating a thin duplicate file."
+}

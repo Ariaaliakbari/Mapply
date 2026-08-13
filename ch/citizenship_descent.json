@@ -1,0 +1,81 @@
+{
+  "id": "ch_citizenship_descent",
+  "country": "CH",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "desc_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_swiss_citizen_at_birth",
+          "hard": true,
+          "blocker_text": "This requires at least one parent being a Swiss citizen at the time of your birth (father or mother, in or out of wedlock, with paternity established for out-of-wedlock cases). Citizenship is attributed automatically at birth, whether in Switzerland or abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sca_citizenship"
+        },
+        {
+          "id": "desc_registration_deadline",
+          "attribute": "age",
+          "operator": "<",
+          "value": 25,
+          "hard": true,
+          "blocker_text": "If born abroad and also holding another nationality, this requires notifying a Swiss authority (abroad or in Switzerland) of the birth, OR declaring in writing the wish to retain Swiss citizenship, before turning 25 — failure to do so results in AUTOMATIC LOSS of Swiss citizenship at that age (Art. 7 SCA). Children of a person who lost citizenship under this rule likewise lose it.",
+          "fix_path": "Complete the registration or declaration with a Swiss authority before age 25.",
+          "fix_time_months": null,
+          "source_id": "sca_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and evidence of the parent's Swiss citizenship at time of birth",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Registration/declaration with a Swiss authority before age 25 (for those born abroad with dual nationality)",
+      "difficulty": "routine",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (subject to the age-25 loss provision for those born abroad)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sca_citizenship",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/buergerrecht.html",
+      "title": "Swiss Citizenship Act (SCA), Art. 1-7 - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "STALE-DATA CORRECTION confirmed during research: the loss-of-citizenship deadline for those born abroad with dual nationality is AGE 25, not age 22 as some tier-3 sites still claim — a real and specific figure error worth catching. This age-25 rule is genuinely unusual among the ancestry routes in this dataset — most other countries' descent routes (France, Japan, Australia) attribute citizenship at birth with no subsequent loss condition; Switzerland's automatic-loss-if-not-registered mechanic is a real structural outlier, closer in spirit to Japan's separate age-based choice-of-nationality rule (though Japan's is a CHOICE between nationalities, while Switzerland's is a registration/notification requirement to simply RETAIN citizenship already held). Genuine live legal debate exists in Switzerland about this rule's fairness given how common dual nationality has become through international marriage — no confirmed change had taken effect as of this verification; encoded as current law, not anticipated reform."
+}

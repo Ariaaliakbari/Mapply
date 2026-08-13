@@ -1,0 +1,121 @@
+{
+  "id": "ie_citizenship_birth_descent",
+  "country": "IE",
+  "name": "Citizenship by Birth and by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_ireland_qualifying_parent",
+      "name": "Born on the island of Ireland with a qualifying parent",
+      "requirements": [
+        {
+          "id": "bi_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_irish_british_eea_or_3yr_reckonable_residence",
+          "hard": true,
+          "blocker_text": "For births on/after 1 January 2005 on the island of Ireland, this requires at least one parent who is Irish/British, an EEA/UK national with unrestricted residence, or a parent with 3 years' reckonable residence in the 4 years before the birth (student/asylum time excluded). Births before 1 January 2005 were automatically Irish regardless of parental status. A child otherwise stateless is granted citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizens_info_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "child_of_irish_parent_born_abroad",
+      "name": "Child born abroad to a parent born on the island of Ireland",
+      "requirements": [
+        {
+          "id": "cia_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_born_on_island_of_ireland",
+          "hard": true,
+          "blocker_text": "This requires a parent who was born on the island of Ireland — citizenship is automatic; just apply for a passport, no Foreign Births Register entry needed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizens_info_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "grandchild_via_fbr",
+      "name": "Grandchild via Foreign Births Register (distinctive Irish provision)",
+      "requirements": [
+        {
+          "id": "gvf_grandparent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "grandparent_born_on_island_of_ireland",
+          "hard": true,
+          "blocker_text": "This requires a grandparent born on the island of Ireland, even if neither parent was ever born in or resident in Ireland — but MUST register on the Foreign Births Register; citizenship dates from the registration itself, not from birth.",
+          "fix_path": "Complete Foreign Births Register registration with the Department of Foreign Affairs.",
+          "fix_time_months": 9,
+          "source_id": "citizens_info_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "great_grandchild_via_fbr",
+      "name": "Great-grandchild via Foreign Births Register (chain-dependent)",
+      "requirements": [
+        {
+          "id": "gvf2_chain",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "linking_parent_registered_on_fbr_before_applicants_birth",
+          "hard": true,
+          "blocker_text": "This further generation only works if the LINKING parent registered on the Foreign Births Register BEFORE the applicant's own birth — the chain must be maintained generation by generation; there is no entitlement beyond this.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizens_info_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth/parentage documentation matching the applicable group",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Foreign Births Register application (grandchild and further-generation groups)",
+      "difficulty": "moderate",
+      "typical_time_days": 270
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizens_info_citizenship",
+      "tier": 1,
+      "url": "https://www.citizensinformation.ie/en/moving-country/irish-citizenship/",
+      "title": "Irish citizenship - Citizens Information (state-funded service, citing primary legislation)",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE, DISTINCTIVE IRISH PROVISION worth flagging as one of the most generous ancestry mechanisms in this entire multi-country dataset: the Foreign Births Register grandparent rule works EVEN IF NEITHER PARENT was ever born in or resident in Ireland — a materially more generous reach-back than Portugal's post-2025 parent/grandparent-only cap (which at least requires a direct parent-or-grandparent link with additional conditions) or most other ancestry routes in this dataset. Citizenship dates from the REGISTRATION itself, not from birth — a real and consequential distinction, since it means the FBR applicant is not retroactively Irish for the period before registration. The further-generation (great-grandchild) case is genuinely chain-dependent: it ONLY works if the linking parent registered on the FBR before the applicant's own birth — this is a real structural limit that prevents indefinite generational reach, distinct from a true unlimited-generations system. Post-2005 birthright citizenship (Group 1) reflects Ireland's 2004 constitutional amendment tightening automatic jus soli — a genuine historical parallel to Portugal's 2025 jure sanguinis tightening and the ongoing US birthright-citizenship litigation covered elsewhere in this dataset, though Ireland's change is long-settled (2005) rather than currently contested."
+}

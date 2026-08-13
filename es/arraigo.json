@@ -1,0 +1,171 @@
+{
+  "id": "es_arraigo",
+  "country": "ES",
+  "name": "Arraigo (Regularization pathways)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "social",
+      "name": "Arraigo social",
+      "requirements": [
+        {
+          "id": "soc_presence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires 2 continuous years of presence in Spain (reduced from 3 years by the May 2025 reform), plus either family ties with a legal resident, or an integration-effort report.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        },
+        {
+          "id": "soc_means",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_economic_means",
+          "hard": true,
+          "blocker_text": "This requires demonstrating sufficient economic means.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    },
+    {
+      "id": "sociolaboral",
+      "name": "Arraigo sociolaboral",
+      "requirements": [
+        {
+          "id": "sl_presence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires 2 continuous years of presence in Spain, plus one or more employment contracts guaranteeing at least the SMI (or applicable collective-agreement wage), working at least 20 hours/week. Self-employment does not qualify for this specific route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    },
+    {
+      "id": "familiar",
+      "name": "Arraigo familiar",
+      "requirements": [
+        {
+          "id": "fam_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This requires being family of a Spaniard, or a parent of a minor Spanish or EU citizen — no minimum unauthorized-presence period applies.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    },
+    {
+      "id": "laboral",
+      "name": "Arraigo laboral",
+      "requirements": [
+        {
+          "id": "lab_evidence",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "evidence_of_prior_labor_relationship_or_exploitation",
+          "hard": true,
+          "blocker_text": "This requires evidencing a prior labour relationship, or labour exploitation, while in an irregular situation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    },
+    {
+      "id": "socioformativo",
+      "name": "Arraigo socioformativo",
+      "requirements": [
+        {
+          "id": "form_presence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires 2 continuous years of presence in Spain plus a commitment to regulated training for employment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    },
+    {
+      "id": "segunda_oportunidad",
+      "name": "Arraigo de segunda oportunidad (new, 2025)",
+      "requirements": [
+        {
+          "id": "so_prior_status",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "previously_held_non_exceptional_temporary_residence_lost",
+          "hard": true,
+          "blocker_text": "This requires having previously held a non-exceptional temporary residence status that could not be renewed — explicitly excludes former international-protection (asylum) applicants.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Continuous-presence evidence (empadronamiento records, medical/school records, etc.) for the applicable groups",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employment contract meeting the SMI/collective-agreement floor (sociolaboral)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Integration-effort report (social route, if no family ties)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "initial authorization 1 year, renewals now 4 years (up from 2 years)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "the required unauthorized-presence period (2 years for most sub-routes) must be continuous, evidenced through padrón and other documentary records",
+    "switchable_to": ["es_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "rd_1155_2024",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Real Decreto 1155/2024 (new Reglamento de Extranjería), in force 20 May 2025, Arts. 124 ff.",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT already in force, restructuring the entire category: RD 1155/2024 (in force 20 May 2025) cut the required unauthorized-presence period from 3 years to 2 years for most sub-routes, and reorganized what used to be a simpler binary (arraigo social / arraigo laboral) into SIX distinct sub-routes, one of them (segunda oportunidad) genuinely new. Modeled here as six requirement groups under one route, consistent with the schema's core rule that variation belongs in RequirementGroups — the alternative (six separate route files) would have fragmented what is legally one regularization mechanism with several entry doors. Genuinely important renewal change: renewals extended from 2 to 4 years, a real quality-of-life improvement for arraigo holders reducing how often they must go through the renewal process. UNRESOLVED LEGAL CONFLICT flagged honestly, not silently resolved: whether time spent as an asylum seeker counts toward the 2-year arraigo sociolaboral clock is genuinely disputed — the reglamento itself says no, but some Supreme Court rulings and legal commentary argue it should count in certain circumstances; this file does not take a side, and any real product built on this data should flag it as 'varies by case, consult a lawyer' rather than asserting either position as settled fact. Categorized as 'humanitarian' since arraigo functions as Spain's undocumented-to-documented regularization safety valve, though it isn't asylum/protection in the technical sense — a judgment call flagged the same way as uk_bno and pt_cplp's category placements elsewhere in this dataset."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "de_eu_family_member",
+  "country": "DE",
+  "name": "Residence card for family members of EU/EEA citizens (FreizügG/EU)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "eu_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "registered_partner", "child_under_21", "dependent_relative"],
+          "hard": true,
+          "blocker_text": "This requires being the spouse, registered partner, child under 21, or a dependent relative of an EU/EEA citizen (other than a German citizen) who is exercising free movement rights in Germany.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "freizuegg_5"
+        },
+        {
+          "id": "eu_sponsor_exercising",
+          "attribute": "family_tie_status",
+          "operator": "==",
+          "value": "eu_eea_citizen_exercising_free_movement",
+          "hard": true,
+          "blocker_text": "This requires the EU/EEA sponsor to be genuinely exercising free-movement rights in Germany (e.g. working, studying, or self-sufficient) — this route does NOT generally apply to family members of German citizens, who instead need a residence permit under § 28 AufenthG unless the German exercised free movement in another member state first.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "freizuegg_5"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of the family relationship (marriage/partnership/birth certificate)",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Proof of the EU/EEA sponsor's exercise of free movement in Germany",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_niederlassungserlaubnis"]
+  },
+  "sources": [
+    {
+      "id": "freizuegg_5",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/freizuegg_eu_2004/__5.html",
+      "title": "§ 5 FreizügG/EU - Aufenthaltskarte für Familienangehörige (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Structurally distinct from de_family_reunification_spouse: this route derives from EU free-movement law (FreizügG/EU), not the Aufenthaltsgesetz, and the residence card CERTIFIES a right that already exists rather than creating one — it carries unrestricted work rights immediately and no income/housing/language pre-conditions, a materially easier route than the standard Ehegattennachzug when it applies. Key eligibility trap flagged explicitly per the research: this does NOT generally cover family members of GERMAN citizens — those need § 28 AufenthG instead, UNLESS the German sponsor previously exercised free movement in another EU member state (the 'Surinder Singh' scenario), which is a genuinely obscure but consequential distinction most applicants would never find on their own — exactly the kind of blocker_text value-add this product is meant to provide. citizenship_after_months (120) reflects the standard 5-year settlement plus 5-year naturalisation stacking, since this route's holder doesn't get any of the accelerated timelines available to Blue Card or spouse-of-German paths — genuinely the slowest family route in the German dataset, worth surfacing in any cross-route comparison."
+}

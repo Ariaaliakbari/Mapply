@@ -1,0 +1,92 @@
+{
+  "id": "jp_citizenship_descent",
+  "country": "JP",
+  "name": "Citizenship by descent (jus sanguinis, 出生による国籍取得)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cd_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_japanese_national_at_birth",
+          "hard": true,
+          "blocker_text": "This requires at least one parent being a Japanese national at the time of your birth (father or mother — the law has been gender-neutral since a 1985 reform). Citizenship is attributed automatically at birth, whether in Japan or abroad — no application is needed for the initial attribution itself.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_nationality_act"
+        },
+        {
+          "id": "cd_koseki",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "koseki_registration_completed",
+          "hard": true,
+          "blocker_text": "This requires registration in the koseki (family register) system, typically via a birth notification filed within a set period (commonly 3 months for births abroad) — failure to register on time can create genuine complications even though the underlying nationality attribution is automatic.",
+          "fix_path": "File the required koseki registration/birth notification promptly.",
+          "fix_time_months": 3,
+          "source_id": "moj_nationality_act"
+        },
+        {
+          "id": "cd_dual_choice",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 22,
+          "hard": true,
+          "blocker_text": "If you hold another nationality alongside Japanese citizenship, this requires making a formal choice of nationality by age 22 (age 20 if the dual nationality arose after age 20) — Japan does not permit adults to hold dual citizenship, and failure to choose can result in loss of Japanese nationality after a notice period.",
+          "fix_path": "Formally choose Japanese nationality (renouncing the other) or the other nationality before the deadline.",
+          "fix_time_months": null,
+          "source_id": "moj_nationality_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and evidence of the parent's Japanese nationality at the time of birth",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Koseki registration/birth notification, filed within the applicable deadline",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "moj_nationality_act",
+      "tier": 1,
+      "url": "https://www.moj.go.jp",
+      "title": "Ministry of Justice — 国籍法 (Nationality Act) provisions on citizenship by descent and the choice-of-nationality requirement",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE LIVE LEGAL CONTROVERSY, flagged honestly rather than resolved with false confidence: the mandatory choice-of-nationality requirement at age 22 (Article 14 of the Nationality Act) has faced legal challenges in recent years arguing it's unconstitutional or impractical given how common dual nationality at birth has become through international marriage — as of this verification, NO confirmed legislative or judicial change had taken effect; the rule remains current law. This is treated the same way as other unresolved-but-not-yet-changed policy debates elsewhere in this dataset (e.g. Japan's own adult dual-citizenship prohibition debate on jp_naturalisation) — encoded as current policy, not anticipated reform. selection_method is 'automatic' since citizenship by descent attributes AT BIRTH without application, structurally similar to France's droit du sang (fr_droit_du_sang_et_du_sol) rather than Australia's assessed-application model (au_citizenship_descent) — a genuine three-way split in how countries in this dataset implement the same basic jus sanguinis principle: automatic (France, Japan), assessed-application (Australia), or generationally-capped-and-assessed (Portugal). No confirmed generational limit beyond the direct parent-child link — Japan's descent rule, like France's, applies based on a PARENT's nationality specifically, with no extension to grandparents the way Portugal's or UK Ancestry's routes reach further back."
+}

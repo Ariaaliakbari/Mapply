@@ -1,0 +1,98 @@
+{
+  "id": "ca_refugee_asylum",
+  "country": "CA",
+  "name": "Refugee & Asylum (In-Canada Asylum System & Resettlement)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "in_canada_asylum",
+      "name": "In-Canada asylum (Immigration and Refugee Board)",
+      "requirements": [
+        {
+          "id": "ica_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_canada",
+          "hard": true,
+          "blocker_text": "This requires an eligibility determination followed by referral to the Immigration and Refugee Board's Refugee Protection Division (RPD), a Basis of Claim, and a hearing. The Safe Third Country Agreement (STCA) with the US applies across the entire land border — those arriving via the US are generally ineligible unless a specific exception applies.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irb_asylum"
+        },
+        {
+          "id": "ica_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "This requires a well-founded fear of persecution under Convention grounds, or risk of torture/cruel treatment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irb_asylum"
+        }
+      ]
+    },
+    {
+      "id": "resettlement",
+      "name": "Resettlement (Government-Assisted or Privately Sponsored Refugees)",
+      "requirements": [
+        {
+          "id": "res_referral",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "unhcr_referral_or_private_sponsorship",
+          "hard": true,
+          "blocker_text": "This requires either a UNHCR referral (Government-Assisted Refugees) or a private sponsor group (Privately Sponsored Refugees) inside Canada.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irb_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Basis of Claim form and attendance at the RPD hearing",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite once protected-person status is granted",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_permanent_residence", "ca_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "irb_asylum",
+      "tier": 1,
+      "url": "https://irb-cisr.gc.ca",
+      "title": "Immigration and Refugee Board of Canada — Refugee Protection Division",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "SEVERE, CONFIRMED BACKLOG: the RPD inventory rose from ~70,000 (end-2022) to ~293,000 (April 2026) — over a four-fold increase in roughly three years, one of the sharpest backlog-growth trajectories confirmed anywhere in this dataset. Wait times run approximately 16 months from ready-for-adjudication, with total time from claim to decision commonly 2-3 years (longer in Quebec) — though early 2026 saw three consecutive months of net backlog reduction, a real if modest positive signal. Safe Third Country Agreement (STCA) with the US, expanded across the ENTIRE land border 25 March 2023, remains UNDER ACTIVE LEGAL CHALLENGE as of this verification (CARL/SALCO judicial review arguing the US no longer qualifies as 'safe') — encoded as current policy since it hasn't been struck down, but flagged as genuinely contested rather than settled. Bill C-12 (in force 26 March 2026) added a 14-day bar for between-ports crossers and a 1-year claim deadline. Direct PR path for successful claimants, same pattern as most other countries' asylum routes in this dataset."
+}

@@ -1,0 +1,126 @@
+{
+  "id": "de_family_reunification_spouse",
+  "country": "DE",
+  "name": "Family reunification for spouses (Ehegattennachzug)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fam_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires both spouses being 18 or over.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_30"
+        },
+        {
+          "id": "fam_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "This requires being legally married to a sponsor who holds a qualifying German residence status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_30"
+        },
+        {
+          "id": "fam_german_a1",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A1",
+          "hard": true,
+          "blocker_text": "This requires German at A1 level before entry, unless the sponsor holds an EU Blue Card, ICT Card, or § 18b skilled-worker permit, is a recognised refugee, holds a settlement/EU long-term permit, holds a degree, is a national of certain visa-waiver countries, or A1 courses are inaccessible in the home region.",
+          "fix_path": "Take an approved A1 German course and test, or confirm eligibility for an exemption.",
+          "fix_time_months": 6,
+          "source_id": "gesetze_30"
+        },
+        {
+          "id": "fam_livelihood",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "secured_livelihood_meeting_household_income_threshold",
+          "hard": true,
+          "blocker_text": "This requires the sponsor's household net income to exceed the Bürgergeld standard rate plus reasonable rent — waived if joining an EU Blue Card/ICT/§18b skilled worker or a German citizen sponsor.",
+          "fix_path": "Increase household income to the required threshold, or confirm exemption eligibility.",
+          "fix_time_months": null,
+          "source_id": "gesetze_29"
+        },
+        {
+          "id": "fam_housing",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "adequate_housing_approx_12sqm_per_person",
+          "hard": true,
+          "blocker_text": "This requires adequate housing space (approximately 12 m² per person) — waived under the same exemptions as the income requirement.",
+          "fix_path": "Secure adequate housing before applying, or confirm exemption eligibility.",
+          "fix_time_months": null,
+          "source_id": "gesetze_29"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage certificate",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Approved A1 German test certificate (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Sponsor's income and housing evidence",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    }
+  ],
+  "outcome": {
+    "duration_length": "matches the sponsor's residence permit duration",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_niederlassungserlaubnis"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_29",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__29.html",
+      "title": "§ 29 AufenthG - Familiennachzug zu Ausländern (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "gesetze_30",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__30.html",
+      "title": "§ 30 AufenthG - Ehegattennachzug (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Independent residence right after 3 years of marriage regardless of the underlying relationship's status (§31 AufenthG) — pr_after_months and citizenship_after_months both set to 36 reflecting this, since a spouse joining under this route gains an independent path that isn't strictly tied to the sponsor's own status timeline. This intentionally mirrors uk_family_spouse's structure (income/housing/language requirements, shorter path via marriage) — a genuinely comparable route across both countries, which is exactly the kind of cross-country comparison the whole product exists to enable. LIVE POLICY WATCH: family reunification for sponsors holding SUBSIDIARY PROTECTION status is currently suspended entirely — per the Federal Foreign Office, the suspending law entered into force 24 July 2025 and no reunification will be granted before 24 July 2027 (§104(14) AufenthG). This route as encoded assumes the sponsor holds a standard qualifying status (not subsidiary protection); a sponsor with subsidiary protection cannot currently sponsor a spouse at all under any timeline — this is a hard gap in coverage, not reflected as a separate requirement group here, flagged for a future pass. German A1 exemption list is broad and consequential — worth surfacing prominently in any UI built from this data, since many applicants likely qualify for an exemption without realizing it."
+}

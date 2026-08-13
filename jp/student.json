@@ -1,0 +1,76 @@
+{
+  "id": "jp_student",
+  "country": "JP",
+  "name": "Student visa (留学)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "admission_to_recognised_institution",
+          "hard": true,
+          "blocker_text": "This requires admission to a Japanese university, vocational college, or accredited Japanese-language school.",
+          "fix_path": "Secure admission to a recognised institution.",
+          "fix_time_months": null,
+          "source_id": "isa_student"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_or_sponsor_declaration",
+          "hard": true,
+          "blocker_text": "This requires demonstrating sufficient funds (commonly evidenced by a bank statement, scholarship confirmation, or a financial sponsor's declaration and bank statement) to cover tuition and living costs.",
+          "fix_path": "Arrange sufficient funds or a sponsor declaration.",
+          "fix_time_months": 1,
+          "source_id": "isa_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Certificate of Eligibility application supporting documents (admission letter, financial evidence)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the course, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_gijinkoku", "jp_specified_skilled_worker"]
+  },
+  "sources": [
+    {
+      "id": "isa_student",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 留学 (Student) visa",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Work rights: up to 28 hours/week with separate 'permission to engage in activity other than that permitted' (資格外活動許可) — a genuinely distinctive administrative requirement not present on most other countries' student routes in this dataset, since the permission is a SEPARATE authorization layered on top of the visa itself, not an automatic entitlement built into student status. No dedicated post-study job-seeking visa/permit was confirmed as currently active during this research pass, unlike UK Graduate, Germany's Job Seeker permit, France's APS, or the Netherlands' Orientation Year — students seeking to stay for work must transition directly to jp_gijinkoku or jp_specified_skilled_worker with a confirmed job offer in hand before their student status expires, a genuinely more time-pressured transition than most other countries in this dataset offer, and a real gap in Japan's Journey chain worth flagging rather than assuming a bridge program exists that wasn't confirmed."
+}

@@ -1,0 +1,86 @@
+{
+  "id": "es_student",
+  "country": "ES",
+  "name": "Student Visa (Estancia por Estudios)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "admission_to_recognised_institution",
+          "hard": true,
+          "blocker_text": "This requires admission/enrolment at a recognised institution.",
+          "fix_path": "Secure admission from a recognised Spanish institution.",
+          "fix_time_months": null,
+          "source_id": "exteriores_student"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "iprem_2026_monthly", "ratio": 1.0, "resolved_amount": 600, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "This requires funds of at least €600/month (100% of IPREM); some consulates require the full annual €7,200 up front for 1-year courses.",
+          "fix_path": "Arrange sufficient funds.",
+          "fix_time_months": 1,
+          "source_id": "exteriores_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission/enrolment letter from the institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Health insurance",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Criminal record certificate and medical certificate (stays over 6 months)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the course, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["es_job_seeker", "es_work_cuenta_ajena", "es_self_employed"]
+  },
+  "sources": [
+    {
+      "id": "exteriores_student",
+      "tier": 1,
+      "url": "https://www.exteriores.gob.es",
+      "title": "Ministerio de Asuntos Exteriores — visado de estudios",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Work rights are genuinely generous: up to 30 hours/week without a separate work authorization since the RD 629/2022 reform (the employer must register the student in Social Security and pay at least the proportional SMI) — a real advantage over most equivalent routes in this dataset, most of which cap non-EU student work at 16-20 hours/week. STRUCTURAL NOTE worth flagging: this is legally a 'stay' (estancia) rather than a 'residence' (residencia) — it does NOT count directly toward permanent residence or nationality timelines the way study time does in UK/Germany/Netherlands/Portugal, unless and until the holder converts to an actual residence status. This is a genuine structural difference from every other country's student route in this dataset, worth surfacing prominently since it changes the real value of time spent studying in Spain. Application via form EX-00; consular resolution approximately 30 calendar days — notably faster than most other Spain routes given the country's general backlog context flagged on other routes."
+}

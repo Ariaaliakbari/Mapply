@@ -1,0 +1,89 @@
+{
+  "id": "ca_work_permit",
+  "country": "CA",
+  "name": "Work Permit (Employer-Specific LMIA & LMIA-Exempt IMP)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "lmia_based",
+      "name": "LMIA-based (Temporary Foreign Worker Program)",
+      "requirements": [
+        {
+          "id": "lmia_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a job offer and a positive Labour Market Impact Assessment (LMIA) — the employer must advertise the role and prove no Canadian/PR was available, and pay a $1,000/position LMIA fee to ESDC.",
+          "fix_path": "Secure a job offer from an employer willing to complete the LMIA process.",
+          "fix_time_months": 3,
+          "source_id": "esdc_lmia"
+        }
+      ]
+    },
+    {
+      "id": "lmia_exempt",
+      "name": "LMIA-exempt (International Mobility Program)",
+      "requirements": [
+        {
+          "id": "imp_category",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "cusma_ict_or_other_imp_exemption",
+          "hard": true,
+          "blocker_text": "This covers CUSMA/USMCA professionals, traders and investors, general intra-company transferees (1 year foreign employment in the past 3 years with a qualifying corporate relationship), CETA/CPTPP categories, Francophone Mobility, International Experience Canada, and other LMIA-exempt categories — still requires an Offer of Employment filed via the Employer Portal plus a $230 compliance fee.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_imp"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Positive LMIA (LMIA-based group) or documented LMIA exemption category evidence (IMP group)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to the duration of the LMIA or exemption category, typically 1-3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_express_entry_cec", "ca_pnp"]
+  },
+  "sources": [
+    {
+      "id": "esdc_lmia",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/employment-social-development/services/foreign-workers.html",
+      "title": "Temporary Foreign Worker Program - Employment and Social Development Canada",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "ircc_imp",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/permit/temporary/international-mobility-program.html",
+      "title": "International Mobility Program - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE GOVERNMENT PREFERENCE confirmed: 2026 targets reportedly favor LMIA-exempt IMP routes over LMIA-based TFWP by a wide margin (~170,000 vs ~60,000 admissions per tier-3 reporting) — the government is explicitly steering employers toward the lighter-touch IMP wherever a qualifying exemption applies. CUSMA professionals (US/Mexican nationals) can often get same-day permits at a land port of entry — a genuinely fast-track mechanic not seen elsewhere in this dataset for a work-sponsored route. leads_to_pr is FALSE at the route level since neither LMIA-based nor most IMP work permits grant PR directly — the real path is accumulating Canadian work experience then applying via ca_express_entry_cec or ca_pnp, the same temporary-then-PR staging common across most European countries in this dataset, in contrast to Express Entry's own direct-to-PR design."
+}

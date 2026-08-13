@@ -1,0 +1,108 @@
+{
+  "id": "fr_carte_resident",
+  "country": "FR",
+  "name": "Carte de résident (10-year permanent residence)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["fr_talent_salarie_qualifie", "fr_eu_blue_card", "fr_vls_ts_salarie", "fr_entrepreneur_liberal", "fr_regroupement_familial", "fr_visa_visiteur"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of uninterrupted regular residence in France, with limited exceptions for certain family/refugee categories.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legifrance_ceseda"
+        },
+        {
+          "id": "cr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires French at CEFR B1.",
+          "fix_path": "Prepare for and pass an approved test at B1.",
+          "fix_time_months": 4,
+          "source_id": "loi_2024_42"
+        },
+        {
+          "id": "cr_integration",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "republican_integration_contract_completed",
+          "hard": true,
+          "blocker_text": "This requires having completed the Contrat d'Intégration Républicaine (CIR) obligations undertaken at the start of residence, and demonstrated republican integration more broadly.",
+          "fix_path": "Complete outstanding CIR obligations.",
+          "fix_time_months": null,
+          "source_id": "legifrance_ceseda"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "TCF or DELF certificate at B1",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "CIR completion evidence",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "5 years of continuous residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite; the physical card is renewed every 10 years",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "legifrance_ceseda",
+      "tier": 1,
+      "url": "https://www.legifrance.gouv.fr",
+      "title": "Légifrance — CESEDA, carte de résident provisions",
+      "accessed_at": "2026-08-09"
+    },
+    {
+      "id": "loi_2024_42",
+      "tier": 1,
+      "url": "https://www.legifrance.gouv.fr",
+      "title": "Légifrance — Loi n° 2024-42 du 26 janvier 2024 (B1 language requirement for carte de résident)",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "France's ILR-equivalent hub route, same structural role as uk_ilr, de_niederlassungserlaubnis, nl_permanent_residence, pt_permanent_residence, and es_permanent_residence. Distinct from the general EU long-term residence permit in some technical respects (carte de résident is the French national implementation, with an EU long-term-resident variant also available with similar conditions) — modeled as a single route here, consistent with the scope simplification applied to the equivalent hub routes in Netherlands, Portugal, and Spain. citizenship_after_months is 0 since holding this card is what makes naturalisation possible at 0 additional months per fr_naturalisation's own 60-month figure being measured from initial residence, not from carte de résident grant — the two clocks run in parallel from the same starting point rather than stacking sequentially, a genuine structural difference from Portugal's system (where PR and citizenship clocks are explicitly sequential and stack). B1 French requirement here sits below the B2 required for citizenship itself — part of the tiered A2/B1/B2 ladder (pluriannual card / carte de résident / naturalisation) confirmed during this research pass, worth surfacing as a coherent progressive system rather than three unrelated figures."
+}

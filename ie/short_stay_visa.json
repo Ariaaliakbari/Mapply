@@ -1,0 +1,82 @@
+{
+  "id": "ie_short_stay_visa",
+  "country": "IE",
+  "name": "Short-Stay Visa (Category C) & Visa-Exempt Arrangements",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (visa-required nationalities)",
+      "requirements": [
+        {
+          "id": "ssv_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave Ireland at the end of your visit. IMPORTANT: Ireland is NOT part of Schengen — a Schengen visa is NOT valid for travel to Ireland, and Ireland maintains its own separate visa-required list.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dfa_visa_requirements"
+        }
+      ]
+    },
+    {
+      "id": "bivs",
+      "name": "British-Irish Visa Scheme (China and India)",
+      "requirements": [
+        {
+          "id": "bivs_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["china", "india"],
+          "hard": true,
+          "blocker_text": "This allows nationals of China or India to travel around the Common Travel Area on a single UK or Irish short-stay visa endorsed 'BIVS' — no separate Irish visa needed if already holding a qualifying UK visa, or vice versa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dfa_visa_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of sufficient funds and intent to leave",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days; not renewable/extendable except in emergencies",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "not valid for travel to any Schengen-area country; a separate Schengen visa would be needed for onward Schengen travel",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dfa_visa_requirements",
+      "tier": 1,
+      "url": "https://www.ireland.ie",
+      "title": "Visa requirements for entering Ireland - Department of Foreign Affairs",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL CONFIRMATION, the last and one of the most foundational facts closing out this entire 15-country dataset: Ireland is an EU member state but explicitly NOT part of Schengen (it opted out and maintains the Common Travel Area with the UK instead — see ie_common_travel_area) — a Schengen visa issued by any other EU state is NOT valid for travel to Ireland, and Ireland runs its own independent visa-required nationality list rather than inheriting the Schengen one. This is the exact structural inverse of Switzerland (a non-EU country that IS in Schengen, ch_tourist_visa), making these two countries' visit-visa routes a genuinely instructive contrasting pair for anyone comparing the 'visit' category across this full multi-country dataset. British-Irish Visa Scheme (BIVS) confirmed still operational for China and India specifically — a real, narrow, named-country exception allowing single-visa travel around the CTA, legal basis the Immigration Act (Visas) Order 2014 as amended by SI 502/2016. Fees not fully confirmed at tier-1 precision during the underlying research (tier-3 sources cited roughly €60 single-entry / €100 multiple-entry) — flagged as a gap rather than asserted with false confidence, the same honest-gap convention used throughout this entire dataset build."
+}

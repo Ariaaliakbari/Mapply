@@ -1,0 +1,112 @@
+{
+  "id": "es_family_reunification",
+  "country": "ES",
+  "name": "Family Reunification (Reagrupación Familiar)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 12,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fam_sponsor_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "This requires the sponsor to hold at least 1 year of legal residence, renewed or authorized for at least another year.",
+          "fix_path": "Wait until the sponsor reaches the required residence tenure.",
+          "fix_time_months": 12,
+          "source_id": "rd_1155_2024"
+        },
+        {
+          "id": "fam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This covers spouse/registered partner (not separated), minor children (of the sponsor or spouse), dependent adult children with a disability, and ascendants over 65 (only if the sponsor holds long-term residence).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        },
+        {
+          "id": "fam_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "iprem_2026_monthly", "ratio": 1.5, "resolved_amount": 900, "currency": "EUR", "unit": "month", "note": "for sponsor + 1 reunited family member; +50% IPREM per additional member" },
+          "hard": true,
+          "blocker_text": "This requires the sponsor to show income of at least €900/month (150% of IPREM) for reuniting with 1 family member, plus €300/month (50% of IPREM) for each additional member.",
+          "fix_path": "Increase income to the required level.",
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        },
+        {
+          "id": "fam_housing",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "adequate_housing_report",
+          "hard": true,
+          "blocker_text": "This requires an informe de habitabilidad/adecuación de vivienda (housing adequacy report) from the local town hall or autonomous community.",
+          "fix_path": "Obtain the housing adequacy report.",
+          "fix_time_months": 1,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/partnership certificate or birth certificate proving family tie",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Housing adequacy report from the local authority",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Sponsor's income evidence",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "tracks the sponsor's residence status",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["es_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "rd_1155_2024",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Real Decreto 1155/2024 (Reglamento de Extranjería), Arts. 65-68",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed as pegged to IPREM at exactly 150% (2 members) + 50% per additional member. STALE-DATA FLAG: some tier-3 sites publish €940/month for the base 2-member figure, inconsistent with the frozen €600 IPREM (150% of €600 is exactly €900, not €940) — likely a computational error or reliance on an outdated IPREM value on the source's end. A REDUCED threshold (tied to the Ingreso Mínimo Vital/renta garantizada, approximately €724/month for 2 members) can apply when the reunited family member is a minor — not modeled as a separate requirement group here, flagged as a real simplification pending further detail. Timeline structure is genuinely multi-stage and worth surfacing distinctly: administration resolves within 2 months, the family member then has 2 months to apply for the visa at the consulate, and 3 months to actually enter Spain — three separate clocks, not one, a level of process detail not present on most other countries' family routes in this dataset."
+}

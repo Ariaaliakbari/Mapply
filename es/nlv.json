@@ -1,0 +1,108 @@
+{
+  "id": "es_nlv",
+  "country": "ES",
+  "name": "Non-Lucrative Visa (Visado de Residencia No Lucrativa)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nlv_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "iprem_2026_monthly", "ratio": 4.0, "resolved_amount": 2400, "currency": "EUR", "unit": "month", "note": "€28,800/year (€2,400 × 12); passive income only" },
+          "hard": true,
+          "blocker_text": "This requires passive income (pensions, rentals, dividends, interest, annuities, or savings) of at least €2,400/month / €28,800/year (400% of the 2026 IPREM).",
+          "fix_path": "Increase passive income to the required level.",
+          "fix_time_months": null,
+          "source_id": "exteriores_nlv"
+        },
+        {
+          "id": "nlv_income_dependent",
+          "attribute": "dependents",
+          "operator": "exists",
+          "value": { "value_type": "formula", "formula_ref": "iprem_2026_monthly", "ratio": 1.0, "resolved_amount": 600, "currency": "EUR", "unit": "month", "note": "additional income required per accompanying dependent" },
+          "hard": false,
+          "blocker_text": "Each accompanying dependent adds a further €600/month (100% of IPREM) to the required income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "exteriores_nlv"
+        },
+        {
+          "id": "nlv_no_work",
+          "attribute": "job_offer_status",
+          "operator": "!=",
+          "value": "spain_employment_or_self_employment",
+          "hard": true,
+          "blocker_text": "This does not permit any employed or self-employed work in Spain — income must be genuinely passive.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "exteriores_nlv"
+        },
+        {
+          "id": "nlv_insurance",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "private_health_insurance_full_sns_equivalent",
+          "hard": true,
+          "blocker_text": "This requires private health insurance with coverage equivalent to the Spanish public system, with no copayments or waiting periods.",
+          "fix_path": "Purchase a qualifying private health insurance policy.",
+          "fix_time_months": null,
+          "source_id": "exteriores_nlv"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of passive income (pension statements, rental contracts, dividend/interest records)",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Private health insurance policy meeting the no-copay/no-waiting-period standard",
+      "difficulty": "moderate",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Clean criminal record certificate and medical certificate",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "initial 1 year, renewable 2 years then 2 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["es_work_cuenta_ajena", "es_self_employed", "es_dnv", "es_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "exteriores_nlv",
+      "tier": 1,
+      "url": "https://www.exteriores.gob.es",
+      "title": "Ministerio de Asuntos Exteriores — Visado de Residencia No Lucrativa",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed as pegged to IPREM (not SMI) at exactly 400% for the main applicant, +100% per dependent. HIGH STALE-DATA RISK, same class as Portugal's RMMG-vs-IAS confusion: several tier-3 sites publish €31,200/year or ~€2,600/month, apparently computing 400% of the ANNUAL 14-payment IPREM figure (€8,400 × 4 = €33,600, still doesn't match either) rather than the correct monthly-times-12 convention actually used in consular practice (€600 × 4 × 12 = €28,800). This is the clearest single counterfeit-figure case in the Spain dataset. LIVE STRUCTURAL RISK worth flagging prominently: the IPREM has been FROZEN at €600/month since 2021 purely because Spain hasn't passed a new national budget (Presupuestos Generales del Estado) for 2024, 2025, or 2026 — any future budget passage would move this and several other Spain thresholds (family reunification, student) simultaneously in one event, unlike the UK/Germany/Netherlands/Portugal patterns where each threshold updates somewhat independently. citizenship_after_months (120) uses the general 10-year track since NLV holders aren't inherently tied to any nationality-based reduced track — Ibero-American/Andorran/Filipino/Equatorial-Guinean/Sephardic NLV holders would use the 2-year reduced track instead (see es_naturalisation)."
+}

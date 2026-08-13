@@ -1,0 +1,121 @@
+{
+  "id": "ch_family_reunification",
+  "country": "CH",
+  "name": "Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "swiss_citizen_sponsor",
+      "name": "Swiss citizen sponsor",
+      "requirements": [
+        {
+          "id": "swc_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This covers spouse and unmarried children under 18 of a Swiss citizen — a genuine entitlement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "c_permit_sponsor",
+      "name": "C permit (Settlement) sponsor",
+      "requirements": [
+        {
+          "id": "cp_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This covers spouse and unmarried children under 18 — a genuine entitlement (Art. 43 FNIA), subject to cohabitation, adequate housing, and no social-assistance dependency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "b_permit_sponsor",
+      "name": "B permit sponsor",
+      "requirements": [
+        {
+          "id": "bp_discretionary",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This is DISCRETIONARY ('may be granted', Art. 44 FNIA), not an entitlement — same conditions as C-permit sponsors PLUS an A1 language requirement for the sponsor (or enrolment in a course; children under 18 exempt).",
+          "fix_path": "The sponsor should meet A1 language ability or enrol in a course.",
+          "fix_time_months": 6,
+          "source_id": "sem_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "l_permit_sponsor",
+      "name": "L permit sponsor (short-stay)",
+      "requirements": [
+        {
+          "id": "lp_conditions",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This applies under Art. 45 FNIA — same core conditions as B-permit sponsors, but no language requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/birth certificate proving family tie",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Adequate housing evidence (cantonal benchmarks vary)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "tracks the sponsor's permit duration",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_settlement_permit", "ch_naturalisation_ordinary"]
+  },
+  "sources": [
+    {
+      "id": "sem_family_reunification",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/familien.html",
+      "title": "Family reunification - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE FOUR-TIER STRUCTURE confirmed, tightening progressively by sponsor status — a level of gradation not present on most other countries' family routes in this dataset: Swiss-citizen and C-permit sponsors carry a genuine ENTITLEMENT, while B-permit sponsorship is explicitly DISCRETIONARY ('may be granted') and adds an A1 language requirement, and L-permit sponsorship (short-stay) drops the language requirement but remains conditional. Deadlines confirmed (Art. 47 FNIA): reunification generally must be requested within 5 years, but only 12 MONTHS for children over 12 — a real and consequential shorter window for older children worth flagging distinctly. Refugees and provisionally admitted (F permit) persons face a further wait of 3 years before reunification, plus financial independence and adequate housing tests — not modeled as a separate group here given scope, but flagged as a real additional tier beyond the four modeled. No federal square-metre housing rule exists — cantons apply their own benchmarks, a genuine source of cantonal variation consistent with the rest of this Switzerland dataset."
+}

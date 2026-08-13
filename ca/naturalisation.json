@@ -1,0 +1,101 @@
+{
+  "id": "ca_naturalisation",
+  "country": "CA",
+  "name": "Canadian Citizenship by Naturalization",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ca_express_entry_fswp", "ca_express_entry_cec", "ca_express_entry_fstp", "ca_pnp", "ca_family_sponsorship_spouse"],
+    "minimum_months_held": 36,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nat_presence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This requires 1,095 days of physical presence in Canada within the 5 years before applying, calculated as a PR — pre-PR days count as half-days up to a maximum credit of 365 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_citizenship"
+        },
+        {
+          "id": "nat_language",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "CLB4",
+          "hard": true,
+          "blocker_text": "This requires English or French at CLB 4 (for applicants aged 18-54).",
+          "fix_path": "Take an approved language test at CLB 4.",
+          "fix_time_months": 3,
+          "source_id": "ircc_citizenship"
+        },
+        {
+          "id": "nat_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "citizenship_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the citizenship test (20 questions, pass at 15/20), typically administered online, for applicants aged 18-54.",
+          "fix_path": "Prepare for and pass the citizenship test.",
+          "fix_time_months": 2,
+          "source_id": "ircc_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "1,095 days of physical presence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Approved language test result at CLB 4",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "3 of the 5 years' tax filing evidence, if required",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ircc_citizenship",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/eligibility.html",
+      "title": "Become a Canadian citizen - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "CLARIFICATION on the physical-presence formula: 1,095 days (3 years) within the 5 years before applying — minimum_months_held (36) reflects this, though the ACTUAL calculation is in days with partial pre-PR credit, not a flat 36-month PR-holding requirement. Fee: $630 ($530 processing + $100 Right of Citizenship), though several sources report the Right of Citizenship Fee rising to $123 from 31 March 2026 ($653 total) — flagged as needing direct confirmation against canada.ca before treating as settled. Dual citizenship permitted, confirmed."
+}

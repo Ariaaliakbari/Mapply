@@ -1,0 +1,92 @@
+{
+  "id": "ch_third_generation_naturalisation",
+  "country": "CH",
+  "name": "Third-Generation Facilitated Naturalisation",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": { "basis": "Genuinely low uptake since introduction — approximately 1,868 applications in the first 3 years (2018-2021) against an estimated ~25,000 eligible population", "source_id": "sem_third_gen" },
+  "application_window": { "window_type": "closed", "opens": null, "closes": "2023-02-15", "cap_type": "none", "typical_fill_time_days": null, "note": "A transitional window for applicants aged 26-35 at the law's 2018 introduction expired 15 February 2023; the standard under-25 route remains open" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (born in Switzerland, applying before age 25)",
+      "requirements": [
+        {
+          "id": "tg_birth",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "born_in_switzerland",
+          "hard": true,
+          "blocker_text": "This requires being born in Switzerland, holding a C permit, having completed at least 5 years of compulsory schooling in Switzerland, and applying before age 25.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_third_gen"
+        },
+        {
+          "id": "tg_grandparent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "grandparent_born_or_resided_in_switzerland",
+          "hard": true,
+          "blocker_text": "This requires at least one grandparent born in Switzerland, or shown to have held a residence right (B, C, L, or A permit, or a carte de légitimation) in Switzerland.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_third_gen"
+        },
+        {
+          "id": "tg_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_c_permit_10yr_residence_5yr_schooling",
+          "hard": true,
+          "blocker_text": "This requires at least one parent who held a C permit, lived in Switzerland for at least 10 years, and completed at least 5 years of compulsory schooling in Switzerland.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_third_gen"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Documented three-generation family chain (birth certificates, residence records for grandparent and parent)",
+      "difficulty": "hard",
+      "typical_time_days": 120
+    },
+    {
+      "document": "School records evidencing 5+ years of compulsory schooling in Switzerland",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sem_third_gen",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/buergerrecht.html",
+      "title": "Third-generation facilitated naturalisation, Art. 24a SCA - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE, CONFIRMED LOW-UPTAKE FINDING: approximately 1,868 applications filed in the first 3 years (2018-2021) against an estimated ~25,000 eligible population — a real and striking gap between statutory eligibility and actual use, worth flagging prominently as a genuine 'route exists but is rarely used' case, distinct from every other route in this dataset. Introduced by Art. 24a SCA (in force 15 February 2018), itself approved by a genuinely narrow 60.4% referendum result (12 February 2017) — a real democratic-legitimacy data point worth noting given Switzerland's direct-democracy system, not replicated for any other citizenship reform elsewhere in this dataset. Requires documenting THREE generations of family history (grandparent + parent + applicant) — a genuinely more demanding evidentiary burden than most other ancestry routes in this dataset, which typically require documentation of only one or two generations. A transitional window that allowed applicants aged 26-35 at the law's introduction to also apply EXPIRED 15 February 2023 — this route as currently encoded reflects only the standard, ongoing under-25 pathway."
+}

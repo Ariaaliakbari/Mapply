@@ -1,0 +1,86 @@
+{
+  "id": "ca_study_permit",
+  "country": "CA",
+  "name": "Study Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": { "window_type": "annual", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null, "note": "2026 cap: maximum 309,670 study-permit applications accepted for processing, gated by a Provincial/Territorial Attestation Letter (PAL/TAL); IRCC targets issuing up to ~408,000 permits total (155,000 new arrivals, 253,000 extensions)" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sp_dli",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "designated_learning_institution_acceptance",
+          "hard": true,
+          "blocker_text": "This requires acceptance from a Designated Learning Institution (DLI) and — for most applicants — a Provincial/Territorial Attestation Letter (PAL/TAL), part of the 2024-introduced cap system.",
+          "fix_path": "Secure DLI acceptance and the required PAL/TAL.",
+          "fix_time_months": null,
+          "source_id": "ircc_study_permit"
+        },
+        {
+          "id": "sp_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 22895, "currency": "CAD", "note": "single applicant, outside Quebec; Quebec uses a separate figure of $24,617 CAD; indexed annually to LICO" },
+          "hard": true,
+          "blocker_text": "This requires proof of funds of at least $22,895 CAD (single applicant, outside Quebec), on top of first-year tuition and travel costs.",
+          "fix_path": "Arrange sufficient verifiable funds.",
+          "fix_time_months": 1,
+          "source_id": "ircc_study_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Letter of acceptance from a DLI",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "PAL/TAL (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Proof of funds meeting the required threshold",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the study program, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_pgwp"]
+  },
+  "sources": [
+    {
+      "id": "ircc_study_permit",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html",
+      "title": "Study permit - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed: $22,895 CAD effective since 1 Sept 2025, a $2,260 rise from the $20,635 set 1 Jan 2024 (itself up sharply from a long-frozen $10,000) — indexed annually to LICO (Low Income Cut-Off). Quebec uses a separate figure ($24,617 CAD, effective 1 Jan 2026). GENUINE 2024-era STRUCTURAL CHANGE still shaping 2026: the PAL/TAL cap system introduced in 2024 caused study-permit holders to fall from over 1 million (Jan 2024) to roughly 725,000 (Sept 2025) — a dramatic, confirmed contraction. NEW EXEMPTION from 1 Jan 2026: master's and doctoral students at PUBLIC DLIs no longer need a PAL/TAL — also exempt: K-12 students, the FMCSP pilot, exchange/scholarship holders, and same-DLI/same-level extensions. Direct feeder into ca_pgwp, closing Canada's version of the core Journey chain seen throughout this dataset."
+}

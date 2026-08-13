@@ -1,0 +1,76 @@
+{
+  "id": "ca_family_sponsorship_spouse",
+  "country": "CA",
+  "name": "Family Sponsorship — Spouse/Partner/Dependent Children",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fs_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This requires being the spouse, common-law partner, conjugal partner, or dependent child of a Canadian citizen or permanent resident. NO minimum income is required from the sponsor for this category, unlike parent/grandparent sponsorship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_spousal_sponsorship"
+        },
+        {
+          "id": "fs_undertaking",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "sponsor_3_year_undertaking",
+          "hard": true,
+          "blocker_text": "This requires the sponsor to sign a 3-year undertaking of financial support.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_spousal_sponsorship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage/partnership certificate or evidence of genuine relationship",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — direct PR grant, no conditional PR",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ircc_spousal_sponsorship",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/spouse-partner-children.html",
+      "title": "Sponsor your spouse, partner or child - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "CONFIRMED: no conditional PR for spousal sponsorship — this was repealed in 2017, and Canada has NOT reintroduced it as of this verification. A person sponsored as a spouse cannot sponsor a NEW spouse for 5 years — a real, specific anti-fraud restriction worth flagging. NO income requirement for this category — a genuine and confirmed structural simplicity distinct from ca_family_sponsorship_pgp's Minimum Necessary Income test, worth surfacing prominently as a real difference within Canada's own family-immigration system. Direct PR grant (pr_after_months: 0), same structural pattern as Express Entry — Canada's family and economic PR routes both largely avoid the temporary-then-PR staging common in Europe."
+}

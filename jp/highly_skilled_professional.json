@@ -1,0 +1,96 @@
+{
+  "id": "jp_highly_skilled_professional",
+  "country": "JP",
+  "name": "Highly Skilled Professional visa (高度専門職)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_70",
+      "name": "Standard route (70+ points)",
+      "requirements": [
+        {
+          "id": "hsp_points",
+          "attribute": "occupation",
+          "operator": ">=",
+          "value": { "note": "70+ points across academic background, career/work experience, annual salary, age, research achievements, and bonus factors (Japanese language ability, university ranking, growth-field designation, etc.), scored under one of three activity types: 1-i (advanced academic research), 1-ro (advanced specialist/technical), 1-ha (advanced business management)" },
+          "hard": true,
+          "blocker_text": "This requires scoring at least 70 points on the official points table, which scores academic background, career/work experience, annual salary, age, and research achievements, plus bonus points for factors like Japanese language ability and university ranking.",
+          "fix_path": "Improve point-scoring factors (e.g. gain more work experience, increase salary, improve Japanese language level) before applying.",
+          "fix_time_months": null,
+          "source_id": "isa_hsp_points"
+        },
+        {
+          "id": "hsp_activity_type",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["advanced_academic_research", "advanced_specialist_technical", "advanced_business_management"],
+          "hard": true,
+          "blocker_text": "This requires the underlying activity to genuinely fall within one of the three qualifying types — advanced academic research, advanced specialist/technical activity, or advanced business management — not merely scoring 70 points in the abstract.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_hsp_points"
+        }
+      ]
+    },
+    {
+      "id": "accelerated_80",
+      "name": "Accelerated route (80+ points, 1-year PR eligibility)",
+      "outcome_override": {
+        "pr_after_months": 12
+      },
+      "requirements": [
+        {
+          "id": "hsp80_points",
+          "attribute": "occupation",
+          "operator": ">=",
+          "value": { "note": "80+ points, same scoring table as the standard route" },
+          "hard": true,
+          "blocker_text": "This requires scoring at least 80 points on the same points table, unlocking permanent residence eligibility after just 1 year of residence instead of the standard 10.",
+          "fix_path": "Improve point-scoring factors to reach 80+.",
+          "fix_time_months": null,
+          "source_id": "isa_hsp_points"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Documentary evidence for each claimed points-table factor (degree certificates, employment records, salary evidence, research publications)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "5 years (the maximum period available), renewable; Highly Skilled Professional 2 (available after 3+ years on HSP 1) carries indefinite period",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "for the 70-point 3-year fast track, the 70+ score must be maintained continuously for at least 3 years",
+    "switchable_to": ["jp_permanent_residence", "jp_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "isa_hsp_points",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 高度人材ポイント制度 (Highly Skilled Professional points system); 永住許可に関するガイドライン (Permanent Residence Guidelines, revised 24 February 2026, Reiwa 8)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE NEW FINDING not previously confirmed: a separate, newer 'J-Skip' (特別高度人材制度) program exists alongside the traditional points system — a further-simplified fast-track for exceptionally high earners/graduates of top-ranked universities, effectively bypassing full points calculation for a narrow super-qualified segment. Not modeled as a separate route file here since its precise 2026 eligibility criteria weren't fully confirmed at tier-1 precision during this research pass — flagged as a real gap rather than guessed, consistent with how similarly-unconfirmed sub-programs are handled elsewhere in this dataset (e.g. Portugal's entrepreneur-incubator sub-route). pr_after_months (36) reflects the STANDARD 70-point/3-year fast track as the route-level default; the 80-point/1-year accelerated group overrides this to 12 months — a clean, confirmed use of the outcome_override mechanism for a genuinely two-tier fast-track structure, similar in spirit to how UK Global Talent's tiers were modeled. This is Japan's closest equivalent to UK Global Talent or Germany's Blue Card in terms of being the flagship 'fast path for exceptional people' route, though it retains more employer/institutional tie-in than UK's fully sponsor-free Global Talent route. Permanent Residence Guidelines revision dated 24 February 2026 (Reiwa 8) confirms this route's fast-track mechanics are current and recently re-affirmed, not a stale historical rule."
+}

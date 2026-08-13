@@ -1,0 +1,104 @@
+{
+  "id": "de_student",
+  "country": "DE",
+  "name": "Student residence permit (§ 16b AufenthG)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "university_admission_confirmed",
+          "hard": true,
+          "blocker_text": "This requires confirmed admission to a German university or a recognised preparatory program (Studienkolleg).",
+          "fix_path": "Secure a university admission letter.",
+          "fix_time_months": null,
+          "source_id": "gesetze_16b"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 11904, "currency": "EUR", "unit": "year", "note": "blocked account (Sperrkonto), €992/month, tied to the BAföG rate" },
+          "hard": true,
+          "blocker_text": "This requires a blocked account (Sperrkonto) holding €11,904/year (€992/month, 2026 figure).",
+          "fix_path": "Open and fund a blocked account with the required amount.",
+          "fix_time_months": 1,
+          "source_id": "auswaertiges_student"
+        },
+        {
+          "id": "st_insurance",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "german_health_insurance",
+          "hard": true,
+          "blocker_text": "This requires German health insurance.",
+          "fix_path": "Arrange statutory or private German health insurance before applying.",
+          "fix_time_months": null,
+          "source_id": "gesetze_16b"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "University admission letter",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Blocked account confirmation showing €11,904 held",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "German health insurance confirmation",
+      "difficulty": "routine",
+      "typical_time_days": 7
+    }
+  ],
+  "outcome": {
+    "duration_length": "usually up to 2 years, renewable while enrolled",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_job_seeker_post_study", "de_eu_blue_card"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_16b",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__16b.html",
+      "title": "§ 16b AufenthG - Studium (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "auswaertiges_student",
+      "tier": 1,
+      "url": "https://www.auswaertiges-amt.de",
+      "title": "Auswärtiges Amt - blocked account requirement for student visas",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Blocked account figure of €11,904/year (€992/month) is corroborated primarily via aggregator sites referencing the Auswärtiges Amt rather than a directly-fetched embassy Merkblatt — flagged honestly as a slightly weaker sourcing position than the Chancenkarte's €1,091/month figure, which was confirmed directly via arbeitsagentur.de. Recommend a priority re-check against a specific embassy Merkblatt before this route leaves any draft-equivalent status. Work rights: 140 full days or 280 half-days per year (raised from 120/240 on 1 March 2024), or roughly 20 hours/week during lecture periods — same precision gap as uk_student and de_chancenkarte, where the schema's coarse work_rights enum can't hold an hours/days figure; captured in notes only. This is the direct feeder into de_job_seeker_post_study, mirroring the UK's Student→Graduate structure and giving Germany its own version of the core Journey chain."
+}

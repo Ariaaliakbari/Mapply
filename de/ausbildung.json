@@ -1,0 +1,97 @@
+{
+  "id": "de_ausbildung",
+  "country": "DE",
+  "name": "Vocational training residence permit (Ausbildung, § 16a AufenthG)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aus_contract",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "signed_ausbildungsvertrag",
+          "hard": true,
+          "blocker_text": "This requires a signed vocational training contract (Ausbildungsvertrag) with a recognised German training provider.",
+          "fix_path": "Secure a signed Ausbildungsvertrag before applying.",
+          "fix_time_months": null,
+          "source_id": "gesetze_16a"
+        },
+        {
+          "id": "aus_german",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires German at B1 (B2 often preferred by training providers, though not always statutorily required).",
+          "fix_path": "Take an approved German test at B1.",
+          "fix_time_months": 6,
+          "source_id": "gesetze_16a"
+        },
+        {
+          "id": "aus_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 11904, "currency": "EUR", "unit": "year", "note": "waived if the paid Ausbildung stipend is at least €992/month; otherwise blocked account or Verpflichtungserklärung required" },
+          "hard": true,
+          "blocker_text": "This requires proof of funds of €11,904/year — waived if your Ausbildung stipend is at least €992/month.",
+          "fix_path": "Confirm your stipend meets the threshold, or fund a blocked account.",
+          "fix_time_months": 1,
+          "source_id": "gesetze_16a"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Signed Ausbildungsvertrag",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Approved German test certificate at B1",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Proof of funds or stipend confirmation",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 to 3.5 years, covering the training period",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_job_seeker_post_study"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_16a",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__16a.html",
+      "title": "§ 16a AufenthG - Berufliche Ausbildung (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Genuine cost-saving conditional worth surfacing prominently: most Ausbildung programs pay a stipend that clears the €992/month bar on its own, making the blocked-account requirement moot for most applicants — a real practical difference from de_student, where the blocked account is essentially always required. Part-time work up to 20 hours/week permitted outside the program, same cap as de_chancenkarte's side-work allowance — worth noting as a recurring German-system constant when comparing routes. After completion: feeds directly into de_job_seeker_post_study (18-month permit), then typically into de_eu_blue_card or a general skilled-worker permit once a qualified role is secured, with permanent residence realistically achievable after 2 years of qualified employment post-Ausbildung — faster than almost any other entry path in this dataset, though not modeled as a direct leads_to_pr here since the qualifying employment step is a genuinely separate route, not automatic."
+}

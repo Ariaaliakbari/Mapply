@@ -1,0 +1,76 @@
+{
+  "id": "ch_self_employment",
+  "country": "CH",
+  "name": "Self-Employment / Business Permit (Third-Country)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": { "window_type": "annual", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null, "note": "Subject to the same third-country federal quota as ch_third_country_work_permit" },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "se_economic_interest",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "overall_economic_interest_of_switzerland",
+          "hard": true,
+          "blocker_text": "This requires being in the overall economic interest of Switzerland — genuine demand, job creation, investment, innovation, market need — with a mandatory business plan/budgeted balance sheet.",
+          "fix_path": "Develop a business plan demonstrating economic interest.",
+          "fix_time_months": 3,
+          "source_id": "sem_self_employment"
+        },
+        {
+          "id": "se_capital",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_seed_capital_and_income",
+          "hard": true,
+          "blocker_text": "This requires adequate seed capital and expected income sufficient to cover operating and living costs, plus available business premises.",
+          "fix_path": "Secure sufficient capital.",
+          "fix_time_months": null,
+          "source_id": "sem_self_employment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Business plan and budgeted balance sheet",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "1 year, annually renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_settlement_permit", "ch_naturalisation_ordinary"]
+  },
+  "sources": [
+    {
+      "id": "sem_self_employment",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/arbeit.html",
+      "title": "Self-employment - State Secretariat for Migration (Art. 19 FNIA)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Genuinely quota-limited (Art. 19 FNIA), subject to the SAME third-country federal quota as ch_third_country_work_permit rather than a separate business-specific allocation — a real structural constraint distinct from most other countries' self-employment routes in this dataset, which typically run outside the numerical caps that apply to standard employer-sponsored work. Passive ownership of a Swiss AG/GmbH confers NO residence permit on its own — the business must independently pass the economic-interest test, a real and often-underestimated gate worth flagging."
+}

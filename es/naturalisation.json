@@ -1,0 +1,174 @@
+{
+  "id": "es_naturalisation",
+  "country": "ES",
+  "name": "Citizenship by Residence (Nacionalidad por Residencia)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["es_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General route (10 years)",
+      "requirements": [
+        {
+          "id": "gen_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "This requires 10 years of legal residence in Spain.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "codigo_civil_22"
+        },
+        {
+          "id": "gen_exams",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires the DELE A2 Spanish exam (unless a national of a Spanish-speaking country by origin, or having completed compulsory Spanish secondary education), plus the CCSE exam (Conocimientos Constitucionales y Socioculturales de España).",
+          "fix_path": "Take the DELE A2 and CCSE exams.",
+          "fix_time_months": 4,
+          "source_id": "codigo_civil_22"
+        },
+        {
+          "id": "gen_renunciation",
+          "attribute": "nationality",
+          "operator": "not_in",
+          "value": ["ibero_american", "andorra", "philippines", "equatorial_guinea", "portugal", "sephardic_jewish"],
+          "hard": true,
+          "blocker_text": "This requires renouncing your prior nationality, unless you are a national of an Ibero-American country, Andorra, the Philippines, Equatorial Guinea, or Portugal, or are Sephardic Jewish — these are exempt and may hold dual nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "codigo_civil_22"
+        }
+      ]
+    },
+    {
+      "id": "ibero_american_2_year",
+      "name": "Ibero-American countries, Andorra, Philippines, Equatorial Guinea, Portugal, Sephardic Jews (2 years)",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "requirements": [
+        {
+          "id": "ib_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires 2 years of legal residence — available to nationals of Ibero-American countries, Andorra, the Philippines, Equatorial Guinea, Portugal, and Sephardic Jews. The special no-residence Sephardic law (2015-2021) has expired; Sephardic Jews now use this ongoing reduced-residence pathway instead.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "codigo_civil_22"
+        },
+        {
+          "id": "ib_exams",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires the CCSE exam; the DELE A2 exam is waived for nationals of Spanish-speaking countries by origin.",
+          "fix_path": "Take the CCSE exam.",
+          "fix_time_months": 2,
+          "source_id": "codigo_civil_22"
+        },
+        {
+          "id": "ib_dual",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["ibero_american", "andorra", "philippines", "equatorial_guinea", "portugal", "sephardic_jewish"],
+          "hard": true,
+          "blocker_text": "No renunciation is required — dual nationality is permitted for this group.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "codigo_civil_22"
+        }
+      ]
+    },
+    {
+      "id": "family_tie_1_year",
+      "name": "Family-tie categories (1 year)",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "requirements": [
+        {
+          "id": "ft_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "This 1-year track covers: born in Spain; married to a Spaniard; widowed spouse of a Spaniard; children of a Spaniard/Spaniard-by-origin; grandchildren of Spaniards by origin; and those who were under the tutelage of a Spanish public entity for 2+ years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "codigo_civil_22"
+        },
+        {
+          "id": "ft_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "This requires 1 year of legal residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "codigo_civil_22"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "DELE A2 certificate (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "CCSE exam pass certificate",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Residence and family-tie documentation matching the applicable track",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "codigo_civil_22",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Código Civil, Art. 22 (nationality by residence, all residence-period tiers)",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "The most tiered naturalisation structure in this entire five-country dataset — three groups modeled here (10-year general, 2-year Ibero-American/Sephardic/etc., 1-year family-tie), though the real statute has even finer gradations within the 1-year tier that are collapsed into a single group for practicality; a genuinely honest simplification rather than a false precision claim. dual_citizenship_allowed is TRUE at the route level as a default, but this is only accurate for the exempted nationalities — the general group's own requirement (gen_renunciation) correctly states renunciation IS required for everyone else, so the route-level field and the general group's specific requirement intentionally diverge, which is exactly the class of case outcome_override exists for; not applied here for dual_citizenship_allowed specifically since the schema's override doesn't currently cover that field, a minor additional schema gap worth flagging for a future pass. SEPHARDIC ROUTE STATUS, genuinely nuanced and worth getting right: the SPECIAL law (Ley 12/2015) that let Sephardic Jews naturalise WITHOUT any residence requirement has EXPIRED — but Sephardic Jews are NOT locked out; they simply fall back to the ONGOING 2-year reduced-residence pathway that Ibero-Americans and others use, per the general Código Civil provision. This is a materially different situation from Portugal's Sephardic route, which is genuinely fully closed with no fallback — a real, confirmed cross-country contrast worth surfacing. Fee €104.05 (Ministerio de Justicia, unchanged since 2022) — two tier-3 sites cite €104.89/€105.73 without tier-1 confirmation, treated as stale/unconfirmed here. REALISTIC PROCESSING TIME flagged distinctly from the statutory figure, same pattern as Portugal: legal maximum 1 year with positive silence, but real processing commonly runs 12-24 months and sometimes up to 3 years given recording backlogs. No standalone ancestry-category route exists for Spain in this dataset (unlike UK/Germany/Portugal) — the closest equivalents (grandchildren of Spaniards by origin, children/grandchildren job-seeker preference) are folded into this naturalisation route and es_job_seeker respectively rather than modeled as independent routes, a genuine and honestly-flagged category gap."
+}

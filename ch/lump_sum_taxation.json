@@ -1,0 +1,87 @@
+{
+  "id": "ch_lump_sum_taxation",
+  "country": "CH",
+  "name": "Lump-Sum Taxation Residence (Forfait Fiscal / Pauschalbesteuerung)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lst_eligibility",
+          "attribute": "nationality",
+          "operator": "!=",
+          "value": "swiss_national",
+          "hard": true,
+          "blocker_text": "This requires being a foreign national establishing Swiss residence for the first time (or returning after 10+ years' absence), with no gainful activity in Switzerland — not available to Swiss nationals or anyone who has worked in Switzerland.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "estv_lump_sum"
+        },
+        {
+          "id": "lst_minimum_base",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "lump_sum_tax_federal_minimum_2026", "ratio": 1.0, "resolved_amount": 435000, "currency": "CHF" },
+          "hard": true,
+          "blocker_text": "This requires a federal minimum taxable base of CHF 435,000 (2026) — the actual base is the HIGHEST of the statutory minimum, 7x annual rent/rental value (for own-household taxpayers, 3x board-and-lodging otherwise), or a control-calculation of Swiss-source income. Cantonal minimums can exceed this federal floor.",
+          "fix_path": "Negotiate the taxable base with the relevant cantonal tax authority.",
+          "fix_time_months": null,
+          "source_id": "estv_lump_sum"
+        },
+        {
+          "id": "lst_canton",
+          "attribute": "current_location",
+          "operator": "!=",
+          "value": "zurich_schaffhausen_appenzell_ausserrhoden_basel_landschaft_basel_stadt",
+          "hard": true,
+          "blocker_text": "This is only available in 21 of Switzerland's 26 cantons — Zürich, Schaffhausen, Appenzell Ausserrhoden, Basel-Landschaft, and Basel-Stadt have abolished the regime entirely.",
+          "fix_path": "Choose an eligible canton.",
+          "fix_time_months": null,
+          "source_id": "estv_lump_sum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Negotiated tax ruling with the cantonal tax authority confirming the taxable base",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite while criteria maintained",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_settlement_permit", "ch_naturalisation_ordinary"]
+  },
+  "sources": [
+    {
+      "id": "estv_lump_sum",
+      "tier": 1,
+      "url": "https://www.estv.admin.ch",
+      "title": "Federal Tax Administration (ESTV) — lump-sum taxation, Art. 14 DBG",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "FORMULA VALUE, THE HIGHEST-RISK STALE FIGURE IN THIS ENTIRE COUNTRY'S DATASET: CHF 435,000 for 2026, up from CHF 434,700 in 2025 — a small but consequential year-over-year change (set by an annual CPI-indexed cold-progression ordinance, AS 2025 579). Multiple secondary sites republish the OLD 2025 figure (CHF 434,700) as current, and others cite entirely fabricated-looking figures (CHF 421,700, CHF 429,700, CHF 451,200) that don't match any confirmed official value for any recent year — this is the single clearest, highest-confidence stale-figure catch found across the Switzerland research pass. GENUINE STRUCTURAL COMPLEXITY: the actual taxable base isn't simply the statutory minimum — it's the HIGHEST of three calculations (statutory floor, 7x rent/rental value, or a control-calculation of Swiss-source income), meaning the real number paid is frequently well above CHF 435,000 for anyone with a substantial Swiss residence. Five cantons (Zürich, Schaffhausen, Appenzell Ausserrhoden, Basel-Landschaft, Basel-Stadt) have ABOLISHED this regime entirely — a real geographic exclusion modeled as a hard requirement here. Uptake data confirmed at tier-1 level is dated: 4,557 persons paid CHF 821 million in tax as of end-2018, the most recent consolidated federal figure identified during research — current-year uptake requires querying individual cantons directly. work_rights is 'none' — genuinely and deliberately excludes gainful activity in Switzerland, the defining feature that distinguishes this from every other Swiss work-adjacent route in this dataset."
+}

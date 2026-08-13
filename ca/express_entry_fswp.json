@@ -1,0 +1,106 @@
+{
+  "id": "ca_express_entry_fswp",
+  "country": "CA",
+  "name": "Express Entry — Federal Skilled Worker Program (FSWP)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "merit_ranked",
+  "selection_odds": { "basis": "Comprehensive Ranking System (CRS) points-based pool; no general (all-program) draws held in 2026 to date — candidates reached primarily through category-based draws", "source_id": "ircc_express_entry" },
+  "application_window": { "window_type": "multiple_rounds", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fswp_experience",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 1,
+          "hard": true,
+          "blocker_text": "This requires at least 1 year of continuous full-time skilled work experience (NOC TEER 0/1/2/3) within the last 10 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_fswp"
+        },
+        {
+          "id": "fswp_language",
+          "attribute": "language_en",
+          "operator": ">=",
+          "value": "CLB7",
+          "hard": true,
+          "blocker_text": "This requires language ability of at least CLB 7 in an official language.",
+          "fix_path": "Take an approved language test at CLB 7.",
+          "fix_time_months": 3,
+          "source_id": "ircc_fswp"
+        },
+        {
+          "id": "fswp_crs",
+          "attribute": "age",
+          "operator": "exists",
+          "value": "crs_score_sufficient_for_invitation",
+          "hard": true,
+          "blocker_text": "This requires a Comprehensive Ranking System (CRS) score sufficient to receive an Invitation to Apply — in 2026, FSWP candidates are reached almost exclusively via category-based draws (e.g. French-language, healthcare, STEM, trades, education) rather than general draws, since no general draw has been held in 2026 to date.",
+          "fix_path": "Improve CRS-scoring factors (age, education, language, work experience) or target a category-based draw the profile matches.",
+          "fix_time_months": null,
+          "source_id": "ircc_rounds"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Educational Credential Assessment (ECA) if the degree was obtained abroad",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Approved language test result at CLB 7",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite — direct-to-PR on approval",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ircc_express_entry",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry.html",
+      "title": "Express Entry - Immigration, Refugees and Citizenship Canada",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "ircc_fswp",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/federal-skilled-workers.html",
+      "title": "Federal Skilled Worker Program eligibility - IRCC",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "ircc_rounds",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html",
+      "title": "Express Entry rounds of invitations - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR STRUCTURAL FINDING confirmed for 2026: Express Entry has held NO general (all-program) draws in 2026 to date — every 2026 round has been either program-specific (CEC, PNP) or category-based. This means pure FSWP candidates without a category-based-draw-matching profile face a genuinely uncertain path, since the traditional 'just accumulate CRS points and wait for a general draw' strategy currently has no live mechanism to act on. Direct-to-PR on approval, same structural pattern as ca_express_entry_cec and ca_express_entry_fstp — all three Express Entry programs share this direct-to-PR feature, distinct from the more common temporary-then-PR staging seen throughout the European countries in this dataset. citizenship_after_months (36) uses Canada's physical-presence formula: 1,095 days within the 5 years before applying, with pre-PR days counting as half-days up to a 365-day maximum credit — the 36-month figure is the minimum theoretical case with maximum pre-PR credit applied; realistic timelines are often longer."
+}

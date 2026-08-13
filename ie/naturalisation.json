@@ -1,0 +1,102 @@
+{
+  "id": "ie_naturalisation",
+  "country": "IE",
+  "name": "Naturalisation (Irish Citizenship)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ie_stamp_4"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nat_reckonable_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of 'reckonable residence' within the last 9 years, including 1 continuous year immediately before applying. Must hold Stamp 4 or 5 at time of application. Student and asylum-seeker time is NOT reckonable.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isd_naturalisation"
+        },
+        {
+          "id": "nat_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires good character — assessed with ministerial discretion, not an automatic entitlement even when residence criteria are technically met.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isd_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_citizen",
+      "name": "Spouse/civil partner of an Irish citizen",
+      "requirements": [
+        {
+          "id": "spc_marriage",
+          "attribute": "marital_status",
+          "operator": "exists",
+          "value": "married_3_years_3_of_last_5_residence",
+          "hard": true,
+          "blocker_text": "This requires 3 years of marriage/civil partnership and 3 of the last 5 years of residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isd_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "5 (or 3) years of reckonable residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Declaration of fidelity and attendance at a citizenship ceremony",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "isd_naturalisation",
+      "tier": 1,
+      "url": "https://www.irishimmigration.ie/what-we-do/naturalisation/",
+      "title": "Naturalisation - Immigration Service Delivery",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "GENUINE, CONFIRMED PROCESSING-TIME IMPROVEMENT worth flagging prominently — a rare positive counter-trend in this dataset, which more often documents backlogs worsening: per a Ministerial Oireachtas written answer (24 March 2026, ref 22096/26), the median processing time for a naturalisation decision was approximately 8 months in 2024-2025, down from 15 months (2023), 19 months (2022), and 24 months (2021) — a genuine, dated, multi-year improvement credited to the new online process introduced October 2023. Note this is time-to-DECISION specifically; the full path to certificate/ceremony can still run 12-20 months, a real distinction worth surfacing. Fees confirmed: €175 application (non-refundable) + €950 certification on approval (€200 for minors/widow(er)s; free for refugees). Dual citizenship confirmed permitted. PROPOSAL NOT YET LAW, flagged consistently with how this dataset handles similar cases: a DHS-equivalent proposed fee increase (€175→higher, €950 certification also proposed to rise) was NOT confirmed as enacted during this research pass — encoded fees reflect current, operative figures only."
+}

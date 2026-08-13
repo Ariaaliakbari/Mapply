@@ -1,0 +1,135 @@
+{
+  "id": "jp_business_manager",
+  "country": "JP",
+  "name": "Business Manager visa (経営・管理)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (applications from 16 October 2025)",
+      "requirements": [
+        {
+          "id": "bm_capital",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 30000000, "currency": "JPY" },
+          "hard": true,
+          "blocker_text": "This requires capital or investment of at least ¥30,000,000 in the Japanese business, confirmed current for applications from 16 October 2025 onward — a sharp increase from the long-standing ¥5,000,000 figure.",
+          "fix_path": "Secure and commit the required capital.",
+          "fix_time_months": null,
+          "source_id": "isa_business_manager_reform"
+        },
+        {
+          "id": "bm_employee",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "full_time_employee_hired",
+          "hard": true,
+          "blocker_text": "This requires hiring at least one full-time employee who is a Japanese national, permanent resident, spouse of a Japanese national or permanent resident, long-term resident, or special permanent resident — employment is now mandatory regardless of capital amount, unlike the previous either/or structure.",
+          "fix_path": "Hire a qualifying full-time employee.",
+          "fix_time_months": 2,
+          "source_id": "isa_business_manager_reform"
+        },
+        {
+          "id": "bm_japanese",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B2",
+          "hard": true,
+          "blocker_text": "This requires either the applicant or the hired employee to hold Japanese language ability equivalent to JLPT N2 or higher (a new requirement from the October 2025 reform).",
+          "fix_path": "Take an approved Japanese test at N2, or ensure the hired employee meets this standard.",
+          "fix_time_months": 6,
+          "source_id": "isa_business_manager_reform"
+        },
+        {
+          "id": "bm_experience",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "This requires at least 3 years of management/business experience, or a relevant master's degree/MBA — a new requirement from the October 2025 reform; previously no such experience test existed.",
+          "fix_path": "Document qualifying management experience or obtain a relevant advanced degree.",
+          "fix_time_months": null,
+          "source_id": "isa_business_manager_reform"
+        },
+        {
+          "id": "bm_business_plan",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "professionally_reviewed_business_plan",
+          "hard": true,
+          "blocker_text": "This requires a business plan reviewed and confirmed by a qualified professional (small and medium enterprise consultant, certified public accountant, or tax accountant) — business plans are no longer optional/informal.",
+          "fix_path": "Engage a qualified professional to review and confirm the business plan.",
+          "fix_time_months": 2,
+          "source_id": "isa_business_manager_reform"
+        },
+        {
+          "id": "bm_office",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "dedicated_independent_office_space",
+          "hard": true,
+          "blocker_text": "This requires securing dedicated, independent office space — virtual offices and similarly loose arrangements are now genuinely difficult to qualify with, a real tightening from prior practice.",
+          "fix_path": "Secure appropriate dedicated office space.",
+          "fix_time_months": 2,
+          "source_id": "isa_business_manager_reform"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of ¥30,000,000 capital, including documentation of how the funds were accumulated (subject to genuine scrutiny)",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Professional-reviewed business plan",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employment contract for the required full-time employee",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Office lease evidencing dedicated, independent business premises",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 months, 6 months, 1 year, 3 years, or 5 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_permanent_residence", "jp_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "isa_business_manager_reform",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 在留資格「経営・管理」に係る上陸基準省令等の改正 (Business Manager status landing-permission ministerial ordinance reform), in force 16 October 2025",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT, one of the single largest numeric threshold jumps found across this entire multi-country dataset: the capital requirement rose from ¥5,000,000 to ¥30,000,000 — a SIX-FOLD increase — effective 16 October 2025. This is dramatically larger in proportional terms than any other threshold change encountered in this dataset (Germany's Blue Card, France's SMIC decoupling, Australia's TSMIT indexation all move by single-digit percentages annually; this moved 500%). The old ¥5,000,000 figure is EXTREMELY widely cited across the internet as 'the' Business Manager visa requirement, including in countless English-language relocation guides written before October 2025 — any source still citing ¥5 million for new applications from October 2025 onward is describing a fully superseded rule, arguably the single highest-confidence counterfeit-figure catch in this entire dataset given how universally the old figure was known and repeated. FIVE additional new requirements were bundled into the SAME reform simultaneously (mandatory employee hire regardless of capital, JLPT N2 Japanese language test, 3-years-experience-or-relevant-master's test, professional business-plan review, and a stricter dedicated-office standard) — this wasn't a single-number update but a comprehensive tightening of the entire route, comparable in scope to how Portugal's Lei 61/2025 restructured multiple aspects of that country's immigration system simultaneously. TRANSITION MECHANICS confirmed: existing Business Manager visa holders as of 16 October 2025 get a 3-year transitional period (through 16 October 2028) to bring their status into compliance with the new standards at renewal — not a permanent grandfather clause, but a real phase-in window worth flagging distinctly from a hard cutover."
+}

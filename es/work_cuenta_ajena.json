@@ -1,0 +1,123 @@
+{
+  "id": "es_work_cuenta_ajena",
+  "country": "ES",
+  "name": "Work Visa — Employed (Cuenta Ajena)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route — subject to labour market test",
+      "requirements": [
+        {
+          "id": "ca_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer from a Spanish employer.",
+          "fix_path": "Secure a job offer from a Spanish employer.",
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024"
+        },
+        {
+          "id": "ca_labour_test",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "situacion_nacional_de_empleo_pass_or_exemption",
+          "hard": true,
+          "blocker_text": "This requires either passing the situación nacional de empleo (labour-market test showing no suitable Spanish/EU candidate is available), or the occupation appearing on the Catálogo de Ocupaciones de Difícil Cobertura (shortage occupations catalogue), which exempts the employer from the test.",
+          "fix_path": "Confirm whether the occupation is on the shortage list, or complete the labour-market test process.",
+          "fix_time_months": 2,
+          "source_id": "rd_1155_2024"
+        }
+      ]
+    },
+    {
+      "id": "highly_qualified_pac",
+      "name": "Highly Qualified Professional (PAC, exempt from labour market test)",
+      "requirements": [
+        {
+          "id": "pac_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer in a highly-qualified role.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_14_2013"
+        },
+        {
+          "id": "pac_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 41356.36, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a gross annual salary of at least €41,356.36 (2026 figure, in force since June 2026), processed by UGE-CE and exempt from the labour-market test.",
+          "fix_path": "Negotiate a higher salary meeting the PAC threshold.",
+          "fix_time_months": null,
+          "source_id": "inclusion_umbral_salarial_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Labour-market test documentation (unless exempt via shortage occupation or PAC status)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["es_eu_blue_card", "es_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "rd_1155_2024",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Real Decreto 1155/2024 (Reglamento de Extranjería)",
+      "accessed_at": "2026-08-09"
+    },
+    {
+      "id": "ley_14_2013",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Ley 14/2013, Art. 71.2, Profesional Altamente Cualificado (PAC)",
+      "accessed_at": "2026-08-09"
+    },
+    {
+      "id": "inclusion_umbral_salarial_2026",
+      "tier": 1,
+      "url": "https://www.inclusion.gob.es/documents/d/unidadgrandesempresas/umbral-salarial.pdf",
+      "title": "Ministerio de Inclusión, Seguridad Social y Migraciones — UGE-CE umbral salarial, June 2026 update",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "PAC salary threshold €41,356.36 confirmed directly via the official UGE-CE PDF, updated JUNE 2026 — this figure re-indexed TWICE within 2026 alone (January and June), the fastest-changing single figure found across the entire five-country dataset so far. HIGH STALE-DATA RISK: the January 2026 figure of €39,269.92 is now itself superseded and stale as of June — some tier-3 sites still show €39,269.92 as current. The methodology is genuinely unusual and worth encoding precisely: the threshold is set as exactly 1.4× the INE's published average gross annual earnings per worker (Encuesta de Estructura Salarial), so it moves whenever INE releases new wage-survey data, not on a fixed annual calendar date the way most other thresholds in this dataset do — this is a genuinely different update_cadence pattern from the January/July/annual patterns seen elsewhere, and arguably deserves its own national-variable entry pegged to the INE average rather than being hardcoded, a refinement not yet implemented here given the figure's very recent (June 2026) change. Standard route's labour-market test (situación nacional de empleo) is a real, still-active gate that several other countries in this dataset (UK, Germany, NL for HSM) have moved away from — worth surfacing as a genuine structural difference in any cross-country comparison of employer-sponsored routes."
+}

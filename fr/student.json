@@ -1,0 +1,86 @@
+{
+  "id": "fr_student",
+  "country": "FR",
+  "name": "VLS-TS Étudiant (Student visa)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "admission_to_recognised_institution",
+          "hard": true,
+          "blocker_text": "This requires admission to a recognised French higher-education institution, typically via the Campus France procedure for most applicant nationalities.",
+          "fix_path": "Secure admission and complete the Campus France procedure where applicable.",
+          "fix_time_months": null,
+          "source_id": "campus_france"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_means_reference_amount",
+          "hard": true,
+          "blocker_text": "This requires demonstrating sufficient financial means, assessed against a reference monthly amount used by Campus France/consulates.",
+          "fix_path": "Arrange sufficient funds or a scholarship/funding declaration.",
+          "fix_time_months": 1,
+          "source_id": "campus_france"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission letter from the institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of financial means",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Campus France procedure completion (for applicable nationalities)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of the course, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fr_aps_job_seeker", "fr_talent_salarie_qualifie", "fr_vls_ts_salarie"]
+  },
+  "sources": [
+    {
+      "id": "campus_france",
+      "tier": 1,
+      "url": "https://www.campusfrance.org",
+      "title": "Campus France — official student admission and visa procedure",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Work rights: up to 964 hours/year (approximately equivalent to 60% of full-time), a distinctive annual-hours cap rather than the weekly-hours caps used by most other countries in this dataset (UK, Germany, Netherlands all use weekly limits) — worth surfacing as a genuine structural difference. SOURCING CAVEAT flagged honestly: the exact financial reference amount was not confirmed at a specific tier-1 figure during this research pass — Campus France and consulates apply a reference monthly amount for the 'sufficient means' test, but the precise current euro figure needs a follow-up fetch of the specific Campus France financial-guarantee page before this can be considered fully sourced, similar to Portugal's Blue Card salary caveat. This is the direct feeder into fr_aps_job_seeker, closing France's version of the core Journey chain seen across every country in this dataset."
+}

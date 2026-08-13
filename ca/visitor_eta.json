@@ -1,0 +1,89 @@
+{
+  "id": "ca_visitor_eta",
+  "country": "CA",
+  "name": "Visitor Visa (TRV) and eTA",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "trv",
+      "name": "Temporary Resident Visa (visa-required nationalities)",
+      "requirements": [
+        {
+          "id": "trv_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave Canada at the end of your visit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_trv"
+        }
+      ]
+    },
+    {
+      "id": "eta",
+      "name": "Electronic Travel Authorization (visa-exempt air travellers)",
+      "requirements": [
+        {
+          "id": "eta_country",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "eta_eligible_country",
+          "hard": true,
+          "blocker_text": "This requires holding a passport from a visa-exempt country and applying for an eTA before flying to Canada.",
+          "fix_path": "Apply for an eTA online.",
+          "fix_time_months": null,
+          "source_id": "ircc_eta"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence of sufficient funds and intent to leave",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "TRV typically valid up to 10 years or passport expiry, each visit generally up to 6 months; eTA valid up to 5 years or passport expiry, each visit generally up to 6 months",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ircc_trv",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/temporary-resident-visa.html",
+      "title": "Temporary resident visa - IRCC",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "ircc_eta",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/eta.html",
+      "title": "Electronic Travel Authorization (eTA) - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "TRV fee $100/person (family maximum $500) + $85 biometrics; eTA fee just $7, approved within minutes in most cases — a genuinely low-friction visa-exempt product. Processing time (outside Canada, TRV) varies significantly by country: roughly 17 days (Philippines) to 48 days (Pakistan) per country-specific estimates from the underlying research. Official applications should only be made via canada.ca/eta — a genuine warning worth surfacing given the pattern (seen across multiple countries in this dataset) of third-party sites charging inflated fees for straightforward government processes."
+}

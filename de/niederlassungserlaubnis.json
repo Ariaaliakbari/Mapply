@@ -1,0 +1,175 @@
+{
+  "id": "de_niederlassungserlaubnis",
+  "country": "DE",
+  "name": "Niederlassungserlaubnis (permanent settlement permit)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["de_eu_blue_card", "de_freelance_self_employment", "de_family_reunification_spouse"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "via_blue_card",
+      "name": "Via EU Blue Card",
+      "requirements": [
+        {
+          "id": "bc_route",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "de_eu_blue_card",
+          "hard": true,
+          "blocker_text": "This requires currently holding an EU Blue Card.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_18c"
+        },
+        {
+          "id": "bc_months_b1",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "This requires 21 months held with German at B1, or 27 months with German at A1 only.",
+          "fix_path": "Reach B1 German to shorten the wait from 27 to 21 months.",
+          "fix_time_months": null,
+          "source_id": "gesetze_18c"
+        },
+        {
+          "id": "bc_pension",
+          "attribute": "months_on_current_route",
+          "operator": "exists",
+          "value": "matching_months_of_pension_contributions",
+          "hard": true,
+          "blocker_text": "This requires pension contributions matching the qualifying period (21 or 27 months).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_18c"
+        }
+      ]
+    },
+    {
+      "id": "via_general_skilled_work",
+      "name": "General skilled-worker route",
+      "requirements": [
+        {
+          "id": "gen_months",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires 24 months of qualified employment (§18b/§18a routes), plus B1 German and secured livelihood — faster than the general 5-year path but slower than Blue Card's accelerated timeline.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_18c"
+        },
+        {
+          "id": "gen_german",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires German at B1.",
+          "fix_path": "Take an approved German test at B1.",
+          "fix_time_months": 4,
+          "source_id": "gesetze_18c"
+        }
+      ]
+    },
+    {
+      "id": "general_5_year",
+      "name": "General route (any qualifying residence status)",
+      "requirements": [
+        {
+          "id": "g5_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of continuous lawful residence in Germany on a qualifying residence status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_9"
+        },
+        {
+          "id": "g5_german",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires German at B1.",
+          "fix_path": "Take an approved German test at B1.",
+          "fix_time_months": 4,
+          "source_id": "gesetze_9"
+        },
+        {
+          "id": "g5_pension",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 60 months of pension contributions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_9"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Approved German test at B1 (or A1 if relying on the longer Blue Card timeline)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Pension contribution record matching the qualifying period",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Naturalisation-style integration/orientation course certificate where required",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "status can lapse after 6+ months' continuous absence without prior authorization",
+    "switchable_to": ["de_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_18c",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__18c.html",
+      "title": "§ 18c AufenthG - Niederlassungserlaubnis für Fachkräfte (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "gesetze_9",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__9.html",
+      "title": "§ 9 AufenthG - Niederlassungserlaubnis (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "This is Germany's ILR-equivalent hub route, structured the same way uk_ilr is — one route, multiple qualifying groups reflecting different feeder routes and timelines, rather than splitting per feeder route. prerequisites.required_prior_route_ids lists three representative feeder routes but is not exhaustive (Chancenkarte, ICT, and others feed in indirectly via Blue Card/skilled-worker permits rather than directly) — same known schema gap as uk_ilr where prerequisites is bound to the Route rather than the RequirementGroup, so the top-level field is necessarily a simplification. citizenship_after_months (60) uses the general 5-year naturalisation timeline layered on TOP of already holding this permit for the general_5_year group, but for via_blue_card and via_general_skilled_work groups the true combined citizenship timeline is shorter since settlement itself already took only 21-24 months — this route-level field can't express that variance, another instance of the Outcome-bound-to-Route gap seen throughout both country datasets. This route intentionally does NOT include the family reunification-spouse feeder path in its main requirement groups despite listing it in prerequisites, because that route's own settlement timeline (36 months via independent residence right) is genuinely faster and structurally different enough to arguably need its own group — flagged as incomplete rather than forced in inaccurately."
+}

@@ -1,0 +1,150 @@
+{
+  "id": "de_eu_blue_card",
+  "country": "DE",
+  "name": "EU Blue Card (Blaue Karte EU)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard threshold",
+      "requirements": [
+        {
+          "id": "bc_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer matching your qualification level from a German employer.",
+          "fix_path": "Secure a qualifying job offer from a German employer.",
+          "fix_time_months": null,
+          "source_id": "gesetze_18g"
+        },
+        {
+          "id": "bc_degree",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires a recognised university degree (checked via anabin/ZAB against your home institution).",
+          "fix_path": "Obtain formal recognition of your degree via the ZAB/anabin database if it isn't automatically recognised.",
+          "fix_time_months": 3,
+          "source_id": "gesetze_18g"
+        },
+        {
+          "id": "bc_salary_standard",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "pension_ceiling_2026", "ratio": 0.50, "resolved_amount": 50700, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a gross annual salary of at least €50,700 (2026 figure — 50% of the annual pension-insurance contribution ceiling, which re-baselines every 1 January).",
+          "fix_path": "Negotiate a higher salary, or check eligibility for the reduced shortage-occupation/graduate/IT threshold.",
+          "fix_time_months": null,
+          "source_id": "makeit_bluecard"
+        }
+      ]
+    },
+    {
+      "id": "shortage_graduate_it",
+      "name": "Shortage occupation, recent graduate, or IT specialist (reduced threshold)",
+      "requirements": [
+        {
+          "id": "bc2_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "This requires a confirmed job offer matching your qualification level from a German employer.",
+          "fix_path": "Secure a qualifying job offer from a German employer.",
+          "fix_time_months": null,
+          "source_id": "gesetze_18g"
+        },
+        {
+          "id": "bc2_eligibility",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "shortage_occupation_or_recent_graduate_or_it_specialist_3yr_experience",
+          "hard": true,
+          "blocker_text": "This requires either a role in a shortage occupation, a degree awarded within the last 3 years, or (for IT specialists without a matching degree) at least 3 years of relevant professional experience within the last 7 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_18g"
+        },
+        {
+          "id": "bc2_salary_reduced",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "pension_ceiling_2026", "ratio": 0.453, "resolved_amount": 45934.20, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a gross annual salary of at least €45,934.20 (2026 figure — 45.3% of the annual pension-insurance contribution ceiling).",
+          "fix_path": "Negotiate a higher salary.",
+          "fix_time_months": null,
+          "source_id": "gesetze_18g"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Degree recognition (anabin/ZAB) or equivalent proof of qualification",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employment contract meeting the applicable salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Federal Employment Agency approval (for offers below €4,225/month gross)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years, or contract duration + 3 months if shorter",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 21,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 81,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_niederlassungserlaubnis"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_18g",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__18g.html",
+      "title": "§ 18g AufenthG - Blaue Karte EU (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "makeit_bluecard",
+      "tier": 1,
+      "url": "https://www.make-it-in-germany.com/en/visa-residence/types/eu-blue-card",
+      "title": "EU Blue Card - Make it in Germany (Federal Government portal)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "envoy_bluecard",
+      "tier": 3,
+      "url": "https://www.envoyglobal.com",
+      "title": "Envoy Global — Blue Card threshold corroboration (used to confirm the 45.3% shortage-rate figure; treat as secondary corroboration of a tier-1-sourced formula, not the primary source)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Highest-value counterfeit-figure catch in the Germany dataset. 2026 thresholds are €50,700 (standard) and €45,934.20 (shortage/graduate/IT) — pegged as exactly 50% and 45.3% of the 2026 pension-insurance contribution ceiling of €101,400/year, confirmed via Deutsche Rentenversicherung. Multiple sources still show 2025's stale €48,300/€43,750 figures as if current for 2026 — a direct parallel to the UK Skilled Worker £38,700-vs-£41,700 case, except here the whole THRESHOLD moves every January 1, not just occasionally. This is exactly the NationalVariable + formula-value pattern the schema was built for (see schema-v1.md §3, Portugal D7 stress test) — value stored here as a literal 2026 figure PLUS a formula annotation, since the schema's requirement.value field doesn't yet have a first-class formula_ref/ratio structure wired into the validator; a real gap, flagged rather than faked. pr_after_months (21) assumes B1 German — the settlement timeline under §18c(2) AufenthG is 27 months at basic/A1 German, reduced to 21 months at B1. IMPORTANT CORRECTION: the commonly-cited '33 months' figure (still on some English-language BMI FAQ pages) is stale — it was the PRE-2023-reform figure (33/27 months), superseded by the current 27/21 months since the March 2024 reform. This is a rare case where even an official English-language government page lags the German statute — flagged explicitly since it's the exact failure mode this product exists to catch, this time inside tier-1 sourcing itself. citizenship_after_months (81) = 21 months to settlement + standard 60-month naturalisation residence requirement, though Blue Card holders' settlement time likely also counts toward the naturalisation clock — not yet modeled precisely, flagged as an open question rather than asserted as fact."
+}

@@ -1,0 +1,138 @@
+{
+  "id": "jp_permanent_residence",
+  "country": "JP",
+  "name": "Permanent Resident visa (永住者)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["jp_gijinkoku", "jp_highly_skilled_professional", "jp_business_manager", "jp_spouse_child_japanese", "jp_long_term_resident"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "This requires 10 continuous years of residence in Japan, of which the most recent 5 years must include a valid, ongoing work status with genuine income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_pr_guidelines"
+        },
+        {
+          "id": "pr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "stable_sufficient_livelihood_and_tax_compliance",
+          "hard": true,
+          "blocker_text": "This requires a stable, sufficient livelihood, and being fully current on tax and public pension/insurance payments — genuine, well-documented compliance is scrutinised closely.",
+          "fix_path": "Ensure all tax and pension/insurance obligations are current before applying.",
+          "fix_time_months": null,
+          "source_id": "isa_pr_guidelines"
+        },
+        {
+          "id": "pr_conduct",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires good conduct.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_pr_guidelines"
+        }
+      ]
+    },
+    {
+      "id": "hsp_accelerated",
+      "name": "Highly Skilled Professional accelerated route",
+      "prerequisites_override": {
+        "required_prior_route_ids": ["jp_highly_skilled_professional"],
+        "minimum_months_held": 12
+      },
+      "requirements": [
+        {
+          "id": "hspa_status",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "jp_highly_skilled_professional",
+          "hard": true,
+          "blocker_text": "This requires holding Highly Skilled Professional status with 70+ points maintained for 3 years, or 80+ points maintained for 1 year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_pr_guidelines"
+        }
+      ]
+    },
+    {
+      "id": "spouse_accelerated",
+      "name": "Spouse of Japanese national accelerated route",
+      "prerequisites_override": {
+        "required_prior_route_ids": ["jp_spouse_child_japanese"],
+        "minimum_months_held": 36
+      },
+      "requirements": [
+        {
+          "id": "spa_status",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "jp_spouse_child_japanese",
+          "hard": true,
+          "blocker_text": "This requires being married to and residing with a Japanese national or permanent resident for a sufficient period (commonly cited around 3 years of marriage with at least 1 year of residence in Japan).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_pr_guidelines"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "10 (or accelerated) years of residence and tax/pension compliance evidence",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Guarantor letter from a Japanese national or permanent resident",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "isa_pr_guidelines",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 永住許可に関するガイドライン (Permanent Residence Guidelines, revised 24 February 2026, Reiwa 8)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Japan's Eijusha hub route, same structural role as uk_ilr, de_niederlassungserlaubnis, and every other country's PR-hub route in this dataset — but with a genuinely long standard timeline (10 years) among the longest in this entire multi-country dataset, second only to some of Spain's/UK's slower non-CPLP tracks. Three groups modeled: standard 10-year track, and two accelerated tracks (HSP fast-track at 1-3 years depending on points, spouse-of-Japanese-national at ~3 years) using prerequisites_override — a clean, confirmed application of the schema's group-level prerequisites mechanism, same pattern as UK ILR's multi-group structure. citizenship_after_months (0) reflects that Japan's naturalisation residence clock (5 years) runs independently of PR status rather than being gated behind it — genuinely UNLIKE most European countries in this dataset (UK, Germany, Netherlands, Portugal, Spain, France all require holding PR/settlement before or as part of naturalisation eligibility) — someone could naturalise in Japan without ever holding PR at all, a real and significant structural distinction worth surfacing prominently in any cross-country comparison view. Permanent Residence Guidelines dated 24 February 2026 (Reiwa 8) confirm this is current, recently-reaffirmed policy, not a stale historical rule — same freshness confirmation as jp_highly_skilled_professional."
+}

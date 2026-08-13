@@ -1,0 +1,99 @@
+{
+  "id": "ch_third_country_work_permit",
+  "country": "CH",
+  "name": "Third-Country Work Permit (B/L, quota-based)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": { "basis": "2026 federal quota frozen at 8,500 total (4,500 B + 4,000 L), unchanged from 2025, confirmed 19 November 2025. Additional 3,500 permits for EU/EFTA service providers (3,000 L + 500 B) and 3,500 for UK nationals (2,100 B + 1,400 L).", "source_id": "admin_ch_quota" },
+  "application_window": { "window_type": "annual", "opens": null, "closes": null, "cap_type": "fixed_number", "typical_fill_time_days": null },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "twp_priority",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires the employer to prove no suitable Swiss/EU-EFTA candidate was available (priority of domestic workers / Inländervorrang), overall economic interest of Switzerland, and quota availability at the cantonal level.",
+          "fix_path": "Secure a qualifying job offer from an employer prepared to complete the priority test.",
+          "fix_time_months": 3,
+          "source_id": "sem_third_country"
+        },
+        {
+          "id": "twp_qualification",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This is generally restricted to managers, specialists, and other qualified workers — typically requiring a university degree and several years of relevant experience.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_third_country"
+        },
+        {
+          "id": "twp_quota",
+          "attribute": "job_offer_status",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "third_country_quota_b_permits_2026", "ratio": 1.0, "resolved_amount": 4500, "currency": null, "note": "B permits; separate 4,000 L permit quota also applies" },
+          "hard": true,
+          "blocker_text": "This is subject to the annual federal quota (4,500 B + 4,000 L for 2026), distributed to cantons, which can be exhausted before year-end in high-demand cantons.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "admin_ch_quota"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employer's priority-test (Inländervorrang) documentation",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Degree certificate and evidence of relevant professional experience",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "B permit: 1 year, renewed annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_settlement_permit", "ch_naturalisation_ordinary"]
+  },
+  "sources": [
+    {
+      "id": "sem_third_country",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/arbeit.html",
+      "title": "Working in Switzerland - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "admin_ch_quota",
+      "tier": 1,
+      "url": "https://www.admin.ch",
+      "title": "Federal Council quota decision for 2026, 19 November 2025",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed and genuinely frozen year-over-year: 8,500 total quota (4,500 B + 4,000 L) unchanged from 2025. Confirmed utilization context: as of end-2024, companies had used 74% of the available quota, well below full exhaustion — worth flagging since demand doesn't always match the headline cap. Duration (1 year, third-country) is genuinely shorter than the EU/EFTA equivalent's 5-year B permit — the same underlying permit letter (B) means something structurally different depending on which of Switzerland's two tiers the holder falls into, a real and confirmed asymmetry central to the whole Swiss system. No national minimum wage exists (Switzerland has none federally; a handful of cantons set their own) — so unlike most other countries' work-sponsored routes in this dataset, there's no single salary-threshold figure to encode; the market-rate test is comparative rather than absolute."
+}

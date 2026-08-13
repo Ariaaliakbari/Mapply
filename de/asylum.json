@@ -1,0 +1,88 @@
+{
+  "id": "de_asylum",
+  "country": "DE",
+  "name": "Asylum (Asyl)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "asy_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_germany",
+          "hard": true,
+          "blocker_text": "This can only be claimed while physically in Germany or at a German border.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bamf_asylum"
+        },
+        {
+          "id": "asy_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution_or_serious_harm",
+          "hard": true,
+          "blocker_text": "This requires meeting one of four protection categories assessed by BAMF: constitutional asylum (Art. 16a GG, for those persecuted for political reasons who did not arrive via a safe third country), refugee protection (§3 AsylG, Geneva Convention grounds), subsidiary protection (§4 AsylG, serious harm short of persecution), or a national deportation ban (§60(5)/(7) AufenthG).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asylg"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at BAMF screening and substantive interview",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 years (constitutional asylum / refugee protection) or 1 year initially, extended by 2 years (subsidiary protection)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_niederlassungserlaubnis"]
+  },
+  "sources": [
+    {
+      "id": "bamf_asylum",
+      "tier": 1,
+      "url": "https://www.bamf.de/DE/Themen/AsylFluechtlingsschutz/AblaufAsylverfahrens/Entscheidung/entscheidung-node.html",
+      "title": "BAMF - Entscheidung des Bundesamtes im Asylverfahren",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "asylg",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/asylvfg_1992/",
+      "title": "Asylgesetz (AsylG) (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "No application fee — same structural feature as uk_asylum. Four distinct protection statuses collapsed into one requirement group here since the schema's predicate model can't cleanly express 'meets any one of four legally distinct tests with different downstream consequences' without either fragmenting into four separate routes (which would violate the core route-identity rule) or four separate requirement groups with materially different Outcome blocks — a genuine schema tension, same class as the Global Talent/ILR Outcome-bound-to-Route gap, but sharper here since the FOUR outcomes genuinely differ (duration, and whether family reunification is currently even possible). MAJOR LIVE POLICY RISK, same class as uk_asylum: family reunification for SUBSIDIARY PROTECTION holders specifically is suspended until 24 July 2027 (see de_family_reunification_spouse notes) — meaning family_can_join: true is only accurate for constitutional-asylum and refugee-protection statuses, not subsidiary protection, a real inaccuracy in this file's current single-group modeling that should be fixed before publication. pr_after_months (36) and citizenship_after_months (96) reflect the refugee-protection track; subsidiary protection's path is both slower and currently blocked on the family dimension — flagged rather than silently averaged into one number."
+}

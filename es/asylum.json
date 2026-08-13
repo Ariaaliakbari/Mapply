@@ -1,0 +1,81 @@
+{
+  "id": "es_asylum",
+  "country": "ES",
+  "name": "International Protection (Protección Internacional)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "asy_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_spain_or_at_border",
+          "hard": true,
+          "blocker_text": "This can only be claimed while on Spanish territory or at a border post.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_12_2009"
+        },
+        {
+          "id": "asy_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_status_or_subsidiary_protection",
+          "hard": true,
+          "blocker_text": "This requires meeting one of two categories: refugee status (estatuto de refugiado — persecution based on race, religion, nationality, political opinion, membership of a social group, gender, or sexual orientation under the 1951 Geneva Convention) or subsidiary protection (protección subsidiaria — real risk of serious harm including death penalty, torture, or indiscriminate violence in armed conflict).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_12_2009"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at CIAR/Oficina de Asilo y Refugio screening and interview",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "5-year residence-and-work authorization (both statuses)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["es_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "ley_12_2009",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Ley 12/2009 (Asylum Law) and RD 203/1995",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "No application fee, consistent with every other country's asylum route in this dataset. Both protection statuses grant the SAME 5-year duration in Spain, a genuine structural simplicity relative to Germany, Netherlands, and Portugal's asylum routes, all of which differentiate duration by status (typically shorter for subsidiary protection) — worth surfacing as a real, confirmed cross-country difference. work_rights marked 'restricted' rather than 'full' specifically because the right to work only activates after 6 months from application, not immediately upon status grant — a genuine timing nuance not present on several other countries' asylum routes in this dataset. citizenship_after_months (60) uses the REFUGEE-specific 5-year naturalisation track (a reduced track distinct from the 10-year general route) rather than the standard figure — refugees get meaningfully faster access to citizenship in Spain, worth surfacing prominently. VOLUME CONTEXT, tier-1 confirmed and worth including for realism: Spain formalized 144,396 international-protection applications in 2025 (Ministerio del Interior, published 16 January 2026), the THIRD-LARGEST volume in the EU behind Germany and France — Venezuela led with 85,413 applications (59.2% of the total); overall recognition rate was 11.2%. This corrects a ~180,000 figure circulating on some tier-3 sites, which appears to be an overstatement."
+}

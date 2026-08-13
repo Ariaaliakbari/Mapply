@@ -1,0 +1,104 @@
+{
+  "id": "jp_long_term_resident",
+  "country": "JP",
+  "name": "Long-Term Resident visa (定住者)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "nikkei_2nd_gen",
+      "name": "Nikkei 2nd generation (child of a former Japanese national)",
+      "requirements": [
+        {
+          "id": "nk2_ancestry",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "child_of_person_born_as_japanese_national",
+          "hard": true,
+          "blocker_text": "This requires being the child of a person who was born a Japanese national and later lost that nationality (e.g. through naturalisation abroad) — 2nd-generation Nikkei descendants.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_teijusha"
+        },
+        {
+          "id": "nk2_conduct",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires good conduct.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_teijusha"
+        }
+      ]
+    },
+    {
+      "id": "nikkei_3rd_gen",
+      "name": "Nikkei 3rd generation (grandchild)",
+      "requirements": [
+        {
+          "id": "nk3_ancestry",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "grandchild_of_person_born_as_japanese_national",
+          "hard": true,
+          "blocker_text": "This requires being the grandchild (3rd generation) of a person born a Japanese national who later lost that nationality — the standard Teijusha route reaches 3rd-generation Nikkei descendants directly, with no sponsor or age-limited program required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_teijusha"
+        },
+        {
+          "id": "nk3_conduct",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires good conduct.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_teijusha"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Documented descent chain (koseki or equivalent civil records linking the applicant to the qualifying Japanese-national ancestor)",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "6 months, 1 year, 3 years, or 5 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_permanent_residence", "jp_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "isa_teijusha",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 定住者 (Long-Term Resident) status, 日系人 (Nikkei) provisions under Ministry of Justice notification (告示)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE GENERATIONAL LIMIT CONFIRMED, matching the pattern of similar restrictions found elsewhere in this dataset (Portugal's 2025 parent/grandparent cap on jure sanguinis): standard, unrestricted Teijusha (Long-Term Resident) status for Nikkei descendants reaches the 3RD generation (grandchildren of a person born Japanese) with full, unrestricted work rights and no sponsor required — the SAME generational depth as Portugal's post-2025 reform, though Japan's limit has been stable long-term rather than a recent tightening. A SEPARATE, genuinely distinct 4th-generation program exists (created 2018, 特定活動 告示43号 status, not Teijusha) but is materially different: capped at ages 18-30, maximum 5 years total, REQUIRES a named Japanese sponsor ('Nikkei Yonsei Uketsuke Supporter'), and is explicitly framed as a cultural/language-learning bridge program rather than open settlement — modeled here as a scope exclusion rather than a third requirement_group, since its terminal, non-settlement nature (no leads_to_pr, no unrestricted work) makes it functionally closer to a working-holiday-style route than to the Nikkei ancestry route proper; a future pass could encode it as its own separate file (jp_nikkei_yonsei) given how structurally distinct it is. Also note: Teijusha status covers OTHER special circumstances beyond Nikkei descent (certain refugee-adjacent cases, some divorced/widowed spouses of Japanese nationals meeting residence thresholds) not modeled as separate groups here — a scope simplification, since Nikkei descent is the route's most requested and most distinctive use case for this dataset's purposes."
+}

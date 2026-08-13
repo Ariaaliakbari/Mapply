@@ -1,0 +1,92 @@
+{
+  "id": "de_job_seeker_post_study",
+  "country": "DE",
+  "name": "Job Seeker residence permit (post-study, § 20 AufenthG)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["de_student", "de_ausbildung"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "js_graduation",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["de_student", "de_ausbildung"],
+          "hard": true,
+          "blocker_text": "This requires having completed a degree at a German university or a recognised vocational training (Ausbildung) program in Germany.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_20"
+        },
+        {
+          "id": "js_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 13092, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires proof of funds of €13,092/year (€1,091/month, 2026 figure).",
+          "fix_path": "Build the required savings or secure a formal funding declaration.",
+          "fix_time_months": null,
+          "source_id": "arbeitsagentur_funds"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "German university degree certificate or vocational training completion certificate",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    },
+    {
+      "document": "Proof of funds for the search period",
+      "difficulty": "routine",
+      "typical_time_days": 28
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 18 months, non-renewable",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_eu_blue_card"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_20",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__20.html",
+      "title": "§ 20 AufenthG - Aufenthaltserlaubnis zur Arbeitsplatzsuche (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "arbeitsagentur_funds",
+      "tier": 1,
+      "url": "https://www.arbeitsagentur.de",
+      "title": "Bundesagentur für Arbeit - funds requirement (same €1,091/month figure as Chancenkarte)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "This is the POST-STUDY / POST-AUSBILDUNG variant of § 20 specifically — distinct from the abroad job-seeker route, which the Chancenkarte has largely superseded since 2024. Unrestricted work rights during the search period (a real difference from the Chancenkarte's capped 20 hours/week) — graduates can take any job while searching, not just trial/side work, because they've already demonstrated integration through their German qualification. This is the direct downstream link from both de_student and de_ausbildung, closing the Journey chain that mirrors the UK's Student→Graduate structure. Non-renewable and terminal if no job is found — must switch to a work permit before expiry or leave Germany, structurally similar to the UK's Graduate visa."
+}

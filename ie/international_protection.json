@@ -1,0 +1,81 @@
+{
+  "id": "ie_international_protection",
+  "country": "IE",
+  "name": "International Protection (Asylum)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ip_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_ireland_or_at_border",
+          "hard": true,
+          "blocker_text": "This can only be claimed in Ireland or at a border post.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipo_asylum"
+        },
+        {
+          "id": "ip_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_status_or_subsidiary_protection",
+          "hard": true,
+          "blocker_text": "This requires meeting refugee status or subsidiary protection criteria under the new International Protection Act 2026 (commenced 12 June 2026), which replaced the 2015 Act and implements the EU Migration and Asylum Pact — the most significant reform of Irish asylum law in the history of the State.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipo_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Mandatory screening on arrival (identity, biometric/Eurodac, security, health, vulnerability)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "statutory targets: Border Procedure cases (from countries with ≤20% recognition rate) decided including appeal within 3 months; standard cases targeted at 6 months; realistic 2025 median first-instance decision was approximately 17 months",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ie_stamp_4", "ie_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipo_asylum",
+      "tier": 1,
+      "url": "https://www.gov.ie/en/department-of-justice-home-affairs-and-migration/",
+      "title": "International Protection Act 2026 - Government of Ireland (commenced 12 June 2026)",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT, one of the largest confirmed asylum-system overhauls in this entire multi-country dataset: the International Protection Act 2026 (signed 22 April 2026, commenced 12 June 2026) replaced the 2015 Act entirely, implementing the EU Migration and Asylum Pact and described by the Irish government itself as 'the most significant reform of Irish asylum laws in the history of the State' — a genuinely strong self-characterisation worth surfacing verbatim. GENUINE, CONFIRMED STATUTORY-VS-REALISTIC GAP: the new Border Procedure targets a 3-month combined decision-plus-appeal for applicants from low-recognition-rate countries, and standard cases target 6 months — but the REALISTIC 2025 median first-instance decision time was approximately 17 months (per Ministerial data reported via RTÉ), nearly triple the standard target even before the new faster procedures had fully taken effect. Applications fell 29.1% in 2025 (13,146, down from 18,553 in 2024) even as the appeals backlog grew to nearly 20,000 — a real and somewhat counterintuitive combination (fewer new applications, growing backlog) worth flagging rather than assuming they'd move together. citizenship_after_months (36) reflects the reduced 3-year naturalisation track available to refugees specifically (see ie_naturalisation), faster than the standard 5-year/60-month track."
+}

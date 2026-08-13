@@ -1,0 +1,127 @@
+{
+  "id": "es_eu_blue_card",
+  "country": "ES",
+  "name": "EU Blue Card (Tarjeta Azul-UE)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard threshold",
+      "requirements": [
+        {
+          "id": "bc_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "This requires an employment contract of at least 6 months (or indefinite) with a Spanish employer.",
+          "fix_path": "Secure a qualifying employment contract.",
+          "fix_time_months": null,
+          "source_id": "orden_pjc_44_2026"
+        },
+        {
+          "id": "bc_qualification",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires a higher-education qualification, or at least 5 years of relevant professional experience.",
+          "fix_path": "Obtain formal recognition of your degree if issued abroad, or document qualifying experience.",
+          "fix_time_months": 3,
+          "source_id": "orden_pjc_44_2026"
+        },
+        {
+          "id": "bc_salary_standard",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 41356.36, "currency": "EUR", "unit": "year", "note": "1.4x the INE average gross annual earnings per worker; re-indexed June 2026" },
+          "hard": true,
+          "blocker_text": "This requires a gross annual salary of at least €41,356.36 (2026 figure, in force since June 2026).",
+          "fix_path": "Negotiate a higher salary, or check eligibility for the reduced threshold.",
+          "fix_time_months": null,
+          "source_id": "inclusion_umbral_salarial_2026"
+        }
+      ]
+    },
+    {
+      "id": "reduced_shortage_or_recent_graduate",
+      "name": "Reduced threshold — shortage occupation or recent graduate",
+      "requirements": [
+        {
+          "id": "bc2_eligibility",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "cno_group_1_2_shortage_or_qualification_within_3_years",
+          "hard": true,
+          "blocker_text": "This reduced threshold applies to CNO-2011 group 1-2 occupations that also appear on the shortage catalogue, or to applicants who obtained their qualification within the last 3 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "orden_pjc_44_2026"
+        },
+        {
+          "id": "bc2_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 33085.09, "currency": "EUR", "unit": "year", "note": "80% of the standard threshold" },
+          "hard": true,
+          "blocker_text": "This requires a gross annual salary of at least €33,085.09 (80% of the standard 2026 threshold).",
+          "fix_path": "Negotiate a higher salary.",
+          "fix_time_months": null,
+          "source_id": "inclusion_umbral_salarial_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Degree certificate or documented 5+ years' professional experience",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Employment contract meeting the applicable salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "tied to contract, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["es_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "orden_pjc_44_2026",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Orden PJC/44/2026, de 27 de enero, EU Blue Card threshold methodology",
+      "accessed_at": "2026-08-09"
+    },
+    {
+      "id": "inclusion_umbral_salarial_2026",
+      "tier": 1,
+      "url": "https://www.inclusion.gob.es/documents/d/unidadgrandesempresas/umbral-salarial.pdf",
+      "title": "Ministerio de Inclusión, Seguridad Social y Migraciones — UGE-CE umbral salarial, June 2026 update",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Same threshold and same June-2026 re-indexing as es_work_cuenta_ajena's PAC group (€41,356.36 / €33,085.09) — Spain's Blue Card and Highly Qualified Professional category share the identical salary figure, a genuine structural simplification worth noting, unlike Germany and the Netherlands where Blue Card and the general skilled-worker route have distinct thresholds. Processed by UGE-CE with full EU portability and time in other EU states counting toward the Spanish settlement clock — standard Blue Card mobility rights, consistent with Germany's and the Netherlands' versions. HIGH STALE-DATA RISK, same as flagged on es_work_cuenta_ajena: the January 2026 figure (€39,269.92) is superseded; any source citing that number is stale as of June 2026."
+}

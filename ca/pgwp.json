@@ -1,0 +1,91 @@
+{
+  "id": "ca_pgwp",
+  "country": "CA",
+  "name": "Post-Graduation Work Permit (PGWP)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ca_study_permit"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "degree_holders",
+      "name": "Bachelor's/master's/doctoral graduates (exempt from field-of-study rule)",
+      "requirements": [
+        {
+          "id": "dg_credential",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires graduating from an eligible program at a DLI with a bachelor's, master's, or doctoral degree — exempt from the field-of-study restriction that applies to non-degree graduates.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_pgwp"
+        }
+      ]
+    },
+    {
+      "id": "non_degree_holders",
+      "name": "Non-degree graduates (field-of-study restricted)",
+      "requirements": [
+        {
+          "id": "ndg_field",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "eligible_cip_code_linked_to_shortage",
+          "hard": true,
+          "blocker_text": "This applies to those who applied for a study permit on/after 1 Nov 2024 in a non-degree program — the field of study must map to one of 920 eligible CIP codes linked to long-term labour shortages.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_pgwp"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Degree/diploma certificate from an eligible program",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Transcript confirming full-time enrolment throughout the program",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years for programs of 2+ years (and for master's degrees regardless of length); shorter programs match program length",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_express_entry_cec"]
+  },
+  "sources": [
+    {
+      "id": "ircc_pgwp",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation.html",
+      "title": "Post-Graduation Work Permit Program - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "FIELD-OF-STUDY REQUIREMENT confirmed as genuinely new and non-trivial: for non-degree graduates who applied for a study permit on/after 1 Nov 2024, the program must map to one of 920 eligible CIP codes linked to long-term labour shortages (per the 25 June 2025 update — 119 fields added, 178 removed, then those 178 re-added 4 July 2025 and remaining eligible until the next update expected early 2026) — a genuinely volatile, mid-update-cycle rule worth flagging as high-risk for staleness. Bachelor's/master's/doctoral graduates and PGWP-eligible flight-school graduates are fully exempt from this restriction. Language requirement to apply: CLB 7 (university grads) / CLB 5 (college grads). Direct feeder into ca_express_entry_cec, the direct-to-PR route that dominates 2026 Express Entry volume — closing Canada's core Journey chain (Student → PGWP → CEC → citizenship)."
+}

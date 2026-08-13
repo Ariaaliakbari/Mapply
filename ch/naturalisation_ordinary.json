@@ -1,0 +1,109 @@
+{
+  "id": "ch_naturalisation_ordinary",
+  "country": "CH",
+  "name": "Citizenship by Naturalisation (Ordinary and Facilitated for Spouses)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ch_settlement_permit"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "ordinary",
+      "name": "Ordinary naturalisation",
+      "requirements": [
+        {
+          "id": "ord_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "This requires 10 years federal residence (reduced from 12 in 2018), holding a C permit at application, plus additional cantonal and communal residence/integration criteria that vary by jurisdiction.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_citizenship"
+        },
+        {
+          "id": "ord_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires B1 oral / A2 written in a national language, plus meeting Art. 58a integration criteria (respect for public order, economic/social participation, familiarity with Swiss life).",
+          "fix_path": "Take an approved language test at B1 oral / A2 written.",
+          "fix_time_months": 6,
+          "source_id": "sem_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "facilitated_spouse_resident",
+      "name": "Facilitated naturalisation — spouse resident in Switzerland",
+      "outcome_override": {
+        "citizenship_after_months": 0
+      },
+      "prerequisites_override": {
+        "required_prior_route_ids": ["ch_family_reunification"],
+        "minimum_months_held": 60
+      },
+      "requirements": [
+        {
+          "id": "fsr_marriage",
+          "attribute": "marital_status",
+          "operator": "exists",
+          "value": "married_3_years_5_years_total_residence",
+          "hard": true,
+          "blocker_text": "This requires 3 years of marriage to a Swiss citizen and 5 years total Swiss residence (year immediately prior in Switzerland). A C permit is not formally required, though valid residence status must be held throughout. Excluded if the Swiss spouse only naturalised after the marriage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Approved language test at the required level",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "10 (or 5) years of residence evidence and cantonal/communal integration documentation",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sem_citizenship",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/buergerrecht.html",
+      "title": "Naturalisation - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE THREE-LEVEL PROCESS, one of the most administratively complex naturalisation structures in this entire multi-country dataset: federal (SEM naturalisation licence) + cantonal + communal, with cantons and communes free to impose ADDITIONAL residence and integration criteria beyond the federal 10-year minimum — some communes even run local assembly votes on individual applications, a genuinely unique feature not replicated anywhere else in this dataset. SEM federal fee is only CHF 100/150/50 (single/joint/minor) — but cantonal and communal fees add substantially, pushing the REAL total cost to commonly CHF 1,000-3,000+, a stale-figure risk worth flagging since many tier-3 sites quote a single blended 'naturalisation fee' as if it were federal. Facilitated route for spouses: 3 years marriage + 5 years total residence (year immediately prior in Switzerland) — genuinely does NOT require holding a C permit first, unlike the ordinary route, though valid residence status throughout is still required; explicitly EXCLUDED if the Swiss spouse only naturalised themselves after the marriage — a real anti-circumvention rule worth flagging. Dual citizenship confirmed permitted for both routes."
+}

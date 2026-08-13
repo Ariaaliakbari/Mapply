@@ -1,0 +1,87 @@
+{
+  "id": "ca_citizenship_descent",
+  "country": "CA",
+  "name": "Citizenship by Descent (Bill C-3)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_before_cutoff",
+      "name": "Born/adopted abroad BEFORE 15 December 2025 (2nd generation or later)",
+      "requirements": [
+        {
+          "id": "bbc_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "canadian_parent_also_born_abroad",
+          "hard": true,
+          "blocker_text": "This covers a person born or adopted abroad, to a Canadian parent (who was themselves also born abroad), before 15 December 2025 — citizenship is automatically restored/conferred by operation of law, with NO generational cap for this group.",
+          "fix_path": "Apply for a citizenship certificate as proof (interim-measure applications are processed under the new rules without re-filing).",
+          "fix_time_months": 6,
+          "source_id": "ircc_bill_c3"
+        }
+      ]
+    },
+    {
+      "id": "born_after_cutoff",
+      "name": "Born/adopted abroad ON/AFTER 15 December 2025 (2nd generation or later)",
+      "requirements": [
+        {
+          "id": "bac_parent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "canadian_parent_also_born_abroad",
+          "hard": true,
+          "blocker_text": "This covers births/adoptions abroad on or after 15 December 2025 to a Canadian parent who was themselves also born abroad — citizenship requires the Canadian parent to meet a substantial-connection test of at least 1,095 days' physical presence in Canada BEFORE the birth/adoption.",
+          "fix_path": "The Canadian parent must document at least 1,095 days of physical presence in Canada before the child's birth/adoption.",
+          "fix_time_months": null,
+          "source_id": "ircc_bill_c3"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth/adoption certificate and evidence of the Canadian parent's citizenship",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Evidence of the Canadian parent's 1,095-day physical presence before the birth (post-cutoff group only)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ircc_bill_c3",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/2025/11/bill-c-3.html",
+      "title": "Bill C-3 - IRCC (Royal Assent 20 Nov 2025, in force 15 Dec 2025)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR LIVE LEGAL EVENT, one of the most significant citizenship-law changes in this entire multi-country research pass: the Ontario Superior Court of Justice declared Canada's 'first-generation limit' on citizenship by descent unconstitutional in December 2023; Bill C-3 (Royal Assent 20 Nov 2025, in force 15 Dec 2025) removed that limit for the affected population. This is genuinely the OPPOSITE direction from Portugal's contemporaneous jure sanguinis restriction — Portugal imposed a NEW generational cap in 2025 while Canada REMOVED an existing one in the same period, a real and striking cross-country contrast worth surfacing prominently in any comparison view of ancestry routes across this dataset. The pre/post 15-Dec-2025 bifurcation is genuinely load-bearing: pre-cutoff 2nd-generation-or-later applicants get automatic restoration with NO cap, while post-cutoff births require the Canadian parent to clear a 1,095-day substantial-connection test — modeled here as two distinct requirement groups rather than one, since collapsing them would misrepresent a materially different legal test. STALE-DATA WARNING confirmed during research: several tier-3 sites (mercan.com, ircc.com [a look-alike commercial domain, NOT the real government site], libertyimmigration.ca, visaverge.com) describe this reform expansively and sometimes inaccurately — claiming reach to 'great-grandparents' or 'millions of Americans automatically eligible.' Only canada.ca should be treated as authoritative for generation-counting specifics."
+}

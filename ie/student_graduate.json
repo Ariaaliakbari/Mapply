@@ -1,0 +1,109 @@
+{
+  "id": "ie_student_graduate",
+  "country": "IE",
+  "name": "Student Permission (Stamp 2) & Graduate Scheme (Stamp 1G)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "student",
+      "name": "Student permission (Stamp 2)",
+      "requirements": [
+        {
+          "id": "st_ilep",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "ilep_listed_course_enrolment",
+          "hard": true,
+          "blocker_text": "This requires enrolment in a full-time course on the Interim List of Eligible Programmes (ILEP).",
+          "fix_path": "Secure admission to an ILEP-listed course.",
+          "fix_time_months": null,
+          "source_id": "isd_student"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_approximately_10000_per_year",
+          "hard": true,
+          "blocker_text": "This requires proof of funds (commonly around €10,000/year) beyond tuition.",
+          "fix_path": "Arrange sufficient funds.",
+          "fix_time_months": 1,
+          "source_id": "isd_student"
+        }
+      ]
+    },
+    {
+      "id": "graduate_scheme",
+      "name": "Third Level Graduate Programme (Stamp 1G)",
+      "prerequisites_override": {
+        "required_prior_route_ids": ["ie_student_graduate"],
+        "minimum_months_held": null
+      },
+      "requirements": [
+        {
+          "id": "gs_level",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "This requires graduating from an Irish Level 8 (bachelor's) or Level 9-10 (master's/doctorate) programme — Level 8 grants 12 months, Level 9-10 grants 24 months, full-time work without a permit (no self-employment).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isd_stamp_1g"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "ILEP course admission letter",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of funds",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "student: duration of course, max 7 years (Level 8) / 8 years (Level 9+); graduate scheme: 12 months (Level 8) or 24 months (Level 9-10)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ie_critical_skills_employment_permit", "ie_general_employment_permit"]
+  },
+  "sources": [
+    {
+      "id": "isd_student",
+      "tier": 1,
+      "url": "https://www.irishimmigration.ie/what-we-do/student-permission/",
+      "title": "Student permission - Immigration Service Delivery",
+      "accessed_at": "2026-08-09"
+    },
+    {
+      "id": "isd_stamp_1g",
+      "tier": 1,
+      "url": "https://www.irishimmigration.ie/what-we-do/graduate-permission/",
+      "title": "Third Level Graduate Programme (Stamp 1G) - Immigration Service Delivery",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Work rights during study (Stamp 2): 20 hours/week during term, 40 hours/week during scheduled holiday periods (June-September and 15 Dec-15 Jan) — a genuinely standardised holiday-period definition worth flagging, distinct from the more open-ended 'scheduled breaks' language used elsewhere in this dataset. Stamp 1G duration is genuinely tiered by credential level (12 months Level 8, 24 months Level 9-10) — a real and confirmed structural gradation, though it grants full-time work WITHOUT self-employment rights, a specific restriction worth noting. Direct feeder into ie_critical_skills_employment_permit and ie_general_employment_permit, closing Ireland's version of the core Journey chain seen throughout this dataset — time on this route is reckonable for eventual citizenship purposes, unlike some other countries where student time doesn't count toward naturalisation residence."
+}

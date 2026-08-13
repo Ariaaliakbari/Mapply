@@ -1,0 +1,97 @@
+{
+  "id": "de_schengen_visitor",
+  "country": "DE",
+  "name": "Schengen short-stay visa (Category C)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sv_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave the Schengen area at the end of your visit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auswaertiges_visa"
+        },
+        {
+          "id": "sv_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_for_the_trip",
+          "hard": true,
+          "blocker_text": "This requires showing sufficient funds to cover the visit and return journey.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auswaertiges_visa"
+        },
+        {
+          "id": "sv_insurance",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "travel_health_insurance_30000eur_minimum",
+          "hard": true,
+          "blocker_text": "This requires travel health insurance covering at least €30,000, valid across the Schengen area.",
+          "fix_path": "Purchase qualifying Schengen travel health insurance before applying.",
+          "fix_time_months": null,
+          "source_id": "auswaertiges_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Travel health insurance certificate (€30,000 minimum coverage)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of sufficient funds",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of ties to home country and intent to leave",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "valid throughout the Schengen area, not just Germany; cannot be used to establish residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "auswaertiges_visa",
+      "tier": 1,
+      "url": "https://www.auswaertiges-amt.de/en/visa-service/215870-215870",
+      "title": "Visas for Germany - Federal Foreign Office",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Fee €90 confirmed via direct fetch of auswaertiges-amt.de; national (D) visa fee €75 confirmed the same way and reused as the base long-stay visa fee across every other German route in this dataset — worth noting these two figures (€90/€75) as the two most-cited numbers across the entire German dataset. This closes the visit-category gap for Germany, structurally paired with uk_standard_visitor. Unlike the UK's Standard Visitor route, this is a Schengen-wide instrument, not Germany-specific — valid for travel throughout the Schengen area, not just Germany, a genuine structural difference worth surfacing when comparing 'visit' routes across countries (UK, having left the EU, has no Schengen equivalent). Health insurance minimum (€30,000 coverage) is a genuinely distinctive requirement not present on the UK visitor route at all — flagged as a real cross-country difference, not an oversight. Same as uk_standard_visitor: doesn't encode which nationalities are visa-required vs visa-exempt vs need an ETIA S(from 2025-2026, not yet mandatory at verification) — a per-nationality lookup table, not yet built for either country."
+}

@@ -1,0 +1,69 @@
+{
+  "id": "es_permanent_residence",
+  "country": "ES",
+  "name": "Long-term Residence (Residencia de Larga Duración)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["es_nlv", "es_dnv", "es_entrepreneur", "es_work_cuenta_ajena", "es_eu_blue_card", "es_self_employed", "es_family_reunification", "es_arraigo"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 continuous years of legal residence in Spain. Permitted absences: no more than 6 months continuous, or 10 months cumulative over the 5 years (18 months if work-related).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rd_1155_2024_larga_duracion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "5 years of continuous residence evidence, including full absence history",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite status; the physical TIE card is renewed every 5 years (10 years from age 30)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "max 6 months continuous absence, or 10 months cumulative over the qualifying 5 years (18 months if work-related)",
+    "switchable_to": ["es_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "rd_1155_2024_larga_duracion",
+      "tier": 1,
+      "url": "https://www.boe.es",
+      "title": "BOE — Real Decreto 1155/2024, larga duración provisions",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "Spain's ILR-equivalent hub route, same structural role as uk_ilr, de_niederlassungserlaubnis, nl_permanent_residence, and pt_permanent_residence. Two modalities exist: larga duración NACIONAL (Spain only, simpler) and larga duración-UE (EU Directive 2003/109/CE, enables simplified intra-EU mobility but requires proof of stable sufficient resources) — modeled as a single route here since the qualifying conditions and core outcome are the same, same scope decision as the Netherlands' equivalent route. citizenship_after_months (60) reflects the GENERAL 10-year naturalisation track MINUS the 5 years already spent reaching PR — Ibero-American/Sephardic/family-tie holders would reach citizenship faster via es_naturalisation's other groups, not captured in this single route-level figure since PR itself doesn't discriminate by the applicant's eventual naturalisation track. Other qualifying paths to this status not modeled as separate requirement groups here (retirement/disability pensioners, born in Spain + 3 years post-majority residence, former Spaniards by origin, refugees/subsidiary-protection holders, 5-year wards of a Spanish entity, notable economic/cultural contribution) — flagged as a real scope simplification, since the standard 5-year residence path covers the large majority of cases in this dataset's use case."
+}

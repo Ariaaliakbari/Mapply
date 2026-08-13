@@ -1,0 +1,98 @@
+{
+  "id": "jp_asylum",
+  "country": "JP",
+  "name": "Refugee recognition / asylum (難民認定)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": { "basis": "Japan's refugee recognition rate is exceptionally low compared to most other countries in this dataset — well below 1% in most recent years, an order of magnitude lower than the UK, Germany, France, Spain, or Australia's recognition rates for comparable protection categories", "source_id": "isa_refugee_recognition" },
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status (難民)",
+      "requirements": [
+        {
+          "id": "rs_location",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "inside_japan",
+          "hard": true,
+          "blocker_text": "This can only be claimed while in Japan.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_refugee_recognition"
+        },
+        {
+          "id": "rs_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "This requires a well-founded fear of persecution based on race, religion, nationality, political opinion, or membership of a particular social group, under the 1951 Refugee Convention definition — Japan's recognition standard is applied notably strictly relative to most peer countries.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_refugee_recognition"
+        }
+      ]
+    },
+    {
+      "id": "complementary_protection",
+      "name": "Complementary protection (補完的保護対象者)",
+      "requirements": [
+        {
+          "id": "cp_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "risk_of_serious_harm_short_of_refugee_definition",
+          "hard": true,
+          "blocker_text": "This requires facing a genuine risk of serious harm that does not squarely meet the traditional Refugee Convention definition — this category was newly introduced by the 2023 immigration law reform, closer in concept to subsidiary/complementary protection categories used elsewhere in this dataset.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_refugee_recognition"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or serious-harm claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at Immigration Services Agency interview",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "recognised refugees and complementary-protection persons receive Long-Term Resident (定住者) or equivalent status",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "isa_refugee_recognition",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 難民認定制度 (Refugee recognition system) and 補完的保護対象者 (complementary protection) statistics",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MAJOR STRUCTURAL OUTLIER, the most extreme confirmed cross-country contrast in this entire dataset on a single metric: Japan's refugee recognition rate is exceptionally low — commonly cited well below 1% in recent years, versus recognition rates in the UK, Germany, France, Spain, and Australia in this dataset that run into double-digit percentages for comparable claims. This is a genuine, confirmed, structural feature of Japan's asylum system, not a temporary backlog effect (contrast with Portugal's AIMA backlog or Spain's naturalisation delays, which are processing-capacity problems rather than acceptance-rate problems). The Complementary Protection category (補完的保護対象者), introduced by the 2023 immigration law reform, is a genuine and relatively recent addition — Japan's closest analogue to the 'subsidiary protection' categories used throughout the European countries in this dataset (Germany's protección subsidiaria, Spain's, Portugal's, France's), though it was introduced later and the exact numeric approval statistics for this specific new category were not fully itemized at tier-1 precision during this research pass. No application fee, consistent with every other asylum route in this dataset."
+}

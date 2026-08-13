@@ -1,0 +1,94 @@
+{
+  "id": "ca_family_sponsorship_pgp",
+  "country": "CA",
+  "name": "Family Sponsorship — Parents & Grandparents (PGP) + Super Visa",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "lottery",
+  "selection_odds": { "basis": "PGP intake PAUSED as of 15 July 2026 (no new applications accepted 'until further notice'). IRCC plans to approve up to 15,000 PR grants in 2026 from the existing pool of ~60,500 applications already in the pipeline.", "source_id": "ircc_pgp_pause" },
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "pgp_pr_route",
+      "name": "PGP (permanent residence route, intake paused)",
+      "requirements": [
+        {
+          "id": "pgp_mni",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "note": "Minimum Necessary Income = LICO + 30%, assessed over the 3 most recent tax years" },
+          "hard": true,
+          "blocker_text": "This requires the sponsor to meet the Minimum Necessary Income (LICO + 30%) over the 3 most recent tax years — but new PGP applications are not being accepted as of this verification.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_pgp_pause"
+        }
+      ]
+    },
+    {
+      "id": "super_visa",
+      "name": "Super Visa (NOT a PR route — multiple-entry visitor visa)",
+      "requirements": [
+        {
+          "id": "sv_insurance",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "medical_insurance_100000_1yr_minimum",
+          "hard": true,
+          "blocker_text": "This requires medical insurance of at least $100,000 CAD (or OSFI-authorized equivalent) valid for at least 1 year, and the Canadian host meeting the same income requirement as PGP sponsors.",
+          "fix_path": "Purchase the required insurance and confirm host income eligibility.",
+          "fix_time_months": null,
+          "source_id": "ircc_super_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Sponsor's Minimum Necessary Income evidence over 3 tax years (PGP route)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Medical insurance policy meeting the $100,000/1-year minimum (Super Visa route)",
+      "difficulty": "routine",
+      "typical_time_days": 14
+    }
+  ],
+  "outcome": {
+    "duration_length": "PGP: indefinite once granted (route currently paused). Super Visa: valid up to 10 years, stays up to 5 years per entry, extendable 2 years.",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ca_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ircc_pgp_pause",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship/parents-grandparents.html",
+      "title": "Sponsor your parents and grandparents - IRCC (intake pause notice, 15 July 2026)",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "ircc_super_visa",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/parent-grandparent-super-visa.html",
+      "title": "Super Visa for parents and grandparents - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "MODELED AS TWO GENUINELY DIFFERENT PRODUCTS in one route file: PGP is a real PR pathway (currently paused, marked 'draft' consistent with ca_start_up_visa/ca_self_employed), while Super Visa is explicitly NOT a PR route at all — a long-validity multiple-entry VISITOR visa, a real tension in how a single file represents two structurally different products, flagged honestly rather than smoothed over. GENUINE PROCESS IMPROVEMENT confirmed effective 31 March 2026: Super Visa hosts may now use EITHER of the two most recent tax years (not just the most recent) to meet the income test, and the visiting parent's OWN income (e.g. pension) may now count toward the threshold — a real, dated liberalization worth flagging distinctly from the PGP pause. Given the historical interest-to-sponsor pool lottery mechanic, selection_method is set to 'lottery' at the route level, though this applied to the (now-paused) PGP intake process specifically, not to Super Visa, which has no selection mechanism at all beyond meeting the criteria."
+}

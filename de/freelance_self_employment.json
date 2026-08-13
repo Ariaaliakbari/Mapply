@@ -1,0 +1,148 @@
+{
+  "id": "de_freelance_self_employment",
+  "country": "DE",
+  "name": "Freelance / self-employment residence permit (§ 21 AufenthG)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "freiberufler",
+      "name": "Freiberufler (liberal professions)",
+      "requirements": [
+        {
+          "id": "fr_profession",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "recognised_liberal_profession",
+          "hard": true,
+          "blocker_text": "This requires practicing a recognised liberal profession (Freier Beruf) — e.g. consultant, artist, writer, IT freelancer, translator, or a licensed profession (doctor, lawyer, architect).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gesetze_21"
+        },
+        {
+          "id": "fr_qualification",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "professional_qualification_or_license_where_regulated",
+          "hard": true,
+          "blocker_text": "This requires the relevant professional qualification or licence where the profession is regulated.",
+          "fix_path": "Obtain the required licence or qualification recognition.",
+          "fix_time_months": 4,
+          "source_id": "gesetze_21"
+        },
+        {
+          "id": "fr_clients",
+          "attribute": "has_job_offer",
+          "operator": "exists",
+          "value": "client_letters_of_intent_or_contracts",
+          "hard": true,
+          "blocker_text": "This requires evidence of demand for your services — client letters of intent, existing contracts, or a credible client pipeline.",
+          "fix_path": "Secure client letters of intent or signed contracts before applying.",
+          "fix_time_months": 3,
+          "source_id": "makeit_freelance"
+        }
+      ]
+    },
+    {
+      "id": "gewerbetreibende",
+      "name": "Selbständige / Gewerbetreibende (commercial self-employed)",
+      "requirements": [
+        {
+          "id": "ge_business_plan",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "viable_business_plan_with_economic_interest",
+          "hard": true,
+          "blocker_text": "This requires a viable business plan showing economic interest or regional need, positive economic impact, and secured financing — assessed by the local chamber of commerce or trade and the immigration authority.",
+          "fix_path": "Develop a business plan meeting the economic-interest and financing-secured criteria, and obtain a supporting assessment from the relevant chamber.",
+          "fix_time_months": 4,
+          "source_id": "gesetze_21"
+        },
+        {
+          "id": "ge_financing",
+          "attribute": "investment_capacity",
+          "operator": "exists",
+          "value": "secured_financing_for_the_business",
+          "hard": true,
+          "blocker_text": "This requires proof of secured financing for the business (own capital, loan commitment, or investor funding).",
+          "fix_path": "Secure financing commitments before applying.",
+          "fix_time_months": null,
+          "source_id": "makeit_freelance"
+        },
+        {
+          "id": "ge_pension",
+          "attribute": "age",
+          "operator": ">",
+          "value": 45,
+          "hard": false,
+          "blocker_text": "If over 45, this requires adequate provision for old age (private pension or equivalent) unless exempt.",
+          "fix_path": "Arrange adequate old-age provision.",
+          "fix_time_months": null,
+          "source_id": "gesetze_21"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Business plan (Gewerbetreibende route)",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Client letters of intent or contracts (Freiberufler route)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Proof of financing",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Professional licence where regulated",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "initially up to 3 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["de_niederlassungserlaubnis"]
+  },
+  "sources": [
+    {
+      "id": "gesetze_21",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__21.html",
+      "title": "§ 21 AufenthG - Selbständige Tätigkeit (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    },
+    {
+      "id": "makeit_freelance",
+      "tier": 1,
+      "url": "https://www.make-it-in-germany.com/en/visa-residence/types/self-employment",
+      "title": "Self-employment - Make it in Germany",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "Genuinely two distinct qualifying paths under one statutory route (§21), similar in shape to UK Innovator Founder's endorsement-vs-prize split, or UK ILR's multi-group structure — Freiberufler (liberal professions, lighter bar) vs Gewerbetreibende (commercial self-employed, must show economic interest/regional need). Settlement after 3 years (36 months) is CONDITIONAL on the business being successful and livelihood secured (§21(4)) — otherwise falls back to the standard 5-year (60-month) settlement timeline generally. pr_after_months encodes the accelerated 3-year figure as the realistic target outcome, but this is a real conditional the flat number doesn't fully capture — same class of simplification flagged on several UK routes (uk_student, uk_graduate family_can_join conditionals). No fixed minimum investment figure exists in the statute (unlike UK Innovator Founder's now-removed £50k threshold) — financing adequacy is assessed case-by-case against the specific business plan, which is a genuine structural difference worth surfacing in any 'minimum investment' comparison view."
+}

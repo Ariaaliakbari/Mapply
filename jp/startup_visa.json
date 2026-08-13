@@ -1,0 +1,81 @@
+{
+  "id": "jp_startup_visa",
+  "country": "JP",
+  "name": "Startup preparatory visa (創業活動)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "su_endorsement",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "local_government_or_national_program_endorsement",
+          "hard": true,
+          "blocker_text": "This requires endorsement from a participating local government (originally under National Strategic Special Zones) or the newer national-level startup support program, confirming a genuine business plan intended to reach the Business Manager visa's capital threshold.",
+          "fix_path": "Apply to a participating local government or national startup support program for endorsement.",
+          "fix_time_months": 3,
+          "source_id": "isa_startup_visa"
+        },
+        {
+          "id": "su_plan",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "viable_business_plan",
+          "hard": true,
+          "blocker_text": "This requires a genuine business plan with a credible path to meeting the Business Manager visa's capital and structural requirements within the preparatory period.",
+          "fix_path": "Develop a viable business plan.",
+          "fix_time_months": 3,
+          "source_id": "isa_startup_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Endorsement letter from a participating local government or national program",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Business plan",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    }
+  ],
+  "outcome": {
+    "duration_length": "6 months to 1 year (varies by municipality/program), not directly renewable beyond the preparatory period",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_business_manager"]
+  },
+  "sources": [
+    {
+      "id": "isa_startup_visa",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 創業活動 (startup preparatory activity) visa framework",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "SOURCING CAVEAT flagged honestly: the exact current 2026 status of any unification of the historically fragmented, municipality-by-municipality National Strategic Special Zone startup visa system into a single national program was not fully confirmed at tier-1 precision during this research pass — treat the endorsement pathway as potentially varying by specific local government until this is verified. Deliberately terminal in this dataset (leads_to_pr: false, not itself renewable) — its entire function is bridging an entrepreneur to jp_business_manager, which now requires ¥30,000,000 in capital following the October 2025 reform (see that route's notes) — meaning this preparatory visa has become significantly MORE valuable as a bridge than before, since the target threshold it's preparing founders to reach is six times higher than it used to be, a real second-order effect of the Business Manager reform worth surfacing."
+}

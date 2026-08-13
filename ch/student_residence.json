@@ -1,0 +1,81 @@
+{
+  "id": "ch_student_residence",
+  "country": "CH",
+  "name": "Student Residence Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "st_admission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "admission_letter",
+          "hard": true,
+          "blocker_text": "This requires admission from a recognised institution.",
+          "fix_path": "Secure admission from a recognised institution.",
+          "fix_time_months": null,
+          "source_id": "sem_students"
+        },
+        {
+          "id": "st_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 21000, "currency": "CHF", "unit": "year", "note": "practical minimum cited by universities; not a single federal statutory figure" },
+          "hard": true,
+          "blocker_text": "This requires proof of funds (commonly cited around CHF 21,000/year), mandatory health/accident insurance, and adequate accommodation. Must declare intent to leave after studies.",
+          "fix_path": "Arrange sufficient funds.",
+          "fix_time_months": 1,
+          "source_id": "sem_students"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission letter",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Proof of funds and health/accident insurance",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "duration of study, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_third_country_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "sem_students",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt.html",
+      "title": "Residence for study purposes - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "SOURCING CAVEAT flagged honestly: the CHF 21,000/year funds figure is a widely-cited practical minimum from university admissions guidance, not a single codified federal statutory figure the way several other countries' student-funds thresholds are in this dataset. Non-EU/EFTA students must wait 6 months after arrival before working, then max 15 hours/week during term, up to 100% during breaks (employer needs a separate work permit) — EU/EFTA students may work from day one, a genuine two-tier distinction consistent with the rest of Switzerland's system. GENUINE, DISTINCTIVE POST-STUDY PROVISION: non-EU graduates of recognised Swiss institutions may apply for a 6-month, non-renewable job-search permit, and the Inländervorrang labour-market test can be WAIVED for graduate hires where the job is of high scientific or economic interest (Art. 21(3) FNIA) — with ETH/EPFL and Swiss university graduates receiving preferential treatment, a real and confirmed structural advantage worth flagging as a bridge into ch_third_country_work_permit."
+}

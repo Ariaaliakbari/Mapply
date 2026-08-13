@@ -1,0 +1,119 @@
+{
+  "id": "jp_naturalisation",
+  "country": "JP",
+  "name": "Naturalisation (帰化)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nat_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 continuous years of residence in Japan.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_naturalisation"
+        },
+        {
+          "id": "nat_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "This requires being of legal adult age under Japanese law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_naturalisation"
+        },
+        {
+          "id": "nat_conduct",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires good conduct — a genuinely holistic, discretionary assessment covering tax payment history, driving record, and general community standing, not merely absence of criminal convictions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_naturalisation"
+        },
+        {
+          "id": "nat_livelihood",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "sufficient_independent_or_household_livelihood",
+          "hard": true,
+          "blocker_text": "This requires the ability to make an independent living, either through your own means or your household's combined assets/skills.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_naturalisation"
+        },
+        {
+          "id": "nat_renunciation",
+          "attribute": "nationality",
+          "operator": "==",
+          "value": "willing_to_renounce_prior_nationality",
+          "hard": true,
+          "blocker_text": "This requires renouncing your prior nationality — Japan does not permit dual citizenship for adults. You must lose or be in the process of losing your original nationality upon acquiring Japanese citizenship.",
+          "fix_path": "Complete renunciation procedures with your country of prior nationality.",
+          "fix_time_months": 6,
+          "source_id": "moj_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "5 years of continuous residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Tax and pension payment history",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Proof of renunciation of, or process to renounce, prior nationality",
+      "difficulty": "hard",
+      "typical_time_days": 180
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "moj_naturalisation",
+      "tier": 1,
+      "url": "https://www.moj.go.jp",
+      "title": "Ministry of Justice — 帰化許可申請 (Naturalisation permit application) requirements under the Nationality Act",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "No application fee — confirmed, a genuinely distinctive feature among the settled/citizenship routes in this dataset, most of which charge several hundred to several thousand euros/pounds equivalent (compare UK's £1,839, Portugal's ~€250, Spain's €104.05). dual_citizenship_allowed is FALSE — Japan's mandatory-renunciation policy for adult naturalisation remains current policy as of this verification, a genuinely more restrictive position than most European countries in this dataset (Germany since 2024, UK, Netherlands via exemptions, Spain via its exemption list all permit some form of dual citizenship more readily). LIVE POLICY WATCH, not yet resolved: there is known ongoing public and legal debate in Japan about relaxing the dual-citizenship prohibition, but no confirmed change had taken legal effect as of this verification — encoded as current, unchanged policy rather than anticipating a reform that hasn't happened, consistent with how this dataset treats proposals-not-yet-law elsewhere (e.g. Netherlands' B1 language proposal, France's pre-2026 B1 baseline). Approval is naturalisation BY PERMISSION (許可), not an automatic entitlement even when all criteria are technically met — the Minister of Justice retains discretion, a genuinely more discretionary structure than most naturalisation routes in this dataset, which tend to be closer to entitlements once statutory criteria are satisfied."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "ch_tourist_visa",
+  "country": "CH",
+  "name": "Tourist / Short-Stay Visa (Schengen Type C)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tv_return_intent",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "genuine_temporary_visit_intent",
+          "hard": true,
+          "blocker_text": "This requires showing you'll leave the Schengen area at the end of your visit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eda_schengen_visa"
+        },
+        {
+          "id": "tv_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "note": "approximately CHF 100/day, plus travel medical insurance of at least EUR 30,000" },
+          "hard": true,
+          "blocker_text": "This requires approximately CHF 100/day proof of funds and travel medical insurance of at least EUR 30,000.",
+          "fix_path": "Arrange sufficient funds and qualifying insurance.",
+          "fix_time_months": null,
+          "source_id": "eda_schengen_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Travel medical insurance certificate (≥EUR 30,000)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Evidence of sufficient funds and intent to leave",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period, across the whole Schengen area",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "valid throughout the Schengen area, not just Switzerland; cannot be used to establish residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "eda_schengen_visa",
+      "tier": 1,
+      "url": "https://www.eda.admin.ch/countries/usa/en/home/visa/entry-ch/up-90-days/fees-schengen.html",
+      "title": "Schengen visa fees - Swiss Federal Department of Foreign Affairs",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "Same EUR 90 standard adult fee (children 6-11: EUR 45) as every other Schengen visitor route in this dataset — Switzerland is in Schengen despite NOT being an EU member, a genuine and important structural distinction from Ireland (an EU member that opted OUT of Schengen, the exact inverse situation), worth flagging as a real cross-country contrast when comparing 'visit' category routes. Free for family members of EU/EFTA citizens — a real fee waiver worth noting. Standard processing 15 calendar days, up to 30-60 for complex cases. Living/working/studying beyond 90 days requires a separate national Type D visa with prior cantonal (and sometimes federal) authorisation — this route cannot be converted in-country the way some other countries' visitor routes in this dataset allow. EES phased in at Swiss airports from 12 October 2025; ETIAS expected for visa-exempt travellers late 2026 — both confirmed as live operational changes worth flagging, though ETIAS specifically was not yet in force as of this verification."
+}

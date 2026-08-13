@@ -1,0 +1,82 @@
+{
+  "id": "ch_cross_border_commuter",
+  "country": "CH",
+  "name": "Cross-Border Commuter Permit (G Permit)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "eu_efta",
+      "name": "EU/EFTA cross-border commuter",
+      "requirements": [
+        {
+          "id": "eug_residence",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "resides_in_eu_efta_works_in_switzerland",
+          "hard": true,
+          "blocker_text": "This requires living anywhere in the EU/EFTA and working anywhere in Switzerland (no border-zone restriction remains for EU/EFTA nationals) — registration-based, no quota, no labour-market test. The holder must return to their main foreign residence at least weekly.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_g_permit"
+        }
+      ]
+    },
+    {
+      "id": "third_country",
+      "name": "Third-country cross-border commuter",
+      "requirements": [
+        {
+          "id": "tcg_prior_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "This requires a permanent right of residence in a neighbouring country, at least 6 months' prior residence within the defined border zone, and satisfaction of the labour-market test and applicable quota.",
+          "fix_path": null,
+          "fix_time_months": 6,
+          "source_id": "sem_g_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract and evidence of qualifying foreign residence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "EU/EFTA: 5 years if the contract is 12+ months or unlimited, otherwise contract term. Third-country: limited to the issuing canton's border zone, usually 1 year.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "must NOT reside in Switzerland — this permit does not confer a right to live in the country, only to work there while residing abroad",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sem_g_permit",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/eu_efta/grenzgaenger_g.html",
+      "title": "Cross-border commuter permit G - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINELY DISTINCTIVE STRUCTURE with no direct equivalent elsewhere in this entire multi-country dataset: this permit explicitly does NOT confer a right to RESIDE in Switzerland — the holder works in Switzerland while living abroad, taxed via withholding at source with Swiss AHV contributions, and must return to their main foreign residence at least weekly (EU/EFTA group). This is the only route in this dataset (across all 15 countries built so far) structured explicitly around the applicant NEVER establishing Swiss residence at all — deliberately terminal in every direction (leads_to_pr: false, no family_can_join, no switchable_to targets), since its entire premise is the opposite of settlement. If a G-permit holder DOES eventually move their residence into Switzerland, a standard B/L route applies instead — not modeled as a formal switchable_to link here since it represents abandoning this route's defining characteristic rather than a natural progression from it. EU/EFTA cross-border commuters can now live ANYWHERE in the EU/EFTA and work anywhere in Switzerland — the old border-zone restriction has been fully removed for this group specifically, though it remains in force for the third-country group."
+}

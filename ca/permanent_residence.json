@@ -1,0 +1,76 @@
+{
+  "id": "ca_permanent_residence",
+  "country": "CA",
+  "name": "Permanent Residence & PR Card",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pr_mechanism",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "granted_via_economic_family_or_humanitarian_route",
+          "hard": true,
+          "blocker_text": "PR is obtained via one of the economic (Express Entry, PNP), family, or humanitarian routes — there is no standalone 'PR application' independent of those categories.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_pr_card"
+        },
+        {
+          "id": "pr_residency_obligation",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "This requires meeting the residency obligation of 730 days physical presence per rolling 5-year period to maintain PR status (exemptions apply for accompanying a Canadian-citizen spouse abroad, qualifying overseas employment with a Canadian business, and certain public-service work).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ircc_pr_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "730-day physical presence evidence per rolling 5-year period (for PR card renewal)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite status; PR card itself renewed periodically (typically 5 years)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "730 days physical presence per rolling 5-year period to maintain status",
+    "switchable_to": ["ca_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ircc_pr_card",
+      "tier": 1,
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card.html",
+      "title": "Get a Permanent Resident Card - IRCC",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "PR CARD RENEWAL FEE $50 CAD (Form IMM 5444); apply within 9 months of expiry (applying earlier gets the package returned). Processing has recovered from the 2022-2024 backlog: roughly 28 days to 3 months in 2026 — a genuine and confirmed improvement worth flagging distinctly from Portugal's/Spain's ongoing backlog situations elsewhere in this dataset. An expired PR card does NOT mean lost PR status — the two are separate; from outside Canada, a Permanent Resident Travel Document (PRTD) is needed instead of relying on the card itself. This route functions as Canada's PR-hub equivalent to uk_ilr/de_niederlassungserlaubnis in structure, but is genuinely UNUSUAL among this dataset's hub routes in that it's explicitly NOT a separate application — PR is granted directly by the underlying economic/family/humanitarian route itself, and this file exists primarily to document the ONGOING maintenance obligation (730-day rule) and card mechanics rather than a standalone grant pathway."
+}

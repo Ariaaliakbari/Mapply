@@ -1,0 +1,116 @@
+{
+  "id": "ch_settlement_permit",
+  "country": "CH",
+  "name": "Settlement Permit (C Permit / Niederlassungsbewilligung)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ch_eu_efta_free_movement", "ch_third_country_work_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard_10yr",
+      "name": "Standard route (10 years)",
+      "requirements": [
+        {
+          "id": "std_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "This requires 10 years continuous residence for third-country nationals with no settlement treaty (last 5 uninterrupted on a B permit).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_settlement"
+        },
+        {
+          "id": "std_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "This requires A2 oral / A1 written in a national language for the ordinary (10-year) grant.",
+          "fix_path": "Take an approved language test at A2 oral / A1 written.",
+          "fix_time_months": 4,
+          "source_id": "sem_settlement"
+        }
+      ]
+    },
+    {
+      "id": "treaty_5yr",
+      "name": "Settlement-treaty nationals (5 years)",
+      "prerequisites_override": {
+        "minimum_months_held": 60
+      },
+      "requirements": [
+        {
+          "id": "treaty_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["austria", "belgium", "denmark", "france", "germany", "greece", "italy", "liechtenstein", "netherlands", "portugal", "spain", "united_states", "canada"],
+          "hard": true,
+          "blocker_text": "This 5-year fast track applies to nationals of countries with a bilateral settlement/establishment treaty with Switzerland (commonly Austria, Belgium, Denmark, France, Germany, Greece, Italy, Liechtenstein, Netherlands, Portugal, Spain), plus US and Canadian nationals via long-standing administrative practice — NOT a blanket EU/AFMP entitlement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_settlement"
+        },
+        {
+          "id": "treaty_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires B1 oral / A1 written — a higher discretionary bar in exchange for the shorter residence period.",
+          "fix_path": "Take an approved language test at B1 oral / A1 written.",
+          "fix_time_months": 6,
+          "source_id": "sem_settlement"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "5 or 10 years of continuous residence evidence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Approved language test result",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite; the physical card is reissued every 5 years administratively",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_naturalisation_ordinary"]
+  },
+  "sources": [
+    {
+      "id": "sem_settlement",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/eu_efta/niederlassungsbewilligung_c.html",
+      "title": "Settlement permit C - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE NATIONALITY-DEPENDENT STRUCTURE, one of the most consequential cross-country findings in the whole dataset for a single route: the residence period is 5 or 10 years depending SPECIFICALLY on the applicant's nationality via bilateral settlement treaties (or, for the US and Canada, long-standing administrative practice rather than a treaty) — NOT a blanket EU/AFMP-wide rule, a common tier-3 misconception this file is built specifically to correct. The 5-year treaty track requires a HIGHER language bar (B1 oral vs A2 for the standard 10-year route) — a genuine and real trade-off, shorter residence in exchange for a tougher language test, worth surfacing prominently. Indefinite status once granted; the physical card itself is reissued every 5 years but this is purely administrative, not a renewal of the underlying status. leads to near-equal labour-market status and strong protection against revocation, comparable in substance to the most generous PR-hub routes elsewhere in this dataset."
+}

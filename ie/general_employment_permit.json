@@ -1,0 +1,98 @@
+{
+  "id": "ie_general_employment_permit",
+  "country": "IE",
+  "name": "General Employment Permit (GEP)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gep_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "gep_threshold_2026", "ratio": 1.0, "resolved_amount": 36605, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least €36,605/year (from 1 March 2026) for an occupation not on the Critical Skills list and not on the ineligible occupations list.",
+          "fix_path": "Negotiate a salary meeting the threshold.",
+          "fix_time_months": null,
+          "source_id": "dete_gep"
+        },
+        {
+          "id": "gep_lmnt",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "labour_market_needs_test_passed_or_exempt",
+          "hard": true,
+          "blocker_text": "This requires a Labour Market Needs Test (28-day advertising via DSP Employment Services/EURES plus one online platform) unless exempt (role on the Critical Skills list, Enterprise Ireland/IDA recommendation, salary ≥€68,911, exceptional-needs carer, or prior redundancy).",
+          "fix_path": "Complete the Labour Market Needs Test or confirm an exemption applies.",
+          "fix_time_months": 1,
+          "source_id": "dete_gep"
+        }
+      ]
+    },
+    {
+      "id": "shortage_roles",
+      "name": "Meat processors, horticultural workers, healthcare assistants, home carers",
+      "requirements": [
+        {
+          "id": "sr_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 32691, "currency": "EUR", "unit": "year", "note": "requires Level 5 QQI qualification where applicable" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least €32,691/year for meat processors, horticultural workers, healthcare assistants, or home carers, with Level 5 QQI qualification where applicable.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dete_gep"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the applicable salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Labour Market Needs Test documentation (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years initial, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 57,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ie_stamp_4", "ie_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dete_gep",
+      "tier": 1,
+      "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/",
+      "title": "General Employment Permit - Department of Enterprise, Trade and Employment",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "FORMULA VALUE, tier-1 confirmed at €36,605 (from 1 March 2026, up from €34,000). HIGH-CONFIDENCE STALE-DATA CATCH: multiple tier-3 immigration law firms (Tafapolsky & Smith, Mason Hayes Curran) publish €36,505 as the current figure — a genuine €100 error that could cause an under-threshold application refusal, one of the clearest and most consequential small-figure errors found across this entire multi-country research pass, precisely because the error is small enough to look plausible rather than obviously wrong. Labour Market Needs Test genuinely required in most cases (unlike ie_critical_skills_employment_permit) — the print-newspaper advertising requirement was removed by the Employment Permits Act 2024, a real procedural simplification worth noting. 50:50 rule applies (an employer's foreign-national workforce generally capped at 50% of total staff). pr_after_months (57) reflects the standard employment-permit-to-Stamp-4 path — genuinely slower than CSEP's 21-month fast track, a real and confirmed two-speed system within Ireland's own employment permit hierarchy."
+}

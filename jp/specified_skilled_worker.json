@@ -1,0 +1,116 @@
+{
+  "id": "jp_specified_skilled_worker",
+  "country": "JP",
+  "name": "Specified Skilled Worker visa (特定技能, types i and ii)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "type_i",
+      "name": "Type i (up to 5 years, no family)",
+      "outcome_override": {
+        "pr_after_months": null
+      },
+      "requirements": [
+        {
+          "id": "ssw1_field",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "designated_labor_shortage_sector",
+          "hard": true,
+          "blocker_text": "This requires working in one of the officially designated labor-shortage industry sectors (a list that has expanded significantly in recent years, spanning care work, construction, manufacturing, agriculture, food service, and several others).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_ssw"
+        },
+        {
+          "id": "ssw1_skills_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "skills_test_and_language_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing a sector-specific skills test and a Japanese language test (JFT-Basic or JLPT N4 or higher), unless exempt via completion of the Technical Intern Training Program (or its successor) in a matching field.",
+          "fix_path": "Take and pass the required skills and language tests.",
+          "fix_time_months": 6,
+          "source_id": "isa_ssw"
+        }
+      ]
+    },
+    {
+      "id": "type_ii",
+      "name": "Type ii (renewable, family allowed, path to PR)",
+      "outcome_override": {
+        "pr_after_months": 60,
+        "citizenship_after_months": 60
+      },
+      "requirements": [
+        {
+          "id": "ssw2_field",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "type_ii_eligible_sector",
+          "hard": true,
+          "blocker_text": "This requires working in one of the (narrower) set of sectors eligible for Type ii status, which has also expanded in recent years beyond the original construction and shipbuilding fields.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "isa_ssw"
+        },
+        {
+          "id": "ssw2_upgrade",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "jp_specified_skilled_worker",
+          "hard": true,
+          "blocker_text": "This requires an advanced skills test demonstrating supervisory-level proficiency, typically after time spent on Type i status in the same field.",
+          "fix_path": "Gain experience on Type i status and pass the Type ii advanced skills test.",
+          "fix_time_months": null,
+          "source_id": "isa_ssw"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Skills test pass certificate (sector-specific)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Japanese language test result (JFT-Basic or JLPT N4+)",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    }
+  ],
+  "outcome": {
+    "duration_length": "Type i: up to 5 years total, not renewable beyond that cap; Type ii: renewable indefinitely",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jp_permanent_residence", "jp_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "isa_ssw",
+      "tier": 1,
+      "url": "https://www.isa.go.jp",
+      "title": "Immigration Services Agency of Japan — 特定技能制度 (Specified Skilled Worker system)",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE STRUCTURAL SPLIT worth flagging prominently: Type i and Type ii are functionally almost two different routes bundled under one visa name — Type i is capped at 5 years total, permits NO family accompaniment, and does NOT lead to PR/citizenship (route-level outcome reflects this terminal Type i default); Type ii removes all three of those restrictions via the group-level outcome_override. This is one of the sharpest within-route outcome divergences in the entire dataset, comparable in scale to Portugal's Golden Visa investment-category variation but here driven by a skill-tier upgrade rather than investment amount. The designated labor-shortage sector list has genuinely expanded significantly in recent years — the exact current 2026 sector count/list was not fully itemized at tier-1 precision during this research pass (a real sourcing gap, flagged rather than guessed); re-verify against the current isa.go.jp sector list before treating this as exhaustive. This route is the primary downstream destination for jp_ikusei_shuro graduates once that program is fully operational from April 2027 — see that route's notes for the transition mechanics."
+}

@@ -1,0 +1,173 @@
+{
+  "id": "de_naturalisation",
+  "country": "DE",
+  "name": "Naturalisation (Einbürgerung)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-08",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["de_niederlassungserlaubnis"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General route",
+      "requirements": [
+        {
+          "id": "gen_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This requires 5 years of lawful residence in Germany (reduced from 8 years since the June 2024 reform).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "gen_german",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires German at B1 (Deutsch-Test für Zuwanderer, DTZ).",
+          "fix_path": "Take the approved DTZ test at B1.",
+          "fix_time_months": 3,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "gen_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "leben_in_deutschland_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the naturalisation test (17 of 33 questions correct).",
+          "fix_path": "Book and pass the Leben in Deutschland test.",
+          "fix_time_months": 2,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "gen_livelihood",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "financial_self_sufficiency_no_burgergeld",
+          "hard": true,
+          "blocker_text": "This requires financial self-sufficiency — not relying on Bürgergeld (basic income support) except in narrow exempted circumstances.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "gen_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "This requires a clean criminal record and commitment to the free democratic basic order, including acknowledgment of Germany's responsibility for the Holocaust.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stag_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_german",
+      "name": "Spouse of a German citizen",
+      "requirements": [
+        {
+          "id": "sp_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "This requires 3 years of lawful residence, combined with at least 2 years of marriage to a German citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "sp_marriage",
+          "attribute": "marital_status",
+          "operator": "==",
+          "value": "married_to_german_citizen_2_years_plus",
+          "hard": true,
+          "blocker_text": "This requires being married to a German citizen for at least 2 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "sp_german",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "This requires German at B1.",
+          "fix_path": "Take the approved DTZ test at B1.",
+          "fix_time_months": 3,
+          "source_id": "stag_naturalisation"
+        },
+        {
+          "id": "sp_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "leben_in_deutschland_test_pass",
+          "hard": true,
+          "blocker_text": "This requires passing the naturalisation test.",
+          "fix_path": "Book and pass the Leben in Deutschland test.",
+          "fix_time_months": 2,
+          "source_id": "stag_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "DTZ German test certificate at B1",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Leben in Deutschland test pass certificate",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "5 (or 3) years of continuous residence and financial self-sufficiency evidence",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "stag_naturalisation",
+      "tier": 1,
+      "url": "https://www.gesetze-im-internet.de/stag/",
+      "title": "Staatsangehörigkeitsgesetz (StAG) as amended by StARModG (gesetze-im-internet.de)",
+      "accessed_at": "2026-08-08"
+    }
+  ],
+  "notes": "MAJOR LIVE POLICY EVENT already resolved, not pending: the 3-year fast-track (Turbo-Einbürgerung) route was ABOLISHED on 30 October 2025 — confirmed via multiple sources including VisaHQ's coverage of the government's own clarification. This dataset deliberately does NOT include a fast-track group, since it no longer exists; several third-party sites may still describe it as current, which would be a genuine stale-data catch if found during publication. A narrower DISCRETIONARY shortened naturalisation still exists for exceptional integration cases (C1 German, secured livelihood) but is NOT the same as the repealed automatic 3-year track — not encoded as a separate group here since it's discretionary rather than a predictable predicate-testable path, consistent with the schema's rule that non-predicate conditions go in notes, not as fake requirements. Dual citizenship generally permitted since June 2024 (Optionspflicht and retention-permit rules repealed) — a genuine structural match with the UK's position, unlike several other European countries (see Netherlands note in the original research dossier, which generally requires renunciation). Fee €255/adult confirmed; €51/minor naturalising with a parent. Naturalisation volumes are real and rising fast — Destatis recorded 291,955 naturalisations in 2024 (+46% YoY) and 332,500 in 2025, a fifth consecutive record year — worth surfacing as context on the route page rather than encoding as a schema field."
+}

@@ -1,0 +1,95 @@
+{
+  "id": "ch_asylum_refugee",
+  "country": "CH",
+  "name": "Asylum and Refugee Status (N/B/F Permits)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-10",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "recognised_refugee",
+      "name": "Recognised refugee (B permit)",
+      "requirements": [
+        {
+          "id": "rr_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_status_recognised",
+          "hard": true,
+          "blocker_text": "This requires SEM recognition as a refugee under the Asylum Act — grants a full B permit with genuine residence and eventual settlement prospects.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_asylum"
+        }
+      ]
+    },
+    {
+      "id": "provisional_admission",
+      "name": "Provisional admission (F permit — de facto long-lasting)",
+      "outcome_override": {
+        "leads_to_pr": true,
+        "pr_after_months": 60,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": null
+      },
+      "requirements": [
+        {
+          "id": "pa_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "cannot_be_removed_but_not_recognised_refugee",
+          "hard": true,
+          "blocker_text": "This applies to those not granted refugee status but who cannot be lawfully, safely, or reasonably returned — issued for 12 months, renewed annually by the canton. Despite the name 'provisional,' this status is frequently held long-term: at end-2024, 35,239 people held F status, of whom 15,409 (44%) had held it for more than 7 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sem_f_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Evidence supporting the persecution or non-removability claim",
+      "difficulty": "often_impossible",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "B permit (recognised refugee): tracks the standard permit cycle. F permit: 12 months, renewed annually — genuinely long-lasting in practice",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ch_settlement_permit", "ch_naturalisation_ordinary"]
+  },
+  "sources": [
+    {
+      "id": "sem_asylum",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/asyl.html",
+      "title": "Asylum - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    },
+    {
+      "id": "sem_f_permit",
+      "tier": 1,
+      "url": "https://www.sem.admin.ch/sem/en/home/asyl/vorlaeufige_aufnahme.html",
+      "title": "Provisional admission (F permit) - State Secretariat for Migration",
+      "accessed_at": "2026-08-10"
+    }
+  ],
+  "notes": "GENUINE, WELL-DOCUMENTED 'PROVISIONAL IN NAME ONLY' FINDING — one of the most striking statistics in this entire multi-country dataset: at end-2024, 35,239 people held F (provisional admission) status, and 15,409 of them (44%) had held it for MORE THAN 7 YEARS — meaning the modal experience of 'provisional' admission in Switzerland is genuinely long-term, not provisional in any meaningful sense. This is captured via a group-level outcome_override on the F-permit group, since its actual real-world trajectory (leads_to_pr eventually, after years of annual renewal) differs materially from what the bare word 'provisional' would suggest. Switzerland participates in the Dublin/AMMR system DESPITE NOT BEING AN EU MEMBER — a genuinely distinctive bilateral arrangement, issuing 9,947 take-charge/take-back requests in 2024 (12,933 in 2023), a real and substantial volume worth noting. N permit (asylum seeker during the procedure) is not separately modeled as its own group here since it carries no independent outcome of its own — it resolves into either the recognised-refugee or provisional-admission group, or removal."
+}

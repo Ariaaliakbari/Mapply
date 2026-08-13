@@ -1,0 +1,99 @@
+{
+  "id": "ie_critical_skills_employment_permit",
+  "country": "IE",
+  "name": "Critical Skills Employment Permit (CSEP)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-09",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General (Critical Skills Occupations List, with relevant degree)",
+      "requirements": [
+        {
+          "id": "csep1_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "csep_general_threshold_2026", "ratio": 1.0, "resolved_amount": 40904, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires an occupation on the Critical Skills Occupations List with a relevant degree, and a salary of at least €40,904/year (from 1 March 2026).",
+          "fix_path": "Secure a qualifying role and salary.",
+          "fix_time_months": null,
+          "source_id": "dete_csep"
+        }
+      ]
+    },
+    {
+      "id": "no_list_no_degree",
+      "name": "Eligible job not on the list (no degree required)",
+      "requirements": [
+        {
+          "id": "csep2_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "csep_no_degree_threshold_2026", "ratio": 1.0, "resolved_amount": 68911, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least €68,911/year (from 1 March 2026) for an eligible job not on the Critical Skills Occupations List, no degree required.",
+          "fix_path": "Negotiate a salary meeting the threshold.",
+          "fix_time_months": null,
+          "source_id": "dete_csep"
+        }
+      ]
+    },
+    {
+      "id": "recent_graduate",
+      "name": "Recent graduate (reduced rate)",
+      "requirements": [
+        {
+          "id": "csep3_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 36848, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "This requires a salary of at least €36,848/year for a job on the Critical Skills list, where the applicant's qualification was obtained within the prior 12 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dete_csep"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the applicable salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years initial",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 21,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ie_stamp_4", "ie_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dete_csep",
+      "tier": 1,
+      "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/",
+      "title": "Critical Skills Employment Permit - Department of Enterprise, Trade and Employment",
+      "accessed_at": "2026-08-09"
+    }
+  ],
+  "notes": "FORMULA VALUES, tier-1 confirmed, part of a live multi-year DETE roadmap of increases phased through 2030 (index-linked to CSO average earnings, historically ~4.9%/yr) — the 1 March 2026 figures (€40,904 general / €68,911 no-degree / €36,848 recent-graduate) replace €38,000 / €64,000 respectively. No Labour Market Needs Test — a genuine advantage over ie_general_employment_permit. Immediate family reunification: spouse/de-facto partner gets Stamp 1G (work without a permit) directly, a more generous outcome than most other work-sponsored routes in this dataset provide for spouses. pr_after_months (21) reflects the relaxed CSEP-specific rule reinstated 3 April 2024 — applying directly to Stamp 4 after 21 months of employment, no renewal permit needed, genuinely faster than the standard employment-permit-to-Stamp-4 path (57 months, see ie_general_employment_permit)."
+}
