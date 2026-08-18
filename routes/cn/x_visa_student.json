@@ -1,0 +1,105 @@
+{
+  "id": "cn_x_visa_student",
+  "country": "CN",
+  "name": "X1/X2 Student visa",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "x1_longterm",
+      "name": "X1: study exceeding 180 days",
+      "requirements": [
+        {
+          "id": "x1_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_recognised_chinese_institution_long_term",
+          "hard": true,
+          "blocker_text": "Requires an admission letter from a recognised Chinese educational institution and a JW201 or JW202 form issued by that institution, for a program of study exceeding 180 days.",
+          "fix_path": "Secure admission and the required JW201/JW202 form from a recognised Chinese institution.",
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        },
+        {
+          "id": "x1_registration",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "psb_registration_within_30_days",
+          "hard": true,
+          "blocker_text": "Holders must register with the local Public Security Bureau (PSB) within 30 days of arrival and apply for a Temporary/Residence Permit for Study to convert the entry visa into a long-term status.",
+          "fix_path": "Complete PSB registration within 30 days of arrival.",
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        }
+      ]
+    },
+    {
+      "id": "x2_shortterm",
+      "name": "X2: study of 180 days or fewer",
+      "requirements": [
+        {
+          "id": "x2_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_recognised_chinese_institution_short_term",
+          "hard": true,
+          "blocker_text": "Requires an admission letter and JW201/JW202 form for a short-term program of 180 days or fewer; for medical programmes, an additional Internship Admission Notice is required.",
+          "fix_path": "Secure admission and the required documentation from a recognised Chinese institution for the short-term program.",
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Admission letter and JW201 or JW202 form from the Chinese institution",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Passport valid at least 6 months with blank pages",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "PSB registration within 30 days of arrival (X1 track)",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "X1: up to 5 years multiple-entry, tied to program length; X2: single-entry, up to 6 months",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "cn_z_visa_work_permit"
+    ]
+  },
+  "sources": [
+    {
+      "id": "chinaneighbor_visa_guide",
+      "tier": 3,
+      "url": "https://chinaneighbor.com/guide/essentials/china-visa-types-guide-2026/",
+      "title": "China Neighbor -- China Visa Types: Complete Guide for Foreigners (2026), describing the X1/X2 distinction, PSB registration requirement, and JW201/JW202 documentation",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "HONEST SOURCING GAP: as with cn_l_visa_visafree, this route rests on a well cross-referenced tier-3 guide rather than a directly fetched nia.gov.cn or Ministry of Education page -- the specific X1/X2 category pages were not isolated and fetched in this research pass. work_rights is 'none' as the verified default; unlike Poland's uncapped student work rights or Korea's narrow permitted-activity exceptions, no source checked in this pass documented any legal part-time work allowance for X-visa holders in China, and several general work-visa guides note that even Chinese permanent residents face province-specific work restrictions, suggesting China's system is generally more restrictive on foreign student work than the other countries in this dataset -- flagged as the verified position rather than an assumption of restrictiveness. Standard graduation pathway mirrors Korea's: X1 holders typically transition to a Z visa (work visa) and then a Foreigner's Work Permit upon graduation and securing employment, rather than having a dedicated job-seeker status -- China has no direct equivalent to Korea's D-10 or Poland's graduate permit documented in sources checked for this build."
+}

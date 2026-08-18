@@ -1,0 +1,92 @@
+{
+  "id": "pl_student",
+  "country": "PL",
+  "name": "Temporary residence permit for studies (zezwolenie na pobyt czasowy w celu kształcenia się na studiach)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Enrolled student",
+      "requirements": [
+        {
+          "id": "stu_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_polish_full_time_program",
+          "hard": true,
+          "blocker_text": "This requires admission to full-time studies (or a preparatory course for higher education, or a PhD programme) at a Polish institution.",
+          "fix_path": "Secure an admission letter from an accredited Polish university or preparatory programme.",
+          "fix_time_months": null,
+          "source_id": "migrant_student"
+        },
+        {
+          "id": "stu_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 776, "currency": "PLN", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Applicants must show a stable and regular source of funds for the duration of study, referenced to the social-assistance income threshold for a single person (currently just above PLN 1,010/month net; some voivodeship offices apply the lower per-person-in-household figure of PLN 823/month depending on circumstances).",
+          "fix_path": "Provide bank statements, a scholarship confirmation, or a sponsorship declaration from a person obliged to support the applicant.",
+          "fix_time_months": null,
+          "source_id": "migrant_student"
+        },
+        {
+          "id": "stu_insurance",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean_or_covered_health_insurance",
+          "hard": true,
+          "blocker_text": "Applicants need health insurance (NFZ or private) covering the stay in Poland.",
+          "fix_path": "Enrol in the Polish national health fund (NFZ) as a student or purchase qualifying private travel/health insurance.",
+          "fix_time_months": 1,
+          "source_id": "migrant_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission/enrolment confirmation from the Polish institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of tuition payment where applicable", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation in Poland", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 15 months for the first permit (or up to program length for programs under 1 year); renewed for subsequent years of study",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pl_single_permit", "pl_eu_blue_card", "pl_business_activity"]
+  },
+  "sources": [
+    {
+      "id": "migrant_student",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/udsc-en/permit-for-temporary-residence--graduate",
+      "title": "Office for Foreigners (gov.pl/udsc-en) -- residence permits for study and post-graduation",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "migrant_info_student",
+      "tier": 2,
+      "url": "https://migrant.info.pl/en/temporary-residence-permit-for-studies",
+      "title": "Migrant.info.pl (IOM / Polish Ministry of Interior co-funded portal) -- Temporary residence permit for studies, corroborating admission and funds conditions",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Full work rights during studies is a genuinely favourable feature relative to several other countries in this dataset (e.g. Germany's 120-full/240-half-day cap for Blue Card-track non-EU students) -- Poland places no statutory cap on hours worked by full-time students holding this permit, since 2018 amendments exempted students from the labour-market test and hours restriction entirely. A closely related route not separately encoded here: graduates of Polish higher education institutions can obtain a one-time 9-month 'graduate' temporary residence permit (permit for temporary residence -- graduate) exempting them from the labour-market test while job-hunting, confirmed via gov.pl/udsc-en. This functions similarly to Germany's job-seeker permit or the Netherlands' Zoekjaar but is narrower (Polish-graduates only, 9 months, one-time) -- flagged as a candidate for a future separate route file rather than folded in here, to keep this file's requirement grammar clean around enrolled status specifically."
+}

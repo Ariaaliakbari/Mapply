@@ -1,0 +1,80 @@
+{
+  "id": "sa_temporary_work_visa",
+  "country": "SA",
+  "name": "Temporary work visa (project-based, multiple-entry consultant visa)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-17",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Project-based or consultancy assignment",
+      "requirements": [
+        {
+          "id": "tw_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a Saudi entity to sponsor the visit for a specific, time-bound project, consultancy, or specialist assignment, distinct from an ordinary employment contract.",
+          "fix_path": "Secure a project-based sponsorship from a Saudi entity for the specific engagement.",
+          "fix_time_months": null,
+          "source_id": "usemultiplier_temp_work"
+        },
+        {
+          "id": "tw_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "project_based_or_consultancy_role",
+          "hard": true,
+          "blocker_text": "Limited to consultants, specialists, and project managers on defined assignments; it is not a substitute for the standard Employment Visa for ongoing, indefinite roles.",
+          "fix_path": "Use the standard Employment Visa (sa_employment_visa) for ongoing indefinite employment instead.",
+          "fix_time_months": null,
+          "source_id": "usemultiplier_temp_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Project or consultancy contract with defined scope and duration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical examination for each entry where required", "difficulty": "routine", "typical_time_days": 7 }
+  ],
+  "outcome": {
+    "duration_length": "up to 180 days per entry, multiple entries within a 12-month validity",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 180 days per single entry",
+    "switchable_to": ["sa_employment_visa"]
+  },
+  "sources": [
+    {
+      "id": "usemultiplier_temp_work",
+      "tier": 3,
+      "url": "https://www.usemultiplier.com/saudi-arabia/work-visa",
+      "title": "Multiplier -- Saudi Arabia work visa types, describing the temporary/project work visa's 180-day-per-entry, 12-month multiple-entry structure",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "worldwide_rs_temp_work",
+      "tier": 3,
+      "url": "https://www.worldwide-rs.com/blog/saudi-arabia-work-permits-visas/",
+      "title": "Worldwide RS -- Saudi Arabia Work Permits and Visas 2026, independent corroboration distinguishing temporary/seasonal visas from the standard Employment Visa and Iqama track",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STATUS: DRAFT. Unlike every other route in this build, this one could not be pinned to a single primary MOI or HRSD page describing the temporary/multi-entry project-work visa on its own terms -- most official-looking guidance folds it into general work-visa overviews without a dedicated statutory citation, and the two sources used here, while consistent with each other and with the broader Saudi visa-guide literature, are tier-3 secondary sources rather than a fetched government page. Flagged honestly rather than assumed away; switched to draft status (rather than forcing a tier-3 source onto hard requirements to pass as published) because the route's core mechanics -- the 180-day-per-entry cap, 12-month multi-entry window, project/consultancy scope -- rest on secondary-source corroboration alone. A follow-up session should attempt to locate the underlying MOI/Jawazat regulation directly (likely referenced as a 'Visit Visa - Work' or Type-18-adjacent category) before promoting this route to published."
+}

@@ -1,0 +1,155 @@
+{
+  "id": "it_naturalisation",
+  "country": "IT",
+  "name": "Italian citizenship by naturalisation (Legge 91/1992, Art. 5 and 9)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general_residence",
+      "name": "General residence track, 10 years (non-EU)",
+      "requirements": [
+        {
+          "id": "gen_10yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 years of continuous legal residence in Italy for non-EU citizens, an Italian-language certificate at B1 level or higher, and income sufficient to be self-supporting.",
+          "fix_path": "Continue accruing continuous legal residence, and complete a B1-level Italian language certification.",
+          "fix_time_months": 120,
+          "source_id": "interno_cittadinanza"
+        }
+      ]
+    },
+    {
+      "id": "eu_citizen",
+      "name": "EU citizen track, 4 years",
+      "requirements": [
+        {
+          "id": "eu_4yr",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["eu_member_state_national"],
+          "hard": true,
+          "blocker_text": "EU citizens qualify after 4 years of legal residence in Italy, half the general track.",
+          "fix_path": "Continue accruing legal residence until the 4-year threshold is met.",
+          "fix_time_months": 48,
+          "source_id": "prefettura_reggioemilia"
+        }
+      ]
+    },
+    {
+      "id": "stateless_refugee",
+      "name": "Stateless persons and recognised refugees, 5 years",
+      "requirements": [
+        {
+          "id": "sr_5yr",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["stateless_status", "recognised_refugee_status"],
+          "hard": true,
+          "blocker_text": "Stateless persons and recognised political refugees qualify after 5 years of legal residence, per Art. 9 lett. e and Art. 16 comma 2 respectively.",
+          "fix_path": "Continue accruing legal residence following recognition of statelessness or refugee status.",
+          "fix_time_months": 60,
+          "source_id": "prefettura_reggioemilia"
+        }
+      ]
+    },
+    {
+      "id": "born_in_italy",
+      "name": "Foreign nationals born in Italy, 3 years",
+      "requirements": [
+        {
+          "id": "born_3yr",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "born_in_italy_no_break_in_legal_residence",
+          "hard": true,
+          "blocker_text": "Foreign nationals born in Italy, with no break in their legal residence, qualify after 3 years of legal residence -- a distinct track from the jure sanguinis descent route, applying to birth location and continuous residence rather than ancestry.",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "prefettura_reggioemilia"
+        }
+      ]
+    },
+    {
+      "id": "descendant_of_citizen",
+      "name": "Direct-line ascendants of Italian-born citizens, 3 years",
+      "requirements": [
+        {
+          "id": "desc_3yr",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "direct_line_ascendant_of_italian_born_citizen",
+          "hard": true,
+          "blocker_text": "Foreign nationals whose direct-line ascendant was an Italian citizen by birth qualify after 3 years of legal residence. NOTE: some secondary sources describe a 2-year track for this same population as part of the 2025 jure sanguinis reform (Legge 74/2025) -- a discrepancy this dataset flags rather than resolves; the 3-year figure here is sourced directly from an official Prefettura (Ministry of Interior field office) page, while the 2-year claim traces to jure-sanguinis-specialist commentary. Applicants in this category should confirm the current figure directly with a Prefettura before relying on either.",
+          "fix_path": "Continue accruing legal residence; verify current requirement with a Prefettura given the unresolved figure discrepancy.",
+          "fix_time_months": 36,
+          "source_id": "prefettura_reggioemilia"
+        }
+      ]
+    },
+    {
+      "id": "marriage",
+      "name": "Spouse of an Italian citizen",
+      "requirements": [
+        {
+          "id": "marr_2yr_domestic",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_italian_citizen",
+          "hard": true,
+          "blocker_text": "The foreign or stateless spouse of an Italian citizen may acquire citizenship after 2 years of legal residence in Italy following the marriage, or after 3 years from the marriage date if resident abroad -- both halved (to 1 year / 1.5 years) if the couple has children born or adopted together. The marriage must not have been dissolved, annulled, or have civil effects ceased, and the spouses must not be legally separated, at the time the grant decree is adopted.",
+          "fix_path": "Maintain the marriage and required residence period; document any children born or adopted together to halve the timeline.",
+          "fix_time_months": 24,
+          "source_id": "interno_cittadinanza"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence for the applicable track's period", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Italian-language certificate at B1 level or higher (general/most tracks)", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Income documentation sufficient to be self-supporting", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "the decree of naturalisation must be followed by an oath of allegiance within 6 months of notification; citizenship takes effect the day after the oath, not on the decree date itself",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "interno_cittadinanza",
+      "tier": 1,
+      "url": "https://www.interno.gov.it/it/temi/cittadinanza-e-altri-diritti-civili/cittadinanza",
+      "title": "Ministero dell'Interno (interno.gov.it) -- Cittadinanza, official portal citing Legge 5 febbraio 1992, n. 91 and its implementing decrees",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "prefettura_reggioemilia",
+      "tier": 1,
+      "url": "https://prefettura.interno.gov.it/it/prefetture/reggio-emilia/cittadinanza-residenza",
+      "title": "Prefettura di Reggio Emilia (prefettura.interno.gov.it, a Ministry of Interior field office) -- Cittadinanza per Residenza, itemising all Art. 9 residence-track periods (10/5/4/3 years by category)",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Six genuinely distinct naturalisation tracks, correctly modeled as OR-logic groups per this schema's core design decision -- confirmed identically across two independent Ministero dell'Interno sources (the national portal and a regional Prefettura field office), giving strong tier-1 confidence in the overall structure even where one specific figure (descendant_of_citizen's 3-year vs 2-year discrepancy) remains genuinely unresolved and is flagged rather than silently picked. Processing-time procedural note, distinct from the residence-requirement years documented above: the administrative processing deadline for naturalisation applications was 4 years under DL 113/2018, then cut to 2 years (extendable to 3) under DL 130/2020 for applications filed from 19 December 2020 onward -- this is how long the government has to decide, not how long the applicant must reside, and is worth surfacing separately since the two timeframes are easy to conflate. dual_citizenship_allowed is true throughout, consistent with Italy's general acceptance of dual nationality since Legge 91/1992 Art. 11 (1992) -- a genuine structural contrast with China, Korea's general track, and Saudi Arabia's naturalisation regimes documented elsewhere in this dataset, and consistent with it_ancestry_jure_sanguinis's own dual-citizenship allowance. The marriage track's 2-years-domestic/3-years-abroad split, both halved with children, is a real, meaningfully generous structure relative to several other countries in this dataset -- faster than the general track by a wide margin, though not as fast as Poland's Karta Polaka-linked tracks or Korea's F-6."
+}

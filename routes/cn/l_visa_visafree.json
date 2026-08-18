@@ -1,0 +1,91 @@
+{
+  "id": "cn_l_visa_visafree",
+  "country": "CN",
+  "name": "L Visa (tourism) / unilateral visa-free entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_free",
+      "name": "Unilateral visa-free entry (eligible nationalities)",
+      "requirements": [
+        {
+          "id": "vf_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": [
+            "unilateral_visa_free_eligible_countries"
+          ],
+          "hard": true,
+          "blocker_text": "China's unilateral visa-free policy, extended through 31 December 2026, covers ordinary-passport holders from a growing list of countries (roughly 45+ as of this research, including Australia, France, Germany, Italy, and Spain) for stays up to 30 days for tourism, business, family visits, or transit -- other nationalities need an L (tourist) or M (business) visa.",
+          "fix_path": "Apply for an L visa at a Chinese embassy or consulate if not on the visa-free list.",
+          "fix_time_months": null,
+          "source_id": "travelchinaguide_visa"
+        }
+      ]
+    },
+    {
+      "id": "l_visa",
+      "name": "Standard L visa (tourism)",
+      "requirements": [
+        {
+          "id": "l_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_no_work",
+          "hard": true,
+          "blocker_text": "Requires proof of tourism purpose -- a round-trip itinerary, hotel bookings, or an invitation letter from a host in China; does not authorise work or study.",
+          "fix_path": "Apply for the relevant work or study route instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "travelchinaguide_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Passport valid at least 6 months with 2 blank pages",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Itinerary, hotel bookings, or invitation letter",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "L visa typically 30-90 days per stay; visa-free entry up to 30 days per stay",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "up to 30 days per visa-free stay; L visa duration varies by nationality and consular decision",
+    "switchable_to": [
+      "cn_x_visa_student"
+    ]
+  },
+  "sources": [
+    {
+      "id": "travelchinaguide_visa",
+      "tier": 3,
+      "url": "https://www.travelchinaguide.com/embassy/visa.htm",
+      "title": "TravelChinaGuide -- China Visa: Chinese Visa Application, Types, E-arrival Card, describing the L/M/X/Z visa categories and the unilateral visa-free policy extended to 31 December 2026",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "HONEST SOURCING GAP: China's National Immigration Administration (nia.gov.cn) is the genuine tier-1 authority and was successfully fetched elsewhere in this build (see cn_naturalisation), but its specific visa-category and visa-free-list pages were not isolated and fetched in this research pass -- this route rests on a well-established, widely cross-corroborated tier-3 travel-guide source rather than a direct nia.gov.cn or Ministry of Foreign Affairs fetch. Kept as published rather than draft because the core facts (visa categories, general visa-free mechanism, 30-day cap) are stable, long-standing, and consistent across every source checked, unlike the more volatile country-list specifics. Change of status to a long-term category from inside China while on L-visa or visa-free status is not permitted; applicants must leave and apply for the target visa from outside China, the same pattern seen across nearly every 'visit' category route in this dataset."
+}

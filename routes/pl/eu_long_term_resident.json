@@ -1,0 +1,110 @@
+{
+  "id": "pl_eu_long_term_resident",
+  "country": "PL",
+  "name": "EU long-term resident's residence permit (zezwolenie na pobyt rezydenta długoterminowego UE)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "5-year continuous legal residence, economic grounds",
+      "requirements": [
+        {
+          "id": "ltr_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous, legal residence in Poland directly before the application. Time spent on an EU Blue Card counts fully; if held partly in another EU state, at least the final 2 years directly before the application must be in Poland.",
+          "fix_path": "Continue accruing continuous legal residence; breaks under 6 months at a time (10 months total) are tolerated.",
+          "fix_time_months": 60,
+          "source_id": "gov_ltr"
+        },
+        {
+          "id": "ltr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "stable_regular_income",
+          "hard": true,
+          "blocker_text": "Requires a stable, regular source of income sufficient to cover the applicant and any dependants.",
+          "fix_path": "Document stable employment, business, or other regular income.",
+          "fix_time_months": null,
+          "source_id": "gov_ltr"
+        },
+        {
+          "id": "ltr_health_insurance",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "health_insurance_confirmed",
+          "hard": true,
+          "blocker_text": "Requires valid health insurance (NFZ or private) covering costs in Poland.",
+          "fix_path": "Confirm NFZ coverage through employment or purchase qualifying private insurance.",
+          "fix_time_months": null,
+          "source_id": "gov_ltr"
+        },
+        {
+          "id": "ltr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "confirmed",
+          "hard": true,
+          "blocker_text": "Requires confirmed knowledge of Polish, evidenced by a certificate, completion of Polish-language education, or a language exam -- this test is not required for plain permanent residence, making it the one requirement where the EU long-term route is stricter than pl_permanent_residence.",
+          "fix_path": "Pass a recognised Polish-language exam (B1 is the commonly-required threshold in practice) or document Polish-language schooling.",
+          "fix_time_months": 6,
+          "source_id": "gov_ltr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Polish-language certificate or exam pass", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Proof of stable income and health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited (residence card issued for 5 years, renewed as a card only)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "grants EU-wide long-term resident mobility rights, distinct from Poland-only permanent residence",
+    "switchable_to": ["pl_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_ltr",
+      "tier": 1,
+      "url": "https://mos.cudzoziemcy.gov.pl/baza-pytan-i-odpowiedzi/zezwolenia-bezterminowe/zezwolenie-na-pobyt-staly/",
+      "title": "Moduł Obsługi Spraw (mos.cudzoziemcy.gov.pl, Office for Foreigners' official case-handling portal) -- EU long-term resident permit conditions",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "powroty_ltr",
+      "tier": 1,
+      "url": "https://powroty.gov.pl/zezwolenie-na-pobyt-staly-10025/",
+      "title": "Powroty.gov.pl (official Polish government portal, gov.pl domain) -- side-by-side comparison of permanent residence vs. EU long-term resident status, independent cross-check of the language and income conditions",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "zielonalinia_ltr_continuity",
+      "tier": 1,
+      "url": "https://zielonalinia.gov.pl/zezwolenie-na-pobyt-rezydenta-dlugoterminowego-ue-a-nieprzerwany-pobyt/",
+      "title": "Zielona Linia (Ministry of Family, Labour and Social Policy-run public information line) -- confirming the Blue Card cross-border portability provision and the 6-month/10-month continuity-break tolerances",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Genuinely distinct from pl_permanent_residence rather than a duplicate: both require 5 years and both are unlimited-duration outcomes, but EU long-term residence adds a confirmed Polish-language requirement that plain permanent residence does not carry, and in exchange grants EU-wide long-term-mobility rights (the ability to move long-term to certain other EU states under the 2003/109/EC directive) that plain Poland-only permanent residence does not. Poland is unusual among the countries built so far in offering these as two genuinely parallel, freestanding settled-category routes rather than one being a strict subset or later stage of the other -- an applicant chooses between them based on whether EU-wide mobility or a simpler no-language-test path matters more, confirmed via powroty.gov.pl's explicit side-by-side comparison of the two statuses. EU Blue Card holders get a specific acceleration on this route: time spent in another EU member state on that state's Blue Card counts toward the 5-year total, provided the final 2 years directly before the Polish application were spent in Poland on a Blue Card -- a cross-border portability feature confirmed via lexlege.pl's reproduction of the Act on Foreigners' Article on this point, and worth surfacing prominently on any comparison view since it rewards genuine EU-wide Blue Card mobility rather than penalising it."
+}

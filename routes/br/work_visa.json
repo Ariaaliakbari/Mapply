@@ -1,0 +1,121 @@
+{
+  "id": "br_work_visa",
+  "country": "BR",
+  "name": "VITEM V Work visa (employer-sponsored)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored, technical role match",
+      "requirements": [
+        {
+          "id": "wv_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Brazilian-registered employer, who files the sponsorship request with the Ministry of Labour (or Ministry of Justice, depending on the applicable Normative Resolution) justifying why a foreign national was selected for the role.",
+          "fix_path": "Secure a job offer from a Brazilian employer willing to sponsor the application.",
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        },
+        {
+          "id": "wv_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "value_type": "formula",
+            "formula_ref": "min_wage_2x",
+            "ratio": 1.0,
+            "resolved_amount": 3242,
+            "currency": "BRL",
+            "unit": "month"
+          },
+          "hard": false,
+          "blocker_text": "Requires a documented salary of at least twice the national minimum wage (R$3,242/month, based on the 2026 minimum wage of R$1,621/month).",
+          "fix_path": "Negotiate a salary at or above twice the current national minimum wage.",
+          "fix_time_months": null,
+          "source_id": "dofmar_work_visas"
+        },
+        {
+          "id": "wv_no_local_clients",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "employed_by_brazilian_sponsor_only",
+          "hard": false,
+          "blocker_text": "This is strictly an employer-sponsored status tied to the sponsoring Brazilian entity; it cannot be self-initiated or used for independent/freelance work.",
+          "fix_path": "Use br_investor_visa or br_digital_nomad_visa instead if not employed by a single Brazilian sponsor.",
+          "fix_time_months": null,
+          "source_id": "ribeirocavalcante_vitem_v"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the salary floor",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Employer's justification filing with the Ministry of Labour/Justice",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Degree or qualification documentation matching the sponsored role",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, extendable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "br_permanent_residence",
+      "br_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "gov_br_pf_residency",
+      "tier": 1,
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/autorizacao-residencia",
+      "title": "Polícia Federal (gov.br/pf) -- Autorização de Residência, the federal police portal listing residence-authorisation categories",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "dofmar_work_visas",
+      "tier": 3,
+      "url": "https://dofmar.com/work-visas-brazil/",
+      "title": "Dofmar -- Work Visas Brazil 2026 Guide, citing the 2026 minimum wage of R$1,621/month and the VITEM V's 2x-minimum-wage salary floor",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "ribeirocavalcante_vitem_v",
+      "tier": 3,
+      "url": "https://www.ribeirocavalcante.com.br/brazil-work-visa-vitem-v-requirements-2026",
+      "title": "RC Advocacia -- Brazil Work Visa (VITEM V) 2026, confirming the visa cannot be self-initiated and does not cover remote work for foreign employers",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "HONEST SOURCING GAP on the specific salary multiplier: the 2x-minimum-wage figure and the exact 2026 minimum wage (R$1,621/month, giving R$3,242/month for VITEM V) are corroborated by a single tier-3 source in this research pass; the underlying Normative Resolution setting this specific multiplier was not independently fetched from a gov.br page. The general job-offer/employer-sponsorship mechanics are tier-1 sourced via gov.br/pf. Salary_2x_min_wage in national-variables/BR.json documents the underlying formula reference for reuse across other Brazil routes that may peg to the same minimum-wage base. pr_after_months and citizenship_after_months (48) reflect the general 4-year track; br_mercosur_residency and br_naturalisation document materially faster alternate paths (Mercosur nationals, Portuguese-speaking-country nationals, and several other reduced-residency categories under Lei 13.445/2017 Article 66) that this route's holders would generally prefer if they qualify for them instead of the plain 4-year employment track."
+}

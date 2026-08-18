@@ -1,0 +1,88 @@
+{
+  "id": "kr_refugee_status",
+  "country": "KR",
+  "name": "Refugee status recognition (Refugee Act)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": {
+    "approx_rate_percent": 2.7,
+    "basis": "Cumulative refugee recognitions (1,544) against cumulative applications (122,095) since Korea began processing refugee claims in 1994, per Ministry of Justice statistics as of end-2024",
+    "source_id": "koreaherald_recognition_rate"
+  },
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of persecution based on race, religion, nationality, membership of a particular social group, or political opinion, making the applicant unable or unwilling to seek protection from their country of origin (Article 2(1) of the Refugee Act).",
+    "evidence_hint": "Personal testimony plus any corroborating documentation of the persecution or risk; identity documents where available, though their absence does not bar an application."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status determination",
+      "requirements": [
+        {
+          "id": "ref_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution based on race, religion, nationality, membership of a particular social group, or political opinion, as defined in Article 2(1) of the Refugee Act -- Korea's own statutory definition, closely modelled on the 1951 Refugee Convention, which Korea ratified in 1992 and gave full domestic legal effect via the 2013 Refugee Act.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "daegu_go_kr_refugee"
+        },
+        {
+          "id": "ref_application_point",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "korea_or_port_of_entry",
+          "hard": true,
+          "blocker_text": "Applications can be filed at a local immigration office, a foreigner-related agency, or at the port of entry/departure during the immigration inspection process itself, regardless of how long the applicant has been in Korea.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "daegu_go_kr_refugee"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for Refugee Status Recognition, obtainable from a local immigration office or filed at the port of entry", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal testimony and any supporting documentation of persecution or risk", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Physical examination report and civil-status documents where available", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited once recognised, with the residence card renewed periodically",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kr_f5_permanent_residence", "kr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "daegu_go_kr_refugee",
+      "tier": 1,
+      "url": "https://www.daegu.go.kr/english/?menu_id=00000795",
+      "title": "Daegu Metropolitan City (official government portal, daegu.go.kr) -- Refugee Status Determination, reproducing Article 2(1) of the Refugee Act and the application procedure verbatim",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "koreaherald_recognition_rate",
+      "tier": 3,
+      "url": "https://www.koreaherald.com/article/10412679",
+      "title": "The Korea Herald -- 'South Korea rejects most asylum seekers as refugee recognition rate stays at just 2.7%', citing Ministry of Justice cumulative statistics",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL CONTRAST worth stating plainly: Korea is the first country in Asia to enact a standalone Refugee Act (2013) and has a genuine, codified, court-appealable refugee status determination system, not a discretionary or informal arrangement -- a sharp contrast with the UAE, Saudi Arabia, and Singapore's confirmed 'never existed, no formal system' pattern documented elsewhere in this dataset. This makes Korea's humanitarian route structurally comparable to Germany's or the UK's asylum systems, not to the Gulf-state pattern, despite geographic and cultural distance from those comparisons. selection_odds (0.027) is a genuine, source-confirmed figure, not an estimate: per Ministry of Justice cumulative statistics reported by the Korea Herald and independently corroborated by the Korea Times, only 1,544 of roughly 122,095 cumulative applicants (1994-2024) have been granted refugee status, a 2.7% recognition rate -- markedly below the OECD 2023 average of roughly 25%. An additional 2,696 applicants have received a separate 'humanitarian stay permit' (temporary residence for those facing serious threats such as torture or inhumane treatment if deported, short of full refugee status) -- not modeled as a separate route file here since it is explicitly a lesser, temporary, non-refugee status rather than an independent qualifying path, but worth flagging given its real scale. Average processing time is 13.4 months per Ministry of Justice data (Korea Times), with 18.5% of cases taking over 2 years; rejected applicants can appeal to the Ministry of Justice within 30 days and, if still rejected, file administrative litigation in court within 90 days -- a genuine multi-stage appeal process, distinguishing Korea's system from the discretionary, non-appealable frameworks seen in some Gulf states' broader immigration systems. citizenship_after_months (60) reflects the general naturalisation timeline; Korea's Nationality Act does not appear, from sources checked in this research pass, to offer refugee-status holders an accelerated naturalisation track comparable to Poland's 2-year refugee-specific citizenship tier -- flagged as an open question rather than asserted either way, since this wasn't conclusively confirmed or ruled out."
+}

@@ -1,0 +1,99 @@
+{
+  "id": "pl_schengen_visitor",
+  "country": "PL",
+  "name": "Schengen short-stay visa (Category C) / visa-free stay",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard short-stay entry",
+      "requirements": [
+        {
+          "id": "visit_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_visiting_family_no_work",
+          "hard": true,
+          "blocker_text": "Category C visas and visa-free entry cover tourism, business visits, and family visits; they do not authorise employment or self-employment in Poland.",
+          "fix_path": "Apply for the relevant work or business residence route instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "gov_visas"
+        },
+        {
+          "id": "visit_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 300, "currency": "PLN", "unit": "day" },
+          "hard": true,
+          "blocker_text": "Applicants must show sufficient funds for the intended stay, commonly assessed around PLN 300/day of stay (or documented sponsorship/invitation covering costs), plus return travel and travel medical insurance of at least EUR 30,000.",
+          "fix_path": "Provide bank statements, a sponsorship declaration, or a formal invitation covering the cost of stay.",
+          "fix_time_months": null,
+          "source_id": "gov_visas"
+        },
+        {
+          "id": "visit_insurance",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean_or_not_a_security_risk",
+          "hard": true,
+          "blocker_text": "Applicants must not be flagged in the Schengen Information System and must not be considered a threat to public policy, security, or health.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid travel document, valid at least 3 months beyond intended departure", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel medical insurance, minimum EUR 30,000 coverage, valid for the Schengen area", "difficulty": "routine", "typical_time_days": 3 },
+    { "document": "Proof of purpose of visit, accommodation, and sufficient funds", "difficulty": "routine", "typical_time_days": 14 }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 90 days per 180-day rolling window across the whole Schengen area, not just Poland",
+    "switchable_to": ["pl_student", "pl_business_activity"]
+  },
+  "sources": [
+    {
+      "id": "gov_visas",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/gov/uzyskaj-wize-jednolita-wize-schengen",
+      "title": "gov.pl -- Uzyskaj wizę jednolitą Schengen (official Polish government visa portal)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "migrant_visas",
+      "tier": 2,
+      "url": "https://migrant.info.pl/en/Visas",
+      "title": "Migrant.info.pl (IOM / Polish Ministry of Interior co-funded portal) -- Visas, corroborating the funds and insurance conditions",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "deel_no_nomad_visa",
+      "tier": 3,
+      "url": "https://www.deel.com/blog/how-to-get-a-visa-and-work-permit-in-poland/",
+      "title": "Deel -- How to Get a Visa and Work Permit in Poland (2025), corroborating the confirmed absence of a Polish digital-nomad visa",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Poland is a full Schengen member, so short-stay entry follows the standard EU Schengen Borders Code / common visa framework, not a Poland-specific instrument -- citizens of many countries (US, UK, Canada, Japan, South Korea, etc.) enter visa-free under the same 90/180 rule and the same purpose and funds restrictions as Category C visa holders. Poland has no working-holiday agreement network on the scale of e.g. the Netherlands or Australia and no digital-nomad visa (confirmed absence noted repeatedly across immigration-law secondary sources, e.g. Deel's 2026 guide, and not contradicted by any tier-1 Polish source found), so remote workers who are not employed by a Polish entity have no dedicated short-stay-plus route beyond this one and must otherwise use the business-activity or single-permit routes if they intend a longer or working stay."
+}

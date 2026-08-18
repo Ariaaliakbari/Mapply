@@ -1,0 +1,74 @@
+{
+  "id": "br_student_visa",
+  "country": "BR",
+  "name": "VITEM IV Student visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Admitted to a recognised Brazilian institution",
+      "requirements": [
+        {
+          "id": "stu_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_recognised_brazilian_institution",
+          "hard": true,
+          "blocker_text": "Requires an official letter of acceptance from a Brazilian educational institution recognised by the Ministry of Education, for a course of regular study, research, or extension activities.",
+          "fix_path": "Secure admission from a recognised Brazilian institution.",
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        },
+        {
+          "id": "stu_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_or_scholarship",
+          "hard": true,
+          "blocker_text": "Requires proof of financial means to support the stay -- personal funds, a scholarship, or a sponsor's declaration -- plus valid health insurance covering the stay.",
+          "fix_path": "Provide bank statements, a scholarship award letter, or a sponsor's financial declaration.",
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Official letter of acceptance from the Brazilian institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds or scholarship, and health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Federal Police (Polícia Federal) registration within 90 days of arrival, for the CRNM", "difficulty": "routine", "typical_time_days": 90 }
+  ],
+  "outcome": {
+    "duration_length": "tied to course length, renewed via the CRNM",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["br_work_visa", "br_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_pf_residency",
+      "tier": 1,
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/autorizacao-residencia",
+      "title": "Polícia Federal (gov.br/pf) -- Autorização de Residência, the federal police portal listing residence-authorisation categories including student status",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Postgraduate researchers and exchange students may hold internship or fellowship contracts that permit a stipend without this constituting 'work' in the Lei 13.445/2017 sense -- this nuance was not independently confirmed in full detail against a primary source in this research pass and is flagged rather than asserted as a blanket work-rights exception. Unlike Korea's F-2-7 or Poland's student route, no dedicated post-graduation job-seeker status was identified for Brazil in sources checked for this build -- the standard path from student to work status is a direct conversion to br_work_visa upon securing employer sponsorship, without an intermediate job-search-specific permit."
+}

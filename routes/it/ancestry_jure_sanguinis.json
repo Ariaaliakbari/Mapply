@@ -1,0 +1,115 @@
+{
+  "id": "it_ancestry_jure_sanguinis",
+  "country": "IT",
+  "name": "Italian citizenship by descent (jure sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "parent_or_grandparent_2025",
+      "name": "Parent or grandparent exclusively Italian (post-27 March 2025 rule)",
+      "requirements": [
+        {
+          "id": "js_ancestor_degree",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "italian_parent_or_grandparent_exclusive_citizenship",
+          "hard": true,
+          "blocker_text": "Under Legge 74/2025 (converting Decreto-Legge 36/2025, the 'Tajani Decree'), applications filed from 28 March 2025 onward require a parent or grandparent who held, or held at death, exclusively Italian citizenship -- great-grandparents and more distant ancestors no longer confer eligibility under this standard route, a sharp break from the pre-reform rule which had no generational limit at all (any ancestor who was an Italian citizen on or after 17 March 1861, unification, with an unbroken citizenship chain).",
+          "fix_path": "If descent runs through a great-grandparent or more distant ancestor, this route no longer applies -- see the residency-based accelerated track in this same file, or it_naturalisation's general tracks.",
+          "fix_time_months": null,
+          "source_id": "esteri_consbasilea_iure"
+        },
+        {
+          "id": "js_no_renunciation",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "unbroken_citizenship_chain_no_renunciation",
+          "hard": true,
+          "blocker_text": "The Italian ancestor must not have renounced or otherwise lost Italian citizenship before the birth of the next person in the direct line.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "esteri_consbasilea_iure"
+        }
+      ]
+    },
+    {
+      "id": "pre_reform_grandfathered",
+      "name": "Pre-27 March 2025 applications, no generational limit",
+      "requirements": [
+        {
+          "id": "js_pre_reform_filed",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "application_or_confirmed_appointment_before_27_march_2025",
+          "hard": true,
+          "blocker_text": "Applications filed, or consular appointments confirmed by email through the Prenot@mi portal, by 23:59 Rome time on 27 March 2025, continue to be assessed under the pre-reform rule with no generational limit -- any unbroken descent from an Italian citizen alive on or after 17 March 1861 qualifies. The Constitutional Court upheld the reform's validity on 12 March 2026 and rejected retroactive application to already-filed cases, so this grandfathering is confirmed stable rather than at risk of being revoked.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "esteri_consbasilea_iure"
+        }
+      ]
+    },
+    {
+      "id": "residency_alternative",
+      "name": "Parent residency alternative (Art. 3-bis lettera d)",
+      "requirements": [
+        {
+          "id": "js_parent_residency",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "parent_resided_italy_2yr_after_acquiring_citizenship_before_child_birth",
+          "hard": true,
+          "blocker_text": "A parent or adoptive parent who was legally resident in Italy for at least 2 continuous years after acquiring Italian citizenship, and before the applicant's birth or adoption, confers eligibility regardless of generational distance -- a genuine-connection-based alternative to the parent/grandparent degree test.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "esteri_consbasilea_iure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Full civil-status document chain (birth, marriage, and where relevant death certificates) for every person in the direct line", "difficulty": "hard", "typical_time_days": 180 },
+    { "document": "Proof the Italian ancestor did not naturalise elsewhere before the next generation's birth, or naturalisation date documentation where relevant", "difficulty": "hard", "typical_time_days": null },
+    { "document": "EUR 600 non-refundable consular fee (in force from 1 January 2025, per Legge 207/2024)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "esteri_consbasilea_iure",
+      "tier": 1,
+      "url": "https://consbasilea.esteri.it/it/servizi-consolari/servizi-per-il-cittadino-straniero/cittadinanza/cittadinanza-italiana-per-discendenza-secondo-il-criterio-dello-iure-sanguinis/",
+      "title": "Consolato d'Italia a Basilea (esteri.it, official Italian consular network) -- Riconoscimento della cittadinanza italiana ai cittadini stranieri (iure sanguinis), reproducing Art. 3-bis of Legge 91/1992 as amended by Legge 74/2025 in full, including lettere C and D",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "consnewyork_iure",
+      "tier": 1,
+      "url": "https://consnewyork.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/cittadinanza/how-to-apply-for-citizenship-by-descent-iure-sanguinis/",
+      "title": "Consulate General of Italy in New York (esteri.it) -- Citizenship by descent (iure sanguinis), independently corroborating the same Art. 3-bis text and the 27 March 2025 cutoff",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, likely the single most significant global citizenship-by-descent policy event documented anywhere in this dataset: Decree-Law 36/2025 (the 'Tajani Decree,' 28 March 2025), converted into Legge 74/2025 (in force 24 May 2025), ended over a century of unlimited-generation jure sanguinis eligibility -- from 1912 (and continuously since Legge 91/1992) any applicant could claim citizenship through an unbroken chain back to any ancestor who was an Italian citizen on or after unification (17 March 1861), with genealogists and applicants routinely tracing 4th, 5th, or 6th-generation descent. The reform restricts the standard route to a parent or grandparent who held citizenship exclusively -- correctly modeled here as three genuinely distinct OR-logic groups (the new 2-generation standard, pre-27-March-2025 grandfathered applications retaining the old unlimited-generation rule, and a separate genuine-connection-based residency alternative under Art. 3-bis lettera d) rather than collapsed into one rule, since each has a materially different qualifying test. On 12 March 2026, Italy's Constitutional Court upheld the reform (partly unfounded, partly inadmissible challenges) and explicitly rejected retroactive reopening of rejected cases -- confirmed via multiple independent 2026-dated sources, meaning this is now settled law rather than a pending legal question, worth stating plainly rather than hedging. A materially favourable, less-publicised feature of the same reform: descendants who still qualify under the parent/grandparent standard can reach citizenship via an accelerated 2-year residency track (versus the 10-year general naturalisation track) if they relocate to Italy, and gain access to a special employment-entry channel exempt from the Decreto Flussi quota system entirely -- a genuine structural link between this ancestry route and it_work_visa_subordinato's quota-constrained mechanics, giving jure-sanguinis-eligible descendants a real practical advantage over ordinary quota applicants even when they don't yet hold citizenship. citizenship_after_months = 0 across all three groups reflects that recognition IS citizenship from the point of successful application -- the real variable is which generational test the applicant can meet, not a further wait after grant. dual_citizenship_allowed is true, consistent with Italy's general acceptance of dual nationality since 1992 (Art. 11, Legge 91/1992) -- a genuine structural contrast with China, Korea's general track, and Saudi Arabia's naturalisation regimes documented elsewhere in this dataset."
+}

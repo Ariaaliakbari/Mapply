@@ -1,0 +1,122 @@
+{
+  "id": "it_self_employment_visa",
+  "country": "IT",
+  "name": "Visto per lavoro autonomo (self-employment visa, Decreto Flussi quota)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": {
+    "opens": "2026-01-12",
+    "closes": "2026-12-31",
+    "cap_type": "fixed_number",
+    "typical_fill_time_days": 1
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "General self-employment, within the 650-slot quota",
+      "requirements": [
+        {
+          "id": "se_activity",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "qualifying_self_employed_activity",
+          "hard": true,
+          "blocker_text": "Requires a qualifying self-employed, professional, or entrepreneurial activity, with prior authorisation or professional registration where the activity requires it under Italian law.",
+          "fix_path": "Confirm the intended activity is a recognised self-employment category and secure any required professional authorisation.",
+          "fix_time_months": null,
+          "source_id": "prefettura_flussi2026"
+        },
+        {
+          "id": "se_quota_slot",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "click_day_slot_secured",
+          "hard": true,
+          "blocker_text": "Competes for one of only 650 national self-employment quota slots for 2026, within the same Click Day mechanism as subordinate work -- one of the tightest quotas of any route category found across this dataset.",
+          "fix_path": "File during the Click Day window and expect very high competition for the limited slots.",
+          "fix_time_months": null,
+          "source_id": "prefettura_flussi2026"
+        }
+      ]
+    },
+    {
+      "id": "investor_entrepreneur",
+      "name": "Investor-entrepreneur, dedicated 500/year sub-quota",
+      "requirements": [
+        {
+          "id": "se_investment",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": {
+            "amount": 500000,
+            "currency": "EUR",
+            "unit": "one_time"
+          },
+          "hard": false,
+          "blocker_text": "Requires investment of at least EUR 500,000 in an activity of interest to the Italian economy and the creation of at least 3 new jobs -- a dedicated 500-of-650 sub-allocation within the annual self-employment quota. This specific sub-allocation figure rests on a single specialist legal-consultancy source rather than a directly-fetched government page confirming the exact split, unlike the general self-employment quota mechanism above.",
+          "fix_path": "Structure a qualifying investment of at least EUR 500,000 with at least 3 new hires.",
+          "fix_time_months": null,
+          "source_id": "lombardini_flussi2026_detail"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Business plan or professional-activity documentation",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Proof of financial resources adequate to the activity",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Professional registration or authorisation, where the activity requires it",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "it_eu_long_term_residence",
+      "it_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "prefettura_flussi2026",
+      "tier": 1,
+      "url": "https://prefettura.interno.gov.it/it/prefetture/spezia/decreto-flussi-2026-2028",
+      "title": "Prefettura della Spezia (prefettura.interno.gov.it, Ministero dell'Interno field office) -- Decreto flussi 2026-2028, confirming D.P.C.M. 2 ottobre 2025 (Gazzetta Ufficiale 15 ottobre 2025) Art. 5's 164,850-unit total quota and Art. 6's subordinate/self-employment sub-allocation",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "lombardini_flussi2026_detail",
+      "tier": 3,
+      "url": "https://www.avvocatofrancescolombardini.it/decreto-flussi/",
+      "title": "Studio Legale Avvocato Francesco Lombardini -- Decreto Flussi 2026-2028: quote, click day e nulla osta, detailing the 650/year self-employment quota breakdown including the investor-entrepreneur and Venezuela-descendant sub-allocations",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, one of the tightest single-category quotas found anywhere in this dataset: only 650 self-employment slots exist nationally for the whole of 2026, compared to 76,200 subordinate-work slots in the same Decreto Flussi cycle -- a roughly 117-to-1 ratio favouring employer-sponsored over independent work, a far starker imbalance than any other country's work_sponsored-vs-work_independent split documented in this build. Within that already-tiny 650, 500 slots are specifically reserved for the EUR 500,000-plus investor-entrepreneur sub-category (modeled here as its own OR-logic group, since it carries a materially different, higher-bar qualifying test than the general self-employment slots), leaving only about 150 slots nationally for all other self-employment categories combined. A genuinely distinctive detail found only in this route across the entire dataset: a dedicated 50-per-year sub-allocation exists specifically for descendants of Italian citizens (up to the 3rd degree) legally resident in Venezuela or other MAECI-designated countries -- an ancestry-linked quota carve-out inside an otherwise ordinary economic-migration channel, distinct from and smaller in scope than it_ancestry_jure_sanguinis's own separate citizenship-recognition route, but worth flagging as a related, narrower benefit for a subset of the same population. This mirrors a broader pattern documented elsewhere in this dataset (Saudi Arabia's Karta-Polaka-adjacent quota nuances, China's overseas-Chinese PR track) of ancestry functioning as a narrow accelerant embedded within an otherwise unrelated route category, rather than only appearing as its own standalone ancestry-category route. selection_odds.approx_rate_percent is left null rather than guessed, since no source gave a defensible applicant-to-slot ratio -- only the raw slot counts, which are reported instead in the basis field."
+}

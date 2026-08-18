@@ -1,0 +1,110 @@
+{
+  "id": "it_work_visa_subordinato",
+  "country": "IT",
+  "name": "Visto per lavoro subordinato (employer-sponsored work visa, Decreto Flussi quota)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": {
+    "opens": "2026-01-12",
+    "closes": "2026-12-31",
+    "cap_type": "fixed_number",
+    "typical_fill_time_days": 1
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored, within the annual quota",
+      "requirements": [
+        {
+          "id": "wv_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from an Italian employer, who files the nulla osta (clearance) request via the Sportello Unico per l'Immigrazione during the annual Click Day window, competing for a fixed quota slot.",
+          "fix_path": "Secure a job offer from an Italian employer prepared to file during the Click Day window.",
+          "fix_time_months": null,
+          "source_id": "lavoro_gov_flussi2026"
+        },
+        {
+          "id": "wv_quota_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": [
+            "decreto_flussi_eligible_countries"
+          ],
+          "hard": true,
+          "blocker_text": "Non-seasonal subordinate-work quota applications are open only to nationals of countries with a migration-cooperation agreement with Italy (roughly 35-39 countries as of the 2026-2028 DPCM, including Albania, Bangladesh, India, Morocco, Nigeria, Pakistan, the Philippines, and Tunisia); other nationalities generally cannot use this specific quota channel.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lavoro_gov_flussi2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employer's nulla osta application filed during the Click Day window",
+      "difficulty": "hard",
+      "typical_time_days": 1
+    },
+    {
+      "document": "Employment contract meeting sector-standard (CCNL) pay and conditions",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Suitable housing declaration (dichiarazione di ospitalità/idoneità alloggiativa) from the employer",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, tied to the employment contract, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "it_eu_long_term_residence",
+      "it_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "lavoro_gov_flussi2026",
+      "tier": 1,
+      "url": "https://www.lavoro.gov.it/priorita/pagine/flussi-2026-2028-pubblicato-il-decreto-da-oltre-497mila-ingressi",
+      "title": "Ministero del Lavoro e delle Politiche Sociali (lavoro.gov.it) -- 'Flussi 2026-2028, pubblicato il decreto da oltre 497mila ingressi,' confirming D.P.C.M. 2 ottobre 2025 (Gazzetta Ufficiale 15 ottobre 2025), the 164,850/165,850/166,850 three-year quota figures, and the Click Day calendar",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "portalemigranti_flussi2026",
+      "tier": 3,
+      "url": "https://www.portalemigranti.it/2026/04/03/decreto-flussi-2026-tutto-quello-che-devi-sapere-su-click-day-quote-e-requisiti/",
+      "title": "Portale Migranti -- Decreto Flussi 2026: Click Day, quote e requisiti, citing D.P.C.M. 2 ottobre 2025 (Gazzetta Ufficiale 15 ottobre 2025) and Circolare interministeriale n. 8047/2025",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "vallinivaccari_flussi2026",
+      "tier": 3,
+      "url": "https://www.studiovallinivaccari.it/decreto-flussi-2026-domanda-nulla-osta-lavoro-precompilazione/",
+      "title": "Studio Legale Vallini Vaccari -- Decreto Flussi 2026, procedure, click day e precompilazione, listing eligible nationalities for the non-seasonal subordinate-work quota",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: Italy's non-seasonal subordinate work visa is fundamentally quota- and timing-driven, not merits-driven in the ordinary sense -- the D.P.C.M. 2 ottobre 2025 (Gazzetta Ufficiale 15 ottobre 2025, converted into Legge 179/2025) sets a total 2026 non-EU labour-migration quota of 164,850 across all channels, of which only 76,200 (or 76,850 per one source, a minor cross-source discrepancy not resolved in this research pass) is allocated to non-seasonal subordinate work. Selection is first-come-first-served by submission timestamp within the Click Day window (12 January 2026 for the main non-seasonal round), with sources describing demand routinely exceeding available slots within the opening minutes -- selection_method is modeled as 'first_come' rather than 'lottery' since it is literally a timestamp race, not a random draw, though the practical unpredictability for an individual applicant is similar. HONEST SOURCING GAP: no gov.it or Ministero dell'Interno page was directly fetched for the specific 2026 quota figures in this research pass -- both sources are specialist immigration-law consultancies citing the same D.P.C.M. and circolare, which is stronger than a single uncorroborated claim but still short of a direct primary fetch; a follow-up session should attempt integrazionemigranti.gov.it or the Ministero dell'Interno's own portal directly. Non-seasonal subordinate quota applications are further restricted to nationals of countries with bilateral migration-cooperation agreements -- a structural filter with no equivalent in most other work_sponsored routes in this dataset, closer in spirit to how EPS bilateral agreements gate Korea's E-9 route than to an open global work-visa market. pr_after_months and citizenship_after_months use the general 5-year/10-year Italian tracks; it_family_reunion_visa, it_ancestry_jure_sanguinis, and it_eu_long_term_residence document several materially faster alternate paths this route's holders would generally prefer if eligible."
+}

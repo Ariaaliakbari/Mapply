@@ -1,0 +1,99 @@
+{
+  "id": "pl_ict",
+  "country": "PL",
+  "name": "Intra-corporate transfer permit (przeniesienie wewnątrz przedsiębiorstwa, ICT)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Manager or specialist transfer",
+      "requirements": [
+        {
+          "id": "ict_group_tenure",
+          "attribute": "months_on_current_route",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Managers and specialists must have been employed continuously within the same company or corporate group for at least 12 months immediately before the transfer (6 months for trainees).",
+          "fix_path": "Accrue 12 months (6 for trainees) of continuous employment with the sending entity before applying.",
+          "fix_time_months": 12,
+          "source_id": "biznes_ict"
+        },
+        {
+          "id": "ict_receiving_entity",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "The Polish receiving entity must be capital- or organisationally-linked to the foreign sending employer (same corporate group), and files the application before the transferee's arrival.",
+          "fix_path": "Confirm the Polish entity and the sending employer belong to the same corporate group.",
+          "fix_time_months": null,
+          "source_id": "biznes_ict"
+        },
+        {
+          "id": "ict_qualifications",
+          "attribute": "years_experience",
+          "operator": "exists",
+          "value": "qualifications_or_degree_matching_role",
+          "hard": true,
+          "blocker_text": "Managers and specialists must document professional qualifications or experience matching the receiving role; trainees must hold a relevant university degree.",
+          "fix_path": "Provide qualification or degree documentation matching the transferred role.",
+          "fix_time_months": null,
+          "source_id": "biznes_ict"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 12 (or 6) months' continuous prior employment within the group", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Assignment letter and intra-group linkage documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Qualification or degree documentation matching the role", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years for managers/specialists, up to 1 year for trainees",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "must be outside all EU member states at the time of the first application (does not apply to renewals from within the EU)",
+    "switchable_to": ["pl_permanent_residence", "pl_eu_long_term_resident"]
+  },
+  "sources": [
+    {
+      "id": "biznes_ict",
+      "tier": 1,
+      "url": "https://www.biznes.gov.pl/pl/portal/ou985",
+      "title": "biznes.gov.pl (official Polish government business portal) -- Zezwolenie na pobyt czasowy w celu wykonywania pracy w ramach przeniesienia wewnątrz przedsiębiorstwa (ICT)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "udsc_ict",
+      "tier": 1,
+      "url": "https://udsc.gov.pl/cudzoziemcy/obywatele-panstw-trzecich/przeniesienie-wewnatrz-przedsiebiorstwa/zezwolenie-na-pobyt-czasowy-w-celu-wykonywania-pracy-w-ramach-przeniesienia-wewnatrz-przedsiebiorstwa/",
+      "title": "Urząd do Spraw Cudzoziemców (Office for Foreigners) -- Przeniesienie wewnątrz przedsiębiorstwa (ICT), corroborating the pre-application EU-external-residence condition",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "bip_lubuskie_ict",
+      "tier": 1,
+      "url": "https://bip.lubuskie.uw.gov.pl/sprawy_obywatelskie/wnioski-zlozone-przed-31122020-r",
+      "title": "Lubuski Urząd Wojewódzki (regional government office, BIP public-information portal) -- ICT long-term mobility conditions, independent cross-check of the receiving-entity and duration rules",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Not renewable within Poland in the ordinary sense -- ICT permits are capped at a hard 3-year (manager/specialist) or 1-year (trainee) ceiling regardless of extensions, per biznes.gov.pl, which is a structurally different cap-shape from the Single Permit's renewable 3-year cycles. A distinct 'long-term mobility' sub-permit exists for ICT-card holders who were first posted to another EU state and want to extend the assignment to Poland for over 90 days -- not separately encoded as its own route file here since it is a mobility extension of an ICT status granted elsewhere, not an independent entry route into Poland; flagged for a future outcome_override if this dataset later needs to model intra-EU ICT mobility chains explicitly. This route sits alongside pl_single_permit as Poland's other main employer-sponsored channel, distinguished by requiring genuine corporate-group linkage and prior tenure rather than an open-market job offer -- the standard OR-vs-AND split the schema is designed to hold without needing group-level overrides here, since ICT and Single Permit are legally and administratively separate permit types rather than alternate qualifying groups within one permit."
+}

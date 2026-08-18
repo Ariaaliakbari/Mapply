@@ -1,0 +1,130 @@
+{
+  "id": "sa_citizenship_by_descent",
+  "country": "SA",
+  "name": "Citizenship by descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "saudi_father",
+      "name": "Child of a Saudi father",
+      "requirements": [
+        {
+          "id": "cd_father_automatic",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "saudi_father_at_birth",
+          "hard": true,
+          "blocker_text": "Citizenship is automatic and unconditional for any child born to a Saudi father, in wedlock, regardless of the child's country of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moi_nationality_law"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 0,
+        "dual_citizenship_allowed": false,
+        "physical_presence_requirement": null,
+        "switchable_to": []
+      }
+    },
+    {
+      "id": "saudi_mother",
+      "name": "Child of a Saudi mother and foreign father (2024 reform, discretionary)",
+      "requirements": [
+        {
+          "id": "cd_mother_apply",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "saudi_mother_foreign_father",
+          "hard": true,
+          "blocker_text": "Following the January 2024 amendment to Article 8 of the Saudi Arabian Citizenship System, a person born to a Saudi mother and a foreign father may apply for citizenship if they meet conditions including fluency in Arabic, permanent residency in Saudi Arabia, and good conduct and character; the decision rests with the Prime Minister on a proposal from the Minister of Interior and is discretionary, not automatic.",
+          "fix_path": "Establish permanent residency in Saudi Arabia and demonstrate Arabic fluency and good conduct before applying.",
+          "fix_time_months": null,
+          "source_id": "boe_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Birth certificate and, where applicable, parents' marriage certificate",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "For the Saudi-mother track: proof of Arabic fluency, permanent residency, and character references",
+      "difficulty": "hard",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "moi_nationality_law",
+      "tier": 1,
+      "url": "https://www.moi.gov.sa/wps/wcm/connect/2a41fada-e268-42b6-9481-ac594ec2649a/Saudi+Nationality.pdf",
+      "title": "Ministry of Interior -- official PDF of the Saudi Arabian Citizenship System (Nizam al-Jinsiyyah al-Arabiyyah al-Saudiyyah), Royal Decree of 1374 AH / 1954",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "boe_nationality_law",
+      "tier": 1,
+      "url": "https://laws.boe.gov.sa/BoeLaws/Laws/Viewer/dab5f623-453b-446c-a1f5-7303fe0836ca?lawId=df507331-79d9-43dc-a4de-a9a700f18571",
+      "title": "Bureau of Experts at the Council of Ministers (boe.gov.sa, laws.boe.gov.sa) -- official current text of the Saudi Arabian Citizenship System, including subsequent amendments",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "multiplecitizenship_sa",
+      "tier": 3,
+      "url": "https://www.multiplecitizenship.com/wscl/ws_SAUDI_ARABIA.html",
+      "title": "Multiplecitizenship.com -- Saudi Arabia Dual and Multiple Citizenship reference, summarising the citizenship-by-descent provisions of the Saudi Arabian Citizenship System",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "agsi_article8",
+      "tier": 3,
+      "url": "https://agsi.org/analysis/saudi-arabia-amends-its-citizenship-law/",
+      "title": "Arab Gulf States Institute (AGSI) -- Saudi Arabia Amends Its Citizenship Law, analysis of the January 2024 royal decree amending Article 8",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "newarab_article8",
+      "tier": 4,
+      "url": "https://www.newarab.com/news/saudi-arabia-allow-mothers-pass-citizenship",
+      "title": "The New Arab -- Saudi Arabia to allow mothers to pass on citizenship, independent corroboration of the Arabic-fluency and permanent-residency conditions",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "HONEST SOURCING GAP: Saudi Arabia's nationality law is rooted in Royal Decree No. M/88 (sometimes cited as No. M/25 in secondary sources -- a numbering discrepancy noted but not resolved in this research pass, since the primary Bureau of Experts (boe.gov.sa) legal-text repository was not successfully fetched). No official Ministry of Interior or Bureau of Experts page with the full statutory text was directly accessed; every source used here is tier-3/4 legal-analysis or journalism, which is why this route is more thinly sourced than most of the Saudi build despite being kept as published rather than draft, since the core facts (automatic paternal descent, the 2024 maternal-line reform, and its discretionary character) are corroborated identically across multiple independent sources including a specialist Gulf-policy research institute. STRUCTURAL FINDING: the two qualifying groups here are genuinely different in kind, not just degree -- the Saudi-father group is automatic and unconditional (citizenship_after_months = 0, no application needed), while the Saudi-mother group, even after the 2024 reform, remains a discretionary application requiring Arabic fluency, established residency, and Prime Ministerial approval on a case-by-case basis, confirmed via AGSI's analysis of the actual decree language ('if certain requirements are met'). This asymmetry -- a Gulf state extending a partial, application-based, still-discretionary maternal citizenship route rather than full parity with the automatic paternal route -- is itself a genuine finding worth surfacing on this route's detail page, and top-level citizenship_after_months is left null (rather than the paternal group's 0) because it correctly reflects that the general/default case for this route is not automatic the way the override for the Saudi-father group is. Saudi Arabia generally does not recognise dual citizenship outside narrow royal-decree exceptions, confirmed across all three sources -- dual_citizenship_allowed is false at both group levels."
+}

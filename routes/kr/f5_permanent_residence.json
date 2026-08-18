@@ -1,0 +1,202 @@
+{
+  "id": "kr_f5_permanent_residence",
+  "country": "KR",
+  "name": "F-5 Permanent Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "f5_1_general",
+      "name": "F-5-1: general 5-year track",
+      "requirements": [
+        {
+          "id": "f51_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 consecutive years of legal residence in Korea on a qualifying visa (commonly D-7, E-7, or F-2).",
+          "fix_path": "Continue accruing 5 consecutive years on a qualifying visa status.",
+          "fix_time_months": 60,
+          "source_id": "hikorea_general"
+        },
+        {
+          "id": "f51_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "value_type": "formula",
+            "formula_ref": "gni_x2",
+            "ratio": 1.0,
+            "resolved_amount": 104832000,
+            "currency": "KRW",
+            "unit": "year"
+          },
+          "hard": true,
+          "blocker_text": "Requires annual income of at least twice Korea's per-capita GNI -- KRW 104,832,000/year based on the Bank of Korea's 10 March 2026 GNI announcement; a working spouse's or cohabiting family member's income can be combined toward this threshold, provided the applicant's own income is more than 50% of the total (except where the applicant is raising a minor child).",
+          "fix_path": "Document individual or combined household income at or above the current 2x-GNI threshold.",
+          "fix_time_months": null,
+          "source_id": "bok_gni_2025"
+        },
+        {
+          "id": "f51_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "kiip_level_5_or_60_points",
+          "hard": true,
+          "blocker_text": "Requires completion of KIIP (Korea Immigration & Integration Program) Level 5, or a score of 60 or higher on the comprehensive permanent-residence-and-naturalisation evaluation -- TOPIK alone is not accepted for this specific requirement, despite being commonly cited as sufficient in several outdated guides.",
+          "fix_path": "Complete KIIP through Level 5, or sit the comprehensive evaluation and score 60+.",
+          "fix_time_months": 24,
+          "source_id": "hikorea_general"
+        }
+      ]
+    },
+    {
+      "id": "f5_16_points_track",
+      "name": "F-5-16: fast track for F-2-7 points-visa holders",
+      "requirements": [
+        {
+          "id": "f516_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": false,
+          "blocker_text": "Requires 3 years holding F-2-7 (Points-Based Long-Term Resident) status specifically, rather than the general 5-year track.",
+          "fix_path": "Obtain F-2-7 status first (see kr_f2_7_points_resident), then hold it for 3 years.",
+          "fix_time_months": 36,
+          "source_id": "krinsider_f5_guide"
+        },
+        {
+          "id": "f516_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "value_type": "formula",
+            "formula_ref": "gni_per_capita_2025",
+            "ratio": 1.0,
+            "resolved_amount": 52416000,
+            "currency": "KRW",
+            "unit": "year"
+          },
+          "hard": false,
+          "blocker_text": "Requires annual income of at least 1x Korea's per-capita GNI -- significantly lower than the F-5-1 general track's 2x-GNI floor, a genuine, deliberate incentive built into the points-visa pathway.",
+          "fix_path": "Document income at or above the current 1x-GNI threshold.",
+          "fix_time_months": null,
+          "source_id": "krinsider_f5_guide"
+        }
+      ]
+    },
+    {
+      "id": "f5_2_spouse",
+      "name": "F-5-2: spouse of a Korean national (F-6 holder)",
+      "requirements": [
+        {
+          "id": "f52_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": false,
+          "blocker_text": "Requires 2+ years on F-6 (Marriage Migrant) status.",
+          "fix_path": "Hold F-6 status for 2 years first (see kr_f6_marriage_migrant).",
+          "fix_time_months": 24,
+          "source_id": "haniseoul_f6_guide"
+        },
+        {
+          "id": "f52_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "value_type": "formula",
+            "formula_ref": "gni_per_capita_2025",
+            "ratio": 1.0,
+            "resolved_amount": 52416000,
+            "currency": "KRW",
+            "unit": "year"
+          },
+          "hard": false,
+          "blocker_text": "Requires income of at least 1x GNI, combinable with the Korean spouse's income.",
+          "fix_path": "Document combined household income at or above 1x GNI.",
+          "fix_time_months": null,
+          "source_id": "haniseoul_f6_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "5 (or 3, or 2) years of continuous ARC/residence records on the applicable qualifying track",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Income documentation meeting the applicable GNI multiple",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "KIIP Level 5 completion certificate or comprehensive-evaluation score of 60+",
+      "difficulty": "hard",
+      "typical_time_days": null
+    },
+    {
+      "document": "Overseas criminal-history certificate",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (ARC-equivalent card renewed periodically as a card only)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "kr_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "bok_gni_2025",
+      "tier": 1,
+      "url": "https://www.bok.or.kr/portal/singl/newsData/list.do?menuNo=201263",
+      "title": "Bank of Korea (bok.or.kr) -- official press release archive; 10 March 2026 release confirming 2025 per-capita GNI of KRW 52,416,000",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "krinsider_f5_guide",
+      "tier": 3,
+      "url": "https://krinsider.com/blog/f5-permanent-residency-korea-2026-guide",
+      "title": "KR Insider -- Complete Guide to F-5 Permanent Residency Status in Korea (2026), the source for the F-5-16 fast-track figures (3 years, 1x GNI)",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "haniseoul_f6_guide",
+      "tier": 3,
+      "url": "https://www.haniseoul.com/blogs/south-korea-f6-marriage-migrant-visa",
+      "title": "HaniSeoul -- F-6 Marriage Visa Guide, the source for the F-5-2 spouse fast-track figures (2 years, 1x GNI)",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "F-5 is genuinely not a single route but a family of over 25 sub-codes sharing one final status, per multiple independent sources -- this file models the three most structurally distinct and commonly-used tracks as OR-logic requirement_groups (general 5-year, F-2-7 fast-track, F-6-spouse fast-track), the same schema mechanism validated repeatedly elsewhere in this dataset (Poland's permanent-residence four-way split, UK Global Talent). Sub-codes not modeled here but confirmed to exist include F-5-24 (technology-startup track for D-8-4/OASIS holders, see kr_d8_4_oasis_startup's notes) and investment-based tracks (F-5-21, F-5-25) tied to specific government-approved investment programs (IISPB) -- flagged as candidates for future expansion of this route file rather than separate files, since they share F-5's single Outcome shape. LIVE DISCREPANCY CAUGHT: one otherwise well-sourced 2026 guide explicitly corrects itself mid-article, stating that TOPIK is 'not accepted as an F-5 language requirement, despite what many older guides still say' -- the correct standard is KIIP Level 5 or a 60+ score on the dedicated permanent-residence comprehensive evaluation. This is exactly the live-staleness pattern this dataset exists to catch, and it was caught here via the same source that corrected it rather than requiring independent verification, a useful reminder that even secondary sources sometimes self-correct in ways worth surfacing. The three qualifying groups' costs (5yr/2xGNI vs 3yr/1xGNI vs 2yr/1xGNI) form a clear, deliberate policy gradient rewarding the points-based skilled-talent and marriage-to-citizen tracks over the plain-residence track -- worth surfacing as a structural finding on any comparison view, since it shows Korea's immigration system actively steering applicants toward specific tracks rather than treating all qualifying paths as neutral alternatives."
+}

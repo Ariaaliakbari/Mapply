@@ -1,0 +1,81 @@
+{
+  "id": "cn_chinese_descent_5yr_visa",
+  "country": "CN",
+  "name": "5-Year Multiple-Entry Visa for Foreign Nationals of Chinese Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Foreign national of Chinese descent",
+      "requirements": [
+        {
+          "id": "cd_descent",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "chinese_descent_foreign_national",
+          "hard": true,
+          "blocker_text": "Requires documented Chinese ancestry -- the applicant is a huaren (foreign citizen of Chinese descent) rather than a Chinese national living abroad (huaqiao, who remain Chinese citizens and use a different document entirely).",
+          "fix_path": "Document Chinese ancestry via family records, prior Chinese nationality (own or an ancestor's), or other recognised proof of descent.",
+          "fix_time_months": null,
+          "source_id": "scmp_chinese_descent_visa"
+        },
+        {
+          "id": "cd_skills_criteria",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "meets_skills_or_investment_or_family_criteria",
+          "hard": true,
+          "blocker_text": "The policy is explicitly framed as attracting skilled overseas Chinese to contribute to China's economic and social development -- applicants are assessed against criteria that commonly include professional skills, investment, or close family ties in China, set by local authorities rather than a single uniform national test.",
+          "fix_path": "Document professional qualifications, an investment plan, or qualifying family ties in China.",
+          "fix_time_months": null,
+          "source_id": "popula_5yr_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation of Chinese ancestry (family records, prior nationality documents, or equivalent)", "difficulty": "hard", "typical_time_days": 60 },
+    { "document": "Proof of foreign nationality acquisition", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting documentation of professional skills, investment, or family ties in China", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years multiple-entry",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cn_z_visa_work_permit", "cn_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "scmp_chinese_descent_visa",
+      "tier": 4,
+      "url": "https://www.scmp.com/news/china/society/article/2131030/ethnic-chinese-and-want-live-china-find-out-if-you-qualify-new",
+      "title": "South China Morning Post -- 'Ethnic Chinese and want to live in China? Find out if you qualify for new five-year visa', reporting the policy's 2018 launch",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "popula_5yr_residency",
+      "tier": 4,
+      "url": "https://popula.com/2018/12/03/how-to-get-a-five-year-residency-permit-if-youre-sort-of-chinese-ish/",
+      "title": "Popula -- first-person account of applying for the 5-year residency permit for foreign nationals of Chinese descent, describing the policy's explicit framing around attracting skilled overseas Chinese",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT, the only draft-status route in the China build alongside cn_refugee_status. STRUCTURAL FINDING and a genuinely important correction to a common misconception: a formal 'Huayi Card' (华裔卡) explicitly modelled on India's OCI-style overseas-citizen card has been publicly proposed by Chinese policy think-tanks (e.g. the Center for China and Globalization) since at least 2018, including specific recommendations to extend validity to 10-20 years and cover descendants up to four generations back -- but sources checked in this research pass, including a direct nia.gov.cn fetch elsewhere in this build, found no confirmation that this card has been formally enacted as of mid-2026. What does exist and is operative is a narrower 5-year multiple-entry visa (not a card, not a residence status), launched around 2018-2019, aimed specifically at skilled overseas Chinese rather than functioning as a general ancestry-based entry right. This is the single thinnest-sourced route in the entire China build -- both sources are tier-4 (journalism, including a first-person blog account) rather than tier-1 or even tier-3 consultancy sources, and no nia.gov.cn, Overseas Chinese Affairs Office, or Ministry of Foreign Affairs page describing current eligibility criteria was successfully fetched. Kept as published rather than draft because the policy's existence and general shape are independently corroborated by two unrelated sources from different years, but flagged as the top candidate in this build for a follow-up session's tier-1 verification effort -- unlike Poland's Karta Polaka or Korea's F-4, which rest on solid primary-source ground, this route's exact current criteria should be treated as indicative rather than fully confirmed. This route, alongside cn_permanent_residence and cn_naturalisation, illustrates a genuine structural pattern specific to China in this dataset: ancestry alone confers no automatic status of any kind, in sharp contrast to Poland's Karta Polaka (zero-wait permanent residence) or Korea's F-4 (2-year citizenship track) -- China's approach treats Chinese descent as one favourable factor among several (skills, investment, family ties) rather than as an independently sufficient qualifying condition."
+}

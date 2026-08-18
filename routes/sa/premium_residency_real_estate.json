@@ -1,0 +1,76 @@
+{
+  "id": "sa_premium_residency_real_estate",
+  "country": "SA",
+  "name": "Premium Residency -- Real Estate Owner Residency",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Qualifying property ownership",
+      "requirements": [
+        {
+          "id": "re_property_value",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 4000000, "currency": "SAR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires ownership of Saudi real estate worth at least SAR 4 million (approx. USD 1.07 million), in a location and property class approved under the January 2026 foreign property ownership law -- eligible in most major cities (Riyadh, Jeddah, NEOM, Qiddiya, Red Sea Global) but explicitly excluding Makkah and Madinah.",
+          "fix_path": "Purchase or already own qualifying Saudi property worth at least SAR 4 million in an eligible city outside Makkah and Madinah.",
+          "fix_time_months": null,
+          "source_id": "pr_gov_sa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Title deed or verified property-ownership documentation meeting the SAR 4 million threshold", "difficulty": "moderate", "typical_time_days": 45 },
+    { "document": "Medical examination and criminal-background check from country of origin", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "no minimum physical presence requirement to maintain the residency",
+    "switchable_to": ["sa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "pr_gov_sa",
+      "tier": 1,
+      "url": "https://pr.gov.sa/",
+      "title": "Premium Residency Center (pr.gov.sa) -- official Saudi government portal, Real Estate Owner Residency product. Direct automated fetch is blocked by robots.txt; figures cross-verified against secondary sources and my.gov.sa's official listing (see sa_premium_residency_investor_entrepreneur for the same sourcing-method caveat, which applies identically here)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mirabello_pr_2026",
+      "tier": 3,
+      "url": "https://www.mirabelloconsultancy.com/blog/saudi-premium-residency-2026-complete-guide",
+      "title": "Mirabello Consultancy -- Saudi Premium Residency 2026 guide, describing the January 2026 foreign property ownership law and the SAR 4 million Real Estate Owner threshold in detail, including the Makkah/Madinah exclusion",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "relocate_gcc_pr",
+      "tier": 3,
+      "url": "https://relocate-gcc.com/saudi/saudi-arabia-premium-residency-2026",
+      "title": "GCC Relocation Hub -- Saudi Premium Residency 2026 full eligibility guide, independent cross-check of the SAR 4 million property threshold",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, one of the sharpest single-year regulatory shifts found anywhere in this dataset: this entire route was effectively non-viable before January 2026, when a new foreign property ownership law opened Saudi real estate to foreign buyers across most major cities for the first time -- before that, foreign real estate ownership in Saudi Arabia was tightly restricted, making the Real Estate Owner Premium Residency product largely theoretical. The Makkah/Madinah exclusion is notable and not incidental: it reflects the two holy cities' distinct legal and religious-significance status rather than an ordinary zoning restriction, and is worth surfacing prominently on any route detail page rather than treating as a routine geographic carve-out. Same sourcing-method limitation as sa_premium_residency_investor_entrepreneur applies here: pr.gov.sa blocks automated fetching, so the SAR 4 million figure rests on strong convergent secondary-source corroboration (3+ independent sources, all dated 2026, all agreeing) rather than a directly fetched primary page -- flagged honestly as a follow-up target rather than treated as fully tier-1 verified in the strictest sense. The Makkah/Madinah exclusion is folded into re_property_value's blocker_text rather than modeled as its own requirement: the schema's closed attribute list has no clean fit for 'property location' (current_location represents the applicant's own location, not an asset's), and forcing that mismatch would repeat the same imperfect-attribute-fit issue flagged on Poland's repatriation route -- honest simplification over a technically-wrong formal requirement."
+}

@@ -1,0 +1,108 @@
+{
+  "id": "sa_family_sponsorship",
+  "country": "SA",
+  "name": "Family/dependent sponsorship (spouse and children)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Sponsor is an Iqama-holding resident",
+      "requirements": [
+        {
+          "id": "fs_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "==",
+          "value": "iqama_holder_or_premium_residency_holder",
+          "hard": true,
+          "blocker_text": "The sponsor must hold a valid Iqama (or Premium Residency) with at least 3-6 months of remaining validity at the time of application.",
+          "fix_path": "Ensure the sponsor's Iqama has sufficient remaining validity before applying.",
+          "fix_time_months": null,
+          "source_id": "ksaexpats_family_visa"
+        },
+        {
+          "id": "fs_profession",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "approved_profession_for_sponsorship",
+          "hard": true,
+          "blocker_text": "The sponsor's profession, as classified on their Iqama, must be on the Ministry of Interior's approved list for family sponsorship -- most labourer/basic-tier occupations do not qualify.",
+          "fix_path": "Confirm the Iqama profession classification qualifies, or have the employer update it to an eligible category where accurate.",
+          "fix_time_months": null,
+          "source_id": "ksaexpats_family_visa"
+        },
+        {
+          "id": "fs_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 4000,
+            "currency": "SAR",
+            "unit": "month"
+          },
+          "hard": true,
+          "blocker_text": "Requires a documented salary of roughly SAR 4,000-10,000/month depending on the profession category and number of dependents being sponsored, confirmed via the sponsor's GOSI (social insurance) certificate.",
+          "fix_path": "Document a salary meeting the applicable threshold for the number and type of dependents being sponsored.",
+          "fix_time_months": null,
+          "source_id": "ksaexpats_family_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "GOSI salary certificate",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attested marriage/birth certificates for each dependent",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Registered tenancy contract (Ejar) in the sponsor's name",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's Iqama validity",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ksaexpats_family_visa",
+      "tier": 3,
+      "url": "https://ksaexpats.com/permanent-family-visa-saudi-arabia/",
+      "title": "KSA Expats -- Permanent Family Visa Saudi Arabia 2026 guide",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "incorpmena_family_visa",
+      "tier": 3,
+      "url": "https://incorpmena.com/saudi-family-visa",
+      "title": "Incorp MENA -- Saudi Dependent & Family Visa: Eligibility & Process 2026",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STATUS: DRAFT, and an unusually explicit sourcing gap for this dataset. The family-sponsorship salary threshold in Saudi Arabia is genuinely NOT a single published statutory figure -- one of the sources checked in this research pass states this outright ('Saudi Arabia's dependent visa salary threshold is not published as a fixed figure'), and the range cited across independent secondary sources spans SAR 3,500 to SAR 10,000/month depending on profession, number of dependents, and which Jawazat office processes the application. No primary MOI, Jawazat, or Absher page with a clean, citable, single figure was found in this research pass despite multiple targeted searches -- this is a genuine, honestly-reported sourcing gap rather than a resolved fact, consistent with this project's discipline of flagging what it doesn't know rather than inventing a precise number. resolved SAR 4,000 is used as the requirement's floor because it is the most consistently-cited baseline figure and matches the SAR 4,000 Nitaqat/Saudization compliance threshold that several sources appear to be extrapolating the family-visa figure from -- but this extrapolation is itself unconfirmed against a primary source, and the true rule may be entirely discretionary/administrative rather than a fixed number at all. A follow-up session should attempt direct outreach to moi.gov.sa or absher.sa (both currently inaccessible to automated fetching) to resolve this properly before promoting this route to published status. Note on family_can_join: set to false here because this route's own holder is the dependent (spouse/child) being sponsored -- a dependent Iqama does not itself carry the right to further sponsor sub-dependents; that would require the dependent to first obtain independent, primary-holder status."
+}

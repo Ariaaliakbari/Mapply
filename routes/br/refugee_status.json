@@ -1,0 +1,87 @@
+{
+  "id": "br_refugee_status",
+  "country": "BR",
+  "name": "Refugee status recognition (Lei 9.474/1997, CONARE)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": {
+    "approx_rate_percent": 86,
+    "basis": "60,548 refugee-status recognitions out of approximately 70,206 applications analysed over the first 25 years of Lei 9.474/97 (1997-2022), per the CONARE/UNHCR Interactive Panel on Refugee Decisions in Brazil, reproduced in a SciELO-published academic study",
+    "source_id": "scielo_25yr_study"
+  },
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of persecution based on race, religion, nationality, membership of a particular social group, or political opinion, or a person fleeing serious and widespread human rights violations, per Lei 9.474/1997 Article 1 -- Brazil's law extends the 1951 Convention's grounds to also cover the broader Cartagena Declaration standard of generalised human rights violations.",
+    "evidence_hint": "Personal testimony plus any corroborating documentation of the persecution or risk; identity documents where available, though their absence does not bar an application."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status determination by CONARE",
+      "requirements": [
+        {
+          "id": "ref_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_or_generalised_human_rights_violation",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution on Convention grounds, or flight from a generalised and serious human rights violation in the country of origin (the broader Cartagena standard Brazilian law explicitly incorporates).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_9474_1997"
+        },
+        {
+          "id": "ref_not_national",
+          "attribute": "nationality",
+          "operator": "!=",
+          "value": "BR",
+          "hard": true,
+          "blocker_text": "A naturalised Brazilian citizen cannot be recognised as a refugee, since Article 3(II) of the law expressly excludes anyone with the rights and obligations attached to Brazilian nationality -- confirmed by a real denied case cited in Brazilian case law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lei_9474_1997"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for refugee status recognition, filed with CONARE (typically via the Federal Police at the point of entry or a local office)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal testimony and any supporting documentation of persecution or risk", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited once recognised; the residence document is renewed periodically",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "the recognition period (time from application to CONARE decision) counts as indefinite-term residence for naturalisation purposes -- a genuinely favourable feature confirmed directly in gov.br's own naturalisation guidance",
+    "switchable_to": ["br_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "lei_9474_1997",
+      "tier": 1,
+      "url": "https://www2.camara.leg.br/legin/fed/lei/1997/lei-9474-22-julho-1997-365390-publicacaooriginal-1-pl.html",
+      "title": "Câmara dos Deputados (camara.leg.br, official legislative text repository) -- full text of Lei nº 9.474, de 22 de julho de 1997 (Estatuto dos Refugiados)",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "scielo_25yr_study",
+      "tier": 3,
+      "url": "https://www.scielo.br/j/remhu/a/nfvG8RFv9mJHNtcrwWK6Kyw/?format=html&lang=pt",
+      "title": "SciELO (Scientific Electronic Library Online, a peer-reviewed Brazilian academic-journal platform) -- 'Mudanças no Procedimento de Reconhecimento do Status de Refugiado no Brasil ao longo dos 25 anos da Lei 9.474/97,' citing the CONARE/UNHCR Interactive Panel on Refugee Decisions",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL CONTRAST worth stating plainly, mirroring the finding made for Korea's refugee system elsewhere in this dataset: Brazil has one of the more genuinely functional, well-regarded refugee status determination systems in Latin America, established by a dedicated 1997 statute and operationalised via CONARE (Comitê Nacional para os Refugiados), a real multi-stakeholder administrative body with a documented 25-year track record. This stands in sharp contrast to the UAE, Saudi Arabia, and Singapore's confirmed 'never existed, no formal system' pattern, and to China's 'enacted in 1982 but never made operational' pattern -- both documented elsewhere in this dataset. selection_odds (86%) is a genuine, source-confirmed figure spanning CONARE's first 25 years, and is dramatically higher than Korea's confirmed 2.7% cumulative recognition rate -- a striking cross-country contrast worth surfacing prominently on any comparison view, though the two figures aren't perfectly comparable (Brazil's includes a large volume of prima facie mass recognitions, particularly of Venezuelan nationals in more recent years, which likely pulls the aggregate rate up relative to individually-adjudicated claims elsewhere). Brazilian law goes beyond the 1951 Convention's persecution-grounds test by also incorporating the broader Cartagena Declaration standard covering generalised, serious human rights violations in the country of origin -- a materially wider qualifying test than most other countries in this dataset, worth flagging as a genuine legal distinctive rather than a minor variation. leads_to_pr and pr_after_months (0) reflect that refugee status itself functions as indefinite-term residence in Brazil's system from the point of the CONARE application, not merely from a subsequent grant -- confirmed directly via gov.br/mj naturalisation guidance stating the recognition period (application date to decision date) counts toward the 4-year (or reduced) residency clock for naturalisation, a genuinely favourable and non-obvious detail."
+}

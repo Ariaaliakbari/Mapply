@@ -1,0 +1,73 @@
+{
+  "id": "br_family_reunion_visa",
+  "country": "BR",
+  "name": "VITEM XI Family Reunion visa",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Spouse, child, or dependent of a Brazilian or resident",
+      "requirements": [
+        {
+          "id": "fam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_sponsor", "minor_child_of_sponsor", "dependent_parent_of_sponsor"],
+          "hard": true,
+          "blocker_text": "Covers spouses/partners, minor children, and dependent parents of a Brazilian citizen or of a foreign national holding valid Brazilian residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        },
+        {
+          "id": "fam_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "in",
+          "value": ["brazilian_national", "brazilian_resident"],
+          "hard": true,
+          "blocker_text": "The sponsoring family member must be a Brazilian citizen or hold valid Brazilian residence status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate, birth certificate, or documentation proving the qualifying family relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's Brazilian ID or valid residence documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's status; indefinite if the sponsor is a Brazilian citizen",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["br_permanent_residence", "br_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_pf_residency",
+      "tier": 1,
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/autorizacao-residencia",
+      "title": "Polícia Federal (gov.br/pf) -- Autorização de Residência, the federal police portal listing residence-authorisation categories including family reunion",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "citizenship_after_months (12) reflects Lei 13.445/2017 Article 66's reduced naturalisation track for spouses/partners of Brazilian citizens (not legally or factually separated at the time of the grant) -- one of several qualifying conditions that cut the ordinary 4-year residency requirement to 1 year, alongside having a Brazilian child, having rendered relevant service to Brazil, or professional/scientific/artistic distinction (see br_naturalisation for the full Article 66 detail). This is a materially faster spouse-to-citizenship track than most other countries in this dataset, though not as fast as Poland's Karta Polaka-linked routes or Korea's F-6 (both 12 months from a different starting point). pr_after_months uses the same 12-month figure as an approximation, since Brazil's system does not cleanly separate a distinct 'permanent residence' step from naturalisation eligibility the way some other countries in this dataset do -- residência por prazo indeterminado (indefinite-term residence) is the operative status, and naturalisation is a separate, subsequent application on top of it rather than an automatic escalation."
+}

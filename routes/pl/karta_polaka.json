@@ -1,0 +1,127 @@
+{
+  "id": "pl_karta_polaka",
+  "country": "PL",
+  "name": "Pole's Card (Karta Polaka)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "descent_based",
+      "name": "Polish ancestry (parent, grandparent, or two great-grandparents)",
+      "requirements": [
+        {
+          "id": "kp_ancestry",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "polish_nationality_parent_grandparent_or_two_greatgrandparents",
+          "hard": true,
+          "blocker_text": "Requires that the applicant, or at least one parent or grandparent, or two great-grandparents, were of Polish nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_karta_polaka"
+        },
+        {
+          "id": "kp_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "basic",
+          "hard": true,
+          "blocker_text": "Requires at least basic knowledge of Polish, treated as one's native language, plus knowledge and cultivation of Polish traditions and customs, assessed at interview by a consul if no qualifying certificate is held.",
+          "fix_path": "Study Polish to at least a basic conversational level and prepare to discuss Polish traditions with the consul.",
+          "fix_time_months": 6,
+          "source_id": "gov_karta_polaka"
+        },
+        {
+          "id": "kp_no_polish_status",
+          "attribute": "current_route_held",
+          "operator": "!=",
+          "value": "polish_citizenship_or_permanent_residence",
+          "hard": true,
+          "blocker_text": "Cannot be issued to someone who already holds Polish citizenship or Polish permanent residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_karta_polaka"
+        }
+      ]
+    },
+    {
+      "id": "activism_based",
+      "name": "3+ years of active engagement with Polish language/culture organisations (no documented ancestry required)",
+      "requirements": [
+        {
+          "id": "kp_activism",
+          "attribute": "months_since_qualifying_event",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Alternatively, without documented Polish ancestry, requires a certificate from an authorised Polish or Polish-diaspora organisation confirming at least 3 years of active engagement in Polish-language or Polish-culture activities, or activities on behalf of the Polish national minority.",
+          "fix_path": "Engage with a recognised Polish or Polonia organisation for at least 3 years and obtain their certification.",
+          "fix_time_months": 36,
+          "source_id": "gov_karta_polaka"
+        },
+        {
+          "id": "kp_language_alt",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "basic",
+          "hard": true,
+          "blocker_text": "Requires at least basic knowledge of Polish, treated as one's native language, plus knowledge and cultivation of Polish traditions and customs.",
+          "fix_path": "Study Polish to at least a basic conversational level.",
+          "fix_time_months": 6,
+          "source_id": "gov_karta_polaka"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written declaration of belonging to the Polish Nation, signed before a consul or voivode", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Documentary proof of Polish ancestry (birth/marriage certificates of ancestors) OR an organisation's 3-year activism certificate", "difficulty": "moderate", "typical_time_days": 60 },
+    { "document": "Declaration that neither the applicant nor their ancestors were repatriated from Poland/USSR territories under the 1944-1957 agreements", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "10 years (indefinite once the holder turns 65)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pl_permanent_residence", "pl_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_karta_polaka",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/ukraina/karta-polaka-informacje-ogolne",
+      "title": "gov.pl (Polish government portal, embassy site) -- Karta Polaka - informacje ogólne",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_art30_lodzki",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/uw-lodzki/uznanie-za-obywatela-polskiego",
+      "title": "gov.pl / Łódzki Urząd Wojewódzki -- Uznanie za obywatela polskiego, reproducing Art. 30 of the Ustawa o obywatelstwie polskim (2 April 2009) in full",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "powroty_kp_citizenship",
+      "tier": 1,
+      "url": "https://powroty.gov.pl/ubieganie-sie-o-polskie-obywatelstwo-przez-posiadaczy-karty-polaka/",
+      "title": "Powroty.gov.pl (official Polish government portal) -- Ubieganie się o polskie obywatelstwo przez posiadaczy Karty Polaka",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, and Poland's single most distinctive route in this build: the Pole's Card is not itself a residence permit -- it confers no right to enter or settle in Poland by itself -- but a holder who then decides to settle can apply directly for permanent residence (zezwolenie na pobyt stały) with ZERO residency-time requirement and the stamp duty fully waived, confirmed identically across five separate voivodeship-office and gov.pl pages (Lubuski, Poznań, Lublin, Podlaski, Powroty). This is categorically different from every other ancestry route built so far in this dataset: Portugal's descent route and CPLP mobility permit both still require a standard residence-then-naturalisation clock, whereas Karta Polaka lets a holder walk in and receive permanent residence on day one. pr_after_months is therefore correctly 0, not a placeholder. CITIZENSHIP TIMELINE, resolved rather than left open: Art. 30(1)(7) of the Ustawa o obywatelstwie polskim z dnia 2 kwietnia 2009 r. -- reproduced verbatim on multiple gov.pl voivodeship-office pages (Łódzki, Pomorski, Lubuski) -- creates a dedicated administrative-recognition track for 'a foreigner continuously resident in Poland for at least 1 year on the basis of permanent residence obtained due to Polish origin or a held Pole's Card,' distinct from and faster than the general 3/10-year tracks that apply to other permanent residents (see pl_naturalisation). Chained with this route's own 0-month PR wait, that gives citizenship_after_months = 12: the fastest non-instant citizenship track found anywhere in this build outside of pl_repatriation's day-one grant. This closes what was previously flagged as an open, unresolved question -- the earlier draft of this file left the figure null rather than guessing; that gap is now closed against a primary statutory citation rather than assumption. The activism-based alternate qualifying group (3+ years with a Polish/Polonia organisation, no ancestry required at all) is a second genuinely distinct qualifying path under the same Card, correctly modeled as OR-logic requirement_groups per the schema's core design decision -- and is itself a notable finding: Poland's ancestry route doesn't strictly require ancestry."
+}

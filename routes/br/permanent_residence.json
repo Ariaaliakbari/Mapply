@@ -1,0 +1,74 @@
+{
+  "id": "br_permanent_residence",
+  "country": "BR",
+  "name": "Residência por Prazo Indeterminado (indefinite-term residence, general conversion)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Conversion from a qualifying temporary status",
+      "requirements": [
+        {
+          "id": "pr_prior_temp_status",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["work_visa_holder", "mercosur_temp_resident", "family_reunion_holder", "investor_visa_holder", "retirement_visa_holder"],
+          "hard": true,
+          "blocker_text": "Requires holding a qualifying temporary residence status (work, Mercosur, family, investor, or retirement) and meeting that specific category's conversion requirements -- indefinite-term residence in Brazil's system is a conversion from an existing temporary status, not a freestanding first-entry application.",
+          "fix_path": "First obtain a qualifying temporary residence status and meet its category-specific conversion timeline.",
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        },
+        {
+          "id": "pr_no_criminal_record",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Requires no disqualifying criminal record in Brazil or, where checked, in the country of origin.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence under the qualifying temporary status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal-record certificate", "difficulty": "routine", "typical_time_days": 30 },
+    { "document": "CRNM (Carteira de Registro Nacional Migratório) conversion request filed with the Federal Police", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (CRNM card itself has a 9-year validity cycle for renewal purposes only, per 2026 sources)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["br_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_pf_residency",
+      "tier": 1,
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/autorizacao-residencia",
+      "title": "Polícia Federal (gov.br/pf) -- Autorização de Residência, listing residence categories and the conversion-to-indefinite-term mechanism",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Structurally, Brazil's system does not have a single freestanding 'permanent residence application' the way most other countries in this dataset do (contrast with Poland's zezwolenie na pobyt stały or Korea's F-5, both direct applications with their own point-of-entry eligibility tests) -- residência por prazo indeterminado is instead a conversion mechanism layered onto whichever temporary category the applicant already holds, with the specific conversion timeline and requirements varying by that underlying category (2 years for Mercosur nationals with explicit rules, per-category variation for others that wasn't fully traced for every route in this build). This route file exists to capture that conversion mechanism generically, but the real category-specific detail lives on each originating route (br_work_visa, br_mercosur_residency, br_family_reunion_visa, br_investor_visa, br_retirement_visa) rather than here -- pr_after_months and citizenship_after_months are therefore left as 0/null at this route's own level, since 'time to PR from here' isn't a meaningful question for a route that IS the PR status; the meaningful timelines live upstream on the originating temporary routes. citizenship_after_months is null rather than a single figure since it depends entirely on which originating category and which specific naturalisation track (ordinary 4-year, reduced 1-year, or other) applies -- see br_naturalisation for the full breakdown. Once granted, indefinite-term residence itself is genuinely indefinite and does not require further renewal as a status, though the physical CRNM card requires periodic reissuance -- a distinction between the underlying legal status (permanent) and the physical document (time-limited) worth surfacing clearly on any UI, similar to how China's Five-Star Card and Korea's F-5 card are handled in this dataset."
+}

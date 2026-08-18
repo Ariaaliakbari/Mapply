@@ -1,0 +1,99 @@
+{
+  "id": "kr_f2_7_points_resident",
+  "country": "KR",
+  "name": "F-2-7 Points-Based Long-Term Resident",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Points-based assessment for E- or D-visa holders",
+      "requirements": [
+        {
+          "id": "f27_prior_status",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": [
+            "e_series_work_visa",
+            "d_series_work_or_study_visa"
+          ],
+          "hard": true,
+          "blocker_text": "Open only to foreigners currently on an E-series (employment) or D-series (study, trade, investment) visa; it is a status change, not a first-entry visa.",
+          "fix_path": "Hold a qualifying E- or D-series visa before applying.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        },
+        {
+          "id": "f27_points",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 80,
+          "hard": false,
+          "blocker_text": "Requires 80 or more points on a scored assessment combining age, education, Korean-language ability (TOPIK), income, time already spent in Korea, social integration (KIIP participation), and special achievements or awards.",
+          "fix_path": "Improve individual point categories -- KIIP completion, TOPIK level, or documented income increases are the most commonly used levers.",
+          "fix_time_months": 12,
+          "source_id": "livinginkorea_visa_types"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Points-assessment application with supporting documentation for each scored category",
+      "difficulty": "hard",
+      "typical_time_days": null
+    },
+    {
+      "document": "TOPIK certificate or KIIP completion record",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Income and employment history documentation",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "3-5 years per issuance, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "kr_f5_permanent_residence",
+      "kr_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "livinginkorea_visa_types",
+      "tier": 3,
+      "url": "https://www.livinginkorea.co/guides/visa/visa-types/",
+      "title": "Living in Korea -- Korean Visa Types Explained, corroborating the 80+ point threshold and scored categories for F-2-7",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: F-2-7 is the single most consequential intermediate status in Korea's entire route graph -- it is the fastest documented path to F-5 permanent residence in this dataset (F-5-16: 3 years on F-2-7 plus only 1x GNI income, versus the general F-5-1 track's 5 years plus 2x GNI), which is why pr_after_months and citizenship_after_months here (36) are meaningfully faster than kr_e7_designated_activities' or kr_d8_corporate_investment's own top-level defaults (60), even though F-2-7 itself typically requires holding an E- or D-visa first. A real, documented adversarial case worth flagging: one sourced example (allvisakorea.com) describes an applicant who spent 18 years in Korea on E-9 to E-7-4 to F-2-7 to reach F-5, specifically because the F-2-7 points system's scoring criteria for education and income changed materially between when they first applied (2017) and later years -- illustrating that points thresholds and scoring weights are not static, unlike most other hard-requirement figures in this dataset which are simple salary floors. A key practical advantage over most other Korea work routes: F-2-7 holders can bring accompanying family members with the same application (not modeled as a separate outcome field, but worth surfacing on the route detail page), a benefit not shared by e.g. kr_e9_eps_nonprofessional's flat family exclusion. F-2-7 grants full employment freedom without requiring a specific employer sponsor, a structural difference from the E-7 track's employer-tied status -- functionally the closest Korea equivalent to the UK's Global Talent or Portugal's D7-style unsponsored long-term routes documented elsewhere in this dataset."
+}

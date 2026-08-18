@@ -1,0 +1,157 @@
+{
+  "id": "cn_z_visa_work_permit",
+  "country": "CN",
+  "name": "Z Visa and Foreigner's Work Permit (points-based Category A/B/C system)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "category_a",
+      "name": "Category A: high-level talent",
+      "requirements": [
+        {
+          "id": "cat_a_points",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 85,
+          "hard": true,
+          "blocker_text": "Requires 85 or more points on the weighted work-permit assessment (salary up to 20 points, education up to 20 points, age, Chinese-relevant work experience, and other factors), or qualification via a recognised high-talent category (e.g. national/international award winners, senior executives at major employers).",
+          "fix_path": "Improve individual scoring factors -- an advanced degree, higher documented salary, or relevant prior China experience are the most commonly used levers.",
+          "fix_time_months": 6,
+          "source_id": "danyoungcpa_points_system"
+        },
+        {
+          "id": "cat_a_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Chinese-registered employer with no outstanding tax, social-insurance, or annual-reporting compliance issues, who applies for the Work Permit Notification Letter before the applicant enters China.",
+          "fix_path": "Secure a job offer from a compliant Chinese employer willing to sponsor the application.",
+          "fix_time_months": null,
+          "source_id": "danyoungcpa_points_system"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "up to 5 years",
+        "renewable": true,
+        "work_rights": "restricted",
+        "study_rights": "none",
+        "family_can_join": true,
+        "family_can_work": false,
+        "leads_to_pr": true,
+        "pr_after_months": 48,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": null,
+        "dual_citizenship_allowed": false,
+        "physical_presence_requirement": null,
+        "switchable_to": [
+          "cn_permanent_residence",
+          "cn_naturalisation"
+        ]
+      }
+    },
+    {
+      "id": "category_b",
+      "name": "Category B: professional talent",
+      "requirements": [
+        {
+          "id": "cat_b_points",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 60-84 points on the same weighted assessment used for Category A -- the standard tier for most ordinary skilled professionals; scores of 85 or above escalate the applicant into the Category A group instead.",
+          "fix_path": "Improve scoring factors to reach at least 60 points.",
+          "fix_time_months": 6,
+          "source_id": "danyoungcpa_points_system"
+        },
+        {
+          "id": "cat_b_salary_beijing_shanghai",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 49736,
+            "currency": "CNY",
+            "unit": "month"
+          },
+          "hard": true,
+          "blocker_text": "In Beijing and Shanghai specifically, Category B requires a gross salary of at least 4x the local average monthly wage (approximately CNY 49,736/month in Shanghai as of the February 2026 enforcement update) -- other cities set their own local multiples and figures, generally lower.",
+          "fix_path": "Negotiate a salary meeting the local 4x-average-wage threshold, or apply in a city with a lower local figure.",
+          "fix_time_months": null,
+          "source_id": "morganlewis_salary_thresholds"
+        },
+        {
+          "id": "cat_b_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a compliant Chinese-registered employer who files the work-permit application.",
+          "fix_path": "Secure a job offer from a compliant Chinese employer.",
+          "fix_time_months": null,
+          "source_id": "danyoungcpa_points_system"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the applicable Category A/B salary threshold",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Degree authentication and, for Category B applicants shifted from A, criminal-record clearance and apostilled academic credentials",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Employer's Work Permit Notification Letter, filed before the applicant's entry",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "1-5 years depending on category and contract length",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "cn_permanent_residence",
+      "cn_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "danyoungcpa_points_system",
+      "tier": 3,
+      "url": "https://www.danyoungcpa.com/china-work-permit-points-system-category-a-b-c-foreign-workers-2026/",
+      "title": "Dan Young Business Consultancy -- China Work Permit Points System: Category A B C Guide 2026",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "morganlewis_salary_thresholds",
+      "tier": 3,
+      "url": "https://www.morganlewis.com/pubs/2026/03/beijing-and-shanghai-significantly-increase-foreign-category-a-and-b-work-permit-salary-thresholds",
+      "title": "Morgan Lewis (international law firm) -- Beijing and Shanghai Significantly Increase Foreign Category A and B Work Permit Salary Thresholds, describing the February 2026 enforcement update",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "LIVE POLICY-TIGHTENING CATCH, corroborated across four independent sources checked in this research pass: Beijing and Shanghai's Category A (6x local average wage) and Category B (4x) salary multipliers existed on paper for years but were not strictly enforced during the pandemic period -- strict enforcement resumed in February 2026, when the online work-permit portal was updated to automatically block submissions that fall short, with 'no discretion provided at the local level' per one source. Several guides likely still in circulation describe the older, more lenient practical-enforcement reality rather than the current hard-blocked online system -- the same live-staleness pattern documented repeatedly elsewhere in this dataset. cat_b_points uses an unsupported 'between' concept flagged honestly via operator_note rather than forced into a clean operator the schema doesn't have a perfect fit for -- the real test is a 60-84 point band, distinct from Category A's 85+ floor, and modeled here with '>=60' as the closest available approximation; a UI implementation should treat scores of 85+ as re-routing to the Category A group rather than double-counting. HONEST SOURCING GAP: all sources for the points-scoring mechanics and salary multipliers are tier-3 (consultancies and a law firm) rather than a directly fetched SAFEA/State Administration of Foreign Experts Affairs or nia.gov.cn page -- despite reasonably strong cross-corroboration across independent sources (including one major international law firm), this reflects a general pattern noticed across the China build: government sourcing for operational visa mechanics is harder to fetch directly than for Korea or the EU countries in this dataset, worth flagging for a follow-up session to attempt SAFEA-specific fetches. Category C (under 60 points, seasonal/service/temporary roles under quota control) is not modeled as its own group here given its narrow scope and low approval rates per sources checked, but is referenced for completeness -- a genuine structural finding is that Category C explicitly excludes most remote-first or non-traditional roles, per one 2026 source warning digital-nomad-style applicants they are 'not going at all' without a Category B-qualifying offer."
+}

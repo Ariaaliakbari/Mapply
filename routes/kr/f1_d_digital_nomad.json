@@ -1,0 +1,99 @@
+{
+  "id": "kr_f1_d_digital_nomad",
+  "country": "KR",
+  "name": "F-1-D Workation (digital nomad) visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Remote worker for a foreign employer",
+      "requirements": [
+        {
+          "id": "f1d_foreign_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_employment_foreign_company",
+          "hard": true,
+          "blocker_text": "Requires ongoing employment with, or self-employment through, a company based outside Korea; the visa does not authorise work for a Korean employer or client.",
+          "fix_path": "Confirm the employing or contracting entity is genuinely foreign-based and the work is performed remotely for that entity.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        },
+        {
+          "id": "f1d_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "gni_x2", "ratio": 1.0, "resolved_amount": 104832000, "currency": "KRW", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires annual income of at least twice Korea's per-capita Gross National Income (GNI), a materially higher bar than comparable digital-nomad visas in Southeast Asia -- KRW 104,832,000/year based on the Bank of Korea's 10 March 2026 announcement of 2025 per-capita GNI (KRW 52,416,000).",
+          "fix_path": "Document income at or above the current 2x-GNI threshold from the foreign employer or client base.",
+          "fix_time_months": null,
+          "source_id": "bok_gni_2025"
+        },
+        {
+          "id": "f1d_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "private_health_insurance_covering_stay",
+          "hard": true,
+          "blocker_text": "Requires private health insurance covering the full intended stay in Korea (Korea's national health insurance is not available to F-1-D holders).",
+          "fix_path": "Purchase qualifying private health insurance for the intended stay duration.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment or client contracts with foreign-based entities showing the qualifying income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Private health insurance certificate covering the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "bok_gni_2025",
+      "tier": 1,
+      "url": "https://www.bok.or.kr/portal/singl/newsData/list.do?menuNo=201263",
+      "title": "Bank of Korea (bok.or.kr) -- official press release archive; 10 March 2026 release confirming 2025 per-capita GNI of KRW 52,416,000",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "legalclarity_kr_immigrate",
+      "tier": 3,
+      "url": "https://legalclarity.org/how-to-immigrate-to-south-korea-pathways-requirements/",
+      "title": "LegalClarity -- How to Immigrate to South Korea: Visas, Residency & Citizenship, corroborating the 2x-GNI income threshold and January 2024 launch date",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Launched January 2024, F-1-D is a genuinely narrow product by design: work_rights is 'restricted' rather than 'full' because the entire premise of the visa is that all income-generating activity must flow to a foreign entity -- any Korean-sourced income or Korean-client work falls outside its scope entirely, a sharper boundary than most other countries' digital-nomad products in this dataset. The 2x-GNI income bar is explicitly and repeatedly described across sources as significantly higher than comparable Southeast Asian digital-nomad visas, positioning F-1-D as a high-income-only product rather than a broadly accessible remote-work route. switchable_to is empty because F-1-D does not lead anywhere in the route graph -- it is a standalone, capped-duration status structurally similar to Poland's Schengen visitor route or the UAE's Green Visa in shape, not a stepping stone toward settlement. formula_ref uses the 'gni_x2' key defined in national-variables/KR.json, this build's first Korea national-variables file -- created specifically because this route and kr_f5_permanent_residence both peg income thresholds to the same underlying GNI figure, the same formula_ref pattern used for Poland's GUS-linked thresholds elsewhere in this dataset. A genuine within-year figure revision is worth flagging: BOK's 10 March 2026 preliminary announcement gave KRW 52,416,000 for 2025 per-capita GNI; a later 9 June 2026 release restated it as KRW 52,570,000. This route uses the March figure as the operative value -- see national-variables/KR.json for the full reasoning."
+}

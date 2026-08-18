@@ -1,0 +1,136 @@
+{
+  "id": "br_naturalisation",
+  "country": "BR",
+  "name": "Brazilian citizenship by naturalisation (Lei 13.445/2017, Art. 64-71)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "ordinaria_general",
+      "name": "Naturalização ordinária, general 4-year track",
+      "requirements": [
+        {
+          "id": "ord_4yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Requires civil capacity under Brazilian law, indefinite-term residence in Brazil for at least 4 years, communication ability in Portuguese, and no unrehabilitated criminal conviction.",
+          "fix_path": "Continue accruing indefinite-term residence until the 4-year threshold is met, and demonstrate Portuguese communication ability.",
+          "fix_time_months": 48,
+          "source_id": "lei_13445_arts64_71"
+        }
+      ]
+    },
+    {
+      "id": "ordinaria_reduced",
+      "name": "Naturalização ordinária, reduced 1-year track",
+      "requirements": [
+        {
+          "id": "ord_1yr_basis",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["brazilian_child", "brazilian_spouse_or_partner_not_separated", "relevant_service_to_brazil", "professional_scientific_artistic_distinction"],
+          "hard": true,
+          "blocker_text": "The 4-year residency requirement drops to a minimum of 1 year if the applicant has a Brazilian child; has a Brazilian spouse or partner and is not legally or factually separated from them at the time of the grant; has rendered or can render relevant service to Brazil; or is recommended by professional, scientific, or artistic capacity. A separate constitutional provision (distinct from this Article 66 list) reduces the requirement to 1 year of uninterrupted residence plus good moral standing for nationals of Portuguese-speaking countries specifically.",
+          "fix_path": "Establish one of the qualifying bases (Brazilian child, Brazilian spouse/partner, relevant service, or professional/scientific/artistic distinction), or rely on Portuguese-speaking-country nationality if applicable.",
+          "fix_time_months": 12,
+          "source_id": "lei_13445_arts64_71"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 12,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": null,
+        "switchable_to": []
+      }
+    },
+    {
+      "id": "extraordinaria",
+      "name": "Naturalização extraordinária, 15-year track",
+      "requirements": [
+        {
+          "id": "extra_15yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "Available to any foreign national residing in Brazil for more than 15 uninterrupted years without a criminal conviction, who requests Brazilian nationality -- this constitutional provision (Art. 12, I, 'c' of the Constitution, restated in the Migration Law) requires no other condition beyond residence duration, no criminal record, and the request itself.",
+          "fix_path": "Continue accruing uninterrupted residence until the 15-year threshold is met.",
+          "fix_time_months": 180,
+          "source_id": "lei_13445_arts64_71"
+        }
+      ]
+    },
+    {
+      "id": "especial",
+      "name": "Naturalização especial, spouse of Brazilian foreign-service personnel",
+      "requirements": [
+        {
+          "id": "esp_spouse_5yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_brazilian_foreign_service_5yr",
+          "hard": true,
+          "blocker_text": "Available to the spouse or partner, for more than 5 years, of an active member of the Brazilian Foreign Service or of a person serving Brazil abroad -- requires civil capacity, Portuguese communication ability, and no unrehabilitated criminal conviction, but no separate residence-duration test of its own.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "lei_13445_arts64_71"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of indefinite-term residence (CRNM) for the applicable period", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Portuguese-language communication evidence (assessed proportionate to the applicant's circumstances, not a fixed formal exam)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate, or proof of rehabilitation", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "sporadic trips abroad totalling no more than 3 months within a 1-year residence requirement, 6 months within a 2-year requirement, or 12 months within a 4-year requirement do not interrupt the naturalisation clock",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lei_13445_arts64_71",
+      "tier": 1,
+      "url": "https://www2.camara.leg.br/legin/fed/lei/2017/lei-13445-24-maio-2017-784925-publicacaooriginal-152812-pl.html",
+      "title": "Câmara dos Deputados (camara.leg.br, official legislative text repository) -- full text of Lei nº 13.445, de 24 de maio de 2017 (Lei de Migração), Articles 64-71 on naturalisation",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "gov_br_mj_residence_period",
+      "tier": 1,
+      "url": "https://www.gov.br/mj/pt-br/assuntos/seus-direitos/migracoes/naturalizacao/o-que-e-naturalizacao/naturalizacao-ordinaria/ter-residencia-em-territorio-nacional-pelo-prazo-estabelecido-pela-lei-brasileira",
+      "title": "Ministério da Justiça e Segurança Pública (gov.br/mj) -- official guidance on the residence-period requirement, including the sporadic-absence proportionality rule and the rule that refugee-status applicants count from their CONARE application date",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Four genuinely distinct naturalisation mechanisms, correctly modeled as OR-logic groups per this schema's core design decision -- the same four-type structure (ordinária/extraordinária/especial/provisória) is set out explicitly in Lei 13.445/2017 Article 64, an unusually clean match between the statute's own taxonomy and this schema's requirement_groups mechanism. A fourth type, naturalização provisória (for children/adolescents who established Brazilian residence before age 10, applied for via legal representative, converting to definitive status if the naturalised person requests it within 2 years of reaching majority), is not modeled as its own group here since it applies to a fundamentally different applicant profile (minors via representative) than the adult-applicant framing this dataset generally uses -- flagged as a candidate for a future expansion. dual_citizenship_allowed is true throughout, consistent with Brazil's general acceptance of dual nationality (unlike China, Korea's general track, and Saudi Arabia, all of which restrict or bar it in this dataset) -- a genuine structural finding worth surfacing on any cross-country comparison, since Brazil imposes no renunciation requirement on naturalised citizens at all. gov.br/mj's own guidance confirms a favourable detail for br_refugee_status specifically: for CONARE-recognised refugees, the residence-period clock for naturalisation counts from the date of the refugee-status application itself, not from the date of recognition -- meaningfully faster than it might first appear given how long CONARE's process can take. The reduced 1-year track (ordinaria_reduced) combines two textually distinct legal bases that produce the same practical outcome: Article 66's list (Brazilian child, Brazilian spouse/partner, relevant service, professional distinction) and a separate constitutional provision specifically for Portuguese-speaking-country nationals (1 year plus good moral standing, no other condition) -- both collapsed into one requirement_group here since the schema doesn't have a clean way to express 'two different legal articles producing an identical 1-year reduction,' flagged as a simplification consistent with this project's honesty conventions rather than silently treated as one uniform rule."
+}

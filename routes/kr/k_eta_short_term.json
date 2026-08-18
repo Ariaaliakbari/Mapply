@@ -1,0 +1,73 @@
+{
+  "id": "kr_k_eta_short_term",
+  "country": "KR",
+  "name": "K-ETA (Korea Electronic Travel Authorization) / Short-term C-3 visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "k_eta",
+      "name": "K-ETA (visa-waiver-programme nationalities)",
+      "requirements": [
+        {
+          "id": "keta_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["k_eta_eligible_visa_waiver_countries"],
+          "hard": true,
+          "blocker_text": "K-ETA is only available to nationals of countries participating in Korea's Visa Waiver Programme (roughly 110+ countries); other nationalities need a Short-term C-3 visa instead.",
+          "fix_path": "Apply for a Short-term C-3 visa at a Korean embassy or consulate if not visa-waiver eligible.",
+          "fix_time_months": null,
+          "source_id": "k_eta_official"
+        },
+        {
+          "id": "keta_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_visit_transit_no_work",
+          "hard": true,
+          "blocker_text": "K-ETA and the C-3 visa cover tourism, short business visits, transit, and similar purposes; they do not authorise employment or study.",
+          "fix_path": "Apply for the relevant work or study route instead if the purpose is employment or enrolled study.",
+          "fix_time_months": null,
+          "source_id": "k_eta_official"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Online K-ETA application, typically approved within 24-72 hours", "difficulty": "routine", "typical_time_days": 3 }
+  ],
+  "outcome": {
+    "duration_length": "K-ETA valid 3 years (or until passport expiry) for stays up to 90 days per visit, depending on nationality",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "up to 90 days per visit, exact cap varies by nationality's bilateral visa-waiver agreement",
+    "switchable_to": ["kr_d2_student"]
+  },
+  "sources": [
+    {
+      "id": "k_eta_official",
+      "tier": 1,
+      "url": "https://www.k-eta.go.kr/",
+      "title": "K-ETA (Korea Electronic Travel Authorization) -- official Korea Immigration Service portal",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "K-ETA (launched 2021) is a pre-screening electronic travel authorization layered on top of Korea's existing visa-waiver agreements, not a visa itself -- nationals who need a visa outside the waiver programme still apply for a Short-term C-3 visa through a consulate rather than K-ETA. Change of status to a long-term category (study, work, family) from inside Korea while on K-ETA/C-3 status is generally not permitted; applicants typically need to leave and re-apply for the target visa from outside Korea, mirroring the general pattern seen across most 'visit' category routes in this dataset."
+}

@@ -1,0 +1,84 @@
+{
+  "id": "it_international_protection",
+  "country": "IT",
+  "name": "Protezione internazionale (refugee status and subsidiary protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of persecution on Convention grounds (refugee status) or a real risk of serious harm such as the death penalty, torture, or serious threat from armed conflict (subsidiary protection), per Decreto Legislativo 251/2007, implementing the EU Qualification Directive. Article 10(3) of the Italian Constitution separately guarantees a broader right of asylum to foreigners denied effective exercise of democratic freedoms in their own country.",
+    "evidence_hint": "Personal testimony plus any corroborating documentation of the persecution or risk, presented to the competent Commissione Territoriale during a formal interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status or subsidiary protection determination",
+      "requirements": [
+        {
+          "id": "prot_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution_or_serious_harm",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution (refugee status) or a real risk of serious harm (subsidiary protection), assessed by one of Italy's 20 Commissioni Territoriali (with up to 30 further sub-sections) in a formal interview.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "interno_protezione_internazionale"
+        },
+        {
+          "id": "prot_application_point",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "italy_or_border_police",
+          "hard": true,
+          "blocker_text": "The application can be filed with border police upon entry or, at any later point, with the local Questura (police headquarters) with territorial jurisdiction over the applicant's place of residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "interno_protezione_internazionale"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Modello C3 application form, completed with interpreter assistance if needed", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport where available, plus any documentation supporting the claim", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Personal testimony at the Commissione Territoriale interview", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "refugee status and subsidiary protection are granted for an unlimited period; the residence permit itself is renewed periodically (5 years for refugee status, shorter for subsidiary protection)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["it_eu_long_term_residence", "it_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "interno_protezione_internazionale",
+      "tier": 1,
+      "url": "https://www.interno.gov.it/it/temi/immigrazione-e-asilo/protezione-internazionale",
+      "title": "Ministero dell'Interno (interno.gov.it) -- Protezione internazionale, citing DPR 21/2015 and Decreto Legislativo 251/2007, and reproducing Art. 10(3) of the Constitution",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "unipd_protezione",
+      "tier": 3,
+      "url": "https://unipd-centrodirittiumani.it/it/temi/il-procedimento-per-il-riconoscimento-della-protezione-internazionale",
+      "title": "Centro di Ateneo per i Diritti Umani, Università di Padova -- Il procedimento per il riconoscimento della protezione internazionale, corroborating the application and interview procedure",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL DETAIL, a genuinely favourable feature confirmed directly in interno.gov.it's own practical guide for applicants: while a decision is pending, if the Commissione Territoriale has not ruled within 6 months for reasons not attributable to the applicant, the residence permit is renewed for a further 6 months and the applicant gains the right to work for the remainder of the procedure -- otherwise, work rights during the pending-decision period begin 60 days after the application is filed. Italy also recognises a distinct 'protezione speciale' (special protection) category, a 2-year renewable permit granted by the Questore on the Commissione's recommendation for cases that don't meet the refugee or subsidiary-protection standard but where removal would breach other protections -- explicitly NOT convertible to a work-reason permit, a genuinely different and more limited status than full refugee/subsidiary protection, not modeled as its own separate route file here given its narrower, discretionary, non-independently-applied-for nature (the applicant cannot request it directly; only the Commissione can refer a case into it). pr_after_months and citizenship_after_months use the general 5-year/5-year figures pending confirmation of whether Italy offers refugee-status holders any accelerated naturalisation track comparable to Poland's 2-year refugee-specific tier documented elsewhere in this dataset -- this was not conclusively confirmed or ruled out in sources checked for this build and is flagged as an open question rather than asserted either way."
+}

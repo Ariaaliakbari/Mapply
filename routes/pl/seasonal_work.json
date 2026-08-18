@@ -1,0 +1,98 @@
+{
+  "id": "pl_seasonal_work",
+  "country": "PL",
+  "name": "Seasonal work permit, Type S (zezwolenie na pracę sezonową)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Seasonal sector employment",
+      "requirements": [
+        {
+          "id": "sw_sector",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["agriculture", "horticulture", "tourism_accommodation_catering"],
+          "hard": true,
+          "blocker_text": "Work must fall within one of the government-designated seasonal PKD business-activity subclasses -- primarily agriculture, horticulture, animal husbandry, accommodation, and catering.",
+          "fix_path": "Confirm the offered role sits within a designated seasonal PKD subclass, or apply for a different work route if not.",
+          "fix_time_months": null,
+          "source_id": "psz_seasonal"
+        },
+        {
+          "id": "sw_employer_filing",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "The Polish employer applies to the starosta (district authority, not the voivode) for the permit before work begins, and pays a PLN 30 filing fee.",
+          "fix_path": "Secure a seasonal job offer from a Polish employer willing to file the Type S application.",
+          "fix_time_months": null,
+          "source_id": "psz_seasonal"
+        },
+        {
+          "id": "sw_wage",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "min_wage_2026", "ratio": 1.0, "resolved_amount": 4806, "currency": "PLN", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Wage terms must match those of comparable Polish workers and cannot fall below the statutory minimum wage.",
+          "fix_path": "Negotiate a wage at or above the statutory minimum.",
+          "fix_time_months": null,
+          "source_id": "psz_seasonal"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written employment contract in a language the worker understands", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Starosta's Type S permit decision", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "up to 9 months within a calendar year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 9 months per calendar year on this status; does not accumulate toward permanent residence or citizenship",
+    "switchable_to": ["pl_single_permit"]
+  },
+  "sources": [
+    {
+      "id": "psz_seasonal",
+      "tier": 1,
+      "url": "https://psz.praca.gov.pl/dla-bezrobotnych-i-poszukujacych-pracy/dla-cudzoziemcow/zezwolenie-na-prace-sezonowa",
+      "title": "Ministerstwo Rodziny, Pracy i Polityki Społecznej (praca.gov.pl portal) -- Zezwolenia na pracę sezonową",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "pip_seasonal",
+      "tier": 1,
+      "url": "https://www.pip.gov.pl/dla-pracownikow/porady-prawne/cudzoziemcy",
+      "title": "Państwowa Inspekcja Pracy (National Labour Inspectorate) -- Praca sezonowa cudzoziemców na terytorium Polski, corroborating the PKD sector list and PLN 30 filing fee",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "biznes_seasonal",
+      "tier": 1,
+      "url": "https://www.biznes.gov.pl/pl/portal/ou228",
+      "title": "biznes.gov.pl (official Polish government business portal) -- Uzyskaj zezwolenie na pracę sezonową, corroborating the 9-month cap and multi-season registration mechanics",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Structurally a dead-end route by design: seasonal work explicitly does not count toward permanent residence or citizenship timelines (physical_presence_requirement note), and the government's own declaration-procedure (oświadczenie) page explicitly states seasonal work cannot be authorised via that simplified channel either -- Type S is a closed, separate system, confirmed via pip.gov.pl (National Labour Inspectorate). Citizens of Armenia, Belarus, Moldova, and Ukraine get one enhancement unavailable to others: a multi-season entry allowing a single registration to cover up to 9 months per year across up to 3 consecutive calendar years, provided the employer has hired that same worker under a Type S permit at least once in the preceding 5 years -- a genuine structural nuance not modeled as a separate requirement_group here since it only changes the administrative registration mechanism, not the underlying eligibility test, but worth flagging for anyone building the UI's blocker/fix-path display for this route. leads_to_pr and leads_to_citizenship are correctly false, not merely unpopulated -- this is one of the few routes across the whole 214-route dataset (Poland's 15th country) that is a genuine structural dead-end by government design, similar in shape to how visit-category routes work elsewhere, despite being classified as work_sponsored rather than visit."
+}

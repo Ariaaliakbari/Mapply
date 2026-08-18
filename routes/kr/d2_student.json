@@ -1,0 +1,74 @@
+{
+  "id": "kr_d2_student",
+  "country": "KR",
+  "name": "D-2 Student visa (degree-seeking)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Admitted to a degree program",
+      "requirements": [
+        {
+          "id": "d2_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_accredited_korean_degree_program",
+          "hard": true,
+          "blocker_text": "Requires admission to an accredited associate, bachelor's, master's, or doctoral degree program at a Korean university (D-4 covers non-degree language institutes and vocational training instead).",
+          "fix_path": "Secure admission to an accredited Korean degree program.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        },
+        {
+          "id": "d2_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_or_scholarship",
+          "hard": true,
+          "blocker_text": "Requires proof of sufficient financial means (bank balance certificate, scholarship award, or sponsor's financial guarantee) covering tuition and living costs.",
+          "fix_path": "Provide bank statements, a scholarship award letter, or a sponsor's financial guarantee.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certificate of admission from the Korean institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank balance certificate or scholarship documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Alien Registration Card (ARC) application within 90 days of arrival for stays over 90 days", "difficulty": "routine", "typical_time_days": 90 }
+  ],
+  "outcome": {
+    "duration_length": "tied to program length, renewed periodically via ARC",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kr_e7_designated_activities", "kr_f2_7_points_resident"]
+  },
+  "sources": [
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "D-2 holders may work part-time only with explicit, separately-obtained permission for activities outside their status of residence -- general unrestricted part-time work is not permitted, and this permission must be obtained before working, not after. Standard graduation pathway: D-2 holders convert to D-10 (job-seeker) status after graduating rather than working immediately, using the D-10 period to secure the specific employer sponsorship an E-7 (or, for the small number of qualifying strategic-industry fields, E-7-T under the Top-Tier Visa track effective April 2025) requires -- this D-2 to D-10 to E-7 sequence is the standard route Korea's own immigration-service guidance and independent secondary sources describe consistently for foreign graduates, distinct from the direct-to-employment pattern seen in some other countries' student routes in this dataset. The Top-Tier Visa track (8 strategic industries: AI, semiconductors, displays, secondary batteries, biotech, advanced mobility, robotics, defense) offers graduates in those specific fields a D-10-T to E-7-T to F-2-T to F-5-T pathway with different income and credential rules than the standard track -- not separately modeled as its own route file given its current narrow scope, but flagged here since it changes this route's most likely next step for STEM/strategic-industry graduates specifically."
+}

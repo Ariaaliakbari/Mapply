@@ -1,0 +1,146 @@
+{
+  "id": "sa_premium_residency_general",
+  "country": "SA",
+  "name": "Premium Residency -- Permanent, Annual, Special Talent, and Gifted products (Al-Iqama Al-Mumayaza)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "permanent_financial",
+      "name": "Permanent (Unlimited Duration) Residency, one-time fee",
+      "requirements": [
+        {
+          "id": "pr_permanent_fee",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 800000, "currency": "SAR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a one-time government fee of SAR 800,000 (approx. USD 213,000) and passing financial-solvency and background checks; no investment, business, or employment is required.",
+          "fix_path": "Save toward the SAR 800,000 one-time fee, or choose the Annual track if the full amount isn't available upfront.",
+          "fix_time_months": null,
+          "source_id": "pr_gov_sa"
+        }
+      ]
+    },
+    {
+      "id": "annual_financial",
+      "name": "Annual (Renewable) Residency",
+      "requirements": [
+        {
+          "id": "pr_annual_fee",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 100000, "currency": "SAR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires an annual government fee of SAR 100,000 (approx. USD 26,700), renewed each year, with the same financial-solvency and background checks as the Permanent track.",
+          "fix_path": "Confirm ability to sustain the SAR 100,000/year fee; the break-even point against the Permanent track's one-time fee is around 8 years.",
+          "fix_time_months": null,
+          "source_id": "pr_gov_sa"
+        }
+      ]
+    },
+    {
+      "id": "special_talent",
+      "name": "Special Talent Residency",
+      "requirements": [
+        {
+          "id": "pr_talent_field",
+          "attribute": "field_of_study",
+          "operator": "in",
+          "value": ["healthcare", "science", "research", "executive_leadership"],
+          "hard": true,
+          "blocker_text": "Targets skilled professionals in healthcare, science, research, and executive leadership whose knowledge and experience would benefit Saudi Arabia's development, requiring a relevant degree, professional licence, publications, or recognised achievements in the field.",
+          "fix_path": "Document relevant credentials, publications, or achievements demonstrating specialised expertise.",
+          "fix_time_months": null,
+          "source_id": "pr_gov_sa"
+        },
+        {
+          "id": "pr_talent_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 80000, "currency": "SAR", "unit": "month" },
+          "hard": false,
+          "blocker_text": "One commonly-cited criterion for this specific track is a high salary threshold, around SAR 80,000+/month, materially above the SAR 14,000+ threshold associated with standard priority-sector employment -- combined with relevant degrees, licences, or achievements. This figure is cited by only one source in this research pass and could not be cross-verified against pr.gov.sa directly (see notes), so it is treated as informational rather than a confirmed hard cutoff.",
+          "fix_path": "Secure or document a position meeting the high-salary threshold for this track.",
+          "fix_time_months": null,
+          "source_id": "relocate_gcc_pr"
+        }
+      ]
+    },
+    {
+      "id": "gifted",
+      "name": "Gifted Residency",
+      "requirements": [
+        {
+          "id": "pr_gifted_field",
+          "attribute": "field_of_study",
+          "operator": "in",
+          "value": ["culture", "sports", "arts"],
+          "hard": true,
+          "blocker_text": "Targets individuals with recognised achievements or active standing in culture, sports, or the arts.",
+          "fix_path": "Document recognised achievements or professional standing in a qualifying cultural, sporting, or artistic field.",
+          "fix_time_months": null,
+          "source_id": "pr_gov_sa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of financial solvency (Permanent/Annual tracks) or field-specific credentials (Talent/Gifted tracks)", "difficulty": "moderate", "typical_time_days": 45 },
+    { "document": "Medical examination and criminal-background check from country of origin", "difficulty": "routine", "typical_time_days": 30 },
+    { "document": "SAR 4,000 standard application fee for the category-based products (Talent, Gifted), not required for the fee-based Permanent/Annual products", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited (Permanent track) or 1-5 years, renewable (Annual, Talent, Gifted tracks)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "no minimum physical presence requirement to maintain the residency",
+    "switchable_to": ["sa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "pr_gov_sa",
+      "tier": 1,
+      "url": "https://pr.gov.sa/",
+      "title": "Premium Residency Center (pr.gov.sa) -- official Saudi government portal, Permanent, Annual, Special Talent, and Gifted Residency products. Direct automated fetch blocked by robots.txt; see notes for the sourcing-method caveat that applies across all Premium Residency route files in this build",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mygovsa_pr_center",
+      "tier": 1,
+      "url": "https://my.gov.sa/en/agencies/18047",
+      "title": "my.gov.sa (Saudi National Portal) -- Premium Residency Center official agency listing",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "relocate_gcc_pr",
+      "tier": 3,
+      "url": "https://relocate-gcc.com/saudi/saudi-arabia-premium-residency-2026",
+      "title": "GCC Relocation Hub -- Saudi Premium Residency 2026 full eligibility guide, the specific source for the SAR 80,000+/month Special Talent salary figure",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "baticfirm_pr_cost",
+      "tier": 3,
+      "url": "https://baticfirm.com/cost-saudi-premium-residency/",
+      "title": "BATIC Firm -- Cost of Saudi Premium Residency 2026, independent cross-check of the SAR 800,000 / SAR 100,000 fee split and the SAR 4,000 category-based application fee",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Classified as settled rather than business (unlike the Investor/Entrepreneur/Real Estate Owner tracks in sa_premium_residency_investor_entrepreneur and sa_premium_residency_real_estate) because these four products require no investment, business activity, or specific economic contribution beyond a flat fee (Permanent/Annual) or personal/professional standing (Talent/Gifted) -- the closest functional analogue in this dataset to an unconditional long-term settlement status, even though Saudi Arabia has no true 'permanent residence' status of the kind built for the other 14 countries. Same pr.gov.sa robots.txt sourcing-method limitation applies here as on the other two Premium Residency files: figures are strongly cross-corroborated across multiple independent 2026-dated sources but not directly fetched from the primary government page, flagged honestly as a follow-up target. STRUCTURAL FINDING, confirmed identically across every source checked: none of Premium Residency's products -- financial, investment, or talent-based -- lead to citizenship or accelerate the naturalisation clock in any way. This is stated as an explicit, repeated point across law-firm and relocation-consultancy sources alike ('it does not directly lead to citizenship... Naturalisation in Saudi Arabia remains a complex process'), making Premium Residency structurally closer to the UAE's Golden Visa (also citizenship-sealed) than to e.g. Portugal's or Spain's investment routes, both of which do carry a real (if slow) path to naturalisation. The Special Talent salary figure (SAR 80,000+/month) is the single thinnest-sourced numeric fact in this route -- cited by only one of the sources checked in this research pass rather than cross-corroborated across multiple independent sources the way the fee figures are -- flagged honestly here rather than presented with the same confidence as the Permanent/Annual fee amounts."
+}

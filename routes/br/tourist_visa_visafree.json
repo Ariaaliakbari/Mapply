@@ -1,0 +1,73 @@
+{
+  "id": "br_tourist_visa_visafree",
+  "country": "BR",
+  "name": "VITUR Tourist visa / visa-free entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Tourism, no work",
+      "requirements": [
+        {
+          "id": "tur_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism and similar short visits; working in Brazil on a tourist visa or visa-free entry violates Lei 13.445/2017 (the Migration Law), even for remote work performed for a non-Brazilian employer -- the dedicated Digital Nomad route exists specifically to legalise that scenario.",
+          "fix_path": "Apply for the relevant work or digital-nomad route instead if any form of paid activity is intended.",
+          "fix_time_months": null,
+          "source_id": "gov_br_mre_visas"
+        },
+        {
+          "id": "tur_stay_limit",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_free_or_evisa_eligible",
+          "hard": true,
+          "blocker_text": "Many nationalities enter visa-free or via eVisa for stays up to 90 days, extendable once for another 90 days (180 days total per 12-month period); other nationalities need a consular VITUR visa.",
+          "fix_path": "Apply for a VITUR visa at a Brazilian consulate if not visa-free or eVisa eligible.",
+          "fix_time_months": null,
+          "source_id": "gov_br_mre_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the intended stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of onward/return travel and sufficient funds where requested at the border", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days, extendable once to 180 days per 12-month period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 180 days per 12-month period",
+    "switchable_to": ["br_student_visa", "br_digital_nomad_visa"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_mre_visas",
+      "tier": 1,
+      "url": "https://www.gov.br/mre/pt-br/embaixada-helsinque/consular-services/digital-nomad-visa-vitem-xiv",
+      "title": "Ministério das Relações Exteriores (gov.br/mre) -- consular services pages describing Brazilian visa categories and the 90+90 day stay structure for visa-free/eVisa entrants",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Overstaying triggers fines of R$100/day (capped at R$10,000) and potential re-entry restrictions, per multiple independent sources cross-checked in this research pass. Change of status to a long-term category from inside Brazil while on tourist status is generally not permitted for most categories -- applicants typically need to apply for the target visa from outside Brazil, though some routes (e.g. the Digital Nomad visa) explicitly allow in-country status change via the Federal Police's MigranteWeb platform, a genuine exception worth flagging since it isn't the default pattern."
+}

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mapply — Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0; --ink:#1A1A1A; --stamp:#8B1A1A;
+    --verified:#2B4C3F; --rule:#C9C4B8; --paper-dim:#EFEDE6; --gray:#6b6b6b;
+    --grid-line:#DAD5C8; --amber:#8A6A16;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; overflow:hidden;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .topbar{
+    position:fixed; top:0; left:0; right:0; z-index:20;
+    border-bottom:1.5px solid var(--ink);
+    background:var(--paper);
+    padding:16px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .logo{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .logo span{color:var(--stamp);}
+  .nav{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; display:flex; gap:22px; color:var(--gray);}
+  .nav a{color:var(--gray); text-decoration:none;}
+  .nav a.active{color:var(--ink); border-bottom:1px solid var(--ink);}
+
+  .atlas{position:relative; width:100%; height:100vh; padding-top:58px; overflow:hidden;}
+  .map-area{position:relative; width:100%; height:100%;}
+
+  .graticule{position:absolute; inset:0;}
+  .grat-line{position:absolute; background:var(--grid-line);}
+  .grat-line.h{left:0; right:0; height:1px;}
+  .grat-line.v{top:0; bottom:0; width:1px;}
+  .grat-line.major{background:var(--rule);}
+
+  .marker{
+    position:absolute; transform:translate(-50%, -100%);
+    display:flex; flex-direction:column; align-items:center;
+    cursor:pointer; transition:transform 0.15s ease;
+  }
+  .marker:hover{transform:translate(-50%, -104%); z-index:10;}
+  .marker-icon{
+    width:60px; height:60px; display:flex; align-items:center; justify-content:center;
+    font-size:26px; filter:drop-shadow(0 3px 4px rgba(26,26,26,0.28));
+  }
+  .marker-icon img{width:100%; height:100%; object-fit:contain;}
+  .marker.has-draft .marker-icon, .marker.has-closed-only .marker-icon{opacity:0.85;}
+  .marker-label{
+    margin-top:5px; font-family:'IBM Plex Mono', monospace; font-size:10px;
+    text-transform:uppercase; letter-spacing:0.03em; background:var(--paper);
+    padding:1px 5px; white-space:nowrap;
+  }
+  .marker-count{
+    position:absolute; top:-6px; right:-6px; background:var(--verified); color:var(--paper);
+    font-family:'IBM Plex Mono', monospace; font-size:9px; width:16px; height:16px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+
+  .legend{
+    position:absolute; bottom:20px; left:28px;
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray);
+    display:flex; gap:18px; text-transform:uppercase; letter-spacing:0.03em; max-width:640px;
+  }
+  .legend .dot{display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; position:relative; top:-1px;}
+  .legend .dot.live{background:var(--verified);}
+  .legend .dot.draft{background:var(--gray);}
+  .legend .dot.closed{background:var(--stamp);}
+
+  .atlas-caption{position:absolute; top:14px; left:28px; max-width:300px; font-size:12px; color:var(--gray);}
+  .atlas-caption strong{color:var(--ink); display:block; font-family:'Fraunces', serif; font-size:15px; font-weight:500; margin-bottom:3px;}
+
+  .stats-badge{
+    position:absolute; top:14px; right:28px; text-align:right;
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); text-transform:uppercase; letter-spacing:0.03em;
+  }
+  .stats-badge strong{display:block; font-family:'Fraunces', serif; font-size:20px; font-weight:500; color:var(--ink); text-transform:none; letter-spacing:0;}
+
+  .sheet-backdrop{
+    position:fixed; inset:0; background:rgba(26,26,26,0.25);
+    opacity:0; pointer-events:none; transition:opacity 0.2s ease; z-index:30;
+  }
+  .sheet-backdrop.open{opacity:1; pointer-events:auto;}
+  .sheet{
+    position:fixed; top:0; right:0; bottom:0; width:440px; background:var(--paper);
+    border-left:1.5px solid var(--ink); transform:translateX(100%);
+    transition:transform 0.25s ease; z-index:31; display:flex; flex-direction:column;
+  }
+  .sheet.open{transform:translateX(0);}
+  .sheet-header{padding:22px 24px 18px; border-bottom:2px solid var(--ink); display:flex; justify-content:space-between; align-items:flex-start;}
+  .sheet-header h2{font-family:'Fraunces', serif; font-weight:500; font-size:24px;}
+  .sheet-header .meta{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gray); margin-top:6px; text-transform:uppercase;}
+  .sheet-close{font-family:'IBM Plex Mono', monospace; font-size:11px; cursor:pointer; border:1px solid var(--ink); padding:4px 9px; background:none; color:var(--ink);}
+  .sheet-body{flex:1; overflow-y:auto; padding:20px 24px;}
+
+  .route-link{display:block; text-decoration:none; color:inherit;}
+  .route-item{border-bottom:1px solid #EAE7DF; padding:14px 0;}
+  .route-item:first-child{padding-top:0;}
+  .route-item-top{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+  .route-item h3{font-family:'IBM Plex Sans', sans-serif; font-size:14px; font-weight:600;}
+  .route-item.closed h3{text-decoration:line-through; color:var(--gray);}
+  .route-status{
+    font-family:'IBM Plex Mono', monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.04em;
+    padding:1px 6px; border-radius:2px; white-space:nowrap; flex:0 0 auto;
+  }
+  .route-status.published{color:var(--verified); border:1px solid var(--verified);}
+  .route-status.draft{color:var(--gray); border:1px solid var(--gray);}
+  .route-status.closed{color:var(--stamp); border:1px solid var(--stamp);}
+  .route-cat{font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); text-transform:uppercase; margin-top:2px; display:block;}
+  .route-outcome{font-size:12px; color:#333; margin-top:6px; line-height:1.5;}
+  .route-verified{font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); margin-top:6px;}
+  .sheet-empty{color:var(--gray); font-size:13px; font-family:'IBM Plex Mono', monospace;}
+  .sheet-footer{padding:16px 24px; border-top:1px solid var(--rule); font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gray);}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="logo">Map<span>ply</span></div>
+    <div class="nav">
+      <a class="active" href="atlas.html">Atlas</a>
+      <a href="#">Categories</a>
+      <a href="#">Outcomes</a>
+      <a href="#">By profile</a>
+      <a href="#">Sources</a>
+    </div>
+  </div>
+
+  <div class="atlas">
+    <div class="map-area" id="mapArea">
+      <div class="graticule" id="graticule"></div>
+
+      <div class="atlas-caption">
+        <strong>The Atlas</strong>
+        <span id="captionText">Loading routes/_index.json…</span>
+      </div>
+
+      <div class="stats-badge" id="statsBadge"></div>
+
+      <div id="markers"></div>
+
+      <div class="legend">
+        <span><span class="dot live"></span>Published — checked against source</span>
+        <span><span class="dot draft"></span>Draft — missing tier-1 sourcing or incomplete</span>
+        <span><span class="dot closed"></span>Closed — no longer accepts applicants, kept for reference</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-backdrop" id="backdrop"></div>
+  <div class="sheet" id="sheet">
+    <div class="sheet-header">
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <img id="sheetIcon" src="" alt="" style="width:40px; height:40px; object-fit:contain; filter:drop-shadow(0 2px 3px rgba(26,26,26,0.25)); flex:0 0 auto;">
+        <div>
+          <h2 id="sheetTitle">Country</h2>
+          <div class="meta" id="sheetMeta">status</div>
+        </div>
+      </div>
+      <button class="sheet-close" id="sheetClose">CLOSE</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+    <div class="sheet-footer" id="sheetFooter"></div>
+  </div>
+
+<script>
+// Every marker and every sheet row below is read straight from routes/_index.json,
+// a generated manifest whose fields are copied verbatim from the per-route JSON files
+// under routes/[country]/[route].json — nothing here is placeholder data.
+
+const COUNTRY_META = {
+  ae: { name: "United Arab Emirates", label: "UAE",  emoji: "🐫", icon: "icons/uae-burj-khalifa.png",              left: 67.6, top: 36 },
+  au: { name: "Australia",            emoji: "🦘", icon: "icons/australia-sydney-opera-house-3.png",  left: 88,   top: 72 },
+  ca: { name: "Canada",               emoji: "🍁", icon: "icons/canada-maple-leaf-2.png",              left: 21,   top: 20 },
+  ch: { name: "Switzerland",          emoji: "⛰️", icon: "icons/switzerland-matterhorn.png",           left: 52.5, top: 29 },
+  de: { name: "Germany",              emoji: "🏛️", icon: "icons/germany-brandenburg-gate.png",         left: 62.5, top: 15.5 },
+  es: { name: "Spain",                emoji: "💃", icon: "icons/spain-flamenco-dancer.png",            left: 49,   top: 43 },
+  fr: { name: "France",               emoji: "🥐", icon: "icons/france-eiffel-tower.png",              left: 43.9, top: 28 },
+  ie: { name: "Ireland",              emoji: "☘️", icon: "icons/ireland-celtic-harp.png",              left: 38,   top: 14 },
+  jp: { name: "Japan",                emoji: "⛩️", icon: "icons/japan-torii-gate.png",                 left: 87,   top: 28 },
+  nl: { name: "Netherlands",          emoji: "🌷", icon: "icons/netherlands-windmill.png",             left: 53.5, top: 13 },
+  pt: { name: "Portugal",             emoji: "⛵", icon: "icons/portugal-belem-tower.png",             left: 41,   top: 42 },
+  sg: { name: "Singapore",            emoji: "🦁", icon: "icons/singapore-merlion.png",                left: 78,   top: 51 },
+  tr: { name: "Turkey",               emoji: "🕌", icon: "icons/turkey-hagia-sophia.png",              left: 61.1, top: 28.6 },
+  uk: { name: "United Kingdom",       label: "UK",  emoji: "🎡", icon: "icons/uk-big-ben-tower.png",    left: 45,   top: 14 },
+  us: { name: "United States",        label: "USA", emoji: "🗽", icon: "icons/usa-statue-of-liberty.png", left: 26, top: 31 },
+};
+
+const CATEGORY_LABELS = {
+  visit:'Visit', study:'Study', work_sponsored:'Sponsored work', work_independent:'Independent work',
+  business:'Business', family:'Family', ancestry:'Ancestry', humanitarian:'Humanitarian', settled:'Settlement'
+};
+
+function el(html){
+  const t = document.createElement('template');
+  t.innerHTML = html.trim();
+  return t.content.firstElementChild;
+}
+function fmtDate(d){
+  if(!d) return null;
+  return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+function outcomeLine(o){
+  if(!o) return '';
+  const bits = [];
+  if(o.duration_length) bits.push(o.duration_length);
+  if(o.work_rights) bits.push(o.work_rights === 'none' ? 'no work rights' : o.work_rights + ' work rights');
+  if(o.leads_to_pr) bits.push(`→ PR in ${o.pr_after_months}mo`);
+  if(o.leads_to_citizenship) bits.push(`→ citizenship in ${o.citizenship_after_months}mo`);
+  return bits.join(' · ');
+}
+
+let INDEX = null;
+let openCountry = null;
+
+async function main(){
+  const res = await fetch('routes/_index.json', { cache: 'no-store' });
+  INDEX = (await res.json()).countries;
+
+  const codes = Object.keys(INDEX).filter(cc => COUNTRY_META[cc]);
+  const markersWrap = document.getElementById('markers');
+
+  let totalRoutes = 0, totalPublished = 0;
+  codes.forEach(cc => {
+    const entries = INDEX[cc];
+    const meta = COUNTRY_META[cc];
+    const published = entries.filter(e => e.status === 'published').length;
+    const draft = entries.filter(e => e.status === 'draft').length;
+    totalRoutes += entries.length;
+    totalPublished += published;
+
+    const cls = draft > 0 && published === 0 ? 'has-draft' : (draft > 0 ? 'has-draft' : '');
+    const marker = el(`
+      <div class="marker ${cls}" data-country="${cc}" style="left:${meta.left}%; top:${meta.top}%;">
+        <div class="marker-icon">
+          <img src="${encodeURI(meta.icon)}" alt="${meta.name}"
+               onerror="this.outerHTML='${meta.emoji}';">
+          <span class="marker-count">${entries.length}</span>
+        </div>
+        <div class="marker-label">${meta.label || meta.name}</div>
+      </div>
+    `);
+    marker.addEventListener('click', () => openSheet(cc));
+    markersWrap.appendChild(marker);
+  });
+
+  document.getElementById('captionText').textContent =
+    `Every marker is the same size — the map isn't ranking countries by importance, only placing them where they are. Click one.`;
+  document.getElementById('statsBadge').innerHTML =
+    `<strong>${totalRoutes}</strong>${codes.length} countries · ${totalRoutes} routes on file · ${totalPublished} published`;
+}
+
+function openSheet(cc){
+  openCountry = cc;
+  const meta = COUNTRY_META[cc];
+  const entries = [...INDEX[cc]].sort((a, b) => {
+    const rank = { published: 0, draft: 1, closed: 2 };
+    return rank[a.status] - rank[b.status] || a.name.localeCompare(b.name);
+  });
+  const published = entries.filter(e => e.status === 'published').length;
+  const draft = entries.filter(e => e.status === 'draft').length;
+  const closed = entries.filter(e => e.status === 'closed').length;
+  const mostRecent = entries.reduce((m, e) => (!m || e.verified_at > m) ? e.verified_at : m, null);
+
+  document.getElementById('sheetTitle').textContent = meta.name;
+  const sheetIcon = document.getElementById('sheetIcon');
+  sheetIcon.src = encodeURI(meta.icon);
+  sheetIcon.alt = meta.name;
+  sheetIcon.onerror = () => { sheetIcon.replaceWith(el(`<span style="font-size:32px;">${meta.emoji}</span>`)); };
+  document.getElementById('sheetMeta').innerHTML =
+    `<span style="color:#2B4C3F">● ${published} PUBLISHED</span>` +
+    (draft ? ` · <span style="color:#6b6b6b">${draft} DRAFT</span>` : '') +
+    (closed ? ` · <span style="color:#8B1A1A">${closed} CLOSED</span>` : '') +
+    ` · verified through ${fmtDate(mostRecent)}`;
+
+  const body = document.getElementById('sheetBody');
+  if(entries.length === 0){
+    body.innerHTML = `<div class="sheet-empty">No routes encoded yet for ${meta.name}.</div>`;
+  } else {
+    body.innerHTML = '';
+    entries.forEach(r => {
+      const item = el(`
+        <a class="route-link" href="routes/route-detail.html?country=${cc}&route=${r.file}">
+          <div class="route-item ${r.status === 'closed' ? 'closed' : ''}">
+            <div class="route-item-top">
+              <h3>${r.name}</h3>
+              <span class="route-status ${r.status}">${r.status}</span>
+            </div>
+            <span class="route-cat">${CATEGORY_LABELS[r.category] || r.category}</span>
+            <div class="route-outcome">${outcomeLine(r.outcome)}</div>
+            <div class="route-verified">verified ${fmtDate(r.verified_at)}${r.superseded_by ? ` · superseded by ${r.superseded_by}` : ''}</div>
+          </div>
+        </a>
+      `);
+      body.appendChild(item);
+    });
+  }
+
+  document.getElementById('sheetFooter').textContent =
+    published === entries.length
+      ? `All ${entries.length} routes published · click any route for the full breakdown →`
+      : `${published} of ${entries.length} routes published so far · click any route for the full breakdown →`;
+
+  document.getElementById('sheet').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+function closeSheet(){
+  document.getElementById('sheet').classList.remove('open');
+  document.getElementById('backdrop').classList.remove('open');
+}
+document.getElementById('sheetClose').addEventListener('click', closeSheet);
+document.getElementById('backdrop').addEventListener('click', closeSheet);
+
+// graticule — lines every 10%, majors at equator/prime meridian
+const grat = document.getElementById('graticule');
+for(let i=0;i<=100;i+=10){
+  const h = el(`<div class="grat-line h${i===50?' major':''}" style="top:${i}%;"></div>`);
+  grat.appendChild(h);
+  const v = el(`<div class="grat-line v${i===50?' major':''}" style="left:${i}%;"></div>`);
+  grat.appendChild(v);
+}
+
+main();
+</script>
+
+</body>
+</html>

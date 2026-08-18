@@ -1,0 +1,71 @@
+{
+  "id": "cn_refugee_status",
+  "country": "CN",
+  "name": "Refugee/asylum status (Constitution Art. 32 and Exit-Entry Administration Law Art. 46)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 32 of the PRC Constitution provides that the state 'may grant asylum to foreigners who request it for political reasons' -- a general, discretionary principle rather than a defined, testable eligibility standard.",
+    "evidence_hint": "No standardised application form or domestic determination process exists; in practice, individuals seeking international protection register with the UNHCR Beijing office rather than a Chinese government agency."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "no_operative_process",
+      "name": "No domestic refugee status determination process exists",
+      "requirements": [
+        {
+          "id": "ref_no_domestic_rsd",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "no_domestic_refugee_status_determination_mechanism",
+          "hard": false,
+          "blocker_text": "China acceded to the 1951 Refugee Convention and its 1967 Protocol in 1982, and Article 46 of the Exit and Entry Administration Law confirms that refugees may obtain identity documentation -- but no comprehensive domestic law establishes who qualifies as a refugee or a process for determining refugee status. The UNHCR Beijing office conducts refugee registration and status determination in China's place; UNHCR-recognised individuals are permitted to remain temporarily while a durable solution (typically third-country resettlement) is sought, but this is not a Chinese government-administered legal status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "loc_china_refugee_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "UNHCR registration (administered by UNHCR Beijing, not a Chinese government agency)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary, pending a UNHCR-brokered durable solution -- typically third-country resettlement rather than integration in China",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "loc_china_refugee_law",
+      "tier": 2,
+      "url": "https://maint.loc.gov/law/help/refugee-law/china.php",
+      "title": "U.S. Library of Congress -- Refugee Law and Policy: China, an intergovernmental-adjacent comparative-law reference summarising China's 1982 Convention accession, Constitution Article 32, and Exit and Entry Administration Law Article 46",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "chinausfocus_refugee_regime",
+      "tier": 4,
+      "url": "https://www.chinausfocus.com/society-culture/china-and-the-international-refugee-regime",
+      "title": "China-US Focus -- China and the International Refugee Regime, corroborating the absence of comprehensive domestic implementing legislation",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT, and a genuinely distinct category from this dataset's other 'no functioning system' cases (UAE, Saudi Arabia, Singapore, all modeled as status: closed with the 'never existed' convention). China is meaningfully different: it acceded to the 1951 Convention and 1967 Protocol in 1982 (unlike the Gulf states and Singapore, which never acceded at all), and its own domestic statutes (Constitution Art. 32, Exit and Entry Administration Law Art. 46) do reference asylum and refugee documentation -- so there is a genuine, if thin, legal basis, not a total absence of one. What's missing is any operative determination mechanism: no Chinese government agency conducts refugee status determination, no standardised application process exists for an individual to invoke, and the function is filled entirely by the UNHCR Beijing office instead, which China has historically treated with some ambivalence about sovereignty (documented instances of China repatriating UNHCR-recognised refugees against non-refoulement principles, e.g. 1992 and later cases, per the Oxford Refugee Survey Quarterly source consulted in this research pass but not directly cited above since it wasn't independently re-verified at tier-1/2). 'draft' is used here specifically for its 'enacted in law but not yet operationally available' sense -- except this isn't a not-yet case with a future start date like Portugal's skilled job-seeker visa; it's been in this dormant state since at least 1982 with no indication of near-term change, a genuinely different flavour of 'draft' than this schema's other uses of the status. ref_no_domestic_rsd is modeled hard:false, the same convention used for sa_asylum's and kr's equivalent notices, because there is no testable eligibility criterion for a Chinese-government process that doesn't exist -- the honest content of this route is the notice itself, not a disqualifying test. Hong Kong and Macao SARs are explicitly excluded from this route's scope: the 1951 Convention does not apply in the HKSAR at all, and Macao maintains only an informal working relationship with UNHCR -- both are structurally distinct from mainland China and would need their own separate route files if this dataset is extended to cover them as distinct jurisdictions."
+}

@@ -1,0 +1,117 @@
+{
+  "id": "pl_business_activity",
+  "country": "PL",
+  "name": "Temporary residence permit for conducting business activity (zezwolenie na pobyt czasowy w celu prowadzenia działalności gospodarczej)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "income_test",
+      "name": "Company already meets income threshold",
+      "requirements": [
+        {
+          "id": "ba_registered",
+          "attribute": "occupation",
+          "operator": "==",
+          "value": "self_employed_or_company_owner",
+          "hard": true,
+          "blocker_text": "Requires an active registered business (sole proprietorship via CEIDG, or a company via the KRS commercial register) in Poland.",
+          "fix_path": "Register a sole proprietorship or company in Poland.",
+          "fix_time_months": 1,
+          "source_id": "biznes_dzialalnosc"
+        },
+        {
+          "id": "ba_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "business_income_threshold_2026", "ratio": 1.0, "resolved_amount": 106842.72, "currency": "PLN", "unit": "year" },
+          "hard": true,
+          "blocker_text": "In the tax year preceding the application, the business must have generated income of at least 12x the average monthly gross wage in the voivodeship where it is seated, for Q3 of the preceding year (approximated here using the national annual average -- see national-variables/PL.json for the caveat on this simplification).",
+          "fix_path": "Grow business income to the required threshold, or qualify instead via the employment-based alternative group below.",
+          "fix_time_months": null,
+          "source_id": "biznes_dzialalnosc"
+        }
+      ]
+    },
+    {
+      "id": "employment_test",
+      "name": "Company below income threshold but employs Polish/authorised workers",
+      "outcome_override": null,
+      "requirements": [
+        {
+          "id": "ba_registered_alt",
+          "attribute": "occupation",
+          "operator": "==",
+          "value": "self_employed_or_company_owner",
+          "hard": true,
+          "blocker_text": "Requires an active registered business (sole proprietorship via CEIDG, or a company via the KRS commercial register) in Poland.",
+          "fix_path": "Register a sole proprietorship or company in Poland.",
+          "fix_time_months": 1,
+          "source_id": "biznes_dzialalnosc"
+        },
+        {
+          "id": "ba_employment",
+          "attribute": "years_experience",
+          "operator": "exists",
+          "value": "employs_2_authorised_workers_fulltime_1yr",
+          "hard": true,
+          "blocker_text": "Alternatively, the business must employ at least 2 Polish citizens or work-authorised foreigners full-time, on indefinite contracts, for at least 1 year before the application, with confirmed ZUS social-security contributions for the whole period.",
+          "fix_path": "Hire and retain 2 qualifying full-time employees for at least 12 months before reapplying.",
+          "fix_time_months": 12,
+          "source_id": "biznes_dzialalnosc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "CEIDG or KRS registration extract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "PIT-36/PIT-28 or CIT-8 tax return with tax-office confirmation of receipt", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "ZUS confirmation of no outstanding social-security arrears", "difficulty": "routine", "typical_time_days": 14 }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "continuous legal residence for the 5 years preceding a permanent-residence application",
+    "switchable_to": ["pl_permanent_residence", "pl_eu_long_term_resident"]
+  },
+  "sources": [
+    {
+      "id": "biznes_dzialalnosc",
+      "tier": 1,
+      "url": "https://www.biznes.gov.pl/pl/portal/00213",
+      "title": "biznes.gov.pl (official Polish government business portal) -- zezwolenie na pobyt czasowy w celu prowadzenia działalności gospodarczej",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "bip_lubuskie_business",
+      "tier": 1,
+      "url": "https://bip.lubuskie.uw.gov.pl/sprawy_obywatelskie/Zezwolenie_na_pobyt_czasowy_-_dzialalnosc_gospodarcza",
+      "title": "Lubuski Urząd Wojewódzki (regional government office, BIP public-information portal) -- income and employment-alternative test conditions, independent cross-check",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_pomorski_business",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/uw-pomorski/zezwolenie-na-pobyt-czasowy-ze-wzgledu-na-dzialalnosc-gospodarcza",
+      "title": "gov.pl / Pomorski Urząd Wojewódzki -- Zezwolenie na pobyt czasowy ze względu na działalność gospodarczą, independent cross-check confirming the same dual-track test structure",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "This is the schema's OR-logic requirement_groups working as designed on real adversarial data: an applicant can qualify via EITHER a company income test OR an employment-generation test, and the two are genuinely alternate qualifying paths for the same route rather than sequential steps -- confirmed identically across multiple voivodeship office pages (Lubuski, Pomorski, Lublin) using near-identical wording, suggesting this dual-track structure is a stable, well-established feature of the statute rather than a regional variation. HONEST SOURCING GAP, flagged rather than guessed around: the income threshold is legally defined as 12x the average monthly wage in the specific voivodeship where the business is seated, for Q3 of the year preceding the application, as separately announced by the President of GUS -- not the single national annual figure used here as resolved_amount. Poland publishes these regional Q3 figures separately per voivodeship and they were not fetched for all 16 voivodeships in this research pass; the resolved_amount of PLN 106,842.72 is a national-average approximation only, and a future session should replace it with the correct regional Q3 figures if this route needs to support voivodeship-specific accuracy. First business-related route in the Poland set to use a genuine group-level OR structure rather than group-level override (outcome_override/prerequisites_override) -- included as an explicit null field on the second group to make clear that this is a plain alternate-qualifying-path case, not one requiring a different Outcome shape, unlike e.g. Turkey's Temporary Protection carve-out or the UK Global Talent two-tier case documented in the project brief."
+}

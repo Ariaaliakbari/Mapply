@@ -1,0 +1,74 @@
+{
+  "id": "kr_d8_corporate_investment",
+  "country": "KR",
+  "name": "D-8 Corporate Investment (Foreign-Invested Enterprise Representative)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "D-8-1: individual foreign investor",
+      "requirements": [
+        {
+          "id": "d8_investment_amount",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 100000000, "currency": "KRW", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum investment of KRW 100 million (roughly USD 70,000-75,000) under the Foreign Investment Promotion Act, remitted from abroad into the Korean company's account -- funds already held in a domestic Korean account do not qualify. If two foreigners co-invest, each must separately contribute at least KRW 100 million; a combined KRW 100 million split between two applicants does not qualify either of them.",
+          "fix_path": "Remit at least KRW 100 million in qualifying foreign-investment funds into the Korean corporation's account.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        },
+        {
+          "id": "d8_shareholding",
+          "attribute": "occupation",
+          "operator": "==",
+          "value": "self_employed_or_company_owner",
+          "hard": true,
+          "blocker_text": "The investor must hold at least 10% of the invested company's voting shares and actively participate in management as an executive.",
+          "fix_path": "Confirm shareholding structure meets the 10% minimum and management role is documented.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Foreign-invested company registration certificate", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Bank remittance records showing the qualifying investment amount arriving from abroad", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Business premises appropriate to the company's operations (a shared-office address alone is often insufficient)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years, renewed subject to demonstrating actual business operations (revenue, tax filings) rather than dormant capital",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kr_f5_permanent_residence", "kr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "The KRW 100 million (roughly USD 70,000) minimum is notably low by the standards of comparable investor-residency products in this dataset -- several independent sources note this explicitly, observing that even countries with lower GNI than Korea's often require substantially more for an equivalent investor route, and one Korean-language source frames D-8 as functioning as a de facto family-immigration product at this price point (spouse and children can accompany via F-3 dependent status) precisely because the bar is so low relative to Korea's income level. Distinguished from kr_d8_4_oasis_startup, which shares the D-8 visa-code family but requires zero capital in exchange for a 60+ point technology/credential assessment -- the two are structurally different qualifying paths, not scaled versions of the same test, correctly modeled as separate route files rather than requirement_groups within one route given how differently their evidence and blocker logic work. Renewal scrutiny has tightened as of 2026 per multiple sources: consular and immigration officers now focus specifically on whether the invested capital shows genuine business activity (revenue, tax filings, operational records) rather than remaining untouched in the company account, a meaningful practical difference between initial approval and renewal that's worth surfacing on the route detail page. Investment amount is per-investor, not per-company: two co-founders cannot pool a single KRW 100 million contribution to both qualify -- each needs their own qualifying KRW 100 million, a specific and easy-to-miss structural trap flagged repeatedly across independent sources."
+}

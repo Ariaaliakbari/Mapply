@@ -1,0 +1,175 @@
+{
+  "id": "sa_naturalisation",
+  "country": "SA",
+  "name": "Naturalisation by residency, marriage, or exceptional merit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "ordinary_residency",
+      "name": "Ordinary naturalisation by 10 years' residence",
+      "requirements": [
+        {
+          "id": "nat_10yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires at least 10 years of continuous, uninterrupted legal residence in Saudi Arabia, a needed/beneficial profession, good conduct, Arabic-language proficiency, sound Islamic faith conduct where applicable, and renunciation of the applicant's existing nationality.",
+          "fix_path": "Accrue 10 years of continuous legal residence while maintaining an approved profession and clean record.",
+          "fix_time_months": 120,
+          "source_id": "moi_nationality_law"
+        },
+        {
+          "id": "nat_renounce",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "willing_to_renounce_prior_nationality",
+          "hard": true,
+          "blocker_text": "Saudi Arabia generally does not recognise dual nationality for naturalised citizens; renunciation of the applicant's existing nationality is ordinarily required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moi_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "marriage",
+      "name": "Naturalisation by marriage to a Saudi national",
+      "requirements": [
+        {
+          "id": "nat_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_saudi_national",
+          "hard": true,
+          "blocker_text": "A foreign woman who marries a Saudi man may apply for citizenship by registration, provided she renounces her foreign nationality; residency requirements before eligibility vary case by case, reportedly up to 5 years. The reverse case (foreign man marrying a Saudi woman) does not carry the same automatic registration route and is handled through the discretionary Article 8 process instead (see sa_citizenship_by_descent's saudi_mother group for a related discretionary mechanism).",
+          "fix_path": "Maintain the marriage and residence in Saudi Arabia while the case-by-case eligibility period runs.",
+          "fix_time_months": 60,
+          "source_id": "mygovsa_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "exceptional_merit",
+      "name": "Exceptional talent or service (Article 9, ministerial discretion)",
+      "requirements": [
+        {
+          "id": "nat_merit",
+          "attribute": "field_of_study",
+          "operator": "in",
+          "value": [
+            "science",
+            "medicine",
+            "technology",
+            "culture"
+          ],
+          "hard": false,
+          "blocker_text": "Article 9 of the Saudi Nationality System allows the Minister of Interior to grant citizenship by royal decree to individuals with specialised skills in fields such as science, medicine, technology, and culture, or who render significant services to the Kingdom -- this track bypasses the standard 10-year residency requirement entirely and is fully discretionary, with no publicly codified acceptance criteria or odds.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "grokipedia_sa_nationality"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 0,
+        "dual_citizenship_allowed": false,
+        "physical_presence_requirement": "no prior residency period required at all -- the sole documented route in this file that bypasses the 10-year clock entirely",
+        "switchable_to": []
+      }
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of 10 years' continuous legal residence (ordinary track)",
+      "difficulty": "hard",
+      "typical_time_days": null
+    },
+    {
+      "document": "Arabic-language proficiency and good-conduct documentation",
+      "difficulty": "hard",
+      "typical_time_days": null
+    },
+    {
+      "document": "Renunciation of prior nationality, typically required before or upon grant",
+      "difficulty": "hard",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "moi_nationality_law",
+      "tier": 1,
+      "url": "https://www.moi.gov.sa/wps/wcm/connect/2a41fada-e268-42b6-9481-ac594ec2649a/Saudi+Nationality.pdf",
+      "title": "Ministry of Interior -- official PDF of the Saudi Arabian Citizenship System (Nizam al-Jinsiyyah al-Arabiyyah al-Saudiyyah), Royal Decree of 1374 AH / 1954",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "boe_nationality_law",
+      "tier": 1,
+      "url": "https://laws.boe.gov.sa/BoeLaws/Laws/Viewer/dab5f623-453b-446c-a1f5-7303fe0836ca?lawId=df507331-79d9-43dc-a4de-a9a700f18571",
+      "title": "Bureau of Experts at the Council of Ministers (boe.gov.sa, laws.boe.gov.sa) -- official current text of the Saudi Arabian Citizenship System, including subsequent amendments",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mygovsa_citizenship",
+      "tier": 1,
+      "url": "https://my.gov.sa/ar/content/saudi-citezens-hip",
+      "title": "my.gov.sa (Saudi National Portal) -- Obtaining Saudi Citizenship, official page setting out the marriage-based citizenship conditions (renunciation of prior nationality, marriage validity, clean record) verified before a judge or notary",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "grokipedia_sa_nationality",
+      "tier": 4,
+      "url": "https://grokipedia.com/page/Saudi_Arabian_nationality_law",
+      "title": "Grokipedia -- Saudi Arabian nationality law, summarising Royal Decree No. M/88 (1954) and subsequent amendments including the Article 9 exceptional-merit provision",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "multiplecitizenship_sa",
+      "tier": 3,
+      "url": "https://www.multiplecitizenship.com/wscl/ws_SAUDI_ARABIA.html",
+      "title": "Multiplecitizenship.com -- Saudi Arabia Dual and Multiple Citizenship reference",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "ahysp_sa_citizenship",
+      "tier": 3,
+      "url": "https://ahysp.com/saudi-citizenship-requirements-and-legal-paths-through-birth-marriage-investment-and-professionals-under-vision-2030-reforms/",
+      "title": "AHYSP -- Saudi Citizenship Requirements Explained Clearly, independent cross-check of the 10-year ordinary residency track and the discretionary exceptional-merit track",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "SOURCING UPGRADE: a genuine tier-1 upgrade found mid-build -- moi.gov.sa hosts an official PDF of the full Saudi Arabian Citizenship System text, and boe.gov.sa (the Council of Ministers' Bureau of Experts, the authoritative current-law database) hosts the amended version including later royal-decree changes; my.gov.sa's national portal separately confirms the marriage-track conditions (marriage validity verified before a judge or notary, renunciation of prior nationality, clean record). These replace the tier-3/4 sources this route was initially drafted against for the ordinary-residency and marriage tracks. The exceptional-merit (Article 9) track remains genuinely uncodified in any test-able sense -- every source agrees it is fully discretionary ministerial/royal-decree action with no published acceptance criteria or process an applicant can follow -- so nat_merit is modeled as hard:false rather than forced onto a tier-1 citation, the same honest-modeling choice used for sa_asylum's no_system_notice: there is no test to fail, only a discretionary mechanism outside the applicant's control. This mirrors the UAE's 'Citizenship by Naturalisation -- Exceptional Merit' route in shape (published, business/settled-adjacent, decree-based discretionary grant) but Saudi Arabia's version is older (Article 9 predates the UAE's 2021 reform) and the ordinary 10-year track remains formally on the books alongside it, unlike some Gulf states where naturalisation is exceptional-merit-only in practice. citizenship_after_months = 0 at the top level reflects that naturalisation IS citizenship (0 months from grant, same convention as pl_naturalisation and sa_citizenship_by_descent's automatic-descent group) -- not that the route is fast; the ordinary track's real barrier is the 120-month residency requirement plus documented administrative rarity of approval regardless of years served, which is why sa_employment_visa's chained citizenship_after_months (120) should be read as a formal floor rather than a realistic timeline, exactly as flagged there. Naturalised citizens generally cannot hold dual nationality (dual_citizenship_allowed: false throughout), with a narrow, separately-documented exception for Saudi women who retain both nationalities under specific marriage-duration and child-count conditions -- not modeled as its own group here since it applies to citizenship retention by birth-citizens rather than to the naturalisation process a foreign applicant would use, and is out of scope for a route aimed at foreign nationals seeking to acquire Saudi citizenship."
+}

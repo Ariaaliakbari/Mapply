@@ -1,0 +1,92 @@
+{
+  "id": "pl_single_permit",
+  "country": "PL",
+  "name": "Temporary residence and work permit / Single Permit (jednolite zezwolenie na pobyt czasowy i pracę)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard employer-sponsored route",
+      "requirements": [
+        {
+          "id": "sp_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from an employer registered/resident in Poland, who initiates the application at the relevant voivodeship office.",
+          "fix_path": "Secure a job offer from a Polish-registered employer.",
+          "fix_time_months": null,
+          "source_id": "gov_single_permit"
+        },
+        {
+          "id": "sp_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "min_wage_2026", "ratio": 1.0, "resolved_amount": 4806, "currency": "PLN", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Gross salary must be at least the national minimum wage (PLN 4,806/month from 1 Jan 2026) and not lower than what Polish employees earn in comparable positions.",
+          "fix_path": "Negotiate a salary at or above the current statutory minimum wage.",
+          "fix_time_months": null,
+          "source_id": "gov_single_permit"
+        },
+        {
+          "id": "sp_labour_market_test",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "labour_market_test_passed_or_exempt",
+          "hard": true,
+          "blocker_text": "For most occupations the employer must first obtain a starosta's confirmation that the position cannot be filled from the local labour market (test rynku pracy) before applying for the Type A work-permit component; several occupations and nationalities are exempt.",
+          "fix_path": "Employer completes the labour-market test process, or confirms the role/nationality falls under an existing exemption.",
+          "fix_time_months": 1,
+          "source_id": "gov_single_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract or job offer meeting salary and comparability conditions", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Appendix 1 to the application, completed by the employer", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and health insurance in Poland", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years (exceptionally up to 5 for large employers), tied to the employment contract length",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "continuous legal residence, breaks no longer than 6 months at a time and no more than 10 months total within the 5-year window",
+    "switchable_to": ["pl_permanent_residence", "pl_eu_long_term_resident", "pl_eu_blue_card"]
+  },
+  "sources": [
+    {
+      "id": "gov_single_permit",
+      "tier": 1,
+      "url": "https://migrant.info.pl/en/Permit_to_settle",
+      "title": "Migrant.info.pl (IOM / Polish Ministry of Interior co-funded portal) -- Residence and work permit (Single Permit)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mrpips_min_wage_2026",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/rodzina",
+      "title": "Ministerstwo Rodziny, Pracy i Polityki Społecznej -- 2026 minimum wage announcement",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: this route absorbed the largest single procedural overhaul found anywhere in the Poland build. From 1 January 2026, the old Type A/B/C/D/E work-permit application names were formally retired under the new Ustawa z dnia 20 marca 2025 r. o warunkach dopuszczalności powierzania pracy cudzoziemcom -- Type A became ZC-WWZPP, Type B became ZC-WWZF, and Types C/D/E merged into ZC-WWZD, confirmed via zielonalinia.gov.pl (a Ministry of Family, Labour and Social Policy-run public information line). Multiple secondary sources dated mid-2026 still describe 'Type A/B/C' as if current -- a direct live-staleness catch, the same failure mode as the UK/Germany/Netherlands salary-threshold catches, except here it's a naming/procedural overhaul rather than a numeric threshold. Renamed labels are noted for completeness but the underlying legal mechanism (employer-initiated single decision combining work authorisation and temporary residence, issued by the voivode) is unchanged. Minimum wage rose to PLN 4,806/month (PLN 31.40/hour) from 1 Jan 2026, per Ministry announcement -- this is the wage floor for standard Single Permit and work-permit salary conditions generally, distinct from and much lower than the EU Blue Card's 150%-of-average-wage threshold (see pl_eu_blue_card). pr_after_months and citizenship_after_months use the standard 5-year continuous-residence figures confirmed directly in Poland's Act on Foreigners (ustawa o cudzoziemcach) via multiple voivodeship-office and mos.cudzoziemcy.gov.pl pages -- see pl_permanent_residence and pl_naturalisation for the underlying route-level detail and the faster alternate paths (marriage to a Polish citizen, Karta Polaka) that this route can feed into."
+}

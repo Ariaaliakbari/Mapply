@@ -1,0 +1,90 @@
+{
+  "id": "pl_international_protection",
+  "country": "PL",
+  "name": "International protection (ochrona międzynarodowa) -- refugee status and subsidiary protection",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Well-founded fear of persecution (refugee status) or a real risk of serious harm such as the death penalty, torture, or serious threat from armed conflict (subsidiary protection) in the country of origin.",
+    "evidence_hint": "Personal testimony plus any corroborating documentation of the persecution or risk; identity documents where available, though their absence does not bar an application."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status or subsidiary protection",
+      "requirements": [
+        {
+          "id": "ip_persecution",
+          "attribute": "qualifying_event",
+          "operator": "==",
+          "value": "well_founded_fear_of_persecution_or_serious_harm",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution (race, religion, nationality, political opinion, or social group membership) for refugee status, or a real risk of serious harm (death penalty, torture, or serious threat from armed conflict) for subsidiary protection, in the country of origin.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_udsc_azyl"
+        },
+        {
+          "id": "ip_application_in_poland",
+          "attribute": "current_location",
+          "operator": "==",
+          "value": "PL_or_at_border",
+          "hard": true,
+          "blocker_text": "The application must be lodged in Poland or at a Polish border crossing point, typically with the Border Guard (Straż Graniczna).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_udsc_azyl"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Personal testimony and any supporting documentation of persecution or risk of serious harm", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Identity documents where available (their absence does not bar an application)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "refugee status and subsidiary protection are granted for an unlimited period, though the residence card is issued for a fixed term and renewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years continuous legal residence in connection with refugee status, subsidiary protection, or humanitarian-grounds stay, counted from the start of the international-protection procedure even if held in a guarded centre during that time",
+    "switchable_to": ["pl_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_udsc_azyl",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/udsc/azyl2",
+      "title": "gov.pl / Urząd do Spraw Cudzoziemców -- Azyl (Office for Foreigners, official asylum information)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_udsc_uchodzcy",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/udsc/uchodzcy",
+      "title": "gov.pl / Urząd do Spraw Cudzoziemców -- Ochrona międzynarodowa, corroborating the refugee-status and subsidiary-protection distinction",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mos_refugee_continuity",
+      "tier": 1,
+      "url": "https://mos.cudzoziemcy.gov.pl/baza-pytan-i-odpowiedzi/zezwolenia-bezterminowe/zezwolenie-na-pobyt-staly/",
+      "title": "Moduł Obsługi Spraw (mos.cudzoziemcy.gov.pl) -- confirming that time in a guarded centre or detention during the international-protection procedure counts toward the 5-year continuous-residence calculation",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Distinguished here from ochrona czasowa (temporary protection), the separate mass-influx mechanism activated for Ukrainian nationals displaced since 24 February 2022, which is not itself a route to citizenship or permanent residence and is not modeled as a separate route file in this initial build -- flagged as a candidate addition given its scale (the UdSC gov.pl homepage prominently features temporary-protection extension notices through at least March 2028 as of this research pass) but structurally it is an EU Temporary Protection Directive mechanism rather than Poland's ordinary international-protection route, and modeling it correctly would need its own qualifying_event and a status value this schema doesn't yet have a clean slot for (it is neither draft, published, nor closed in the ordinary sense -- it is time-limited by EU Council decision). pr_after_months and citizenship_after_months use the standard 5-year figure confirmed directly against mos.cudzoziemcy.gov.pl's official FAQ on continuous-residence calculation for refugee-status holders specifically -- time spent in a guarded centre or detention during the international-protection procedure counts toward this period, per the same source, a genuinely favourable and non-obvious detail worth surfacing on the route detail page."
+}

@@ -1,0 +1,94 @@
+{
+  "id": "cn_s1_dependent_family",
+  "country": "CN",
+  "name": "S1 Visa (family of a foreign worker or student, long-term)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Family of a work- or study-visa holder",
+      "requirements": [
+        {
+          "id": "s1_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "in",
+          "value": [
+            "z_visa_holder",
+            "x1_visa_holder"
+          ],
+          "hard": true,
+          "blocker_text": "The sponsoring family member must hold a valid Z (work) or long-term X1 (student) visa/residence permit; S1 covers stays exceeding 180 days, while the related S2 status covers shorter visits under 180 days.",
+          "fix_path": "Wait until the sponsoring family member holds a qualifying Z or X1 status.",
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        },
+        {
+          "id": "s1_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": [
+            "spouse_of_visa_holder",
+            "minor_child_of_visa_holder",
+            "parent_of_visa_holder",
+            "parent_in_law_of_visa_holder"
+          ],
+          "hard": true,
+          "blocker_text": "Covers spouses, minor children, parents, and parents-in-law of the sponsoring foreign worker or student.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage certificate, birth certificate, or documentation proving the qualifying family relationship",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Sponsor's valid Z or X1 visa/residence permit",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Invitation letter from the sponsor",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's visa validity, converted to a Residence Permit for Private Affairs after arrival",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "chinaneighbor_visa_guide",
+      "tier": 3,
+      "url": "https://chinaneighbor.com/guide/essentials/china-visa-types-guide-2026/",
+      "title": "China Neighbor -- China Visa Types: Complete Guide for Foreigners (2026), describing S1/S2 eligibility",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Structurally similar to Korea's F-1/F-3 family-of-a-foreign-resident route: no direct path to permanent residence or citizenship, since it depends entirely on the sponsor's own (also non-citizen) status rather than on Chinese citizenship or permanent residence. leads_to_pr is correctly false, not merely unpopulated -- unlike cn_q1_family_reunion, which can lead to Chinese permanent residence via the spouse-of-citizen track, S1 dependents have no independent route to settlement documented in sources checked for this build; if the sponsor eventually obtains Chinese permanent residence, the family would need to separately qualify under cn_q1_family_reunion rather than S1 itself carrying forward. switchable_to is empty for the same reason -- there is no direct route-graph progression from S1 to another status in this dataset's model, only a contingent path through the sponsor's own status change. HONEST SOURCING GAP: same tier-3-only basis as the other short-notice entry visas in this build."
+}

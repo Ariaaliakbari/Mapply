@@ -1,0 +1,125 @@
+{
+  "id": "kr_f4_overseas_korean",
+  "country": "KR",
+  "name": "F-4 Overseas Korean visa",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Korean ancestry, any nationality (unified since 12 Feb 2026)",
+      "requirements": [
+        {
+          "id": "f4_ancestry",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "korean_nationality_self_or_parent_or_grandparent",
+          "hard": true,
+          "blocker_text": "Requires that the applicant, or a parent or grandparent, once held Korean nationality (including those who left before the government's establishment) and subsequently acquired a foreign nationality. Since 12 Feb 2026, this single standard applies equally regardless of the applicant's country of origin -- previously, overseas Koreans from China and 6 former Soviet states faced additional income, education, or work-experience screening before qualifying for F-4, and were routed into the separate, now-discontinued H-2 status if they didn't meet it.",
+          "fix_path": "Document Korean-nationality ancestry via family registry, discharge certificate, or birth/marriage certificates linking the applicant to a former Korean-national parent or grandparent.",
+          "fix_time_months": null,
+          "source_id": "moj_notice_2026_35"
+        },
+        {
+          "id": "f4_no_dual_status",
+          "attribute": "current_route_held",
+          "operator": "!=",
+          "value": "korean_citizenship_or_permanent_residence",
+          "hard": true,
+          "blocker_text": "Cannot be issued to someone who currently holds Korean citizenship or Korean permanent residence in a way that would make F-4 redundant.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_notice_2026_35"
+        },
+        {
+          "id": "f4_military_age_men",
+          "attribute": "age",
+          "operator": "!=",
+          "value": "male_18_38_unfulfilled_service_restricted",
+          "hard": false,
+          "blocker_text": "Men who left Korea or first lost Korean nationality on or after 1 May 2018 are restricted from F-4 status until 31 December of the year they turn 40, unless they have completed or been exempted from Korean military service.",
+          "fix_path": "Complete or obtain exemption from Korean military service, or wait until the applicable age threshold.",
+          "fix_time_months": null,
+          "source_id": "kowork_f4"
+        },
+        {
+          "id": "f4_early_adaptation",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean_and_early_adaptation_program_completed",
+          "hard": false,
+          "blocker_text": "As part of the 2026 H-2/F-4 unification, applicants must complete a 5-hour early-adaptation program (crime prevention and safety orientation) in the initial settlement stage, and are barred from F-4 status if they have a criminal history involving murder, rape, drug offences, or voice-phishing fraud.",
+          "fix_path": "Complete the mandatory early-adaptation program and confirm no disqualifying criminal history.",
+          "fix_time_months": null,
+          "source_id": "kowork_h2f4_integration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Family relationship certificate, discharge certificate, family register, or birth/marriage certificate proving Korean-nationality ancestry",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Proof of foreign nationality acquisition (own or ancestor's, where applicable)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Criminal record certificate from country of residence and any country of 6+ months' residence",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years (up to 1 year without Level 1 Social Integration Program completion, up to 3 with it, per multiple sources)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "kr_f5_permanent_residence",
+      "kr_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "moj_notice_2026_35",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "Ministry of Justice Notice No. 2026-35 (법무부 고시 제2026-35호, 재외동포(F-4) 취업활동 제한범위 고시), published via HiKorea, governing F-4 employment-activity restrictions under the unified overseas-Korean status effective 12 Feb 2026",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "kowork_f4",
+      "tier": 3,
+      "url": "https://kowork.kr/en/visa/F-4",
+      "title": "KOWORK Visa Center -- F-4 Overseas Korean visa guide, corroborating the male military-service age restriction (born/left after 1 May 2018, restricted until age 40)",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "kowork_h2f4_integration",
+      "tier": 3,
+      "url": "https://kowork.kr/blog/H2andF4integration",
+      "title": "KOWORK -- H-2/F-4 integration policy summary, effective 12 Feb 2026, describing the 5-hour early-adaptation program and criminal-history bar",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, and the single most significant live event caught in the Korea build: effective 12 February 2026, Korea unified its two-tier overseas-Korean status system -- previously, ethnic Koreans from China and 6 former-Soviet-bloc countries (the largest overseas-Korean populations) faced extra income/education/work-experience screening for F-4 and were routed into the separate, more restrictive H-2 (Working Visit) status if they didn't qualify, while overseas Koreans from other countries faced no such extra screening. As of the unification date, the Ministry of Justice stopped issuing new H-2 visas entirely, and F-4 eligibility now applies identically regardless of country of origin -- see kr_h2_working_visit_closed for the corresponding closed-route file marking this transition formally. Several English-language guides checked in this research pass, including some dated after the merger, still describe H-2 and F-4 as two separate, currently-issuable statuses -- a direct live-staleness catch matching this dataset's core thesis, arguably the clearest and most consequential example found in the Korea build given the scale of the population affected (H-2 quota had reached roughly 303,000 at its peak before shrinking to about 80,000 by mid-2025 as F-4 conversions absorbed most of the demand). citizenship_after_months (24) and pr_after_months (24) reflect the fast simplified track available to overseas Koreans generally -- among the more favourable ancestry-to-citizenship timelines in this dataset, though not as fast as Poland's Karta Polaka (12 months) or instant repatriation (0 months); Korea's route requires an actual residence period even for confirmed ancestry, unlike Poland's ancestry routes. dual_citizenship_allowed is false, consistent with Korea's general single-nationality rule for naturalisation, though F-4 holders retain their existing foreign nationality indefinitely while on F-4 status itself -- the false value here refers specifically to the eventual naturalisation step, not to holding F-4 status."
+}

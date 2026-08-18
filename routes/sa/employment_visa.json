@@ -1,0 +1,92 @@
+{
+  "id": "sa_employment_visa",
+  "country": "SA",
+  "name": "Employment visa and Iqama (kafala-based sponsored work permit)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored under the skill-tier system",
+      "requirements": [
+        {
+          "id": "ev_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Saudi-registered employer (the kafeel/sponsor), who secures a block-visa quota and initiates the work-permit application via the Qiwa platform before the worker enters the country.",
+          "fix_path": "Secure a job offer from a Saudi employer with available Nitaqat (Saudization) quota headroom to sponsor a foreign worker.",
+          "fix_time_months": null,
+          "source_id": "hrsd_qiwa"
+        },
+        {
+          "id": "ev_ssco_tier",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["high_skilled_ssco", "skilled_ssco", "basic_ssco"],
+          "hard": true,
+          "blocker_text": "Since the July 2025 reform, every role is classified into one of three tiers under the Saudi Standard Classification of Occupations (SSCO) -- High-Skilled (degree plus 5 years' experience, doctors/engineers/executives), Skilled (secondary education plus relevant experience, technicians), or Basic -- each with different salary and documentation requirements, automatically gated through the Qiwa platform.",
+          "fix_path": "Confirm the employer has correctly classified the role in Qiwa and that the applicant's qualifications match the claimed tier.",
+          "fix_time_months": null,
+          "source_id": "hrsd_qiwa"
+        },
+        {
+          "id": "ev_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 15000, "currency": "SAR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "High-Skilled tier roles require a documented salary of at least SAR 15,000/month, in addition to a relevant degree and 5+ years of experience; Skilled and Basic tiers have lower, role-dependent thresholds.",
+          "fix_path": "Negotiate a salary meeting the applicable SSCO tier threshold, or apply under a lower tier if the role qualifies.",
+          "fix_time_months": null,
+          "source_id": "hrsd_qiwa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract classified in Qiwa under the correct SSCO tier", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical examination at a GCC-approved clinic before travel", "difficulty": "routine", "typical_time_days": 14 },
+    { "document": "Degree attestation and, for High-Skilled roles, proof of 5+ years' relevant experience", "difficulty": "moderate", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "1-2 years, renewed annually with the Iqama, tied to the employment contract",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sa_premium_residency_investor_entrepreneur", "sa_premium_residency_general", "sa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "hrsd_qiwa",
+      "tier": 1,
+      "url": "https://qiwa.sa/en",
+      "title": "Qiwa (Ministry of Human Resources and Social Development's official labour platform) -- work permit and SSCO skill-tier classification",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "moi_iqama",
+      "tier": 1,
+      "url": "https://www.moi.gov.sa/",
+      "title": "Ministry of Interior -- General Directorate of Passports (Jawazat), residence permit (Iqama) issuance and renewal, corroborating the annual renewal cycle",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: this is the biggest single procedural overhaul found anywhere in the Saudi build. In July 2025, HRSD replaced the old binary 'professional vs. non-professional' work-permit model with a three-tier Saudi Standard Classification of Occupations (SSCO) system -- High-Skilled, Skilled, Basic -- enforced automatically within the Qiwa platform, with all existing permits transitioned into the new system by late 2025. Several English-language secondary sources dated even mid-2026 still describe the old professional/non-professional binary as current, the same live-staleness failure mode caught repeatedly elsewhere in this dataset (Poland's Type A/B/C renaming, UK/Germany/Netherlands salary re-basings). pr_after_months is left null and leads_to_pr is true only in the narrow sense that this route can lead toward Premium Residency (not a traditional PR ladder) or the fully discretionary naturalisation track (see sa_naturalisation) -- Saudi Arabia has no ordinary points-in-time permanent-residence status comparable to the other 14 countries in this dataset; the closest functional equivalent is Premium Residency, which this route's switchable_to correctly points to rather than to a plain 'permanent residence' route that does not exist here. citizenship_after_months (120) reflects the general 10-year naturalisation residence minimum under Royal Decree No. M/88, chained from this route -- see sa_naturalisation for the full, heavily discretionary detail; this figure should be read as a floor, not a realistic expectation, since approval is administratively rare regardless of years served."
+}

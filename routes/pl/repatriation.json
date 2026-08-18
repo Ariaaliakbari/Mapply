@@ -1,0 +1,99 @@
+{
+  "id": "pl_repatriation",
+  "country": "PL",
+  "name": "Repatriation visa (wiza krajowa w celu repatriacji)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Polish descent, historic residence in designated former-USSR territories",
+      "requirements": [
+        {
+          "id": "rep_territory",
+          "attribute": "current_location",
+          "operator": "in",
+          "value": ["AM", "AZ", "GE", "KZ", "KG", "TJ", "TM", "UZ", "RU_asian"],
+          "hard": true,
+          "blocker_text": "Requires that the applicant lived permanently, before 1 January 2001, in the territory of present-day Armenia, Azerbaijan, Georgia, Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan, or the Asian part of the Russian Federation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_repatriation"
+        },
+        {
+          "id": "rep_ancestry",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "polish_nationality_confirmed",
+          "hard": true,
+          "blocker_text": "Requires that at least one parent, grandparent, or two great-grandparents confirmed their belonging to the Polish Nation (e.g. through cultivation of Polish culture, language, or traditions).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_repatriation"
+        },
+        {
+          "id": "rep_settlement_conditions",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "confirmed_housing_and_income_or_adaptation_centre_place",
+          "hard": true,
+          "blocker_text": "The consul requires proof of housing and a source of income in Poland for at least 12 months (e.g. a lease and a 12-month job offer or self-employment declaration), or a confirmed place in a government adaptation centre for repatriates.",
+          "fix_path": "Secure a 12-month lease and job offer in Poland, or apply for a place in a repatriate adaptation centre through the local commune/gmina.",
+          "fix_time_months": null,
+          "source_id": "gov_repatriation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Consular decision confirming Polish origin (stwierdzenie polskiego pochodzenia)", "difficulty": "hard", "typical_time_days": 180 },
+    { "document": "Proof of pre-2001 permanent residence in a designated territory", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Lease/housing proof plus a 12-month employment offer or self-employment declaration, or an adaptation-centre placement decision", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "visa valid 12 months to enter Poland; citizenship is instant on entry",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "citizenship is acquired automatically by operation of law on the day the visa holder crosses the Polish border, not on any later date",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_repatriation",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/mswia/kto-moze-ubiegac-sie-o-repatriacje",
+      "title": "gov.pl (Ministerstwo Spraw Wewnętrznych i Administracji) -- Kto może ubiegać się o repatriację",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mswia_repatriation_procedure",
+      "tier": 1,
+      "url": "https://archiwum.mswia.gov.pl/pl/bezpieczenstwo/obywatelstwo-i-repatri/repatriacja-1/16269,Procedura-repatriacyjna.html",
+      "title": "MSWiA archive -- Procedura repatriacyjna, corroborating the 12-month visa validity and the housing/income proof requirements",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "bip_lubuskie_repatriation",
+      "tier": 1,
+      "url": "https://bip.lubuskie.uw.gov.pl/sprawy_obywatelskie/Repatriacja",
+      "title": "Lubuski Urząd Wojewódzki (regional government office, BIP public-information portal) -- Repatriacja, corroborating the spouse's permanent-residence provision and the 'uznanie za repatrianta' domestic route",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "STRUCTURAL OUTLIER, the only route found across all 15 countries in this build (214 routes total) where citizenship is acquired instantly and automatically -- 'z mocy prawa z dniem przekroczenia granicy Rzeczypospolitej Polskiej' (by operation of law on the day of crossing the Polish border) -- rather than after any residence period at all, confirmed identically across powroty.gov.pl and multiple gov.pl embassy pages (China, UAE, South Africa). citizenship_after_months is correctly 0, not null or a placeholder: there is no waiting period whatsoever once the visa is used to enter. This is categorically faster even than pl_karta_polaka's zero-wait permanent-residence track, since repatriation skips permanent residence entirely and grants citizenship directly. The geographic restriction is the genuinely unusual hard requirement: eligibility is scoped to specific former-USSR successor states (plus 'the Asian part of the Russian Federation' specifically, excluding European Russia) reflecting the historical deportations of Poles under 1936-1950s Soviet policy -- a person of identical Polish ancestry who instead grew up in, say, Lithuania or Belarus does not qualify for repatriation and must use pl_karta_polaka or a standard route instead. current_location is used here as a proxy for 'historic pre-2001 permanent residence location,' which is an imperfect fit against the schema's ~26-attribute closed list -- flagged honestly rather than inventing a new attribute, consistent with the project's requirement-grammar discipline; a cleaner long-term fix would be a dedicated historic-residence attribute, noted here as a candidate schema addition rather than added unilaterally. switchable_to is empty by design: this route terminates directly in citizenship, so there is nothing further to switch to."
+}

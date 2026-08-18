@@ -1,0 +1,103 @@
+{
+  "id": "sa_freelance_work_document",
+  "country": "SA",
+  "name": "Freelance Work Document (Wathiqat Al-Amal Al-Hur)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Saudi national or Premium Residency holder",
+      "requirements": [
+        {
+          "id": "fw_status",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["saudi_national", "premium_residency_holder"],
+          "hard": true,
+          "blocker_text": "The Freelance Work Document is issued by HRSD only to Saudi nationals and to Premium Residency (Iqama Mumtaza) holders -- it is NOT available to ordinary expatriates on a standard employer-sponsored Iqama, regardless of profession.",
+          "fix_path": "Obtain Premium Residency first (see sa_premium_residency_investor_entrepreneur or sa_premium_residency_talent_gifted) -- there is no other route to this document for a foreign national.",
+          "fix_time_months": null,
+          "source_id": "hrsd_freelance_ar"
+        },
+        {
+          "id": "fw_profession",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["technology_it", "marketing_creative", "consulting", "education", "healthcare_licensed"],
+          "hard": true,
+          "blocker_text": "The applicant's profession must fall within HRSD's approved freelance-activity list (over 120 professions as of mid-2026, spanning IT, marketing, consulting, creative services, and some licensed professions), set and periodically updated by HRSD.",
+          "fix_path": "Confirm the specific activity is on the current HRSD-approved freelance profession list at freelance.sa before applying.",
+          "fix_time_months": null,
+          "source_id": "hrsd_freelance_ar"
+        },
+        {
+          "id": "fw_age_min",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicants must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "hrsd_freelance_ar"
+        },
+        {
+          "id": "fw_age_max",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Applicants must be no older than 60 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "hrsd_freelance_ar"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "National ID (Saudi nationals) or Premium Residency card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Registration via the Unified National Access (Nafath) and Absher biometric verification", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of practice or qualification in the selected profession category", "difficulty": "moderate", "typical_time_days": 14 }
+  ],
+  "outcome": {
+    "duration_length": "1 year, free renewal via the platform before expiry",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hrsd_freelance_ar",
+      "tier": 1,
+      "url": "https://www.hrsd.gov.sa/en/ministry-services/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D9%88%D8%AB%D9%8A%D9%82%D8%A9-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D8%A7%D9%84%D8%AD%D8%B1",
+      "title": "Ministry of Human Resources and Social Development (hrsd.gov.sa) -- Freelance Work Document issuance and renewal service",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "hrsd_freelance_conditions",
+      "tier": 1,
+      "url": "https://www.hrsd.gov.sa/media-center/media/110720241",
+      "title": "Ministry of Human Resources and Social Development -- Al-Amal Al-Hur (Freelance Work) programme description, confirming Saudi-national eligibility base",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY CAUGHT, and a genuinely important one: multiple English-language 2026-dated 'expat guide' sites (SafariStar, Gulf Corporate Services, gulfwisdom.com) describe this as a general-purpose freelance visa open to any foreign national with a standard Iqama -- a materially misleading claim that could lead an applicant to waste real time and money pursuing an application they don't qualify for. The official HRSD Arabic-language service page and a directly-quoted third-party platform reproducing HRSD's own stated conditions ('يجب أن يكون المتقدم لإصدار الوثيقة من المواطنين السعوديين' -- the applicant must be a Saudi national) both confirm the base eligibility is Saudi nationality, with a 2026-dated update extending it specifically to Premium Residency holders as a named exception -- not to expatriates generally. This is the same category of live catch as the UK/Germany/Netherlands salary-threshold discrepancies documented elsewhere in this dataset, except here the error is categorical (who qualifies at all) rather than numeric. fw_status is modeled as an OR-list against current_route_held including 'saudi_national' as a value -- a genuine edge case for this schema, since Mapply's routes are designed for foreign applicants and 'already being a citizen' isn't normally a relevant attribute value; included here because the fix_path correctly routes a foreign applicant toward Premium Residency as the only real path into this document, which is itself valuable product information even though the route's primary qualifying condition isn't something a foreign applicant starts with. switchable_to is empty because holding this document doesn't itself lead anywhere further in the route graph -- it's a standing work-authorisation status, not a step toward settlement."
+}

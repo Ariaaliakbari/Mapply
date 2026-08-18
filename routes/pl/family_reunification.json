@@ -1,0 +1,131 @@
+{
+  "id": "pl_family_reunification",
+  "country": "PL",
+  "name": "Temporary residence permit for family reunification (zezwolenie na pobyt czasowy w celu połączenia z rodziną)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_of_polish_citizen",
+      "name": "Spouse or family member of a Polish citizen",
+      "requirements": [
+        {
+          "id": "fam_pl_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_polish_citizen",
+          "hard": true,
+          "blocker_text": "Requires a genuine, legally-recognised marriage to a Polish citizen resident in Poland, or another documented family tie protected under Article 8 ECHR.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "powroty_pobyt_czasowy"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "up to 3 years",
+        "renewable": true,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 36,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 36,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": "3 years of marriage plus at least 2 years of continuous residence in Poland on a marriage-linked temporary permit, directly before the permanent-residence application",
+        "switchable_to": ["pl_permanent_residence", "pl_naturalisation"]
+      }
+    },
+    {
+      "id": "family_of_foreign_resident",
+      "name": "Spouse, minor child, or dependent of a non-Polish resident with an established status",
+      "requirements": [
+        {
+          "id": "fam_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "in",
+          "value": ["single_permit_holder_2yr", "blue_card_holder", "ict_holder", "permanent_resident", "eu_long_term_resident"],
+          "hard": true,
+          "blocker_text": "The Poland-resident family member (sponsor) must hold a Single Permit for at least 2 years, or hold an EU Blue Card, ICT permit, permanent residence, or EU long-term resident status.",
+          "fix_path": "Wait for the sponsor to accrue the required residence history, or for the sponsor to obtain a qualifying permit type.",
+          "fix_time_months": null,
+          "source_id": "mos_rodzina"
+        },
+        {
+          "id": "fam_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 1010, "currency": "PLN", "unit": "month" },
+          "hard": true,
+          "blocker_text": "The sponsor must show a stable, regular income above PLN 1,010/month net (single-person threshold) or PLN 823/month net per household member, sufficient to support the family member joining -- unless the sponsor is a Polish citizen's spouse, in which case this is waived.",
+          "fix_path": "Document income above the relevant social-assistance threshold, or arrange for a family member obliged to provide support to cover costs instead.",
+          "fix_time_months": null,
+          "source_id": "bip_lubuskie_family"
+        },
+        {
+          "id": "fam_housing",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "confirmed_accommodation_poland",
+          "hard": true,
+          "blocker_text": "Confirmed accommodation in Poland is required (lease, ownership, or a hosting declaration).",
+          "fix_path": "Secure documented accommodation before applying.",
+          "fix_time_months": null,
+          "source_id": "mos_rodzina"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or birth certificate proving the family tie (issued within 3 months of the application)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's valid residence permit or Polish ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and, where required, income", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches the sponsor's permit validity, up to 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years continuous legal residence for the general family-of-foreign-resident path (see the spouse-of-Polish-citizen group above for the faster 3-year alternative)",
+    "switchable_to": ["pl_permanent_residence", "pl_eu_long_term_resident"]
+  },
+  "sources": [
+    {
+      "id": "powroty_pobyt_czasowy",
+      "tier": 1,
+      "url": "https://powroty.gov.pl/zezwolenie-na-pobyt-czasowy-10024/",
+      "title": "Powroty.gov.pl (official Polish government portal, gov.pl domain) -- Zezwolenie na pobyt czasowy",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mos_rodzina",
+      "tier": 1,
+      "url": "https://mos.cudzoziemcy.gov.pl/baza-pytan-i-odpowiedzi/pozostale-zezwolenia-na-pobyt-czasowy/rodzina/",
+      "title": "Moduł Obsługi Spraw (mos.cudzoziemcy.gov.pl, Office for Foreigners' official case-handling portal) -- Rodzina",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "bip_lubuskie_family",
+      "tier": 1,
+      "url": "https://bip.lubuskie.uw.gov.pl/sprawy_obywatelskie/Zezwolenie_na_pobyt_czasowy_-_polaczenie_z_rodzina",
+      "title": "Lubuski Urząd Wojewódzki (regional government office, BIP public-information portal) -- income criteria for family reunification",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Uses outcome_override precisely as documented in the schema's design brief: spouses of Polish citizens get a materially faster and easier path (income/insurance/accommodation waived entirely, 3-year combined marriage-plus-residence route to permanent residence) than family members joining a foreign national resident on a Single Permit, Blue Card, or similar status (full 5-year standard track, income and housing tests apply). This is a genuine two-different-outcomes case, not a cosmetic variation -- the correct use of the schema mechanism per the Turkey Temporary Protection and UK Global Talent precedents in the project brief. Income threshold figures (PLN 1,010/month net single-person, PLN 823/month net per household member) come from the 2024 Rada Ministrów social-assistance-criteria regulation and are confirmed unchanged through 2026 in multiple contemporaneous 2026 sources (rynekzdrowia.pl, infor.pl) -- these criteria update on a 3-year cycle, so the next re-basing is expected around 2027, flagged for future freshness monitoring on this route specifically. fam_sponsor_status's 2-year Single-Permit-holder threshold and the qualifying alternate statuses (Blue Card, ICT, permanent residence, EU long-term residence) are drawn from mos.cudzoziemcy.gov.pl's official FAQ rather than the primary statutory text (ustawa o cudzoziemcach) directly -- treated as tier-1 since mos.cudzoziemcy.gov.pl is the Office for Foreigners' own official case-handling system, but flagged for anyone wanting the exact article number."
+}

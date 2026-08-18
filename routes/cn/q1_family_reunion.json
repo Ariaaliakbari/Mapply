@@ -1,0 +1,96 @@
+{
+  "id": "cn_q1_family_reunion",
+  "country": "CN",
+  "name": "Q1 Visa (family of Chinese citizens or permanent residents, long-term)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Spouse, minor child, or qualifying relative",
+      "requirements": [
+        {
+          "id": "q1_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": [
+            "spouse_of_chinese_national_or_pr",
+            "minor_child_dependent",
+            "elderly_relative_no_family_abroad"
+          ],
+          "hard": true,
+          "blocker_text": "Covers spouses, minor children, and (in a narrower category) elderly relatives over 60 with no other family abroad, of Chinese citizens or foreigners holding Chinese permanent residence, for intended stays exceeding 180 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        },
+        {
+          "id": "q1_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "in",
+          "value": [
+            "chinese_national",
+            "chinese_permanent_resident"
+          ],
+          "hard": true,
+          "blocker_text": "The sponsoring family member must be a Chinese citizen or hold Chinese permanent residence (the Five-Star Card) -- family of ordinary foreign workers or students uses the separate S visa instead.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinaneighbor_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage certificate, birth certificate, or documentation proving the qualifying family relationship",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Sponsor's Chinese ID/household registration or Foreign Permanent Resident ID Card",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Invitation letter from the sponsor",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years multiple-entry, converted to a Residence Permit for Family Reunion after arrival",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "cn_permanent_residence",
+      "cn_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "chinaneighbor_visa_guide",
+      "tier": 3,
+      "url": "https://chinaneighbor.com/guide/essentials/china-visa-types-guide-2026/",
+      "title": "China Neighbor -- China Visa Types: Complete Guide for Foreigners (2026), describing Q1/Q2 eligibility",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "The elderly-relative qualifying path (over 60, no direct relatives abroad, 5 years' continuous residence already in China, stable housing and income) is a genuinely distinctive category not seen in comparable form in most other countries in this dataset -- it describes a narrow reverse-dependency case (an elderly person already established in China with no remaining family ties abroad) rather than a fresh family-reunion application, confirmed via the English Wikipedia's reproduction of China's family-based permanent-residence provisions (itself citing official Chinese-language sources). pr_after_months (60) reflects the general permanent-residence spouse track requiring 5 years of marriage plus 5 years of physical residence at 9+ months/year -- see cn_permanent_residence for the full detail; this route (Q1) is the entry visa/residence-permit status a spouse holds during that qualifying period, not the permanent-residence grant itself. HONEST SOURCING GAP: as with the other 'visit-adjacent' entry visas in this build, no direct nia.gov.cn category page was fetched -- this rests on a cross-referenced tier-3 guide, consistent with the general pattern noted across this build of China's operational visa mechanics being harder to source at tier-1 than this dataset's other countries."
+}

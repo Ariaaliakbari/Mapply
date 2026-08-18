@@ -1,0 +1,74 @@
+{
+  "id": "it_student_visa",
+  "country": "IT",
+  "name": "Visto per motivi di studio (Student visa)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Admitted to a recognised Italian institution",
+      "requirements": [
+        {
+          "id": "stu_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_recognised_italian_institution",
+          "hard": true,
+          "blocker_text": "Requires enrolment confirmation from a recognised Italian university or educational institution for a full-time programme of study.",
+          "fix_path": "Secure admission from a recognised Italian institution.",
+          "fix_time_months": null,
+          "source_id": "esteri_visti"
+        },
+        {
+          "id": "stu_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_or_scholarship",
+          "hard": true,
+          "blocker_text": "Requires proof of sufficient financial means for tuition and living costs, plus valid health insurance for the stay.",
+          "fix_path": "Provide bank statements, a scholarship award letter, or a sponsor's financial guarantee.",
+          "fix_time_months": null,
+          "source_id": "esteri_visti"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrolment confirmation from the Italian institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds or scholarship, and health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Permesso di soggiorno application within 8 days of arrival", "difficulty": "routine", "typical_time_days": 8 }
+  ],
+  "outcome": {
+    "duration_length": "tied to course length, renewed via the permesso di soggiorno",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["it_work_visa_subordinato", "it_eu_long_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "esteri_visti",
+      "tier": 1,
+      "url": "https://vistoperitalia.esteri.it/home/it",
+      "title": "Ministero degli Affari Esteri e della Cooperazione Internazionale (esteri.it) -- Visto per l'Italia, student visa category",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Student permesso di soggiorno holders may work part-time up to 20 hours/week (1,040 hours/year), a real work-rights allowance modeled here as 'restricted' rather than 'none' or 'full' -- distinct from China's confirmed zero-work-rights student status and closer to Poland's more generous allowance, though still capped unlike Poland's uncapped student work rights. Converting a student permesso di soggiorno directly to a work permesso is possible in principle but, as of the 2026 Decreto Flussi cycle, non-seasonal subordinate work conversions from study/training status are explicitly carved out of the click-day quota mechanism (per Circolare interministeriale n. 8047/2025), meaning graduates generally have an easier conversion path than a fresh work-visa applicant competing for click-day quota -- a genuinely favourable structural detail worth flagging."
+}

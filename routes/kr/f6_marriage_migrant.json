@@ -1,0 +1,118 @@
+{
+  "id": "kr_f6_marriage_migrant",
+  "country": "KR",
+  "name": "F-6 Marriage Migrant visa (spouse of a Korean national)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Spouse of a Korean national",
+      "requirements": [
+        {
+          "id": "f6_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_korean_national",
+          "hard": true,
+          "blocker_text": "Requires a legally registered marriage to a Korean citizen, with evidence the relationship is genuine (not a sham marriage) -- immigration officers specifically screen marriage authenticity as one of the three core review areas alongside income and communication.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "easylaw_marriage_status"
+        },
+        {
+          "id": "f6_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "meets_annual_moj_income_notice",
+          "hard": true,
+          "blocker_text": "The Korean-citizen sponsor must meet an income threshold published annually by the Minister of Justice, scaled to household size -- family income (including the foreign spouse's own income, if any) can be combined to meet it.",
+          "fix_path": "Document combined household income at or above the current year's published threshold for the applicable household size.",
+          "fix_time_months": null,
+          "source_id": "easylaw_marriage_status"
+        },
+        {
+          "id": "f6_communication",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "topik_1_or_shared_language",
+          "hard": true,
+          "blocker_text": "Requires evidence the couple can communicate -- TOPIK Level 1 or higher, or documented shared language history (e.g. the sponsor lived in the spouse's home country for a year or more, or the couple shared a common third language for a year or more).",
+          "fix_path": "Complete a TOPIK Level 1 exam or document an alternative qualifying communication history.",
+          "fix_time_months": 3,
+          "source_id": "easylaw_marriage_status"
+        },
+        {
+          "id": "f6_prior_sponsorship",
+          "attribute": "family_tie_status",
+          "operator": "!=",
+          "value": "sponsored_foreign_spouse_within_5_years",
+          "hard": false,
+          "blocker_text": "The Korean sponsor is barred from sponsoring another foreign spouse if they have sponsored one within the preceding 5 years, and a naturalised Korean who acquired citizenship through marriage cannot sponsor a new foreign spouse until 3 years have passed since naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "korvia_f6_overseas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage certificate and civil registration documents",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Income documentation meeting the current Ministry of Justice income notice",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "TOPIK certificate or equivalent communication-history evidence",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "renewed indefinitely as long as the marriage is maintained",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "kr_f5_permanent_residence",
+      "kr_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "easylaw_marriage_status",
+      "tier": 1,
+      "url": "https://easylaw.go.kr/CSM/CsmOvSave.laf?csmSeq=1015&ccfNo=2&cciNo=1&cnpClsNo=1",
+      "title": "Easy-to-Find Practical Law (easylaw.go.kr, Ministry of Government Legislation) -- Immigrants by marriage: International Marriage, Status and Nationality",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "korvia_f6_overseas",
+      "tier": 3,
+      "url": "https://www.korvia.com/support/how-to-apply-f-6-visa-from-overseas-korean-consulate",
+      "title": "Korvia -- How to apply F-6 Visa from Overseas Korean Consulate, corroborating the 5-year prior-sponsorship restriction and the 3-year post-naturalisation restriction",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "F-6 is one of the most favourable family routes in this entire dataset: unlike Poland's spouse-of-citizen track (still a multi-year residence requirement before permanent residence) or most other countries' marriage routes, F-6 holders can reach a simplified permanent residence (F-5-2) or simplified naturalisation after just 2 years -- confirmed identically across easylaw.go.kr (the Ministry of Government Legislation's own official plain-language legal explainer, a genuine tier-1 source) and multiple independent secondary sources. Korea's Nationality Act offers marriage-based applicants an even faster alternate track for some cases: naturalisation after 3 years of marriage plus 1+ year of Korean residence, an alternative to the 2-years-continuous-residence-while-married standard track, useful for spouses who married abroad and moved to Korea partway through the marriage. dual_citizenship_allowed is true here specifically because F-6-to-citizenship naturalisation is one of Korea's narrow, explicitly-permitted dual-nationality exceptions (alongside the exceptional-talent naturalisation track) -- contrasted with kr_e7_designated_activities and kr_d8_corporate_investment, where dual_citizenship_allowed is false under Korea's general single-nationality rule; this is a genuine structural difference between naturalisation pathways within the same country, not an inconsistency. income requirement is modeled with an 'exists' test rather than a fixed KRW figure because the Ministry of Justice publishes the threshold annually and it varies by household size -- multiple secondary sources cite differing illustrative figures (e.g. KRW 25.19 million for a 2-person household as of one 2026 source), but no single fixed number applies universally, so a fixed hard-coded amount would misrepresent the actual rule; this mirrors how Saudi Arabia's family-sponsorship threshold was handled honestly rather than forcing a false precision."
+}

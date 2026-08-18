@@ -1,0 +1,85 @@
+{
+  "id": "cn_naturalisation",
+  "country": "CN",
+  "name": "Chinese citizenship by naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Naturalisation under Nationality Law Article 7",
+      "requirements": [
+        {
+          "id": "nat_prior_pr",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "chinese_permanent_residence",
+          "hard": true,
+          "blocker_text": "Chinese permanent residence (the Five-Star Card) is a practical prerequisite before applying for naturalisation, per the National Immigration Administration's own guidance on first-time permanent-residence applications -- Article 7 of the Nationality Law does not state this explicitly, but it is the standard administrative practice.",
+          "fix_path": "Obtain Chinese permanent residence first (see cn_permanent_residence or cn_green_card_investor).",
+          "fix_time_months": null,
+          "source_id": "nia_nationality_law"
+        },
+        {
+          "id": "nat_qualifying_basis",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["close_relative_of_chinese_national", "settled_in_china", "other_proper_reason"],
+          "hard": true,
+          "blocker_text": "Under Article 7 of the Nationality Law, a foreigner or stateless person willing to abide by China's Constitution and laws may apply for naturalisation if they meet at least one of: being a close relative of a Chinese national, being settled in China, or having another proper reason.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nia_nationality_law"
+        },
+        {
+          "id": "nat_renounce",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "willing_to_renounce_prior_nationality",
+          "hard": true,
+          "blocker_text": "Under Article 8, approval grants Chinese nationality and the applicant may not retain their foreign nationality -- China does not recognise dual nationality under any circumstances (Article 3).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nia_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Chinese permanent residence status", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Documentation of the qualifying basis (close-relative proof, settlement evidence, or other justification)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Formal renunciation of prior nationality upon approval", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nia_nationality_law",
+      "tier": 1,
+      "url": "https://www.nia.gov.cn/n741440/n741547/c1013967/content.html",
+      "title": "National Immigration Administration (nia.gov.cn) -- full text of the 中华人民共和国国籍法 (Nationality Law of the People's Republic of China), Articles 3, 7, and 8",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "China's naturalisation regime is, by a wide margin, the most restrictive settled-category route encountered anywhere in this dataset. Article 7's stated criteria read as unremarkable on paper (close relative of a Chinese national, settled in China, or 'other proper reason') and impose no explicit residence-year requirement at all -- but the Chinese Wikipedia's reproduction of official figures states that from the PRC's founding in 1949 through February 2019, only slightly over 4,000 people successfully naturalised under Article 7 in roughly 70 years, a number small enough that it is sometimes cited alongside individual named cases (e.g. naturalised athletes) rather than as a population statistic. This is a genuinely different kind of restrictiveness than the UAE's or Saudi Arabia's discretionary, uncodified exceptional-merit tracks: China's criteria are written down and look ordinary, but administrative practice makes approval vanishingly rare regardless of how well an applicant matches the stated text -- worth surfacing prominently on this route's detail page precisely because the gap between codified criteria and real-world outcome is so wide. nat_prior_pr is included as a hard requirement despite not appearing explicitly in Article 7 itself, based on secondary reporting (a Baidu-hosted encyclopaedia entry citing '外国人首次申请永久居留指南') that applicants must first hold permanent residence before naturalisation is practically available -- flagged honestly since this specific procedural claim rests on a tier-4 source even though the core statutory text (Articles 3, 7, 8) is fully tier-1 verified via a direct nia.gov.cn fetch. citizenship_after_months = 0 reflects that naturalisation IS citizenship, per this dataset's standard convention -- the real barrier here is nat_prior_pr and the general administrative rarity of approval, not a further waiting period after grant. dual_citizenship_allowed is false with no exceptions documented anywhere in this build's China research, a firmer single-nationality rule than Korea's (which carves out marriage and exceptional-talent exceptions) or Saudi Arabia's (which allows a narrow exception for certain women retaining nationality) -- China's Article 3 states the non-recognition principle with no qualifying language, and Article 8 reinforces it specifically for the naturalisation grant."
+}

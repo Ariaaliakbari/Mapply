@@ -1,0 +1,75 @@
+{
+  "id": "sa_asylum",
+  "country": "SA",
+  "name": "Refugee/Asylum Status",
+  "category": "humanitarian",
+  "status": "closed",
+  "superseded_by": null,
+  "closed_date": null,
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "no_system",
+      "name": "No formal system exists",
+      "requirements": [
+        {
+          "id": "no_system_notice",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "no_formal_asylum_system_exists",
+          "hard": false,
+          "blocker_text": "Saudi Arabia is not a signatory to the 1951 Refugee Convention or its 1967 Protocol and has no formal domestic asylum system or refugee-status determination framework. Saudi Arabia does not use the term 'refugee' in its immigration framework and does not grant Convention rights. Some individuals are hosted informally or granted case-by-case humanitarian stay at the government's discretion, but there is no route to apply for asylum in Saudi Arabia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_sa_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [],
+  "outcome": {
+    "duration_length": "n/a -- no formal route exists",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_sa_general",
+      "tier": 2,
+      "url": "https://www.unhcr.org/countries/saudi-arabia",
+      "title": "UNHCR -- Saudi Arabia country page, confirming Saudi Arabia is not a party to the 1951 Refugee Convention and has no domestic asylum framework",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "unhcr_ksa_registration",
+      "tier": 2,
+      "url": "https://help.unhcr.org/ksa/en/registration-with-unhcr/",
+      "title": "UNHCR Kingdom of Saudi Arabia -- Registration with UNHCR, confirming registration confers no legal status since Saudi Arabia is not a Convention signatory",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "unhcr_rimap_sa",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/countries/saudi-arabia",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Saudi Arabia, independent confirmation of non-party status to both the 1951 Convention and its 1967 Protocol",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Uses the identical 'never existed, not closed' convention established for the UAE (closed_date: null, superseded_by: null) rather than the ordinary closed-with-successor pattern, since there is no prior asylum system that was abolished -- one never existed to begin with. Saudi Arabia sits alongside the UAE and Singapore as the third country in this dataset confirmed to have no formal asylum system at all, reinforcing that this is a genuine structural pattern across several Gulf and Gulf-adjacent states rather than an isolated case. SOURCING NOTE: unlike the UAE's equivalent route, no Saudi government page stating this directly was found despite a dedicated search pass (moi.gov.sa's site structure did not surface a specific statement); this route relies on three independent UNHCR pages (UNHCR is an intergovernmental body, tier 2) rather than a tier-1 Saudi government source. Because a genuinely tier-1-sourced disqualifying test isn't possible here, this requirement is modeled as hard:false -- an honest reflection that there is no test to fail, only a structural notice -- rather than forcing a tier-2 source onto a hard:true field to pass validation artificially. Saudi Arabia's 1992 Basic Law of Governance reportedly contains a discretionary asylum clause ('the State shall grant political asylum if the public interest so requires,' per the Vatican's Migrants & Refugees Section country profile), but this is expressly discretionary rather than a codified right or process, consistent with -- not contradicting -- the 'no formal route' classification here; that specific clause was not independently verified against a fetched primary Basic Law text in this research pass. Distinguished from Saudi Arabia's substantial informal role in hosting displaced populations (particularly from Yemen and, historically, other regional conflicts) on humanitarian/discretionary grounds outside any codified legal framework -- this practical reality does not change the formal-route assessment, which is what this dataset measures; a person in that situation has no application process to follow, only discretionary state action outside their control, which is precisely why this route is correctly modeled as closed/never-existed rather than as a route with vague or hard-to-meet requirements."
+}

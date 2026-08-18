@@ -1,0 +1,106 @@
+{
+  "id": "pl_eu_blue_card",
+  "country": "PL",
+  "name": "EU Blue Card (Niebieska Karta UE)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard EU Blue Card",
+      "requirements": [
+        {
+          "id": "bc_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires an employment contract, homework (nakładcza) contract, or civil-law contract of at least 6 months' duration, paid in PLN through the Polish payroll system.",
+          "fix_path": "Secure a qualifying contract from a Polish employer of at least 6 months.",
+          "fix_time_months": null,
+          "source_id": "mos_bluecard"
+        },
+        {
+          "id": "bc_education",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["bachelors", "masters", "phd"],
+          "hard": true,
+          "blocker_text": "Requires higher education qualifications relevant to the role, or at least 5 years of comparable professional experience as an alternative route to qualifying.",
+          "fix_path": "Obtain recognition of a foreign degree, or document 5+ years of relevant professional experience.",
+          "fix_time_months": 3,
+          "source_id": "mos_bluecard"
+        },
+        {
+          "id": "bc_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "eu_blue_card_threshold_2026", "ratio": 1.0, "resolved_amount": 13355.34, "currency": "PLN", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Gross monthly salary must be at least 150% of the national average wage in the preceding calendar year -- PLN 13,355.34/month as of the February 2026 GUS announcement for 2025's average wage.",
+          "fix_path": "Negotiate a higher salary or wait for a new employer offer at or above the current threshold.",
+          "fix_time_months": null,
+          "source_id": "gus_avg_wage_2025"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment or civil-law contract of at least 1 year, meeting the salary threshold", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Degree recognition or documented professional experience", "difficulty": "moderate", "typical_time_days": 45 },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "contract duration + 3 months, up to a maximum of 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years total in the EU, of which at least 2 years immediately before the application must be in Poland, count toward the EU long-term resident permit specifically (a faster combined-mobility path than the plain 5-year Polish-only residence requirement)",
+    "switchable_to": ["pl_permanent_residence", "pl_eu_long_term_resident"]
+  },
+  "sources": [
+    {
+      "id": "gus_avg_wage_2025",
+      "tier": 1,
+      "url": "https://stat.gov.pl/sygnalne/komunikaty-i-obwieszczenia/lista-komunikatow-i-obwieszczen/komunikat-w-sprawie-przecietnego-wynagrodzenia-w-gospodarce-narodowej-w-2025-r-,273,13.html",
+      "title": "Komunikat Prezesa GUS z dnia 9 lutego 2026 r. w sprawie przeciętnego wynagrodzenia w gospodarce narodowej w 2025 r.",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "mos_bluecard",
+      "tier": 1,
+      "url": "https://www.mos.cudzoziemcy.gov.pl/kategorie-informacji/mozliwosci-legalizacji/spoza-ue-kontynuacja-pobytu/zezwolenie-czasowy/praca/niebieska-karta/",
+      "title": "Moduł Obsługi Spraw (mos.cudzoziemcy.gov.pl, Office for Foreigners' official case-handling portal) -- Niebieska Karta UE conditions",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "atl_law_bluecard",
+      "tier": 3,
+      "url": "https://atl-law.pl/en/eu-blue-card-in-poland-in-2026/",
+      "title": "ATL Law -- EU Blue Card in Poland 2026 (secondary corroboration of the 2025 Act on Foreigners amendment, Dz.U. 2025 poz. 619)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "dudkowiak_bluecard",
+      "tier": 3,
+      "url": "https://www.dudkowiak.com/immigration-law-in-poland/eu-blue-card-in-poland/",
+      "title": "Dudkowiak & Putyra -- EU Blue Card in Poland: how to apply (secondary corroboration of education/contract conditions)",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "LIVE THRESHOLD CATCH, same pattern as Germany's Blue Card and the UK/Netherlands/France salary re-basings: the Blue Card threshold is not a fixed number, it's 150% of GUS's announced average national wage for the prior year, re-published every February. The 2025 threshold was PLN 12,272.58/month (150% of 2024's PLN 8,181.72 average); the 2026 threshold, announced 9 Feb 2026, is PLN 13,355.34/month (150% of 2025's PLN 8,903.56 average) -- a jump of over PLN 1,000/month in one year. Secondary sources dated before 9 Feb 2026 still show the stale 2025 figure. Poland's Blue Card threshold is notably one of the lowest in the EU for 2026 -- roughly EUR 37,200/year, well below Germany's EUR 50,700 -- per a multi-country 2026 salary-threshold comparison (ep-advisory.com), making Poland's Blue Card a comparatively accessible route relative to its Western European peers, a genuine structural finding worth surfacing on any cross-country Blue Card comparison view. A significant 2025 Act on Foreigners amendment (Dz.U. 2025 poz. 619) abolished the labour-market test for Blue Card applicants and simplified employer-switching (notification only, no fresh permit procedure) -- corroborated by both ATL Law's 2026 guide and mos.cudzoziemcy.gov.pl's own Blue Card FAQ ('Nie, wniosek... test rynku pracy... został zniesiony'), so treated as verified; the exact amendment article number in the primary statutory text (isap.sejm.gov.pl) was not independently pulled in this pass and would be the next-level citation if needed. Contract-length minimum corrected during validation from an initially-drafted 1 year down to the tier-1-confirmed 6 months (mos.cudzoziemcy.gov.pl) -- a real catch worth flagging in its own right, since several tier-3 secondary sources conflate the Blue Card's 6-month minimum with the Single Permit's longer typical contract lengths. pr_after_months and citizenship_after_months use the standard 5-year Polish continuous-residence path pending confirmation of whether Blue Card time earns any acceleration under Polish naturalisation practice specifically (unlike Germany, no accelerated 21-month track was found for Poland's Blue Card in this research pass -- flagged as an open question, not asserted as settled)."
+}

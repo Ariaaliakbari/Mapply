@@ -1,0 +1,68 @@
+{
+  "id": "kr_h2_working_visit_closed",
+  "country": "KR",
+  "name": "H-2 Working Visit visa (for ethnic Koreans in China and CIS states)",
+  "category": "ancestry",
+  "status": "closed",
+  "superseded_by": "kr_f4_overseas_korean",
+  "closed_date": "2026-02-12",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "historical",
+      "name": "Historical eligibility (no new visas issued since closure)",
+      "requirements": [
+        {
+          "id": "h2_closed_notice",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "route_closed_no_new_applications",
+          "hard": false,
+          "blocker_text": "The Ministry of Justice stopped issuing new H-2 visas from 12 February 2026, when H-2 and F-4 were unified into a single Overseas Korean (F-4) status. H-2 was historically issued to ethnic Koreans from China and 6 former Soviet states (Kazakhstan, Uzbekistan, Kyrgyzstan, and others) who did not meet F-4's stricter income/education/work-experience screening; that screening no longer exists, and all overseas-Korean applicants now apply through kr_f4_overseas_korean regardless of country of origin.",
+          "fix_path": "Apply through kr_f4_overseas_korean instead -- the unified route now covers what H-2 previously covered.",
+          "fix_time_months": null,
+          "source_id": "kowork_h2f4_integration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [],
+  "outcome": {
+    "duration_length": "n/a -- route closed to new applicants",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kr_f4_overseas_korean"]
+  },
+  "sources": [
+    {
+      "id": "kowork_h2f4_integration",
+      "tier": 3,
+      "url": "https://kowork.kr/blog/H2andF4integration",
+      "title": "KOWORK -- '방문취업(H-2) 비자와 재외동포(F-4) 비자 통합' (H-2/F-4 visa integration), effective 12 Feb 2026, confirming the Ministry of Justice has stopped issuing new H-2 visas",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "ekw_h2f4_scale",
+      "tier": 4,
+      "url": "https://www.ekw.co.kr/news/articleView.html?idxno=12457",
+      "title": "EKW (동포세계신문, an overseas-Korean community newspaper) -- reporting the scale of the H-2/F-4 transition: H-2 quota once reached 303,000, declining to roughly 80,000 by July 2025 as F-4 conversions absorbed most demand ahead of formal unification",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "This is the closed-route half of the single most significant structural finding in the Korea build (see kr_f4_overseas_korean for the full account). h2_closed_notice is modeled hard:false, the same convention used for sa_asylum's never-existed notice and Poland's repatriation edge case, because there is no eligibility test left to apply -- the route is simply closed to new applicants, and the honest modeling choice is an informational notice rather than a forced pass/fail criterion. superseded_by points to kr_f4_overseas_korean with a real closed_date (2026-02-12, not null) because this is a genuine successor case, not a 'never existed' pattern -- H-2 operated for two decades as a real, heavily-used route (peak quota 303,000) before being formally absorbed. HONEST SOURCING GAP: no tier-1 Korean government source stating the closure directly and explicitly was successfully fetched in this research pass -- Ministry of Justice Notice No. 2026-35 (cited on kr_f4_overseas_korean) governs the successor route's employment-activity restrictions but wasn't independently confirmed to state the H-2 closure in so many words; the closure itself rests on Korean-language secondary reporting (a licensed immigration/visa-services blog and an overseas-Korean community newspaper) that are internally consistent with each other and with the broader English-language secondary sources checked earlier in this research pass, but this is flagged as a follow-up target for direct HiKorea or Ministry of Justice primary-text confirmation rather than treated as fully tier-1 verified. Existing H-2 holders at the time of closure retain their status until it expires and can convert to F-4 -- this route is not retroactively voiding anyone's current status, only closing new applications, worth surfacing clearly on any UI messaging for this route so existing holders don't read 'closed' as 'your status is cancelled.'"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "sa_student",
+  "country": "SA",
+  "name": "Student visa (Study in Saudi Arabia programme)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Admitted to a Saudi institution",
+      "requirements": [
+        {
+          "id": "stu_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_saudi_institution",
+          "hard": true,
+          "blocker_text": "Requires admission to a recognised Saudi university or institution, sponsoring the student's visa via the Ministry of Education's international-student channels.",
+          "fix_path": "Secure admission from a Saudi institution participating in the 'Study in Saudi Arabia' programme.",
+          "fix_time_months": null,
+          "source_id": "moe_study_ksa"
+        },
+        {
+          "id": "stu_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "The institution acts as the sponsor for the student's residence permit (Iqama); a self-sponsored student route also exists for a narrower set of applicants who can demonstrate independent financial means.",
+          "fix_path": "Confirm the institution will sponsor the visa, or qualify for the self-sponsored track if not institution-sponsored.",
+          "fix_time_months": null,
+          "source_id": "moe_study_ksa"
+        },
+        {
+          "id": "stu_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_or_scholarship",
+          "hard": true,
+          "blocker_text": "Requires proof of sufficient financial means (personal funds, family sponsorship, or a scholarship) for tuition and living costs, plus mandatory health insurance.",
+          "fix_path": "Provide bank statements, a scholarship award letter, or a sponsor's financial guarantee.",
+          "fix_time_months": null,
+          "source_id": "moe_study_ksa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter from a Saudi institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds or scholarship award", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical examination and health insurance", "difficulty": "routine", "typical_time_days": 14 }
+  ],
+  "outcome": {
+    "duration_length": "tied to programme length, renewed annually via the Iqama",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sa_employment_visa", "sa_premium_residency_investor_entrepreneur"]
+  },
+  "sources": [
+    {
+      "id": "moe_study_ksa",
+      "tier": 1,
+      "url": "https://www.moe.gov.sa/en/studyinsaudiarabia/Pages/default.aspx",
+      "title": "Ministry of Education -- Study in Saudi Arabia programme (official)",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "HONEST SOURCING GAP, flagged rather than guessed around: unlike Poland's student route, foreign students in Saudi Arabia generally have NO work rights on a standard student Iqama -- this is the opposite of Poland's uncapped student work rights and worth surfacing prominently on any cross-country comparison view. A narrower part-time work allowance exists in practice for some scholarship categories and postgraduate researchers, but the exact scope and any hour caps were not conclusively confirmed against a primary Ministry of Education or HRSD source in this research pass; work_rights is set to 'none' as the safe, verified default for the standard case rather than asserting a partial allowance that couldn't be pinned down. status is published rather than draft because the core admission/sponsorship/funds requirements are solidly tier-1 sourced; the narrower work-rights question is the specific gap, not the route's core eligibility test."
+}

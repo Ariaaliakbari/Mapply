@@ -1,0 +1,85 @@
+{
+  "id": "it_eu_long_term_residence",
+  "country": "IT",
+  "name": "Permesso di soggiorno UE per soggiornanti di lungo periodo (EU long-term residence permit)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "5-year continuous legal residence",
+      "requirements": [
+        {
+          "id": "ltr_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous, legal residence in Italy on a valid permesso di soggiorno directly before the application; absences under 6 consecutive months, totalling no more than 10 months across the 5 years, don't interrupt continuity (documented exceptions apply for military service or serious health reasons).",
+          "fix_path": "Continue accruing continuous legal residence, keeping any single absence under 6 months and total absences under 10 months across the 5-year window.",
+          "fix_time_months": 60,
+          "source_id": "interno_lungo_periodo_altalex"
+        },
+        {
+          "id": "ltr_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "assegno_sociale", "ratio": 1.0, "resolved_amount": 6542.51, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires annual income not lower than the assegno sociale (roughly EUR 6,542.51/year as of 2026).",
+          "fix_path": "Document annual income at or above the current assegno sociale threshold.",
+          "fix_time_months": null,
+          "source_id": "interno_lungo_periodo_altalex"
+        },
+        {
+          "id": "ltr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "Requires passing an Italian-language test at A2 level, unless exempted (holders of international protection status and their families, children under 14, and those with certified serious learning-capacity limitations due to age, illness, or disability are exempt).",
+          "fix_path": "Pass the A2-level Italian language test, or confirm eligibility for an exemption.",
+          "fix_time_months": 6,
+          "source_id": "interno_lungo_periodo_altalex"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence (permesso di soggiorno history)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Income documentation and, for family applications, suitable-housing certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "A2-level Italian language certificate, unless exempt", "difficulty": "moderate", "typical_time_days": 90 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (the card itself is periodically reissued, but the underlying status does not expire or require renewal as a status)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "grants EU-wide long-term-resident mobility rights (entry into Schengen for under 3 months without further formality, and the ability to seek work/study rights in other EU states via that state's own procedure), distinct from Italy-only status",
+    "switchable_to": ["it_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "interno_lungo_periodo_altalex",
+      "tier": 1,
+      "url": "https://www.altalex.com/guide/permesso-soggiorno-lungo-periodo",
+      "title": "Altalex (Italian legal-publishing platform reproducing Testo Unico Immigrazione Art. 9 provisions verbatim) -- Il permesso di soggiorno di lungo periodo, cross-checked against an ASGI (Associazione per gli Studi Giuridici sull'Immigrazione) technical guide citing the same statutory text",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "International-protection holders (refugees and subsidiary-protection beneficiaries) get two real, confirmed advantages on this route: they're exempt from both the language test and the housing-suitability requirement, and -- more significantly -- their 5-year continuity clock is calculated from the date they first applied for protection (Modello C3 submission), not from the date of eventual recognition, per an ASGI technical guide directly reproducing the relevant provision. This mirrors a nearly identical rule documented for Brazil's refugee-to-citizenship pathway elsewhere in this dataset -- a genuine cross-country pattern of protection-application dates counting retroactively toward settlement timelines, worth surfacing as a structural finding rather than treating as an Italy-specific quirk. Family members applying alongside the primary holder face additional requirements: the sponsor's income must be increased by half the assegno sociale per additional family member (or doubled if two or more children under 14 are included), and each included family member must independently have accrued their own 5 years of residence -- confirmed via Circolare del Ministero dell'Interno n. 122106 (6 September 2019). citizenship_after_months (60) reflects that this status itself typically requires the same 5-year residence period as the general naturalisation track's residual 5 years on top of it in most cases, though in practice many holders naturalise around the same broad timeframe as the general 10-year track once the preceding temporary-status years are counted -- see it_naturalisation for the complete breakdown of Italy's naturalisation timelines by category."
+}

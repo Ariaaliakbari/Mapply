@@ -1,0 +1,90 @@
+{
+  "id": "kr_e9_eps_nonprofessional",
+  "country": "KR",
+  "name": "E-9 Non-Professional Employment (Employment Permit System, EPS)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": null,
+    "cap_type": "budget",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "EPS bilateral-agreement nationals",
+      "requirements": [
+        {
+          "id": "e9_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["eps_mou_partner_countries"],
+          "hard": true,
+          "blocker_text": "Only available to nationals of countries with a signed EPS bilateral MOU with Korea (17 countries as of this research, including Vietnam, Thailand, the Philippines, Indonesia, and India, added as the 17th partner in late 2023) -- recruitment runs government-to-government through each country's official sending agency, and private brokers cannot legally charge placement fees.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "korea_net_eps_quota_2026"
+        },
+        {
+          "id": "e9_eps_topik",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "eps_topik_ranked",
+          "hard": true,
+          "blocker_text": "Requires passing the EPS-TOPIK test (40 multiple-choice questions on workplace Korean, scored out of 100) and being ranked into the Worker Roster; selection is by relative ranking against the country-and-sector quota, not a fixed pass score, so passing does not guarantee placement.",
+          "fix_path": "Retake the EPS-TOPIK to improve ranking within the quota competition.",
+          "fix_time_months": null,
+          "source_id": "korea_net_eps_quota_2026"
+        },
+        {
+          "id": "e9_sector",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["manufacturing", "agriculture_livestock", "fisheries", "construction", "service_sector"],
+          "hard": true,
+          "blocker_text": "Limited to five designated low-to-mid-skilled sectors: manufacturing, agriculture and livestock, fisheries, construction, and a small service-sector allocation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "korea_net_eps_quota_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "EPS-TOPIK test result and Worker Roster ranking", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health check meeting EPS medical standards", "difficulty": "routine", "typical_time_days": 14 },
+    { "document": "Employer's approved quota allocation and employment permit", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years and 10 months maximum",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "workplace changes restricted to specific circumstances (business closure, contract violation, injury, contract end); unauthorised changes can void the status",
+    "switchable_to": ["kr_e7_designated_activities"]
+  },
+  "sources": [
+    {
+      "id": "korea_net_eps_quota_2026",
+      "tier": 1,
+      "url": "https://www.korea.net/NewsFocus/policies/view?articleId=284542",
+      "title": "Korea.net (Korean Culture and Information Service, Ministry of Culture, Sports and Tourism) -- 'Non-professional foreign worker quota for 2026 set at 191K', 23 Dec 2025, reporting the Foreign Workforce Policy Committee's decision",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY, directly caught via a tier-1 fetch: the official 2026 E-9 quota, set by the Foreign Workforce Policy Committee on 22 Dec 2025 and reported on korea.net, is 80,000 (split 50,000 manufacturing / 10,000 agriculture-livestock / 7,000 fisheries / 2,000 construction / 1,000 service, plus 10,000 flexible reserve), alongside a separate 109,000 E-8 seasonal-worker quota, for a combined 191,000 non-professional-worker ceiling. Secondary sources checked in this research pass report wildly different, mutually inconsistent figures for the same year -- one cites 165,000 E-9 + 53,000 E-8; another cites a flat '33,000 spots' with no sector breakdown; a third describes an '80,000' figure that matches the tier-1 source only by coincidence, since it's presented without corroborating detail. The tier-1 korea.net figure (80,000 E-9 / 109,000 E-8 / 191,000 combined, with the specific sector breakdown) is treated as authoritative here precisely because it's the only account with underlying committee-level administrative detail rather than a bare headline number -- a clear example of why this dataset prioritises direct government-source fetches over search-retrieved secondary figures, even when several secondary sources cluster around a different number. selection_odds is left null rather than estimated: EPS selection is a relative ranking against per-country-per-sector sub-quotas, not a single national lottery or a published pass/placement rate, and no tier-1 source in this research pass gave a defensible single probability figure -- an invented approximation would misrepresent the mechanism more than it would inform an applicant, so this is an honest gap rather than a guess. E-9 holders cannot bring family (family_can_join: false) -- one of the starkest work-rights restrictions in this entire dataset given the route's scale (tens of thousands of workers annually). The standard long-term path out is conversion to E-7-4 (Skilled Worker Points system) after 4+ years on E-9 within the past 10 years, at least 1 year with the current registered employer, salary ≥KRW 26 million (KRW 25 million for agriculture/fisheries), an employer recommendation, and 200+/300 on the K-Point assessment -- not modeled as a separate requirement_group on kr_e7_designated_activities in this initial build (see that route's notes for the flagged expansion candidate) but captured here via switchable_to."
+}

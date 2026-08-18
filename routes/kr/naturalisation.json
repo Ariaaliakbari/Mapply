@@ -1,0 +1,134 @@
+{
+  "id": "kr_naturalisation",
+  "country": "KR",
+  "name": "Korean citizenship by naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General naturalisation, 5 years' residence",
+      "requirements": [
+        {
+          "id": "nat_general_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 or more consecutive years of legal residence in Korea, a clean criminal record, financial self-sufficiency, and a passing score on the Korean-language and social/cultural knowledge exam (satisfied by KIIP completion).",
+          "fix_path": "Accrue 5 consecutive years of legal residence while maintaining financial self-sufficiency and completing KIIP.",
+          "fix_time_months": 60,
+          "source_id": "hikorea_general"
+        }
+      ]
+    },
+    {
+      "id": "simplified_marriage",
+      "name": "Simplified naturalisation for F-6 marriage migrants",
+      "requirements": [
+        {
+          "id": "nat_marriage_2yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_korean_national_2yr_marriage",
+          "hard": true,
+          "blocker_text": "A foreign spouse of a Korean national who has maintained the marriage and resided in Korea for 2 or more years may apply for simplified naturalisation. An alternate route exists for spouses who married abroad and moved to Korea partway through the marriage: 3 years of marriage plus 1+ year of Korean residence.",
+          "fix_path": "Maintain the marriage and Korean residence until the applicable threshold is met.",
+          "fix_time_months": 24,
+          "source_id": "easylaw_marriage_status"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 0,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": null,
+        "switchable_to": []
+      }
+    },
+    {
+      "id": "exceptional_talent",
+      "name": "Exceptional talent naturalisation",
+      "requirements": [
+        {
+          "id": "nat_talent",
+          "attribute": "field_of_study",
+          "operator": "in",
+          "value": ["science", "economy", "culture_arts", "sports", "education"],
+          "hard": false,
+          "blocker_text": "For individuals with outstanding, recognised talent or achievements deemed to benefit Korea's national interest in fields such as science, the economy, culture and arts, sports, or education -- granted by Ministry of Justice recommendation and Presidential approval, bypassing the standard 5-year residence requirement. There is no codified points threshold or guaranteed acceptance criterion; approval is discretionary.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 0,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": "no minimum prior residence period required at all",
+        "switchable_to": []
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence (general track) or 2-3 years on F-6 status (marriage track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "KIIP completion certificate or passing score on the naturalisation exam", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal record and proof of financial self-sufficiency", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "easylaw_marriage_status",
+      "tier": 1,
+      "url": "https://easylaw.go.kr/CSM/CsmOvSave.laf?csmSeq=1015&ccfNo=2&cciNo=1&cnpClsNo=1",
+      "title": "Easy-to-Find Practical Law (easylaw.go.kr, Ministry of Government Legislation) -- Immigrants by marriage: International Marriage, Status and Nationality, confirming the 2-year simplified-naturalisation track for F-6 holders",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Three genuinely distinct naturalisation mechanisms, correctly modeled as separate OR-logic groups: general naturalisation (5-year residence, no dual citizenship retained), simplified marriage naturalisation (2-3 years depending on where the marriage began, dual citizenship explicitly permitted as one of Korea's narrow exceptions to its single-nationality rule), and exceptional-talent naturalisation (fully discretionary, no minimum residence, dual citizenship also permitted). dual_citizenship_allowed varies genuinely by group -- true for the marriage and exceptional-talent tracks, false for the general track -- confirmed identically across easylaw.go.kr (a tier-1 Ministry of Government Legislation source) for the marriage exception and HiKorea for the general rule; this is a real structural difference between naturalisation mechanisms within the same country, the same kind of within-country variation documented for Saudi Arabia's discretionary-vs-administrative citizenship tracks elsewhere in this dataset. exceptional_talent's nat_talent requirement is modeled hard:false rather than hard:true because, like Saudi Arabia's Article 9 exceptional-merit track and the UAE's 2021 exceptional-merit decree, there is no codified, testable acceptance criterion -- approval is a discretionary Ministry of Justice recommendation followed by Presidential approval, not a scoreable test, so forcing a hard:true classification would misrepresent the mechanism as more rule-bound than it actually is. citizenship_after_months = 0 across all three groups correctly reflects that naturalisation IS citizenship, the same convention used throughout this dataset (pl_naturalisation, sa_naturalisation, sa_citizenship_by_descent's automatic-descent group) -- the real barrier is each group's residence/marriage/discretion prerequisite, not a further wait after grant."
+}

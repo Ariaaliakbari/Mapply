@@ -1,0 +1,99 @@
+{
+  "id": "pl_declaration_procedure",
+  "country": "PL",
+  "name": "Declaration on entrusting work to a foreigner (oświadczenie o powierzeniu wykonywania pracy cudzoziemcowi) -- simplified procedure",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Simplified declaration route (5 eligible nationalities)",
+      "requirements": [
+        {
+          "id": "decl_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["AM", "BY", "GE", "MD", "UA"],
+          "hard": true,
+          "blocker_text": "Only nationals of Armenia, Belarus, Georgia, Moldova, and Ukraine can be employed under this simplified declaration procedure.",
+          "fix_path": "Use the standard Single Permit route if not a national of one of these 5 countries.",
+          "fix_time_months": null,
+          "source_id": "psz_declaration"
+        },
+        {
+          "id": "decl_non_seasonal",
+          "attribute": "occupation",
+          "operator": "!=",
+          "value": "seasonal_pkd_subclass",
+          "hard": true,
+          "blocker_text": "The work cannot be seasonal work (that requires the separate Type S permit) and cannot be a management-board, proxy (prokurent), or general-partner role.",
+          "fix_path": "Confirm the role is neither seasonal nor a management/board function; use pl_seasonal_work or pl_business_activity instead if it is.",
+          "fix_time_months": null,
+          "source_id": "psz_declaration"
+        },
+        {
+          "id": "decl_registration",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "The Polish employer must register the declaration through the praca.gov.pl portal with the district labour office (starosta), which enters it into the register within roughly 7 business days for straightforward cases.",
+          "fix_path": "Secure an employer willing to register the declaration on praca.gov.pl and pay the PLN 400 filing fee.",
+          "fix_time_months": null,
+          "source_id": "psz_declaration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registered declaration entry number from the district labour office", "difficulty": "routine", "typical_time_days": 7 },
+    { "document": "Valid residence title covering the work period", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Written employment contract matching declared terms", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 24 months",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "work must begin within 6 months of the declaration being registered",
+    "switchable_to": ["pl_single_permit"]
+  },
+  "sources": [
+    {
+      "id": "psz_declaration",
+      "tier": 1,
+      "url": "https://psz.praca.gov.pl/dla-bezrobotnych-i-poszukujacych-pracy/dla-cudzoziemcow/oswiadczenia-o-powierzeniu",
+      "title": "Ministerstwo Rodziny, Pracy i Polityki Społecznej (praca.gov.pl portal) -- Oświadczenia o powierzeniu wykonywania pracy cudzoziemcowi",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "zielonalinia_declaration",
+      "tier": 1,
+      "url": "https://zielonalinia.gov.pl/-/warunki-ktore-nalezy-spelnic-aby-zarejestrowac-oswiadczenie-o-powierzeniu-pracy-cudzoziemcowi",
+      "title": "Zielona Linia (Ministry of Family, Labour and Social Policy-run public information line) -- registration conditions for the declaration procedure, independent cross-check of the 24-month cap and 6-month start window",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "warszawa_praca_declaration",
+      "tier": 1,
+      "url": "https://warszawa.praca.gov.pl/oswiadczenie-o-powierzeniu-wykonywania-pracy-cudzoziemcowi1",
+      "title": "Urząd Pracy m.st. Warszawy (district labour office, Wortal PSZ) -- confirming the PLN 400 filing fee and the 2026 minimum-wage floor",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY CAUGHT: several secondary sources (e.g. cgomobility.pl) list the eligible-nationality set as 6 countries including Russia. The official Ministry of Family, Labour and Social Policy page (psz.praca.gov.pl), fetched directly, lists exactly 5: Armenia, Belarus, Georgia, Moldova, and Ukraine -- Russia is not included. This is treated as the authoritative tier-1 figure and the 6-country secondary claim is flagged as stale/incorrect rather than reconciled by assumption, consistent with this project's sourcing discipline. Workers employed at least 3 months under a declaration can subsequently obtain a full work permit without leaving the country, per the same official page -- a soft on-ramp from this simplified procedure to pl_single_permit that isn't modeled as a formal switchable_to prerequisite chain but is worth surfacing on any UI Journey view for this route. This route sits structurally parallel to pl_seasonal_work: both are simplified, capped, non-PR-accruing channels distinct from the full Single Permit, but declaration procedure covers ordinary (non-seasonal) work while Type S covers seasonal work exclusively -- the two are explicitly mutually exclusive by design, not overlapping alternatives, confirmed by the same official source stating seasonal work 'is not permissible under a registered declaration.'"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "it_family_reunion_visa",
+  "country": "IT",
+  "name": "Ricongiungimento familiare (Family Reunification)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Spouse, minor child, or dependent parent of a sponsor",
+      "requirements": [
+        {
+          "id": "fam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_sponsor", "minor_child_of_sponsor", "dependent_parent_no_other_support"],
+          "hard": true,
+          "blocker_text": "Covers spouses/partners, minor children, and dependent parents who have no other means of support in their country of origin, of a sponsor legally resident in Italy for at least 1 year on a permesso di soggiorno valid for 1+ years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eu_long_term_asgi"
+        },
+        {
+          "id": "fam_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "assegno_sociale", "ratio": 1.0, "resolved_amount": 6542.51, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "The sponsor must show annual income at least equal to the assegno sociale (social allowance, roughly EUR 6,542.51/year as of 2026), increased for each additional family member being sponsored.",
+          "fix_path": "Document sponsor income at or above the applicable threshold for the number of family members being reunited.",
+          "fix_time_months": null,
+          "source_id": "eu_long_term_asgi"
+        },
+        {
+          "id": "fam_housing",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "suitable_housing_confirmed",
+          "hard": true,
+          "blocker_text": "Requires housing meeting local hygiene and safety standards (idoneità alloggiativa), confirmed by the local municipality.",
+          "fix_path": "Secure and document suitable housing meeting local standards.",
+          "fix_time_months": null,
+          "source_id": "eu_long_term_asgi"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate, birth certificate, or documentation proving the qualifying family relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's permesso di soggiorno and income documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Housing suitability certificate (idoneità alloggiativa) from the municipality", "difficulty": "moderate", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's permesso di soggiorno validity",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["it_eu_long_term_residence", "it_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "eu_long_term_asgi",
+      "tier": 1,
+      "url": "https://www.asgi.it/wp-content/uploads/2024/02/PERMESSO-DI-SOGGIORNO-UE-PER-SOGGIORNANTI-DI-LUNGO-PERIODO_feb24.pdf",
+      "title": "ASGI (Associazione per gli Studi Giuridici sull'Immigrazione, an Italian legal-studies association with material reproducing official Testo Unico Immigrazione provisions, Art. 29) -- income and housing requirements for family reunification and long-term residence",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "citizenship_after_months (24) reflects Legge 91/1992 Article 5's marriage-based track specifically for spouses of Italian citizens (2 years' legal residence in Italy after marriage, or 3 years if resident abroad at the time of application; both halved if the couple has children) -- confirmed directly via a genuine tier-1 Ministero dell'Interno fetch (interno.gov.it) and corroborated by multiple independent legal sources. This route (ricongiungimento familiare) covers the broader population of family members of any legally resident sponsor, not only spouses of Italian citizens specifically -- the fast 24-month citizenship figure applies only to the spouse-of-Italian-citizen subset; other reunited family members (children, dependent parents, or spouses of non-citizen sponsors) follow the general residence-based naturalisation tracks documented in it_naturalisation instead, which can run considerably longer. pr_after_months uses the general 5-year EU long-term residence timeline as a conservative default since this route's holders are diverse in their eventual path -- an approximation rather than a single traced figure for every sub-case, consistent with this dataset's honesty conventions where a route's population isn't uniform enough for one precise number."
+}

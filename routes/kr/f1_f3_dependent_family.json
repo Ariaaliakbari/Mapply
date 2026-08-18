@@ -1,0 +1,73 @@
+{
+  "id": "kr_f1_f3_dependent_family",
+  "country": "KR",
+  "name": "F-1 Visit Cohabitation / F-3 Dependent Family (spouse and children of a foreign resident)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Family of a qualifying long-term-visa holder",
+      "requirements": [
+        {
+          "id": "f13_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "in",
+          "value": ["d1_culture_arts", "d5_news_coverage", "d6_religion", "d7_intracompany", "d8_investor", "d9_trade", "e1_professor", "e_series_professional"],
+          "hard": true,
+          "blocker_text": "The sponsoring family member must hold a qualifying long-term status -- primarily D-1 (Culture/Arts), D-5 (News Coverage), D-6 (Religion), D-7 (Intra-Company Transferee), D-8 (Foreign Investor), D-9 (International Trade), E-1 (Professor), or other E-series professional statuses. E-9 and E-10 (non-professional and maritime crew) holders cannot sponsor family under this route at all -- a firm, pre-existing exclusion unaffected by 2025-2026 reforms.",
+          "fix_path": "Wait until the sponsoring family member holds a qualifying visa category; E-9/E-10 holders have no route to family sponsorship at all.",
+          "fix_time_months": null,
+          "source_id": "seoulstart_f3_guide"
+        },
+        {
+          "id": "f13_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_visa_holder", "minor_child_of_visa_holder"],
+          "hard": true,
+          "blocker_text": "Covers spouses and minor children of the qualifying sponsor; F-1 (Visit Cohabitation) applies to some sponsor categories, F-3 (Dependent Family) to others, depending on the specific sponsoring visa type.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "seoulstart_f3_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or birth certificate proving the family relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's valid long-term visa and supporting documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's visa validity",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kr_f2_7_points_resident"]
+  },
+  "sources": [
+    {
+      "id": "seoulstart_f3_guide",
+      "tier": 3,
+      "url": "https://seoulstart.com/guides/f-3-visa-guide",
+      "title": "Seoulstart -- Korea's F-3 Dependent Visa: How to Bring Your Family (2026), citing the Ministry of Justice's 15 April 2025 notice restricting change-of-status to F-3 from inside Korea",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, a real 2025 procedural tightening: since April 2025, change-of-status to F-3 from inside Korea is no longer permitted in principle -- family members must apply from outside Korea, a meaningful practical restriction not yet reflected in several older secondary guides checked in this research pass. STATUS: DRAFT. HONEST SOURCING GAP: this route's primary source is a well-cross-referenced secondary guide (Seoulstart, which states it verifies against multiple primary sources) rather than a directly fetched HiKorea or Ministry of Justice page -- HiKorea's category-specific F-1/F-3 eligibility pages were not successfully isolated and fetched in this research pass, distinct from the general hikorea.go.kr portal citation used elsewhere in this build. Switched to draft status rather than forcing a tier-3 source onto both of this route's hard requirements, consistent with how sa_family_sponsorship and sa_temporary_work_visa were handled in the Saudi Arabia build for the same reason. F-1 and F-3 are treated as one route file here despite being technically distinct visa codes because they serve the same function (family of a foreign, non-Korean-citizen resident) split only by which specific sponsor category applies -- this is different from F-6 (spouse of a Korean citizen specifically), which is correctly modeled as its own route given its materially different rights and pathway to citizenship. work_rights is 'none' as the default; the same 5 narrow exceptions documented in kr_e7_designated_activities's research (ethnic-Korean-from-China, language instruction for F-1/F-3 holders specifically, proofreading, family of F-2-7 points-system talent, and accompanying parents of talent/investors/students) allow limited permitted-activity work, not modeled as a separate requirement_group here given how narrow and case-specific each exception is."
+}

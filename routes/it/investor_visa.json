@@ -1,0 +1,145 @@
+{
+  "id": "it_investor_visa",
+  "country": "IT",
+  "name": "Investor Visa for Italy (Golden Visa)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "startup",
+      "name": "Innovative startup investment",
+      "requirements": [
+        {
+          "id": "inv_startup",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": {
+            "amount": 250000,
+            "currency": "EUR",
+            "unit": "one_time"
+          },
+          "hard": true,
+          "blocker_text": "Requires investment of at least EUR 250,000 in an Italian innovative startup registered on the official startup register, executed after the investor visa application (investments made before applying do not qualify).",
+          "fix_path": "Structure a qualifying post-application investment of at least EUR 250,000 in a registered innovative startup.",
+          "fix_time_months": null,
+          "source_id": "investorvisa_mise_official"
+        }
+      ]
+    },
+    {
+      "id": "company",
+      "name": "Italian limited company equity",
+      "requirements": [
+        {
+          "id": "inv_company",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": {
+            "amount": 500000,
+            "currency": "EUR",
+            "unit": "one_time"
+          },
+          "hard": true,
+          "blocker_text": "Requires investment of at least EUR 500,000 in equity of an operating Italian limited company (S.r.l. or S.p.A.).",
+          "fix_path": "Structure a qualifying equity investment of at least EUR 500,000 in an Italian limited company.",
+          "fix_time_months": null,
+          "source_id": "investorvisa_mise_official"
+        }
+      ]
+    },
+    {
+      "id": "government_bonds",
+      "name": "Italian government bonds",
+      "requirements": [
+        {
+          "id": "inv_bonds",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": {
+            "amount": 2000000,
+            "currency": "EUR",
+            "unit": "one_time"
+          },
+          "hard": true,
+          "blocker_text": "Requires purchase of at least EUR 2,000,000 in Italian government bonds with a residual maturity of at least 2 years at time of purchase.",
+          "fix_path": "Purchase at least EUR 2,000,000 in qualifying Italian government bonds.",
+          "fix_time_months": null,
+          "source_id": "investorvisa_mise_official"
+        }
+      ]
+    },
+    {
+      "id": "philanthropic",
+      "name": "Philanthropic donation",
+      "requirements": [
+        {
+          "id": "inv_donation",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": {
+            "amount": 1000000,
+            "currency": "EUR",
+            "unit": "one_time"
+          },
+          "hard": true,
+          "blocker_text": "Requires an irrevocable donation of at least EUR 1,000,000 to a public-interest project in culture, research, immigration management, or restoration of natural/artistic heritage -- unlike the other three tracks, this is not later divestible.",
+          "fix_path": "Structure a qualifying EUR 1,000,000 philanthropic donation to an eligible public-interest project.",
+          "fix_time_months": null,
+          "source_id": "investorvisa_mise_official"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Nulla Osta (certificate of no impediment) obtained via the online Investor Visa Committee portal before applying for the visa",
+      "difficulty": "moderate",
+      "typical_time_days": 30
+    },
+    {
+      "document": "Business plan or investment/donation documentation matching the chosen track",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Clean criminal record certificate",
+      "difficulty": "routine",
+      "typical_time_days": 30
+    }
+  ],
+  "outcome": {
+    "duration_length": "2 years initially, renewable in 3-year increments (up to 11 years total) while the investment is maintained",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no minimum physical presence requirement to maintain the visa itself",
+    "switchable_to": [
+      "it_eu_long_term_residence",
+      "it_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "investorvisa_mise_official",
+      "tier": 1,
+      "url": "https://investorvisa.mise.gov.it/index.php/en/",
+      "title": "Ministry of Enterprises and Made in Italy (MIMIT) -- official Investor Visa for Italy portal, confirming all four investment thresholds directly (EUR 2M government bonds / EUR 500K limited company / EUR 250K innovative startup / EUR 1M philanthropic initiative)",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "SOURCING UPGRADE: investorvisa.mise.gov.it was successfully fetched directly in this research pass, confirming all four thresholds as genuine tier-1 fact rather than resting on secondary-source corroboration -- replacing an earlier draft's tier-3-only basis. A genuine, currently-live structural finding surfaced only by the direct fetch: the programme has been suspended for Russian and Belarusian citizens since 14 July 2023 (per the Committee Chairman's order implementing EU Recommendation C(2022) 2028), later extended (20 March 2024, per a MAECI note) to cover non-EU citizens holding dual nationality where one passport is Russian or Belarusian -- a real, binding eligibility exclusion not mentioned in any of the secondary sources checked in this research pass, and exactly the kind of detail a direct government fetch catches that aggregator sites miss. STRUCTURAL CONTRAST worth stating plainly against it_self_employment_visa: this route, unlike the ordinary self-employment channel's brutal 650-slot national quota, is explicitly not subject to Decreto Flussi quota limits at all and accepts applications year-round -- the same broader country (and the same year's immigration cycle) running one work-independent channel that is among the tightest in this dataset alongside a parallel, unlimited investment-based channel with materially lower barriers for sufficiently capitalised applicants. Stable since the programme's 2017 introduction, with all four thresholds unchanged into 2026 even as comparable programmes elsewhere in Europe (Portugal's real-estate route, Greece's sharply raised thresholds, several outright closures) saw material disruption -- multiple independent sources attribute this stability to the programme's enterprise/public-interest funding model rather than residential real estate, which has drawn less political controversy. The philanthropic-donation track is structurally distinct from the other three: irrevocable rather than divestible, meaning (unlike the bond, company, or startup tracks) there is no scenario where the applicant later withdraws the capital while retaining status -- worth surfacing clearly since it changes the real financial commitment calculus relative to the other tracks despite sharing the same nominal 'investment' framing."
+}

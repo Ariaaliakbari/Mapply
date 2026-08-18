@@ -1,0 +1,74 @@
+{
+  "id": "it_elective_residency",
+  "country": "IT",
+  "name": "Visto per residenza elettiva (Elective Residency visa)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Passive income, no employment",
+      "requirements": [
+        {
+          "id": "er_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 31000, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires stable, continuous passive income of at least approximately EUR 31,000/year (precisely EUR 31,159.29 per the Decreto Interministeriale MAE 850/2011 formula: 3x the Table A subsistence figure) from sources other than employment -- pensions, annuities, real-estate income, stable business holdings, or investment income. Working in Italy is explicitly prohibited on this status. Passive-income requirement rises by 20% for an accompanying spouse and at least 5% per accompanying child, minor or adult dependent.",
+          "fix_path": "Document passive income at or above the current threshold, adjusted upward for any accompanying family members.",
+          "fix_time_months": null,
+          "source_id": "esteri_recife_elettiva"
+        },
+        {
+          "id": "er_housing",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "italian_accommodation_available",
+          "hard": true,
+          "blocker_text": "Requires availability of housing to establish residence in Italy -- ownership or a rental contract of at least 1 year.",
+          "fix_path": "Secure ownership or a qualifying rental contract for Italian accommodation.",
+          "fix_time_months": null,
+          "source_id": "esteri_recife_elettiva"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documented proof of stable passive income (pension statements, rental income records, dividend/investment statements)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Property deed or rental contract for Italian accommodation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "International health insurance, minimum 30 days' duration and EUR 30,000 coverage for emergency hospitalisation and repatriation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable in further periods (commonly cited as up to 2 years per renewal) indefinitely provided the income and other conditions continue to be met",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["it_eu_long_term_residence", "it_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "esteri_recife_elettiva",
+      "tier": 1,
+      "url": "https://consrecife.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/tipologie-di-visto/visto-per-residenza-elettiva/",
+      "title": "Consolato d'Italia Recife (esteri.it, official Italian consular network) -- Visto per residenza elettiva, describing the no-employment condition, housing requirement, and passive-income sources",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Distinguished sharply from it_self_employment_visa and it_work_visa_subordinato: this status is explicitly premised on NOT working in Italy at all, the mirror image of Brazil's retirement-visa pattern documented elsewhere in this dataset. work_rights is correctly 'none' rather than 'restricted' -- multiple sources note Italian administrative case law has become notably strict in scrutinising elective-residency applications specifically to confirm the applicant genuinely does not intend to seek local employment, treating any sign of intended work-market participation as grounds for refusal. The EUR 31,000 figure derives from a specific bureaucratic formula (Decreto Interministeriale MAE 850/2011: a daily subsistence rate of EUR 27.89 for days beyond 20, multiplied by 365, plus a fixed EUR 206.58 component, tripled) rather than being a simple round legislative number -- worth flagging since the exact figure (EUR 31,159.29 per source, vs the more commonly rounded EUR 31,000 cited elsewhere) reflects a genuine calculation rather than an approximation, and applicants should expect consulates to apply the precise figure rather than the rounded one. If a denial occurs, appeal lies to the TAR Lazio (Regional Administrative Court) within 60 days -- a specific, centralised judicial-review venue rather than a general administrative appeal, worth noting given how routinely sources describe recent refusals. pr_after_months and citizenship_after_months use the general 5-year/10-year tracks since no accelerated path specific to elective-residency holders was found in sources checked for this build."
+}

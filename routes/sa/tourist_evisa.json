@@ -1,0 +1,91 @@
+{
+  "id": "sa_tourist_evisa",
+  "country": "SA",
+  "name": "Tourist eVisa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Eligible-nationality online application",
+      "requirements": [
+        {
+          "id": "tv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["eligible_evisa_nationality_list_66_countries"],
+          "hard": true,
+          "blocker_text": "Only nationals of the roughly 66 countries on the eVisa eligibility list can apply online; other nationalities must use a Saudi embassy/consulate visa or a licensed travel agent instead.",
+          "fix_path": "Apply through a Saudi embassy or consulate if not on the eVisa-eligible list.",
+          "fix_time_months": null,
+          "source_id": "visitsaudi_evisa"
+        },
+        {
+          "id": "tv_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_umrah_family_visit_no_work",
+          "hard": true,
+          "blocker_text": "The eVisa covers tourism, Umrah (excluding Hajj, which has a separate seasonal visa), family and friend visits, and attending events; it does not authorise any form of paid work.",
+          "fix_path": "Apply for the relevant work or business route instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "visitsaudi_evisa"
+        },
+        {
+          "id": "tv_passport",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "passport_valid_6_months_and_insurance",
+          "hard": true,
+          "blocker_text": "Requires a passport valid for at least 6 months and mandatory travel medical insurance, bundled into the eVisa fee.",
+          "fix_path": "Renew the passport if fewer than 6 months of validity remain.",
+          "fix_time_months": null,
+          "source_id": "visitsaudi_evisa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 6 months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Online application via visa.visitsaudi.com, processed in 24-72 hours", "difficulty": "routine", "typical_time_days": 3 }
+  ],
+  "outcome": {
+    "duration_length": "1 year multiple-entry, up to 90 days per visit",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 90 days per visit within the 1-year multiple-entry validity",
+    "switchable_to": ["sa_student", "sa_premium_residency_investor_entrepreneur"]
+  },
+  "sources": [
+    {
+      "id": "visitsaudi_evisa",
+      "tier": 1,
+      "url": "https://visa.visitsaudi.com/",
+      "title": "visa.visitsaudi.com -- official Saudi Arabia eVisa portal (Ministry of Tourism / General Directorate of Passports)",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "saudia_tourist",
+      "tier": 1,
+      "url": "https://www.saudia.com/before-flying/travel-information/hajj-and-umrah/tourist-visa",
+      "title": "Saudia (national carrier, government-owned) -- Tourist Visa requirements, corroborating the passport-validity and age conditions",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Saudi Arabia's eVisa, launched September 2019, represents one of the fastest visa-regime liberalisations in this dataset -- from essentially closed to tourism to a 66-country eVisa list within a few years, explicitly framed against a Vision 2030 target of 150 million annual visits by 2030. Distinguished from the separate seasonal Hajj visa (not modeled as its own route file here, since it is a religious-pilgrimage-specific, quota-managed, government-coordinated process rather than an ordinary applicant-facing immigration route, and sits closer to a logistics/quota allocation system than a comparable route) and from the Business Visit Visa (valid up to 90 days, permits meetings and negotiations but explicitly prohibits any ongoing work relationship -- flagged as a candidate for a future separate route file rather than folded in here, since its requirement grammar differs meaningfully from tourism)."
+}

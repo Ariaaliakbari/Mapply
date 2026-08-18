@@ -1,0 +1,121 @@
+{
+  "id": "cn_green_card_investor",
+  "country": "CN",
+  "name": "Foreigner's Permanent Residence Permit -- Investor track (Five-Star Card)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General investment, any region",
+      "requirements": [
+        {
+          "id": "inv_general",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 2000000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires actually-paid-in registered capital of at least USD 2,000,000 in a Chinese enterprise, maintained at or above this level continuously for 3 years.",
+          "fix_path": "Structure and maintain a qualifying investment of at least USD 2,000,000 for 3 continuous years.",
+          "fix_time_months": 36,
+          "source_id": "nia_pr_measures"
+        }
+      ]
+    },
+    {
+      "id": "central_region",
+      "name": "Investment in central-region provinces",
+      "requirements": [
+        {
+          "id": "inv_central",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 1000000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires actually-paid-in registered capital of at least USD 1,000,000 in a designated central-region province, maintained continuously for 3 years -- half the general-track threshold, a deliberate regional-development incentive.",
+          "fix_path": "Structure and maintain a qualifying central-region investment of at least USD 1,000,000 for 3 continuous years.",
+          "fix_time_months": 36,
+          "source_id": "nia_pr_measures"
+        }
+      ]
+    },
+    {
+      "id": "western_poverty_counties",
+      "name": "Investment in western-region provinces or designated poverty-alleviation counties",
+      "requirements": [
+        {
+          "id": "inv_western",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires actually-paid-in registered capital of at least USD 500,000 in a designated western-region province or a national key poverty-alleviation county, maintained continuously for 4 years -- a longer holding period than the other three tracks, in exchange for the lowest capital floor.",
+          "fix_path": "Structure and maintain a qualifying investment of at least USD 500,000 in an eligible western/poverty-alleviation location for 4 continuous years.",
+          "fix_time_months": 48,
+          "source_id": "nia_pr_measures"
+        }
+      ]
+    },
+    {
+      "id": "encouraged_industry",
+      "name": "Investment in a state-encouraged industry",
+      "requirements": [
+        {
+          "id": "inv_encouraged",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires actually-paid-in registered capital of at least USD 500,000 in an industry listed as 'encouraged' under the state Foreign Investment Industry Guidance Catalogue, maintained continuously for 3 years -- the same capital floor as the western/poverty-county track but with the shorter 3-year holding period, rewarding investment in nationally-prioritised sectors over any-industry investment in a low-cost region.",
+          "fix_path": "Confirm the target industry is listed as 'encouraged' in the current Guidance Catalogue and structure a qualifying investment of at least USD 500,000 for 3 continuous years.",
+          "fix_time_months": 36,
+          "source_id": "nia_pr_measures"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registered-capital payment records showing the qualifying amount actually paid in (not merely committed)", "difficulty": "hard", "typical_time_days": 60 },
+    { "document": "Health certificate from a Chinese government-designated quarantine authority or an authenticated foreign equivalent", "difficulty": "routine", "typical_time_days": 14 },
+    { "document": "Overseas criminal-record certificate", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (card itself valid 10 years for adults, 5 for minors, renewed as a card only)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cn_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "nia_pr_measures",
+      "tier": 1,
+      "url": "https://www.nia.gov.cn/n741440/n741547/c1295837/content.html",
+      "title": "National Immigration Administration (nia.gov.cn) -- 外国人在中国永久居留审批管理办法 (Administrative Measures for the Approval of Foreigners' Permanent Residence in China), Article setting the four investor-track capital tiers",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "dongguan_oca_investor",
+      "tier": 1,
+      "url": "https://ql.dg.gov.cn/ql/sqzcflfg/202312/9e266163691b48dca90a8d684aa75362.shtml",
+      "title": "Dongguan Municipal Overseas Chinese Affairs Federation (ql.dg.gov.cn, a local government body) -- official public notice reproducing the four investor-track thresholds verbatim, corroborating the nia.gov.cn regulation independently",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "SOURCING UPGRADE during this build: an initial draft of this route rested on a single tier-3 immigration-consultancy figure (a USD 500,000-2,000,000 range, described as varying 'by region and sector' without further detail). A direct nia.gov.cn fetch of the actual regulation -- 外国人在中国永久居留审批管理办法 (Administrative Measures for the Approval of Foreigners' Permanent Residence in China) -- resolved this into four distinct, precisely-thresholded OR-logic tracks, independently cross-confirmed by a Dongguan municipal government reproduction of the same figures. This is a clean example of this dataset's core method working as intended: the tier-3 range wasn't wrong, just imprecise, and the direct government fetch replaced an approximation with the actual four-tier structure lawmakers built. The deliberate regional-development gradient is itself a genuine structural finding worth surfacing: central-region investment costs half the general-track threshold (USD 1M vs 2M) for the same 3-year hold, while western-region/poverty-county investment costs only a quarter (USD 500K) but demands a full extra year (4 years vs 3) -- a clear policy design rewarding investment in less-developed regions with a lower capital bar, at the cost of a longer commitment period. Same top-level citizenship/dual-nationality findings apply here as noted in the earlier draft: Green Card status does not itself lead to or accelerate citizenship, which requires an entirely separate naturalisation application (see cn_naturalisation)."
+}

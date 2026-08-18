@@ -1,0 +1,92 @@
+{
+  "id": "kr_e7_designated_activities",
+  "country": "KR",
+  "name": "E-7 Foreign National of Special Ability (Designated Activities)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "e7_1_professional",
+      "name": "E-7-1: professional occupations",
+      "requirements": [
+        {
+          "id": "e71_job_match",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["engineering", "it_specialist", "research", "design", "finance", "legal_accounting", "executive"],
+          "hard": true,
+          "blocker_text": "The role must match exactly one of 87 Ministry of Justice-designated E-7 occupation codes, and the applicant's academic major and career experience must align with that specific code -- a mismatched degree or job title is the single most common reason for refusal.",
+          "fix_path": "Confirm the specific job title and duties map to a designated E-7-1 occupation code before an employer files.",
+          "fix_time_months": null,
+          "source_id": "moj_e7_notice_2025_406"
+        },
+        {
+          "id": "e71_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 31120000, "currency": "KRW", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Minimum annual salary of KRW 31,120,000, effective 1 February through 31 December 2026 under Ministry of Justice Public Notice No. 2025-406 -- this is a flat floor set directly by ministerial notice, not a percentage of GNI, and applies uniformly regardless of employer size since an April 2025 reform removed the older company-size-tiered scale.",
+          "fix_path": "Negotiate a base contractual salary at or above the current floor; bonuses and allowances are not reliably counted toward it.",
+          "fix_time_months": null,
+          "source_id": "moj_e7_notice_2025_406"
+        },
+        {
+          "id": "e71_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Korean-registered employer who files the E-7 application; this is an employer-sponsored, employer-tied status.",
+          "fix_path": "Secure a job offer from a Korean employer willing to sponsor the E-7 application.",
+          "fix_time_months": null,
+          "source_id": "hikorea_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract meeting the current salary floor for the applicable E-7 subclass", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Degree certificate and career-history documentation matching the designated occupation code", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Employer's business registration and, for some roles, an SME/venture/regional confirmation for reduced-floor eligibility", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years, renewed with the employer sponsorship",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kr_f2_7_points_resident", "kr_f5_permanent_residence", "kr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "moj_e7_notice_2025_406",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "Ministry of Justice Public Notice No. 2025-406 (law/moj.go.kr 공고 제2025-406호), setting 2026 E-7 salary floors -- published via HiKorea and cross-corroborated across multiple independent immigration-services sources citing the same notice number and figures",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "hikorea_general",
+      "tier": 1,
+      "url": "https://www.hikorea.go.kr/",
+      "title": "HiKorea -- Korea Immigration Service's official portal for visa categories, ARC, and stay procedures",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, the largest single procedural overhaul found in the Korea build: since April 2025, E-7 salary floors are set as flat KRW figures by direct Ministry of Justice public notice (No. 2025-406 for 2026, published 29 Dec 2025, effective 1 Feb-31 Dec 2026) rather than calculated as a percentage of the prior year's per-capita GNI -- the older GNI-tiered scale, which varied by employer size (large firms vs SMEs/venture firms/non-metropolitan mid-sized companies), was removed. Multiple secondary sources still describe the salary floor as '80% of GNI' or similar percentage formulas, which is the exact live-staleness pattern flagged repeatedly across this dataset (Poland's Type A/B/C renaming, Saudi Arabia's SSCO reform) -- the correct 2026 figure is the flat KRW 31,120,000 published directly by notice, a KRW 2,450,000 increase over the 2025 floor. This route models only E-7-1 (the professional/general-office tier); E-7-2, E-7-3, and E-7-4 (the points-based skilled-worker track that most E-9 workers use to transition to longer-term status) carry materially different, generally lower salary floors and separate qualifying logic -- not modeled as separate groups here given the scope of this initial build, but flagged as the clearest candidate for expanding this route into a full multi-group file in a follow-up session, mirroring how the UK Skilled Worker route absorbed six qualifying groups. citizenship_after_months (60) and pr_after_months (60) use the general naturalisation/permanent-residence timeline; see kr_f5_permanent_residence and kr_naturalisation for the underlying route-level detail, including materially faster alternate tracks (e.g. the F-2-7 points-based route's 3-year path to F-5) that this route's holders commonly use instead of the plain 5-year track."
+}

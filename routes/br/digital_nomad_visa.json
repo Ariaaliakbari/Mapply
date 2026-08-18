@@ -1,0 +1,80 @@
+{
+  "id": "br_digital_nomad_visa",
+  "country": "BR",
+  "name": "Digital Nomad visa (remote worker, foreign-sourced income)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "income_route",
+      "name": "Foreign-sourced monthly income",
+      "requirements": [
+        {
+          "id": "dn_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 1500, "currency": "USD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 1,500/month in income from a foreign-based employer or clients -- Brazilian-sourced income or work for Brazilian clients falls outside this visa's scope entirely.",
+          "fix_path": "Document at least USD 1,500/month in verifiable foreign-sourced income.",
+          "fix_time_months": null,
+          "source_id": "gov_br_mre_nomad"
+        }
+      ]
+    },
+    {
+      "id": "savings_route",
+      "name": "Foreign-held savings",
+      "requirements": [
+        {
+          "id": "dn_savings",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 18000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Alternatively, requires at least USD 18,000 held in a foreign bank account, in lieu of documented monthly income.",
+          "fix_path": "Document at least USD 18,000 in foreign-held savings.",
+          "fix_time_months": null,
+          "source_id": "gov_br_mre_nomad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank statements or remote-employment/freelance contracts proving the qualifying income or savings", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Overseas criminal-record certificate", "difficulty": "routine", "typical_time_days": 30 },
+    { "document": "Health insurance valid in Brazil (only required for consular applications, not for in-country MigranteWeb applications)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable for 1 additional year (practice as of mid-2026 has often extended to a third year, though this is not a guaranteed entitlement)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["br_work_visa", "br_investor_visa", "br_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_mre_nomad",
+      "tier": 1,
+      "url": "https://www.gov.br/mre/pt-br/embaixada-helsinque/consular-services/digital-nomad-visa-vitem-xiv",
+      "title": "Ministério das Relações Exteriores (gov.br/mre, Helsinki embassy consular services page) -- Digital Nomad Visa, citing Resolution CNIg/MJSP 45/2021, the 1-year renewable-once structure, and application via MigranteWeb",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY, flagged rather than silently resolved: the gov.br/mre page used as this route's primary source labels the Digital Nomad visa 'VITEM XIV.' However, a separate set of gov.br/mre consular pages (Istanbul, Geneva) and the Ministry of Justice's own portaldeimigracao.mj.gov.br equally clearly label 'VITEM XIV' as the Visto de Transferência de Rendimentos de Aposentadoria ou Pensão -- the retirement/pension-income visa under Resolução Normativa 40/2019 (see br_retirement_visa), an entirely different route with a different legal basis, different income test (USD 2,000/month vs USD 1,500/month or USD 18,000 savings), and a different qualifying population. Both labels come from what appear to be genuine gov.br subdomains, which is precisely the kind of conflict this dataset's sourcing discipline exists to surface rather than paper over -- deliberately, this route's 'name' field avoids asserting a VITEM code at all, and applicants should confirm the current code directly with a consulate before relying on either source. The Digital Nomad visa's own defining instrument, Resolution CNIg/MJSP 45/2021, is the safer anchor citation regardless of which numeral code currently applies. A genuinely favourable structural feature confirmed across multiple sources: up to 2 years on this visa can count toward the 4-year residency requirement for ordinary naturalisation (br_naturalisation), and unlike most 'visit-adjacent' routes in this dataset, in-country status change from a tourist entry is explicitly permitted via the Federal Police's MigranteWeb platform rather than requiring departure and reapplication from abroad."
+}

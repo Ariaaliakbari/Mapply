@@ -1,0 +1,74 @@
+{
+  "id": "it_schengen_visitor",
+  "country": "IT",
+  "name": "Schengen short-stay visa (Type C) / visa-free entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard short-stay entry",
+      "requirements": [
+        {
+          "id": "visit_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_visiting_family_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism, business visits, and family visits; does not authorise employment or self-employment.",
+          "fix_path": "Apply for the relevant work or self-employment route instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "esteri_visti"
+        },
+        {
+          "id": "visit_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_and_insurance",
+          "hard": true,
+          "blocker_text": "Requires sufficient funds for the intended stay and travel medical insurance covering at least EUR 30,000, valid across the Schengen area.",
+          "fix_path": "Provide bank statements and qualifying travel medical insurance.",
+          "fix_time_months": null,
+          "source_id": "esteri_visti"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 3 months beyond intended departure", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel medical insurance, minimum EUR 30,000 coverage", "difficulty": "routine", "typical_time_days": 3 },
+    { "document": "Proof of accommodation, itinerary, and sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 90 days per 180-day rolling window across the whole Schengen area, not just Italy",
+    "switchable_to": ["it_student_visa"]
+  },
+  "sources": [
+    {
+      "id": "esteri_visti",
+      "tier": 1,
+      "url": "https://vistoperitalia.esteri.it/home/it",
+      "title": "Ministero degli Affari Esteri e della Cooperazione Internazionale (esteri.it) -- Visto per l'Italia, official visa portal",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Italy follows the standard EU Schengen Borders Code framework for short-stay entry, identical in structure to Poland's equivalent route elsewhere in this dataset -- both are full Schengen members, so the 90/180 rule, funds/insurance tests, and no-work restriction are common EU law rather than Italy-specific policy. Change of status to a long-term category from inside Italy while on this status is not permitted; applicants must apply for the target visa from outside Italy."
+}

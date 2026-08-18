@@ -1,0 +1,80 @@
+{
+  "id": "br_mercosur_residency",
+  "country": "BR",
+  "name": "Mercosur Residency Agreement (Acordo de Residência do Mercosul)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Nationality-based, no job offer or economic test required",
+      "requirements": [
+        {
+          "id": "mer_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["AR", "BO", "CL", "CO", "EC", "PY", "PE", "UY"],
+          "hard": true,
+          "blocker_text": "Requires nationality of Argentina, Bolivia, Chile, Colombia, Ecuador, Paraguay, Peru, or Uruguay -- the Mercosur member and associated states covered by Decreto nº 6.975/2009 -- or having naturalised in one of those countries more than 5 years before applying. Nationality is the entire qualifying test: no job offer, sponsor, or minimum-income requirement applies.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_mercosur"
+        },
+        {
+          "id": "mer_documents",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Requires a valid passport, criminal-record certificate, and proof of the qualifying nationality; the request can be filed at a Brazilian consulate abroad (VITEM XIII) or, for those already in Brazil, directly with the Federal Police.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_br_pf_mercosur"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport proving qualifying nationality", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal-record certificate from the country of origin", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "2 years temporary, convertible to indefinite-term residence 90 days before expiry",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["br_permanent_residence", "br_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_pf_mercosur",
+      "tier": 1,
+      "url": "https://www.gov.br/pf/pt-br/assuntos/imigracao/autorizacao-residencia/acordo-de-residencia-para-nacionais-dos-estados-partes-do-mercosul-bolivia-e-chile",
+      "title": "Polícia Federal (gov.br/pf) -- Acordo de Residência do MERCOSUL, listing the 8 qualifying nationalities and the 2-year temporary to indefinite-term conversion process",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "gov_br_mj_mercosur_stats",
+      "tier": 1,
+      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias/brasil-facilita-concessao-de-vistos-temporarios-e-de-residencia-a-migrantes-de-paises-do-mercosul-e-de-lingua-portuguesa",
+      "title": "Ministério da Justiça e Segurança Pública (gov.br/mj) -- news release confirming 64,815 temporary visas/residence authorisations granted Jan 2023-Aug 2024 under the Mercosur agreement and the CPLP portaria combined, with 63,071 of those under the Mercosur agreement specifically",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, the single most distinctive route in the Brazil build: nationality alone is the entire qualifying test -- no job offer, employer sponsor, minimum income, or economic activity of any kind is required, a genuinely different mechanism from every other route in this dataset except Poland's Karta Polaka and Korea's F-4 (both ancestry-based rather than current-nationality-based). Classified as 'settled' rather than 'ancestry' since the qualifying test is the applicant's own current nationality, not descent from a national of the destination country -- a meaningful category distinction from Poland's or Korea's ancestry routes, closer in spirit to EU freedom-of-movement-style regional-bloc mobility than to a diaspora-return programme. Real, large-scale, and recently reported: gov.br/mj's own October 2024 news release states 63,071 of 64,815 total grants under this pathway and the related CPLP (Portuguese-speaking-country) arrangement between January 2023 and August 2024 came through the Mercosur agreement specifically, with Bolivia the single largest source country (25,411 registrations) -- this is a genuinely high-volume, well-used route, not a marginal legal curiosity, and the scale itself is tier-1 sourced rather than asserted. A closely related but narrower CPLP (Comunidade dos Países de Língua Portuguesa) arrangement grants similar simplified treatment specifically to Portuguese-speaking-country nationals under Portaria Interministerial MJSP/MRE nº 40/2023 -- not modeled as its own separate route file here given significant overlap with this route's mechanism and with br_naturalisation's own Portuguese-speaking-country naturalisation track (Article 65's constitutional provision, reduced to 1 year residence), but flagged as a candidate for a future dedicated file if this dataset is expanded further. pr_after_months (24) reflects the 2-year temporary-to-indefinite-term conversion this route's holders can request. citizenship_after_months is left honestly null rather than guessed: br_naturalisation's ordinary track requires 4 years of indefinite-term residence (residência por prazo indeterminado), and it is not conclusively established in this research pass whether that 4-year clock starts running from this route's initial 2-year temporary grant or only from the point of conversion to indefinite-term status -- if the former, total time to citizenship eligibility could be as low as 4 years from initial entry; if the latter, it could run to roughly 6 years (2 to convert plus 4 more). Rather than assert either figure without confirming Brazil's specific rule on this point, the gap is flagged here for a follow-up session to resolve against a primary gov.br/mj source."
+}

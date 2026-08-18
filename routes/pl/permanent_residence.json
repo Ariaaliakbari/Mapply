@@ -1,0 +1,202 @@
+{
+  "id": "pl_permanent_residence",
+  "country": "PL",
+  "name": "Permanent residence permit (zezwolenie na pobyt stały)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "karta_polaka",
+      "name": "Karta Polaka holder settling permanently",
+      "requirements": [
+        {
+          "id": "pr_kp_card",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "valid_karta_polaka",
+          "hard": true,
+          "blocker_text": "Requires holding a valid, currently unexpired Pole's Card and an intention to settle permanently in Poland.",
+          "fix_path": "Obtain a Pole's Card first (see pl_karta_polaka).",
+          "fix_time_months": null,
+          "source_id": "gov_pobyt_staly_kp"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "unlimited",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 12,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": "no minimum prior residence period in Poland required at all",
+        "switchable_to": ["pl_naturalisation"]
+      }
+    },
+    {
+      "id": "economic_general",
+      "name": "General economic residence, 5 years continuous",
+      "requirements": [
+        {
+          "id": "pr_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous, legal residence in Poland directly before the application, including time on a temporary residence permit for other circumstances.",
+          "fix_path": "Continue accruing continuous legal residence; breaks under 6 months at a time (10 months total) are tolerated.",
+          "fix_time_months": 60,
+          "source_id": "gov_pobyt_staly_ogolne"
+        },
+        {
+          "id": "pr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "stable_regular_income",
+          "hard": true,
+          "blocker_text": "Requires a stable, regular source of income sufficient to cover the applicant and any dependants.",
+          "fix_path": "Document stable employment, business, or other regular income.",
+          "fix_time_months": null,
+          "source_id": "gov_pobyt_staly_ogolne"
+        },
+        {
+          "id": "pr_health_insurance",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "health_insurance_confirmed",
+          "hard": true,
+          "blocker_text": "Requires valid health insurance (NFZ or private) covering costs in Poland.",
+          "fix_path": "Confirm NFZ coverage through employment or purchase qualifying private insurance.",
+          "fix_time_months": null,
+          "source_id": "gov_pobyt_staly_ogolne"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_polish_citizen",
+      "name": "Married to a Polish citizen, 3 years married + 2 years residence",
+      "requirements": [
+        {
+          "id": "pr_marriage_3yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_polish_citizen_3yr_plus_2yr_residence",
+          "hard": true,
+          "blocker_text": "Requires at least 3 years of marriage to a Polish citizen before the application, and at least 2 years of continuous residence in Poland directly before the application on a marriage-linked temporary permit.",
+          "fix_path": "Continue the marriage and residence until both thresholds are met.",
+          "fix_time_months": 24,
+          "source_id": "gov_pobyt_staly_ogolne"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "unlimited (residence card itself valid 10 years, renewed as a card only, not a fresh permit)",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 24,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": null,
+        "switchable_to": ["pl_naturalisation", "pl_eu_long_term_resident"]
+      }
+    },
+    {
+      "id": "refugee_humanitarian",
+      "name": "Refugee status, subsidiary protection, or humanitarian stay, 5 years",
+      "requirements": [
+        {
+          "id": "pr_refugee_5yr",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "refugee_or_subsidiary_protection_or_humanitarian",
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous residence in Poland directly connected to refugee status, subsidiary protection, or a humanitarian-grounds stay.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "gov_pobyt_staly_ogolne"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "unlimited (residence card itself valid 10 years, renewed as a card only, not a fresh permit)",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 24,
+        "dual_citizenship_allowed": true,
+        "physical_presence_requirement": null,
+        "switchable_to": ["pl_naturalisation", "pl_eu_long_term_resident"]
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence for the applicable period (residence cards, entry/exit stamps)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Tax office confirmation of no outstanding tax arrears", "difficulty": "routine", "typical_time_days": 14 },
+    { "document": "Clean criminal record confirmation", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "unlimited (residence card itself valid 10 years, renewed as a card only, not a fresh permit)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pl_naturalisation", "pl_eu_long_term_resident"]
+  },
+  "sources": [
+    {
+      "id": "gov_pobyt_staly_kp",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/uw-podlaski/posiadacz-karty-polaka",
+      "title": "gov.pl / Podlaski Urząd Wojewódzki -- Zezwolenie na pobyt stały dla posiadacza Karty Polaka",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_pobyt_staly_ogolne",
+      "tier": 1,
+      "url": "https://mos.cudzoziemcy.gov.pl/baza-pytan-i-odpowiedzi/zezwolenia-bezterminowe/zezwolenie-na-pobyt-staly/",
+      "title": "Moduł Obsługi Spraw (mos.cudzoziemcy.gov.pl, Office for Foreigners' official case-handling portal) -- Zezwolenie na pobyt stały",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_art30_lodzki",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/uw-lodzki/uznanie-za-obywatela-polskiego",
+      "title": "gov.pl / Łódzki Urząd Wojewódzki -- Uznanie za obywatela polskiego, reproducing Art. 30 of the Ustawa o obywatelstwie polskim (2 April 2009) in full",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "bip_lubuskie_art30",
+      "tier": 1,
+      "url": "https://bip.lubuskie.uw.gov.pl/sprawy_obywatelskie/Uznanie_za_obywatela_polskiego",
+      "title": "Lubuski Urząd Wojewódzki (regional government office, BIP public-information portal) -- Art. 30 tiers, independent cross-check of the Łódzki reproduction",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Four distinct OR-logic qualifying groups confirmed directly in the Act on Foreigners' permanent-residence provisions (via mos.cudzoziemcy.gov.pl and cross-checked against multiple voivodeship-office pages using near-identical statutory language): Karta Polaka holders (0-year wait, fee waived), general economic residents (5-year wait, income/insurance tested), spouses of Polish citizens (3-year marriage + 2-year residence, no income test), and refugee/subsidiary-protection/humanitarian-grounds holders (5-year wait, tied to the protection status specifically rather than residence in general). This is the clearest 4-way OR-group case found anywhere in the Poland build, comparable in shape to the UK Skilled Worker's six qualifying groups documented in the project brief -- the schema absorbed it without structural change, consistent with the brief's core validation claim holding for a 15th country. citizenship_after_months is now precisely resolved per group against Art. 30(1) of the Ustawa o obywatelstwie polskim, cross-confirmed independently across the Łódzki and Lubuski voivodeship offices' gov.pl/BIP pages (which reproduce the statute's numbered subpoints and match each other exactly): 36 months for the general economic track (top-level default, Art. 30(1)(1)), 24 months for the spouse-of-Polish-citizen track (Art. 30(1)(2)(a)) and separately for the refugee/humanitarian track (Art. 30(1)(3)), and 12 months for the Karta Polaka/Polish-origin track (Art. 30(1)(7)) -- previously an unconfirmed single top-level estimate, now four distinct group-level figures each tied to the specific statutory subpoint that produces it, replacing the earlier single-figure placeholder this route shipped with."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "br_retirement_visa",
+  "country": "BR",
+  "name": "Retirement/Pension Income Transfer visa (Resolução Normativa 40/2019)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Retiree or death-pension beneficiary",
+      "requirements": [
+        {
+          "id": "ret_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 2000, "currency": "USD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires proof of retirement or death-pension income of at least USD 2,000/month, transferred monthly to Brazil in foreign currency; other regular income sources can supplement this if the primary pension falls short.",
+          "fix_path": "Document at least USD 2,000/month in retirement or pension income, with capacity to transfer it monthly to Brazil.",
+          "fix_time_months": null,
+          "source_id": "gov_br_rn40"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of retirement or death-pension status and monthly income amount", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration of monthly transfer capacity to Brazil in foreign currency", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance valid in Brazilian territory, valid travel document, and overseas criminal-record certificate", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "renewable for as long as the qualifying income continues, with a path to indefinite-term residence",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["br_permanent_residence", "br_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_br_rn40",
+      "tier": 1,
+      "url": "https://www.gov.br/mre/pt-br/consulado-genebra/servicos-consulares/visto-visa/copy_of_vistos/visto-temporario-vitem/vitem-xiv-aposentadoria",
+      "title": "Ministério das Relações Exteriores (gov.br/mre, Geneva consulate) -- VITEM XIV - Aposentadoria, citing Resolução Normativa nº 40/2019 (published in the Diário Oficial da União 27/11/2019) and the USD 2,000/month transfer requirement",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "portaldeimigracao_rn40",
+      "tier": 1,
+      "url": "https://portaldeimigracao.mj.gov.br/pt/nav-guiada/rn-40",
+      "title": "Portal de Imigração (Ministério da Justiça e Segurança Pública's official immigration portal) -- full text reproduction of Resolução Normativa nº 40/2019, Conselho Nacional de Imigração",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY, the same conflict flagged on br_digital_nomad_visa from the other side: this route's own gov.br/mre sources (Geneva and Istanbul consulate pages) consistently label it 'VITEM XIV.' A separate gov.br/mre page (Helsinki embassy) equally clearly assigns 'VITEM XIV' to the Digital Nomad visa instead -- a completely different route with a different legal basis (Resolution CNIg/MJSP 45/2021, not RN 40/2019), a different income test (USD 1,500/month or USD 18,000 savings, not USD 2,000/month), and no work restriction, since retirees aren't working at all while nomads explicitly are. Both this route's numeral-code claim and the nomad route's are left deliberately unresolved in each file's 'name' field, consistent with this dataset's practice of surfacing genuine source conflicts rather than silently picking a winner -- this route is anchored instead to its unambiguous legal basis, Resolução Normativa nº 40/2019, independently confirmed via a full-text reproduction on the Ministry of Justice's own immigration portal (portaldeimigracao.mj.gov.br), which is the stronger and more specific of the two citations. One source notes candidly that 'there is no broad, worldwide publicity campaign from the Brazilian government' about this route, with information largely confined to Ministry of Foreign Affairs consular pages -- a genuine access/awareness gap distinct from a legal-availability gap, worth surfacing since it means this route is real and codified but likely under-used relative to its actual accessibility. work_rights is correctly 'none': this status is explicitly premised on the applicant already having sufficient foreign pension income and not needing or being authorised to work in Brazil, a sharp contrast with br_digital_nomad_visa's active remote-work premise despite both routes sharing similar income-verification mechanics. pr_after_months is left null rather than guessed: the specific temporary-to-indefinite-term conversion timeline for this route was not conclusively confirmed in sources checked for this build (unlike br_mercosur_residency's explicit 2-year/90-days-before-expiry conversion rule); citizenship_after_months (48) uses br_naturalisation's general ordinary-track figure as the best available anchor, on the assumption that RN 40 status converts to indefinite-term residence on a broadly similar timeline to Brazil's other temporary categories, but this specific chain was not independently traced end-to-end and should be treated as an estimate."
+}

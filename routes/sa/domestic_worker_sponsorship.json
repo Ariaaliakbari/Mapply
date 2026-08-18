@@ -1,0 +1,106 @@
+{
+  "id": "sa_domestic_worker_sponsorship",
+  "country": "SA",
+  "name": "Domestic worker sponsorship (Musaned)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Household sponsor via Musaned",
+      "requirements": [
+        {
+          "id": "dw_sponsor_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 24,
+          "hard": false,
+          "blocker_text": "Secondary sources report a minimum sponsor age of 24 for unmarried applicants specifically, per a Ministry of Human Resources and Social Development eligibility rule -- this figure could not be independently confirmed against a directly-fetched hrsd.gov.sa or Musaned page in this research pass, so it is treated as informational rather than a confirmed hard cutoff.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "musaned_gulfnews"
+        },
+        {
+          "id": "dw_household_capacity",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "active_musaned_account_with_household_id",
+          "hard": true,
+          "blocker_text": "Requires an active Musaned account (accessed via Absher/Nafath) -- Musaned is confirmed as HRSD's official, mandatory platform for this service (free of charge, 24-hour processing) directly on hrsd.gov.sa. Household eligibility further limits the number of workers a single household can sponsor based on family size and declared income.",
+          "fix_path": "Register an active Musaned account and confirm household eligibility for the requested worker category.",
+          "fix_time_months": null,
+          "source_id": "hrsd_musaned_service"
+        },
+        {
+          "id": "dw_category",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["housemaid", "private_driver", "cook", "caregiver", "nanny", "gardener"],
+          "hard": true,
+          "blocker_text": "Recruitment is restricted to approved private-household job categories (housemaid, private driver, cook, caregiver, nanny, and similar) under HRSD's domestic-workers regulation; it is legally distinct from corporate work-visa sponsorship and cannot be used to hire staff for a business.",
+          "fix_path": "Use the standard Employment Visa route for business hiring instead.",
+          "fix_time_months": null,
+          "source_id": "hrsd_musaned_service"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Active Musaned account linked to Absher and Nafath", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Signed e-contract and e-Tawtheeq (contract attestation) via the Musaned platform", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Registered housing contract in the sponsor's name", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's household registration, renewed via Musaned",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hrsd_musaned_service",
+      "tier": 1,
+      "url": "https://www.hrsd.gov.sa/en/ministry-services/services/816375",
+      "title": "Ministry of Human Resources and Social Development (hrsd.gov.sa) -- Request to issue a domestic worker visa electronically, confirming Musaned as HRSD's official platform for this service, free of charge with 24-hour processing",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "musaned_wego",
+      "tier": 3,
+      "url": "https://blog.wego.com/musaned-saudi/",
+      "title": "Wego Travel Blog -- How Musaned Works in 2026, describing HRSD's official domestic-worker recruitment platform functions",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "musaned_gulfnews",
+      "tier": 3,
+      "url": "https://gulfnews.com/world/gulf/saudi/you-must-be-24-to-hire-domestic-worker-in-saudi-arabia-1.101269833",
+      "title": "Gulf News -- reporting the government-stated minimum sponsor age of 24 for domestic-worker hiring via Musaned",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "musaned_labourbooking",
+      "tier": 3,
+      "url": "https://labourbooking.com/insights/domestic-worker-visa-sponsorship-saudi.html",
+      "title": "LabourBooking -- Domestic Worker Visa & Sponsorship in Saudi Arabia 2026 Guide, describing the household-vs-corporate sponsorship distinction and approved job categories",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "SOURCING UPGRADE: hrsd.gov.sa was successfully fetched directly in this research pass (unlike pr.gov.sa, which blocks automated access) and confirms Musaned as HRSD's official, mandatory, free-of-charge platform for domestic-worker visa issuance -- a genuine tier-1 basis for the platform-mechanism and job-category facts in this route. The specific age-24 sponsor-minimum figure, however, remains tier-3-sourced only (Gulf News reporting, corroborated by an Arabic-language secondary aggregator) and could not be independently confirmed against a directly-fetched HRSD eligibility page in this pass -- modeled as hard:false rather than forced onto a tier-1 citation it doesn't have, the same honest-modeling choice used elsewhere in this build (sa_asylum, sa_premium_residency_general's talent-salary figure) rather than either inventing a citation or discarding a plausible, specific, widely-reported fact. This route is structurally distinct from sa_family_sponsorship despite sharing the 'family' category: it sponsors a worker into the household rather than a family member, doesn't lead anywhere in the route graph (switchable_to is empty), and the worker's own status is entirely dependent on and terminable by the sponsoring household -- worth surfacing clearly on any UI distinguishing 'family' routes that bring relatives in from this route, which brings in someone to work for the family instead. From 1 January 2026, HRSD mandated that all domestic-worker salaries be paid through Musaned's electronic wage-protection system, and a new Work Interruption service went live -- both confirmed via the Wego Travel source and worth surfacing as a recent regulatory tightening."
+}

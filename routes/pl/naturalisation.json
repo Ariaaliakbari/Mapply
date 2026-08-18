@@ -1,0 +1,112 @@
+{
+  "id": "pl_naturalisation",
+  "country": "PL",
+  "name": "Polish citizenship -- administrative recognition and Presidential grant (uznanie za obywatela polskiego / nadanie obywatelstwa przez Prezydenta RP)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-17",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "administrative_recognition",
+      "name": "Recognition as a Polish citizen (settled applicants, integration-tested)",
+      "requirements": [
+        {
+          "id": "nat_residence",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "permanent_residence_or_eu_long_term_resident",
+          "hard": true,
+          "blocker_text": "Requires continuous legal residence on permanent residence, EU long-term resident status, or the EU right of permanent residence, for a period set by which sub-track applies: 3 years for the general track (plus stable income and legal title to housing); 2 years if married 3+ years to a Polish citizen, stateless, or holding permanent residence due to refugee status; 1 year if permanent residence was obtained due to Polish origin or a held Pole's Card (see pl_karta_polaka); or 10 years for applicants who do not fit any faster track but have 10 years of continuous, legal residence plus stable income and housing.",
+          "fix_path": "Obtain permanent residence or EU long-term resident status first (the fastest on-ramp is Karta Polaka), then continue accruing residence time on the applicable track.",
+          "fix_time_months": 12,
+          "source_id": "gov_art30_lodzki"
+        },
+        {
+          "id": "nat_integration",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "confirmed",
+          "hard": true,
+          "blocker_text": "Requires integration into Polish society, knowledge of Polish, a place to live, a source of income, respect for the Polish legal order, and not posing a threat to state defence or security.",
+          "fix_path": "Complete a Polish-language exam and document stable housing and income.",
+          "fix_time_months": 6,
+          "source_id": "powroty_nabycie"
+        }
+      ]
+    },
+    {
+      "id": "presidential_grant",
+      "name": "Grant by the President of Poland (fully discretionary, no fixed residence requirement)",
+      "requirements": [
+        {
+          "id": "nat_president_discretion",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "legal_stay_in_poland_not_visa_free_or_visa_only",
+          "hard": true,
+          "blocker_text": "Applicants must be legally resident in Poland under something more than a plain visa or visa-free stay (or apply via a consul from abroad); beyond that, the President of the Republic of Poland is bound by no statutory residence-length or integration criteria at all and grants citizenship at full personal discretion.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "prezydent_nadanie"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Confirmation of continuous legal residence at the applicable status and duration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Polish-language certificate or exam pass (administrative-recognition track only)", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Full document set: civil-status records, ancestor documentation where relevant, biometric photo, valid travel document", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "powroty_nabycie",
+      "tier": 1,
+      "url": "https://powroty.gov.pl/nabycie-obywatelstwa-polskiego-10000/",
+      "title": "Powroty.gov.pl (official Polish government portal, gov.pl domain) -- Nabycie obywatelstwa polskiego",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_art30_lodzki",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/uw-lodzki/uznanie-za-obywatela-polskiego",
+      "title": "gov.pl / Łódzki Urząd Wojewódzki -- Uznanie za obywatela polskiego, reproducing Art. 30 of the Ustawa o obywatelstwie polskim (2 April 2009) in full",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "gov_art30_pomorski",
+      "tier": 1,
+      "url": "https://www.gov.pl/web/uw-pomorski/uznanie-za-obywatela-polskiego",
+      "title": "gov.pl / Pomorski Urząd Wojewódzki -- Uznanie za obywatela polskiego, independent reproduction of Art. 30 confirming the same tiered residence periods",
+      "accessed_at": "2026-08-17"
+    },
+    {
+      "id": "prezydent_nadanie",
+      "tier": 1,
+      "url": "https://www.prezydent.pl/prezydent/kompetencje/nadanie-obywatelstwa-polskiego",
+      "title": "Prezydent.pl (official website of the President of the Republic of Poland) -- Nadanie obywatelstwa polskiego",
+      "accessed_at": "2026-08-17"
+    }
+  ],
+  "notes": "Two genuinely different legal mechanisms, correctly modeled as separate OR-logic groups: administrative recognition (uznanie za obywatela polskiego) is a rules-based track with residence-length and integration criteria, decided by the voivode/minister; the Presidential grant (nadanie obywatelstwa) is a constitutional prerogative of the President of Poland alone, explicitly unbound by any statutory residence period, confirmed directly on prezydent.pl -- 'Prezydent RP nie jest związany żadnymi terminami w sprawach o nadanie obywatelstwa polskiego' (the President is not bound by any deadlines in citizenship-grant cases). Presidential decisions are also final and non-appealable ('postanowienia Prezydenta są niezaskarżalne'), a genuinely unusual feature not seen elsewhere in this dataset's settled-category routes, where administrative refusals are typically appealable. The stamp duty for a Presidential-grant application is a substantial PLN 1,669, confirmed via powroty.gov.pl, versus no equivalent flat fee structure on the administrative-recognition track. nat_residence's four-tier structure (3yr/2yr/1yr/10yr) is Art. 30(1) of the Ustawa o obywatelstwie polskim in full, cross-confirmed independently across the Łódzki and Pomorski voivodeship offices' gov.pl pages, which reproduce the statute's numbered subpoints verbatim and match each other exactly -- this replaces an earlier draft of this route that used a single vague '3 years, shorter for some categories' simplification; that simplification has now been resolved against the primary statutory tiers rather than left approximate. The 1-year Karta Polaka/Polish-origin track is the fastest of the four and is the same figure now used on pl_karta_polaka's citizenship_after_months (12, chained with that route's 0-month PR wait). This route is the terminal node for essentially every other Poland route's switchable_to/leads_to_citizenship chain (single_permit, eu_blue_card, business_activity, family_reunification, karta_polaka, permanent_residence, eu_long_term_resident all point here), matching this dataset's Journey-view design intent of deriving citizenship pathways from the underlying route graph rather than hand-authoring them."
+}

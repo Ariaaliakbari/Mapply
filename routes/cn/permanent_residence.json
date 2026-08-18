@@ -1,0 +1,115 @@
+{
+  "id": "cn_permanent_residence",
+  "country": "CN",
+  "name": "Foreigner's Permanent Residence Permit -- Talent and Spouse tracks (Five-Star Card)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "high_level_talent",
+      "name": "High-level talent employed in China",
+      "requirements": [
+        {
+          "id": "talent_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires employment at a qualifying institution -- a State Council department or provincial-government-affiliated body, or a high-and-new-technology enterprise, encouraged-category foreign-invested enterprise, advanced-technology foreign-invested enterprise, or export-oriented foreign-invested enterprise.",
+          "fix_path": "Secure employment at a qualifying institution or enterprise category.",
+          "fix_time_months": null,
+          "source_id": "nia_pr_measures"
+        },
+        {
+          "id": "talent_role_level",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "senior_management_or_technical_role",
+          "hard": true,
+          "blocker_text": "Requires holding a senior management or senior technical role at the qualifying institution, or meeting an equivalent high-level-talent standard.",
+          "fix_path": "Document seniority in a senior management or senior technical capacity.",
+          "fix_time_months": null,
+          "source_id": "nia_pr_measures"
+        }
+      ]
+    },
+    {
+      "id": "phd_or_key_zone",
+      "name": "PhD holder, or 4 years in a nationally-designated key development zone",
+      "requirements": [
+        {
+          "id": "phd_or_zone",
+          "attribute": "education_level",
+          "operator": "in",
+          "value": ["phd"],
+          "hard": true,
+          "blocker_text": "For overseas Chinese specifically (huaren), a doctoral degree working in China, or 4 continuous years of work in a nationally-designated key-development region, is sufficient to apply -- a materially lower bar than the general high-level-talent track, reflecting a 2019 National Immigration Administration policy of 12 immigration facilitation measures aimed at overseas Chinese specifically.",
+          "fix_path": "Complete a PhD and secure Chinese employment, or accrue 4 continuous years of work in a designated key-development zone.",
+          "fix_time_months": 48,
+          "source_id": "nantong_faq_overseas_chinese"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_citizen_or_pr",
+      "name": "Spouse of a Chinese citizen or permanent resident",
+      "requirements": [
+        {
+          "id": "spouse_marriage_5yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_chinese_national_or_pr_5yr",
+          "hard": true,
+          "blocker_text": "Requires a marriage to a Chinese citizen, or to a foreigner who already holds Chinese permanent residence, that has lasted 5 or more years, combined with 5 years of physical residence in China at 9 or more months per year, and stable living conditions.",
+          "fix_path": "Maintain the marriage and required physical presence in China until both 5-year thresholds are met.",
+          "fix_time_months": 60,
+          "source_id": "nia_pr_measures"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment or role documentation matching the applicable track's institution/seniority requirements", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Marriage certificate and 5 years of residence records (spouse track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate and overseas criminal-record certificate", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (card itself valid 10 years for adults, 5 for minors, renewed as a card only)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cn_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "nia_pr_measures",
+      "tier": 1,
+      "url": "https://www.nia.gov.cn/n741440/n741547/c1295837/content.html",
+      "title": "National Immigration Administration (nia.gov.cn) -- 外国人在中国永久居留审批管理办法 (Administrative Measures for the Approval of Foreigners' Permanent Residence in China)",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "nantong_faq_overseas_chinese",
+      "tier": 1,
+      "url": "https://wb.nantong.gov.cn/ntszfwqswbgs/wdzsk/content/a7ad9cb6-348b-4b6c-8071-b64d4aa67642.html",
+      "title": "Nantong Municipal Foreign Affairs Office (a local government body, .gov.cn domain) -- official FAQ for overseas Chinese applying for permanent residence, citing the National Immigration Administration's 2019 package of 12 immigration facilitation measures and its PhD/4-year-key-zone provision specifically",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "Three genuinely distinct qualifying groups, correctly modeled as OR-logic per this schema's core design decision: high-level talent employed at a qualifying institution (the general professional track, open to any nationality), a specifically overseas-Chinese-targeted PhD/key-zone track introduced via a 2019 National Immigration Administration policy package (12 immigration facilitation measures), and the spouse-of-citizen-or-PR track (5 years marriage plus 5 years' 9-months/year residence). The overseas-Chinese PhD/key-zone track is a genuine structural finding worth flagging clearly: it is materially easier than the general high-level-talent track (no requirement to work at a specific institution category, no explicit seniority test) but is explicitly restricted to huaren (foreign nationals of Chinese descent) rather than being open to all applicants -- a real, confirmed instance of ancestry functioning as a qualifying-path accelerant within China's permanent-residence system specifically, even though (per cn_chinese_descent_5yr_visa's notes) it doesn't create any general ancestry-based visa or automatic status outside this narrow context. education_level's 'phd' value is used as an imperfect proxy for the full compound test (PhD-and-employed-in-China, OR 4-years-in-a-key-zone) since the schema's closed attribute list has no clean single field for this OR-within-an-OR structure -- flagged honestly as a schema-fit simplification rather than silently collapsed into a single clean-looking requirement, consistent with how similar imperfect fits were handled for Poland's repatriation route and Saudi Arabia's real-estate-zone exclusion. Same top-level finding applies as on cn_green_card_investor: none of these tracks lead to or accelerate Chinese citizenship, which requires a wholly separate application under Nationality Law Article 7 (see cn_naturalisation) -- China's Green Card and its citizenship track are more sharply separated from each other than in almost any other country in this dataset."
+}

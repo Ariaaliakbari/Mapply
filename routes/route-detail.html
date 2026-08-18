@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mapply — Regroupement Familial (FR)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5F0; --ink:#1A1A1A; --stamp:#8B1A1A;
+    --verified:#2B4C3F; --rule:#C9C4B8; --paper-dim:#EFEDE6; --gray:#6b6b6b;
+    --grid-line:#DAD5C8; --amber:#8A6A16;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', sans-serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+
+  .topbar{
+    position:sticky; top:0; left:0; right:0; z-index:20;
+    border-bottom:1.5px solid var(--ink);
+    background:var(--paper);
+    padding:16px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .logo{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .logo span{color:var(--stamp);}
+  .nav{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.04em; display:flex; gap:22px; color:var(--gray);}
+  .nav a{color:var(--gray); text-decoration:none;}
+  .nav a.active{color:var(--ink); border-bottom:1px solid var(--ink);}
+
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px 90px;}
+
+  /* loading / error */
+  #loading, #error{padding:80px 0; text-align:center; color:var(--gray); font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.04em;}
+  #error{color:var(--stamp); display:none;}
+  #error code{display:block; margin-top:10px; font-size:11px; color:var(--gray); text-transform:none; letter-spacing:0;}
+
+  #content{display:none;}
+
+  /* breadcrumb */
+  .breadcrumb{
+    padding-top:26px;
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--gray);
+  }
+  .breadcrumb a{text-decoration:none; color:var(--gray);}
+  .breadcrumb a:hover{color:var(--ink);}
+  .breadcrumb .sep{margin:0 7px; color:var(--rule);}
+
+  /* header */
+  .route-header{padding:14px 0 22px; border-bottom:2px solid var(--ink); margin-bottom:22px;}
+  h1{font-family:'Fraunces', serif; font-weight:500; font-size:32px; line-height:1.15; letter-spacing:-0.01em;}
+  .status-row{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:12px;}
+
+  .pill{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.04em;
+    padding:3px 9px; border:1px solid var(--ink); display:inline-flex; align-items:center; gap:5px;
+  }
+  .pill .dot{width:6px; height:6px; border-radius:50%; background:currentColor;}
+  .pill.status-published{border-color:var(--verified); color:var(--verified);}
+  .pill.status-draft{border-color:var(--gray); color:var(--gray);}
+  .pill.status-closed{border-color:var(--stamp); color:var(--stamp);}
+
+  .meta-text{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gray);}
+  .id-chip{background:var(--paper-dim); padding:2px 7px; border-radius:2px;}
+
+  .factbar{display:flex; flex-wrap:wrap; gap:0; margin-top:16px; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);}
+  .fact{flex:1 1 0; min-width:140px; padding:10px 16px 10px 0; border-right:1px solid var(--rule);}
+  .fact:last-child{border-right:none;}
+  .fact-label{font-family:'IBM Plex Mono', monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.06em; color:var(--gray);}
+  .fact-value{font-size:14px; margin-top:3px; font-weight:500;}
+
+  /* sections */
+  section{margin-top:38px;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--gray); border-bottom:1px solid var(--ink); padding-bottom:6px; margin-bottom:16px;
+  }
+  .section-head .hint{font-size:10px; color:var(--gray); text-transform:none; letter-spacing:0; font-style:italic;}
+
+  /* prerequisites */
+  .prereq-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 24px;}
+  .prereq-item .fact-label{margin-bottom:3px;}
+  .prereq-item .fact-value{font-size:14px;}
+  .chip-list{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{font-family:'IBM Plex Mono', monospace; font-size:11px; background:var(--paper-dim); padding:3px 8px; border-radius:2px;}
+
+  /* requirement groups */
+  .or-note{font-size:12px; color:var(--gray); margin-bottom:14px; font-style:italic;}
+  .group-card{border:1px solid var(--ink); margin-bottom:18px;}
+  .group-head{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    padding:12px 16px; background:var(--paper-dim); border-bottom:1px solid var(--rule);
+  }
+  .group-head h3{font-family:'Fraunces', serif; font-weight:500; font-size:16px;}
+  .group-tag{font-family:'IBM Plex Mono', monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.05em; color:var(--gray); white-space:nowrap;}
+
+  .override-note{
+    margin:14px 16px 0; padding:9px 12px; background:var(--paper); border-left:3px solid var(--stamp);
+    font-size:12px; line-height:1.5;
+  }
+  .override-note .ov-label{font-family:'IBM Plex Mono', monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.05em; color:var(--stamp); display:block; margin-bottom:3px;}
+
+  .req-list{padding:6px 16px 14px;}
+  .req-item{padding:13px 0; border-bottom:1px dotted var(--rule);}
+  .req-item:last-child{border-bottom:none;}
+  .req-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .req-statement{font-size:14px; line-height:1.4;}
+  .req-statement .attr{font-family:'IBM Plex Mono', monospace; font-size:12px; background:var(--paper-dim); padding:1px 5px; border-radius:2px;}
+  .req-value{font-weight:600;}
+  .req-badge{
+    flex:0 0 auto; font-family:'IBM Plex Mono', monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.05em;
+    padding:2px 7px; border-radius:2px; white-space:nowrap;
+  }
+  .req-badge.hard{background:var(--stamp); color:var(--paper);}
+  .req-badge.soft{border:1px solid var(--gray); color:var(--gray);}
+  .formula-tag{
+    display:inline-flex; align-items:center; gap:4px; font-family:'IBM Plex Mono', monospace; font-size:9px;
+    text-transform:uppercase; letter-spacing:0.04em; color:var(--verified); border:1px solid var(--verified);
+    padding:1px 6px; border-radius:2px; margin-left:8px;
+  }
+  .blocker{font-size:12.5px; color:#333; margin-top:6px; line-height:1.5;}
+  .fix-line{font-size:12px; color:var(--gray); margin-top:5px; font-style:italic;}
+  .src-cite{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); text-decoration:none;
+    border-bottom:1px dotted var(--gray); cursor:pointer;
+  }
+  .src-cite:hover{color:var(--ink); border-bottom-color:var(--ink);}
+
+  /* evidence */
+  .evidence-row{display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid #EAE7DF;}
+  .evidence-row:last-child{border-bottom:none;}
+  .diff-dot{width:9px; height:9px; border-radius:50%; margin-top:5px; flex:0 0 auto;}
+  .diff-routine{background:var(--verified);}
+  .diff-moderate{background:var(--amber);}
+  .diff-hard{background:var(--stamp);}
+  .diff-often_impossible{background:var(--ink);}
+  .evidence-doc{font-size:13.5px; flex:1;}
+  .evidence-meta{font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); text-transform:uppercase; text-align:right; white-space:nowrap;}
+
+  /* outcome */
+  .outcome-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .outcome-tile{background:var(--paper); padding:14px 16px;}
+  .outcome-tile .fact-label{margin-bottom:5px;}
+  .outcome-tile .fact-value{font-size:15px;}
+  .outcome-tile .fact-value.yes{color:var(--verified);}
+  .outcome-tile .fact-value.no{color:var(--stamp);}
+  .outcome-tile.wide{grid-column:1 / -1;}
+  .switch-row{margin-top:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .switch-row .fact-label{margin-right:2px;}
+  .switch-chip{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; background:var(--paper-dim);
+    padding:4px 9px; border-radius:2px; display:flex; align-items:center; gap:6px;
+  }
+  .switch-chip .arrow{color:var(--gray);}
+
+  /* sources */
+  .source-item{display:flex; gap:14px; padding:12px 0; border-bottom:1px solid #EAE7DF; align-items:flex-start;}
+  .source-item:last-child{border-bottom:none;}
+  .source-item:target{background:var(--paper-dim);}
+  .tier-badge{
+    flex:0 0 auto; font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:600;
+    width:52px; height:24px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--ink);
+  }
+  .tier-badge.t1{background:var(--verified); border-color:var(--verified); color:var(--paper);}
+  .tier-badge.t2{background:var(--ink); color:var(--paper);}
+  .tier-badge.t3{color:var(--gray); border-color:var(--rule);}
+  .tier-badge.t4{color:var(--rule); border-color:var(--grid-line);}
+  .source-body a{font-size:13.5px; text-decoration:none; border-bottom:1px solid var(--rule);}
+  .source-body a:hover{border-bottom-color:var(--ink);}
+  .source-body .source-meta{font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); margin-top:3px; text-transform:uppercase;}
+
+  /* notes */
+  .notes-box{
+    background:var(--paper-dim); padding:18px 20px; font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; line-height:1.75; color:#3a3a3a; white-space:pre-wrap;
+  }
+
+  footer{margin-top:50px; padding-top:16px; border-top:1px solid var(--rule); font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--gray); text-transform:uppercase; letter-spacing:0.03em;}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="logo">Map<span>ply</span></div>
+    <div class="nav">
+      <a href="../atlas.html">Atlas</a>
+      <a href="#">Categories</a>
+      <a href="#">Outcomes</a>
+      <a href="#">By profile</a>
+      <a class="active" href="#">Sources</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div id="loading">Loading route…</div>
+    <div id="error">Couldn't load the route file.<code id="errorDetail"></code></div>
+
+    <div id="content">
+      <div class="breadcrumb">
+        <a href="../atlas.html">Atlas</a><span class="sep">/</span><span id="bcCountry">—</span><span class="sep">/</span><span id="bcCategory">—</span>
+      </div>
+
+      <div class="route-header">
+        <h1 id="routeName">—</h1>
+        <div class="status-row">
+          <span class="pill" id="statusPill"><span class="dot"></span><span id="statusText">—</span></span>
+          <span class="meta-text">id <span class="id-chip mono" id="routeId">—</span></span>
+          <span class="meta-text" id="verifiedMeta">—</span>
+        </div>
+        <div class="factbar" id="factbar"></div>
+      </div>
+
+      <section id="prereqSection" style="display:none;">
+        <div class="section-head">Prerequisites</div>
+        <div class="prereq-grid" id="prereqGrid"></div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          Requirement groups
+          <span class="hint" id="groupHint"></span>
+        </div>
+        <div id="groupsWrap"></div>
+      </section>
+
+      <section id="evidenceSection">
+        <div class="section-head">Evidence required</div>
+        <div id="evidenceWrap"></div>
+      </section>
+
+      <section>
+        <div class="section-head">Outcome</div>
+        <div class="outcome-grid" id="outcomeGrid"></div>
+        <div class="switch-row" id="switchRow"></div>
+      </section>
+
+      <section>
+        <div class="section-head">Sources</div>
+        <div id="sourcesWrap"></div>
+      </section>
+
+      <section id="notesSection" style="display:none;">
+        <div class="section-head">Researcher notes</div>
+        <div class="notes-box" id="notesBox"></div>
+      </section>
+
+      <footer id="footerMeta"></footer>
+    </div>
+  </div>
+
+<script>
+// This page renders exactly one real route JSON, end to end, with no placeholder data.
+// Fields absent from the source file simply don't produce a section/row — nothing is fabricated.
+const params = new URLSearchParams(location.search);
+const COUNTRY = (params.get('country') || 'fr').toLowerCase();
+const ROUTE = params.get('route') || 'regroupement_familial';
+const SOURCE_PATH = `${COUNTRY}/${ROUTE}.json`;
+
+const COUNTRY_NAMES = {
+  ae:'United Arab Emirates', au:'Australia', ca:'Canada', ch:'Switzerland', de:'Germany',
+  es:'Spain', fr:'France', ie:'Ireland', jp:'Japan', nl:'Netherlands', pt:'Portugal',
+  sg:'Singapore', tr:'Turkey', uk:'United Kingdom', us:'United States'
+};
+const CATEGORY_LABELS = {
+  visit:'Visit', study:'Study', work_sponsored:'Sponsored work', work_independent:'Independent work',
+  business:'Business', family:'Family', ancestry:'Ancestry', humanitarian:'Humanitarian', settled:'Settlement'
+};
+const OPERATOR_LABELS = {
+  '==':'must be', '!=':'must not be', '>=':'at least', '<=':'at most',
+  '>':'more than', '<':'less than', 'in':'one of', 'not_in':'none of', 'exists':'must have'
+};
+const DIFFICULTY_LABELS = {
+  routine:'Routine', moderate:'Moderate effort', hard:'Hard to obtain', often_impossible:'Often impossible'
+};
+
+function humanize(str){
+  return String(str).replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+function fmtDate(d){
+  if(!d) return null;
+  const dt = new Date(d + 'T00:00:00');
+  return dt.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+}
+function daysSince(d){
+  const then = new Date(d + 'T00:00:00');
+  const now = new Date();
+  return Math.floor((now - then) / 86400000);
+}
+function el(html){
+  const t = document.createElement('template');
+  t.innerHTML = html.trim();
+  return t.content.firstElementChild;
+}
+
+// -- value rendering (literal, unit-object, or formula-linked) --
+function renderValue(v){
+  if(v === null || v === undefined) return { text: '—', formula: null };
+
+  if(typeof v === 'object' && !Array.isArray(v)){
+    if(v.value_type === 'formula'){
+      const amt = v.currency ? formatMoney(v.resolved_amount, v.currency) : v.resolved_amount;
+      const per = v.unit ? `/${v.unit}` : '';
+      return {
+        text: `${amt}${per}`,
+        note: v.note || null,
+        formula: { ref: v.formula_ref, ratio: v.ratio }
+      };
+    }
+    if(v.amount !== undefined && v.currency !== undefined){
+      const per = v.unit ? `/${v.unit}` : '';
+      return { text: `${formatMoney(v.amount, v.currency)}${per}`, note: v.note || null, formula: null };
+    }
+    if(v.language && v.level){
+      return { text: `${v.language} ${v.level} (${v.framework || ''})`, formula: null };
+    }
+    if(v.lookup_ref){
+      return { text: humanize(v.lookup_ref), formula: null };
+    }
+    return { text: humanize(JSON.stringify(v)), formula: null };
+  }
+  if(Array.isArray(v)){
+    return { text: v.map(humanize).join(', '), formula: null };
+  }
+  return { text: humanize(v), formula: null };
+}
+function formatMoney(amount, currency){
+  try{
+    return new Intl.NumberFormat('en-GB', { style:'currency', currency, maximumFractionDigits: amount % 1 === 0 ? 0 : 2 }).format(amount);
+  }catch(e){
+    return `${amount} ${currency}`;
+  }
+}
+
+async function main(){
+  let data;
+  try{
+    const res = await fetch(SOURCE_PATH, { cache: 'no-store' });
+    if(!res.ok) throw new Error(`HTTP ${res.status} fetching ${SOURCE_PATH}`);
+    data = await res.json();
+  }catch(err){
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error').style.display = 'block';
+    document.getElementById('errorDetail').textContent =
+      err.message + ' — open this file from a local server (not double-clicked from disk), since some browsers block fetch() over file://.';
+    return;
+  }
+
+  render(data);
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+}
+
+function render(data){
+  // breadcrumb + header
+  document.getElementById('bcCountry').textContent = COUNTRY_NAMES[data.country.toLowerCase()] || COUNTRY_NAMES[COUNTRY] || data.country;
+  document.getElementById('bcCategory').textContent = CATEGORY_LABELS[data.category] || humanize(data.category);
+  document.title = `Mapply — ${data.name} (${data.country})`;
+
+  document.getElementById('routeName').textContent = data.name;
+  document.getElementById('routeId').textContent = data.id;
+
+  const statusPill = document.getElementById('statusPill');
+  statusPill.classList.add('status-' + data.status);
+  document.getElementById('statusText').textContent = data.status;
+
+  // verified_at + staleness
+  const vMeta = document.getElementById('verifiedMeta');
+  const days = daysSince(data.verified_at);
+  let freshness = 'verified';
+  if(days > 180) freshness = 'VALIDATION FAILED — stale';
+  else if(days > 90) freshness = 'warning — recheck due';
+  vMeta.innerHTML = `${freshness} <span class="mono">${fmtDate(data.verified_at)}</span> · ${days}d ago`;
+  if(days > 180) vMeta.style.color = 'var(--stamp)';
+  else if(days > 90) vMeta.style.color = 'var(--amber)';
+
+  if(data.status === 'closed'){
+    let closedLine = data.closed_date ? `Closed ${fmtDate(data.closed_date)}.` : 'Closed.';
+    if(data.superseded_by) closedLine += ` Superseded by <span class="mono">${data.superseded_by}</span>.`;
+    else closedLine += ' No direct successor route.';
+    document.querySelector('.route-header').appendChild(el(`<div class="meta-text" style="margin-top:8px; color:var(--stamp);">${closedLine}</div>`));
+  }
+
+  // factbar
+  const facts = [];
+  facts.push(['Duration type', data.duration_type ? humanize(data.duration_type) : null]);
+  facts.push(['Selection method', humanize(data.selection_method)]);
+  if(data.selection_odds){
+    facts.push(['Selection odds', data.selection_odds.basis || (data.selection_odds.approx_rate_percent + '%')]);
+  }
+  if(data.sponsorship_duration_months !== undefined && data.sponsorship_duration_months !== null){
+    facts.push(['Sponsorship required for', `${data.sponsorship_duration_months} months`]);
+  }
+  if(data.application_window){
+    const w = data.application_window;
+    facts.push(['Application window', w.cap_type ? humanize(w.cap_type) : (w.opens ? `${w.opens} – ${w.closes}` : null)]);
+  }
+  const factbar = document.getElementById('factbar');
+  facts.filter(([,v]) => v).forEach(([label, value]) => {
+    factbar.appendChild(el(`<div class="fact"><div class="fact-label mono">${label}</div><div class="fact-value">${value}</div></div>`));
+  });
+
+  // qualifying event (used only by fact-based-history routes; render if present)
+  if(data.qualifying_event){
+    factbar.appendChild(el(`<div class="fact"><div class="fact-label mono">Qualifying event</div><div class="fact-value">${data.qualifying_event.description}</div></div>`));
+  }
+
+  // prerequisites
+  if(data.prerequisites){
+    const p = data.prerequisites;
+    const grid = document.getElementById('prereqGrid');
+    if(p.minimum_months_held !== null && p.minimum_months_held !== undefined){
+      grid.appendChild(el(`<div class="prereq-item"><div class="fact-label mono">Minimum time on prior route</div><div class="fact-value">${p.minimum_months_held} months${p.continuity_required ? ', held continuously' : ''}</div></div>`));
+    }
+    if(p.required_prior_route_ids && p.required_prior_route_ids.length){
+      grid.appendChild(el(`<div class="prereq-item"><div class="fact-label mono">Required prior route</div><div class="chip-list">${p.required_prior_route_ids.map(id => `<span class="chip">${id}</span>`).join('')}</div></div>`));
+    } else {
+      grid.appendChild(el(`<div class="prereq-item"><div class="fact-label mono">Required prior route</div><div class="fact-value" style="font-size:13px; color:var(--gray);">None — no specific prior route required</div></div>`));
+    }
+    document.getElementById('prereqSection').style.display = 'block';
+  }
+
+  // requirement groups
+  const groupHint = document.getElementById('groupHint');
+  const groups = data.requirement_groups || [];
+  groupHint.textContent = groups.length > 1
+    ? `Qualify via ANY ONE of ${groups.length} groups below — requirements within a group are all required.`
+    : 'All requirements below are required.';
+
+  const groupsWrap = document.getElementById('groupsWrap');
+  groups.forEach((g, i) => {
+    const card = el(`
+      <div class="group-card">
+        <div class="group-head">
+          <h3>${g.name}</h3>
+          <span class="group-tag mono">Group ${i + 1} of ${groups.length}${groups.length > 1 ? ' · OR' : ''}</span>
+        </div>
+      </div>
+    `);
+
+    if(g.outcome_override){
+      const fields = Object.entries(g.outcome_override).filter(([,v]) => v !== null && v !== undefined);
+      if(fields.length){
+        const lines = fields.map(([k, v]) => {
+          const base = data.outcome[k];
+          const label = humanize(k);
+          const shown = Array.isArray(v) ? v.join(', ') : v;
+          const baseShown = Array.isArray(base) ? base.join(', ') : base;
+          return `<strong>${label}: ${shown}</strong>${base !== undefined && String(base) !== String(v) ? ` <span style="color:var(--gray); font-weight:400;">(route default: ${baseShown})</span>` : ''}`;
+        }).join('<br>');
+        card.appendChild(el(`
+          <div class="override-note">
+            <span class="ov-label">Overrides route-level outcome for this group</span>
+            ${lines}
+          </div>
+        `));
+      }
+    }
+    if(g.prerequisites_override){
+      const po = g.prerequisites_override;
+      const bits = [];
+      if(po.minimum_months_held !== undefined && po.minimum_months_held !== null) bits.push(`minimum months held: ${po.minimum_months_held}`);
+      if(po.required_prior_route_ids && po.required_prior_route_ids.length) bits.push(`required prior route: ${po.required_prior_route_ids.join(', ')}`);
+      if(bits.length){
+        card.appendChild(el(`<div class="override-note"><span class="ov-label">Overrides prerequisites for this group</span>${bits.join(' · ')}</div>`));
+      }
+    }
+
+    const reqList = el(`<div class="req-list"></div>`);
+    (g.requirements || []).forEach(r => {
+      const rv = renderValue(r.value);
+      const opLabel = OPERATOR_LABELS[r.operator] || r.operator;
+      const formulaTag = rv.formula
+        ? `<span class="formula-tag" title="Pegged to national reference variable, updates periodically">⟳ ${(rv.formula.ratio * 100).toFixed(rv.formula.ratio * 100 % 1 === 0 ? 0 : 1)}% of ${humanize(rv.formula.ref)}</span>`
+        : '';
+      const item = el(`
+        <div class="req-item">
+          <div class="req-top">
+            <div class="req-statement">
+              <span class="attr">${r.attribute}</span> ${opLabel} <span class="req-value">${rv.text}</span>${formulaTag}
+            </div>
+            <span class="req-badge ${r.hard ? 'hard' : 'soft'}">${r.hard ? 'Hard' : 'Soft'}</span>
+          </div>
+          ${rv.note ? `<div class="fix-line" style="margin-top:2px;">${rv.note}</div>` : ''}
+          <div class="blocker">${r.blocker_text}</div>
+          ${r.fix_path ? `<div class="fix-line">→ Fix: ${r.fix_path}${r.fix_time_months ? ` (~${r.fix_time_months} months)` : ''}</div>` : (r.fix_path === null ? `<div class="fix-line">Not fixable — fixed personal attribute.</div>` : '')}
+          <div style="margin-top:6px;"><a class="src-cite" href="#src-${r.source_id}">source: ${r.source_id}</a></div>
+        </div>
+      `);
+      reqList.appendChild(item);
+    });
+    card.appendChild(reqList);
+    groupsWrap.appendChild(card);
+  });
+
+  // evidence
+  const evidence = data.evidence_required || [];
+  const evidenceWrap = document.getElementById('evidenceWrap');
+  if(evidence.length){
+    evidence.forEach(e => {
+      evidenceWrap.appendChild(el(`
+        <div class="evidence-row">
+          <span class="diff-dot diff-${e.difficulty}"></span>
+          <span class="evidence-doc">${e.document}</span>
+          <span class="evidence-meta">${DIFFICULTY_LABELS[e.difficulty] || humanize(e.difficulty)}${e.typical_time_days ? ` · ~${e.typical_time_days}d` : ''}</span>
+        </div>
+      `));
+    });
+  } else {
+    document.getElementById('evidenceSection').style.display = 'none';
+  }
+
+  // third-party fees (rendered if the source route carries any)
+  if(data.third_party_fees && data.third_party_fees.length){
+    const feeSection = el(`<section><div class="section-head">Third-party fees</div><div id="feesWrap"></div></section>`);
+    data.third_party_fees.forEach(f => {
+      feeSection.querySelector('#feesWrap').appendChild(el(`
+        <div class="evidence-row">
+          <span class="evidence-doc">${f.label} <span class="meta-text">→ payable to ${f.payable_to}</span></span>
+          <span class="evidence-meta">${formatMoney(f.amount, f.currency)}${f.mandatory === false ? ' · optional' : ''}</span>
+        </div>
+      `));
+    });
+    document.getElementById('evidenceSection').insertAdjacentElement('afterend', feeSection);
+  }
+
+  // outcome
+  const o = data.outcome;
+  const grid = document.getElementById('outcomeGrid');
+  const tiles = [
+    ['Duration', o.duration_length, true],
+    ['Renewable', o.renewable ? 'Yes' : 'No', false, o.renewable],
+    ['Work rights', humanize(o.work_rights)],
+    ['Study rights', o.study_rights ? humanize(o.study_rights) : null],
+    ['Family can join', o.family_can_join ? 'Yes' : 'No', false, o.family_can_join],
+    ['Family can work', o.family_can_work === null ? 'Not specified' : (o.family_can_work ? 'Yes' : 'No'), false, o.family_can_work],
+    ['Leads to PR', o.leads_to_pr ? `Yes — after ${o.pr_after_months} months` : 'No', false, o.leads_to_pr],
+    ['Leads to citizenship', o.leads_to_citizenship ? `Yes — after ${o.citizenship_after_months} months` : 'No', false, o.leads_to_citizenship],
+    ['Dual citizenship', o.dual_citizenship_allowed === null ? 'Not specified' : (o.dual_citizenship_allowed ? 'Allowed' : 'Not allowed'), false, o.dual_citizenship_allowed],
+    ['Physical presence rule', o.physical_presence_requirement, true],
+  ];
+  tiles.filter(t => t[1] !== null && t[1] !== undefined).forEach(([label, value, wide, bool]) => {
+    const cls = bool === true ? 'yes' : bool === false ? 'no' : '';
+    grid.appendChild(el(`<div class="outcome-tile ${wide ? 'wide' : ''}"><div class="fact-label mono">${label}</div><div class="fact-value ${cls}">${value}</div></div>`));
+  });
+
+  const switchRow = document.getElementById('switchRow');
+  if(o.switchable_to && o.switchable_to.length){
+    switchRow.appendChild(el(`<span class="fact-label mono">Switchable in-country to</span>`));
+    for(const id of o.switchable_to){
+      const chip = el(`<span class="switch-chip"><span class="arrow">→</span><span class="mono">${id}</span></span>`);
+      switchRow.appendChild(chip);
+      // best-effort: resolve the target route's real name via its own JSON (2-letter folder prefix convention)
+      const targetCountry = id.split('_')[0];
+      const targetFile = id.slice(targetCountry.length + 1);
+      fetch(`${targetCountry}/${targetFile}.json`).then(r => r.ok ? r.json() : null).then(t => {
+        if(t && t.name) chip.querySelector('.mono').textContent = `${t.name}`;
+      }).catch(() => {});
+    }
+  }
+
+  // sources
+  const sourcesWrap = document.getElementById('sourcesWrap');
+  (data.sources || []).forEach(s => {
+    sourcesWrap.appendChild(el(`
+      <div class="source-item" id="src-${s.id}">
+        <span class="tier-badge t${s.tier}">TIER ${s.tier}</span>
+        <div class="source-body">
+          <a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>
+          <div class="source-meta">${s.id} · accessed ${fmtDate(s.accessed_at)}</div>
+        </div>
+      </div>
+    `));
+  });
+
+  // notes
+  if(data.notes){
+    document.getElementById('notesBox').textContent = data.notes;
+    document.getElementById('notesSection').style.display = 'block';
+  }
+
+  document.getElementById('footerMeta').textContent =
+    `Rendered directly from ${SOURCE_PATH} against schema/route.schema.json — no mock data.`;
+}
+
+main();
+</script>
+
+</body>
+</html>
