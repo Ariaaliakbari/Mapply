@@ -1,0 +1,120 @@
+{
+  "id": "dk_asylum_protection",
+  "country": "DK",
+  "name": "Asylum and protection status (Convention status, protection status, temporary protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of persecution on Convention grounds (Convention status, § 7, stk. 1), an individual, concrete risk of the death penalty, torture, or inhuman treatment if returned (protection status, § 7, stk. 2), or the same risk arising instead from a particularly serious general situation in the country of origin marked by indiscriminate violence and abuses against civilians, without individual persecution grounds (temporary protection status, § 7, stk. 3, created in a February 2015 reform originally targeted at the Syrian civil war).",
+    "evidence_hint": "Personal testimony and any corroborating documentation of the persecution or risk, presented during the asylum procedure while resident at a Red Cross- or municipality-run asylum centre pending a decision."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "convention_status",
+      "name": "Convention status (§ 7, stk. 1)",
+      "requirements": [
+        {
+          "id": "asy_convention",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution on grounds of race, religion, nationality, membership of a particular social group, or political opinion, while outside the country of nationality -- granted under Udlændingeloven § 7, stk. 1, directly tracking the 1951 Refugee Convention definition.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nyidanmark_voksen_asylansoger"
+        }
+      ]
+    },
+    {
+      "id": "protection_status",
+      "name": "Protection status (§ 7, stk. 2)",
+      "requirements": [
+        {
+          "id": "asy_protection",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "individual_risk_death_penalty_torture_inhuman_treatment",
+          "hard": true,
+          "blocker_text": "Requires a real, individual risk of the death penalty or torture/inhuman or degrading treatment or punishment if returned, based on concrete individual circumstances rather than general country conditions -- granted under § 7, stk. 2.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nyidanmark_voksen_asylansoger"
+        }
+      ]
+    },
+    {
+      "id": "temporary_protection_status",
+      "name": "Temporary protection status (§ 7, stk. 3), explicitly non-permanent",
+      "requirements": [
+        {
+          "id": "asy_general_conditions",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "general_conditions_indiscriminate_violence_no_individual_grounds",
+          "hard": true,
+          "blocker_text": "Covers the same death-penalty/torture/inhuman-treatment risk as § 7, stk. 2, but where that risk stems from a particularly serious situation in the country of origin marked by indiscriminate violence and abuses against civilians, rather than individual circumstances -- granted under § 7, stk. 3, a category created by a February 2015 reform originally aimed at the Syrian civil war specifically. Family reunification for this group is barred for the first 2 years of residence except where Denmark's international obligations require otherwise -- a real, meaningfully harsher restriction than the other two grounds carry, confirmed directly via nyidanmark.dk.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nyidanmark_familiesammenforing_midlertidig"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Asylum application, filed in person at a police station or the Sandholm reception centre, or with the Immigration Service if the applicant already holds a residence permit on another basis", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal testimony and any supporting documentation of persecution or risk", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary protection status (§7 stk.3): 1 year initially, extendable to 2 years at a time after the first 3 years, confirmed directly via nyidanmark.dk; Convention and protection status durations were not independently confirmed with the same precision in this research pass -- one secondary source (a Ministry of Immigration and Integration factsheet) states protection-status permits are 'as a general rule' now issued for 5 years at a time, which conflicts with another secondary source's claim of a reduction to 1-2 years, and this discrepancy is flagged rather than resolved by assumption",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 96,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 132,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "residence permits are actively reviewed for revocation once the government assesses that home-country conditions have sufficiently improved -- confirmed applied in practice, not merely a theoretical power, with over 1,000 Syrian refugees' permits reassessed and some revoked from 2021 onward",
+    "switchable_to": ["dk_permanent_residence", "dk_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "nyidanmark_voksen_asylansoger",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Du-vil-ans%C3%B8ge/Asyl/Voksen-asylans%C3%B8ger",
+      "title": "Nyidanmark.dk (Udlændingestyrelsen) -- Voksen asylansøger, confirming § 7, stk. 1/2/3 definitions directly, and that temporary protection status is capped at 1 year initially, extendable to 2 years after the first 3 years",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "nyidanmark_familiesammenforing_midlertidig",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Ord-og-begreber/US/Familie/Familiesammenf%C3%B8ring-til-personer-med-midlertidig-beskyttelsesstatus",
+      "title": "Nyidanmark.dk -- Familiesammenføring til personer med midlertidig beskyttelsesstatus, confirming the 2-year family-reunification bar for § 7, stk. 3 holders",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "lex_asyl_beskyttelse",
+      "tier": 2,
+      "url": "https://lex.dk/asyl_-_beskyttelse",
+      "title": "Lex.dk (Den Store Danske, Denmark's national encyclopaedia, operated under the Ministry of Culture) -- Asyl, beskyttelse, describing the 2015 and 2019 Udlændingeloven reforms and the reduction of protection-permit duration from 7 years to 1-2 years",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "menneskeret_paradigmeskifte",
+      "tier": 2,
+      "url": "https://menneskeret.dk/status/flygtninge-udlaendinge-0",
+      "title": "Institut for Menneskerettigheder (Danish Institute for Human Rights, a state-funded independent institution) -- Flygtninge og udlændinge, documenting the practical application of permit revocation to Syrian refugees since 2021",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, a genuinely distinctive policy stance worth documenting factually and without editorializing, the same neutral treatment given to every other country's routes in this dataset regardless of political character: Denmark's 2015 and 2019 immigration-law reforms, collectively known in Danish public debate as the 'paradigmeskifte' (paradigm shift), explicitly reoriented refugee policy from an integration default toward a return default. Since 1 March 2019, the law states that ALL refugee residence permits are granted 'with a view to temporary residence' rather than potential permanent settlement, and authorities are instructed to revoke permits once protection needs lapse unless doing so would breach specific international obligations -- a codified policy position, not merely rhetoric, confirmed as actively applied via the Danish Institute for Human Rights' own tracking: as of March 2025, 164 Syrian refugees had lost their residence permits since 2019, and the review process was reported as ongoing into 2026 for other regions of Syria and other countries of origin. In practice, Denmark has not forcibly deported the Syrian refugees whose permits were revoked (no diplomatic return agreement exists with Syria), leaving affected individuals in an extended limbo status in Denmark or prompting some to relocate to other EU states to seek asylum there instead -- a real, documented practical outcome worth surfacing alongside the formal legal mechanism, since the law's stated aim (return) and its actual effect (prolonged limbo, secondary EU migration) have diverged in practice according to the sources checked. This is one of the only countries in this dataset where a formally functioning, codified, Convention-compliant asylum system nonetheless treats successful protection as explicitly non-permanent by design and by law -- distinguishing Denmark from Korea's, Brazil's, and Russia's asylum systems documented elsewhere in this dataset, which are similarly codified and functioning but do not carry this same explicit temporariness mandate written into the statute itself. citizenship_after_months (132) and pr_after_months (96) reflect the general 8-year track to permanent residence plus the standard citizenship pipeline, though refugees and stateless persons specifically qualify for reduced permanent-residence and citizenship waiting periods (1 year of permanent residence rather than 2, per dk_naturalisation) -- a partial softening that coexists with the broader temporariness framework rather than contradicting it, since it applies only once protection status and permanent residence have already both been confirmed as durable in a given case."
+}

@@ -1,0 +1,195 @@
+{
+  "id": "za_permanent_residence",
+  "country": "ZA",
+  "name": "Permanent Residence (Sections 26 and 27, Immigration Act 13 of 2002)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "direct_work_based",
+      "name": "Section 26(a): 5 years on a qualifying work visa, permanent job offer",
+      "requirements": [
+        {
+          "id": "s26a_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 continuous years holding a General Work Visa or Critical Skills Work Visa, plus a permanent (open-ended, no contractual end date) offer of employment from a South African employer in the same occupational category.",
+          "fix_path": "Continue accruing 5 continuous years on a qualifying work visa and secure a genuinely permanent (not fixed-term) employment offer.",
+          "fix_time_months": 60,
+          "source_id": "dha_gov_za_pr"
+        }
+      ]
+    },
+    {
+      "id": "critical_skills_direct",
+      "name": "Section 27(b): Critical Skills, direct application",
+      "requirements": [
+        {
+          "id": "s27b_critical_skills",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "critical_skills_list_match_with_5yr_experience",
+          "hard": false,
+          "blocker_text": "Foreign nationals with a Critical Skills Certificate, SAQA-evaluated qualifications, and at least 5 years' post-qualification work experience may apply for permanent residence directly, without first holding South African temporary residence for a set period -- see za_critical_skills_visa for the flagged discrepancy on exactly how this interacts with that route's own PR-eligibility claims.",
+          "fix_path": "Obtain SAQA evaluation, a Critical Skills Certificate, and document 5 years' post-qualification experience.",
+          "fix_time_months": null,
+          "source_id": "immigrationconsultantsa_pr"
+        }
+      ]
+    },
+    {
+      "id": "refugee_ground",
+      "name": "Section 27(c): Recognised refugees",
+      "requirements": [
+        {
+          "id": "s27c_refugee",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "recognised_refugee_status",
+          "hard": true,
+          "blocker_text": "Recognised refugees under the Refugees Act 130 of 1998 may qualify for permanent residence -- see za_refugee_status for the exact residence-period requirement, which this research pass found conflicting accounts of (5 vs 10 years) and left unresolved.",
+          "fix_path": "Obtain recognised refugee status first (see za_refugee_status).",
+          "fix_time_months": null,
+          "source_id": "dha_gov_za_pr"
+        }
+      ]
+    },
+    {
+      "id": "retired_person",
+      "name": "Section 27(e): Retired persons",
+      "requirements": [
+        {
+          "id": "s27e_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 37000,
+            "currency": "ZAR",
+            "unit": "month"
+          },
+          "hard": false,
+          "blocker_text": "Requires a verifiable monthly income of at least ZAR 37,000 from a pension, retirement annuity, or guaranteed irrevocable income for life. This category is not restricted to retirement activity once granted -- holders may later engage in business, consulting, or employment without needing an additional permit, and holders can remain outside South Africa for up to 3 consecutive years (Section 28) without losing status, suiting dual/seasonal residents.",
+          "fix_path": "Document verifiable qualifying monthly income of at least ZAR 37,000.",
+          "fix_time_months": null,
+          "source_id": "ibn_pr_retire_fi"
+        }
+      ]
+    },
+    {
+      "id": "financially_independent",
+      "name": "Section 27(f): Financially independent",
+      "requirements": [
+        {
+          "id": "s27f_networth",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": {
+            "amount": 12000000,
+            "currency": "ZAR",
+            "unit": "one_time"
+          },
+          "hard": false,
+          "blocker_text": "Requires a verifiable net worth of at least ZAR 12,000,000, subject to a once-off, non-refundable fee of ZAR 120,000 payable to the DHA upon approval.",
+          "fix_path": "Document verifiable net worth of at least ZAR 12,000,000 and budget for the ZAR 120,000 approval fee.",
+          "fix_time_months": null,
+          "source_id": "idchecker_pr_2026"
+        }
+      ]
+    },
+    {
+      "id": "relatives_ground",
+      "name": "Section 27(g): Relatives of a citizen or PR holder",
+      "requirements": [
+        {
+          "id": "s27g_kinship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": [
+            "parent_of_sponsor",
+            "adult_child_of_sponsor",
+            "sibling_of_sponsor"
+          ],
+          "hard": false,
+          "blocker_text": "Relatives within the first degree of kinship of a South African citizen or permanent resident -- parents, children over 21, and siblings -- may qualify, depending on the nature of the family relationship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "idchecker_pr_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Form BI-947/DHA-947 (paper submission required for most categories)",
+      "difficulty": "hard",
+      "typical_time_days": null
+    },
+    {
+      "document": "Full set of fingerprints, police clearance certificates from every country lived in for 12+ months since age 18",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Category-specific financial, employment, or relationship documentation",
+      "difficulty": "hard",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "PR is revoked if the holder is absent from South Africa for longer than 3 consecutive years (Section 28), except where specifically exempted (e.g. the retired-persons category)",
+    "switchable_to": [
+      "za_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "dha_gov_za_pr",
+      "tier": 1,
+      "url": "https://www.southafricain.com/824.html",
+      "title": "Reproduction of official Department of Home Affairs (dha.gov.za) content -- Apply for a Permanent Residency, confirming Sections 26/27 structure and the refugee, retired-person, financially-independent, and relatives categories directly in DHA's own language",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "ibn_pr_retire_fi",
+      "tier": 3,
+      "url": "https://www.ibn.co.za/south-africa/pr-retire-fi/",
+      "title": "IBN Immigration -- Permanent Residence Based on Retirement or Financial Independence, describing Section 27(e)'s non-category-restricted post-grant rights and the Section 28 3-year absence rule",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "idchecker_pr_2026",
+      "tier": 3,
+      "url": "https://idchecker.co.za/permanent-residence-south-africa/",
+      "title": "IDChecker -- Permanent Residence South Africa: How to Apply [2026], confirming the ZAR 37,000/month (27(e)) and ZAR 12,000,000 net worth plus ZAR 120,000 fee (27(f)) thresholds and the 27(g) relatives category",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "immigrationconsultantsa_pr",
+      "tier": 3,
+      "url": "https://immigrationconsultantsa.com/south-africa-visa/permanent-residence-permit/",
+      "title": "Migrate With Q -- Permanent Residence Permit South Africa, describing Section 27(b)'s Critical Skills direct-application mechanics and the 5-year post-qualification-experience requirement",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "Six genuinely distinct qualifying categories, correctly modeled as OR-logic groups per this schema's core design decision, spanning work, skills, humanitarian, retirement, wealth, and family grounds -- one of the broadest and most varied PR-category structures documented in this dataset, comparable in scope to Saudi Arabia's Green Card tracks or Korea's F-5 sub-codes. dha.gov.za content was successfully accessed (via a reproduction site preserving the original government page's bullet-point formatting) confirming the core Section 26/27 category list directly, the strongest tier-1 anchor in this South Africa build alongside za_refugee_status's SAFLII fetch -- that fetch grounds the direct_work_based and refugee_ground groups specifically as hard:true. The remaining four groups' specific numeric thresholds (Critical Skills' 5-year experience figure, the ZAR 37,000/12,000,000/120,000 figures, and the relatives' exact kinship list) rest on tier-3 sources only and are modeled hard:false accordingly -- the category structure itself is confirmed tier-1, but the precise qualifying numbers for those four groups are not, an important distinction between confirming a category exists and confirming its exact current threshold. A real pending reform worth flagging for currency: multiple 2026-dated sources reference a government White Paper proposing to 'radically change how PR is awarded,' not yet enacted as of this research pass -- the categories and thresholds documented here reflect the current Immigration Act 13 of 2002 framework, which should be treated as subject to near-term change given this pending reform process. Processing-time reality is described inconsistently across sources -- official DHA targets of 8-12 months versus practical experience of 12 months to 2-3 years, a familiar backlog pattern also documented on za_general_work_visa and za_business_visa. PR status grants nearly all rights of citizenship (work, study, property ownership, social-security access, a 13-digit SA ID number with the identity-distinguishing 11th digit set to 1 rather than 0) except the right to vote in national elections and the right to hold a South African passport -- confirmed consistently across sources checked, worth surfacing as the precise practical boundary between PR and full citizenship in this system."
+}

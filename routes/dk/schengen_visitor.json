@@ -1,0 +1,74 @@
+{
+  "id": "dk_schengen_visitor",
+  "country": "DK",
+  "name": "Schengen short-stay visa (Type C) / visa-free entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard short-stay entry",
+      "requirements": [
+        {
+          "id": "visit_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_visiting_family_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism, business visits, and family visits; does not authorise employment or self-employment.",
+          "fix_path": "Apply for the relevant work route instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_visit"
+        },
+        {
+          "id": "visit_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_and_insurance",
+          "hard": true,
+          "blocker_text": "Requires sufficient funds for the intended stay and travel medical insurance covering at least EUR 30,000, valid across the Schengen area.",
+          "fix_path": "Provide bank statements and qualifying travel medical insurance.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_visit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 3 months beyond intended departure", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel medical insurance, minimum EUR 30,000 coverage", "difficulty": "routine", "typical_time_days": 3 },
+    { "document": "Proof of accommodation, itinerary, and sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "max 90 days per 180-day rolling window across the whole Schengen area, not just Denmark",
+    "switchable_to": ["dk_student_residence"]
+  },
+  "sources": [
+    {
+      "id": "nyidanmark_visit",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/",
+      "title": "Nyidanmark.dk -- official Danish immigration portal (Styrelsen for International Rekruttering og Integration / SIRI and Udlændingestyrelsen), Schengen short-stay visa category",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "Denmark is a full Schengen member (though outside the euro and with several EU justice/home-affairs opt-outs under its 1993 Edinburgh Agreement protocol), so short-stay entry follows the standard EU Schengen Borders Code framework -- the 90/180 rule, funds/insurance tests, and no-work restriction are common EU law rather than Denmark-specific policy, the same pattern documented for Poland and Italy elsewhere in this dataset. Nordic-country citizens (Iceland, Norway, Sweden, Finland) do not need any residence or work permit to live and work in Denmark at all under the Nordic Passport Union, a separate and more liberal regime predating Schengen -- not modeled as its own route here since it requires no application process whatsoever, only registration for a CPR number upon establishing residence."
+}

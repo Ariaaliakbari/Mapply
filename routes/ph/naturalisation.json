@@ -1,0 +1,128 @@
+{
+  "id": "ph_naturalisation",
+  "country": "PH",
+  "name": "Philippine citizenship by naturalisation (judicial and administrative)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "judicial_general",
+      "name": "Judicial naturalisation, general track (Commonwealth Act No. 473), 10 years",
+      "requirements": [
+        {
+          "id": "jud_10yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires at least 10 years of continuous residence in the Philippines, good moral character, adherence to Philippine law and order, a lawful trade/profession/lawful occupation, and the ability to speak and write English or Filipino and one of the principal Philippine languages, per Commonwealth Act No. 473, decided through a full court proceeding (Regional Trial Court).",
+          "fix_path": "Continue accruing continuous residence toward the 10-year threshold and prepare for a full judicial hearing.",
+          "fix_time_months": 120,
+          "source_id": "elibrary_karbasi_gr210412"
+        }
+      ]
+    },
+    {
+      "id": "judicial_reduced",
+      "name": "Judicial naturalisation, reduced 5-year track",
+      "requirements": [
+        {
+          "id": "jud_5yr",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_filipino_citizen", "engaged_in_worthwhile_public_enterprise"],
+          "hard": false,
+          "blocker_text": "The 10-year residence requirement is reduced to 5 years for applicants with specific qualifying circumstances, including having a Filipino spouse or engaging in a worthwhile enterprise benefiting the Philippines -- this reduced track was described in secondary sources discussing case law rather than independently confirmed against the primary statutory conditions list in this research pass.",
+          "fix_path": "Establish a qualifying circumstance (Filipino spouse, or a documented worthwhile public enterprise) to access the reduced 5-year track.",
+          "fix_time_months": 60,
+          "source_id": "respicio_refugee_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "administrative",
+      "name": "Administrative naturalisation (RA 9139), born and raised in the Philippines",
+      "requirements": [
+        {
+          "id": "admin_born_raised",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "born_and_residing_in_philippines_since_birth",
+          "hard": false,
+          "blocker_text": "Available to aliens born and residing in the Philippines since birth who meet age, Philippine-language proficiency, and clean-record requirements, and who completed education at levels where Philippine history, government, and civics were taught -- decided by a Special Committee on Naturalization rather than through a full court proceeding, a genuinely faster and less adversarial process than the judicial tracks. This specific criteria list rests on a tier-3 source rather than a directly-fetched primary text of RA 9139 itself.",
+          "fix_path": "Document continuous Philippine residence since birth and completion of qualifying Philippine schooling.",
+          "fix_time_months": null,
+          "source_id": "respicio_refugee_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "refugee_stateless_facilitated",
+      "name": "Facilitated naturalisation, recognised refugees and stateless persons",
+      "requirements": [
+        {
+          "id": "facilitated_status",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["recognised_refugee_status", "recognised_stateless_status"],
+          "hard": true,
+          "blocker_text": "Recognised refugees and stateless persons (per ph_refugee_status) can petition under a dedicated, judiciary-approved fast-track procedure (Supreme Court A.M. No. 21-07-22, in effect since 2022) rather than the ordinary judicial process -- both pathways still require an oath of allegiance, but the facilitated rule streamlines the proceeding specifically for this population, reflecting the Philippines' obligations as a 1951 Convention State Party.",
+          "fix_path": "Obtain recognised refugee or stateless status first (see ph_refugee_status), then petition under the facilitated procedure.",
+          "fix_time_months": null,
+          "source_id": "sc_judiciary_facilitated_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of the applicable track's residence/status requirement", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Philippine-language proficiency and, for the judicial tracks, a full court hearing with witnesses", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Oath of allegiance to the Republic of the Philippines", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "elibrary_karbasi_gr210412",
+      "tier": 1,
+      "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/60816",
+      "title": "Supreme Court E-Library (elibrary.judiciary.gov.ph) -- Republic of the Philippines v. Kamran F. Karbasi, G.R. No. 210412, confirming both the judicial (Commonwealth Act No. 473) and administrative (RA 9139) naturalisation tracks directly, and the 1951 Refugee Convention's Article 6/34 relevance to naturalisation proceedings",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "sc_judiciary_facilitated_naturalisation",
+      "tier": 1,
+      "url": "https://sc.judiciary.gov.ph/sc-approves-rule-on-facilitated-naturalization-of-refugees-and-stateless-persons/",
+      "title": "Supreme Court of the Philippines (sc.judiciary.gov.ph) -- SC Approves Rule on Facilitated Naturalization of Refugees and Stateless Persons (A.M. No. 21-07-22)",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "respicio_refugee_citizenship",
+      "tier": 3,
+      "url": "https://www.respicio.ph/commentaries/citizenship-status-of-refugees-born-in-the-philippines",
+      "title": "Respicio & Co. -- Citizenship Status of Refugees Born in the Philippines, describing RA 9139's specific administrative criteria and the judicial track's reduced 5-year circumstances",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "Four genuinely distinct naturalisation mechanisms, correctly modeled as OR-logic groups, two of them directly tier-1 sourced via genuine Supreme Court e-Library and sc.judiciary.gov.ph fetches -- an unusually strong sourcing outcome for this Philippines build, where most routes remain draft. The judicial (Commonwealth Act No. 473, 1939) and administrative (RA 9139, 2000) tracks are structurally distinct in a way worth stating plainly: judicial naturalisation runs through a full adversarial Regional Trial Court proceeding, historically slow and costly, while RA 9139 created a genuinely faster administrative alternative decided by a Special Committee on Naturalization -- but RA 9139 is narrowly scoped to aliens born and residing in the Philippines since birth specifically, not available to the general foreign-resident population the way Malaysia's or Thailand's naturalisation systems are. The judicial_reduced group's specific circumstances (Filipino spouse, worthwhile enterprise) are modeled hard:false since this specific 5-year figure traces to secondary case-law commentary rather than a directly confirmed primary statutory citation in this research pass -- flagged honestly rather than asserted with full confidence, even though the file's other groups carry genuine tier-1 backing. The facilitated-naturalisation track for refugees/stateless persons (Supreme Court A.M. No. 21-07-22, 2022) is a genuinely recent, citable judicial innovation -- confirmed directly via the Supreme Court's own website -- worth surfacing as a real, current procedural advantage for that specific population rather than folding it silently into the general judicial track. dual_citizenship_allowed is true throughout, consistent with the broader Philippine legal position documented on ph_ra9225_dual_citizenship (the Oath of Allegiance does not require renouncing other citizenships in the ordinary case) -- though the Constitution's Article IV Section 5 separately declares 'dual allegiance' (as opposed to mere dual citizenship) inimical to the national interest, a real distinction some sources draw between holding two passports (generally tolerated) and active political allegiance to two states (constitutionally disfavoured), worth flagging as a nuance rather than a contradiction."
+}

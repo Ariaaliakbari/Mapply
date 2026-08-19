@@ -1,0 +1,74 @@
+{
+  "id": "ph_tourist_visa",
+  "country": "PH",
+  "name": "Temporary Visitor Visa (9(a)) / visa-free entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Visa-exempt or 9(a) visa entry",
+      "requirements": [
+        {
+          "id": "tv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["visa_exempt_under_eo408"],
+          "hard": true,
+          "blocker_text": "Many nationalities enter visa-free for 30 days under Executive Order 408, extendable at Bureau of Immigration offices up to a cumulative maximum of 36 months without leaving the country; other nationalities need a consular 9(a) Temporary Visitor Visa.",
+          "fix_path": "Apply for a 9(a) visa at a Philippine embassy or consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "philippinehubpartners_2026"
+        },
+        {
+          "id": "tv_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_medical_events_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism, business meetings, medical treatment, and event attendance; does not authorise employment.",
+          "fix_path": "Apply for the relevant work or long-stay route instead if employment is intended.",
+          "fix_time_months": null,
+          "source_id": "philippinehubpartners_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 6 months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of onward/return travel", "difficulty": "routine", "typical_time_days": null },
+    { "document": "eTravel registration (free, online)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days initially, extendable at Bureau of Immigration offices up to a cumulative 36 months total before a mandatory exit",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "cumulative 36-month cap on continuous extension without leaving the Philippines",
+    "switchable_to": ["ph_student_visa", "ph_srrv"]
+  },
+  "sources": [
+    {
+      "id": "philippinehubpartners_2026",
+      "tier": 3,
+      "url": "https://philippinehubpartners.com/philippine-visa-requirements-2026/",
+      "title": "Philippine Hub Partners -- Philippine Visa Requirements 2026: Investor Visas, describing the 9(a) visa-waiver/extension structure under EO 408 and the 36-month cumulative extension ceiling",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Bureau of Immigration (immigration.gov.ph) page was achieved for this route in this research pass. The 36-month cumulative stacking of tourist extensions without ever leaving the country is a genuinely permissive feature relative to most other countries in this dataset's 'visit' category routes -- most cap continuous stays far lower (Schengen's 90/180, for example) -- and is explicitly identified by multiple sources as a practical long-stay strategy in its own right for visa-exempt nationals who don't want to pursue a formal long-stay visa category."
+}

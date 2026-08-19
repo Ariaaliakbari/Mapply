@@ -1,0 +1,97 @@
+{
+  "id": "ph_permanent_resident_visa",
+  "country": "PH",
+  "name": "Permanent Resident Visa / Quota Immigrant Visa (Section 13)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "quota",
+      "name": "Section 13 Quota Immigrant Visa",
+      "requirements": [
+        {
+          "id": "quota_slot",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "quota_slot_secured",
+          "hard": true,
+          "blocker_text": "Requires a slot within the annual Section 13 immigration quota, historically set at a small fixed number per nationality per year under the Philippine Immigration Act of 1940.",
+          "fix_path": "Confirm current quota availability for the applicable nationality directly with the Bureau of Immigration.",
+          "fix_time_months": null,
+          "source_id": "visafoto_visa_guide"
+        }
+      ]
+    },
+    {
+      "id": "returning_former_filipino",
+      "name": "13(g): Returning former natural-born Filipino citizen",
+      "requirements": [
+        {
+          "id": "return_13g",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "former_natural_born_filipino_returning_to_reside",
+          "hard": true,
+          "blocker_text": "For former Filipino citizens (who have not reacquired citizenship under RA 9225) returning to reside permanently in the Philippines.",
+          "fix_path": "Consider ph_ra9225_dual_citizenship instead if seeking to reacquire citizenship rather than only permanent-resident status.",
+          "fix_time_months": null,
+          "source_id": "visafoto_visa_guide"
+        }
+      ]
+    },
+    {
+      "id": "returning_resident",
+      "name": "13(e): Returning resident (former Philippine PR holder)",
+      "requirements": [
+        {
+          "id": "return_13e",
+          "attribute": "current_route_held",
+          "operator": "==",
+          "value": "former_philippine_permanent_resident",
+          "hard": true,
+          "blocker_text": "For individuals who previously held Philippine permanent resident status and are returning after a period abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "visafoto_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Category-specific documentation (quota confirmation, former-citizenship proof, or prior PR status proof)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical and police clearances", "difficulty": "routine", "typical_time_days": 45 },
+    { "document": "ACR I-Card registration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ph_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "visafoto_visa_guide",
+      "tier": 3,
+      "url": "https://visafoto.com/philippines/visa-guide",
+      "title": "VisaFoto -- Philippines Visa Guide for 2026, listing the Section 13 immigrant-visa subcategories (13(a) marriage, 13(e) returning resident, 13(g) returning former citizen, plain 13 quota)",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Bureau of Immigration page confirming current Section 13 quota numbers per nationality was achieved in this research pass -- the Quota Immigrant Visa's practical availability varies significantly by nationality and the specific current allocation was not confirmed. STRUCTURAL FINDING: 'Section 13' functions as an umbrella covering several genuinely distinct immigrant-visa subcategories with different qualifying logic -- this file models the plain quota category plus the two 'returning' categories (13(e) and 13(g)), while 13(a) marriage-based immigration is deliberately modeled as its own separate route file (ph_marriage_visa_13a) given how much distinctive detail (reciprocity gating, probationary conversion) that specific subcategory carries. 13(g) is explicitly distinct from and can be used instead of ph_ra9225_dual_citizenship for a former Filipino who wants only permanent-resident status without reacquiring full citizenship -- a real choice point for former Filipinos worth surfacing, since the two routes lead to meaningfully different end states (resident alien vs. citizen) despite serving an overlapping population."
+}

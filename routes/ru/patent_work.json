@@ -1,0 +1,116 @@
+{
+  "id": "ru_patent_work",
+  "country": "RU",
+  "name": "Work patent (patent na rabotu, for visa-free nationals)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Visa-free national, applicant-administered patent",
+      "requirements": [
+        {
+          "id": "pat_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": [
+            "visa_free_entry_countries_mostly_cis"
+          ],
+          "hard": true,
+          "blocker_text": "Only available to nationals of countries with visa-free entry to Russia (predominantly CIS states); visa-required nationals use the separate employer-sponsored work visa route instead.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consultant_115fz_patent_quota"
+        },
+        {
+          "id": "pat_declare_purpose",
+          "attribute": "current_route_held",
+          "operator": "exists",
+          "value": "patent_filed_within_30_days_of_entry",
+          "hard": false,
+          "blocker_text": "The patent must be applied for within 30 calendar days of entry, having declared 'work' as the purpose of visit on the migration card at the border.",
+          "fix_path": "File the patent application within 30 days of entry and ensure the migration card declares a work purpose.",
+          "fix_time_months": null,
+          "source_id": "veLaw_patent_2026"
+        },
+        {
+          "id": "pat_monthly_payment",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "monthly_advance_ndfl_payment_current",
+          "hard": false,
+          "blocker_text": "Requires monthly advance NDFL (personal income tax) payments in advance, calculated as: fixed base rate (RUB 1,200 per Ministry of Economic Development Order No. 573, 19 Oct 2022) x federal deflator coefficient (2.842 for 2026) x a regional coefficient set by each constituent region -- yielding roughly RUB 3,000-5,000/month in most regions, approximately RUB 8,000/month in St. Petersburg and Leningrad Region (from 1 Jan 2026), and approximately RUB 10,000/month in Moscow. Missing a single day's payment automatically voids the patent.",
+          "fix_path": "Maintain uninterrupted monthly advance payments at the applicable regional rate for the entire employment period.",
+          "fix_time_months": null,
+          "source_id": "veLaw_patent_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Migration card showing 'work' as the declared entry purpose",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Patent application filed within 30 days of entry (10 working days to issue once a taxpayer ID (INN) is on file)",
+      "difficulty": "moderate",
+      "typical_time_days": 10
+    },
+    {
+      "document": "Proof of ongoing monthly advance NDFL payments",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, extendable for further 1-year periods provided payments continue without interruption",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "ru_rvp_temporary_residence",
+      "ru_vnzh_permanent_residence"
+    ]
+  },
+  "sources": [
+    {
+      "id": "consultant_115fz_patent_quota",
+      "tier": 1,
+      "url": "https://www.consultant.ru/document/cons_doc_LAW_171434/80d2d1566533bddf0fcc9a3d0de7849d8a2cc144/",
+      "title": "ConsultantPlus -- statutory text confirming the patent system exists specifically as a quota-replacement mechanism for visa-free-entry foreign nationals aged 18+, under Federal Law No. 115-FZ",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "veLaw_patent_2026",
+      "tier": 3,
+      "url": "https://ve-law.ru/blog/info/patent-na-rabotu-2026",
+      "title": "VE Law -- Патент на работу для иностранцев в 2026 году, describing the patent filing procedure, 30-day window, and 2026 regional payment figures",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "confidencegroup_patent_coef",
+      "tier": 3,
+      "url": "https://www.confidencegroup.ru/info/articles/migratsionnye-uslugi/stoimost-patenta-na-rabotu-dlya-inostrantsev-v-2026-goodu/",
+      "title": "Confidence Group -- Стоимость патента для иностранцев в 2026 году в России, independently confirming the 2026 federal deflator coefficient of 2.842 and the RUB 1,200 base rate under Tax Code Art. 227.1",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, and the clearest example in the Russia build of a formula-linked national-variable worth capturing centrally: the patent payment is not a flat fee but a calculated product of three components -- a federal base rate (RUB 1,200, fixed by Ministry of Economic Development Order No. 573 of 19 October 2022, under Tax Code Art. 227.1), a federal deflator coefficient re-set annually (2.842 for 2026), and a regional coefficient each constituent region sets independently, reflecting local labour-market conditions. This produces genuinely large regional variation -- roughly 3-4x between the cheapest ordinary regions and Moscow -- worth surfacing prominently, since a patent holder's real monthly cost depends heavily on which region they work in, unlike most other countries' flat national work-authorisation fees documented elsewhere in this dataset. The single-missed-day cancellation rule is a genuinely harsh enforcement mechanism relative to comparable systems elsewhere in this dataset -- there is no grace period, and reinstatement generally requires a fresh application rather than simply resuming payment. Employers can make patent payments on the worker's behalf, but the payment is then treated as taxable income to the worker regardless of who transfers it (Tax Code Art. 217, 226, 227.1) -- a specific interaction worth flagging for payroll purposes. This route is structurally parallel to ru_work_visa_permit (both are work_sponsored, employment-tied statuses with the same downstream RVP/VNZh/citizenship pipeline) but the qualifying test and ongoing compliance mechanics are entirely different -- nationality-gated self-administered tax payments here, versus employer-administered quota and permit filings there."
+}

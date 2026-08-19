@@ -1,0 +1,99 @@
+{
+  "id": "za_critical_skills_visa",
+  "country": "ZA",
+  "name": "Critical Skills Work Visa",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Points-based, Critical Skills List occupation",
+      "requirements": [
+        {
+          "id": "cs_list_match",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["engineering", "it_specialist", "healthcare", "finance_accounting", "renewable_energy"],
+          "hard": true,
+          "blocker_text": "Requires a qualification matching an occupation on the Critical Skills List, gazetted under Regulation 18(4) of the Immigration Regulations, 2014, in terms of Section 19(4) of the Immigration Act 13 of 2002 -- the current operative list dates to 2022 (as amended August 2022), with no confirmed newer gazette identified in this research pass despite it being 2026.",
+          "fix_path": "Confirm the specific occupation is listed on the current Critical Skills List before applying.",
+          "fix_time_months": null,
+          "source_id": "idchecker_critical_skills"
+        },
+        {
+          "id": "cs_points",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 100,
+          "hard": true,
+          "blocker_text": "Since amendments effective 9 October 2024, applications are assessed under a Points-Based System (PBS) requiring a minimum score of 100 points, replacing the prior requirement for Department of Employment and Labour certification.",
+          "fix_path": "Build toward the 100-point threshold across the PBS scoring criteria.",
+          "fix_time_months": 6,
+          "source_id": "legitimus_temp_residence"
+        },
+        {
+          "id": "cs_saqa",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "saqa_evaluated_qualification",
+          "hard": true,
+          "blocker_text": "Requires SAQA (South African Qualifications Authority) evaluation of the foreign qualification, plus, where applicable, a professional-body confirmation letter.",
+          "fix_path": "Obtain a SAQA evaluation of the qualification and any required professional-body confirmation.",
+          "fix_time_months": 3,
+          "source_id": "idchecker_critical_skills"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "SAQA-evaluated qualification certificate", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Professional-body confirmation letter, where the occupation requires registration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance, medical and radiology reports, MIE background-check report", "difficulty": "moderate", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years, renewable within South Africa",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["za_permanent_residence", "za_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "idchecker_critical_skills",
+      "tier": 3,
+      "url": "https://idchecker.co.za/critical-skills-list-south-africa/",
+      "title": "IDChecker -- Critical Skills List South Africa: Full 2026 Guide, citing Section 19(4)/27(b) of the Immigration Act 13 of 2002 and Regulation 18(4) of the Immigration Regulations, 2014",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "legitimus_temp_residence",
+      "tier": 3,
+      "url": "https://www.legitimus.co.za/services/temporary-residence-visas",
+      "title": "Legitimus -- Temporary Residence Visa South Africa 2026 Guide, describing the October 2024 Points-Based System reform",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "visaatlas_critical_skills",
+      "tier": 3,
+      "url": "https://visaatlas.org/visas/south-africa/critical-skills-work-visa",
+      "title": "Visa Atlas -- Critical Skills Work Visa (Republic of South Africa), citing a Department of Home Affairs statement (verified 1 June 2026 per the source) that holders may apply for permanent residence without the waiting period that applies to other categories",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. LIVE DISCREPANCY, flagged rather than resolved: sources checked in this research pass give three different, seemingly incompatible accounts of how quickly a Critical Skills Work Visa holder can reach permanent residence -- (1) 'without the waiting period that applies to other categories' (visaatlas, citing DHA directly, verified 1 June 2026), (2) 'after as little as 12 months' provided the holder has a permanent-employment offer (idchecker.co.za's work-visa guide), and (3) 'after 5 years of proven post-qualification experience' (a different idchecker.co.za guide and abroadscope). A plausible reconciliation, not independently confirmed in this research pass: Section 27(b) of the Immigration Act allows a Critical Skills holder to apply for permanent residence directly, without first needing to hold South African temporary residence for a set period (accounting for accounts 1 and 2) -- but the underlying qualifying test itself requires 5 years of POST-QUALIFICATION PROFESSIONAL EXPERIENCE (which may have already accrued before the applicant ever arrived in South Africa), not 5 years of South African residence (accounting for account 3). This reconciliation is plausible and would explain why all three claims could be independently true depending on what's being measured, but it was not verified against a primary dha.gov.za source in this research pass and is offered as a hypothesis rather than a settled fact -- pr_after_months is therefore left null rather than asserting any of the three conflicting figures. STRUCTURAL FINDING: this route can be applied for without a job offer at all -- applicants qualify on qualifications/skill match alone and have 12 months after entry to secure employment in the critical-skills field, a genuinely unusual no-sponsor-required structure for a category still classified work_sponsored given its ultimate employment orientation. The operative Critical Skills List itself was last substantively updated in 2022 (with a further amendment in August 2022 adding 38 medical-specialist professions) -- multiple 2026-dated sources describe this 2022 list as 'still the current list,' a 4-year-old list remaining operative, worth flagging as a genuine staleness risk in the underlying policy itself (not a sourcing error in this build) rather than assuming a newer list exists without confirmation."
+}

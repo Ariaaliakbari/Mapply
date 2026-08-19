@@ -1,0 +1,74 @@
+{
+  "id": "ph_marriage_visa_13a",
+  "country": "PH",
+  "name": "Immigrant Visa by Marriage (13(a))",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Spouse of a Filipino citizen, reciprocity nationalities",
+      "requirements": [
+        {
+          "id": "marriage_valid",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_filipino_citizen",
+          "hard": true,
+          "blocker_text": "Requires a legally valid marriage to a Filipino citizen, with evidence the relationship is genuine and subsisting.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asialongstay_longstay_options"
+        },
+        {
+          "id": "reciprocity_check",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["reciprocity_agreement_countries"],
+          "hard": true,
+          "blocker_text": "The 13(a) is available only to nationals of countries with an immigration reciprocity arrangement with the Philippines; applicants from countries without reciprocity instead use a Temporary Resident Visa (TRV) as the functional equivalent -- there is no practical preference between the two routes beyond this nationality-based gate.",
+          "fix_path": "Confirm reciprocity status for the applicable nationality, or use the TRV route if reciprocity does not apply.",
+          "fix_time_months": null,
+          "source_id": "asialongstay_longstay_options"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (PSA-issued for marriages performed in the Philippines, or report of marriage for those performed abroad)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Probationary 13(a) status for the first year, converting to permanent status upon Bureau of Immigration confirmation the marriage remains valid", "difficulty": "moderate", "typical_time_days": 365 },
+    { "document": "Medical and police clearances", "difficulty": "routine", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "probationary for 1 year, then converts to a permanent immigrant status",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ph_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "asialongstay_longstay_options",
+      "tier": 3,
+      "url": "https://asialongstay.com/philippines/procedure/philippines-long-term-stay-visas",
+      "title": "Asia Long Stay -- Philippines Long-Stay Visa and Residency Options, describing the 13(a)/TRV reciprocity gate and the probationary-to-permanent conversion structure",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Bureau of Immigration page was achieved for this route in this research pass. STRUCTURAL FINDING: the probationary structure -- 1 year of provisional status before the Bureau of Immigration confirms the marriage is genuine and subsisting and converts the status to permanent -- is a real, deliberate safeguard against sham marriages, structurally similar in intent to Italy's marriage-authenticity screening documented elsewhere in this dataset, though implemented as a formal waiting/conversion period rather than an upfront interview-based test. Marriage to a Filipino citizen does not by itself create permanent residence -- multiple sources explicitly warn that the 13(a) application process is still required and not automatic, a common point of confusion worth surfacing clearly on any route detail page. work_rights is 'restricted' rather than 'full': 13(a) holders generally still need separate work authorisation to be employed, despite being married to a citizen -- distinct from several other countries in this dataset (e.g. Poland's spouse-of-citizen routes) which grant automatic full work rights to a citizen's spouse."
+}

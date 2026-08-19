@@ -1,0 +1,91 @@
+{
+  "id": "th_non_o_family",
+  "country": "TH",
+  "name": "Non-Immigrant O Visa (Marriage/Family)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse of a Thai citizen",
+      "requirements": [
+        {
+          "id": "spouse_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_thai_national",
+          "hard": true,
+          "blocker_text": "Requires a legally registered marriage to a Thai citizen, with evidence the relationship is genuine.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "hellothailandvisa_general"
+        },
+        {
+          "id": "spouse_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 400000, "currency": "THB", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least THB 400,000 held in a Thai bank account, or monthly income of at least THB 40,000, to demonstrate financial support for the couple.",
+          "fix_path": "Document at least THB 400,000 in a Thai bank account, or qualifying monthly income.",
+          "fix_time_months": null,
+          "source_id": "hellothailandvisa_general"
+        }
+      ]
+    },
+    {
+      "id": "dependent_child",
+      "name": "Minor child of a Thai citizen or foreign resident",
+      "requirements": [
+        {
+          "id": "child_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "minor_child_of_sponsor",
+          "hard": true,
+          "blocker_text": "Covers minor children of a Thai citizen or of a foreign national holding valid long-term Thai residence status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "hellothailandvisa_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or birth certificate proving the qualifying family relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds or income (spouse track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "90-day address reporting to Immigration Bureau once resident", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["th_permanent_residence", "th_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "hellothailandvisa_general",
+      "tier": 3,
+      "url": "https://www.hellothailandvisa.com/articles/thailand-long-term-visa",
+      "title": "HelloThailand -- Thailand Long Term Visa Options in 2026, describing the Non-O marriage-visa funds requirement",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of an Immigration Bureau page was achieved for this route in this research pass. work_rights is correctly 'none': a Non-O marriage visa alone does not authorise employment -- a separate work permit application is required even for spouses of Thai citizens, a structurally stricter position than several other countries in this dataset (e.g. Poland's family-reunification routes grant full work rights automatically). Marriage to a Thai citizen has a genuine, faster naturalisation track under the Nationality Act, distinct from this route's own general pipeline figures -- see th_naturalisation for the marriage-specific detail, which this route's outcome fields don't fully capture given the diversity of the underlying population (spouses vs. dependent children follow different downstream timelines)."
+}

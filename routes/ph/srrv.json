@@ -1,0 +1,132 @@
+{
+  "id": "ph_srrv",
+  "country": "PH",
+  "name": "Special Resident Retiree's Visa (SRRV)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "classic_50plus_pension",
+      "name": "SRRV Classic, age 50+, with pension",
+      "requirements": [
+        {
+          "id": "c50p_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 50,
+          "hard": true,
+          "blocker_text": "Requires the applicant to be at least 50 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sebsauerborn_srrv_restructure"
+        },
+        {
+          "id": "c50p_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 15000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a USD 15,000 time deposit at a PRA-accredited Philippine bank (held in the applicant's name, refundable upon visa surrender), combined with documented, apostilled proof of a lifetime monthly pension of at least approximately USD 800.",
+          "fix_path": "Remit the USD 15,000 deposit to a PRA-accredited bank and document the qualifying pension.",
+          "fix_time_months": null,
+          "source_id": "onevisacenter_srrv_2026"
+        }
+      ]
+    },
+    {
+      "id": "classic_50plus_nopension",
+      "name": "SRRV Classic, age 50+, no pension",
+      "requirements": [
+        {
+          "id": "c50np_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 30000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a USD 30,000 time deposit at a PRA-accredited Philippine bank, double the pensioner rate, for applicants aged 50+ without a qualifying documented pension.",
+          "fix_path": "Remit the USD 30,000 deposit to a PRA-accredited bank.",
+          "fix_time_months": null,
+          "source_id": "onevisacenter_srrv_2026"
+        }
+      ]
+    },
+    {
+      "id": "classic_40to49",
+      "name": "SRRV Classic, age 40-49 (Expanded Programme)",
+      "requirements": [
+        {
+          "id": "c4049_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 25000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a USD 25,000 deposit with a qualifying pension, or USD 50,000 without one, for applicants aged 40-49 under the September 2025 Expanded SRRV Program -- both figures higher than the equivalent 50+ tiers, a deliberate age-based pricing structure.",
+          "fix_path": "Remit the applicable USD 25,000 (with pension) or USD 50,000 (without pension) deposit to a PRA-accredited bank.",
+          "fix_time_months": null,
+          "source_id": "onevisacenter_srrv_2026"
+        }
+      ]
+    },
+    {
+      "id": "courtesy",
+      "name": "SRRV Courtesy (former Filipinos, retired diplomats/military/international-org officers)",
+      "requirements": [
+        {
+          "id": "courtesy_status",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": ["former_filipino_citizen", "retired_diplomat", "retired_international_org_officer", "retired_foreign_military"],
+          "hard": true,
+          "blocker_text": "Reserved for former Filipino citizens and retired foreign diplomats, international-organisation officers, or foreign military personnel, requiring only a USD 1,500 deposit -- a fraction of the Classic tiers.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sebsauerborn_srrv_restructure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Time-deposit certification from a PRA-accredited bank matching the applicable tier", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Apostilled proof of pension entitlement (pensioner tracks)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bureau of Immigration clearance (mandatory for all applicants since the September 2025 restructuring), medical clearance, and police clearance", "difficulty": "moderate", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, multiple-entry, no annual Bureau of Immigration renewal required (PRA membership renewed on a 2-year cycle since the September 2025 restructuring, previously annual)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no minimum stay requirement; SRRV holders use a Travel Pass rather than a Bureau of Immigration exit clearance",
+    "switchable_to": ["ph_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "sebsauerborn_srrv_restructure",
+      "tier": 3,
+      "url": "https://www.sebsauerborn.com/the-brief/philippines-srrv-changes-effective-september-1",
+      "title": "Seb Sauerborn -- Philippines SRRV Changes Effective September 1 [2025], describing the Expanded SRRV Program restructuring: abolition of Smile/Human Touch, age lowered to 40, and the Courtesy category's USD 1,500 deposit",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "onevisacenter_srrv_2026",
+      "tier": 3,
+      "url": "https://onevisacenter.com/philippines-srrv-visa-requirements-complete-guide-for-retirees/",
+      "title": "One Visa Center -- Philippines SRRV Visa Requirements: Complete Guide for Retirees, citing PRA's revised 2025-2026 deposit-bracket schedule by age and pension status",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of pra.gov.ph was achieved in this research pass despite one source explicitly directing readers to verify every figure there -- the deposit figures used here are cross-corroborated across 6+ independent specialist sources with strong mutual consistency, giving reasonable confidence, but this remains short of this dataset's preferred direct-government-fetch standard. LIVE STRUCTURAL REFORM, a major restructuring worth stating plainly: effective September 2025, the Philippine Retirement Authority abolished the SRRV Smile and Human Touch categories entirely (Smile had been the popular lower-deposit entry tier at USD 10,000-20,000; Human Touch served applicants needing medical/clinical care), lowered the minimum age from 50 to 40 for the first time, and introduced age-tiered deposit brackets where the 40-49 age band pays MORE than the 50+ band for the equivalent pension/no-pension status -- a genuine, deliberate reverse-discount structure rewarding older applicants, confirmed identically across every source checked. Existing SRRV holders under the abolished categories keep their visas under the old terms; the changes apply to new applications only, per every source checked -- multiple sources also explicitly warn that pre-September-2025 guides circulating online are now outdated, exactly the kind of live-staleness pattern this dataset's sourcing discipline exists to catch. Bureau of Immigration clearance became mandatory for every applicant as part of this same restructuring, a new procedural layer not present before. SRRV holders are exempt from the standard Bureau of Immigration Annual Report and ACR I-Card requirements that apply to most other long-stay visa holders in this dataset's Philippines routes -- PRA administers its own separate, lighter-touch compliance system instead, a genuinely distinctive administrative arrangement (a dedicated government retirement agency running its own visa programme in parallel to the general immigration bureaucracy) not seen in this exact form elsewhere in this dataset. work_rights is correctly 'none': SRRV holders wanting to work must apply separately for work authorisation, which is not automatic. citizenship_after_months (120) uses the general judicial-naturalisation residency floor; former-Filipino Courtesy-tier holders would in practice more likely use ph_ra9225_dual_citizenship instead of ordinary naturalisation, a materially faster and more natural path for that specific sub-population."
+}

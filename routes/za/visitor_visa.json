@@ -1,0 +1,73 @@
+{
+  "id": "za_visitor_visa",
+  "country": "ZA",
+  "name": "Visitor's Visa / visa-free entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Visa-exempt or consular Visitor's Visa",
+      "requirements": [
+        {
+          "id": "vv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["visa_exempt_countries"],
+          "hard": true,
+          "blocker_text": "Many nationalities enter visa-free for up to 90 days; other nationalities need a consular Visitor's Visa issued under the Immigration Act 13 of 2002.",
+          "fix_path": "Apply for a Visitor's Visa at a South African embassy or consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "legitimus_temp_residence"
+        },
+        {
+          "id": "vv_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_medical_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism, business meetings, and medical visits; does not authorise employment.",
+          "fix_path": "Apply for the relevant work or long-stay route instead if employment is intended.",
+          "fix_time_months": null,
+          "source_id": "legitimus_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 30 days beyond intended departure, with 2 blank pages", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of onward/return travel and sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days, extendable at a Department of Home Affairs office",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["za_study_visa"]
+  },
+  "sources": [
+    {
+      "id": "legitimus_temp_residence",
+      "tier": 3,
+      "url": "https://www.legitimus.co.za/services/temporary-residence-visas",
+      "title": "Legitimus -- Temporary Residence Visa South Africa 2026 Guide, describing the Visitor's Visa category alongside other temporary residence visas",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a dha.gov.za page was achieved for this specific route in this research pass, though dha.gov.za content was successfully accessed elsewhere in this build (see za_permanent_residence). Change of status to a long-term category from inside South Africa while on Visitor's Visa status is generally not permitted for most categories; a long-term temporary residence visa must generally be acquired before permanent residence can later be pursued under the matching category, per sources consulted across this build."
+}

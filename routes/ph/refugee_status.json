@@ -1,0 +1,72 @@
+{
+  "id": "ph_refugee_status",
+  "country": "PH",
+  "name": "Refugee and stateless-person status determination (DOJ-RSPPU)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of persecution on grounds of race, religion, nationality, membership of a particular social group, or political opinion, per the 1951 Refugee Convention definition, which the Philippines applies directly as a State Party alongside its 1967 Protocol.",
+    "evidence_hint": "Personal testimony and any corroborating documentation of the persecution or risk, assessed by the DOJ-RSPPU under the refugee status determination (RSD) procedure set out in Department Circular No. 58, series of 2012."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status determination by DOJ-RSPPU",
+      "requirements": [
+        {
+          "id": "ref_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution meeting the 1951 Refugee Convention definition, assessed by the Department of Justice's Refugees and Stateless Persons Protection Unit (RSPPU) under Department Circular No. 58, series of 2012.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "doj_rsppu_official"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for refugee status recognition, filed with the DOJ-RSPPU", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal testimony and any supporting documentation of persecution or risk", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited once recognised, evidenced by a refugee certificate; the underlying residence status is renewed periodically",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ph_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "doj_rsppu_official",
+      "tier": 1,
+      "url": "https://www.doj.gov.ph/rsppu.html",
+      "title": "Department of Justice, Republic of the Philippines (doj.gov.ph) -- Refugees and Stateless Persons Protection Unit (RSPPU), confirming State Party status to the 1951 Convention (acceded 1981), its 1967 Protocol, the 1954 Statelessness Convention, and the 1961 Statelessness Reduction Convention directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "sc_judiciary_facilitated_naturalisation",
+      "tier": 1,
+      "url": "https://sc.judiciary.gov.ph/sc-approves-rule-on-facilitated-naturalization-of-refugees-and-stateless-persons/",
+      "title": "Supreme Court of the Philippines (sc.judiciary.gov.ph) -- SC Approves Rule on Facilitated Naturalization of Refugees and Stateless Persons (A.M. No. 21-07-22, approved 15 February 2022), confirming a dedicated fast-track judicial naturalisation procedure for recognised refugees and stateless persons",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL CONTRAST, one of the sharpest documented anywhere in this dataset given regional proximity: the Philippines acceded to the 1951 Refugee Convention and its 1967 Protocol in 1981, and was the first country in Southeast Asia to sign the 1954 Convention on Statelessness (in 2011) -- a genuinely functioning, internationally-compliant refugee protection system operated by a dedicated DOJ unit (RSPPU), standing in direct contrast to the 'never existed' pattern confirmed for Thailand, Malaysia, and Singapore elsewhere in this dataset, all in the same immediate region. Both primary sources here are genuine tier-1 government fetches (doj.gov.ph and sc.judiciary.gov.ph), among the strongest sourcing in this entire Philippines build. A real, documented gap exists between the Convention's ratification and full domestic implementing legislation: the Philippines still has no comprehensive standalone refugee-protection statute, operating instead via a Department of Justice administrative circular (No. 58, series of 2012) rather than an Act of Congress -- confirmed via a UNHCR Universal Periodic Review submission consulted in broader research for this build, worth flagging as a genuine structural gap even within an overall functioning system. A landmark, unusually citable legal development: on 15 February 2022, the Supreme Court itself approved a dedicated Rule on Facilitated Naturalization specifically for recognised refugees and stateless persons (A.M. No. 21-07-22) -- a real, court-level procedural fast-track distinct from and faster than the ordinary judicial or administrative naturalisation tracks documented on ph_naturalisation, confirmed directly via the Supreme Court's own website. Philippine case law (Republic v. Karbasi, cited directly in Supreme Court records) has affirmed that Convention refugee status doesn't waive all ordinary naturalisation requirements but does inform how residency and other conditions are assessed for a refugee applicant specifically -- a real judicial nuance worth surfacing rather than treating refugee-to-citizenship as fully automatic. leads_to_pr is false since the Philippines' PR framework (ph_permanent_resident_visa) doesn't have a dedicated refugee-specific quota category documented in sources checked for this build; the more direct path from recognised refugee status is toward the facilitated naturalisation track itself."
+}

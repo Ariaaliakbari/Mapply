@@ -1,0 +1,97 @@
+{
+  "id": "ru_rvp_temporary_residence",
+  "country": "RU",
+  "name": "Temporary Residence Permit (RVP, Razreshenie na Vremennoe Prozhivanie)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general_quota",
+      "name": "General track, within the annual regional quota",
+      "requirements": [
+        {
+          "id": "rvp_quota",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "within_annual_regional_quota",
+          "hard": true,
+          "blocker_text": "Requires passing exams in Russian language, history, and law, and falling within the annual regional quota set by the Russian government for RVP issuance -- both the language/history/law exam and the quota system are the general track's two main barriers.",
+          "fix_path": "Pass the language, history, and law exams and apply within an open quota allocation for the target region.",
+          "fix_time_months": 6,
+          "source_id": "gw2ru_traditional_values"
+        }
+      ]
+    },
+    {
+      "id": "shared_values",
+      "name": "\"Shared Values\" simplified track (Presidential Decree No. 702)",
+      "requirements": [
+        {
+          "id": "sv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": [
+            "shared_values_decree_702_eligible_countries"
+          ],
+          "hard": true,
+          "blocker_text": "Under Presidential Decree No. 702 (19 August 2024, 'On Providing Humanitarian Support to Individuals Who Share Traditional Russian Spiritual and Moral Values'), citizens of 47 designated countries can obtain RVP without the language/history/law exams and without competing for the standard quota. 'Traditional values,' per the related Presidential Decree No. 809 (9 November 2022), is a broad, non-exhaustive concept including patriotism, family ties, historical memory, and productive labour, assessed at application rather than tested by exam.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gw2ru_traditional_values"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Application form (2 copies, in Russian)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Apostilled or legalised criminal-record certificate (also required for children over 14)",
+      "difficulty": "moderate",
+      "typical_time_days": 45
+    },
+    {
+      "document": "Russian medical certificates, civil-status documents (translated and apostilled), and fingerprinting/photographing at submission",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "3 years, not extendable -- applicants must apply for VNZh (permanent residence) before expiry or leave the country",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "RVP holders cannot leave Russia for more than 180 days in a single year, and are restricted to living and working within the specific region where the RVP was issued unless the MVD grants permission to relocate",
+    "switchable_to": [
+      "ru_vnzh_permanent_residence",
+      "ru_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "gw2ru_traditional_values",
+      "tier": 3,
+      "url": "https://www.gw2ru.com/plan-your-trip/237894-move-russia-traditional-values-decree",
+      "title": "GW2RU -- How to move to Russia under the 'traditional values' decree, citing Presidential Decree No. 702 (19 August 2024) and Presidential Decree No. 809 (9 November 2022) directly, and describing the standard RVP's exam and quota requirements for comparison",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT. STRUCTURAL FINDING, and a genuinely distinctive, values-based immigration mechanism not seen in comparable form anywhere else in this dataset: the 'Shared Values' RVP track, created by Presidential Decree No. 702 in August 2024, grants citizens of 47 designated countries a simplified path bypassing both the standard route's language/history/law examination and its competitive regional quota -- explicitly framed around alignment with a broadly-defined concept of 'traditional Russian spiritual and moral values' (patriotism, family ties, historical memory, productive labour, per the related Decree No. 809) rather than any economic, familial, or ancestry-based qualifying test used elsewhere in this dataset. This is documented here as a factual description of the legal mechanism as enacted, consistent with this dataset's approach of describing immigration law neutrally regardless of its underlying policy rationale -- the same approach taken for every other country's routes in this dataset, whatever their political character. RVP is structurally a mandatory, non-extendable 3-year bridge status in Russia's system -- unlike most other countries' initial residence permits, it cannot simply be renewed; holders must either progress to VNZh or leave, a harder deadline than seen in most comparable countries documented in this dataset. The region-lock restriction (RVP holders can only work/reside in the specific region where issued) is a genuinely unusual constraint among this dataset's settled-category routes -- most other countries' temporary residence statuses grant nationwide mobility by default. citizenship_after_months (72) reflects the general pipeline (12 months minimum on RVP before VNZh eligibility, plus the general 5-year VNZh-to-citizenship track documented in ru_naturalisation) -- ru_compatriot_resettlement, ru_hqs_status, and ru_investor_vnzh all document materially faster alternate paths that bypass much of this pipeline for applicants who qualify."
+}

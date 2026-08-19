@@ -1,0 +1,73 @@
+{
+  "id": "my_social_visit_pass",
+  "country": "MY",
+  "name": "Social Visit Pass (tourist) / eVisa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Visa-exempt or eVisa entry",
+      "requirements": [
+        {
+          "id": "sv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["visa_exempt_or_evisa_eligible_countries"],
+          "hard": true,
+          "blocker_text": "Many nationalities enter visa-free for stays of 30-90 days depending on nationality, or via the eVisa/eNTRI online system; other nationalities need a consular Social Visit Pass.",
+          "fix_path": "Apply for a Social Visit Pass at a Malaysian embassy or consulate if not visa-exempt or eVisa eligible.",
+          "fix_time_months": null,
+          "source_id": "malaysia_gov_categories"
+        },
+        {
+          "id": "sv_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_business_visiting_family_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism, social visits, and short business meetings; does not authorise employment.",
+          "fix_path": "Apply for the relevant work or pass category instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "malaysia_gov_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 6 months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of onward travel and sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30-90 days depending on nationality and entry type",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["my_student_pass"]
+  },
+  "sources": [
+    {
+      "id": "malaysia_gov_categories",
+      "tier": 1,
+      "url": "https://rai.malaysia.gov.my/enter",
+      "title": "Malaysia.gov.my (rai.malaysia.gov.my, official government portal) -- entry and pass category overview, confirming Social Visit Pass, eVISA, VTR, and MDAC mechanisms directly",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "Malaysia's federal structure has a real, practical effect even on this baseline visit category: Sabah and Sarawak (East Malaysia) retain their own immigration authority under the Malaysia Agreement 1963, and travellers -- including Malaysians from the Peninsula -- must pass a separate immigration checkpoint when moving between Peninsular Malaysia and either East Malaysian state, or between Sabah and Sarawak themselves. A visa or pass valid for Peninsular Malaysia does not automatically grant entry to Sabah/Sarawak and vice versa -- this distinction runs through nearly every route in the Malaysia build and is documented in detail on the MM2H-family route files, where it has the most consequential effect."
+}

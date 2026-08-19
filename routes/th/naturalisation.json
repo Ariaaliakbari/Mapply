@@ -1,0 +1,92 @@
+{
+  "id": "th_naturalisation",
+  "country": "TH",
+  "name": "Thai citizenship by naturalisation (Nationality Act B.E. 2508)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "General track, 5 years' permanent residence, points test",
+      "requirements": [
+        {
+          "id": "nat_5yr_pr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires holding permanent residence status for at least 5 consecutive years, per Section 10 of the Nationality Act B.E. 2508.",
+          "fix_path": "Continue holding permanent residence for the required 5-year period (see th_permanent_residence).",
+          "fix_time_months": 60,
+          "source_id": "legalclarity_th_naturalisation"
+        },
+        {
+          "id": "nat_points_test",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "points_test_50_of_100",
+          "hard": true,
+          "blocker_text": "Requires scoring at least 50 of 100 points on the citizenship points test (applicable to marriage-based and PR-based applicants; a separate, different process applies to women applying via a Thai husband), covering qualifications (up to 25 points) plus other assessed categories including conversational Thai proficiency, good conduct, and having a regular occupation with a valid work permit.",
+          "fix_path": "Build toward the 50-point threshold across the qualifications, language, conduct, and occupation categories.",
+          "fix_time_months": 12,
+          "source_id": "thaicitizenship_points_test"
+        },
+        {
+          "id": "nat_anthem",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean_and_anthem_test_passed",
+          "hard": true,
+          "blocker_text": "Applicants are typically expected to speak and understand conversational Thai and may be asked to sing the Thai National Anthem and the Royal Anthem during the citizenship interview, alongside a clean criminal record requirement.",
+          "fix_path": "Prepare to demonstrate conversational Thai and knowledge of the National and Royal Anthems at interview.",
+          "fix_time_months": 6,
+          "source_id": "legalclarity_th_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous permanent residence status", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Points-test documentation covering qualifications, occupation, and conduct", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid work permit and regular-occupation proof", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "final approval requires Royal assent under the Nationality Act, a genuine additional procedural stage beyond ministry-level processing",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "legalclarity_th_naturalisation",
+      "tier": 3,
+      "url": "https://legalclarity.org/thailand-permanent-residence-requirements-and-process/",
+      "title": "LegalClarity -- Thailand Permanent Residence: Requirements and Process, citing Section 10 of the Nationality Act B.E. 2508 for the 5-year PR-to-naturalisation requirement and describing the National/Royal Anthem interview component",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "thaicitizenship_points_test",
+      "tier": 3,
+      "url": "https://thaicitizenship.com/thai-citizenship-points-test/",
+      "title": "Thai Citizenship -- Thai citizenship points test, reproducing the official Thai-language points-allocation criteria ('เกณฑ์การให้คะแนน กรณีการขอแปลงสัญชาติเป็นไทย') and the 50-of-100-point threshold",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Ministry of Interior or Royal Thai Government Gazette page was achieved for the Nationality Act's primary statutory text or the points-test's official criteria document in this research pass -- both sources are specialist tier-3 guides, though the points-test source specifically reproduces what it presents as the official Thai-language scoring rubric verbatim, giving somewhat higher confidence than a typical secondary summary. STRUCTURAL FINDING: the points-test mechanism (50-of-100 threshold, covering qualifications, language, conduct, and occupation) applies specifically to PR-based and marriage-based (via a Thai wife) applicants -- a woman applying for citizenship via a Thai husband follows a different, separately-documented process not modeled in this route given research-depth limits in this pass, flagged as a candidate for future expansion. The requirement to sing the Thai National Anthem and Royal Anthem during the citizenship interview is a genuinely distinctive cultural-integration test not seen in comparable form elsewhere in this dataset -- closer in spirit to Denmark's mandatory Grundlovsceremoni handshake than to a written civics exam, though assessed conversationally rather than via a formal certified test. Final naturalisation approval requires Royal assent, a genuine additional procedural layer beyond ministry-level decision-making -- structurally comparable to Denmark's Act-of-Parliament citizenship mechanism documented elsewhere in this dataset, in that neither country treats naturalisation as a purely administrative act, though Thailand's mechanism runs through the monarchy rather than the legislature specifically. dual_citizenship_allowed is modeled true based on general knowledge that Thailand does not require renunciation of prior nationality for naturalised citizens in most cases, but this was not independently verified against a primary source in this specific research pass and should be treated as the best available answer rather than a fully confirmed fact."
+}

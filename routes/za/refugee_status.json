@@ -1,0 +1,73 @@
+{
+  "id": "za_refugee_status",
+  "country": "ZA",
+  "name": "Refugee and asylum-seeker status (Refugees Act 130 of 1998)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of persecution based on race, religion, nationality, membership of a particular social group, or political opinion, or flight from external aggression, occupation, foreign domination, or events seriously disturbing public order in the country of origin, per Section 3 of the Refugees Act 130 of 1998.",
+    "evidence_hint": "Report to a Refugee Reception Office within 5 days of entry (absent a compelling reason such as hospitalisation), then an interview with a Refugee Status Determination Officer to assess the claim under Section 3."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status determination",
+      "requirements": [
+        {
+          "id": "ref_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_or_public_order_disturbance",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution on Convention grounds, or flight from a serious public-order disturbance in the country of origin -- South Africa's statutory definition (Refugees Act 130 of 1998, Section 3) extends beyond the strict 1951 Convention persecution test to also cover this broader African-regional standard, tracking the 1969 OAU Refugee Convention.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "saflii_refugees_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Report to a Refugee Reception Office within 5 days of entry", "difficulty": "moderate", "typical_time_days": 5 },
+    { "document": "Section 22 asylum-seeker permit application and interview with a Refugee Status Determination Officer", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Personal testimony and any supporting documentation of persecution or risk", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Section 22 asylum-seeker permit: up to 6 months, renewable while the claim is pending; Section 24 refugee status: renewed periodically for as long as the underlying conditions persist",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["za_permanent_residence", "za_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "saflii_refugees_act",
+      "tier": 1,
+      "url": "https://www.saflii.org/za/legis/consol_act/ra199899/",
+      "title": "Southern African Legal Information Institute (saflii.org, an official South African legal-text repository) -- full consolidated text of the Refugees Act 130 of 1998, including Section 3 (refugee definition), Section 4 (exclusions), and Section 28 (removal)",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "unhcr_sa_work_access",
+      "tier": 2,
+      "url": "https://help.unhcr.org/southafrica/get-help/work/",
+      "title": "UNHCR South Africa (help.unhcr.org, intergovernmental body) -- Access to work, confirming the 2020 amendment removing automatic work rights for Section 22 asylum-seeker permit holders and the endorsement-application alternative",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: South Africa's Refugees Act 130 of 1998 is described by multiple independent sources as 'highly progressive' legislation, and its Section 3 definition is genuinely broader than the plain 1951 Convention persecution test -- it also covers the 1969 OAU Refugee Convention's regional standard (flight from external aggression, occupation, or serious public-order disturbance), a materially wider qualifying test than most other countries documented in this dataset, including Brazil's Cartagena-Declaration-extended standard, itself already broader than the plain Convention test. LIVE POLICY-TIGHTENING CATCH: work_rights is correctly modeled 'restricted' rather than 'full' for the asylum-seeker (Section 22) stage specifically -- prior to a 2020 amendment to the Refugees Act, asylum seekers had automatic permission to work and study while their claim was pending; since the amendment, an asylum seeker must separately apply to have their Section 22 permit 'endorsed' with work permission, which the Standing Committee for Refugee Affairs assesses on a case-by-case basis rather than granting automatically -- confirmed directly via UNHCR South Africa's own guidance. Once full refugee status is granted under Section 24, the right to work becomes automatic and unconditional, so this restriction is specific to the pending-claim period. STRUCTURAL CONTRAST worth stating plainly, and a genuine gap between formal law and practical reality: the Refugees Act sets a 180-day statutory deadline for the DHA to adjudicate an asylum application, but South Africa is reported to hold one of the highest volumes of pending asylum cases in the world (184,200+ cases per one source), with waits of a decade or longer not uncommon in practice -- a real, large-scale implementation gap between a genuinely progressive statute and its administration, worth surfacing clearly rather than assuming the 180-day figure reflects lived reality. pr_after_months and citizenship_after_months reflect a discrepancy across sources checked in this research pass that is flagged rather than resolved by guessing: one source (AfricanLII) describes a requirement of continuous residence in South Africa for 10 years after refugee status is granted before permanent-residence eligibility under Section 27(c), while another (Craig Smith & Associates, describing older case law) cites a 5-year figure read together with Immigration Act Section 27(d) -- these may reflect different eras of the law (the Act has been amended repeatedly, including a renumbering some sources refer to as the 'Immigration Act 13 of 2022') rather than a live current contradiction, but this was not conclusively resolved against the current consolidated text in this research pass. Both fields are left null rather than asserting either the 5-year or 10-year figure, or an averaged/hybrid number that would misrepresent both accounts -- a follow-up session should resolve this directly against saflii.org's current consolidated Immigration Act text before either figure is treated as settled."
+}

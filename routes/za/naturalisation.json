@@ -1,0 +1,97 @@
+{
+  "id": "za_naturalisation",
+  "country": "ZA",
+  "name": "South African citizenship by naturalisation (South African Citizenship Act 88 of 1995)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General track, 5 years on permanent residence",
+      "requirements": [
+        {
+          "id": "nat_5yr_pr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires holding a South African permanent residence permit for at least 5 years of ordinary residence before applying, per the South African Citizenship Act 88 of 1995.",
+          "fix_path": "Continue holding permanent residence for the required 5-year period (see za_permanent_residence).",
+          "fix_time_months": 60,
+          "source_id": "westerncape_gov_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "married_to_citizen",
+      "name": "Spouse of a South African citizen, 5 years on PR",
+      "requirements": [
+        {
+          "id": "nat_married_5yr_pr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_south_african_citizen_5yr_pr",
+          "hard": true,
+          "blocker_text": "Foreign nationals married to a South African citizen may also apply for naturalisation after 5 years holding a permanent residence permit -- per the source consulted, this is the same 5-year figure as the general track rather than a reduced one, unlike several other countries' faster spousal-naturalisation tracks documented elsewhere in this dataset.",
+          "fix_path": "Continue holding permanent residence for 5 years while married to the South African citizen sponsor.",
+          "fix_time_months": 60,
+          "source_id": "westerncape_gov_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "minor_with_pr",
+      "name": "Minor under 21 with permanent residence",
+      "requirements": [
+        {
+          "id": "nat_minor",
+          "attribute": "age",
+          "operator": "<",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Minors under 21 years old who hold permanent residence may apply for citizenship through a separate, simpler process than the adult general track.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "westerncape_gov_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' permanent residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Naturalisation fee payment", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Form DHA-9 (identity document application) with 2 ID photographs, once citizenship is granted", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "westerncape_gov_citizenship",
+      "tier": 1,
+      "url": "https://d7.westerncape.gov.za/general-publication/immigration-and-citizenship",
+      "title": "Western Cape Government (westerncape.gov.za, a South African provincial government portal) -- Immigration and Citizenship, confirming the 5-year-on-PR naturalisation requirement for both the general and married-to-citizen tracks, and the separate minor-under-21 process",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: this route rests on a single tier-1 provincial-government source rather than a directly-fetched dha.gov.za page or the primary Citizenship Act 88 of 1995 text itself -- kept as draft despite the tier-1 source given how much of the file's remaining structure (the married-to-citizen track's exact terms, whether any other simplified tracks exist) rests on that single source's brief treatment rather than a fuller statutory citation, consistent with this dataset's preference for corroboration before treating a route as fully verified. STRUCTURAL FINDING worth flagging clearly: unlike most other countries documented in this dataset (Poland's 2-3 year marriage track, Korea's 2-year F-6 track, Italy's 2-year domestic marriage track), South Africa's spouse-of-citizen naturalisation track does NOT appear to offer any acceleration over the general track -- both require the same 5 years of permanent residence per the single source consulted here, a genuinely different design choice worth surfacing rather than assuming marriage-based acceleration is universal across this dataset's countries. dual_citizenship_allowed is modeled true based on general knowledge that South Africa permits dual citizenship (subject to a formal retention permit requirement for South African-born citizens who naturalise elsewhere, a separate administrative process not itself modeled here), but this was not independently verified against a primary source in this specific research pass for the inbound-naturalisation direction and should be treated as the best available answer rather than fully confirmed. citizenship_after_months = 0 correctly reflects that naturalisation IS citizenship from the point of grant, per this dataset's standard convention -- the real barrier across all three groups is the preceding 5-year PR requirement (or the separate minor process), not a further wait after the naturalisation decision itself."
+}

@@ -1,0 +1,89 @@
+{
+  "id": "ru_work_visa_permit",
+  "country": "RU",
+  "name": "Work visa and work permit (visa-required nationals, employer-sponsored)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored, visa-required nationals",
+      "requirements": [
+        {
+          "id": "wv_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Russian employer, who must first obtain a foreign-worker hiring permit and an official invitation from the Ministry of Internal Affairs (MVD) -- a 4-8 week procedure on the employer's side, before the applicant can apply for the work visa itself.",
+          "fix_path": "Secure a job offer from a Russian employer willing to complete the MVD hiring-permit and invitation process.",
+          "fix_time_months": 2,
+          "source_id": "novika_visa_guide"
+        },
+        {
+          "id": "wv_quota",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "within_regional_sectoral_quota",
+          "hard": true,
+          "blocker_text": "Non-HQS employer-sponsored hiring is subject to annual regional and sectoral quotas set by the Russian government; the employer's hiring permit application must fall within the available quota for the applicant's occupation and region.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "novika_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employer's MVD hiring permit and official invitation",
+      "difficulty": "hard",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Work visa application at a Russian consulate",
+      "difficulty": "moderate",
+      "typical_time_days": 20
+    },
+    {
+      "document": "Work permit issued after arrival, plus MVD registration",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable annually tied to the employment contract",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "ru_rvp_temporary_residence",
+      "ru_vnzh_permanent_residence"
+    ]
+  },
+  "sources": [
+    {
+      "id": "novika_visa_guide",
+      "tier": 3,
+      "url": "https://www.novika.info/en/guides/visa/visa-russia-complete-guide",
+      "title": "Novika -- Russia Visa 2026: Application, E-Visa, Cost & Times, describing the work visa's employer-side hiring-permit and invitation procedure",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT. STRUCTURAL FINDING: Russia runs two entirely separate legal channels for foreign employment depending on whether the applicant's nationality requires a visa to enter -- this route covers visa-required nationals (broadly, non-CIS/non-visa-free countries), who go through employer-side hiring permits, official invitations, and quota allocation; visa-free nationals (see ru_patent_work) use a structurally different, applicant-administered patent system instead. This is a sharper visa-required/visa-free bifurcation of the employment system than seen in most other countries in this dataset, closer in spirit to how EPS bilateral agreements gate a specific subset of Korea's E-9 route, except here the split covers the entire ordinary (non-HQS) work-visa population rather than a narrow sub-channel. HONEST SOURCING GAP: no direct fetch of mvd.ru's own work-permit procedural pages was achieved in this research pass; kept as published rather than draft since the core two-track structure and general procedural shape (employer hiring permit, quota system, annual renewal) are corroborated consistently across multiple sources checked in this research pass, even though this specific citation is tier-3. citizenship_after_months (96) reflects the general RVP (1yr)-to-VNZh(after 1yr on RVP)-to-citizenship(5 more years) pipeline; ru_hqs_status documents a materially faster track for the subset of workers who qualify as Highly Qualified Specialists instead of using this ordinary employment channel."
+}

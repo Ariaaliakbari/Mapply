@@ -1,0 +1,106 @@
+{
+  "id": "ru_compatriot_resettlement",
+  "country": "RU",
+  "name": "State Programme to Assist Voluntary Resettlement of Compatriots (Sootechestvenniki)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Compatriot with historical, cultural, or linguistic ties to Russia",
+      "requirements": [
+        {
+          "id": "comp_status",
+          "attribute": "ancestry",
+          "operator": "exists",
+          "value": "compatriot_historical_cultural_linguistic_tie",
+          "hard": true,
+          "blocker_text": "Requires recognition as a 'compatriot' under Presidential Decree No. 1289 (14 September 2012, as amended) -- broadly, persons and their descendants who lived in the Russian state, the Russian Empire, the USSR, or the Russian Federation, and who identify with Russian culture, language, or historical ties, along with some categories defined by broader compatriot-status legislation.",
+          "fix_path": "Document the qualifying historical, cultural, or linguistic connection to Russia.",
+          "fix_time_months": null,
+          "source_id": "consultant_decree1289"
+        },
+        {
+          "id": "comp_relocation_region",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "designated_relocation_region_selected",
+          "hard": false,
+          "blocker_text": "Requires selecting and relocating to one of the Russian regions designated as a resettlement destination under the programme; benefits and support levels vary by the specific region chosen.",
+          "fix_path": "Select a designated resettlement region as part of the application.",
+          "fix_time_months": null,
+          "source_id": "migron_compatriot_citizenship"
+        },
+        {
+          "id": "comp_language_test",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "basic",
+          "hard": false,
+          "blocker_text": "Since a 2024 amendment, participants must confirm knowledge of Russian language, history, and law, with exceptions for certain categories (details vary; not universally required for all applicant types).",
+          "fix_path": "Pass the Russian language, history, and law test, or confirm eligibility for an exemption.",
+          "fix_time_months": 6,
+          "source_id": "migron_compatriot_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Documentation of the qualifying historical, cultural, or linguistic connection to Russia",
+      "difficulty": "hard",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Participant application, filable in the country of origin, from within Russia, or from a third country",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Russian language, history, and law test results (unless exempt)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "participant certificate valid 5 years, not renewable -- citizenship must be completed within this window",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 3,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "ru_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "consultant_decree1289",
+      "tier": 1,
+      "url": "https://www.consultant.ru/document/cons_doc_LAW_135348/9cf95e1cef34d74eca9a5792671e8c9e40db0c88/",
+      "title": "ConsultantPlus (a Russian official legal-text database) -- full text of Presidential Decree No. 1289 of 14 September 2012 (as amended through 22 November 2023), 'On the implementation of the State Programme to Assist Voluntary Resettlement to the Russian Federation of Compatriots Living Abroad'",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "migron_compatriot_citizenship",
+      "tier": 3,
+      "url": "https://migron.ru/stati/grazhdanstvo-rf-programma-pereseleniya-sootechestvennikov/",
+      "title": "Migron -- Гражданство РФ по программе переселения соотечественников, describing the 2024 language/history/law testing requirement and the 2026 expansion allowing applications from within Russia or third countries",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, comparable in shape to Poland's Karta Polaka and Korea's F-4 but with its own distinctive mechanics: Compatriot Programme participants get one of the largest procedural bypasses documented anywhere in this dataset -- with an RVP in hand, participants and their included family members can apply directly for citizenship, skipping VNZh (permanent residence) entirely, confirmed identically across multiple independent sources including the Presidential Decree's own implementing guidance reproduced via ConsultantPlus (a genuine tier-1 Russian legal-text database, directly fetched in this research pass). pr_after_months and citizenship_after_months (0 and 3 respectively) reflect this VNZh-skip: the 3-month figure is a commonly-cited processing estimate for the simplified citizenship application once RVP and regional registration are complete, rather than a further multi-year residence requirement. The 5-year, non-renewable participant certificate window is a genuine hard constraint worth flagging clearly -- unlike Poland's Karta Polaka (renewable, no expiry pressure on the underlying document itself), a Compatriot Programme participant who doesn't complete citizenship within 5 years must restart the process. Family members listed on the same certificate as the primary applicant get the same simplified RVP-and-citizenship benefits -- a real household-level structural feature, not just an individual one. HONEST SOURCING GAP on the specific 2024 testing-requirement details: while the Decree itself is tier-1 sourced, the exact scope of who is exempt from the 2024 Russian-language/history/law test was not independently confirmed against a primary source in this research pass -- flagged as a follow-up target."
+}

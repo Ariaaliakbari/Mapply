@@ -1,0 +1,123 @@
+{
+  "id": "ru_family_reunion",
+  "country": "RU",
+  "name": "Family visa (P category) and family-based RVP",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_with_child",
+      "name": "Spouse of a Russian citizen, with a common child",
+      "requirements": [
+        {
+          "id": "fam_spouse_with_child",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_russian_national_with_common_child",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Russian citizen and a common child; this route bypasses the general 3-year waiting period that otherwise applies to spouses without children following 2025/2026 legal amendments.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "russiahandbook_rvp_2026"
+        }
+      ]
+    },
+    {
+      "id": "spouse_no_child",
+      "name": "Spouse of a Russian citizen, no common child",
+      "requirements": [
+        {
+          "id": "fam_spouse_no_child",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_russian_national_3yr_wait",
+          "hard": true,
+          "blocker_text": "Following 2025/2026 legal amendments, couples without a common child must wait 3 years from the marriage date before the foreign spouse can apply for a Temporary Residence Permit (RVP) -- marriage to a Russian citizen is no longer an instant path to residency, a real tightening from the prior rule.",
+          "fix_path": "Wait 3 years from the marriage date, or establish a common child to qualify for the faster track.",
+          "fix_time_months": 36,
+          "source_id": "russiahandbook_rvp_2026"
+        }
+      ]
+    },
+    {
+      "id": "close_relative",
+      "name": "Parent, child, or other close relative of a Russian citizen or resident",
+      "requirements": [
+        {
+          "id": "fam_relative_invitation",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": [
+            "parent_of_sponsor",
+            "adult_child_of_sponsor",
+            "sibling_of_sponsor"
+          ],
+          "hard": true,
+          "blocker_text": "The Russia-based sponsor must register an invitation with the MVD for the visiting or resident family member; the invitation process on the Russian side takes 30-60 days.",
+          "fix_path": "Have the sponsor register the invitation with the MVD before applying.",
+          "fix_time_months": null,
+          "source_id": "novika_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Marriage certificate, birth certificate, or documentation proving the qualifying family relationship",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "MVD-registered invitation from the Russia-based sponsor",
+      "difficulty": "moderate",
+      "typical_time_days": 60
+    },
+    {
+      "document": "Proof of the sponsor's Russian citizenship or valid residence status",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "P visa: up to 90 days; family-based RVP: 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "ru_vnzh_permanent_residence",
+      "ru_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "russiahandbook_rvp_2026",
+      "tier": 3,
+      "url": "https://russiahandbook.com/applying-for-permanent-residency-in-russia-step-by-step/",
+      "title": "Russia Handbook -- Applying for Permanent Residency in Russia: Step-by-Step, describing the 2025/2026 'Common Child' fast track and the new 3-year waiting period for childless spouses",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "novika_visa_guide",
+      "tier": 3,
+      "url": "https://www.novika.info/en/guides/visa/visa-russia-complete-guide",
+      "title": "Novika -- Russia Visa 2026, describing the P (family visit) visa category and MVD invitation-registration process",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT. LIVE POLICY-TIGHTENING CATCH: marrying a Russian citizen was, until a 2025/2026 legal amendment, treated by multiple secondary sources as a near-instant path to residency -- that is no longer accurate. Couples without a common child now face a mandatory 3-year wait from the marriage date before the foreign spouse can even apply for RVP, a substantial real tightening confirmed independently across sources checked in this research pass. This is correctly modeled as two separate OR-logic groups with genuinely different waiting periods (0 effectively vs 36 months) rather than one blended 'spouse' rule, since the presence of a common child is now the single biggest determinant of how fast this route moves -- a structural finding worth surfacing clearly, since many older guides and general expectations about marriage-based immigration to Russia predate this change. citizenship_after_months (12) for the fastest-qualifying groups reflects that family-based RVP holders can, per general Art. 14 simplified-naturalisation provisions, apply for citizenship without the standard 5-year VNZh residence requirement in some cases -- see ru_naturalisation for the full breakdown; this figure should be read as the fastest documented case, not the default for every sub-group in this route. HONEST SOURCING GAP: no direct fetch of mvd.ru's own family-visa or RVP category pages was achieved in this research pass; both sources are tier-3 but the core structural facts (3-year wait, common-child exception) are corroborated with enough legal-context specificity to be treated as reliable."
+}

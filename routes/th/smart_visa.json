@@ -1,0 +1,122 @@
+{
+  "id": "th_smart_visa",
+  "country": "TH",
+  "name": "SMART Visa (Board of Investment)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "smart_t",
+      "name": "SMART T (Talent)",
+      "requirements": [
+        {
+          "id": "t_contract",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires an employment or service contract with an entity certified as technology-based in one of Thailand's targeted industries, with at least 1 year remaining on the contract; certification comes from agencies including the National Innovation Agency and the Digital Economy Promotion Agency.",
+          "fix_path": "Secure a contract with a BOI/NIA/DEPA-certified employer in a targeted industry.",
+          "fix_time_months": null,
+          "source_id": "boi_smart_t_official"
+        },
+        {
+          "id": "t_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "THB", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires a minimum salary of THB 200,000/month (or the equivalent), exclusive of other benefits and welfare -- reduced for certain categories (retired experts and startup-company employees commonly cited around THB 50,000/month, standard talent-stream applicants around THB 100,000/month).",
+          "fix_path": "Negotiate a salary meeting the applicable threshold, or confirm eligibility for a reduced-threshold sub-category.",
+          "fix_time_months": null,
+          "source_id": "boi_smart_t_official"
+        }
+      ]
+    },
+    {
+      "id": "smart_e",
+      "name": "SMART E (Executive)",
+      "requirements": [
+        {
+          "id": "e_senior_position",
+          "attribute": "occupation",
+          "operator": "==",
+          "value": "senior_management_role",
+          "hard": true,
+          "blocker_text": "Requires a senior management position such as Chairman or Managing Director, with an employment or service contract of at least 1 year remaining, at a company certified as technology-based in a targeted industry by the relevant government agencies.",
+          "fix_path": "Secure a qualifying senior-management contract at a certified targeted-industry employer.",
+          "fix_time_months": null,
+          "source_id": "boi_smart_e_official"
+        }
+      ]
+    },
+    {
+      "id": "smart_s",
+      "name": "SMART S (Startup founder)",
+      "requirements": [
+        {
+          "id": "s_equity_or_role",
+          "attribute": "occupation",
+          "operator": "==",
+          "value": "self_employed_or_company_owner",
+          "hard": false,
+          "blocker_text": "Requires a startup certified in a targeted industry, holding at least 25% equity in the company or a director position, plus a deposit of THB 600,000 held for at least 3 months in a Thai or home-country account. This specific figure rests on a single tier-3 source rather than a directly-fetched BOI page for this sub-category, unlike the T and E groups above.",
+          "fix_path": "Structure at least 25% equity or a director role in a certified targeted-industry startup, and hold the qualifying deposit for 3 months.",
+          "fix_time_months": 3,
+          "source_id": "emerhub_smart_s"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment/service contract or startup certification matching the applicable SMART category", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "BOI endorsement (via BOI, NIA, DEPA, or another designated certifying body)", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Health insurance and, for SMART S, proof of the qualifying deposit", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years (2 years for SMART S startup founders, renewable), not exceeding the underlying contract term",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["th_permanent_residence", "th_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "boi_smart_t_official",
+      "tier": 1,
+      "url": "https://smart-visa.boi.go.th/smart/pages/smart_t.html",
+      "title": "Board of Investment (smart-visa.boi.go.th, official SMART Visa portal) -- Smart T (Talent), confirming certification, contract, and salary requirements directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "boi_smart_e_official",
+      "tier": 1,
+      "url": "https://smart-visa.boi.go.th/smart/pages/smart_e.html",
+      "title": "Board of Investment (smart-visa.boi.go.th, official SMART Visa portal) -- Smart E (Executive), confirming senior-management and contract requirements directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "emerhub_smart_s",
+      "tier": 3,
+      "url": "https://emerhub.com/thailand/visas/smart-visa/",
+      "title": "Emerhub -- Thailand SMART Visa 2026: SMART S Startup Visa Requirements, describing the 25%-equity/director-role and THB 600,000 deposit requirements",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY, flagged rather than silently resolved: Emerhub's 2026-dated guide states that as of 2025 the BOI discontinued the Talent (T), Investor (I), and Executive (E) SMART Visa categories entirely, redirecting those applicant profiles to the LTR visa instead, leaving only SMART S (Startup) and SMART O (dependents) active. However, direct fetches of smart-visa.boi.go.th's own SMART T and SMART E category pages in this research pass returned full, current-looking requirement text for both categories, with no discontinuation notice visible on either page -- a direct contradiction between a specialist secondary source and the ostensibly authoritative primary source. This is treated as an open discrepancy rather than resolved by assumption: it's possible the BOI site has stale, un-retired pages for formally discontinued categories, or that Emerhub's claim is itself incorrect or refers to a narrower policy change (e.g. new-applicant volume restrictions rather than full discontinuation) -- a follow-up session should attempt to confirm current application-acceptance status directly with BOI before treating either account as settled. Given the primary source returned live, populated content for T and E, this route keeps all three groups (T/E/S) as published rather than removing T/E on the strength of a single secondary claim. STRUCTURAL FINDING common to all three groups: SMART Visa holders need no separate work permit at all -- a genuinely more streamlined mechanism than th_non_b_work_permit's dual visa-plus-permit structure and its 4:1 Thai-staff-ratio requirement, which SMART Visa holders are exempt from entirely. Spouses of SMART Visa holders may also work in Thailand without their own separate work permit (excluding prohibited occupations) -- a real, favourable family-level benefit confirmed directly on the BOI's own pages, distinct from most other work_sponsored routes in this dataset where a dependent spouse typically needs an independent work authorisation."
+}

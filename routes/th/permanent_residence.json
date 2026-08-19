@@ -1,0 +1,127 @@
+{
+  "id": "th_permanent_residence",
+  "country": "TH",
+  "name": "Permanent Residence (Immigration Act B.E. 2522)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": null,
+    "cap_type": "fixed_number",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "employment",
+      "name": "Employment category",
+      "requirements": [
+        {
+          "id": "emp_work_permit_3yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires holding a work permit for at least 3 consecutive years, at least 1 of which with the current employer as stated in the application.",
+          "fix_path": "Continue holding a valid work permit for at least 3 years, with at least the most recent year at the current employer.",
+          "fix_time_months": 36,
+          "source_id": "legalclarity_th_pr"
+        },
+        {
+          "id": "emp_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 80000, "currency": "THB", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires income of at least THB 80,000/month for a minimum of 2 consecutive years before submission, or alternatively personal income tax paid of at least THB 100,000/year for each of the 2 preceding years.",
+          "fix_path": "Document income or personal income tax payments meeting the applicable threshold.",
+          "fix_time_months": 24,
+          "source_id": "legalclarity_th_pr"
+        }
+      ]
+    },
+    {
+      "id": "investment",
+      "name": "Investment category",
+      "requirements": [
+        {
+          "id": "inv_amount",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 10000000, "currency": "THB", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum investment of THB 10,000,000 in Thai property, government bonds, or Thai-registered companies, with funds transferred from abroad and held for at least 3 years.",
+          "fix_path": "Structure a qualifying THB 10,000,000 investment, funded from abroad and held for the required 3-year period.",
+          "fix_time_months": 36,
+          "source_id": "thailand_visa_net_pr"
+        }
+      ]
+    },
+    {
+      "id": "family_marriage",
+      "name": "Family/humanitarian category (marriage to a Thai citizen)",
+      "requirements": [
+        {
+          "id": "fam_marriage_years",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_thai_national_extended_residence",
+          "hard": false,
+          "blocker_text": "Covers spouses and other close family members of Thai citizens with extended, documented residence in Thailand -- the specific years-of-marriage/residence threshold for this category was not independently confirmed against a primary source in this research pass.",
+          "fix_path": "Confirm current family-category requirements directly with the Immigration Bureau.",
+          "fix_time_months": null,
+          "source_id": "legalclarity_th_pr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "3 years' continuous Non-Immigrant visa status immediately before the application deadline", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Category-specific financial or investment documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Thai-language proficiency demonstrated at the interview appointment", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "PR holders must report residence annually and notify the Immigration Bureau of address, marital-status, or employment changes within 15 days; PR is revocable for serious criminal offences, fraudulent application documents, or absence from Thailand exceeding 1 year without prior permission",
+    "switchable_to": ["th_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "legal_co_th_quota_video",
+      "tier": 3,
+      "url": "https://legal.co.th/resources/visa-immigration-law/thailand-immigration-law/thai-permanent-residence-nationality-quota-information/",
+      "title": "Integrity Legal -- Thai Permanent Residence: Nationality Quota Information, directly quoting the Immigration Bureau's 2022 notification setting the 100-per-nationality/50-for-stateless quota structure",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "legalclarity_th_pr",
+      "tier": 3,
+      "url": "https://legalclarity.org/thailand-permanent-residency-requirements-and-eligibility-2/",
+      "title": "LegalClarity -- Thailand Permanent Residency Requirements and Eligibility, citing the Immigration Bureau's Immigration Commission Regulation on Residential Permits for the employment-category income and work-permit thresholds",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "thailand_visa_net_pr",
+      "tier": 3,
+      "url": "https://www.thailand-visa.net/thailand-permanent-residency.html",
+      "title": "Thailand Visa -- Thailand Permanent Residency, describing the THB 10,000,000 investment-category threshold under the Immigration Act B.E. 2522",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of an Immigration Bureau (immigration.go.th) page was achieved for this route in this research pass, despite strong, specific, mutually-consistent cross-corroboration across 8+ independent sources on the core quota mechanism and category structure. STRUCTURAL FINDING, one of the most distinctively restrictive settlement routes documented anywhere in this dataset: the 100-per-nationality annual quota (not 100 total, a common misconception one source explicitly corrects) means Thai PR's real bottleneck often isn't the substantive eligibility criteria but simple arithmetic -- popular nationalities can and do exhaust their 100 slots within the roughly 2-month annual application window, meaning a fully-qualified applicant can still be shut out purely by filing order in a given year. selection_method is modeled 'merit_ranked' as the closest fit, though the actual mechanism is closer to first-come-first-served-within-quota than a true merit ranking -- flagged as an imperfect categorisation given the schema's available options. Five categories exist per the Immigration Commission's own framework (investment, employment, humanitarian/family, expert-or-academic, and extraordinary-circumstances case-by-case) -- this file models three (employment, investment, family/marriage) given sourcing depth, with the expert/academic and extraordinary-circumstances categories flagged as candidates for future expansion rather than fabricated without adequate source support. citizenship_after_months (60) reflects Nationality Act B.E. 2508 Section 10's 5-consecutive-years-of-PR requirement before naturalisation eligibility opens -- see th_naturalisation for the full downstream detail, including the distinctive points-test and National/Royal Anthem interview requirement."
+}

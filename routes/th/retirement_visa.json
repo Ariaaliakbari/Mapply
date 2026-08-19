@@ -1,0 +1,91 @@
+{
+  "id": "th_retirement_visa",
+  "country": "TH",
+  "name": "Retirement visa (Non-Immigrant O-A / O-X)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "o_a",
+      "name": "O-A visa, 1-year, consular application",
+      "requirements": [
+        {
+          "id": "oa_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 50,
+          "hard": true,
+          "blocker_text": "Requires the applicant to be at least 50 years old, applying at a Thai embassy or consulate abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "thai_visa_services_comparison"
+        },
+        {
+          "id": "oa_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 800000, "currency": "THB", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least THB 800,000 held in a Thai bank account for at least 2 months before applying and maintained for at least 3 months after receiving the extension (some immigration offices additionally require the balance stay above THB 400,000 year-round), or monthly income of at least THB 65,000, plus mandatory health insurance from an approved Thai insurer.",
+          "fix_path": "Deposit and maintain the required THB 800,000 in a Thai bank account per the timing rules, or document qualifying monthly income, and secure approved Thai health insurance.",
+          "fix_time_months": 5,
+          "source_id": "thai_visa_services_comparison"
+        }
+      ]
+    },
+    {
+      "id": "o_x",
+      "name": "O-X visa, 5-year, higher financial bar",
+      "requirements": [
+        {
+          "id": "ox_higher_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "higher_financial_requirement_than_oa",
+          "hard": false,
+          "blocker_text": "The O-X visa grants 5-year validity in exchange for a materially higher financial requirement than the standard O-A -- the specific current figure was not independently confirmed against a primary source in this research pass, and is available only to nationals of a limited list of eligible countries.",
+          "fix_path": "Confirm current O-X financial thresholds and nationality eligibility directly with a Thai embassy or consulate.",
+          "fix_time_months": null,
+          "source_id": "thai_visa_services_comparison"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank statements showing the required funds held for the applicable period", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Approved Thai health insurance policy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "90-day address reporting to Immigration Bureau once resident", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "O-A: 1 year, renewable annually; O-X: up to 5 years, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["th_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "thai_visa_services_comparison",
+      "tier": 3,
+      "url": "https://www.thai-visa-services.com/guides/best-visa-for-long-stay-thailand",
+      "title": "Thai Visa Services -- Best Visa for Long Stay in Thailand 2026, describing the O-A/O-X financial-requirement structure and timing rules",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Thai embassy or Immigration Bureau page was achieved for this route in this research pass; the O-X category's specific current financial threshold and eligible-nationality list in particular were not confirmed with confidence and are modeled hard:false accordingly. STRUCTURAL FINDING: unlike th_ltr_visa's Wealthy Pensioner category (10-year status, tax exemptions, annual-only reporting) and unlike th_thailand_privilege (pure membership fee, no PR pathway), the retirement visa is explicitly identified by multiple sources as 'the correct visa' if a genuine Thai Permanent Residency pathway matters to the applicant -- LTR and Privilege years do not count toward PR at all, but retirement-visa years on Non-O/O-A status can, subject to the general PR eligibility categories documented on th_permanent_residence. leads_to_citizenship is correctly false at this route's own level: Thai naturalisation requires PR status first (5 consecutive years), so citizenship is only reachable via th_permanent_residence as an intermediate step, not directly from a retirement visa -- a two-hop chain rather than a direct route, worth surfacing clearly given how often retirees might assume otherwise."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "ph_sirv",
+  "country": "PH",
+  "name": "Special Investor's Resident Visa (SIRV)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "BOI-endorsed investment",
+      "requirements": [
+        {
+          "id": "sirv_investment",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 75000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires investment of at least USD 75,000 (commonly cited threshold) in qualified economic activities, endorsed by the Board of Investments (BOI), and the investment must be maintained for as long as the visa is held.",
+          "fix_path": "Structure a qualifying BOI-endorsed investment of at least USD 75,000 and maintain it continuously.",
+          "fix_time_months": null,
+          "source_id": "clearedexpat_investor_options"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "BOI endorsement of the qualifying investment", "difficulty": "hard", "typical_time_days": 60 },
+    { "document": "Proof of continued maintenance of the investment amount", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical and police clearances", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, subject to maintaining the investment",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ph_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "clearedexpat_investor_options",
+      "tier": 3,
+      "url": "https://www.clearedexpat.com/countries/philippines/visa-options-for-americans/",
+      "title": "Cleared Expat -- Visa Options for Americans in the Philippines: SRRV, 13(a), Tourist, describing SIRV's BOI-administered investment thresholds",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Board of Investments (boi.gov.ph) page was achieved for this route in this research pass; the USD 75,000 figure is described as 'commonly cited' by the source used, suggesting it may vary by qualifying sector or have changed without full documentation being found in this research pass. STRUCTURAL FINDING: SIRV is explicitly investment-capital-based (a fixed dollar threshold maintained continuously), distinct from other Philippine investment-adjacent tracks noted in research for this build but not built as separate route files given scope limits -- the SVEG (Special Visa for Employment Generation, jobs-created-based rather than capital-based) and the EO 226/RA 8756 regional-headquarters route (for multinational-company executives), both flagged as candidates for future expansion. leads_to_pr is true with pr_after_months = 0 since SIRV itself already functions as an indefinite-stay status once granted, similar in shape to several other countries' investor-residency routes in this dataset that grant PR-equivalent status directly rather than requiring a separate later PR application."
+}

@@ -1,0 +1,136 @@
+{
+  "id": "my_mm2h_federal",
+  "country": "MY",
+  "name": "Malaysia My Second Home (MM2H), Mainland/Federal programme",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "silver",
+      "name": "Silver tier",
+      "requirements": [
+        {
+          "id": "silver_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 32000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a fixed deposit starting around USD 32,000 (the lowest tier), combined with a mandatory property purchase within 12 months of endorsement -- minimum property price varies by state, with popular states (Penang, Selangor, Kuala Lumpur, Johor) enforcing minimums of RM 1,000,000 or higher even for Silver-tier applicants. Prohibits all work and business activity.",
+          "fix_path": "Structure a qualifying fixed deposit and identify a property purchase meeting the target state's minimum threshold.",
+          "fix_time_months": null,
+          "source_id": "earlyretireabroad_mm2h"
+        }
+      ]
+    },
+    {
+      "id": "gold",
+      "name": "Gold tier",
+      "requirements": [
+        {
+          "id": "gold_deposit",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "gold_tier_fixed_deposit_and_property",
+          "hard": true,
+          "blocker_text": "Requires a higher fixed deposit than Silver tier, combined with a mandatory property purchase within 12 months of endorsement. Prohibits all work and business activity, the same restriction as Silver tier.",
+          "fix_path": "Structure a qualifying Gold-tier fixed deposit and property purchase.",
+          "fix_time_months": null,
+          "source_id": "earlyretireabroad_mm2h"
+        }
+      ]
+    },
+    {
+      "id": "platinum",
+      "name": "Platinum tier",
+      "requirements": [
+        {
+          "id": "platinum_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 1000000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a fixed deposit of USD 1,000,000, combined with a mandatory property purchase. Platinum is the only Mainland MM2H tier that permits business and employment activity -- Silver and Gold tiers prohibit all work.",
+          "fix_path": "Structure a qualifying USD 1,000,000 fixed deposit and property purchase.",
+          "fix_time_months": null,
+          "source_id": "earlyretireabroad_mm2h"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "up to 20 years, renewable, per the 2026 four-tier restructuring",
+        "renewable": true,
+        "work_rights": "full",
+        "study_rights": "restricted",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": false,
+        "pr_after_months": null,
+        "leads_to_citizenship": false,
+        "citizenship_after_months": null,
+        "dual_citizenship_allowed": null,
+        "physical_presence_requirement": null,
+        "switchable_to": []
+      }
+    },
+    {
+      "id": "sez",
+      "name": "SEZ tier (Johor-Singapore Special Economic Zone)",
+      "requirements": [
+        {
+          "id": "sez_deposit",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sez_specific_fixed_deposit_property_threshold",
+          "hard": true,
+          "blocker_text": "A fourth tier specific to the Johor-Singapore Special Economic Zone, with its own fixed-deposit and property thresholds distinct from the three standard tiers, reflecting the SEZ's distinct economic-development status.",
+          "fix_path": "Confirm the current SEZ-specific thresholds directly with MOTAC or a licensed MM2H agent.",
+          "fix_time_months": null,
+          "source_id": "globallawexperts_mm2h"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Fixed deposit placed in a Malaysian bank at the applicable tier threshold", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Property purchase meeting the target state's minimum threshold, completed within 12 months of endorsement", "difficulty": "hard", "typical_time_days": 180 },
+    { "document": "Medical examination, insurance, and security/health clearance", "difficulty": "moderate", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "5-20 years depending on tier, renewable, per the 2026 four-tier restructuring",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "MM2H requires no minimum days of physical presence per year, tracked via passport stamps and enforced at the 5-year renewal point",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "earlyretireabroad_mm2h",
+      "tier": 3,
+      "url": "https://earlyretireabroad.com/malaysia-mm2h-visa-2026/",
+      "title": "Early Retire Abroad -- Malaysia MM2H Visa 2026: Complete Guide to Requirements, Costs & Application Process, describing the four-tier structure, property-purchase mandate, and work restrictions per tier",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "globallawexperts_mm2h",
+      "tier": 3,
+      "url": "https://globallawexperts.com/malaysia-mm2h-visa/",
+      "title": "Global Law Experts -- Malaysia MM2H Visa, confirming the SEZ tier's existence as a fourth category distinct from Silver/Gold/Platinum",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of the Ministry of Tourism, Arts and Culture (MOTAC), which administers Mainland MM2H, was achieved in this research pass -- the exact Gold and SEZ tier figures in particular were not consistently reported with matching precision across the sources checked, and are modeled with an 'exists' test rather than a specific number where the underlying figure could not be confirmed with confidence. STRUCTURAL FINDING, the single most distinctive feature of the entire Malaysia build: this is one of three parallel, separately-administered MM2H-branded long-stay residency programmes operating simultaneously in Malaysia -- this Mainland/Federal programme (covering Peninsular Malaysia and Sabah, administered by MOTAC), plus Sarawak's entirely independent S-MM2H (see my_smm2h_sarawak) and a further separate Sabah MM2H track promoted by the Sabah Ministry of Tourism, Culture and Environment with its own three-tier structure (Silver RM 500,000/5+5yr, Gold USD 500,000/15yr, Platinum USD 1,000,000/20yr) -- not modeled as its own separate route file here given the scope of this initial build, but flagged as a clear candidate for a future addition given how materially different its terms are from both the Mainland and Sarawak programmes. This tri-track structure flows directly from Malaysia's federal system: Sabah and Sarawak retained independent immigration authority under the Malaysia Agreement 1963, and holders of one programme's long-term visa generally cannot use it to reside in the other jurisdiction -- an S-MM2H visa explicitly permits residence anywhere in Malaysia except Sabah, while a Mainland MM2H visa (per one source) has since November 2022 carried an explicit clause permitting travel to but not residence in West Malaysia for holders based in certain configurations. Platinum tier's outcome_override correctly reflects the one genuinely different Outcome shape among the four tiers: it is the only track granting real work and business rights, a materially different legal status from Silver/Gold's pure no-work residency, justifying the override per this schema's design intent. This route does not itself lead to permanent residence or citizenship in the way most of this dataset's other 'settled' routes do -- MM2H is a durable long-stay status in its own right, structurally closer to a renewable elective-residency visa than to a PR-track route, confirmed consistently across every source checked."
+}

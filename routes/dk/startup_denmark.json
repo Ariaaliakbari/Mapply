@@ -1,0 +1,74 @@
+{
+  "id": "dk_startup_denmark",
+  "country": "DK",
+  "name": "Start-up Denmark",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Approved innovative business idea",
+      "requirements": [
+        {
+          "id": "su_panel_approval",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "expert_panel_approved_business_idea",
+          "hard": true,
+          "blocker_text": "The business idea must be approved by an expert panel appointed by the Danish Business Authority (Erhvervsstyrelsen) before SIRI will accept a residence and work permit application -- the panel assesses whether the venture is genuinely innovative and capable of contributing growth and new jobs in Denmark.",
+          "fix_path": "Submit a business plan to the Erhvervsstyrelsen expert panel and obtain approval before applying to SIRI.",
+          "fix_time_months": 3,
+          "source_id": "nyidanmark_startup"
+        },
+        {
+          "id": "su_active_participation",
+          "attribute": "occupation",
+          "operator": "==",
+          "value": "self_employed_or_company_owner",
+          "hard": true,
+          "blocker_text": "Requires actively running the approved business as a self-employed person; the permit is limited to operating that specific business, and any material change to the business, or its closure, requires a fresh application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nyidanmark_startup"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business plan submitted to the Erhvervsstyrelsen expert panel", "difficulty": "hard", "typical_time_days": 90 },
+    { "document": "Expert panel approval certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of funds to support the applicant and, at renewal, a fresh expert-panel reassessment of the business", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years initially, renewable in further 3-year increments provided the business remains active and the expert panel reconfirms it meets requirements",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["dk_permanent_residence", "dk_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "nyidanmark_startup",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Du-vil-ans%C3%B8ge/Arbejde/Start-up-Denmark",
+      "title": "Nyidanmark.dk (SIRI) -- Start-up Denmark, official scheme page confirming the expert-panel approval requirement, team-of-up-to-3 structure, and duration terms",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: Start-up Denmark can be used not only for brand-new ventures but also to continue an existing self-employed business the applicant already established while resident in Denmark on a different basis, or to run a Danish branch of a foreign-based sole proprietorship -- three distinct use cases under one scheme, confirmed directly via nyidanmark.dk. The scheme explicitly supports teams: up to 3 people can apply together around a single shared business plan, a genuinely collaborative structure not commonly seen in this dataset's other work_independent routes (most, like Poland's D-8-4/OASIS or Italy's self-employment visa, are single-applicant). The permit is tightly scoped to the specific approved business -- a material change to the business plan or its closure requires an entirely new application and fresh expert-panel approval, and renewal itself requires the Erhvervsstyrelsen panel to reassess and reconfirm the business still meets requirements, a real, recurring approval gate not present in most comparable countries' investor/founder routes in this dataset, which typically only re-check financial thresholds at renewal rather than re-approving the underlying business concept. pr_after_months and citizenship_after_months use the general 4-year/8-year Danish tracks (see dk_permanent_residence); no accelerated path specific to Start-up Denmark participants was found in sources checked for this build."
+}

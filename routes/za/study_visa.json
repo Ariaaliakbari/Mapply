@@ -1,0 +1,74 @@
+{
+  "id": "za_study_visa",
+  "country": "ZA",
+  "name": "Study Visa",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Admitted to a recognised institution",
+      "requirements": [
+        {
+          "id": "stu_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_recognised_institution",
+          "hard": true,
+          "blocker_text": "Requires a letter of acceptance from a recognised South African school, university, or training institution.",
+          "fix_path": "Secure admission from a recognised South African institution.",
+          "fix_time_months": null,
+          "source_id": "legitimus_temp_residence"
+        },
+        {
+          "id": "stu_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_confirmed",
+          "hard": true,
+          "blocker_text": "Requires proof of sufficient funds for tuition and living costs, medical insurance, and medical/radiological reports.",
+          "fix_path": "Provide bank statements, a scholarship award letter, and required medical clearances.",
+          "fix_time_months": null,
+          "source_id": "legitimus_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter of acceptance from the institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds and medical insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical and radiological reports, police clearance", "difficulty": "moderate", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "tied to programme length, renewed annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["za_critical_skills_visa", "za_general_work_visa"]
+  },
+  "sources": [
+    {
+      "id": "legitimus_temp_residence",
+      "tier": 3,
+      "url": "https://www.legitimus.co.za/services/temporary-residence-visas",
+      "title": "Legitimus -- Temporary Residence Visa South Africa 2026 Guide, describing the Study Visa category",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a dha.gov.za or Department of Higher Education page was achieved for this route's specific mechanics in this research pass. work_rights is modeled 'restricted': South African study visas commonly permit a limited number of part-time work hours (frequently cited around 20 hours/week during term), though the exact current cap was not independently confirmed against a primary source in this research pass."
+}

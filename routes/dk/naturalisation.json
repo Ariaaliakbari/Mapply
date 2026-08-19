@@ -1,0 +1,160 @@
+{
+  "id": "dk_naturalisation",
+  "country": "DK",
+  "name": "Danish citizenship by naturalisation (indfødsret ved lov)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "nomination_required",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": null,
+    "cap_type": "none",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "General track, 2 years' permanent residence",
+      "requirements": [
+        {
+          "id": "nat_pr_2yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires permanent residence for at least 2 years by the end of the month in which the relevant citizenship bill is expected to be passed by the Folketing (Danish Parliament) -- not simply 2 years at the time of application, since processing runs against the timing of a specific future bill.",
+          "fix_path": "Hold permanent residence for the required period, timed against the expected passage date of the next relevant citizenship bill.",
+          "fix_time_months": 24,
+          "source_id": "uim_naturalisation"
+        },
+        {
+          "id": "nat_language_test",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "prove_i_dansk_3",
+          "hard": true,
+          "blocker_text": "Requires passing Prøve i Dansk 3 (or an equivalent or higher-level test) and a citizenship test (indfødsretsprøven) on Danish society, history, and culture.",
+          "fix_path": "Pass Prøve i Dansk 3 and the citizenship test.",
+          "fix_time_months": 12,
+          "source_id": "uim_naturalisation"
+        },
+        {
+          "id": "nat_employment",
+          "attribute": "years_experience",
+          "operator": "exists",
+          "value": "fulltime_employment_3yr6mo_of_last_4yr_and_currently_employed",
+          "hard": true,
+          "blocker_text": "Requires full-time employment (at least 30 hours/week) for 3 years and 6 months within the most recent 4 years, and being employed at the time the citizenship bill is introduced to the Folketing.",
+          "fix_path": "Document sustained full-time employment meeting the 3.5-of-4-year threshold, and remain employed through the bill's introduction.",
+          "fix_time_months": 42,
+          "source_id": "uim_naturalisation"
+        },
+        {
+          "id": "nat_loyalty_declaration",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean_and_loyalty_declaration_signed",
+          "hard": true,
+          "blocker_text": "Requires signing a declaration of allegiance and loyalty to Denmark, the constitution, and Danish democratic principles, alongside a clean criminal record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uim_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "refugee_stateless_reduced",
+      "name": "Refugees and stateless persons, 1 year's permanent residence",
+      "requirements": [
+        {
+          "id": "nat_refugee_1yr",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": [
+            "recognised_refugee_status",
+            "recognised_equivalent_status",
+            "stateless_status"
+          ],
+          "hard": true,
+          "blocker_text": "Recognised refugees, those with an equivalent status, and stateless persons need only 1 year of permanent residence (rather than 2) by the relevant bill's expected passage date -- the language, citizenship-test, employment, and loyalty-declaration requirements otherwise still apply.",
+          "fix_path": "Hold permanent residence for at least 1 year, timed against the expected bill passage date.",
+          "fix_time_months": 12,
+          "source_id": "uim_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of permanent residence for the applicable period",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Prøve i Dansk 3 certificate and citizenship test pass",
+      "difficulty": "hard",
+      "typical_time_days": 180
+    },
+    {
+      "document": "Employment history documentation covering the 3.5-of-4-year requirement",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Attendance at a municipal Grundlovsceremoni (constitution ceremony) after the bill passes",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "citizenship formally takes effect only after the Folketing passes the naturalisation bill and the applicant attends a municipal Grundlovsceremoni, signs a declaration of compliance with the constitution, and shakes hands bare-palmed with a council or mayoral representative -- a person who does not attend the ceremony (or refuses the handshake) does not become a citizen even after the bill passes",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uim_naturalisation",
+      "tier": 1,
+      "url": "https://uim.dk/statsborgerskab/udenlandske-statsborgere/",
+      "title": "Udlændinge- og Integrationsministeriet (uim.dk, the Ministry of Immigration and Integration itself) -- Udenlandske statsborgere, confirming the Act-of-Parliament mechanism, Cirkulæreskrivelse nr. 9461 af 17. juni 2021 om naturalisation, and the April/October biannual bill cycle directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "nyidanmark_statsborgerskab",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Ord-og-begreber/F%C3%A6lles/Statsborgerskab-(indf%C3%B8dsret)",
+      "title": "Nyidanmark.dk -- Statsborgerskab (indfødsret), confirming that citizenship can only be granted by law (Folketing act) and covering stateless-born-in-Denmark exceptions",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "fair_statsborgerskab_faq",
+      "tier": 3,
+      "url": "https://fair-statsborgerskab.dk/statsborgerskab-faq/",
+      "title": "Fair Statsborgerskab -- Dansk Statsborgerskab FAQ, describing the bill-timing mechanic for the 2-year permanent-residence requirement",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "refugees_statsborgerskab",
+      "tier": 3,
+      "url": "https://refugees.dk/da/fakta/opholdstilladelser/dansk-statsborgerskab/",
+      "title": "Refugees Welcome Denmark -- Dansk statsborgerskab, citing the Naturalisationscirkulæret (Naturalisation Circular) directly for the language, employment, and reduced refugee/stateless requirements",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, the single most distinctive citizenship mechanism documented anywhere in this dataset: Danish citizenship by naturalisation is not granted by ministerial or presidential administrative decision, as in every other country in this build, but by a literal Act of Parliament -- the Folketing passes a naturalisation bill (lov om indfødsrets meddelelse) listing successful applicants by name, only twice per year. selection_method is modeled 'nomination_required' as the closest available schema fit for this genuinely unusual mechanism, since an individual doesn't simply meet criteria and receive a grant -- they must be included on a specific parliamentary bill, and processing is explicitly tied to which bill an applicant's timeline lines up with, not to a continuous administrative queue. The realistic end-to-end timeline is over 3 years from application to citizenship: roughly 22 months of ministry (Udlændinge- og Integrationsministeriet, Indfødsretskontoret) processing, plus the wait for the twice-yearly bill cycle, plus scheduling the final ceremony -- confirmed consistently across multiple independent sources. The final step is a mandatory municipal Grundlovsceremoni requiring the new citizen to shake hands bare-palmed with a mayoral or council representative and sign a declaration of compliance with the constitution and Danish democratic values -- a specific, literal, non-negotiable physical requirement (not merely a formality) that has been the subject of real public controversy, since it was designed in part to be incompatible with religious or cultural objections to cross-gender handshaking; children and stateless persons born in Denmark are exempted from the ceremony specifically. The Folketing's Indfødsretsudvalget (Citizenship Committee) retains in-principle power to grant dispensation from any naturalisation requirement, but the sources checked describe this power as exercised only in genuinely rare cases (4 dispensations in 2021, limited to documented illness/disability grounds under Denmark's UN Disability Convention obligations) -- effectively a dead letter for most applicants rather than a real alternate pathway. Denmark has permitted dual citizenship since 2015, confirmed as still in effect, a genuine liberalisation relative to the pre-2015 regime and consistent with dual_citizenship_allowed being true throughout this route despite its otherwise highly restrictive character. Fees: DKK 6,000 for naturalisation via the standard track, reduced to DKK 4,000 for young applicants born and raised in Denmark -- separate from and in addition to the permanent-residence application fees documented on dk_permanent_residence."
+}

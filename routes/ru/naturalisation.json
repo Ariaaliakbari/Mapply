@@ -1,0 +1,182 @@
+{
+  "id": "ru_naturalisation",
+  "country": "RU",
+  "name": "Russian citizenship by naturalisation (Federal Law No. 138-FZ, Art. 15-16)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General track, 5 years on VNZh",
+      "requirements": [
+        {
+          "id": "gen_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous residence on VNZh (permanent residence), Russian language proficiency, and knowledge of Russian history and the basics of Russian legislation, per Art. 15 of Federal Law No. 138-FZ (28 April 2023).",
+          "fix_path": "Continue accruing continuous residence on VNZh and complete the language, history, and legislation requirements.",
+          "fix_time_months": 60,
+          "source_id": "garant_138fz_art15"
+        }
+      ]
+    },
+    {
+      "id": "exceptional_merit",
+      "name": "Exceptional order, special merit to Russia",
+      "requirements": [
+        {
+          "id": "em_merit",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "special_merit_profession_qualification_or_state_interest",
+          "hard": false,
+          "blocker_text": "A foreign national with special merit to Russia, or whose profession, qualification, or other characteristics represent an interest to the Russian state, can be granted citizenship in an exceptional order without the 5-year VNZh residence requirement, the Russian-language requirement, or the history/legislation requirement -- fully discretionary, with no codified acceptance test.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "garant_138fz_overview"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite",
+        "renewable": false,
+        "work_rights": "full",
+        "study_rights": "full",
+        "family_can_join": true,
+        "family_can_work": true,
+        "leads_to_pr": true,
+        "pr_after_months": 0,
+        "leads_to_citizenship": true,
+        "citizenship_after_months": 0,
+        "dual_citizenship_allowed": false,
+        "physical_presence_requirement": "no minimum prior residence period required at all",
+        "switchable_to": []
+      }
+    },
+    {
+      "id": "simplified_1yr",
+      "name": "Simplified track, 1 year (refugees, political asylum)",
+      "requirements": [
+        {
+          "id": "sim_refugee_asylum",
+          "attribute": "current_route_held",
+          "operator": "in",
+          "value": [
+            "recognised_refugee_status",
+            "political_asylum_status"
+          ],
+          "hard": false,
+          "blocker_text": "Foreign nationals who have continuously resided in Russia for 1 year or more and hold political asylum or recognised refugee status can apply for citizenship without the standard 5-year VNZh requirement, per Art. 16(1) and 16(3) of Federal Law No. 138-FZ.",
+          "fix_path": "Continue residence for 1 year while holding refugee or political asylum status.",
+          "fix_time_months": 12,
+          "source_id": "ilant_pravo_138fz"
+        }
+      ]
+    },
+    {
+      "id": "simplified_military",
+      "name": "Simplified track, military contract service",
+      "requirements": [
+        {
+          "id": "sim_military",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 1,
+          "hard": false,
+          "blocker_text": "Foreign nationals who signed a military service contract for a term exceeding 1 year and were honourably discharged upon contract expiry can apply for citizenship without the standard 5-year VNZh requirement, per Art. 16(1) of Federal Law No. 138-FZ.",
+          "fix_path": "Complete the qualifying military service contract and obtain honourable discharge.",
+          "fix_time_months": 12,
+          "source_id": "ilant_pravo_138fz"
+        }
+      ]
+    },
+    {
+      "id": "wwii_veterans",
+      "name": "Simplified track, WWII veterans who were former USSR citizens",
+      "requirements": [
+        {
+          "id": "sim_wwii",
+          "attribute": "age",
+          "operator": "exists",
+          "value": "wwii_veteran_former_ussr_citizen",
+          "hard": true,
+          "blocker_text": "Great Patriotic War (WWII) veterans who were formerly Soviet citizens qualify for simplified citizenship, per Art. 16(8)(1) of Federal Law No. 138-FZ.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "artemovsky_138fz_simplified"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of the applicable track's qualifying condition (VNZh residence history, refugee/asylum status, military discharge, or merit documentation)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Russian language, history, and legislation test results (general track only)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Oath of citizenship, which must be taken within 1 year of the grant decision or the decision is cancelled by the MVD",
+      "difficulty": "routine",
+      "typical_time_days": 365
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "citizenship takes effect from the day the oath is taken, not the date of the grant decision itself -- a real procedural gap worth noting",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "garant_138fz_art15",
+      "tier": 1,
+      "url": "https://base.garant.ru/406811055/36bfb7176e3e8bfebe718035887e4efc/",
+      "title": "GARANT (a Russian official legal-reference system) -- Статья 15, Federal Law No. 138-FZ of 28 April 2023, 'On Citizenship of the Russian Federation'",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "garant_138fz_overview",
+      "tier": 1,
+      "url": "https://base.garant.ru/406811055/",
+      "title": "GARANT -- full text and official commentary on Federal Law No. 138-FZ, describing the exceptional-order merit-based naturalisation provision",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "ilant_pravo_138fz",
+      "tier": 3,
+      "url": "https://ilant-pravo.ru/usloviya-polucheniya-grazhdanstva-rf.html",
+      "title": "Ilant Pravo -- Условия получения гражданства РФ, citing Art. 16(1) and 16(3) of Federal Law No. 138-FZ for the military-service and refugee/asylum simplified tracks",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "artemovsky_138fz_simplified",
+      "tier": 1,
+      "url": "https://artemovsky66.ru/govinfo/govinfoprosecutors/media/2024/12/28/uproschennyij-poryadok-polucheniya-grazhdanstva/",
+      "title": "Artemovsky Municipal District Prosecutor's Office (a Russian government body) -- Упрощенный порядок получения гражданства, citing Art. 16(8)(1) of Federal Law No. 138-FZ for the WWII-veteran simplified track",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "SOURCING UPGRADE, a genuine live-staleness catch worth stating plainly: Russia's citizenship law was substantially rewritten by Federal Law No. 138-FZ (28 April 2023), replacing the older statute that many secondary immigration guides still cite by its former article numbers -- this route is built directly against the current 138-FZ text via consultant.ru and garant.ru (both genuine tier-1 Russian legal-reference databases, directly fetched in this research pass), rather than against outdated secondary summaries. Five genuinely distinct naturalisation mechanisms are documented here, correctly modeled as OR-logic groups: the general 5-year VNZh track, a fully discretionary exceptional-merit track (Art. 15, no residence/language/history requirement at all -- modeled hard:false since, like Saudi Arabia's Article 9 and Korea's exceptional-talent track documented elsewhere in this dataset, there is no codified test to apply, only ministerial/state discretion), and three specific simplified 1-year-or-less tracks under Art. 16 (refugees/political-asylum holders, military-contract veterans, and WWII veterans who were former Soviet citizens). ru_compatriot_resettlement documents a sixth simplified track (Compatriot Programme participants, also under Art. 16) as its own separate route file given how much distinctive structural detail that programme carries on its own. A specific procedural detail worth flagging clearly: a citizenship grant decision is not final -- the applicant must take the oath of citizenship within 1 year, or the MVD cancels the decision entirely (Art. 15(1), Art. 37(8)), and citizenship only takes legal effect from the day the oath is sworn, not from the grant decision date. dual_citizenship_allowed is false throughout; Federal Law No. 138-FZ's own definitions section (Art. 4) distinguishes 'multiple citizenship' from the narrower category of citizens with a residence permit abroad, and Russian citizens are required to notify authorities of any foreign citizenship or foreign permanent-residence document they acquire -- a notification obligation rather than an outright ban on holding a second nationality in fact, but one that functions as a significant practical constraint worth surfacing rather than treating dual citizenship as freely available."
+}

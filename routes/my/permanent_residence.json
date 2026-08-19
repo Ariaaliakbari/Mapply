@@ -1,0 +1,138 @@
+{
+  "id": "my_permanent_residence",
+  "country": "MY",
+  "name": "Permanent Residence (Entry Permit / Permit Masuk, Red IC / MyPR)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "investor",
+      "name": "High-net-worth investor",
+      "requirements": [
+        {
+          "id": "inv_deposit",
+          "attribute": "investment_capacity",
+          "operator": ">=",
+          "value": { "amount": 2000000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a fixed deposit of at least USD 2,000,000 in a Malaysian bank, locked for 5 years (not withdrawable during that period).",
+          "fix_path": "Structure a qualifying USD 2,000,000 fixed deposit for the required 5-year lock period.",
+          "fix_time_months": 60,
+          "source_id": "legalclarity_my_pr"
+        }
+      ]
+    },
+    {
+      "id": "expert",
+      "name": "Expert (\"World Class\" talent)",
+      "requirements": [
+        {
+          "id": "exp_recognition",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "world_class_expertise_international_recognition",
+          "hard": true,
+          "blocker_text": "Requires expertise, talent, or skill recognised as 'World Class' by an international organisation, a recommendation from the relevant Malaysian government agency for the field, and a Malaysian sponsor (any citizen aged 21+) -- both applicant and sponsor must be present at the in-person application in Putrajaya.",
+          "fix_path": "Secure recognition from a relevant international body and a formal recommendation from the applicable Malaysian ministry or agency.",
+          "fix_time_months": null,
+          "source_id": "bestar_my_pr"
+        }
+      ]
+    },
+    {
+      "id": "professional_points",
+      "name": "Professional, points-based assessment",
+      "requirements": [
+        {
+          "id": "prof_points",
+          "attribute": "years_experience",
+          "operator": ">=",
+          "value": 65,
+          "hard": true,
+          "blocker_text": "Requires a minimum score of 65 points on a 7-criteria assessment (typically covering qualifications, work experience, income, age, and integration factors), plus a recommendation from the relevant Malaysian ministry or agency for the applicant's field.",
+          "fix_path": "Use the Immigration Department's point-system calculator to assess current standing and improve scoring factors before applying.",
+          "fix_time_months": 12,
+          "source_id": "bestar_my_pr"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_citizen",
+      "name": "Spouse of a Malaysian citizen",
+      "requirements": [
+        {
+          "id": "spouse_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_malaysian_citizen_3yr",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Malaysian citizen for at least 3 years (reduced from 5 years by a January 2025 Home Ministry reform), holding a Long Term Social Visit Pass (LTSVP) for at least 1 year, and continuous residence in Malaysia during that year.",
+          "fix_path": "Maintain the marriage and required LTSVP residence period until the 3-year threshold is met.",
+          "fix_time_months": 36,
+          "source_id": "legalclarity_my_pr"
+        }
+      ]
+    },
+    {
+      "id": "minor_child",
+      "name": "Minor child of a Malaysian citizen",
+      "requirements": [
+        {
+          "id": "child_age",
+          "attribute": "age",
+          "operator": "<",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Available to children under 18 of a Malaysian citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legalclarity_my_pr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Track-specific documentation (fixed-deposit proof, expert recommendation, points-assessment records, or marriage certificate)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Certificate of good conduct from the country of origin", "difficulty": "routine", "typical_time_days": 45 },
+    { "document": "In-person application at the Immigration Department headquarters in Putrajaya (no mail or online submission permitted)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["my_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "legalclarity_my_pr",
+      "tier": 3,
+      "url": "https://legalclarity.org/how-to-get-permanent-residency-in-malaysia/",
+      "title": "LegalClarity -- Malaysia Permanent Residency: Eligibility and Application, citing the Malaysian Immigration Department's own description of the Entry Permit and the January 2025 marriage-duration reduction (5 to 3 years)",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "bestar_my_pr",
+      "tier": 3,
+      "url": "https://www.bestar-my.com/post/permanent-resident-malaysia",
+      "title": "Bestar -- Permanent Resident Malaysia, describing the 7-criteria points assessment, the 65-point qualifying threshold, and the Expert category's international-recognition requirement",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of the Immigration Department of Malaysia's (JIM) own Entry Permit guidelines was achieved in this research pass, despite one source directly citing 'Malaysian Immigration Department, Entry Permit' as its reference -- flagged as a near-miss tier-1 target for a follow-up session. Five genuinely distinct qualifying categories, correctly modeled as OR-logic groups: investor (USD 2M, 5-year lock, the fastest and most capital-intensive route), expert (discretionary, reserved for internationally-recognised World Class talent), professional (a 65-point threshold across a 7-criteria assessment, the most commonly-used route per one source, which notes most professionals build toward PR via years on an Employment Pass with an RP-T -- Residence Pass-Talent -- bridge status documented briefly on my_employment_pass), spouse of a citizen (3-year marriage-plus-LTSVP track, recently liberalised), and minor child of a citizen. LIVE POLICY-LIBERALISATION CATCH: the Home Ministry's January 2025 reduction of the spousal marriage-duration requirement from 5 to 3 years is a genuine, dated, real loosening -- notable because it runs counter to the broader pattern in this Malaysia build of 2025-2026 reforms generally tightening requirements (the June 2026 Employment Pass overhaul, in particular). The application process itself carries a structural quirk documented consistently across sources: submission is in-person only at Immigration Department headquarters in Putrajaya, with both applicant and (where applicable) Malaysian sponsor required to attend together -- no postal or online submission exists for this route, unusual among this dataset's settled-category routes. Malaysian PR holders cannot vote or participate in political activity, and PR does not automatically convert to citizenship -- a separate naturalisation application under Federal Constitution Part III is required (see my_naturalisation), with its own residency clock that does not automatically start counting from the PR grant date in every case."
+}

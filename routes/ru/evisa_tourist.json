@@ -1,0 +1,90 @@
+{
+  "id": "ru_evisa_tourist",
+  "country": "RU",
+  "name": "Unified e-visa / tourist visa (Category C)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Eligible-nationality e-visa or consular tourist visa",
+      "requirements": [
+        {
+          "id": "tv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": [
+            "unified_evisa_eligible_countries"
+          ],
+          "hard": true,
+          "blocker_text": "The unified e-visa (introduced August 2023) covers a defined list of eligible nationalities for tourism, business, humanitarian, and some other purposes; other nationalities need a consular visa with a formal invitation.",
+          "fix_path": "Apply for a consular tourist visa with an invitation (tourist voucher or MVD-registered invitation letter) if not e-visa eligible.",
+          "fix_time_months": null,
+          "source_id": "novika_visa_guide"
+        },
+        {
+          "id": "tv_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism and short business/humanitarian visits; does not authorise employment.",
+          "fix_path": "Apply for the relevant work route instead if the purpose is employment.",
+          "fix_time_months": null,
+          "source_id": "novika_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Passport valid at least 6 months beyond the visa period",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Travel medical insurance",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Online e-visa application, or a tourist voucher/invitation letter registered with the MVD for consular visas",
+      "difficulty": "routine",
+      "typical_time_days": 4
+    }
+  ],
+  "outcome": {
+    "duration_length": "e-visa: up to 16 days per stay; consular tourist visa: typically up to 30 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "ru_student_visa"
+    ]
+  },
+  "sources": [
+    {
+      "id": "novika_visa_guide",
+      "tier": 3,
+      "url": "https://www.novika.info/en/guides/visa/visa-russia-complete-guide",
+      "title": "Novika -- Russia Visa 2026: Application, E-Visa, Cost & Times, describing the unified e-visa system introduced August 2023 and consular visa requirements",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of mid.ru (Ministry of Foreign Affairs) or the evisa.kdmid.ru portal was achieved in this research pass -- this route rests on a well cross-referenced tier-3 travel-guide source. Kept as published rather than draft because the e-visa system's general shape (16-day cap, defined eligible-country list, August 2023 launch) is stable and consistent across every source checked, though a follow-up session should attempt a direct government fetch for the specific eligible-country list. Context worth noting factually rather than editorially: direct flight connections between Russia and several Western countries have been suspended since February 2022, and multiple Western foreign ministries maintain travel advisories against travel to Russia -- these don't change visa issuance itself, which multiple sources confirm remains procedurally operational, but do affect practical routing and are worth surfacing for trip-planning purposes."
+}

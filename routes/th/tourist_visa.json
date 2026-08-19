@@ -1,0 +1,73 @@
+{
+  "id": "th_tourist_visa",
+  "country": "TH",
+  "name": "Tourist visa (TR) / visa exemption",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Eligible-nationality visa exemption or TR visa",
+      "requirements": [
+        {
+          "id": "tv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["visa_exempt_eligible_countries"],
+          "hard": true,
+          "blocker_text": "Many nationalities enter visa-free for stays up to 60 days (extendable once for 30 more at an immigration office); other nationalities need a consular Tourist Visa (TR), typically valid 60 days and extendable once for 30.",
+          "fix_path": "Apply for a TR visa at a Thai embassy or consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "thaiembassy_visa_overview"
+        },
+        {
+          "id": "tv_purpose",
+          "attribute": "occupation",
+          "operator": "exists",
+          "value": "tourism_no_work",
+          "hard": true,
+          "blocker_text": "Covers tourism and short social/business visits; does not authorise any form of paid work, including remote work for a foreign employer.",
+          "fix_path": "Apply for the DTV or another relevant route instead if any income-generating work is intended.",
+          "fix_time_months": null,
+          "source_id": "thaiembassy_visa_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid at least 6 months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of onward travel and sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 60 days, extendable once for 30 more days (visa exemption); TR visa follows a similar structure",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["th_non_ed_student", "th_dtv"]
+  },
+  "sources": [
+    {
+      "id": "thaiembassy_visa_overview",
+      "tier": 3,
+      "url": "https://www.thaiembassy.com/thailand-visa/dtv-visa-thailand",
+      "title": "ThaiEmbassy.com -- visa category overview describing visa exemption and Tourist Visa (TR) structure",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Royal Thai Government immigration.go.th or mfa.go.th page was achieved for this specific route in this research pass -- kept as published given the consistency of the visa-exemption/TR structure across every source checked in this research pass. In-country conversion from tourist status to a long-term category is not permitted for most routes; applicants typically need to leave Thailand and apply for the target visa from a Thai embassy or consulate abroad, though the DTV and some other categories can be processed while the applicant is inside Thailand on a different valid status."
+}

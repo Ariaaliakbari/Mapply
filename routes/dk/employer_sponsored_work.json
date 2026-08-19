@@ -1,0 +1,158 @@
+{
+  "id": "dk_employer_sponsored_work",
+  "country": "DK",
+  "name": "Employer-sponsored work permit (Pay Limit Scheme, Supplementary Pay Limit Scheme, Positive List)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "pay_limit",
+      "name": "Pay Limit Scheme (Beløbsordningen) -- any occupation, high salary",
+      "requirements": [
+        {
+          "id": "pl_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 552000,
+            "currency": "DKK",
+            "unit": "year"
+          },
+          "hard": true,
+          "blocker_text": "Requires a job offer with an annual salary of at least DKK 552,000 in 2026 (adjusted every 1 January), with no occupation or qualification restriction -- the salary itself is treated as proof the role is genuine and skilled. Countable pay components are limited to guaranteed cash salary and employer/employee pension contributions; irregular bonuses generally don't count.",
+          "fix_path": "Negotiate a salary at or above the current Pay Limit threshold, structured to meet SIRI's specific countable-pay-component rules.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_belobsordningen"
+        }
+      ]
+    },
+    {
+      "id": "supplementary_pay_limit",
+      "name": "Supplementary Pay Limit Scheme -- lower salary, added conditions",
+      "requirements": [
+        {
+          "id": "spl_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": {
+            "amount": 446000,
+            "currency": "DKK",
+            "unit": "year"
+          },
+          "hard": true,
+          "blocker_text": "Requires a job offer with an annual salary of at least DKK 446,000 in 2026 (a lower bar than the standard Pay Limit Scheme), but additionally requires the position to have been publicly posted (including on Jobnet and EURES) and is only available while Denmark's unemployment rate remains below a set threshold -- a labour-market-conditions test the standard Pay Limit Scheme does not carry.",
+          "fix_path": "Ensure the position was properly posted per the scheme's job-posting requirement, and confirm the scheme remains open given current unemployment conditions.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_supplementary"
+        }
+      ]
+    },
+    {
+      "id": "positive_list",
+      "name": "Positive List -- shortage occupation, normal Danish salary",
+      "requirements": [
+        {
+          "id": "poslist_occupation",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": [
+            "healthcare",
+            "engineering",
+            "it_specialist",
+            "natural_sciences",
+            "skilled_trades"
+          ],
+          "hard": true,
+          "blocker_text": "Requires a job offer in an occupation on the current Positive List for People with a Higher Education or the Positive List for Skilled Work, plus the specific qualifications the listed occupation requires -- the lists are updated twice yearly (1 January and 1 July), with occasional acute-shortage additions outside that cycle.",
+          "fix_path": "Confirm the specific job title is currently listed (not a past or future version) before applying, since positions are removed as well as added at each update.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_positivlisten"
+        },
+        {
+          "id": "poslist_normal_salary",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "normal_danish_terms_for_the_position",
+          "hard": true,
+          "blocker_text": "Unlike the Pay Limit Scheme, there is no fixed minimum salary -- only a requirement that pay and terms match normal Danish standards for the specific position, assessed against Confederation of Danish Employers (DA) wage statistics.",
+          "fix_path": "Ensure the offered salary matches normal Danish market terms for the specific role, referenced against current DA wage statistics.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_positivlisten"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Employment contract meeting the applicable scheme's salary/normal-terms test",
+      "difficulty": "routine",
+      "typical_time_days": null
+    },
+    {
+      "document": "Educational or professional qualifications matching the role (Positive List specifically) and, for regulated professions, Danish authorisation",
+      "difficulty": "moderate",
+      "typical_time_days": 45
+    },
+    {
+      "document": "SIRI case-processing fee (DKK 6,810 for the main applicant in 2026, DKK 3,080-3,025 per accompanying family member depending on scheme)",
+      "difficulty": "routine",
+      "typical_time_days": null
+    }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years, tied to the employment contract, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": [
+      "dk_permanent_residence",
+      "dk_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "nyidanmark_belobsordningen",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Du-vil-ans%C3%B8ge/Arbejde/Bel%C3%B8bsordningen",
+      "title": "Nyidanmark.dk (SIRI) -- Beløbsordningen (Pay Limit Scheme), confirming the DKK 552,000 2026 threshold directly and the countable-pay-component rules",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "nyidanmark_supplementary",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Du-vil-ans%C3%B8ge/Arbejde/Bel%C3%B8bsordningerne/Supplementary-Pay-Limit-scheme",
+      "title": "Nyidanmark.dk (SIRI) -- Den Supplerende Beløbsordning (Supplementary Pay Limit Scheme), confirming the DKK 446,000 2026 threshold directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "nyidanmark_positivlisten",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Du-vil-ans%C3%B8ge/Arbejde/Positivlisten-videreg%C3%A5ende-uddannelse",
+      "title": "Nyidanmark.dk (SIRI) -- Positivlisten for personer med en videregående uddannelse, and the parallel Positivlisten for faglærte page, confirming the twice-yearly (1 January/1 July) update cycle, exact position counts (183 higher-education positions, 57 skilled-trade positions as of 1 Jan 2026), and the normal-Danish-terms salary test directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "visaatlas_positive_list",
+      "tier": 3,
+      "url": "https://visaatlas.org/visas/denmark/positive-list-dk",
+      "title": "Visa Atlas -- Positive List Scheme (Positivlisten), Kingdom of Denmark 2026 guide, describing the twice-yearly update cycle and the normal-Danish-terms salary test",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "LIVE DISCREPANCY, directly resolved via tier-1 fetch: several tier-3 aggregator sources checked in this research pass cite DKK 514,000 (Pay Limit) and DKK 415,000 (Supplementary) as the 2026 figures -- these are stale, likely carried over from 2025 without updating. Direct fetches of nyidanmark.dk's own Beløbsordningen and Supplementary Pay Limit Scheme pages confirm the correct, currently-operative 2026 figures are DKK 552,000 and DKK 446,000 respectively, each adjusted annually every 1 January -- exactly the kind of stale-secondary-source catch this dataset's sourcing discipline is designed to make, resolved here against the primary Danish government source rather than either uncorroborated secondary claim. Three genuinely distinct qualifying groups, correctly modeled as OR-logic: Pay Limit Scheme (any occupation, salary alone is the test, no labour-market conditions), Supplementary Pay Limit Scheme (a lower salary floor traded for an added job-posting requirement and a live unemployment-rate gate that can close the scheme entirely if Danish unemployment rises above a set level -- a genuinely unusual macro-conditional eligibility test not seen elsewhere in this dataset), and the Positive List (occupation-and-qualification-gated, no fixed salary floor at all, only a 'normal Danish terms' test). A related but structurally separate mechanism, the Fast-Track Scheme, allows SIRI-certified employers to start a hired worker in the role within days rather than waiting for full permit approval -- not modeled as its own route here since it is a processing-speed variant available to Pay-Limit or Positive-List-qualifying hires at certified companies, not an independent qualifying pathway with its own test. A significant, dated policy restriction confirmed for context: Denmark suspended new temporary residence permits for foreign doctors and nurses seeking Danish professional authorisation from January 2026 through 31 December 2026, not applying to those who already hold Danish authorisation or qualify under other schemes -- a real, time-bound sectoral carve-out worth flagging for healthcare-sector applicants specifically. pr_after_months and citizenship_after_months use the general 4-year/8-year tracks (see dk_permanent_residence's base 8-year track, halved to 4 if all four supplementary conditions are met) -- this route's holders who meet the stricter supplementary conditions can reach permanent residence meaningfully faster than the headline figures suggest."
+}

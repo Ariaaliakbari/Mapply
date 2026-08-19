@@ -1,0 +1,74 @@
+{
+  "id": "th_non_b_work_permit",
+  "country": "TH",
+  "name": "Non-Immigrant B Visa and Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored, 4:1 Thai-staff ratio",
+      "requirements": [
+        {
+          "id": "nb_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Thai-registered company, which sponsors both the Non-B visa and the separate work permit application to the Department of Employment. The company must meet minimum registered-capital requirements (commonly cited around THB 2 million per foreign employee) and, outside BOI-promoted or LTR-exempted arrangements, must generally employ 4 Thai staff for every 1 foreign work-permit holder.",
+          "fix_path": "Secure a job offer from a Thai company able to meet the capital and Thai-staff-ratio requirements.",
+          "fix_time_months": null,
+          "source_id": "hellothailandvisa_general"
+        },
+        {
+          "id": "nb_salary_minimum",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "nationality_tiered_minimum_salary",
+          "hard": true,
+          "blocker_text": "A minimum salary scale applies, tiered by the applicant's nationality (higher for nationals of wealthier countries, lower for others) -- commonly cited in the range of roughly THB 25,000-50,000/month depending on nationality and role.",
+          "fix_path": "Negotiate a salary meeting the applicable nationality-tiered minimum.",
+          "fix_time_months": null,
+          "source_id": "hellothailandvisa_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's work permit application to the Department of Employment", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Company registered-capital and Thai-staff-ratio compliance documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Degree or qualification documentation matching the role", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually tied to the employment contract",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["th_permanent_residence", "th_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "hellothailandvisa_general",
+      "tier": 3,
+      "url": "https://www.hellothailandvisa.com/articles/thailand-long-term-visa",
+      "title": "HelloThailand -- Thailand Long Term Visa Options in 2026, describing the Non-B visa and work permit's employer-sponsorship, capital, and Thai-staff-ratio requirements",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Department of Employment or Immigration Bureau page was achieved for the exact capital, ratio, or nationality-tiered salary figures in this research pass -- these numbers are known to vary by company type, BOI-promotion status, and applicant nationality, and the specific current figures should be treated as indicative rather than confirmed. STRUCTURAL FINDING: the 4:1 Thai-to-foreign staff ratio is a genuinely distinctive labour-market-protection mechanism, structurally similar in spirit to Turkey's employer-side staff ratio documented elsewhere in this dataset, though the specific ratio and enforcement details differ -- BOI-promoted companies and LTR/SMART-visa arrangements are explicitly exempted from this ratio requirement, a real structural carve-out worth flagging since it means the same underlying employer entity can face very different hiring rules depending on which visa mechanism a given foreign hire uses. pr_after_months and citizenship_after_months use estimated general tracks pending confirmation of the specific years-of-work-permit-held threshold against a primary source; see th_permanent_residence for the employment-category PR track's confirmed 3-year work-permit-plus-1-year-current-employer structure, which this route's holders would typically use."
+}

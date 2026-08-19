@@ -1,0 +1,74 @@
+{
+  "id": "dk_student_residence",
+  "country": "DK",
+  "name": "Student residence permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Admitted to a state-approved institution",
+      "requirements": [
+        {
+          "id": "stu_admission",
+          "attribute": "field_of_study",
+          "operator": "exists",
+          "value": "admitted_to_state_approved_institution",
+          "hard": true,
+          "blocker_text": "Requires admission to a full-time programme (bachelor's, master's, PhD, or equivalent) at a Danish state-approved educational institution -- students admitted to institutions that are not state-approved face restricted employment rights, no post-study job-search permit, and limits on family reunification.",
+          "fix_path": "Secure admission to a Danish state-approved institution rather than a non-approved one to access the full set of associated rights.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_student"
+        },
+        {
+          "id": "stu_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_funds_confirmed",
+          "hard": true,
+          "blocker_text": "Requires documented proof of sufficient funds to cover living costs for the duration of study.",
+          "fix_path": "Provide bank statements, a scholarship award letter, or a sponsor's financial guarantee.",
+          "fix_time_months": null,
+          "source_id": "nyidanmark_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter from a Danish state-approved institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds for living costs", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance (until CPR registration, after which public healthcare applies)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to programme length",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["dk_employer_sponsored_work"]
+  },
+  "sources": [
+    {
+      "id": "nyidanmark_student",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Study",
+      "title": "Nyidanmark.dk -- official Danish immigration portal, Study category, distinguishing state-approved from non-approved institutions",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, a real and consequential two-tier system confirmed via a January 2026 tightening: Denmark distinguishes sharply between students at state-approved institutions (full part-time work rights, eligibility for a post-study job-search residence permit, and normal family-reunification access) and students at institutions that are not state-approved, who face restricted employment rights, no post-study job-search permit, and limits on family reunification -- these restrictions were confirmed as continuing into 2026 rather than being phased out. Students on this permit may generally work part-time (commonly cited as up to 20 hours/week during term and full-time during official holiday periods, though the exact current cap was not independently confirmed against a primary nyidanmark.dk page in this research pass) -- work_rights is modeled 'restricted' to reflect this real but capped allowance. switchable_to points to the employer-sponsored work route as the standard graduate pathway; Denmark's post-study job-search permit (Etableringskort/jobsøgningsopholdstilladelse) functions as an intermediate bridging status for state-approved-institution graduates specifically, not modeled as its own separate route file here given its narrow, transitional nature, but flagged as a candidate for future expansion."
+}

@@ -1,0 +1,82 @@
+{
+  "id": "ru_refugee_status",
+  "country": "RU",
+  "name": "Refugee status and temporary asylum (Federal Law No. 4528-1, \"On Refugees\")",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-18",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A well-founded fear of becoming a victim of persecution based on race, religion, nationality, membership of a particular social group, or political opinion, being outside the country of nationality and unable or unwilling to avail oneself of that country's protection due to such fear -- Federal Law No. 4528-1 (19 February 1993) closely tracks the 1951 Refugee Convention definition.",
+    "evidence_hint": "Personal testimony and any supporting documentation of persecution or risk, presented at application to a territorial MVD office or at a border checkpoint."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "full_refugee_status",
+      "name": "Full refugee status",
+      "requirements": [
+        {
+          "id": "ref_persecution",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "well_founded_fear_of_persecution",
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution on Convention grounds, assessed by the MVD's territorial migration division.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_4528_1"
+        }
+      ]
+    },
+    {
+      "id": "temporary_asylum",
+      "name": "Temporary asylum (vremennoe ubezhishche)",
+      "requirements": [
+        {
+          "id": "ta_lesser_grounds",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "does_not_meet_refugee_threshold_but_cannot_be_removed",
+          "hard": true,
+          "blocker_text": "A lesser, temporary status under Art. 12 of the same law, granted where an applicant does not meet the full refugee-status threshold but cannot be safely returned -- functions as a distinct, generally faster and less demanding, category from full refugee recognition.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_4528_1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for refugee status or temporary asylum, filed at a territorial MVD office or border checkpoint", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal testimony and any corroborating documentation of persecution or risk", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "full refugee status: renewable annually while conditions persist; temporary asylum: granted for limited periods and renewed as circumstances require",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ru_vnzh_permanent_residence", "ru_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "law_4528_1",
+      "tier": 1,
+      "url": "https://www.consultant.ru/document/cons_doc_LAW_4340/",
+      "title": "ConsultantPlus -- full text of Federal Law No. 4528-1 of 19 February 1993 (as amended through 13 June 2023), \"On Refugees,\" including Art. 1 (definitions), Art. 12 (temporary asylum), and Art. 3 (recognition procedure)",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING: Russia's refugee framework is a genuine, codified, two-tier system -- full refugee status (closely modelled on the 1951 Convention definition) and the lesser 'temporary asylum' category for cases that don't meet the full threshold but where removal isn't safe -- correctly modeled here as two distinct OR-logic groups rather than one blended humanitarian route, since the two carry different practical rights and are governed by different articles of the same statute. This is a real, functioning legal framework with a 30-year track record (Federal Law No. 4528-1 has been in force since 1993, with amendments through 2023), placing Russia's system closer to the genuinely operational category documented for Korea and Brazil elsewhere in this dataset than to the UAE/Saudi Arabia/Singapore 'never existed' pattern or China's 'enacted but never operationalised' pattern. HONEST SOURCING GAP on recognition-rate statistics: unlike Korea (2.7% cumulative recognition, sourced from Ministry of Justice data) or Brazil (86% recognition, sourced from a CONARE/UNHCR panel), no comparable official recognition-rate figure for Russia's system was found or independently confirmed in this research pass -- selection_odds is left null rather than guessed, consistent with this dataset's honesty conventions. One secondary source consulted (not independently verified at tier-1 in this pass) states that Russia's legal treatment of refugee status operates purely under this domestic statute rather than incorporating direct international-law obligations, and separately notes the law's application to nationals of Ukraine arriving since 2022 -- both points are flagged here for context rather than asserted with full confidence, since neither was cross-checked against a second independent source in this research pass. pr_after_months and citizenship_after_months use the general 5-year pipeline as a conservative default; whether Russia offers refugee-status holders any accelerated naturalisation track comparable to Poland's 2-year refugee-specific tier was not conclusively confirmed or ruled out in sources checked for this build."
+}

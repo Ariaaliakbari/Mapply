@@ -1,0 +1,81 @@
+{
+  "id": "ph_ra9225_dual_citizenship",
+  "country": "PH",
+  "name": "Citizenship Retention and Re-acquisition (RA 9225, \"Dual Citizenship Law\")",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Former natural-born Filipino, naturalised elsewhere",
+      "requirements": [
+        {
+          "id": "ra9225_natural_born",
+          "attribute": "ancestry",
+          "operator": "==",
+          "value": "former_natural_born_filipino_naturalised_abroad",
+          "hard": true,
+          "blocker_text": "Requires that the applicant was a natural-born Filipino citizen who subsequently lost that citizenship by becoming a naturalised citizen of another country -- confirmed directly via multiple Philippine Department of Foreign Affairs (DFA) consular pages. This is legally framed as retention/reacquisition, not a fresh grant: the law declares such persons are deemed NOT to have lost Philippine citizenship, and the oath of allegiance restores it retroactively to that legal position rather than creating a new status.",
+          "fix_path": "Confirm natural-born status (documented via a Philippine Statistics Authority birth certificate) and prior loss of citizenship through foreign naturalisation specifically -- other grounds for loss (renunciation, foreign military commission) may not qualify under this specific law.",
+          "fix_time_months": null,
+          "source_id": "dfa_ra9225_ankarape"
+        },
+        {
+          "id": "ra9225_oath",
+          "attribute": "criminal_record",
+          "operator": "exists",
+          "value": "oath_of_allegiance_taken",
+          "hard": true,
+          "blocker_text": "Requires taking the Philippine Oath of Allegiance in person before a Philippine Consular Officer (or duly authorised official) -- the oath explicitly does NOT require renouncing allegiance to any other country, meaning the applicant keeps their foreign citizenship simultaneously except where a specific public-office role separately requires renunciation.",
+          "fix_path": "Attend an oath-taking appointment at a Philippine embassy, consulate, or authorised Foreign Service Post.",
+          "fix_time_months": null,
+          "source_id": "dfa_ra9225_abujape"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Philippine Statistics Authority (PSA) birth certificate proving natural-born Filipino status", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Proof of foreign naturalisation (naturalisation certificate or equivalent from the country of current citizenship)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "In-person oath of allegiance before a Philippine consular officer", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dfa_ra9225_ankarape",
+      "tier": 1,
+      "url": "https://ankarape.dfa.gov.ph/consular-services/notarials/834-dual-citizenship-ra-9225.html",
+      "title": "Department of Foreign Affairs (dfa.gov.ph, Philippine Embassy Ankara) -- Dual Citizenship (RA 9225), confirming the natural-born-Filipino qualifying basis and no-renunciation-required oath directly",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "dfa_ra9225_abujape",
+      "tier": 1,
+      "url": "https://abujape.dfa.gov.ph/consular-services/reacquisition-citizenship-ra9225",
+      "title": "Department of Foreign Affairs (dfa.gov.ph, Philippine Embassy Abuja) -- Reacquisition of Citizenship (RA 9225), independently confirming the legal 'deemed not to have lost' framing and the right to acquire land/property upon reacquisition",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STRUCTURAL FINDING, one of the most consequential routes in this dataset by sheer scale: Republic Act No. 9225 (the Citizenship Retention and Re-acquisition Act of 2003, in effect since 17 September 2003) addresses one of the world's largest diaspora populations directly -- the Philippines has one of the largest emigrant populations globally relative to its size, and this law lets any former natural-born Filipino who naturalised abroad simply reacquire citizenship by taking an oath, with genuinely minimal friction: no residency requirement, no language test, no waiting period, and critically, no requirement to renounce the foreign citizenship acquired in the meantime. This is categorically different from every other 'ancestry' route documented in this dataset (Poland's Karta Polaka, Korea's F-4, China's 5-year descent visa, Italy's jure sanguinis) in one key respect: those routes extend citizenship or residence rights to people descended from citizens, while RA 9225 restores a person's OWN prior citizenship that they themselves once held and lost -- a reacquisition mechanism rather than a descent-based grant. A genuine derivative-citizenship feature extends the benefit across generations within one application: unmarried children under 18 of a reacquiring parent are automatically deemed Filipino citizens if included in the parent's petition, and even children who are 18+ at the time of the parent's reacquisition can separately apply if they were born while the parent still held Filipino citizenship -- confirmed identically across multiple DFA consular pages. citizenship_after_months = 0 correctly reflects that this route completes in a single appointment (document preparation aside) rather than requiring any waiting period -- one of the fastest citizenship mechanisms found anywhere in this 25-country dataset, rivaled only by Poland's repatriation visa's instant grant. Genuinely NOT covered by this law, and worth distinguishing clearly: people who are already dual citizens by birth (via jus soli in a foreign country combined with jus sanguinis from a still-Filipino parent) don't need RA 9225 at all -- they only need to file a Report of Birth; and those who lost citizenship through means OTHER than foreign naturalisation (e.g. express renunciation, or subscribing to a foreign oath of allegiance at the age of majority, per the older Commonwealth Act No. 63) may need the older, more rigorous general naturalisation process instead, documented on ph_naturalisation."
+}

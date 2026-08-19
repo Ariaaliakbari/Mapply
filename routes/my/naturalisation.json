@@ -1,0 +1,121 @@
+{
+  "id": "my_naturalisation",
+  "country": "MY",
+  "name": "Malaysian citizenship by registration or naturalisation (Federal Constitution Part III)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "naturalisation_general",
+      "name": "Naturalisation, Article 19: 10 of 12 years' residence",
+      "requirements": [
+        {
+          "id": "nat_10of12",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires residence in the Federation amounting in aggregate to at least 10 years within the 12 years immediately preceding the application, including the 12 months immediately before the application date; good character; adequate knowledge of Bahasa Malaysia; and an intention to reside permanently if the certificate is granted, per Article 19 of the Federal Constitution.",
+          "fix_path": "Continue accruing residence toward the 10-of-12-years requirement, ensuring the final 12 months are continuous, and pass the Bahasa Malaysia language assessment.",
+          "fix_time_months": 120,
+          "source_id": "commonlii_constitution_pt3"
+        }
+      ]
+    },
+    {
+      "id": "spouse_registration",
+      "name": "Registration, Article 15(1): foreign wife of a Malaysian citizen",
+      "requirements": [
+        {
+          "id": "spouse_reg",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "foreign_wife_of_malaysian_citizen_2yr_pr",
+          "hard": true,
+          "blocker_text": "A foreign woman legally married to a Malaysian citizen may apply for citizenship by registration, provided she has held Permanent Resident (MyPR) status for at least 2 years and the marriage remains legally valid, per Article 15(1) of the Federal Constitution.",
+          "fix_path": "Obtain PR status first (see my_permanent_residence's spouse-of-citizen group), then hold it for 2 years while the marriage remains valid.",
+          "fix_time_months": 24,
+          "source_id": "malaysia_gov_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "child_registration",
+      "name": "Registration, Article 15(2): child under 21 of a Malaysian citizen",
+      "requirements": [
+        {
+          "id": "child_reg",
+          "attribute": "age",
+          "operator": "<",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Individuals under 21 may apply for citizenship by registration if at least one parent is a Malaysian citizen, per Article 15(2) of the Federal Constitution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "malaysia_gov_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "special_application",
+      "name": "Special application, Article 15A: discretionary, under 21",
+      "requirements": [
+        {
+          "id": "special_discretion",
+          "attribute": "age",
+          "operator": "<",
+          "value": 21,
+          "hard": false,
+          "blocker_text": "Individuals under 21 may apply for citizenship under special circumstances not otherwise covered by Articles 15 or 15(2), entirely at the Federal Government's discretion, per Article 15A -- no codified test beyond the age ceiling and the Government's own assessment of the circumstances.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "malaysia_gov_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of the applicable track's qualifying condition (10-of-12-year residence record, PR history, or parental citizenship documentation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bahasa Malaysia language assessment (naturalisation track)", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Oath of loyalty, required before a naturalisation certificate takes effect, per Article 19(9)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "citizenship by naturalisation takes effect from the date the certificate is granted; registration-based citizenship takes effect from the date of registration itself, per Articles 17(5) and 19(5) respectively -- a real procedural distinction between the two mechanisms worth noting",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "commonlii_constitution_pt3",
+      "tier": 1,
+      "url": "https://www.commonlii.org/my/legis/const/1957/3.html",
+      "title": "CommonLII (Commonwealth Legal Information Institute) -- full text of Part III of the Federal Constitution of Malaysia (1957, as subsequently amended), Articles 14-22",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "malaysia_gov_citizenship",
+      "tier": 1,
+      "url": "https://www.malaysia.gov.my/en/categories/pengenalan-diri/kewarganegaraan",
+      "title": "Malaysia.gov.my -- official government portal page on citizenship (kewarganegaraan), summarising Articles 14, 15, 15A, 15(2), and 19 of the Federal Constitution",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "Four genuinely distinct constitutional mechanisms, correctly modeled as OR-logic groups: general naturalisation under Article 19 (the 10-of-12-years track, applicable to adults with no other qualifying basis), registration for foreign wives of citizens under Article 15(1) (a materially faster 2-year-on-PR track), registration for minor children of citizens under Article 15(2), and a fully discretionary Article 15A track for other under-21 cases not otherwise covered -- modeled hard:false since, like the exceptional-merit tracks documented for Saudi Arabia, Korea, and Russia elsewhere in this dataset, there is no codified acceptance test beyond ministerial discretion. Both primary sources are genuine tier-1 fetches: CommonLII's reproduction of the actual constitutional text, and malaysia.gov.my's own official citizenship-category summary page, giving this route unusually solid sourcing for a settled-category route in a system otherwise thin on directly-fetchable government pages (contrast with most other Malaysia routes in this build, which remain draft for exactly this reason). dual_citizenship_allowed is false throughout: Malaysia does not recognise dual citizenship, and naturalised or registered adults are required to renounce their original citizenship -- confirmed identically across every source checked in this research pass, with no documented exceptions of the kind seen for Korea's marriage/talent tracks or Italy's general acceptance of dual nationality elsewhere in this dataset. A real, if modest, approval-volume figure worth surfacing with an honest caveat: one secondary source reports 34,423 citizenship applications approved across 2023-2025, but explicitly cautions that many of these likely represent undocumented persons already born in Malaysia or children of Malaysians having their status regularised, rather than fresh immigrants completing the naturalisation track documented here -- flagged rather than presented as a clean approval-rate figure, since the underlying population isn't comparable to this route's applicant base. A structurally important nuance specific to Sabah and Sarawak, per Article 19's own text: residence in those two states before Malaysia Day (16 September 1963) counts as residence in the wider Federation for naturalisation purposes -- a direct textual artifact of the Malaysia Agreement 1963's federal-formation history, and the clearest place in the entire Constitution where East Malaysia's distinct joining history is written directly into citizenship law rather than merely reflected in administrative practice."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "my_dependent_pass",
+  "country": "MY",
+  "name": "Dependent Pass and Long Term Social Visit Pass (LTSVP)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "dependent_pass",
+      "name": "Spouse/minor child of a work-pass holder",
+      "requirements": [
+        {
+          "id": "dp_sponsor_status",
+          "attribute": "family_tie_status",
+          "operator": "in",
+          "value": ["employment_pass_holder", "residence_pass_talent_holder"],
+          "hard": true,
+          "blocker_text": "The sponsor must hold an Employment Pass (as of 1 June 2026, this includes Category III, previously excluded) or Residence Pass-Talent; covers the spouse and minor children.",
+          "fix_path": "Wait until the sponsoring family member holds a qualifying Employment Pass category.",
+          "fix_time_months": null,
+          "source_id": "malaysiavisas_ltsvp"
+        }
+      ]
+    },
+    {
+      "id": "ltsvp",
+      "name": "Extended family of a Malaysian citizen or PR holder (LTSVP)",
+      "requirements": [
+        {
+          "id": "ltsvp_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_sponsor", "parent_of_sponsor"],
+          "hard": true,
+          "blocker_text": "Covers spouses and parents of Malaysian citizens or Permanent Residents; sponsored by the Malaysian family member rather than an employer.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "malaysiavisas_ltsvp"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or birth certificate proving the qualifying family relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's valid Employment Pass, citizenship documentation, or PR status", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of financial support sufficient to avoid the dependent becoming a public charge", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Dependent Pass: tied to sponsor's Employment Pass validity; LTSVP: 6 months to 5 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["my_permanent_residence", "my_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "malaysiavisas_ltsvp",
+      "tier": 3,
+      "url": "https://www.malaysiavisas.com/malaysia-long-term-social-visit-pass",
+      "title": "MalaysiaVisas.com -- Malaysia Long Term Social Visit Pass - Complete Guide 2026, describing LTSVP eligibility and the Dependent Pass's Employment Pass-tied structure",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of an Immigration Department page was achieved for either pass category in this research pass. Two structurally distinct passes are correctly modeled as separate OR-logic groups: the Dependent Pass (tied to an employer-sponsored Employment Pass, covering spouse and minor children only) and the LTSVP (sponsored by the Malaysian family member directly, covering a broader relationship set including parents, and usable regardless of the sponsor's own employment status). citizenship_after_months (24) reflects a route worth flagging clearly: per general PR/naturalisation research for this build, the marriage-to-citizen route requires the foreign spouse to first hold PR for a minimum period before naturalisation eligibility opens -- a 2025 reform reduced the minimum marriage duration for PR eligibility itself from 5 years to 3 years (see my_permanent_residence's spouse group for the primary citation), but the further step from PR to citizenship carries its own separate residency requirement documented in my_naturalisation; this figure should be treated as an approximation of the fastest realistic path rather than a fully independently traced chain. pr_after_months (36) reflects the same January 2025 reform reducing the marriage-duration requirement for PR eligibility from 5 to 3 years -- a genuine, dated liberalisation worth surfacing, contrasted with the general pattern of most other Malaysia routes in this build being tightened rather than loosened in 2025-2026 (Employment Pass thresholds, family-marriage-to-citizenship waiting periods in other countries documented elsewhere in this dataset)."
+}

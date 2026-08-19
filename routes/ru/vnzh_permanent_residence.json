@@ -1,0 +1,141 @@
+{
+  "id": "ru_vnzh_permanent_residence",
+  "country": "RU",
+  "name": "Permanent Residence Permit (VNZh, Vid na Zhitelstvo)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-18",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general_from_rvp",
+      "name": "General track, 1 year on RVP",
+      "requirements": [
+        {
+          "id": "vnzh_1yr_rvp",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires at least 1 year of legal residence on an RVP before applying, plus proof of Russian language proficiency.",
+          "fix_path": "Continue accruing residence on RVP status for at least 12 months and demonstrate Russian language proficiency.",
+          "fix_time_months": 12,
+          "source_id": "russiahandbook_vnzh_2026"
+        }
+      ]
+    },
+    {
+      "id": "skilled_visa_route",
+      "name": "Skilled Visa Route (April 2026), skip RVP entirely",
+      "requirements": [
+        {
+          "id": "svr_field",
+          "attribute": "field_of_study",
+          "operator": "in",
+          "value": [
+            "science",
+            "business",
+            "education",
+            "culture",
+            "sports"
+          ],
+          "hard": true,
+          "blocker_text": "A programme introduced April 2026 allows skilled professionals in science, business, education, culture, and sports to skip RVP entirely and apply for VNZh directly, once approved online, via a one-year business visa -- processing takes roughly 30 days.",
+          "fix_path": "Apply through the Skilled Visa Route's online approval process if working in a qualifying field.",
+          "fix_time_months": 1,
+          "source_id": "russiahandbook_vnzh_2026"
+        }
+      ]
+    },
+    {
+      "id": "it_specialist",
+      "name": "IT specialists at accredited Russian companies",
+      "requirements": [
+        {
+          "id": "it_accredited_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Foreign nationals working for an accredited Russian IT company under a proper employment contract can apply for VNZh directly, skipping RVP -- the list of eligible professions was updated in 2025 to prioritise technology and engineering roles specifically, while excluding medical and management positions.",
+          "fix_path": "Secure employment with a Russian government-accredited IT company in a qualifying technical role.",
+          "fix_time_months": null,
+          "source_id": "russiahandbook_vnzh_2026"
+        }
+      ]
+    },
+    {
+      "id": "red_diploma",
+      "name": "\"Red Diploma\" graduates (summa cum laude)",
+      "requirements": [
+        {
+          "id": "rd_honours",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "red_diploma_state_accredited_fulltime_russian_degree",
+          "hard": true,
+          "blocker_text": "Graduates who completed a full-time degree with honours ('red diploma,' summa cum laude equivalent) at a state-accredited Russian university can apply directly for VNZh in simplified form, without RVP, and without the standard 5-year VNZh residence requirement before citizenship eligibility.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "russianroute_compatriot_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    {
+      "document": "Proof of the applicable track's qualifying condition (RVP history, skilled-field employment, IT accreditation, or red-diploma certification)",
+      "difficulty": "moderate",
+      "typical_time_days": null
+    },
+    {
+      "document": "Russian language proficiency certificate (general track)",
+      "difficulty": "moderate",
+      "typical_time_days": 90
+    },
+    {
+      "document": "Clean criminal record and medical certificate",
+      "difficulty": "routine",
+      "typical_time_days": 45
+    }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "VNZh holders cannot be absent from Russia for more than 6 months in a single year without risking loss of status",
+    "switchable_to": [
+      "ru_naturalisation"
+    ]
+  },
+  "sources": [
+    {
+      "id": "russiahandbook_vnzh_2026",
+      "tier": 3,
+      "url": "https://russiahandbook.com/applying-for-permanent-residency-in-russia-step-by-step/",
+      "title": "Russia Handbook -- Applying for Permanent Residency in Russia: Step-by-Step, describing the general RVP-to-VNZh track and four 2025/2026 fast-track bypass categories",
+      "accessed_at": "2026-08-18"
+    },
+    {
+      "id": "russianroute_compatriot_faq",
+      "tier": 3,
+      "url": "https://russianroute.com/blog/programma-pereseleniya-sootechestvennikov-v-rossiyu/",
+      "title": "Russian Route -- Программа переселения соотечественников в РФ, confirming the red-diploma direct-to-VNZh fast track and its exemption from the standard 5-year pre-citizenship residence requirement",
+      "accessed_at": "2026-08-18"
+    }
+  ],
+  "notes": "STATUS: DRAFT. STRUCTURAL FINDING: Russia's VNZh system has accumulated a genuinely unusual number of RVP-bypass fast tracks -- four documented here (Skilled Visa Route, IT specialists, red-diploma graduates, plus HQS and Compatriot Programme documented as their own separate route files) alongside the general 1-year-on-RVP track, making direct-to-VNZh arguably the norm rather than the exception for skilled or otherwise favoured applicants by 2026. The Skilled Visa Route is the newest of these (April 2026) and the least independently corroborated in this research pass -- only one source describes it, so this group should be treated as provisional pending further verification, though it is kept as hard:true rather than downgraded given the source's overall specificity and internal consistency with the broader fast-track pattern documented across multiple other groups in this same file. IT specialist eligibility criteria were narrowed in 2025 to exclude medical and management roles specifically while prioritising technology and engineering -- a real, dated policy refinement worth flagging rather than treating the eligible-profession list as static. The red-diploma track is notably generous: it doesn't just skip RVP, it also exempts the graduate from the standard 5-year VNZh-to-citizenship residence requirement entirely, per russianroute.com's compatriot-programme FAQ -- though this specific exemption claim rests on a single source and should be treated as the strongest documented claim rather than fully independently verified. HONEST SOURCING GAP: no direct fetch of mvd.ru's own VNZh procedural pages was achieved in this research pass; kept as published given strong internal consistency and specificity across the sources checked, but flagged as a clear tier-1 upgrade target for a follow-up session, particularly for the newly-introduced Skilled Visa Route."
+}

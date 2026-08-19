@@ -1,0 +1,74 @@
+{
+  "id": "ph_pre_arranged_employment",
+  "country": "PH",
+  "name": "Pre-Arranged Employment Visa (9(g)) with Alien Employment Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored, DOLE labour-market test",
+      "requirements": [
+        {
+          "id": "aep_dole",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_licensed_sponsor",
+          "hard": true,
+          "blocker_text": "Requires the employer to first obtain an Alien Employment Permit (AEP) from the Department of Labor and Employment (DOLE), demonstrating the role cannot reasonably be filled by a qualified Filipino, before petitioning the Bureau of Immigration for the 9(g) visa itself.",
+          "fix_path": "Secure a job offer from a Philippine employer willing to obtain the DOLE AEP before filing the BI 9(g) petition.",
+          "fix_time_months": 2,
+          "source_id": "workvisaphilippines_requirements"
+        },
+        {
+          "id": "aep_clearances",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean_and_medical_cleared",
+          "hard": true,
+          "blocker_text": "Requires medical clearance (BOQ Form 11), police clearance from both the home country and the Philippine NBI, and a Bureau of Immigration clearance certificate.",
+          "fix_path": "Complete the required medical and police clearances.",
+          "fix_time_months": null,
+          "source_id": "workvisaphilippines_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "DOLE Alien Employment Permit (AEP)", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Employment contract and employer sponsorship documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical clearance (BOQ Form 11), home-country and NBI police clearances, BI Clearance Certificate", "difficulty": "moderate", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years, tied to the employment contract, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ph_permanent_resident_visa", "ph_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "workvisaphilippines_requirements",
+      "tier": 3,
+      "url": "https://workvisaphilippines.com/immigration-requirements-philippines-2026-guide-for-foreign-nationals/",
+      "title": "Work Visa Philippines -- Immigration Requirements in the Philippines: A 2026 Guide for Foreign Nationals, describing the AEP-to-9(g) two-step DOLE/BI process",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a DOLE or Bureau of Immigration page was achieved for this route in this research pass, despite consistent cross-corroboration of the two-agency (DOLE then BI) sequence across multiple sources. STRUCTURAL FINDING: this is a genuine two-agency, two-step process -- DOLE's Alien Employment Permit functions as a labour-market test (broadly similar in spirit to labour-market tests seen in Poland's and other countries' work-sponsored routes elsewhere in this dataset), and only after the AEP is secured does the employer petition the Bureau of Immigration separately for the 9(g) visa itself; the full sequence is commonly cited as taking 2-3 months end-to-end. Foreign employees of PEZA-accredited economic-zone locators can instead use a streamlined 47(a)(2) or Special Working Visa processed through the zone's own one-stop shop, bypassing the standard DOLE/BI sequence -- not modeled as a separate route file here given the scope of this initial build, but flagged as a real, meaningfully faster parallel channel for zone-based employers specifically. pr_after_months and citizenship_after_months use general estimated tracks pending confirmation of the specific years-of-9(g)-status-held threshold against ph_permanent_resident_visa's Quota Immigrant Visa criteria."
+}

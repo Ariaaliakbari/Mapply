@@ -1,0 +1,81 @@
+{
+  "id": "za_remote_work_visa",
+  "country": "ZA",
+  "name": "Remote Work Visitor Visa (\"Digital Nomad Visa\")",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Foreign-employed remote worker",
+      "requirements": [
+        {
+          "id": "rwv_foreign_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_employment_foreign_company",
+          "hard": true,
+          "blocker_text": "Requires verifiable proof of employment with, or freelance work conducted entirely for, a company or clients based outside South Africa -- authorised specifically under Section 11(1)(b)(iv) of the Immigration Act 13 of 2002 as a variant of the Visitor's Visa, not as a standalone visa category, formally distinguishing it from South Africa's other work_sponsored visas.",
+          "fix_path": "Confirm the employing or contracting entity is genuinely based outside South Africa.",
+          "fix_time_months": null,
+          "source_id": "wts_renmere_digital_nomad"
+        },
+        {
+          "id": "rwv_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 650976, "currency": "ZAR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires gross annual income of at least ZAR 650,976, evidenced by 3 months of bank statements -- reduced from an initially proposed ZAR 1,000,000 threshold via the Third Amendment to the Immigration Regulations, published 9 October 2024. Applicants aged 18+ only.",
+          "fix_path": "Document gross annual income at or above the current threshold via 3 months' bank statements.",
+          "fix_time_months": null,
+          "source_id": "rsm_global_nomad_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "3 months' bank statements evidencing the qualifying income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of employment/contracting with a foreign-based entity", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "International health insurance covering the full stay, police clearance from countries of 12+ months' residence in the past 5 years", "difficulty": "moderate", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "up to 12 months initially, renewable annually up to a total of 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "working more than 6 months within any rolling 36-month period triggers a South African Revenue Service (SARS) registration requirement, per DHA/Fragomen guidance",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wts_renmere_digital_nomad",
+      "tier": 3,
+      "url": "https://renmere.co.za/the-south-african-digital-nomad-visa/",
+      "title": "WTS Renmere -- The South African Digital Nomad Visa, confirming the Section 11(1)(b)(iv) legal basis and the formal designation 'Remote Work Visitor Visa'",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "rsm_global_nomad_visa",
+      "tier": 3,
+      "url": "https://www.rsm.global/southafrica/insights/legal-insights/go-digital-go-global-south-africa-launches-nomad-visa",
+      "title": "RSM South Africa -- Go Digital, Go Global: South Africa launches nomad visa, describing the October 2024 Third Amendment and the reduced ZAR 650,976 income threshold",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a dha.gov.za page was achieved for this route in this research pass, despite very extensive, near-unanimous cross-corroboration of the core facts across 8+ independent sources. MINOR LIVE DISCREPANCY, flagged rather than silently resolved: most sources cite the income threshold as ZAR 650,976/year, but one source (ibn.co.za) states ZAR 650,796 -- a very close but genuinely different figure, most likely a transposition typo in one source rather than two distinct real figures, but not conclusively resolved against a primary source in this research pass; ZAR 650,976 is used here as the majority-corroborated figure. STRUCTURAL FINDING, a genuinely troubled and lengthy legislative history worth stating plainly: this visa was first introduced in framework form on 28 March 2024, went through an incomplete public-comment process, was implemented in a first version effective 20 May 2024, then revised again ('Take 3' per multiple law-firm sources) via the Third Amendment to the Immigration Regulations on 9 October 2024 -- which is also when the income threshold was cut by roughly a third, from the originally proposed ZAR 1,000,000 down to the current ZAR 650,976 -- and the visa reportedly only became fully operational for applications in March 2025, nearly a year after the framework legislation was first introduced. Legally, this is NOT a standalone visa category but a variant of the ordinary Visitor's Visa (Section 11(1)(b)(iv)) -- a structural classification choice worth surfacing, since it means this route's legal DNA is closer to za_visitor_visa than to South Africa's other work-authorisation categories, despite functioning in practice as a dedicated digital-nomad product; classified work_independent here based on function rather than its formal Visitor's Visa lineage. leads_to_pr and leads_to_citizenship are correctly false: no source identified any pathway from this visa toward permanent residence or citizenship, consistent with the pattern seen on Thailand's DTV and Poland's/Brazil's digital-nomad routes documented elsewhere in this dataset."
+}

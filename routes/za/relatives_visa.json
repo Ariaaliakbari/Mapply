@@ -1,0 +1,80 @@
+{
+  "id": "za_relatives_visa",
+  "country": "ZA",
+  "name": "Relatives' Visa (spouse/life partner and family)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse or life partner of a South African citizen or PR holder",
+      "requirements": [
+        {
+          "id": "rv_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_lifepartner_of_sponsor",
+          "hard": true,
+          "blocker_text": "Requires marriage or a genuine, documented life-partnership relationship with a South African citizen or permanent resident.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eisenberg_pr_permit"
+        }
+      ]
+    },
+    {
+      "id": "close_relative",
+      "name": "Other close relatives (first vertical step of kinship)",
+      "requirements": [
+        {
+          "id": "rv_relative",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["parent_of_sponsor", "child_of_sponsor", "sibling_of_sponsor"],
+          "hard": true,
+          "blocker_text": "Covers relatives within the first vertical step of kinship of a South African citizen or permanent resident -- broadly parents, children, and (for the permanent-residence version of this category specifically) siblings, with the exact qualifying relationships varying by category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eisenberg_pr_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or documented proof of a genuine life partnership", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's South African ID or permanent residence permit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance, medical and radiology reports", "difficulty": "moderate", "typical_time_days": 45 }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable, tied to the sponsoring relationship",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["za_permanent_residence", "za_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "eisenberg_pr_permit",
+      "tier": 3,
+      "url": "https://eisenberg.co.za/services/immigration-services/permanent-residence-permit/",
+      "title": "Eisenberg & Associates -- Permanent Residence Permit South Africa, describing the spouse/life-partner and relatives permanent-residence categories",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a dha.gov.za page was achieved for the temporary Relatives' Visa specifically in this research pass -- the source used describes the permanent-residence version of this category (Section 27(g)) in more detail than the temporary visa itself, and the temporary-visa figures here are extrapolated with lower confidence. work_rights is 'restricted' since spousal Relatives' Visa holders typically need a separate endorsement or work-visa conversion to be employed, rather than automatic full work rights -- a structurally stricter position than several other countries' spouse-of-citizen routes documented elsewhere in this dataset. citizenship_after_months (60) reflects the general 5-years-on-PR naturalisation track, and pr_after_months (24) is an estimate pending confirmation of the exact relationship-duration threshold for the spousal permanent-residence category specifically -- see za_permanent_residence for the fuller Section 27(g)/spousal detail."
+}

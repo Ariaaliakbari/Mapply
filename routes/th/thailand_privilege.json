@@ -1,0 +1,80 @@
+{
+  "id": "th_thailand_privilege",
+  "country": "TH",
+  "name": "Thailand Privilege Card (formerly Thailand Elite Visa)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-19",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Membership fee, background check only",
+      "requirements": [
+        {
+          "id": "priv_membership_fee",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 600000, "currency": "THB", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a one-time, non-refundable membership fee starting at approximately THB 600,000 for the shortest (5-year) tier, rising to roughly THB 2,140,000-5,000,000 for longer tiers (10-20 years, including a 'Reserve' 20-year option). No income, asset, or investment documentation is required beyond the fee itself.",
+          "fix_path": "Pay the membership fee for the desired tier and pass the background check.",
+          "fix_time_months": null,
+          "source_id": "thai_visa_services_comparison"
+        },
+        {
+          "id": "priv_background_check",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Requires passing a basic background/criminal-record check.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "thai_co_comparative"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Membership-fee payment confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport and background-check clearance", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "5-20 years depending on the membership tier purchased",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "thai_visa_services_comparison",
+      "tier": 3,
+      "url": "https://www.thai-visa-services.com/guides/best-visa-for-long-stay-thailand",
+      "title": "Thai Visa Services -- Best Visa for Long Stay in Thailand 2026, describing the Thailand Privilege Card's fee tiers (THB 600,000-2,140,000)",
+      "accessed_at": "2026-08-19"
+    },
+    {
+      "id": "thai_co_comparative",
+      "tier": 3,
+      "url": "https://www.thai-co.com/blog/comparative-analysis-of-thailands-ltr-visa-digital-nomad-dtv-visa-and-elite-visa",
+      "title": "Thai-Co -- Comparative Analysis of Thailand's LTR Visa, Digital Nomad (DTV) Visa, and Elite Visa, describing the immediate-approval, no-financial-documentation structure",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of the Thailand Privilege Card's own official portal was achieved in this research pass. STRUCTURAL CONTRAST worth stating plainly against every other long-stay route in this dataset: this is the only route encountered anywhere in this 24-country build where long-term residence is purchased as a pure membership product with essentially no eligibility test beyond a background check and the ability to pay -- no income, no assets, no employment, no investment structure, no family ties. This is a meaningfully different mechanism from investor-residency routes elsewhere in this dataset (Saudi Arabia's Premium Residency, Russia's investor VNZh, Italy's Golden Visa, this same country's own LTR Wealthy Global Citizen category) which all require the capital to be invested or held in a specific qualifying form -- here, the fee itself is simply consumed as a service charge with no residual asset. work_rights is correctly 'none': the card explicitly does not authorise any employment, and marketing materials for the product are explicit that it targets people who 'value convenience over cost' and want to 'minimize interactions with Thai Immigration' rather than people seeking a genuine settlement pathway -- leads_to_pr and leads_to_citizenship are correctly false, since Privilege Card years do not count toward Thai Permanent Residency any more than DTV or LTR years do, per the same source pattern documented on those routes."
+}

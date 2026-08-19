@@ -1,0 +1,80 @@
+{
+  "id": "dk_permanent_residence",
+  "country": "DK",
+  "name": "Permanent residence permit (tidsubegrænset opholdstilladelse)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-19",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_8yr",
+      "name": "Standard track: 8 years' residence, 2 of 4 supplementary conditions",
+      "requirements": [
+        {
+          "id": "pr_8yr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Requires 8 years of continuous legal residence in Denmark, all basic conditions (age 18+, no criminal record, no debt to public authorities, no receipt of benefits under the active/integration law, full-time employment or self-employment for approximately 4 years within the last 4.5 years, income at or above a set annual threshold, and passing a Danish-language test at Prøve i Dansk 2 or equivalent), plus at least 2 of 4 supplementary conditions.",
+          "fix_path": "Continue accruing continuous legal residence toward 8 years, and secure at least 2 of the 4 supplementary conditions (higher Danish test level, extended full-time employment, sustained higher income, or active civic engagement).",
+          "fix_time_months": 96,
+          "source_id": "nyidanmark_pr"
+        }
+      ]
+    },
+    {
+      "id": "accelerated_4yr",
+      "name": "Accelerated track: 4 years' residence, all 4 supplementary conditions",
+      "requirements": [
+        {
+          "id": "pr_4yr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "The 8-year requirement is halved to 4 years for applicants who meet all 4 of the supplementary conditions rather than only 2 -- including a higher Danish-language level (Prøve i Dansk 3 or equivalent) and an extended full-time employment record (roughly 3.5 years within the last 4), on top of all basic conditions.",
+          "fix_path": "Meet all 4 supplementary conditions (rather than 2) to access the accelerated 4-year track.",
+          "fix_time_months": 48,
+          "source_id": "nyidanmark_pr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 (or 4) years' continuous legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Danish-language test certificate (Prøve i Dansk 2, or Prøve i Dansk 3 for the accelerated track)", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Employment/self-employment history documentation and income records", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (residence card itself is periodically reissued, but the underlying status does not expire)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["dk_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "nyidanmark_pr",
+      "tier": 1,
+      "url": "https://www.nyidanmark.dk/da/Du-vil-ans%C3%B8ge/Permanent-ophold/Permanent-ophold",
+      "title": "Nyidanmark.dk (Udlændingestyrelsen) -- Ansøg om permanent opholdstilladelse, confirming the 8-year/4-year structure and the 2-of-4/4-of-4 supplementary-conditions mechanism directly",
+      "accessed_at": "2026-08-19"
+    }
+  ],
+  "notes": "SOURCING UPGRADE, a genuine tier-1 catch: this route is built directly against a fetched nyidanmark.dk page, confirming Denmark's 8-year/4-year dual-track structure with unusual precision -- the standard track requires all basic conditions plus at least 2 of 4 supplementary conditions after 8 years, while meeting all 4 supplementary conditions (rather than only 2) halves the residence requirement to 4 years, a real, deliberate policy design rewarding stronger integration markers with materially faster settlement, correctly modeled here as two genuinely distinct requirement_groups rather than one blended rule. This is among the most demanding permanent-residence regimes documented in this dataset by raw residence-year count -- 8 years as the default, compared to 5 years in Poland, Korea's F-5, or Italy's EU long-term residence, and matched or exceeded only by China's investor tracks' multi-year holding periods and Saudi Arabia's 10-year naturalisation floor -- though Denmark's accelerated 4-year track brings it closer to the dataset's more common 4-5 year norm for applicants who can meet the full supplementary-conditions bar. The income and employment thresholds referenced in the basic conditions (approximately DKK 280,908/year as of a 2018 figure cited in one corroborating source) are adjusted periodically and the current 2026 figure was not independently confirmed against a primary source in this research pass -- flagged as a follow-up target, since this specific number is likely stale given multi-year gaps between citations. citizenship_after_months (24) reflects the standard 2-year permanent-residence-to-naturalisation-eligibility window; refugees and stateless persons qualify for a reduced 1-year window instead, but that reduction is modeled on dk_naturalisation directly (where it is now tier-1 sourced) rather than duplicated here as a third PR-track group, since it doesn't change the permanent-residence grant itself -- only how soon naturalisation becomes available afterward."
+}
