@@ -1,0 +1,70 @@
+{
+  "id": "pa_self_solvency_visa",
+  "country": "PA",
+  "name": "Visa de Solvencia Económica Propia",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pass_solvency",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 300000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 300,000 in Panamanian real estate, a Certificate of Deposit, or a combination of both, plus an additional USD 2,000 per dependent.",
+          "fix_path": "Fund and document the qualifying real estate and/or deposit.",
+          "fix_time_months": null,
+          "source_id": "kraemerlaw_pa_self_solvency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property deed and/or Certificate of Deposit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years provisional, then eligible to apply for permanent residence",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "kraemerlaw_pa_self_solvency",
+      "tier": 3,
+      "url": "https://kraemerlaw.com/en/immigration/panama-self-solvency-visa/",
+      "title": "Kraemer & Kraemer -- Panama Economic Self-Solvency Visa: USD 300,000 (real estate and/or CD) + USD 2,000/dependent, 2-year provisional-to-permanent timeline",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "migracion_pa_permisos_overview",
+      "tier": 1,
+      "url": "https://www.migracion.gob.pa/permisos-migratorios/",
+      "title": "Servicio Nacional de Migración de Panamá -- Permisos Migratorios overview, confirming 'Economic solvency via fixed deposits or real estate' as a permanent-resident special-policy category",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. STATUS SET TO DRAFT: the category's existence is confirmed at tier-1, but the USD 300,000/USD 2,000-per-dependent figures are only tier-3 confirmed since a matching migracion.gob.pa requirements PDF was not located and fetched in this pass. This route overlaps conceptually with pa_qualified_investor_visa's real-estate/deposit groups but is understood (per the tier-3 source) to be a lower administrative tier without the Qualified Investor program's immediate-permanent-residence benefit -- the two were NOT fully reconciled against each other in this pass (e.g. whether they are the same legal category at different amounts, or genuinely distinct programs); flagged as an open question rather than merged or arbitrarily separated."
+}

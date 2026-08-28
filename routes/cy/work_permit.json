@@ -1,0 +1,74 @@
+{
+  "id": "cy_work_permit",
+  "country": "CY",
+  "name": "Employment Residence Permit (third-country national employee)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cywp_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed",
+          "hard": true,
+          "blocker_text": "Requires a confirmed job offer from a Cyprus-registered employer, who must apply jointly for the work and residence permit.",
+          "fix_path": "Secure a confirmed job offer from a Cyprus employer.",
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_work_permit"
+        },
+        {
+          "id": "cywp_lmt",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "labour_market_test_or_exemption",
+          "hard": true,
+          "blocker_text": "The Department of Labour must confirm no suitable EU/Cypriot candidate is available for the role, unless the position falls under an exempted category (e.g. Business Facilitation Unit companies, certain highly-skilled roles).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Labour market test result or applicable exemption", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Health insurance, clean criminal record, medical certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cy_long_term_residence", "cy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gk_lawfirm_cy_work_permit",
+      "tier": 3,
+      "url": "https://gk-lawfirm.com/practice-areas/immigration-law/cyprus-work-permit/",
+      "title": "GK Law Firm -- Cyprus work permit for non-EU staff: the employer's guide",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. STATUS SET TO DRAFT: gov.cy's Migration Department pages (the natural tier-1 source, which per the EU home-affairs portal handles exactly this permit category) returned HTTP 403 to automated fetching throughout this pass. This is the general/standard employment route, distinct from cy_business_facilitation (the separate, more favourable regime for companies of foreign interest). work_rights 'restricted': tied to the specific employer and role named in the permit. pr_after_months (60) and leads_to_citizenship follow this route's residence feeding cy_long_term_residence's 5-year test, per that route's own sourcing."
+}

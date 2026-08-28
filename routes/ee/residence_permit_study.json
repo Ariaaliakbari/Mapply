@@ -1,0 +1,72 @@
+{
+  "id": "ee_residence_permit_study",
+  "country": "EE",
+  "name": "Residence Permit for Study",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ees_admission",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "admitted_full_time_to_estonian_institution",
+          "hard": true,
+          "blocker_text": "Requires confirmed admission to full-time study at an Estonian educational institution, and continuing the full curriculum without interruption.",
+          "fix_path": "Secure full-time admission to an Estonian institution.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_study"
+        },
+        {
+          "id": "ees_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "income_4x_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires sufficient income to support yourself in Estonia, set at four times the national subsistence level (a figure that changes annually with the State Budget Act).",
+          "fix_path": "Document income at or above four times the current subsistence level.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter from an Estonian educational institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of income at 4x the subsistence level", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance valid for the stay", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "issued for the full study programme, up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_study",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/residence-permit-for-study",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Residence permit for study",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. work_rights is 'restricted': students may work only if it doesn't interfere with continuing full-time study. The source page does not address a post-graduation job-seeker pathway, so switchable_to is left empty rather than assuming one exists -- worth a second pass, since several other countries in this dataset (Netherlands' orientation_year, Portugal's job_seeker_skilled) have an explicit graduate-to-work bridge and Estonia may too. The four-times-subsistence-level income formula is confirmed at tier-1 but the exact current euro figure was not resolved to a national-variables entry in this pass -- the subsistence level itself is set annually by the State Budget Act."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "id_citizenship_descent",
+  "country": "ID",
+  "name": "Kewarganegaraan Karena Kelahiran (Citizenship by Birth/Descent)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child is Indonesian by birth where both parents are Indonesian citizens, where at least one parent is an Indonesian citizen (mixed parentage), or where the child is born in Indonesian territory and the parents' citizenship is unclear or they are stateless, per Article 4 of Law 12/2006.",
+    "evidence_hint": "Foreign birth certificate (if born abroad); Indonesian parent's citizenship documentation; civil registration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "idcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be an Indonesian citizen at the time of the child's birth (Article 4). Indonesia's dual-citizenship-for-children provision (introduced by Law 12/2006) allows such children to hold both nationalities until age 18 (or 21 for some categories), at which point they must choose one nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Foreign birth certificate, if born abroad", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Indonesian parent's citizenship documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite until the child must elect a single nationality (age 18-21)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ahu_go_id_uu12_2006",
+      "tier": 1,
+      "url": "https://portal.ahu.go.id/uploads/_uploads/dl/PP_UU/Dit.Tatanegara/UU%20No.%2012%20Th%202006.pdf",
+      "title": "Direktorat Jenderal AHU -- Undang-Undang No. 12 Tahun 2006, Article 4 (citizenship by birth, including mixed-parentage children)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. Confirmed directly at tier-1. dual_citizenship_allowed set TRUE for THIS route specifically, unlike id_naturalisation -- Law 12/2006 introduced a limited dual-citizenship allowance precisely for children of mixed marriages/parentage, who must elect a single nationality once reaching adulthood (commonly cited as age 18, with an 3-year window to age 21 in some descriptions) -- the exact elective age window was not independently re-confirmed at tier-1 beyond what this fetch surfaced, flagged as an approximation rather than a precise figure."
+}

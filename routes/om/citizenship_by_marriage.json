@@ -1,0 +1,120 @@
+{
+  "id": "om_citizenship_by_marriage",
+  "country": "OM",
+  "name": "Nationality by Marriage -- Foreign Wife of an Omani Husband",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "omcm_gender_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "foreign_wife_of_omani_husband",
+          "hard": true,
+          "blocker_text": "Available only to a foreign woman married to an Omani man -- Oman's Nationality Law does not provide an equivalent path for a foreign man married to an Omani woman.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "decree_om_nationality_paths"
+        },
+        {
+          "id": "omcm_marriage_duration",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "At least 10 years of marriage to the Omani husband.",
+          "fix_path": "Remain married to the Omani husband for at least 10 years.",
+          "fix_time_months": 120,
+          "source_id": "decree_om_nationality_paths"
+        },
+        {
+          "id": "omcm_child",
+          "attribute": "has_child_with_omani_spouse",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have a child with the Omani husband.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "decree_om_nationality_paths"
+        },
+        {
+          "id": "omcm_language",
+          "attribute": "has_arabic_language_skill",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Arabic language skills are required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "decree_om_nationality_paths"
+        }
+      ]
+    },
+    {
+      "id": "widowed_or_divorced",
+      "name": "Widow/divorcee of an Omani husband",
+      "requirements": [
+        {
+          "id": "omcm_widow_divorcee",
+          "attribute": "months_continuous_residence_as_widow_or_divorcee",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "A widow or divorcee of an Omani husband may apply after 15 years of continuous residence in Oman, with Arabic proficiency, single (unmarried) status, and having a child from the marriage.",
+          "fix_path": null,
+          "fix_time_months": 180,
+          "source_id": "decree_om_nationality_paths"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Child's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Arabic-language proficiency evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "decree_om_nationality_paths",
+      "tier": 3,
+      "url": "https://blog.decree.om/2025/paths-to-omani-nationality-under-the-law/",
+      "title": "Decree.om -- Omani-law commentary blog: foreign-wife-of-Omani-husband route (10-year marriage, child, Arabic), separate widow/divorcee route (15-year continuous residence, Arabic, single status, child), both under Royal Decree 38/2014, no equivalent route described for a foreign husband of an Omani wife",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "commoner_law_citizenship",
+      "tier": 3,
+      "url": "https://commoner-law.com/oman/immigration-pathways/citizenship-naturalization",
+      "title": "Commoner Law -- corroborates a 10-15 year marriage-based route for foreign wives of Omani men, no equivalent for foreign husbands of Omani women, and confirms Oman does not permit dual nationality (renunciation of prior citizenship required)",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- as with om_citizenship_by_descent.json, the primary legislative text could not be independently fetched; this file relies on two corroborating tier-3 legal-commentary sources. This route is explicitly gendered (available only to a foreign wife of an Omani husband) -- modeled precisely rather than smoothed into gender-neutral language, consistent with this dataset's treatment of Morocco's and Serbia's marriage-based citizenship provisions. dual_citizenship_allowed modeled FALSE per the corroborated no-dual-nationality rule that applies across Oman's citizenship routes generally."
+}

@@ -1,0 +1,84 @@
+{
+  "id": "ma_student_permit",
+  "country": "MA",
+  "name": "Student Residence Card (Carte d'Immatriculation -- Études)",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals enrolled at a Moroccan educational institution, holding a long-stay visa marked for study purposes where required by nationality.",
+    "evidence_hint": "Enrollment certificate from a Moroccan institution; long-stay study visa where required; proof of means of subsistence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "masp_enrollment",
+          "attribute": "has_enrollment_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrollment at a Moroccan educational institution is required, evidenced by an admission/enrollment certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "diplomatie_ma_visa_general"
+        },
+        {
+          "id": "masp_means",
+          "attribute": "has_sufficient_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient means of existence appropriate to student status must be demonstrated, per the general 'carte d'immatriculation' requirements under Law 02-03.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gadem_immatriculation_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment certificate from a Moroccan institution", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Long-stay study visa (nationality-dependent)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of means of subsistence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable (general carte d'immatriculation progression: 1yr, then 2-3yr, 5yr, 10yr on successive renewals)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "card lapses after 6 months' continuous absence from Morocco",
+    "switchable_to": ["ma_work_permit", "ma_long_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "gadem_immatriculation_categories",
+      "tier": 3,
+      "url": "https://gadem-guide-juridique.info/category/sejour-territoire/carte-immatriculation/",
+      "title": "GADEM (Groupe Antiraciste d'Accompagnement et de Défense des Etrangers et Migrants) legal guide -- Carte d'immatriculation categories under Law 02-03: student card among 5 categories, 1-10 year validity range, 6-month absence lapse rule, sufficient-means requirement",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "diplomatie_ma_visa_general",
+      "tier": 1,
+      "url": "https://us.diplomatie.ma/en/visa-requirements",
+      "title": "Ministry of Foreign Affairs (Morocco), Embassy in Washington -- confirms long-stay visa categories exist but does not itemize student-specific figures on the page fetched",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT -- Morocco's own government portals (diplomatie.ma, service-public.ma) did not surface a dedicated, detailed student-visa requirements page in this pass; the category's existence and general structure come from GADEM's Law 02-03 legal guide (a respected Moroccan migrants'-rights NGO, tier-3 here since it summarizes rather than quotes the primary text verbatim). No specific funds figure (e.g. a monthly minimum) was located, unlike most other countries in this dataset's student-visa files."
+}

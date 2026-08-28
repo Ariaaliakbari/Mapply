@@ -1,0 +1,73 @@
+{
+  "id": "be_eu_eea_free_movement",
+  "country": "BE",
+  "name": "EU/EEA/Swiss Right of Residence",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "beeu_nationality",
+          "attribute": "nationality_region",
+          "operator": "==",
+          "value": "EU_EEA_or_Swiss",
+          "hard": true,
+          "blocker_text": "EU/EEA/Swiss citizens may reside in Belgium freely for up to 3 months on a valid ID card or passport alone.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dofi_eu_entry_residence"
+        },
+        {
+          "id": "beeu_registration",
+          "attribute": "registered_after_90_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Beyond 3 months, must submit a declaration of registration to the municipal authority, on grounds of employment/self-employment, active job-seeking, self-sufficiency plus comprehensive health insurance, or student status. Missing the 3-month deadline triggers a EUR 200 administrative fine.",
+          "fix_path": "Register with the municipal authority within 3 months of arrival.",
+          "fix_time_months": null,
+          "source_id": "dofi_eu_entry_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid EU/EEA/Swiss ID card or passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employment contract, business registration, jobseeker registration, proof of means/insurance, or enrolment documentation (matching the chosen ground)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "declaration of registration is not time-limited, subject to continuing to meet the grounds; permanent residence available after 5 years",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["be_permanent_residence", "be_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dofi_eu_entry_residence",
+      "tier": 1,
+      "url": "https://dofi.ibz.be/en/themes/citizens-european-union/right-entry-and-residence/right-entry-and-residence-belgium-eu-2",
+      "title": "IBZ -- Right of Entry and Residence (EU citizens, more than 3 months): registration deadline and EUR 200 fine, qualifying grounds (employment, job-seeking, self-sufficiency, student)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). pr_after_months (60) and citizenship_after_months (60) use be_permanent_residence.json/be_naturalisation.json's general 5-year figures as baselines; no EU-citizen-specific reduced track distinct from these general figures was confirmed in this pass."
+}

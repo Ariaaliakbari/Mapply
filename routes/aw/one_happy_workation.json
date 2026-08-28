@@ -1,0 +1,85 @@
+{
+  "id": "aw_one_happy_workation",
+  "country": "AW",
+  "name": "One Happy Workation (Remote Worker Stay)",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "awow_foreign_income",
+          "attribute": "employed_or_self_employed_outside_aruba",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be employed by, or self-employed through, a company or business based in the applicant's home country -- income must not come from an Aruban company.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ata_one_happy_workation"
+        },
+        {
+          "id": "awow_package_booking",
+          "attribute": "booked_participating_package",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must book a participating hotel/resort package and select 'One Happy Workation' as the visit purpose on the ED card -- there is no separate government application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ata_one_happy_workation"
+        },
+        {
+          "id": "awow_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Minimum stay 1 week; maximum stay 90 days total, including any extension.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ata_one_happy_workation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Participating hotel/resort package booking confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed ED card selecting 'One Happy Workation' as visit purpose", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of foreign employment or self-employment", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 week minimum, 90 days maximum total",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ata_one_happy_workation",
+      "tier": 3,
+      "url": "https://www.aruba.com/us/one-happy-workation",
+      "title": "Aruba Tourism Authority -- One Happy Workation: eligibility (foreign employment/self-employment only, no Aruban-sourced income), 1 week to 90 day duration, package-booking-only application process, explicit non-residency confirmation",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "STATUS: DRAFT (tier-3 sourcing throughout -- ATA is not the immigration authority). NEW ROUTE, part of Aruba's initial build. This is NOT a separate visa or DIMAS-issued permit -- it is a marketing/administrative program run by the Aruba Tourism Authority (ATA), a statutory tourism-promotion body, layered on top of the standard visitor entry (see aw_visitor_visa.json): the applicant remains a visitor for immigration-status purposes, simply declaring remote-work intent on the ED card and booking a participating package. Tier 3 rather than tier 1 since ATA is not the immigration authority (DIMAS); modelled as its own route rather than folded into aw_visitor_visa.json because it has a materially different, explicitly documented eligibility test (foreign-sourced income only, no work for an Aruban company) and a distinct declared purpose-of-visit. work_rights is 'restricted' to reflect that only foreign-sourced remote work is permitted, not local employment. The source explicitly confirms this route does NOT lead to Aruba resident registration or any immigration status beyond the visitor stay."
+}

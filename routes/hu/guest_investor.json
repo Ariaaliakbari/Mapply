@@ -1,0 +1,108 @@
+{
+  "id": "hu_guest_investor",
+  "country": "HU",
+  "name": "Guest Investor Programme",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate_fund",
+      "name": "Real estate investment fund track",
+      "requirements": [
+        {
+          "id": "hugi_fund",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 250000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Minimum EUR250,000 in investment certificates issued by one of two government-approved real estate funds, retained for at least 5 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iba_guest_investor"
+        },
+        {
+          "id": "hugi_timing_fund",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "investment_completed_within_3_months",
+          "hard": true,
+          "blocker_text": "The qualifying investment must be completed within 3 months of the guest-investor visa being issued, and within 3 months of entering Hungary.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_guest_investor_faq"
+        }
+      ]
+    },
+    {
+      "id": "education_donation",
+      "name": "Higher-education donation track",
+      "requirements": [
+        {
+          "id": "hugi_donation",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 1000000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Minimum EUR1,000,000 donation to a foundation managing a state-recognised Hungarian higher-education institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iba_guest_investor"
+        },
+        {
+          "id": "hugi_timing_donation",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "investment_completed_within_3_months",
+          "hard": true,
+          "blocker_text": "The qualifying donation must be completed within 3 months of the guest-investor visa being issued, and within 3 months of entering Hungary.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_guest_investor_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment fund certificate or donation confirmation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Guest-investor visa (valid max 6 months, non-extendable)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "residence permit valid up to 10 years, extendable once for another 10 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "none confirmed -- the tier-1 FAQ explicitly states there is no rule regarding a minimum length of stay in Hungary",
+    "switchable_to": ["hu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oif_guest_investor_faq",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/guest-investor-visa-and-permit-frequently-asked-questions-faq",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- Guest Investor Visa and Permit FAQ: 6-month non-extendable visa then 10+10 year residence permit, 3-month investment-completion window, no minimum stay, family reunification process",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "iba_guest_investor",
+      "tier": 3,
+      "url": "https://www.ibanet.org/the-latest-updates-to-the-Guest-Investor-Residency-Programme",
+      "title": "International Bar Association -- The latest updates to the Guest Investor Residency Programme: EUR250,000 real-estate-fund and EUR1,000,000 education-donation thresholds; discontinued direct-property and government-bond options",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. STATUS SET TO DRAFT: the tier-1 FAQ confirms the programme's structure (visa then 10+10yr permit, 3-month investment window, no minimum-stay rule, family process) but omits the specific investment AMOUNTS -- those hard-requirement figures are tier-3 only (International Bar Association), pending tier-1 confirmation. Per the tier-3 source, two other options existed historically but are now discontinued and NOT modelled as active: a direct real-estate-purchase option (cancelled before 2025) and a government-bond option (ended July 2024, predating the current Guest Investor Programme entirely). leads_to_pr set false because the 10(+10)-year permit duration already functions as a long-duration status in its own right rather than converting to a separate permanent-residence product; whether guest-investor time counts toward hu_national_residence_card's 3-year continuous-residence ground was not confirmed at tier-1. Family members apply for family reunification in parallel but cannot lawfully remain until the principal's own permit is granted, per the tier-1 FAQ."
+}

@@ -1,0 +1,111 @@
+{
+  "id": "gd_citizenship_by_investment",
+  "country": "GD",
+  "name": "Citizenship by Investment (CBI)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "national_transformation_fund",
+      "name": "National Transformation Fund",
+      "requirements": [
+        {
+          "id": "gdci_ntf_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "Non-refundable contribution of at least US$150,000 to the National Transformation Fund.",
+          "fix_path": "Make the qualifying National Transformation Fund contribution.",
+          "fix_time_months": null,
+          "source_id": "cbi_gov_gd"
+        },
+        {
+          "id": "gdci_ntf_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": false,
+          "blocker_text": "Main applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cbi_gov_gd"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Approved Real Estate Project",
+      "requirements": [
+        {
+          "id": "gdci_re_option_exists",
+          "attribute": "invests_in_approved_real_estate_project",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Purchase of a qualifying share in a government-approved real estate development (from the official List of Approved Projects).",
+          "fix_path": "Purchase a qualifying share in an approved real estate project.",
+          "fix_time_months": null,
+          "source_id": "cbi_gov_gd"
+        },
+        {
+          "id": "gdci_re_amount_indicative",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 270000,
+          "hard": false,
+          "blocker_text": "Third-party sources cite a minimum of approximately US$270,000 for the real estate option, though this figure is not confirmed on the official CBI site itself.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "osher_gd_permanent_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Due diligence fees (up to ~US$15,620 for a family, per third-party estimate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of source of funds", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Police clearance/good character certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of qualifying investment", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cbi_gov_gd",
+      "tier": 1,
+      "url": "https://www.cbi.gov.gd/",
+      "title": "Citizenship by Investment Committee, Government of Grenada -- Official CBI site: National Transformation Fund (minimum US$150,000 contribution) and Real Estate Options (Approved Projects, exact minimum not stated on this page), 3-4 month processing",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "osher_gd_permanent_residency",
+      "tier": 3,
+      "url": "https://osheradvisors.com/blog/grenada-permanent-residency/",
+      "title": "Osher Advisors -- cites a real-estate CBI minimum of US$270,000 and due-diligence fees up to ~US$15,620 for a family, figures not independently confirmed on the official cbi.gov.gd site",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. IMPORTANT DISCREPANCY: the official cbi.gov.gd site states the National Transformation Fund minimum as US$150,000 without breaking out per-dependent add-ons, while a tier-3 source (osheradvisors.com) cites a considerably higher $235,000 figure for the same NTF route and $270,000 for real estate -- these may reflect a family-inclusive total, a 2024/2025 fee increase not yet reflected on the official page, or simply inconsistent secondary reporting. This build models the confirmed tier-1 figure ($150,000) as the hard NTF requirement rather than guessing which secondary figure is more current; the real-estate dollar threshold is NOT tier-1 confirmed at all, so it is modelled as hard: false (informational only) while the existence of the real-estate option itself IS tier-1 confirmed and kept hard: true. Per-group age requirements set to hard: false per this session's established CBI convention. Re-verify current NTF and real-estate figures directly against cbi.gov.gd's linked Schedule of Fees before relying on this for a live application."
+}

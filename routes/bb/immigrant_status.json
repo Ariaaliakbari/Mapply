@@ -1,0 +1,109 @@
+{
+  "id": "bb_immigrant_status",
+  "country": "BB",
+  "name": "Immigrant Status (Immigration Act, Cap. 190, Section 6)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "business_trade_enterprise",
+      "name": "Establishment in business, trade, or agricultural enterprise",
+      "requirements": [
+        {
+          "id": "bbis_business",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "successful_or_likely_business_establishment",
+          "hard": true,
+          "blocker_text": "Requires successful establishment in a profession, trade, business, or agricultural enterprise in Barbados, or a likely establishment supported by sufficient financial means.",
+          "fix_path": "Establish, or demonstrate sufficient financial means to establish, a qualifying business, trade, or agricultural enterprise.",
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ]
+    },
+    {
+      "id": "employment_public_service",
+      "name": "Professional employment in public service",
+      "requirements": [
+        {
+          "id": "bbis_employment",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "professional_employment_public_service_or_statutory_board",
+          "hard": true,
+          "blocker_text": "Requires professional qualifications and full-time employment in the public service, a statutory board, or a government agency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ]
+    },
+    {
+      "id": "parent_grandparent_of_citizen",
+      "name": "Parent or grandparent of a Barbadian citizen",
+      "requirements": [
+        {
+          "id": "bbis_family_care",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_or_grandparent_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires being the parent or grandparent of a Barbadian citizen who is willing and able to provide care and support.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ]
+    },
+    {
+      "id": "retiree",
+      "name": "Retiree with adequate financial support",
+      "requirements": [
+        {
+          "id": "bbis_retiree",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "adequate_financial_support_for_retirement",
+          "hard": true,
+          "blocker_text": "Requires being a retiree with adequate financial means to support yourself in Barbados without local employment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence matching the qualifying ground claimed (business registration/financial means; employment letter; proof of relationship to a Barbadian citizen; or retirement income proof)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, subject to maintaining the qualifying ground",
+    "renewable": true,
+    "work_rights": "restricted",
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "periods spent imprisoned, or hospitalised for leprosy or mental illness, do not count toward the 5-year residence period required for permanent resident status.",
+    "switchable_to": ["bb_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "cap190_immigration_act",
+      "tier": 1,
+      "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/ImmigrationCAP190.pdf",
+      "title": "Barbados Judiciary (barbadoslawcourts.gov.bb) -- Immigration Act, Cap. 190, Sections 5-6",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Barbados' initial build, and the first route in the dataset to model Barbados' two-stage settlement pipeline: a 'permitted entrant' first attains Immigrant Status under one of these four grounds, then becomes eligible for Permanent Resident Status (see bb_permanent_residence, linked via switchable_to and, on that route's own file, via prerequisites) after 5 years' continuous residence as an Immigrant. STRUCTURAL OVERLAP FLAGGED, not resolved: the business_trade_enterprise ground here closely resembles the 'For Entrepreneurs' documentation requirements listed on the Work Permit page (see bb_work_permit's notes) -- it is not clear from the sources fetched in this pass whether these describe the same practical pathway from two different legal angles, or genuinely separate routes into running a business in Barbados. work_rights is set to 'restricted' as a conservative default since the Act ties the status to the specific qualifying ground (a business-establishment immigrant's work rights differ in practice from an employed-in-public-service immigrant's) -- not a single clean answer, flagged rather than resolved further. leads_to_citizenship is set false for this route specifically: citizenship requires a separate naturalisation application under the Citizenship Act (see bb_naturalisation) with its own aggregate-residence test, not an automatic consequence of Immigrant Status or even of Permanent Resident Status. The Act consolidated at barbadoslawcourts.gov.bb was last confirmed amended in the 1970s per some secondary sources (ILO NATLEX, SELA) -- not independently re-verified as current in this pass; treat Section numbers as subject to revision if a more recent consolidation surfaces."
+}

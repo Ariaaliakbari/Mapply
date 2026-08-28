@@ -1,0 +1,84 @@
+{
+  "id": "cy_business_facilitation",
+  "country": "CY",
+  "name": "Business Facilitation Unit Residence & Work Permit (Company of Foreign Interest)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cybfu_foreign_participation",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Where foreign participation in the company's share capital is 50% or less of the total, that foreign-held portion must itself represent at least EUR 200,000; this capital test does not apply where foreign participation exceeds 50%.",
+          "fix_path": "Structure the company's share capital to meet the foreign-participation test.",
+          "fix_time_months": null,
+          "source_id": "sclaw_cy_bfu"
+        },
+        {
+          "id": "cybfu_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 2500, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "High-skilled third-country employees must earn at least EUR 2,500 gross per month and hold a university degree (or equivalent) or 2+ years' relevant experience, under a contract of at least 2 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sclaw_cy_bfu"
+        },
+        {
+          "id": "cybfu_staff_ratio",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "within_70pct_non_eu_staff_cap",
+          "hard": true,
+          "blocker_text": "During the company's first 5 years under the scheme, third-country nationals may not exceed 70% of all staff (30% for support staff).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sclaw_cy_bfu"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company registration under the Business Facilitation Unit framework", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employment contract (2+ years) and qualification/experience evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the employment contract (2+ years), renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cy_long_term_residence", "cy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "sclaw_cy_bfu",
+      "tier": 3,
+      "url": "https://sclaw.com.cy/business-facilitation-unit/",
+      "title": "SC Law Cyprus -- Business Facilitation Unit (BFU) requirements",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. This is a genuinely distinct, fast-track scheme (one-stop-shop via the Ministry of Energy, Commerce, Industry and Tourism, per the EU home-affairs portal) from the ordinary cy_work_permit route -- kept as its own route rather than a group within it, since it has its own separate qualifying company-registration framework, staff ratios, and salary floor. STATUS SET TO DRAFT: gov.cy pages on the BFU were not reachable (403) in this pass; this single tier-3 legal-advisory source was not cross-verified against a second independent source. family_can_work set false as a conservative default: not addressed in the source fetched."
+}

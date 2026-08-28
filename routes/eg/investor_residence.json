@@ -1,0 +1,97 @@
+{
+  "id": "eg_investor_residence",
+  "country": "EG",
+  "name": "Investment Residence Permit (Real Estate or Business)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate",
+      "name": "Real estate investment",
+      "requirements": [
+        {
+          "id": "eginv_re_exists",
+          "attribute": "has_qualifying_property_investment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A minimum real-estate investment (a specific figure was not confirmed at tier-1 precision -- see notes) qualifies a foreign investor to apply for a long-term or renewable residence permit.",
+          "fix_path": "Purchase qualifying Egyptian real estate.",
+          "fix_time_months": null,
+          "source_id": "realestate_gov_eg"
+        },
+        {
+          "id": "eginv_re_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 50000,
+          "hard": false,
+          "blocker_text": "Secondary sources cite figures ranging from roughly USD 50,000 to USD 300,000 depending on the specific program/route, with explicit caution that these are not interchangeable across routes and requirements have evolved since 2023 policy amendments.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "youssrysaleh_investment_residency"
+        }
+      ]
+    },
+    {
+      "id": "company_capital",
+      "name": "Company formation with deposited capital",
+      "requirements": [
+        {
+          "id": "eginv_company_capital",
+          "attribute": "company_capital_egp",
+          "operator": ">=",
+          "value": 100000,
+          "hard": false,
+          "blocker_text": "Investors can obtain a residence permit by establishing a company and depositing a minimum of EGP 100,000 in capital, though the framework emphasizes the legitimacy and seriousness of the project over a fixed threshold alone.",
+          "fix_path": "Register a qualifying company and deposit the required capital.",
+          "fix_time_months": null,
+          "source_id": "youssrysaleh_investment_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property purchase deed or company incorporation and capital deposit records", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of fund source", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Company route: 1 year initial, renewal tied to project implementation; real estate route duration not confirmed at tier-1 precision",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["eg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "realestate_gov_eg",
+      "tier": 1,
+      "url": "https://blogs.realestate.gov.eg/legal-guide-for-foreigners-buying-property-in-egypt/",
+      "title": "The Official Egyptian Real Estate Platform (Ministry-affiliated, realestate.gov.eg) -- Legal Guide for Foreigners Buying Property in Egypt: confirms foreigners investing a minimum amount, including real estate, can apply for long-term/renewable residence permits; foreign ownership capped at 2 residential properties, max 4,000 sqm combined; notes the government is actively working on legislation to ease investor residency",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "youssrysaleh_investment_residency",
+      "tier": 3,
+      "url": "https://youssrysaleh.com/en/residency-by-investment-in-egypt-what-foreign-investors-should-know/",
+      "title": "Youssry Saleh Law Firm -- Residency by Investment in Egypt: cites EGP 100,000 minimum for the company-capital route and a commonly-referenced but explicitly-cautioned USD 300,000 real-estate figure, notes 2023 policy amendments changed conditions",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). STATUS: DRAFT -- this is a genuinely unsettled area of Egyptian policy as of this research pass. The tier-1 government real-estate portal confirms the real-estate-to-residence-permit route EXISTS and is even actively being expanded by pending legislation, but states no concrete minimum figure. Secondary sources cite wildly different numbers for the real-estate threshold (USD 50,000 vs USD 300,000 depending on the source), with one explicitly warning against treating any single figure as universal across sub-routes -- modeled the existence as hard:true/tier-1 and the specific amount as hard:false/tier-3 with the conflict disclosed rather than resolved by picking one number. The company-formation route (EGP 100,000 capital) is comparatively more concrete but still only tier-3 sourced. citizenship_after_months (60) is a rough estimate assuming this route might access a shortened residence-based naturalization path similar to Article 4's 5-year 'Egyptian origin' provision (see eg_naturalisation.json) -- NOT confirmed as applicable to investors specifically, flagged as speculative rather than sourced."
+}

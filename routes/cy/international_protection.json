@@ -1,0 +1,89 @@
+{
+  "id": "cy_international_protection",
+  "country": "CY",
+  "name": "International Protection (asylum, subsidiary, and national humanitarian protection)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Refugee status requires a well-founded fear of persecution under the 1951 Refugee Convention; subsidiary protection applies where those criteria are not met but there is a real risk of serious harm if returned. A separate, narrower national 'humanitarian protection' status exists for cases outside both categories.",
+    "evidence_hint": "Evidence supporting the persecution/serious-harm claim, assessed by Cyprus's Asylum Service."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_subsidiary",
+      "name": "Refugee status or subsidiary protection",
+      "requirements": [
+        {
+          "id": "cyip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_or_subsidiary_protection_criteria_met",
+          "hard": true,
+          "blocker_text": "Requires meeting the criteria for refugee status or subsidiary protection, assessed by Cyprus's Asylum Service under the EU Common European Asylum System framework.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asylumineurope_cy_general"
+        }
+      ]
+    },
+    {
+      "id": "national_humanitarian",
+      "name": "National humanitarian protection",
+      "requirements": [
+        {
+          "id": "cyip_humanitarian",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "humanitarian_grounds_outside_refugee_subsidiary_criteria",
+          "hard": true,
+          "blocker_text": "A narrower, national (non-EU-directive) protection status for cases falling outside refugee/subsidiary-protection criteria, granted at the authorities' discretion.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asylumineurope_cy_national_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for international protection", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution/serious-harm/humanitarian claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "national humanitarian protection: 12-month special residence permit (renewal options unclear); refugee/subsidiary protection permit durations not confirmed in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cy_long_term_residence", "cy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "asylumineurope_cy_general",
+      "tier": 3,
+      "url": "https://asylumineurope.org/reports/country/cyprus/",
+      "title": "Asylum Information Database (AIDA), European Council on Refugees and Exiles -- Cyprus country report",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "asylumineurope_cy_national_status",
+      "tier": 3,
+      "url": "https://asylumineurope.org/reports/country/cyprus/asylum-procedure/procedures/national-protection-statuses-and-return-procedure/",
+      "title": "AIDA -- Cyprus: National protection statuses and return procedure",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. Cyprus has a real, EU Common European Asylum System-compliant domestic protection framework (unlike Barbados/Dominica's 'never existed' cases) -- it is also, as an EU external-border state, one of the highest per-capita asylum-application recipients in the EU, making this a materially real route rather than a formality. STATUS SET TO DRAFT: sourced only via AIDA (a well-regarded NGO/civil-society legal-monitoring database, tier 3 per this dataset's convention, not a Cyprus government source) since gov.cy and the Cyprus Asylum Service's own pages were not reached in this pass. HONEST GAP: standard refugee/subsidiary-protection residence-permit durations were not confirmed in the sources fetched -- only the narrower 'national humanitarian protection' status's 12-month permit was; work_rights and study_rights set to 'restricted' as conservative defaults reflecting the source's description of discretionary, Labour-Department-gated employment authorisation, not a confirmed blanket restriction level for every protection type. pr_after_months (60) is an inferred figure (protection-holder residence feeding cy_long_term_residence's 5-year test) rather than one stated specifically for asylum in these sources."
+}

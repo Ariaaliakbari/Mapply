@@ -1,0 +1,73 @@
+{
+  "id": "ge_it_professional_permit",
+  "country": "GE",
+  "name": "IT Residence Permit",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "geit_experience",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "2_years_it_experience",
+          "hard": true,
+          "blocker_text": "Requires at least 2 years of professional experience in the information technology sector.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        },
+        {
+          "id": "geit_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 25000, "currency": "USD", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires annual income of at least USD 25,000 from IT-sector work.",
+          "fix_path": "Document qualifying annual IT income.",
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 2+ years' IT experience", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of annual income at or above USD 25,000", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years initially, extendable up to a cumulative 12 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_permanent_residence", "ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "matsne_aliens_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2278806",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Law on the Legal Status of Aliens and Stateless Persons, Article 15(l)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. category set to 'work_independent' since this route's income basis (USD 25,000/year in IT-sector work) does not require Georgian employer sponsorship in the way ge_work_residence_permit does -- it is the closest thing Georgia has to a remote-tech/nomad-style route today, distinct from the lapsed 'Remotely from Georgia' pandemic-era program mentioned in ge_visa_free_entry's notes. work_rights 'restricted' as a conservative default: the specific scope (remote-only vs. any IT work) was not detailed in the sources fetched in this pass."
+}

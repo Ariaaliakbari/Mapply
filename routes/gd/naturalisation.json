@@ -1,0 +1,108 @@
+{
+  "id": "gd_naturalisation",
+  "country": "GD",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gdn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be of full age and capacity (18 years or older, of sound mind).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s7"
+        },
+        {
+          "id": "gdn_residence_recent",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires 12 months' continuous residence immediately preceding the application (the Minister may allow this period to end up to 6 months before the application).",
+          "fix_path": "Accumulate 12 months' continuous residence immediately preceding application.",
+          "fix_time_months": 12,
+          "source_id": "gd_citizenship_act_s7"
+        },
+        {
+          "id": "gdn_residence_antecedent",
+          "attribute": "months_in_country_before_final_year",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Within the 7 years before that 12-month period, requires an aggregate of not less than 5 years of residence or government service (the Minister may count earlier periods or accept less for special circumstances).",
+          "fix_path": "Accumulate 5 years of residence or government service within the antecedent 7-year window.",
+          "fix_time_months": 60,
+          "source_id": "gd_citizenship_act_s7"
+        },
+        {
+          "id": "gdn_character_language",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires good character and adequate knowledge of the English language.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s7"
+        },
+        {
+          "id": "gdn_intent",
+          "attribute": "intends_to_reside_or_serve_government",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must intend to reside in Grenada, or to enter or continue in Government service.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s7"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence history (12 months + 5-of-7-years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "English language assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of Allegiance (aliens and British protected persons)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gd_citizenship_act_s7",
+      "tier": 1,
+      "url": "https://grenadaparliament.gd/wp-content/uploads/2021/08/Cap54-CITIZENSHIP-ACT.pdf",
+      "title": "Grenada Citizenship Act, Cap 54, Section 7 (primary legislation): Naturalisation -- 12 months' immediate residence plus an aggregate 5-of-7-years antecedent residence/government-service requirement, good character, English language knowledge, intent to reside/serve, oath of allegiance for aliens/British protected persons, ministerial discretion for special circumstances (Section 7(3), subject to parliamentary approval) including expedited paths for former citizens, political refugees, and stateless persons",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. Unlike Saint Lucia's ambiguous antecedent-period wording, Grenada's primary Act text is explicit: 'not less than five years' aggregate residence or service within the 7-year antecedent window -- a clean, confirmed 5-of-7 figure (modelled at 60 months, the confirmed floor). No renunciation-of-other-citizenship requirement was found in the fetched Section 7 text (unlike Saint Lucia's naturalisation route) -- dual_citizenship_allowed left null rather than assumed true or false, since this was not explicitly confirmed either way. Section 7(3)'s special-circumstances regulations (1978) provide additional, less-documented expedited paths for former Grenadian citizens, political refugees, and stateless persons requiring only 'good character' with no stated residence duration -- not modelled as separate routes in this build since no further criteria were found, but flagged as a known gap; the stateless/political-refugee variant in particular may be worth a closer look given Grenada's separate international_protection.json route in this build."
+}

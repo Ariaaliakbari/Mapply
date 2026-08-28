@@ -1,0 +1,69 @@
+{
+  "id": "bb_citizenship_descent",
+  "country": "BB",
+  "name": "Citizenship by Descent (Section 5(1))",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a Barbadian parent may apply for Barbadian citizenship under Section 5(1) of the Barbados citizenship framework, via the Immigration Department.",
+    "evidence_hint": "Applicant's birth certificate; parent's birth certificate and proof of the parent's Barbados citizenship; parent's marriage certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bbcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be a Barbadian citizen, proven via the parent's birth certificate and proof of Barbadian citizenship, plus the parents' marriage certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's birth certificate and proof of Barbados citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Parents' marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical certificate (form varies by applicant age)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Three passport photographs (one certified)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "School attendance letters, where applicable", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_bb_citizenship",
+      "tier": 1,
+      "url": "https://immigration.gov.bb/pages/Citizenship.aspx",
+      "title": "Barbados Immigration Department -- Barbadian Citizenship: by descent (Section 5(1)), by marriage, by registration/naturalisation, and Section 3(2), with required documents and fees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, filling a gap flagged in bb_naturalisation.json's notes: that earlier pass extracted the Barbados Citizenship Act, Cap. 186 (Second Schedule) from barbadoslawcourts.gov.bb and found NO general descent-based citizenship provision, only a narrow diplomatic/consular exception -- and explicitly flagged this as a surprising, likely-outdated gap. This route resolves that gap using the Immigration Department's OWN citizenship page (immigration.gov.bb), a different tier-1 source, which describes a Section 5(1) descent ground plainly and without a residence requirement. The section numbering here (3, 3(3), 3A(1)(b), 4(3), 5(1), 6) does not match the Second Schedule numbering bb_naturalisation cited, confirming the earlier suspicion that the Cap. 186 text as consolidated at barbadoslawcourts.gov.bb may be out of date relative to a subsequent amendment -- this is flagged, not silently reconciled. No specific residence period is stated for this ground in the source. dual_citizenship_allowed left null: not independently confirmed at tier-1 in this pass, consistent with bb_naturalisation's own unresolved flag on this point."
+}

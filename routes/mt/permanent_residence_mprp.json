@@ -1,0 +1,147 @@
+{
+  "id": "mt_permanent_residence_mprp",
+  "country": "MT",
+  "name": "Malta Permanent Residence Programme (MPRP)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "property_purchase",
+      "name": "Property Purchase Track",
+      "requirements": [
+        {
+          "id": "mtmprp_capital_purchase",
+          "attribute": "net_worth",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Minimum capital assets of EUR500,000, of which at least EUR150,000 must be financial assets (alternative bracket: EUR650,000 total capital with at least EUR75,000 in financial assets).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        },
+        {
+          "id": "mtmprp_property_purchase",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 375000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Must purchase qualifying residential property in Malta for at least EUR375,000, retained for a minimum of 5 years.",
+          "fix_path": "Purchase qualifying residential property at or above the threshold.",
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        },
+        {
+          "id": "mtmprp_fees_purchase",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "administrative_and_government_contribution_fees_paid",
+          "hard": true,
+          "blocker_text": "EUR60,000 non-refundable administrative fee; EUR37,000 government contribution; EUR500 per person residence-card fee; EUR7,500 per additional adult dependant (excluding spouse).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        },
+        {
+          "id": "mtmprp_donation_purchase",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "ngo_donation_2000eur",
+          "hard": true,
+          "blocker_text": "EUR2,000 donation to a registered local NGO in the philanthropic, cultural, scientific, artistic, sport, or animal-welfare sectors.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        }
+      ]
+    },
+    {
+      "id": "property_rental",
+      "name": "Property Rental Track",
+      "requirements": [
+        {
+          "id": "mtmprp_capital_rental",
+          "attribute": "net_worth",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Minimum capital assets of EUR500,000, of which at least EUR150,000 must be financial assets (alternative bracket: EUR650,000 total capital with at least EUR75,000 in financial assets).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        },
+        {
+          "id": "mtmprp_property_rental",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 14000, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Alternatively, rent qualifying residential property in Malta for at least EUR14,000/year, retained for a minimum of 5 years.",
+          "fix_path": "Sign a qualifying rental agreement at or above the threshold.",
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        },
+        {
+          "id": "mtmprp_fees_rental",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "administrative_and_government_contribution_fees_paid",
+          "hard": true,
+          "blocker_text": "EUR60,000 non-refundable administrative fee; EUR37,000 government contribution; EUR500 per person residence-card fee; EUR7,500 per additional adult dependant (excluding spouse).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        },
+        {
+          "id": "mtmprp_donation_rental",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "ngo_donation_2000eur",
+          "hard": true,
+          "blocker_text": "EUR2,000 donation to a registered local NGO in the philanthropic, cultural, scientific, artistic, sport, or animal-welfare sectors.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "residencymalta_mprp"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of capital assets (EUR500k/EUR650k bracket with matching financial-asset composition)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Property purchase or rental agreement", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police conduct certificate and security vetting clearance", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of stable resources without reliance on social assistance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite residence status; residence card issued for 5-year renewable periods",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "residencymalta_mprp",
+      "tier": 1,
+      "url": "https://residencymalta.gov.mt/legal-framework-mprp-2/",
+      "title": "Residency Malta Agency -- Malta Permanent Residence Programme (MPRP): capital-asset thresholds, administrative/government fees, property purchase/rental thresholds, NGO donation, 4-generations-per-application, 5-year residence card",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1. The source explicitly states: 'The MPRP grants permanent residence in Malta and is distinct from the separate legislative provisions governing citizenship' -- no direct/automatic citizenship pathway is described. leads_to_citizenship is nonetheless set true because MPRP time counts as ordinary legal residence toward mt_naturalisation's general aggregate-residence track, not because MPRP itself confers any accelerated or dedicated citizenship route; citizenship_after_months left null accordingly. work_rights and study_rights set to 'none': the tier-1 page does not describe this as an employment or study status, consistent with its design as a passive-investment residence permit (not independently confirmed as an explicit prohibition, but no work/study authorisation is described). Programme allows 'up to four generations in one application' per the source -- an unusually broad family-inclusion design compared to most other countries' investment-residence routes in this dataset. MPRP beneficiaries separately obtain an 'Economic Self-Sufficient' residence-card renewal permit via Identita (EUR100 fee) -- not modelled as its own route since it is a follow-on administrative permit contingent on already holding MPRP (or GRP/Malta Retirement Programme/citizenship) status, not an independent path. physical_presence_requirement left null: no minimum physical-stay-in-Malta requirement was specified in the source, beyond retaining the property for 5 years."
+}

@@ -1,0 +1,83 @@
+{
+  "id": "nz_citizenship_by_descent",
+  "country": "NZ",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born outside New Zealand to a parent who is a NZ citizen by BIRTH or by GRANT (not by descent) is a citizen by descent, and must register the citizenship with the Department of Internal Affairs before it can be used (e.g. to get a NZ passport). There is no registration deadline or age limit, and the child need never have visited New Zealand. Citizenship by descent cannot itself be passed to a further generation born overseas -- only a citizen by birth or by grant can transmit it.",
+    "evidence_hint": "Birth certificate; parent's proof of NZ citizenship by birth or by grant (not by descent); DIA registration application."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzcd_parent_type",
+          "attribute": "parent_citizenship_type",
+          "operator": "in",
+          "value": "by_birth_or_by_grant",
+          "hard": true,
+          "blocker_text": "The NZ-citizen parent must be a citizen by birth or by grant -- a parent who is themselves only a citizen by descent cannot transmit citizenship to a child born overseas (one-generation limit).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_co_nz_children"
+        },
+        {
+          "id": "nzcd_registration",
+          "attribute": "registered_with_dia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be registered as a citizen by descent with the Department of Internal Affairs before the citizenship can be used (e.g. for a passport) -- no deadline or age limit applies to registration itself.",
+          "fix_path": "Apply to the DIA to register the child's citizenship by descent.",
+          "fix_time_months": null,
+          "source_id": "govt_nz_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of NZ citizenship by birth or by grant", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govt_nz_descent",
+      "tier": 1,
+      "url": "https://www.govt.nz/browse/passports-citizenship-and-identity/nz-citizenship/types-of-citizenship-grant-birth-and-descent/",
+      "title": "New Zealand Government (govt.nz) -- Types of citizenship: confirms registration requirement for citizens by descent and that a citizen-by-descent's own overseas-born children would need citizenship by grant, not descent, to pass it on further",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "citizenship_co_nz_children",
+      "tier": 3,
+      "url": "https://citizenship.co.nz/guides/citizenship-for-children/",
+      "title": "citizenship.co.nz -- NZ citizenship by descent for children: one-generation limit (only a parent who is a citizen by birth or by grant can transmit descent citizenship), no registration deadline or age limit",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). STATUS: DRAFT -- the one-generation-limit rule (parent_citizenship_type gate) is confirmed consistently by a tier-3 specialist source and is corroborated in general terms by the tier-1 govt.nz page's own wording ('any future children... can register as citizens by descent' implies only the citizen-by-grant/birth parent, not a citizen-by-descent parent, passes it on), but the primary Citizenship Act 1977 text itself (legislation.govt.nz) returned a 403 error in this pass and could not be independently verified. Marked draft pending that stronger sourcing despite reasonable convergence across the sources reviewed."
+}

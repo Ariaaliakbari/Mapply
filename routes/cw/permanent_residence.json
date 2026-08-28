@@ -1,0 +1,73 @@
+{
+  "id": "cw_permanent_residence",
+  "country": "CW",
+  "name": "Residence Permit for an Indefinite Period",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cwpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "After 10 consecutive years with a valid residence permit, an applicant becomes eligible for a residence permit for an indefinite period.",
+          "fix_path": "Accumulate 10 consecutive years of lawful residence in Curacao under a valid residence permit.",
+          "fix_time_months": 120,
+          "source_id": "immigrationcur_faq_general"
+        },
+        {
+          "id": "cwpr_continuity",
+          "attribute": "months_absent_consecutively",
+          "operator": "<",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "A residence permit becomes invalid after one year of continuous absence abroad, which would break the 10-year continuity requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_faq_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 consecutive years' lawful residence under valid residence permits", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application form and payment order", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "10 consecutive years of lawful residence, with no single absence exceeding 1 year",
+    "switchable_to": ["cw_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "immigrationcur_faq_general",
+      "tier": 1,
+      "url": "https://immigrationcur.org/en/faq/algemene-vragen/",
+      "title": "Immigratiedienst Curacao -- General FAQ: 10-year continuous residence leads to a residence permit for an indefinite period; permits become invalid after 1 year of continuous absence abroad",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. This is a genuine, distinct permanent-residence status under Curacao's own immigration law, separate from Dutch nationality/naturalisation (cw_naturalisation.json), which instead runs on a 5-year Kingdom-residence clock administered by the Kingdom-level IND. leads_to_citizenship is false here because holding this indefinite residence permit is not itself citizenship and does not appear to shorten or otherwise alter the separate IND naturalisation timeline based on the sources reviewed -- flagged as an open question whether the two 10-year/5-year clocks interact at all. This route feeds from several others in this dataset (cw_work_permit.json, cw_investors_permit.json, cw_rentenier.json, cw_family_reunification.json all list it in switchable_to) on the assumption that any form of lawful residence permit counts toward the 10-year clock; the source does not explicitly confirm that every underlying permit type qualifies equally, so this should be treated as a reasonable but unconfirmed generalisation."
+}

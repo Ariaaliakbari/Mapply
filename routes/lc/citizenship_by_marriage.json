@@ -1,0 +1,78 @@
+{
+  "id": "lc_citizenship_by_marriage",
+  "country": "LC",
+  "name": "Citizenship by Registration -- Marriage to a Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person married to a Saint Lucian citizen (or who was married to someone who was a citizen during the marriage) may apply for registration as a citizen.",
+    "evidence_hint": "Marriage certificate; spouse's proof of citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lcm_spouse_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_lc_citizen",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Saint Lucian citizen, or having been married to someone who was a citizen during the marriage. Available to both women (Section 6(1)) and men/other persons (Section 6(2)) -- unlike some neighbouring jurisdictions, this route is not restricted to one sex.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s6"
+        },
+        {
+          "id": "lcm_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "The Minister may refuse applications on grounds including criminal convictions, drug offences, character concerns, or inadequate English language knowledge.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s6"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Saint Lucian citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of allegiance (may be required of prescribed Commonwealth citizens, at ministerial discretion)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lc_citizenship_act_s6",
+      "tier": 1,
+      "url": "https://attorneygeneralchambers.com/laws-of-saint-lucia/citizenship-of-saint-lucia-act/section-6",
+      "title": "Citizenship of Saint Lucia Act, Section 6 (primary legislation): Registration of Citizens -- subsection (1) covers women married to a citizen (among other grounds), subsection (2) covers men and other persons married to a citizen (among other grounds); Minister has discretion to refuse on character/language grounds",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. IMPORTANT CONTRAST with the Bahamas (built earlier this session): the Bahamas' Form I marriage-based citizenship route is restricted to FEMALE spouses only, with no equivalent for male spouses of female citizens. Saint Lucia's Section 6, by contrast, extends the marriage ground to BOTH sexes -- women under subsection (1), men and other persons under subsection (2) -- via the same registration mechanism. No specific marriage-duration figure was found on this source for the marriage ground specifically (unlike the separate 7-year Commonwealth-residence ground in the same section -- see lc_citizenship_by_registration_commonwealth.json); flagged as a gap rather than assumed to be immediate."
+}

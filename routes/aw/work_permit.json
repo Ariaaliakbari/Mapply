@@ -1,0 +1,96 @@
+{
+  "id": "aw_work_permit",
+  "country": "AW",
+  "name": "Work and Residence Permit -- Paid Employment",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aww_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a labour contract with a single Aruban employer in a specified job title -- working for more than one employer under the same permit is not permitted.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_paid_employment"
+        },
+        {
+          "id": "aww_dpl_clearance",
+          "attribute": "has_dpl_labour_market_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a positive labour market test statement from the DPL (Departamento di Labor / Department of Labor) before DIMAS will process the residence permit application; resident domestic staff are exempt.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_paid_employment"
+        },
+        {
+          "id": "aww_employer_registrations",
+          "attribute": "employer_has_kvk_and_svb_registration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires the employer's Chamber of Commerce (KVK) registration and confirmation of the applicant's social security (SVB) registration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_paid_employment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Labour contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "DPL labour market test statement", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Certificate of no objection", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's declaration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "SVB (social security) registration documents", "difficulty": "routine", "typical_time_days": null },
+    { "document": "KVK (Chamber of Commerce) registration statement", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Legal documentation (first applications only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the labour contract; not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["aw_indefinite_residence", "aw_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "dimas_paid_employment",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/work/paid-employment/",
+      "title": "DIMAS, Government of Aruba -- Paid Employment: single-employer rule, DPL labour market testing process, required documentation list, DPL-then-DIMAS two-step process",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_aw_work_residence",
+      "tier": 1,
+      "url": "https://www.gobierno.aw/en/work-and-residence-permit",
+      "title": "Government of Aruba -- Work and Residence Permit: requirement for a positive DPL advice before a work permit is issued by DIMAS; tourists may not undertake paid employment through an Aruban employer",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build. work_rights is 'restricted' (tied to the specific certified employer and job title, not portable to another employer without a fresh DPL clearance). No fee or standard permit-duration figures were found on the DIMAS or gobierno.aw pages reviewed -- flagged as a gap. leads_to_pr/pr_after_months (120 months) reflects the Indefinite Period Residence route's own stated threshold (see aw_indefinite_residence.json) -- a temporary Work and Residence Permit is the ordinary way a foreign national accumulates that 120-month clock, since no single temporary permit may exceed 3 years and must be renewed to reach it. Separately, a Work Permit holder becomes eligible to sponsor family after only 3 years of legal residence under the family reunification 'temporary residence permit holder' ground -- a materially faster and different benefit from indefinite residence itself; see aw_family_reunification.json."
+}

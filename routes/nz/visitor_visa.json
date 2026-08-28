@@ -1,0 +1,88 @@
+{
+  "id": "nz_visitor_visa",
+  "country": "NZ",
+  "name": "Visitor Visa / NZeTA",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Australian citizens travelling on an Australian passport need neither a Visitor Visa nor an NZeTA. Citizens of visa-waiver countries need only an NZeTA (an online travel authorization); everyone else must apply for a Visitor Visa in advance.",
+    "evidence_hint": "Passport; proof of funds or sponsor; return/onward travel evidence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzvv_funds",
+          "attribute": "monthly_funds_nzd",
+          "operator": ">=",
+          "value": 1000,
+          "hard": true,
+          "blocker_text": "At least NZD 1,000/month in funds (NZD 400/month if accommodation is already paid for), or a sponsor covering living costs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_visitor_visa"
+        },
+        {
+          "id": "nzvv_return_travel",
+          "attribute": "has_return_or_onward_travel_evidence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must show a departure ticket, proof of funds to buy one, or a sponsor's commitment to cover exit travel.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_visitor_visa"
+        },
+        {
+          "id": "nzvv_character",
+          "attribute": "has_good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of good character; a police certificate (under 6 months old) is required if total time in NZ will exceed 24 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_visitor_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds / sponsorship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward travel evidence", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 6 months (multiple-entry, per 12-month period) or up to 9 months (single-entry, per 18-month period)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "inz_visitor_visa",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/visitor-visa",
+      "title": "Immigration New Zealand -- Visitor Visa: funds (NZD 1,000/month or NZD 400/month with prepaid accommodation), return-travel evidence, health/character requirements, 6-month/9-month duration options, NZeTA waiver for Australians and eligible nationalities",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). study_rights modeled 'restricted' since visitor status permits up to 3 months of study during the visit, not full enrollment rights (see nz_student_permit.json for the dedicated study route)."
+}

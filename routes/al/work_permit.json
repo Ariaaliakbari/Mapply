@@ -1,0 +1,93 @@
+{
+  "id": "al_work_permit",
+  "country": "AL",
+  "name": "Unified Residence and Work Permit (Employee)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "alwp_contract",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "Requires a valid employment contract with an Albanian employer; the unified permit's duration matches the contract term (typically 1-3 years).",
+          "fix_path": "Secure a qualifying job offer from an Albanian employer.",
+          "fix_time_months": null,
+          "source_id": "mb_unified_permit"
+        },
+        {
+          "id": "alwp_type_d_visa",
+          "attribute": "has_type_d_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Type D visa is normally required to enter and then apply for the residence permit in-country.",
+          "fix_path": "Apply for a Type D visa via e-visa.al or an Albanian consulate.",
+          "fix_time_months": null,
+          "source_id": "mfa_visa_regime"
+        },
+        {
+          "id": "alwp_accommodation",
+          "attribute": "has_suitable_accommodation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires proof of suitable accommodation in Albania.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mb_unified_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid travel document with entry stamps", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of suitable accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "47x36mm photo (taken within 6 months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Matches employment contract, typically 1-3 years; renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["al_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mb_unified_permit",
+      "tier": 1,
+      "url": "https://mb.gov.al/procedura-dhe-dokumentacioni-per-pajisjen-me-leje-qendrimi-dhe-leje-unike-residence-unique-permit-al-en/",
+      "title": "Ministria e Brendshme (Ministry of Interior) -- Procedure and Documentation for Residence and Unified Permits: unified permit as employee (contract duration, 1-3 years), fees (8,000-10,000 ALL initial, 4,000 ALL renewal), process via e-Albania",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mfa_visa_regime",
+      "tier": 1,
+      "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+      "title": "Ministry for Europe and Foreign Affairs of Albania -- Type D visa: residency exceeding 90 days, allows in-country residence permit application",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). No distinct investor/business-owner or self-employment residence category was found at tier-1 precision during this research pass -- Albania appears to route business owners and self-employed foreigners through the same unified-permit framework tied to a registered economic activity (via the National Business Center) rather than a separately named, separately thresholded investor visa like several Caribbean/Gulf countries in this dataset. Not modeled as a separate route rather than guessed at a threshold. pr_after_months/citizenship_after_months are chained from al_permanent_residence (5yr, itself only secondary-sourced -- see that file's notes) plus al_naturalisation's 7-year standard bar counted from lawful residence generally, not from this specific permit -- flagged as an approximate inference, not a stated figure. mb.gov.al also confirms a distinct 'unique permit for domestic workers,' issued for the duration of employment -- not modeled as a separate file given the substantive overlap with this standard employee route."
+}

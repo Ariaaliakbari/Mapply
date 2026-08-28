@@ -1,0 +1,147 @@
+{
+  "id": "ae_naturalisation",
+  "country": "AE",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "gcc_arab",
+      "name": "Arab nationals of Oman, Qatar, or Bahrain",
+      "requirements": [
+        {
+          "id": "aen_gcc_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["OM", "QA", "BH"],
+          "hard": true,
+          "blocker_text": "Available to Arab nationals of Oman, Qatar, or Bahrain (Nationality Law, Article 5).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ae_nationality_law_art5"
+        },
+        {
+          "id": "aen_gcc_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires 3 years of continuous legal residence, legal income, good conduct, and no criminal convictions.",
+          "fix_path": "Accumulate 3 years of continuous legal residence.",
+          "fix_time_months": 36,
+          "source_id": "ae_nationality_law_art5"
+        }
+      ]
+    },
+    {
+      "id": "long_term_pre_1940",
+      "name": "Long-term residents since 1940 or before",
+      "requirements": [
+        {
+          "id": "aen_pre1940_residence",
+          "attribute": "resident_since_1940_or_before",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires residence in the UAE since 1940 or before, maintained continuously until the law's effective date, plus legal income, good conduct, and Arabic language proficiency (Article 7).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ae_nationality_law_art7"
+        }
+      ]
+    },
+    {
+      "id": "general",
+      "name": "General naturalisation",
+      "requirements": [
+        {
+          "id": "aen_general_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 360,
+          "hard": true,
+          "blocker_text": "Requires 30 years of total residence, of which at least 20 years must be after the law's effective date, plus legal income, good conduct, and Arabic language competency (Article 8).",
+          "fix_path": "Accumulate 30 years of total residence (20+ years post-1972).",
+          "fix_time_months": 360,
+          "source_id": "ae_nationality_law_art8"
+        }
+      ]
+    },
+    {
+      "id": "exceptional_merit",
+      "name": "Exceptional merit (Article 9 -- 'marvelous deeds')",
+      "requirements": [
+        {
+          "id": "aen_marvelous_deeds",
+          "attribute": "rendered_exceptional_service_to_uae",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A person who renders 'marvelous deeds' for the country may be granted citizenship regardless of residence duration, at government discretion.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ae_nationality_law_art9"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence history matching the qualifying category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of legal income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Good conduct/no-conviction certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Arabic language proficiency (general and long-term-resident categories)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ae_nationality_law_art5",
+      "tier": 1,
+      "url": "https://menarights.org/sites/default/files/2016-11/UAE_NationalityLaw_EN.pdf",
+      "title": "UAE Federal Law No. 17 of 1972 Concerning Nationality and Passports, Article 5: naturalisation for Arab nationals of Oman, Qatar, Bahrain after 3 years' residence",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "ae_nationality_law_art7",
+      "tier": 1,
+      "url": "https://menarights.org/sites/default/files/2016-11/UAE_NationalityLaw_EN.pdf",
+      "title": "UAE Federal Law No. 17 of 1972 Concerning Nationality and Passports, Article 7: naturalisation for long-term residents present since 1940 or before",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "ae_nationality_law_art8",
+      "tier": 1,
+      "url": "https://menarights.org/sites/default/files/2016-11/UAE_NationalityLaw_EN.pdf",
+      "title": "UAE Federal Law No. 17 of 1972 Concerning Nationality and Passports, Article 8: general naturalisation after 30 years' total residence (20+ years post-law)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "ae_nationality_law_art9",
+      "tier": 1,
+      "url": "https://menarights.org/sites/default/files/2016-11/UAE_NationalityLaw_EN.pdf",
+      "title": "UAE Federal Law No. 17 of 1972 Concerning Nationality and Passports, Article 9: discretionary grant for 'marvelous deeds' bypassing residence requirements; Article 11: mandatory renunciation of original nationality for all naturalised citizens",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the UAE's full build-out. The general naturalisation bar (30 years total residence) is by a wide margin the longest of any route built this entire session -- more than double Grenada's or Saint Lucia's naturalisation figures, and roughly triple Saint Kitts and Nevis' already-long 14-year Citizenship-by-Residence bar. This reflects the UAE's well-documented policy design: the country has one of the world's largest expatriate-majority populations (most estimates put non-citizens at 80%+ of residents) and deliberately makes ordinary naturalisation nearly unreachable, reserving faster paths for a narrow set of GCC-Arab neighbours (Article 5) or discretionary exceptional-merit grants (Article 9) -- see also ae_citizenship_exceptional.json for the newer, separate 2021 by-invitation program, which operates independently of this Article 9 mechanism. Article 11's renunciation requirement applies UAE-wide to naturalised citizens, hence dual_citizenship_allowed: false here -- notably NOT the case for the 2021 exceptional program, which explicitly permits dual citizenship as a stated policy change (see that route's notes)."
+}

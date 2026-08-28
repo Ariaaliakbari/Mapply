@@ -1,0 +1,106 @@
+{
+  "id": "ee_residence_permit_business",
+  "country": "EE",
+  "name": "Residence Permit for Business",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "shareholder",
+      "name": "Company shareholder",
+      "requirements": [
+        {
+          "id": "eeb_investment",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 65000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a shareholding in a company registered in Estonia's Business Register, with at least EUR 65,000 invested in that company's activities.",
+          "fix_path": "Invest at least EUR 65,000 in the Estonian company's activities.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_business"
+        },
+        {
+          "id": "eeb_income",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "income_6x_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires sufficient income to support yourself in Estonia, set at six times the national subsistence level.",
+          "fix_path": "Document income at or above six times the current subsistence level.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_business"
+        }
+      ]
+    },
+    {
+      "id": "start_up_entrepreneur",
+      "name": "Start-up entrepreneur",
+      "requirements": [
+        {
+          "id": "eeb_startup_evaluation",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "startup_committee_approval",
+          "hard": true,
+          "blocker_text": "Requires prior evaluation by an expert committee of the Ministry of the Interior confirming the company qualifies as a start-up (decided within 10 working days), unless the company is already evaluated or on an exemption list.",
+          "fix_path": "Obtain start-up qualification approval from the Ministry of the Interior's expert committee.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_startup"
+        },
+        {
+          "id": "eeb_startup_income",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "income_4x_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires sufficient income to support yourself in Estonia, set at four times the national subsistence level.",
+          "fix_path": "Document income at or above four times the current subsistence level.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_startup"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business Register company registration, proof of investment amount (shareholder route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Start-up committee approval letter (start-up entrepreneur route)", "difficulty": "moderate", "typical_time_days": 10 },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years initially, extendable up to 10 years at a time",
+    "renewable": true,
+    "work_rights": "restricted",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "must register a residential address in Estonia's Population Register after approval.",
+    "switchable_to": ["ee_long_term_resident", "ee_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_business",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/residence-permit-for-business",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Residence permit for business",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "politsei_ee_startup",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/residence-permit-for-business/for-start-up-entrepreneurs",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Residence permit for business: for start-up entrepreneurs",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. This is ONE government-named residence permit reached via multiple genuinely different qualifying grounds, modelled as OR-logic groups rather than fake separate routes -- the source page names four categories in total (company shareholders, sole proprietors, start-up entrepreneurs, large investors) but only shareholder and start-up-entrepreneur terms were confirmed in enough detail in this pass to encode; sole-proprietor and large-investor grounds are a known, flagged gap, not silently omitted. This is what is commonly marketed as the 'Estonia Startup Visa' -- distinct from e-Residency (which grants no residence right at all) and from the Digital Nomad Visa (which is a short-term, non-renewable visa with no path anywhere, unlike this permit's 5-to-10-year renewable structure and onward links to long-term residence and naturalisation)."
+}

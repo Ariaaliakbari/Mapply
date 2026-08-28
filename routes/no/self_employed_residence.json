@@ -1,0 +1,66 @@
+{
+  "id": "no_self_employed_residence",
+  "country": "NO",
+  "name": "Self-Employed Person's Residence Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For third-country nationals establishing or running their own business in Norway, where the enterprise is assessed as capable of supporting the applicant.",
+    "evidence_hint": "Description of the enterprise's nature, market, and sales potential; financing and budget plans; business accounts and tax returns for an existing enterprise."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nose_viability",
+          "attribute": "business_assessed_as_self_supporting",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "It must be assumed the applicant can support themselves from the business's income, substantiated by financing/budget plans and, for an existing enterprise, business accounts and tax returns. No fixed minimum capital figure is set -- the assessment is case-by-case.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_self_employed"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Description of the enterprise, market, and sales potential", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Financing and budget plans", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Business accounts and tax returns (existing enterprise)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually if conditions remain satisfied",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_permanent_residence", "no_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "udi_self_employed",
+      "tier": 1,
+      "url": "https://www.udiregelverk.no/en/documents/udi-guidelines/udi-2014-009/",
+      "title": "UDI Guideline 2014-009 -- Residence permit for self-employed persons: no fixed capital minimum, financing/budget-plan and business-viability assessment, 1-year initial and renewal permits",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). No fixed minimum capital or investment figure is set by this guideline -- unlike the flat-dollar investor visas modeled for several other countries in this dataset, Norway's self-employed route is a case-by-case business-viability assessment. work_rights modeled 'restricted' since the permit authorizes work only within the specific registered business activity."
+}

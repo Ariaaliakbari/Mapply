@@ -1,0 +1,112 @@
+{
+  "id": "hr_naturalisation",
+  "country": "HR",
+  "name": "Naturalisation (regular way of acquiring Croatian citizenship)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["hr_permanent_stay"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Naturalisation by residence",
+      "requirements": [
+        {
+          "id": "hrn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must be 18 years or older.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_naturalisation_conditions"
+        },
+        {
+          "id": "hrn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Requires 8 years of continuous, registered residence in Croatia immediately preceding the application, holding approved permanent-resident (stalni boravak) status.",
+          "fix_path": "Accumulate 8 years' continuous registered residence in Croatia under permanent-resident status.",
+          "fix_time_months": null,
+          "source_id": "mup_hr_naturalisation_conditions"
+        },
+        {
+          "id": "hrn_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "Requires knowledge of the Croatian language, Latin script, culture, and social organisation, tested at a minimum of B1. Applicants over 60 are exempt.",
+          "fix_path": "Pass the Croatian language/culture examination at B1, or qualify for the over-60 exemption.",
+          "fix_time_months": 6,
+          "source_id": "mup_hr_naturalisation_conditions"
+        },
+        {
+          "id": "hrn_renunciation",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "release_from_or_pending_loss_of_prior_citizenship",
+          "hard": true,
+          "blocker_text": "Requires either being released from prior citizenship or providing proof it will be granted upon acquiring Croatian citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_naturalisation_conditions"
+        },
+        {
+          "id": "hrn_compliance",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires respecting Croatia's legal system, having settled all due public obligations, and posing no security barrier to acceptance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_naturalisation_conditions"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 years' continuous registered residence under permanent-resident status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Croatian language, script, and culture examination certificate (or over-60 exemption evidence)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of release from prior citizenship, or a guarantee it will be granted", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Certificate confirming no security barriers / settled public obligations", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mup_hr_naturalisation_conditions",
+      "tier": 1,
+      "url": "https://mup.gov.hr/drzavljanstvo-281594/koji-je-redovit-nacin-stjecanja-hrvatskog-drzavljanstva/281902",
+      "title": "Ministarstvo unutarnjih poslova Republike Hrvatske (mup.gov.hr) -- What is the regular way of acquiring Croatian citizenship?",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. This resolves an earlier sourcing gap in this research pass: the specific '8 years' residency figure was initially found only via zakon.hr (a private legal database, tier-3/4), then independently confirmed at tier-1 directly on mup.gov.hr's own naturalisation-conditions page -- now cited as the sole source, and zakon.hr is not used. prerequisites points to hr_permanent_stay because the source explicitly requires 'odobren status stranca na stalnom boravku' (approved permanent-resident/stalni-boravak status) held for the full 8 years, not merely any legal residence. dual_citizenship_allowed is set to false based on the explicit renunciation/release requirement -- a real substantive condition of this Act, unlike Estonia and Barbados where this was left null for lack of a clear tier-1 statement. HONEST GAP, DELIBERATE SCOPE DECISION: gov.hr separately lists 'Marriage/Civil Partnership' as its own naturalisation ground alongside ordinary residence, implying a possibly-reduced residence period for spouses of Croatian citizens (commonly cited in secondary/tier-3/4 sources as around 3 years, sometimes with no residence test in some interpretations) -- this pass could NOT find a tier-1 source stating the actual reduced figure or conditions, so no separate 'spouse' requirement group was built here rather than invent one. This is a genuine open question for this country, flagged the same way Barbados' unconfirmed marriage/descent citizenship grounds were flagged -- revisit if a tier-1 source for the marriage-based track surfaces. Citizenship by descent/origin and by diaspora/emigrant status are modelled as separate routes (hr_citizenship_descent, hr_citizenship_diaspora) since they are genuinely different legal grounds requiring no residence test at all, not variants of this route."
+}

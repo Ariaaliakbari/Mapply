@@ -1,0 +1,76 @@
+{
+  "id": "eg_international_protection",
+  "country": "EG",
+  "name": "Refugee Status Determination (UNHCR)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Egypt has no domestic asylum law or refugee-status-determination body; UNHCR conducts registration and refugee status determination directly under a memorandum of understanding with the Egyptian government.",
+    "evidence_hint": "Registration with UNHCR Egypt; identity documentation; RSD interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "egip_claim",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "UNHCR (not the Egyptian government) determines whether the applicant meets the international refugee definition, via registration and one or more RSD interviews.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_egypt_rsd"
+        },
+        {
+          "id": "egip_documents",
+          "attribute": "has_genuine_identity_documents_or_truthful_account",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants must provide genuine identity documentation where possible, and truthful, complete information throughout the process.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_egypt_rsd"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (or explanation if unavailable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Consistent, truthful testimony across RSD interviews", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee card upon recognition; 30-day appeal window on denial",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_egypt_rsd",
+      "tier": 2,
+      "url": "https://help.unhcr.org/egypt/en/refugee-status-determination-rsd/",
+      "title": "UNHCR Egypt -- Refugee Status Determination (RSD): UNHCR (not the Egyptian government) decides, registration/interview process, right to an interpreter and legal representation, confidentiality, refugee card on recognition, 30-day appeal window",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). STATUS: DRAFT -- same structural pattern as several Caribbean states built earlier this session (e.g. Saint Lucia, Grenada, Saint Vincent): Egypt is not itself the decision-maker, UNHCR is, operating under a longstanding memorandum of understanding rather than Egypt's own domestic asylum legislation. work_rights modeled 'none' and study_rights modeled 'restricted' as conservative placeholders: the source does not explicitly address either during processing, and Egypt's Labour Law framework (see eg_work_permit.json's 10:1 Egyptianization ratio) makes it unlikely asylum seekers have unrestricted access to formal employment while a claim is pending -- flagged as an inference, not a stated fact. leads_to_citizenship modeled false: no route from recognized-refugee status to Egyptian naturalization was found stated in this pass; a recognized refugee would presumably need to pursue eg_naturalisation.json's standard 10-year route like any other resident, though this was not explicitly confirmed for refugees specifically."
+}

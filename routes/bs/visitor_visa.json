@@ -1,0 +1,86 @@
+{
+  "id": "bs_visitor_visa",
+  "country": "BS",
+  "name": "Visitor Entry / Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bsv_passport",
+          "attribute": "has_valid_passport",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A valid passport is required of all persons entering The Bahamas.",
+          "fix_path": "Obtain or renew a valid passport.",
+          "fix_time_months": 1,
+          "source_id": "gov_bs_entry_requirements"
+        },
+        {
+          "id": "bsv_onward_ticket",
+          "attribute": "has_return_or_onward_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A return or onward ticket and a valid travel document permitting entry to another country are required.",
+          "fix_path": "Obtain a return or onward ticket.",
+          "fix_time_months": null,
+          "source_id": "gov_bs_entry_requirements"
+        },
+        {
+          "id": "bsv_no_work",
+          "attribute": "intends_paid_work",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Visitors are not allowed to engage in any form of gainful occupation (work).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_entry_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return or onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence of sufficient funds (may be requested)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa (if nationality is not visa-exempt)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 8 months for most visa-exempt visitors, subject to immigration officer discretion",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bs_entry_requirements",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/entry-requirements/",
+      "title": "Bahamas Immigration Department -- Entry Requirements: visa-exempt nationalities (US, Canada, UK, most Commonwealth and South American countries), passport and onward-ticket requirement, up to 8 months stay for US citizens at officer discretion, no gainful occupation permitted",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. Stay length varies significantly by nationality (US citizens up to 8 months; Canadians up to 30 days; most South Americans up to 3 months) and is ultimately at the immigration officer's discretion -- modelled with the longest commonly-cited figure (8 months) as the outcome duration, with the caveat noted. Visa-required nationalities must consult the 'Before Your Arrival' page for country-specific rules, which was not separately fetched for this build."
+}

@@ -1,0 +1,84 @@
+{
+  "id": "al_permanent_residence",
+  "country": "AL",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["al_work_permit", "al_family_reunification", "al_student_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "alpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 consecutive years of legal residence in Albania before eligibility for permanent residence status.",
+          "fix_path": "Accumulate 5 consecutive years of legal residence.",
+          "fix_time_months": 60,
+          "source_id": "karanovic_law_on_foreigners"
+        },
+        {
+          "id": "alpr_stable_ties",
+          "attribute": "has_stable_activities_or_relationships",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "Beyond the 5-year residence period, applicants must demonstrate 'stable activities or relationships in the country' -- the precise definition of this standard was not confirmed at tier-1 precision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "euraxess_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of stable activity/relationships in Albania", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["al_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "euraxess_residence",
+      "tier": 3,
+      "url": "https://www.euraxess.al/albania/information-assistance/residence-permits-and-accommodation",
+      "title": "EURAXESS Albania -- Residence Permits and Accommodation: 5 consecutive years' legal residence plus 'stable activities or relationships' for permanent residence status",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "karanovic_law_on_foreigners",
+      "tier": 3,
+      "url": "https://www.karanovicpartners.com/news/albania-adopts-amendments-to-the-law-on-foreigners/",
+      "title": "Karanovic & Partners -- Albania Adopts Amendments to the Law on Foreigners: confirms 5-year continuous legal residence threshold for permanent residence, under Law No. 108/2013 on Foreigners as amended",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). STATUS: DRAFT -- despite the underlying legal basis being a real, named statute (Law No. 108/2013 'Për të Huajt' / Law on Foreigners, as amended), no .gov.al or Official Gazette (QBZ) page hosting the primary text or a government-authored summary of the 5-year permanent-residence threshold was found and fetched during this research pass; both citing sources are tier 3 (a law firm and the EU's EURAXESS researcher-mobility network, not an Albanian government domain). The two sources independently agree on the 5-year figure, which increases confidence, but per this dataset's sourcing convention a published-status route needs a tier-1 citation for its hard requirements, so this file stays draft until a primary or government-hosted source is located. citizenship_after_months (24) reflects the gap between reaching permanent residence and the earliest point the 7-year Article 8(1) naturalization clock plausibly closes, itself an approximation -- see al_naturalisation.json."
+}

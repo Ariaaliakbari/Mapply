@@ -1,0 +1,72 @@
+{
+  "id": "gr_international_protection",
+  "country": "GR",
+  "name": "Asylum / International Protection",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Any third-country national or stateless person physically present in Greek territory (including those transferred to Greece under the Dublin III Regulation) may apply for international protection based on persecution or serious harm.",
+    "evidence_hint": "Passport/travel documents if available; identity details; evidence supporting the persecution/serious-harm claim."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_or_subsidiary_protection_criteria_met",
+          "hard": true,
+          "blocker_text": "Requires meeting refugee or subsidiary-protection criteria. Initial applications are lodged at Reception and Identification Centres (Lesvos, Chios, Samos, Leros, Kos, Evros) or, for subsequent applications, at Regional Asylum Offices/Units by appointment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_gr_asylum_application"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application filed in person at a Reception/Identification Centre or Regional Asylum Office", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Identity/travel documents if available", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years for recognized refugees; 1 year (renewable every 2 years) for subsidiary protection beneficiaries",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_long_term_residence", "gr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_gr_asylum_application",
+      "tier": 1,
+      "url": "https://migration.gov.gr/en/gas/diadikasia-asyloy/i-aitisi-gia-asylo/",
+      "title": "Greek Ministry of Migration and Asylum -- The Application for Asylum (International Protection): process, timelines, work authorisation after 60 days",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "migration_gov_gr_residence_permits",
+      "tier": 1,
+      "url": "https://migration.gov.gr/en/gas/aitoyntes-kai-dikaioychoi/adeies-diamonis/",
+      "title": "Greek Ministry of Migration and Asylum -- Residence Permits (refugee status: 3-year permit; subsidiary protection: 1-year permit renewable every 2 years)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. Greece is one of the EU's largest asylum-receiving countries (a major entry point via the Aegean islands and Evros land border) with a real, heavily-used, actively administered system -- confirmed directly at tier-1 via the Ministry of Migration and Asylum's own pages, covering both the application process and the resulting permit durations for the two protection statuses. Processing takes 20 days to 6 months per the source; asylum-seeker work authorisation begins 60 days after the applicant card is issued. pr_after_months left null: leads_to_pr is true via gr_long_term_residence's own favourable counting rule for protection beneficiaries (half the asylum-processing period counts toward the 5-year requirement, or the full period if that processing exceeded 18 months), but no single fixed month count applies uniformly, so this is modelled through the switchable_to link and gr_long_term_residence's own sourced counting rule rather than restated as a specific number here."
+}

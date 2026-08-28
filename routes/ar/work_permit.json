@@ -1,0 +1,86 @@
+{
+  "id": "ar_work_permit",
+  "country": "AR",
+  "name": "Temporary Residence as Migrant Worker",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "arwp_precontract",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "Requires a signed pre-contract specifying personal data, tasks, work hours, duration, workplace, and compensation aligned with the applicable collective bargaining agreement, plus the employer's CUIT.",
+          "fix_path": "Secure a qualifying job offer from an Argentine employer.",
+          "fix_time_months": null,
+          "source_id": "migraciones_trabajador"
+        },
+        {
+          "id": "arwp_employer_registered",
+          "attribute": "employer_is_afip_and_migration_registered",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must hold an active AFIP (tax authority) registration certificate and be registered in the Migration Directorate's foreign-contractor registry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_trabajador"
+        },
+        {
+          "id": "arwp_criminal_record",
+          "attribute": "has_criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires an Argentine criminal background certificate and foreign criminal records from any country resided in for 1+ years during the past 3 years (applicants 16+).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_trabajador"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment pre-contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's AFIP registration certificate and foreign-contractor registry enrollment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificates (Argentina and relevant foreign countries)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of address and regular income", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ar_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_trabajador",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/servicio/obtener-una-residencia-temporaria-como-trabajador-migrante",
+      "title": "Dirección Nacional de Migraciones -- Obtener una residencia temporaria como trabajador migrante: employment pre-contract, employer AFIP/migration registry requirements, 1-year duration, RaDEX process",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). pr_after_months (36) reflects the non-MERCOSUR permanent-residence threshold of 3 years of valid temporary residence (see ar_permanent_residence.json) -- non-MERCOSUR nationals on this work route need the longer 3-year path, vs. 2 years for MERCOSUR nationals on the same underlying route. citizenship_after_months (60) reflects Argentina's unusually short standard naturalization bar: 2 CONTINUOUS years of legal residence (Ley 346 Article 2) is the naturalization requirement itself, not counted from PR -- modeled here as 60 months as a practical illustrative total (roughly 3 years to reach PR eligibility as a non-MERCOSUR worker, though naturalization's own 2-year clock can in principle run in parallel on temporary residence alone since Ley 346 does not require permanent residence specifically, only 2 years of continuous LEGAL residence) -- see ar_naturalisation.json for the precise, much shorter standalone figure. This chained estimate is a conservative illustrative combination, not what the law itself states as a single number."
+}

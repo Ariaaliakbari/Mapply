@@ -1,0 +1,74 @@
+{
+  "id": "fi_visitor_visa",
+  "country": "FI",
+  "name": "Short-Stay Visa / Visa-Free Entry (Schengen)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fiv_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Finland applies the Schengen short-stay rule: up to 90 days within any 180-day period, whether entering visa-free or on a Schengen (Type C) visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_residence_types"
+        },
+        {
+          "id": "fiv_visa_requirement",
+          "attribute": "requires_schengen_visa",
+          "operator": "==",
+          "value": "depends_on_nationality",
+          "hard": false,
+          "blocker_text": "Nationals of countries not covered by EU Regulation 2018/1806's visa-exemption list must obtain a Schengen short-stay visa before travel; others may enter visa-free for the same 90/180-day allowance.",
+          "fix_path": "Apply for a Schengen visa at a Finnish embassy/consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "migri_residence_types"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migri_residence_types",
+      "tier": 1,
+      "url": "https://migri.fi/en/residence-permit-types",
+      "title": "Maahanmuuttovirasto (Finnish Immigration Service) -- Residence Permit Types: overview of short-stay Schengen visa framework and the A/B/P permit system",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). Standard Schengen 90/180-day short-stay framework; visa requirement is nationality-dependent per EU Regulation 2018/1806, modeled as a soft (hard:false) branch."
+}

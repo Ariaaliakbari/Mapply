@@ -1,0 +1,78 @@
+{
+  "id": "cz_family_reunification",
+  "country": "CZ",
+  "name": "Long-Term Residence Permit for the Purpose of Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["cz_employee_card", "cz_eu_blue_card", "cz_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "czfr_sponsor_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "eligible_sponsor_status",
+          "hard": true,
+          "blocker_text": "Sponsor must hold: a valid long-term or permanent residence permit and have resided in Czechia over 15 months (both spouses aged 20+); OR a valid Employee Card with 6+ months of Czech residence; OR a Blue Card, intra-company transfer card, or investment residence permit; OR a scientific-research permit (or pending application). These sponsor-status conditions do not apply for adoptees, custody children, elderly parents, or asylum-related family applications.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipc_family"
+        },
+        {
+          "id": "czfr_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child", "dependent_parent"],
+          "hard": true,
+          "blocker_text": "Eligible relatives: spouse or registered partner (including same-sex partnerships); minor children or stepchildren; adult children who are financially dependent or medically incapable of self-care; adopted minors or children in custody; minors whose legal guardian is the sponsor; and single/divorced/widowed parents aged 65+, or parents of any age medically unable to care for themselves.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipc_family"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage, birth, or custody documentation proving the relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's proof of qualifying residence status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee CZK2,500 (CZK1,000 for minors under 15)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches sponsor's permit duration (minimum 1 year); 2 years initially (extendable to 5) if sponsor holds permanent residence",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cz_permanent_residence", "cz_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipc_family",
+      "tier": 1,
+      "url": "https://ipc.gov.cz/en/visa-and-residence-permit-types/third-country-nationals/long-term-residence-permits/long-term-residence-permit-for-the-purpose-of-family-reunification/",
+      "title": "ipc.gov.cz -- Long-Term Residence Permit for the Purpose of Family Reunification: eligible relatives, sponsor-status conditions, asylum-family exceptions, permit duration, free labour-market access",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1. work_rights set to 'full': the source explicitly states holders gain 'free access to the labour market.' After 3 years of residence, holders may apply for an alternative residence purpose (pr_after_months set to 36 reflecting this, though this is a switch to a different status rather than automatic permanent residence -- the source does not describe it as automatic conversion). Additional pathways open at age 18 or upon dissolution of the sponsoring marriage. A distinct, more permissive family-reunification track exists for recognised refugees/asylum beneficiaries (spouses if married before entry, minor children, dependent adult children under 26 in continuing education, parents of minor asylum recipients within 3 months of the grant) -- referenced here rather than modelled as a fully separate file, and covered further in cz_international_protection's notes."
+}

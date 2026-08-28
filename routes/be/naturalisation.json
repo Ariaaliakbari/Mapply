@@ -1,0 +1,126 @@
+{
+  "id": "be_naturalisation",
+  "country": "BE",
+  "name": "Declaration of Acquisition of Nationality",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_with_integration",
+      "name": "5 years' residence with integration proof",
+      "requirements": [
+        {
+          "id": "ben_residence_5yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of legal, uninterrupted residence in Belgium (limited exceptions for those born in Belgium).",
+          "fix_path": "Accumulate 5 years of legal residence.",
+          "fix_time_months": 60,
+          "source_id": "justice_declaration_acquisition"
+        },
+        {
+          "id": "ben_integration",
+          "attribute": "meets_social_or_economic_integration_standard",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must show social integration (upper-secondary-or-higher education credential, 400+ hours of recognised professional training, an integration course, or 5 years' continuous employment) OR economic participation (468+ days as a paid worker/civil servant within 5 years, or 6+ quarters of self-employed social security contributions).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "justice_declaration_acquisition"
+        },
+        {
+          "id": "ben_language",
+          "attribute": "has_language_proficiency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of knowledge of one of Belgium's three national languages (French, Dutch, German) -- generally satisfied automatically through demonstrating the integration standard above.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "justice_declaration_acquisition"
+        }
+      ]
+    },
+    {
+      "id": "extended_without_integration",
+      "name": "10 years' residence without integration proof",
+      "requirements": [
+        {
+          "id": "ben_residence_10yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 years of legal, uninterrupted residence for applicants unable to satisfy the social/economic integration standard of the 5-year route.",
+          "fix_path": "Accumulate 10 years of legal residence.",
+          "fix_time_months": 120,
+          "source_id": "justice_declaration_acquisition"
+        }
+      ]
+    },
+    {
+      "id": "exceptional_merit_naturalisation",
+      "name": "Naturalisation on grounds of exceptional merit",
+      "requirements": [
+        {
+          "id": "ben_merit",
+          "attribute": "has_exceptional_merit_scientific_sporting_or_sociocultural",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A structurally distinct, rare process: proof of exceptional merit in scientific, sporting, or sociocultural fields, with the application submitted directly to the Chamber of Representatives (Parliament) rather than processed administratively via a municipal declaration. No fixed residence-duration requirement was confirmed for this route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "justice_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence period matching the applicable route", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Integration/economic-participation evidence (5-year route)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of exceptional merit (naturalisation route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "justice_declaration_acquisition",
+      "tier": 1,
+      "url": "https://justice.belgium.be/en/themes_and_files/children_and_youth/citizenship/become_belgian/declaration_of_acquisition",
+      "title": "FPS Justice (Belgium.be) -- Declaration of Acquisition: 5-year residence + integration/economic-participation standard, or 10 years without it, EUR 150 fee, 4-month prosecutor review window",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "justice_naturalisation",
+      "tier": 1,
+      "url": "https://justice.belgium.be/en/themes_and_files/children_and_youth/citizenship",
+      "title": "FPS Justice (Belgium.be) -- Citizenship: overview confirming naturalisation on exceptional-merit grounds is submitted to the Chamber of Representatives, distinct from the administrative declaration-of-acquisition route",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). 'Declaration of acquisition' is Belgium's standard administrative naturalisation-equivalent mechanism (processed by the municipality/royal prosecutor); 'naturalisation' in the strict Belgian legal sense is a SEPARATE, rare, parliamentary act reserved for exceptional merit, bundled here as a third requirement group rather than a separate file since both ultimately grant the same citizenship outcome via the be_naturalisation.json id. Also exists but not modeled as separate groups (to avoid excessive fragmentation): a 'declaration of attribution' for minors under 18 whose parents meet specific conditions, and modified/shorter residence periods for those with family ties to Belgian citizens or those unable to work due to disability, per justice.belgium.be's declaration-of-acquisition page -- disclosed here, not itemised."
+}

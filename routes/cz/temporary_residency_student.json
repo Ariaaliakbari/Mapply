@@ -1,0 +1,76 @@
+{
+  "id": "cz_temporary_residency_student",
+  "country": "CZ",
+  "name": "Long-Term Residence Permit for the Purpose of Studies",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "czs_enrollment",
+          "attribute": "enrollment_status",
+          "operator": "==",
+          "value": "confirmed_studies_or_enrollment",
+          "hard": true,
+          "blocker_text": "Requires an original confirmation of studies or enrolment under Section 64 of Act No. 326/1999 Coll., covering university programmes, language preparation courses, or exchange programmes.",
+          "fix_path": "Secure confirmed enrolment at a qualifying institution.",
+          "fix_time_months": null,
+          "source_id": "ipc_study"
+        },
+        {
+          "id": "czs_funds",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "proof_of_funds_for_residence",
+          "hard": true,
+          "blocker_text": "Must demonstrate proof of funds sufficient to support the stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipc_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Confirmation of studies or enrolment", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance (comprehensive; travel insurance for first 90 days if under 18)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Application fee CZK2,500", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, extendable to 2 years in specific circumstances",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ipc_study",
+      "tier": 1,
+      "url": "https://ipc.gov.cz/en/visa-and-residence-permit-types/third-country-nationals/long-term-residence-permits/long-term-residence-permit-in-the-czech-republic-for-the-purpose-of-studies/",
+      "title": "ipc.gov.cz -- Long-Term Residence Permit for the Purpose of Studies: enrolment requirement, proof of funds/accommodation, health insurance, free labour-market access, CZK2,500 fee",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1. work_rights set to 'full': the source states students holding this permit 'work here without an additional permit (free access to the labour market)' -- notably more generous than most other countries' student routes in this dataset, which typically cap part-time hours. family_can_join set false: the source did not address accompanying family members for this specific permit category (family members would separately apply via cz_family_reunification)."
+}

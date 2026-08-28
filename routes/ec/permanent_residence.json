@@ -1,0 +1,86 @@
+{
+  "id": "ec_permanent_residence",
+  "country": "EC",
+  "name": "Permanent Residence by 21+ Months of Temporary Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecpr_residence",
+          "attribute": "months_continuous_temporary_residence",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "At least 21 continuous months documented under a temporary residence visa. The application must be submitted before the current temporary visa expires.",
+          "fix_path": "Accumulate 21 continuous months of temporary residence and apply before that visa expires.",
+          "fix_time_months": 21,
+          "source_id": "gob_ec_pr_21months"
+        },
+        {
+          "id": "ecpr_means",
+          "attribute": "has_lawful_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate lawful means of subsistence per Ministerial Agreement No. 70 (28 June 2024).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_pr_21months"
+        },
+        {
+          "id": "ecpr_conduct",
+          "attribute": "has_clean_criminal_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Apostilled/legalized criminal background certificate required for applicants 18 and older.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_pr_21months"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 21 continuous months of temporary residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of lawful means of subsistence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled/legalized criminal background certificate (18+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 15,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_pr_21months",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-permanente-tiempo-permanencia-mayor-21-meses",
+      "title": "gob.ec (MREMH official portal) -- Permanent residence by 21+ months of continuous temporary residence: application-before-expiry timing rule, criminal record and lawful-means-of-subsistence requirements, e-VISAS platform, USD 225 + USD 50 fees, indefinite validity",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). This is Ecuador's general conversion route from any qualifying temporary residence visa (work, rentista, digital nomad, investor, student) to permanent residence -- see those files' pr_after_months (21) figures, which all point here. citizenship_after_months (15) reflects the remaining time needed to reach ec_naturalisation.json's 3-year (36-month) total residence bar, assuming the full 21 months already accrued as temporary residence counts toward that clock (not independently confirmed whether temporary-residence time counts toward the naturalisation clock the same as permanent-residence time -- treated as a reasonable approximation, not a verified stacking rule)."
+}

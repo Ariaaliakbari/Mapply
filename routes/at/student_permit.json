@@ -1,0 +1,100 @@
+{
+  "id": "at_student_permit",
+  "country": "AT",
+  "name": "Student Residence Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For third-country nationals admitted to an Austrian higher-education institution. Applicants apply at an Austrian embassy/consulate abroad (or, for visa-exempt entrants, directly at the Austrian residence authority).",
+    "evidence_hint": "Letter of admission (Zulassungsbescheid) or confirmation of enrolment; proof of funds; health insurance; accommodation evidence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atsp_admission",
+          "attribute": "has_university_admission",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A letter of admission from an Austrian higher-education institution (or confirmation of enrolment for in-country applicants) is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oead_student_permit"
+        },
+        {
+          "id": "atsp_funds",
+          "attribute": "monthly_funds_eur",
+          "operator": ">=",
+          "value": 1308,
+          "hard": true,
+          "blocker_text": "Proof of monthly funds for 12 months in advance: EUR 722.58/month if under 24, EUR 1,308.39/month if 24 or older (2026 figures), in an accessible account in the applicant's name.",
+          "fix_path": "Deposit 12 months of the applicable monthly amount into a qualifying account.",
+          "fix_time_months": null,
+          "source_id": "oead_student_permit"
+        },
+        {
+          "id": "atsp_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health insurance covering all risks in Austria is required (student self-insurance at EUR 78.84/month qualifies if taken out after arrival).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oead_student_permit"
+        },
+        {
+          "id": "atsp_accommodation",
+          "attribute": "has_accommodation_proof",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of accommodation in Austria for a minimum of 3 months (rental agreement, student housing contract, or formal accommodation agreement).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oead_student_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter of admission or confirmation of enrolment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 12 months' funds", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance covering all risks", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Accommodation proof (3+ months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "12 months, renewable with proof of academic progress (16 ECTS/8 semester hours per academic year)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_work_permit", "at_eu_blue_card"]
+  },
+  "sources": [
+    {
+      "id": "oead_student_permit",
+      "tier": 1,
+      "url": "https://oead.at/en/to-austria/entry-and-residence/residence-permit-student-no-mobility-programme",
+      "title": "OeAD (Austria's national agency for education and internationalisation, operating under the Federal Ministry of Education) -- Residence permit for students (no mobility programme): admission proof, 2026 monthly funds figures, health insurance, accommodation, 90-180 day processing, 20 hrs/week work rights",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). work_rights modeled 'restricted' per the confirmed 20 hours/week work-permit allowance without a labour-market check. family_can_join modeled false as a conservative default since no student-specific family-reunification provision was found in this pass (general family reunification in at_family_reunification.json requires a settled/working sponsor, which a student typically is not)."
+}

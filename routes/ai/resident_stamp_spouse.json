@@ -1,0 +1,69 @@
+{
+  "id": "ai_resident_stamp_spouse",
+  "country": "AI",
+  "name": "Resident Stamp (Spouse of Anguillian/Belonger)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person married to an Anguillian citizen or Belonger may apply to the Immigration Department for a Resident Stamp.",
+    "evidence_hint": "Marriage certificate, passport, birth certificate, divorce decree (if applicable)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "airss_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_anguillian_or_belonger",
+          "hard": true,
+          "blocker_text": "Requires being married to an Anguillian citizen or Belonger, proven by marriage certificate, passport, and birth certificate (plus divorce decree if applicable).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_resident_stamps"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed application form (Immigration Department)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport and birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Divorce decree, if applicable", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Photographs", "difficulty": "routine", "typical_time_days": null },
+    { "document": "First-time processing fee: EC$200.00; grant of stamp: EC$300.00 (renewal processing: EC$50.00; grant of renewal: EC$200.00)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source reviewed (a renewal fee schedule confirms it is time-limited)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ai_belonger_status_marriage"]
+  },
+  "sources": [
+    {
+      "id": "gov_ai_resident_stamps",
+      "tier": 1,
+      "url": "https://www.gov.ai/service/immigration--labour/resident-stamps",
+      "title": "Government of Anguilla -- Resident Stamps: eligibility (spouse of an Anguillian/Belonger), documents, and fee schedule (as of 1 May 2007)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. This is a distinct, lesser interim spousal status from full Belonger Status by marriage (see ai_belonger_status_marriage.json), which instead requires 5 years of marriage and grants a much fuller set of rights -- switchable_to reflects that a Resident Stamp holder can, after accumulating the required years of marriage, separately apply for Belonger Status. The fee figures in the source are explicitly dated 'as of May 1, 2007' -- flagged as likely outdated rather than silently treated as current. work_rights is set to 'none' because the source does not describe the stamp as conferring any work authorisation (a Resident Stamp holder would still need to separately obtain a work permit, per ai_work_permit.json) -- this is inferred from the absence of any statement to the contrary, not an explicit confirmation, and should be treated as an open question. Whether children/other dependants can be included on this status is not addressed in the source."
+}

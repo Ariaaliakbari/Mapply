@@ -1,0 +1,120 @@
+{
+  "id": "ge_naturalisation",
+  "country": "GE",
+  "name": "Naturalisation (Regular Procedure)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gen_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 consecutive years of lawful residence in Georgia immediately preceding the application.",
+          "fix_path": "Accumulate 10 consecutive years' lawful residence in Georgia.",
+          "fix_time_months": null,
+          "source_id": "matsne_citizenship_law_ge"
+        },
+        {
+          "id": "gen_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "georgian_language_history_law_test_pass",
+          "hard": true,
+          "blocker_text": "Requires passing an electronic test on the Georgian language, history, and basic principles of Georgian law, administered by the Public Service Development Agency (free on first attempt; GEL 40 for subsequent attempts).",
+          "fix_path": "Book and pass the language/history/law test.",
+          "fix_time_months": 3,
+          "source_id": "sda_gov_ge_citizenship"
+        },
+        {
+          "id": "gen_ties",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "job_or_real_estate_or_business_interest_in_georgia",
+          "hard": true,
+          "blocker_text": "Requires having a job and/or real estate in Georgia, or carrying out business activity, or holding an interest or shares in a Georgian enterprise.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_citizenship_law_ge"
+        }
+      ]
+    },
+    {
+      "id": "stateless_persons",
+      "name": "Stateless persons with Georgian status",
+      "requirements": [
+        {
+          "id": "gen_stateless_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Stateless persons with Georgian status require only 5 years' lawful residence, rather than the standard 10.",
+          "fix_path": "Accumulate 5 years' lawful residence in Georgia.",
+          "fix_time_months": null,
+          "source_id": "matsne_citizenship_law_ge"
+        },
+        {
+          "id": "gen_stateless_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "georgian_language_history_law_test_pass",
+          "hard": true,
+          "blocker_text": "Requires passing the same electronic language/history/law test as the standard route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 (or 5, for stateless persons) years' lawful residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Language/history/law test pass certificate", "difficulty": "hard", "typical_time_days": 90 },
+    { "document": "Proof of job, real estate, or business interest in Georgia", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "matsne_citizenship_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2342552",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Organic Law of Georgia on Georgian Citizenship, Article 12",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "sda_gov_ge_citizenship",
+      "tier": 1,
+      "url": "https://sda.gov.ge/en/products/citizenship/",
+      "title": "Public Service Development Agency of Georgia (sda.gov.ge) -- Georgian citizenship (naturalization) service page",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. dual_citizenship_allowed set false: Article 3(3) of the Organic Law permits dual citizenship ONLY in the cases specified in Articles 17 (exceptional presidential grant) and 21(1) (prior consent to retain Georgian citizenship on acquiring another) -- NOT as a general rule for ordinary naturalisation under Article 12, so false is the accurate default for this specific route. Refugees and persons with disabilities receive exemptions per the source, not itemised as a separate group here since the exact exemption terms were not detailed in the text fetched -- an honest scope gap, not invented. Kept separate from ge_citizenship_marriage (Article 14, a genuinely different simplified procedure) rather than merged as a group, consistent with how this dataset treats Cyprus's equivalent marriage-vs-residence split."
+}

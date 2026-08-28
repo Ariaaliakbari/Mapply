@@ -1,0 +1,97 @@
+{
+  "id": "be_family_reunification",
+  "country": "BE",
+  "name": "Family Reunification (Third-Country National)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "befam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_or_registered_partner_of_resident", "minor_child_of_resident", "adult_disabled_child_of_resident"],
+          "hard": true,
+          "blocker_text": "Available to the spouse or registered partner (treated equivalent to marriage), minor children, and adult disabled children of a third-country national legally residing in Belgium on an A, B, C, D, F, F+, H, K, L, M, or M+ card.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dofi_family_reunification"
+        },
+        {
+          "id": "befam_income",
+          "attribute": "sponsor_has_stable_sufficient_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor must show stable, regular and sufficient means of subsistence for themselves and joining family members, without becoming a burden on public authorities. Exempt for unlimited-stay-permit sponsors whose applicant is their own unmarried child arriving before age 18 as the sole joining member.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dofi_family_reunification"
+        },
+        {
+          "id": "befam_housing",
+          "attribute": "sponsor_has_adequate_housing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor must provide adequate housing meeting Belgian Civil Code standards for principal residences. Exempt for H-card (EU Blue Card) holders and long-term residents from another EU state if the family unit already existed there.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dofi_family_reunification"
+        },
+        {
+          "id": "befam_waiting_period",
+          "attribute": "sponsor_months_holding_qualifying_card",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "A 12-month waiting period on the sponsor's B, C, D, F, F+, K, or L card applies before family reunification can be sought, UNLESS the marriage/partnership pre-existed the sponsor's arrival in Belgium, the partners share a child, or the sponsor holds international protection status.",
+          "fix_path": "Wait 12 months from the sponsor's card grant, or show one of the stated exceptions applies.",
+          "fix_time_months": 12,
+          "source_id": "dofi_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/partnership certificate or proof of parentage", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's residence card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor's income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of adequate housing", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically matches the sponsor's permit type/duration",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["be_permanent_residence", "be_naturalisation", "be_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "dofi_family_reunification",
+      "tier": 1,
+      "url": "https://dofi.ibz.be/en/themes/ressortissants-dun-pays-tiers/regroupement-familial/conditions-et-documents-justificatifs/le",
+      "title": "IBZ -- Family Reunification (Third-Country Nationals): eligible family members, sponsor income/housing standards and exemptions, 12-month waiting-period rule and its exceptions",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). The 12-month waiting period (with its pre-existing-relationship, shared-child, and international-protection exceptions) is a genuinely distinctive anti-marriage-of-convenience mechanic sourced directly from the government portal, more precisely specified than most family reunification builds in this dataset."
+}

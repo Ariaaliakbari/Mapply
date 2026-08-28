@@ -1,0 +1,83 @@
+{
+  "id": "bm_permission_to_reside",
+  "country": "BM",
+  "name": "Permission to Reside (Annual Residence Permission)",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmpr_no_local_employment",
+          "attribute": "local_employment",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18 years old and is prohibited from local employment; remote work for an overseas employer/company is permitted. Reported as the successor route to Bermuda's discontinued Work From Bermuda Certificate (digital nomad visa), which ended 28 February 2025.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "appleby_bermuda_residence"
+        },
+        {
+          "id": "bmpr_finances_insurance",
+          "attribute": "financial_resources_and_health_insurance",
+          "operator": "exists",
+          "value": "adequate_financial_resources_and_medical_insurance",
+          "hard": true,
+          "blocker_text": "Must demonstrate good character, adequate financial resources, and valid medical/health insurance, supported by a police certificate, character references, medical certificate, and financial evidence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "appleby_bermuda_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Police certificate", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Financial evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: $275 (1 year) or $1,215 (5 years)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable, or up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_all_fees",
+      "tier": 1,
+      "url": "https://www.gov.bm/all-immigration-fees",
+      "title": "Government of Bermuda -- All Immigration Fees: 'Annual Residence Permission' fee of $275 (up to 1 year) or $1,215 (up to 5 years)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "appleby_bermuda_residence",
+      "tier": 3,
+      "url": "https://www.applebyglobal.com/publications/the-end-of-the-digital-nomad-visa-how-else-can-individuals-reside-in-bermuda/",
+      "title": "Appleby (Bermuda law firm) -- The End of the Digital Nomad Visa: describes 'Permission to Reside on an Annual Basis' as a successor route, with eligibility, process, and processing time (approx. 12 weeks)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of Bermuda's initial build. The fee schedule for this exact route name ('Annual Residence Permission') is confirmed at tier-1 (gov.bm's own fee page), but attempts to load the Government of Bermuda's own substantive requirements/application pages for this route (gov.bm/services/residence-permit-application) returned only a loading-error shell with no content in this pass -- so the actual eligibility text (financial resources, health insurance, no local employment, processing time) is sourced from Appleby, a reputable Bermuda law firm, rather than government text directly. IMPORTANT CONTEXT: this route is reported to be the direct replacement for Bermuda's 'Work From Bermuda Certificate' digital nomad visa, which the government discontinued effective 28 February 2025 to preserve housing for locals -- that older, now-defunct visa is NOT modelled as a route in this dataset, consistent with the same treatment given to Cayman's lapsed 'Global Citizen Concierge Program' in this session. This route was NOT independently found named or described as a 'digital nomad visa' by the government itself -- it appears to be a pre-existing general non-working-residence category that has become the practical fallback, not a purpose-built remote-work product; category is modelled as work_independent on that basis, flagged as a judgment call."
+}

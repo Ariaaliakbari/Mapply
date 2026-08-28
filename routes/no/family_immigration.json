@@ -1,0 +1,88 @@
+{
+  "id": "no_family_immigration",
+  "country": "NO",
+  "name": "Family Immigration with a Norwegian or Nordic Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For the spouse or registered partner of a Norwegian or Nordic citizen (or a person with permanent residence/qualifying status in Norway), where the marriage/partnership is valid, genuine, and not a forced or circumvention marriage.",
+    "evidence_hint": "Marriage/partnership certificate recognized in Norway; sponsor's income documentation; identity documents; plans to live together in Norway."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nofi_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Both the applicant and the sponsor must be at least 24 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_family_immigration"
+        },
+        {
+          "id": "nofi_income",
+          "attribute": "sponsor_annual_income_nok",
+          "operator": ">=",
+          "value": 436957,
+          "hard": true,
+          "blocker_text": "The sponsor must have had at least NOK 436,957 in annual pre-tax income the year before, and must maintain it through the year the family member receives a permit and during processing.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_family_immigration"
+        },
+        {
+          "id": "nofi_genuine",
+          "attribute": "is_genuine_marriage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The marriage/partnership must be valid and recognized in Norway, and not a forced or circumvention marriage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_family_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/registered partnership certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's income documentation (NOK 436,957+/year)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Identity documents", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically tied to the sponsor's status; renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_permanent_residence", "no_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "udi_family_immigration",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/family-immigration/family-immigration-with-norwegian-or-nordic-citizen/",
+      "title": "UDI -- Family immigration with a Norwegian or Nordic citizen: NOK 436,957/year sponsor income requirement, 24-year minimum age for both parties, genuine-marriage and no-forced/circumvention-marriage requirements",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). No Norwegian-language or integration-course requirement is imposed at this application stage per the tier-1 source (language only becomes relevant later, at no_naturalisation.json's B1 requirement). pr_after_months (36) reflects the 3-year PR track confirmed for 'family immigration with Nordic/Norwegian citizens' specifically (a faster track than the 5-year track for family members of refugees, which is not this route)."
+}

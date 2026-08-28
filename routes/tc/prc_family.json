@@ -1,0 +1,173 @@
+{
+  "id": "tc_prc_family",
+  "country": "TC",
+  "name": "Permanent Residence Certificate -- Family Grounds",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "former_child_dependent_on_prc",
+      "name": "Former child dependent on a PRC",
+      "requirements": [
+        {
+          "id": "tcprcf_fcdp_age_min",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcf_fcdp_age_max",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Applicant must be no older than 24.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcf_fcdp_endorsement",
+          "attribute": "months_endorsed_as_child_on_prc",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must have been endorsed as a child dependent on a parent's PRC for at least 5 years, and provide a letter demonstrating intent to reside.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "former_child_dependent_on_work_permit",
+      "name": "Former child dependent on a work permit",
+      "requirements": [
+        {
+          "id": "tcprcf_fcdw_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcf_fcdw_endorsement",
+          "attribute": "months_endorsed_as_child_on_work_permit",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Must have been endorsed as a child dependent on a parent's work permit for at least 10 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "widow_widower_of_islander",
+      "name": "Widow/widower of an Islander",
+      "requirements": [
+        {
+          "id": "tcprcf_widow_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "widowed_spouse_of_tci_islander_5yr_marriage",
+          "hard": true,
+          "blocker_text": "Requires having been married to a TCI Islander (now deceased) for at least 5 years, plus good character, good health, English proficiency, and knowledge of the Islands.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "parent_of_islander_with_investment",
+      "name": "Parent of an Islander, with investment",
+      "requirements": [
+        {
+          "id": "tcprcf_parent_child_status",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_of_tci_islander",
+          "hard": true,
+          "blocker_text": "Requires a child who holds TCI Islander status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcf_parent_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "Requires 15 years of continuous residence.",
+          "fix_path": "Accumulate 15 years of continuous residence.",
+          "fix_time_months": 180,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcf_parent_investment",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "Requires a minimum investment of $250,000.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified passport photos, birth certificate, government ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of family tie (marriage certificate, child's TCI status documentation, endorsement history)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references and police certificate (within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of investment (parent-of-Islander route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Submission fee: $150 (non-refundable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Route fee: $5,000 per route ($4,000 refundable if denied)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_prc",
+      "tier": 1,
+      "url": "https://gov.tc/bordercontrol/services/prc",
+      "title": "Government of the Turks and Caicos Islands -- Permanent Residence Certificate: four family-based grounds (former child dependent on PRC, former child dependent on work permit, widow/widower of Islander, parent of Islander with investment), fee schedule",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. Four family-based OR-groups from the same PRC page as tc_prc_residence.json, tc_prc_ancestry.json, and tc_prc_investment.json, split into this file per this dataset's category convention. The 'parent of an Islander, with investment' ground is a notable outlier -- it combines a family tie (parent of a TCI Islander) with both a long residence requirement (15 years) AND a $250,000 investment, unlike any other single-category PRC ground on this page; kept here under 'family' since the qualifying tie (parenthood of an Islander) is the operative condition, with residence and investment as additional hard requirements layered on top. Endorsed family members (including those who obtain PRC via these routes) must obtain their own PRC before they can separately naturalise as BOTC -- citizenship_after_months (12) reflects the same 12-months-after-PRC rule stated on the source page as tc_prc_residence.json."
+}

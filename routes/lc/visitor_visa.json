@@ -1,0 +1,77 @@
+{
+  "id": "lc_visitor_visa",
+  "country": "LC",
+  "name": "Non-Immigrant Visitor Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lcv_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "A valid passport with at least 6 months' validity is required.",
+          "fix_path": "Renew passport to have at least 6 months' validity remaining.",
+          "fix_time_months": 1,
+          "source_id": "gov_lc_non_immigrant_visa"
+        },
+        {
+          "id": "lcv_return_ticket",
+          "attribute": "has_return_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A return ticket to the port of origin is required.",
+          "fix_path": "Obtain a return ticket.",
+          "fix_time_months": null,
+          "source_id": "gov_lc_non_immigrant_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "2 certified passport photographs", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid passport (6 months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return ticket and travel itinerary", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of hotel/private accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Letter of invitation (if applicable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Visa fee: EC$125 single entry (3mo) or EC$190 multiple entry (1yr)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "single entry valid 3 months, or multiple entry valid 1 year",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_lc_non_immigrant_visa",
+      "tier": 1,
+      "url": "https://www.govt.lc/services/apply-for-saint-lucia-non-immigrant-visa",
+      "title": "Government of Saint Lucia -- Apply for Saint Lucia Non-Immigrant Visa: 2 photos, 6-month passport validity, return ticket, itinerary, accommodation proof, EC$125 (single entry/3mo) or EC$190 (multiple entry/1yr), 5 working days processing via the Royal Saint Lucia Police Force Visa Office",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. Visa administration sits with the Royal Saint Lucia Police Force (Visa Office) rather than a separate immigration department -- reflected in the source citation. This route applies to visa-required nationalities; many Commonwealth, EU, and other nationalities are visa-exempt for shorter stays per Saint Lucia's visa policy, not separately fetched for this build."
+}

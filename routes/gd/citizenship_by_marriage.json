@@ -1,0 +1,78 @@
+{
+  "id": "gd_citizenship_by_marriage",
+  "country": "GD",
+  "name": "Citizenship by Registration -- Marriage to a Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person married to a Grenadian citizen may apply to the Minister for registration as a citizen, regardless of the applicant's own age or legal capacity.",
+    "evidence_hint": "Marriage certificate; spouse's proof of Grenadian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gdm_spouse_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_gd_citizen",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Grenadian citizen. No residence-duration requirement is specified in the Act; applies equally regardless of the sex of the applicant or the citizen spouse.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s5_3"
+        },
+        {
+          "id": "gdm_oath",
+          "attribute": "takes_oath_of_allegiance_if_alien_or_bpp",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "If the applicant is a British protected person or an alien, they must take the oath of allegiance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s5_3"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Grenadian citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Second Schedule application form (marriage details, spouse's citizenship, marital status history)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of allegiance (if alien or British protected person)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gd_citizenship_act_s5_3",
+      "tier": 1,
+      "url": "https://grenada-highcommission.co.uk/wp-content/uploads/2024/02/Application-form-Married-to-a-Grenadian.pdf",
+      "title": "Grenada Citizenship Act, 1976, Section 5(3) (primary legislation, official application form Schedule 2/Regulation 4): registration for persons married to a Grenadian citizen, no stated residence duration, oath of allegiance required only for aliens/British protected persons, gender-neutral as to applicant or citizen spouse",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. Like Saint Lucia (and unlike the Bahamas), this route is NOT restricted by the applicant's sex -- Section 5(3) applies 'whether or not that person is of full age and capacity' and makes no distinction based on which spouse holds citizenship. No residence-duration or minimum marriage-length requirement is stated in the Act itself -- this is a faster, more direct route than the family-based Permanent Residence marriage track sourced separately in gd_permanent_residence_family.json (which cites a 3-year marriage duration from a tier-3 source, likely describing a different, slower residence-first pathway rather than this direct citizenship-registration route)."
+}

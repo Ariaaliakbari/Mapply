@@ -1,0 +1,73 @@
+{
+  "id": "do_citizenship_by_marriage",
+  "country": "DO",
+  "name": "Naturalization by Marriage",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national married to a Dominican citizen may naturalize as the spouse's nationality ('optar por la nacionalidad de su cónyuge') under statutory conditions.",
+    "evidence_hint": "Marriage certificate; spouse's Dominican ID; DGM certification application."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (current DGM practice)",
+      "requirements": [
+        {
+          "id": "domar_marriage_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_do_citizen",
+          "hard": true,
+          "blocker_text": "Available to a foreign national married to a Dominican citizen; current DGM process documentation does not state a required marriage or residence duration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_matrimonio"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's Dominican ID (cédula)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed DGM certification form (in person, with fingerprints)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migracion_matrimonio",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/naturalizacion-por-matrimonio/",
+      "title": "Dirección General de Migración -- Naturalización por Matrimonio: certification process for nationality by marriage to a Dominican, RD$2,000 fee, 48 hours-15 business days; page does not specify a marriage/residence duration",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "ley_1683",
+      "tier": 1,
+      "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Otras%20Leyes%20de%20Inter%C3%A9s/1683.pdf",
+      "title": "Ley No. 1683 sobre Naturalización (1948), hosted by DGII -- Article 3: foreign women marrying Dominican men may naturalize 'without any residency requirement' if requested jointly with the husband; foreign men marrying Dominican women require 6 months of uninterrupted residence while married",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic) -- IMPORTANT UNRESOLVED CONFLICT, flagged deliberately rather than resolved by guessing. The only substantive duration requirement found anywhere is in the 1948 Naturalization Law (Ley 1683, Article 3), and it is starkly gender-asymmetric: a foreign WOMAN marrying a Dominican man can naturalize with NO residency requirement at all if the application is made jointly with her husband, while a foreign MAN marrying a Dominican woman needs 6 months of uninterrupted residence while married. This is comparable in severity to the gender asymmetries flagged elsewhere in this dataset (Bahamas' Form I, UAE's Article 3). However, DGM's own CURRENT (2026) process page describes the route in fully gender-neutral terms ('persons... through marriage') and states no duration requirement at all -- which could mean either (a) the requirement was quietly dropped or reformed since 1948 and DGM's silence reflects current law, or (b) DGM's public-facing page simply omits detail that the 1948 statute still governs in practice. No source was found either confirming a repeal of Article 3's asymmetry or confirming it is still applied. Given this genuine ambiguity, the requirement_groups above model ONLY the current, gender-neutral DGM description as the operative hard requirement (with no duration attached, since none is stated) rather than encoding the 1948 statute's gendered duration as fact -- the 1948 provision is preserved here in notes and sources for transparency, not enforced as a modeled requirement. Treat this file's duration-related fields as the weakest-confirmed claim in this country's build."
+}

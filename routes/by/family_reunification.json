@@ -1,0 +1,62 @@
+{
+  "id": "by_family_reunification",
+  "country": "BY",
+  "name": "Temporary Residence Permit -- Family/Spousal Reunion",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "byfam_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_close_relative_of_resident_or_citizen",
+          "hard": true,
+          "blocker_text": "A temporary residence permit is issued to a foreigner staying more than 90 days/year in Belarus for the purpose of spousal or family reunion (Law on Legal Status of Foreign Citizens, Article 46).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legislationline_foreigners_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of family relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's residence status or citizenship documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "generally 1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 84,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["by_permanent_residence", "by_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "legislationline_foreigners_law",
+      "tier": 1,
+      "url": "https://legislationline.org/taxonomy/term/13835",
+      "title": "LegislationLine (OSCE-affiliated legal database, hosting the official English translation) -- Law on Legal Status of Foreign Citizens and Persons without Citizenship in the Republic of Belarus (1993, as amended 2005), Article 46: temporary residence for spousal/family reunion grounds; Article 50: permanent residence for spouses/relatives of Belarusian citizens after marriage or family ties",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). Treated LegislationLine's hosted translation as tier-1 per this dataset's convention for verbatim-legislation mirrors on established legal-database domains -- consistent with how GLOBALCIT-hosted texts have been treated for other countries in this dataset. This is a distinctly GENEROUS route by this dataset's standards: Article 50 (see by_permanent_residence.json) allows spouses/relatives of Belarusian citizens to reach PERMANENT residence directly, without first needing the standard 7-year track -- though the exact reduced timeframe for this specific spousal permanent-residence path was not stated as a precise figure in the source excerpt fetched, only that the category qualifies. work_rights modeled 'restricted' as a conservative default; the source did not explicitly detail work-rights scope for this specific permit category."
+}

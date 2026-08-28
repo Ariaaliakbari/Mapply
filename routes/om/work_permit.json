@@ -1,0 +1,85 @@
+{
+  "id": "om_work_permit",
+  "country": "OM",
+  "name": "Employment Visa (Labour Clearance + Residence Card)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "omwp_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Foreign workers must generally be between 21 and 60 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "expatfocus_work"
+        },
+        {
+          "id": "omwp_labour_clearance",
+          "attribute": "employer_obtained_labour_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must obtain Labour Clearance (a work permit) from the Ministry of Labour, which includes an Omanisation test -- demonstrating no suitably qualified Omani candidate is available, particularly for administrative and sales roles; certain professions are reserved exclusively for Omani nationals.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "expatfocus_work"
+        },
+        {
+          "id": "omwp_employer_registered",
+          "attribute": "employer_is_registered",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The sponsoring employer must be a registered entity in Oman; the employee cannot self-sponsor.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "expatfocus_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's Labour Clearance approval", "difficulty": "hard", "typical_time_days": 28 },
+    { "document": "Employment visa (Royal Oman Police)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical examination on arrival (certain nationalities)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years standard, renewable; temporary project-based visas 4-9 months",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 240,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["om_family_reunification", "om_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "expatfocus_work",
+      "tier": 3,
+      "url": "https://www.expatfocus.com/oman/guide/oman-work-permits-and-working-legally",
+      "title": "Expat Focus -- Oman work permit process: Ministry of Labour Labour Clearance, Royal Oman Police employment visa, employer-only sponsorship, Omanisation quota/reserved-profession requirements, 2-year standard visa duration, 21-60 age range",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- no tier-1 Ministry of Labour or ROP page with equivalent process detail was independently fetched in this pass despite searching; sourced to a specialist expat-guide site. work_rights modeled 'restricted' since the permit is tied to the sponsoring employer -- changing employer generally requires a new Labour Clearance and visa. citizenship_after_months (240) reuses om_naturalisation.json's 20-year non-Arab-national naturalisation figure since no work-specific fast-track to citizenship was found; Oman has no distinct permanent-residence status (see om_naturalisation.json's notes), so employment residence must be continuously renewed indefinitely rather than converting to an indefinite status short of citizenship."
+}

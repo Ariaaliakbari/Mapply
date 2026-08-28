@@ -1,0 +1,74 @@
+{
+  "id": "id_work_kitas",
+  "country": "ID",
+  "name": "Work KITAS (E23, Employer-Sponsored)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "idwk_rptka",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "job_offer_with_rptka_approved_indonesian_employer",
+          "hard": true,
+          "blocker_text": "Requires a job offer from a registered Indonesian entity (PT, PT PMA, representative office, or approved body) that has filed and received an approved RPTKA (Foreign Worker Utilization Plan) with the Ministry of Manpower for the specific role, which must be one foreigners are legally permitted to hold (some roles, e.g. HR positions, are restricted to Indonesian nationals).",
+          "fix_path": "Secure a job offer from an employer with an approved RPTKA for the role.",
+          "fix_time_months": null,
+          "source_id": "emerhub_id_work_kitas"
+        },
+        {
+          "id": "idwk_experience",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "5_years_relevant_experience_or_matching_certification",
+          "hard": true,
+          "blocker_text": "Requires qualifications/experience matching the approved role -- typically at least 5 years in the field, or education/certification matching the RPTKA-approved job title.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "emerhub_id_work_kitas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Approved RPTKA from the employer", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of qualifications/experience matching the approved role", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial means (~USD 2,000)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months or 1-2 years (temporary or long-term RPTKA), up to 5 years for Special Economic Zone roles; all renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["id_permanent_stay_kitap", "id_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "emerhub_id_work_kitas",
+      "tier": 3,
+      "url": "https://emerhub.com/indonesia/visas/work-kitas/",
+      "title": "Emerhub -- Work KITAS (E23): RPTKA employer process, ~5yr experience requirement, monthly foreign-worker levy (~USD 100/employee), duration tiers, path to KITAP",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: imigrasi.go.id's own work-permit pages were not successfully fetched (403s throughout this pass), so this is tier-3 sourced only. work_rights set to 'restricted' rather than 'full': the permit ties the holder to the specific RPTKA-approved role and employer, not open employment generally. No minimum salary figure was found in the source reviewed -- not stated here as a requirement rather than invented. Employers also pay a foreign-worker levy of roughly USD 100/month per worker to a national training-fund program, and must commit to training Indonesian counterpart staff -- both reproduced here as they materially affect employer willingness to sponsor. pr_after_months (60) reflects the general 5-year KITAS-to-KITAP conversion rule (see id_permanent_stay_kitap), not a work-KITAS-specific shortcut."
+}

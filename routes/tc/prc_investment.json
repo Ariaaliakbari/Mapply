@@ -1,0 +1,117 @@
+{
+  "id": "tc_prc_investment",
+  "country": "TC",
+  "name": "Permanent Residence Certificate -- Investment Routes",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "home_investment",
+      "name": "Home investment",
+      "requirements": [
+        {
+          "id": "tcprci_home_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 300000,
+          "hard": true,
+          "blocker_text": "Requires a home investment of $300,000 to $1,000,000 depending on location, plus a Governor's undertaking. No work permission is granted with this route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "business_investment",
+      "name": "Business investment",
+      "requirements": [
+        {
+          "id": "tcprci_biz_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 750000,
+          "hard": true,
+          "blocker_text": "Requires a business investment of $750,000 to $1,500,000, with at least 60% of employees being non-work-permit (i.e. Islander/PRC) holders. Work permission is limited to the applicant's own business.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "public_sector_project",
+      "name": "Public sector project contribution",
+      "requirements": [
+        {
+          "id": "tcprci_public_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "Requires a minimum $1,000,000 contribution to an approved public sector project.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "investment_without_undertaking",
+      "name": "Investment without undertaking",
+      "requirements": [
+        {
+          "id": "tcprci_no_undertaking_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "Requires a minimum $1,000,000 invested in a home or business, without requiring a Governor's undertaking.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified passport photos, birth certificate, government ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of investment (property deed, business registration, or project contribution records)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Character references and police certificate (within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Submission fee: $150 (non-refundable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Route fee: $25,000 plus a $1,500 undertaking fee (home investment, business investment, public sector project); $25,000 with no undertaking fee (investment without undertaking)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_prc",
+      "tier": 1,
+      "url": "https://gov.tc/bordercontrol/services/prc",
+      "title": "Government of the Turks and Caicos Islands -- Permanent Residence Certificate: four investment-based routes (home, business, public sector project, investment without undertaking), fee schedule",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. Four investment OR-groups from the same PRC page as the other three tc_prc_*.json files. work_rights is 'restricted' since the home-investment ground grants NO work permission at all, and the business-investment ground grants work permission only in the applicant's own business -- not a general right to work for any employer, distinguishing this PRC route materially from the residence/family/ancestry PRC grounds (all full work rights). This is the most expensive tier of PRC on the fee schedule ($25,000 plus, in three of four sub-grounds, a further $1,500 Governor's-undertaking fee) -- notably higher than the $10,000 work-permit-residence route or the $5,000 family/ancestry routes."
+}

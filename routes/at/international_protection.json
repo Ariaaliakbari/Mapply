@@ -1,0 +1,90 @@
+{
+  "id": "at_international_protection",
+  "country": "AT",
+  "name": "Asylum (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Applications for international protection must be made in person within Austria, to police, border guards, or (from 12 June 2026) the Federal Office for Immigration and Asylum (BFA), which decides on refugee status and, in sequence, subsidiary protection. Applicants must formally 'submit' their claim within 21 days of registration or it is deemed withdrawn. First-instance decisions: ordinary procedure within 6 months, accelerated procedure (e.g. safe country of origin) within 3 months, border procedure at Schwechat Airport within 12 weeks.",
+    "evidence_hint": "In-person application; registration and screening; formal submission within 21 days; interview; identity/persecution evidence where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "atip_refugee",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution based on race, religion, nationality, social group, or political opinion, and inability to access home-country protection.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_asylum"
+        }
+      ]
+    },
+    {
+      "id": "subsidiary_protection",
+      "name": "Subsidiary protection",
+      "requirements": [
+        {
+          "id": "atip_subsidiary",
+          "attribute": "meets_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Real risk to life or physical integrity if returned, from a deliberate actor (not natural disaster), for applicants who do not meet the refugee definition.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "In-person application within Austria", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Formal claim submission within 21 days of registration", "difficulty": "routine", "typical_time_days": 21 },
+    { "document": "Supporting persecution/risk evidence where available", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: 3 years initially, renewable in further 3-year then 5-year periods. Subsidiary protection: 1 year initially, then 3 years, then 5-year periods.",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_permanent_residence", "at_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oesterreich_gv_asylum",
+      "tier": 1,
+      "url": "https://www.oesterreich.gv.at/en/themen/menschen_aus_anderen_staaten/asyl-in-oesterreich/Seite.3210001",
+      "title": "oesterreich.gv.at -- General information on asylum: refugee/subsidiary protection definitions, permit durations (refugee 3yr then 3yr/5yr; subsidiary protection 1yr then 3yr/5yr), full immediate labour-market access for both statuses, Convention passport/foreigner's ID card",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "asylumineurope_procedure",
+      "tier": 3,
+      "url": "https://asylumineurope.org/reports/country/austria/asylum-procedure/general/short-overview-asylum-procedure/",
+      "title": "Asylum Information Database (ECRE) -- Austria asylum procedure: BFA as first-instance authority (from 12 June 2026), 21-day submission deadline, 6-month ordinary/3-month accelerated/12-week border-procedure decision timeframes, appeal windows",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). citizenship_after_months modeled at the standard 10-year (120-month) naturalisation track per asylumineurope.org's report that recognized refugees naturalise on the same clock as ordinary applicants in Austria (not a reduced track, unlike Belarus's refugee sub-case or several other countries in this dataset); subsidiary-protection beneficiaries face a longer 15-year clock per the same source, not separately modeled here since this file uses one shared outcome block for both sub-statuses. pr_after_months (60) assumes eligibility for at_permanent_residence.json's standard 5-year Long-Term Resident EU track once the protection-based residence permit is held continuously -- not independently confirmed for asylum-specific fast-tracking in this pass."
+}

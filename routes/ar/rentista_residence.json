@@ -1,0 +1,63 @@
+{
+  "id": "ar_rentista_residence",
+  "country": "AR",
+  "name": "Temporary Residence as Rentista",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "arrent_income",
+          "attribute": "monthly_asset_income_multiple_of_smvm",
+          "operator": ">=",
+          "value": 5,
+          "hard": true,
+          "blocker_text": "Requires monthly income of at least 5 times Argentina's Salario Mínimo Vital y Móvil (minimum vital and mobile wage), derived from assets (financial instruments, real estate, or business stakes) -- income from personal labor does not qualify. Funds must enter Argentina through authorized banking institutions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_rentista"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying asset-based income routed through Argentine banks", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of address", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ar_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_rentista",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/servicio/obtener-una-residencia-temporaria-como-rentista",
+      "title": "Dirección Nacional de Migraciones -- Obtener una residencia temporaria como rentista: 5x SMVM minimum from asset-based income, 1-year duration, RaDEX process",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). SMVM (Salario Mínimo Vital y Móvil) is periodically adjusted by the Argentine government, so the effective USD/local-currency income figure changes over time -- modeled as a multiple (5x) rather than a fixed currency amount, consistent with how the source itself states it. citizenship_after_months (24) reflects Ley 346's standalone 2-year continuous-legal-residence bar (see ar_naturalisation.json), separate from the pr_after_months figure which reflects the non-MERCOSUR 3-year permanent-residence threshold -- both clocks can run in parallel on this same temporary status."
+}

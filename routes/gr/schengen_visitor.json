@@ -1,0 +1,73 @@
+{
+  "id": "gr_schengen_visitor",
+  "country": "GR",
+  "name": "Schengen Short-Stay Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "rolling_window",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grsv_nationality",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_exempt_or_schengen_visa_holder",
+          "hard": true,
+          "blocker_text": "Nationals of visa-exempt countries may enter without prior authorisation; others must obtain a uniform Schengen visa in advance from a Greek consulate or the consulate of another Schengen state.",
+          "fix_path": "Apply for a Schengen short-stay visa if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "mfa_gr_schengen_visa"
+        },
+        {
+          "id": "grsv_90_180",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "within_90_of_180_day_limit",
+          "hard": true,
+          "blocker_text": "Stay is capped at 90 days within any rolling 180-day period across the entire Schengen area, not just Greece.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gr_schengen_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient financial resources for the stay (subject to border-check discretion)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days per 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_gr_schengen_visa",
+      "tier": 1,
+      "url": "https://www.mfa.gr/usa/en/services/visas/schengen-visas/what-is-a-schengen-visa/",
+      "title": "Greek Ministry of Foreign Affairs -- What is a Schengen Visa (90/180 rule, visa-exempt vs visa-required nationalities)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. Standard Schengen-area 90/180 short-stay rule, confirmed at tier-1 (mfa.gr). Does not itself lead to any residence status -- purely a visit route. The source does not detail overstay penalties; not modelled here since this route only covers the entry/eligibility side."
+}

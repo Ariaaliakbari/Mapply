@@ -1,0 +1,102 @@
+{
+  "id": "ai_student_permit",
+  "country": "AI",
+  "name": "Student Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aisp_belonger_status",
+          "attribute": "belonger_status",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Non-belongers must obtain a Student Permit to study in Anguilla.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_student_permit_process"
+        },
+        {
+          "id": "aisp_acceptance",
+          "attribute": "enrollment_status",
+          "operator": "exists",
+          "value": "accepted_by_institution",
+          "hard": true,
+          "blocker_text": "Requires a letter of acceptance from the educational institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_student_permit_process"
+        },
+        {
+          "id": "aisp_funds",
+          "attribute": "financial_proof",
+          "operator": "exists",
+          "value": "sufficient_funds",
+          "hard": true,
+          "blocker_text": "Must demonstrate financial ability to support oneself and any dependants.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_student_permit_process"
+        },
+        {
+          "id": "aisp_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a police reference covering the 5 years prior to application, plus two character references from non-family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_student_permit_process"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Two character references (non-family)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical certificate (examination within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance documentation with coverage dates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police reference covering 5 years prior", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Letter of acceptance from educational institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Colour passport photo and passport copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "IRD processing fee receipt: US$100 (EC$268.82)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Permit fee (paid after notification): US$500 (EC$1,344.10)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ai_student_permit_process",
+      "tier": 1,
+      "url": "https://www.gov.ai/forms/immigration/Student%20Permit%20and%20Student%20Work%20Permit%20Process%20updated.pdf",
+      "title": "Government of Anguilla -- Higher Education Licensing Board: Student Permit and Student Work Permit process, eligibility, documents, and fees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. work_rights set to 'restricted': permit holders may do unpaid work related to their studies without further permission, but paid work requires a separate Student Work Permit (via the Higher Education Licensing Board) that is capped at the same expiry date as the underlying Student Permit -- not modelled as its own route since it is entirely derivative of this one. Renewability beyond the stated 3-year maximum is not addressed in the source, so renewable is conservatively false rather than guessed. family_can_join is conservatively false: the source does not address dependants accompanying a student, only that the student must show ability to support 'oneself and dependants' financially, which does not confirm a right for dependants to be included on the permit itself."
+}

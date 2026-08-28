@@ -1,0 +1,112 @@
+{
+  "id": "hr_permanent_stay",
+  "country": "HR",
+  "name": "Permanent Stay (stalni boravak)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "long_term_refugee",
+      "name": "Long-standing refugee",
+      "requirements": [
+        {
+          "id": "hrps_refugee",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires having held refugee status in Croatia for at least 10 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        }
+      ]
+    },
+    {
+      "id": "family_member_of_citizen",
+      "name": "Family member of a Croatian citizen",
+      "requirements": [
+        {
+          "id": "hrps_family_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being a close family member of a Croatian citizen (the source does not state a separate residence-duration test for this category).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        }
+      ]
+    },
+    {
+      "id": "diaspora_returnee",
+      "name": "Member of the Croatian diaspora",
+      "requirements": [
+        {
+          "id": "hrps_diaspora",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "recognised_croatian_diaspora_status",
+          "hard": true,
+          "blocker_text": "Requires recognised membership of the Croatian diaspora (the source does not state a separate residence-duration test for this category).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        }
+      ]
+    },
+    {
+      "id": "born_in_croatia",
+      "name": "Child born in Croatia",
+      "requirements": [
+        {
+          "id": "hrps_born",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "born_in_croatia",
+          "hard": true,
+          "blocker_text": "Requires having been born in Croatia (to parents lawfully resident there).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying category (refugee record, family tie, diaspora recognition, or birth record)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mup_hr_ltr_permanent_stay",
+      "tier": 1,
+      "url": "https://mup.gov.hr/aliens-281621/stay-and-work/long-term-residence-and-permanent-stay/281682",
+      "title": "Ministarstvo unutarnjih poslova Republike Hrvatske (mup.gov.hr) -- Long-Term Residence and Permanent stay",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. This is Croatia's own domestic 'permanent stay' (stalni boravak) status, distinct from the EU-directive 'long-term residence' status (see hr_long_term_residence) which most foreign residents use instead -- the source page describes permanent stay as available for a narrower set of categories: ordinary long-standing temporary stay, family members of Croatian citizens, Croatian diaspora, refugees, and children born in Croatia. HONEST GAP, DELIBERATE MODELLING CHOICE: the source states permanent stay for general (non-refugee) categories takes 'typically three to four years of uninterrupted temporary stay depending on circumstances' but does NOT break out which exact figure applies to which category -- rather than invent a number for the family/diaspora/born-in-Croatia groups, those three groups are modelled WITHOUT a months_in_country test, using only the qualifying-relationship/status fact itself as the hard requirement (which the source does support without a stated duration for these specific categories). Only the refugee group has a duration figure, because the source states it explicitly (10 years). This likely understates real difficulty for the family/diaspora/born groups if an unstated duration test does in fact apply -- flagged, not silently resolved. No Croatian-language requirement applies to this status, unlike hr_long_term_residence, per the same source page."
+}

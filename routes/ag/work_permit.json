@@ -1,0 +1,102 @@
+{
+  "id": "ag_work_permit",
+  "country": "AG",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "agw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a valid job offer from a local employer, who must certify the position through the Labour Department before Immigration will endorse the passport.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_extensions_faq"
+        },
+        {
+          "id": "agw_labour_market_test",
+          "attribute": "employer_advertised_role_locally",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must show it was unable to find a suitably qualified local candidate, typically by advertising the role locally first.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "third_party_rivermate_work_permits"
+        },
+        {
+          "id": "agw_police_clearance",
+          "attribute": "has_police_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a police clearance certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "third_party_rivermate_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer / employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of local recruitment effort by employer", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical examination results", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Educational/professional credentials", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fee (approx. XCD 300 initial, XCD 200 renewal)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ag_resident_permit_general"]
+  },
+  "sources": [
+    {
+      "id": "gov_ag_extensions_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/extentions-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Extensions FAQs: work permit holders remain 'bona fide visitors' with conditional permission to work only, requiring Labour Department certification then Immigration Department endorsement; dependants ordinarily cannot join without special approval",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_ag_residency_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/residency-permit-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Residency Permit FAQs: entrepreneurs/investors ground requires 2 years of work permits before a Resident Permit application",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "third_party_rivermate_work_permits",
+      "tier": 3,
+      "url": "https://rivermate.com/guides/antigua-and-barbuda/work-permits-and-visas",
+      "title": "Rivermate -- Antigua and Barbuda work permit guide: local-recruitment-first employer obligation, permit duration, fees, processing times (used because the Immigration Department's own visa-services subpages could not be retrieved directly in this pass -- see notes)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Antigua and Barbuda's initial build. STATUS: DRAFT. Work rights are marked 'restricted' (tied to the specific certified employer/position, not portable) and family_can_join is false by default per the tier-1 Extensions FAQ's statement that dependants of work permit holders ordinarily cannot live with them absent special Chief Immigration Officer approval -- a stricter default than most work-permit routes in this dataset. The tier-1 sources confirm the Labour-Department-then-Immigration-Department two-step process and the visitor/resident/citizen status framework under the Immigration and Passport Act 2014, but the Immigration Department's own visa-services and general-services subpages (which likely carry the authoritative fee schedule and permit-duration figures) returned a robots.txt fetch error in this pass -- duration (up to 2 years), fees, the local-recruitment-first requirement, and the police-clearance requirement are therefore sourced to a tier-3 relocation/EOR guide rather than gov.ag directly, which is why this route is held at draft status despite the process framework itself being tier-1 confirmed. Re-verify against the Labour Code or immigration.gov.ag's visa-services pages directly when accessible, then promote to published. leads_to_pr at 24 months reflects the Residency Permit FAQ's 'entrepreneurs/investors: 2 years of work permits' ground -- see ag_resident_permit_general.json."
+}

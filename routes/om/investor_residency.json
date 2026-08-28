@@ -1,0 +1,109 @@
+{
+  "id": "om_investor_residency",
+  "country": "OM",
+  "name": "Investor Residency (Golden / Silver Visa)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "golden",
+      "name": "Golden Visa (10 years)",
+      "requirements": [
+        {
+          "id": "ominv_golden_amount",
+          "attribute": "investment_amount_omr",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "At least OMR 500,000 invested in an Omani limited liability company, public joint stock company, or government bonds; or real estate worth at least OMR 500,000; or a company employing at least 50 Omani nationals (no minimum investment for this option).",
+          "fix_path": "Make a qualifying investment of at least OMR 500,000, or establish a company employing 50+ Omani nationals.",
+          "fix_time_months": null,
+          "source_id": "trowers_golden_visa"
+        },
+        {
+          "id": "ominv_age_conduct",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Applicant must be over 21 with no criminal record and sufficient funds for self and dependents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "trowers_golden_visa"
+        }
+      ]
+    },
+    {
+      "id": "silver",
+      "name": "Silver Visa (5 years)",
+      "requirements": [
+        {
+          "id": "ominv_silver_amount",
+          "attribute": "investment_amount_omr",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "At least OMR 250,000 invested in an Omani limited liability company or public joint stock company, or real estate worth at least OMR 250,000.",
+          "fix_path": "Make a qualifying investment of at least OMR 250,000.",
+          "fix_time_months": null,
+          "source_id": "trowers_golden_visa"
+        },
+        {
+          "id": "ominv_silver_age_conduct",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Applicant must be over 21 with no criminal record and sufficient funds for self and dependents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "trowers_golden_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment (bank/company/real estate records)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds for self and dependents", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "10 years (Golden) or 5 years (Silver), renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 240,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["om_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "trowers_golden_visa",
+      "tier": 3,
+      "url": "https://www.trowers.com/insights/2025/september/omans-golden-and-silver-visa-programmes-what-you-need-to-know",
+      "title": "Trowers & Hamlins (law firm) -- Oman's relaunched Golden Visa (OMR 500,000, 10 years) and Silver Visa (OMR 250,000, 5 years) programmes, effective from the 31 August 2025 relaunch, application fees OMR 551/OMR 326",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "omanresidence_portal",
+      "tier": 1,
+      "url": "https://omanresidence.gov.om/en-us/",
+      "title": "Sultanate of Oman -- official Golden Residency Program portal, confirms a 10-year residency track and lists qualifying pathways (business investment, tourism-zone property, bonds/listed shares, fixed-term deposit, employing 50+ Omanis, nomination by an invested company) but did not surface the specific OMR figures or a Silver-tier breakdown in this pass",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- an official Omani government portal (omanresidence.gov.om) for this exact program exists and is cited, but its fetched content did not reproduce the OMR 500,000/250,000 figures or confirm a distinct 'Silver' tier by name; those specific numbers are corroborated only by a law firm's summary (tier-3) of the program's August 2025 relaunch, not independently verified against a tier-1 page in this pass. This is Oman's closest equivalent to a long-term/indefinite residency status, since the country has no separate 'permanent residence' category (see om_naturalisation.json's notes) -- Golden/Silver Visa holders instead renew indefinitely by maintaining the qualifying investment."
+}

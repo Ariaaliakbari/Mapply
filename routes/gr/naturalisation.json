@@ -1,0 +1,127 @@
+{
+  "id": "gr_naturalisation",
+  "country": "GR",
+  "name": "Naturalisation (Citizenship by Naturalisation)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_7yr",
+      "name": "Ordinary track",
+      "requirements": [
+        {
+          "id": "grnat_residence_std",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Requires 7 continuous years of lawful residence in Greece (Article 5.1.d).",
+          "fix_path": "Accrue 7 continuous years of lawful residence.",
+          "fix_time_months": 84,
+          "source_id": "globalcit_gr_citizenship_code"
+        },
+        {
+          "id": "grnat_language",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "adequate_greek_language_knowledge",
+          "hard": true,
+          "blocker_text": "Requires adequate knowledge of the Greek language and evidence of integration into Greek economic/social life (professional activity, tax compliance, property, familiarity with Greek history and culture), per Article 5A.",
+          "fix_path": "Demonstrate Greek language proficiency and integration.",
+          "fix_time_months": null,
+          "source_id": "globalcit_gr_citizenship_code"
+        },
+        {
+          "id": "grnat_criminal",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Serious criminal convictions or public-security concerns bar naturalisation (Articles 5.1.b, 5B).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_gr_citizenship_code"
+        }
+      ]
+    },
+    {
+      "id": "reduced_3yr",
+      "name": "Reduced-period track (EU nationals; spouse of a Greek citizen with a shared child; person with parental responsibility for a Greek minor; recognized political refugees; stateless persons)",
+      "prerequisites_override": null,
+      "outcome_override": null,
+      "requirements": [
+        {
+          "id": "grnat_residence_reduced",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires only 3 continuous years of lawful residence for: EU/EEA nationals; a spouse of a Greek citizen who also shares a child with them; a person exercising parental responsibility for a minor Greek citizen; recognized political refugees; and stateless persons (Article 5.1.d).",
+          "fix_path": "Accrue 3 continuous years of lawful residence while in one of the qualifying categories.",
+          "fix_time_months": 36,
+          "source_id": "globalcit_gr_citizenship_code"
+        },
+        {
+          "id": "grnat_language_reduced",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "adequate_greek_language_knowledge",
+          "hard": true,
+          "blocker_text": "Same language/integration standard as the ordinary track applies (Article 5A).",
+          "fix_path": "Demonstrate Greek language proficiency and integration.",
+          "fix_time_months": null,
+          "source_id": "globalcit_gr_citizenship_code"
+        },
+        {
+          "id": "grnat_criminal_reduced",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Serious criminal convictions or public-security concerns bar naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_gr_citizenship_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous lawful residence (7 or 3 years depending on group)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Greek language/history/civilisation knowledge assessment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Police/criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of economic/social integration (tax records, property, employment)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_gr_citizenship_code",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/GRE%20Citizenship%20Code%20(as%20of%202010,%20English)_1.pdf",
+      "title": "GLOBALCIT (EU-funded comparative citizenship law database, EUI) -- Greek Citizenship Code, English translation as of 2010",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. STATUS SET TO DRAFT: the only full-text source found and fetched is the GLOBALCIT database's English translation of the Citizenship Code 'as of 2010' -- a genuine academic/EU-funded comparative-law database (tier 2), but dated, and Greece amended its nationality law materially since then (notably Law 4735/2020, which this pass did not independently fetch in full text). The core structure (7-year ordinary residence, reduced 3-year track for specific categories, language/integration test under Article 5A) is corroborated by multiple tier-3 legal-guide summaries referencing current law, so it is very unlikely to have been entirely superseded, but the exact current wording was not re-confirmed against the 2020 amendment text -- flagged rather than silently assumed unchanged. TWO GENUINELY DIFFERENT RESIDENCE-LENGTH TRACKS modelled as OR-logic groups for the SAME naturalisation process (not split into separate route files) since both lead to the same legal outcome (Greek citizenship) via the same application mechanism, differing only in the required years of residence and the qualifying category. IMPORTANT: marriage to a Greek citizen ALONE does not reduce the residence requirement -- Article 30 states marriage does not entail acquisition of citizenship, and the reduced 3-year track only applies to a spouse who ALSO shares a child with the Greek citizen. A plain spouse with no child remains on the 7-year ordinary track. A separate 'citizenship_marriage.json' route file was deliberately NOT created, since marriage is not an independent legal mechanism here -- it is only one qualifying fact within the reduced_3yr group's eligibility criteria, and modelling it as its own file would have implied a marriage-alone shortcut that the source explicitly rules out."
+}

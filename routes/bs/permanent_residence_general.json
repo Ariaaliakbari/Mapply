@@ -1,0 +1,169 @@
+{
+  "id": "bs_permanent_residence_general",
+  "country": "BS",
+  "name": "Permanent Residence -- Long-Term Work/Service Categories",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["bs_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "government_service_professionals",
+      "name": "Government service professionals (10-year minimum)",
+      "requirements": [
+        {
+          "id": "bsprg_govt_role",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["police_officer", "prison_officer", "teacher_government_or_charitable_religious", "nurse_government_or_private_healthcare"],
+          "hard": true,
+          "blocker_text": "Must serve as a Police or Prison Officer, or as a Teacher (government or charitable/religious institution), or as a Nurse (government or private healthcare facility).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_permanent_residence"
+        },
+        {
+          "id": "bsprg_govt_years",
+          "attribute": "months_in_qualifying_occupation",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires a minimum of 10 years' service in the qualifying occupation.",
+          "fix_path": "Accumulate 10 years in the qualifying occupation.",
+          "fix_time_months": 120,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "religious_medical_professionals",
+      "name": "Religious/medical professionals (20-year minimum)",
+      "requirements": [
+        {
+          "id": "bsprg_rel_med_role",
+          "attribute": "occupation",
+          "operator": "in",
+          "value": ["minister_of_religion_or_priest", "doctor_or_medical_professional"],
+          "hard": true,
+          "blocker_text": "Must serve as a Minister of Religion/Priest, or as a Doctor/other medical professional.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_permanent_residence"
+        },
+        {
+          "id": "bsprg_rel_med_years",
+          "attribute": "months_in_qualifying_occupation",
+          "operator": ">=",
+          "value": 240,
+          "hard": true,
+          "blocker_text": "Requires a minimum of 20 years' service in the qualifying occupation.",
+          "fix_path": "Accumulate 20 years in the qualifying occupation.",
+          "fix_time_months": 240,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "work_permit_holders",
+      "name": "Long-term work permit holders (20-year minimum)",
+      "requirements": [
+        {
+          "id": "bsprg_wph_years",
+          "attribute": "months_on_work_permit",
+          "operator": ">=",
+          "value": 240,
+          "hard": true,
+          "blocker_text": "Requires 20 or more consecutive years of legal work permit status.",
+          "fix_path": "Maintain continuous, unbroken work permit status for 20 years.",
+          "fix_time_months": 240,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "long_term_residents",
+      "name": "Long-term residents on lower fee scales (10-20 years)",
+      "requirements": [
+        {
+          "id": "bsprg_ltr_scale",
+          "attribute": "work_permit_fee_scale",
+          "operator": "in",
+          "value": [5, 6, 7, 8],
+          "hard": true,
+          "blocker_text": "Applies to residents holding work permits under Immigration Fee Scales 5 through 8.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_permanent_residence"
+        },
+        {
+          "id": "bsprg_ltr_years",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 to 20 years of residency, with the exact figure depending on Fee Scale.",
+          "fix_path": "Accumulate 10-20 years of residency depending on Fee Scale.",
+          "fix_time_months": 120,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "children_born_abroad",
+      "name": "Children born abroad to a married Bahamian mother",
+      "requirements": [
+        {
+          "id": "bsprg_cba_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_married_bahamian_mother_foreign_father_born_abroad",
+          "hard": true,
+          "blocker_text": "Born legitimately abroad to a married Bahamian citizen mother and a non-citizen father -- this scenario does not qualify for automatic citizenship by descent (only children of UNMARRIED Bahamian mothers do), so PR is the route offered here; a separate citizenship registration route (Form IV, minors only) may also be available -- see bs_citizenship_by_registration_family.json.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying occupation and years of service, or work permit history", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (life, unless revoked)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bs_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_bs_permanent_residence",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/residence/permanent-residence/",
+      "title": "Bahamas Immigration Department -- Permanent Residence: government service professionals (10-year minimum: police/prison officers, teachers, nurses), religious/medical professionals (20-year minimum: ministers/priests, doctors), work permit holders (20+ consecutive years), long-term residents on Fee Scales 5-8 (10-20 years)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. Consolidates four distinct long-tenure eligibility categories from the same official PR page into one route with four OR-groups, since they share the same underlying Certificate of Permanent Residence outcome. The 'long_term_residents' group's exact year figure varies by Fee Scale (10-20 years) but the source does not give a scale-by-scale breakdown -- modelled at the 10-year floor as the earliest possible qualifying point, flagged as approximate. Children born abroad to a married Bahamian citizen mother with a non-citizen father are ALSO listed as a PR eligibility category on this same source, but are modelled separately in bs_citizenship_by_registration_family.json since that scenario more directly concerns a citizenship-adjacent family tie than a work/service tenure category."
+}

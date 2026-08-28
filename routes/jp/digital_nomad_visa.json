@@ -1,0 +1,104 @@
+{
+  "id": "jp_digital_nomad_visa",
+  "country": "JP",
+  "name": "Digital Nomad status of residence (Designated Activities / 特定活動)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Remote worker for a foreign employer or client",
+      "requirements": [
+        {
+          "id": "jpdn_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 10000000, "currency": "JPY", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires the applicant's own annual income to be at least JPY 10,000,000 (roughly USD 67,000) at the time of application.",
+          "fix_path": "Document annual income at or above the JPY 10,000,000 threshold.",
+          "fix_time_months": null,
+          "source_id": "moj_isa_designated_activities"
+        },
+        {
+          "id": "jpdn_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": { "note": "Restricted to nationalities on the Immigration Services Agency's published list of countries that are BOTH visa-exempt for short-term stays in Japan AND have a tax treaty with Japan." },
+          "hard": true,
+          "blocker_text": "Restricted to nationals of countries that are both visa-exempt for short-term stays in Japan and have a tax treaty with Japan, per the Immigration Services Agency's published country list.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_isa_digital_nomad_pdf"
+        },
+        {
+          "id": "jpdn_foreign_work_only",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_employment_foreign_company",
+          "hard": true,
+          "blocker_text": "Requires that all income-generating work be the provision of services or sale of goods to entities based outside Japan via information and communications technology; taking up employment or any secondary job with a Japan-based organisation is prohibited.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_isa_designated_activities"
+        },
+        {
+          "id": "jpdn_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "private_medical_insurance_10m_jpy_coverage",
+          "hard": true,
+          "blocker_text": "Requires private travel/medical insurance covering death, injury and illness, with treatment-cost coverage of at least JPY 10,000,000, valid for the full intended stay.",
+          "fix_path": "Purchase qualifying insurance coverage before applying.",
+          "fix_time_months": null,
+          "source_id": "moj_isa_digital_nomad_pdf"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of foreign employment or client contracts conducted via ICT", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of annual income at or above JPY 10,000,000 (tax returns, employer certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Private medical insurance certificate with JPY 10,000,000 treatment-cost coverage for the full stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of nationality from a qualifying visa-exempt and tax-treaty country", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 6 months per stay, non-renewable; a new application may be filed no sooner than 6 months after the previous departure from Japan",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "No residence card is issued; the holder must depart Japan by the end of the 6-month period and cannot switch to another status of residence from within Japan.",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "moj_isa_designated_activities",
+      "tier": 1,
+      "url": "https://www.moj.go.jp/isa/applications/status/designatedactivities10_00001.html",
+      "title": "Immigration Services Agency of Japan (moj.go.jp/isa) -- Designated Activities: Digital Nomad status and accompanying spouse/child",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "moj_isa_digital_nomad_pdf",
+      "tier": 1,
+      "url": "https://www.moj.go.jp/isa/content/001417262.pdf",
+      "title": "Immigration Services Agency of Japan -- Digital Nomad status requirements document (income, insurance, eligible countries)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, added in this pass: Japan had 14 other routes built (including highly_skilled_professional, business_manager, startup_visa) but no route for its actual Digital Nomad status, despite the status existing since 2024. Both sources are the Immigration Services Agency's own domain (moj.go.jp/isa), directly fetched. JPY 10,000,000/year is a materially higher income bar than every other digital-nomad-type route in this dataset (Spain ~EUR 34,000, Portugal ~EUR 44,000, Brazil USD 1,500/month, Malaysia USD 24,000-60,000, South Africa ZAR 650,796, Thailand THB 500,000 in savings not income) -- Japan's product is positioned as high-income-only by design, not broadly accessible. This is also the shortest and least generous outcome of any work_independent route in the dataset: 6 months, explicitly non-renewable, no residence card, no path to PR or citizenship, and no switchable_to targets -- structurally similar in dead-end shape to Thailand's DTV and South Korea's F-1-D but with a materially shorter duration than either. Dependents (spouse/child) receive a mirrored 6-month Designated Activities status for 'daily activities,' not employment -- family_can_work is correctly false. HONEST SOURCING GAP: tier-3 sources (e.g. english.visajapan.jp) label this status's implementing instruments as 'Notification 53' (primary applicant) and 'Notification 54' (dependents) and give a March 2024 launch date; neither the specific notification numbers nor the exact launch date were independently confirmed against a tier-1 source in this pass, so they are not asserted in this file's structured fields."
+}

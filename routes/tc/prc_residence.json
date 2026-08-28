@@ -1,0 +1,121 @@
+{
+  "id": "tc_prc_residence",
+  "country": "TC",
+  "name": "Permanent Residence Certificate -- Long Residence / School Route",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["tc_work_permit"],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "work_permit_residence",
+      "name": "10-year continuous residence via work permits/government stamps",
+      "requirements": [
+        {
+          "id": "tcprcr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 years of continuous legal residence held via work permits or government stamps.",
+          "fix_path": "Accumulate 10 years of continuous legal residence.",
+          "fix_time_months": 120,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcr_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires good character, good health, English proficiency, and financial capability.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    },
+    {
+      "id": "school_route",
+      "name": "Primary and secondary school route",
+      "requirements": [
+        {
+          "id": "tcprcs_age",
+          "attribute": "age",
+          "operator": "<",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Applicant must be under 21.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcs_entry_age",
+          "attribute": "age_at_entry",
+          "operator": "<",
+          "value": 7,
+          "hard": true,
+          "blocker_text": "Must have entered the Islands before age 7.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprcs_education",
+          "attribute": "completed_primary_and_secondary_education_locally",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have completed primary and secondary education in the Turks and Caicos Islands.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified passport photos, birth certificate, government ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "School enrollment/completion records (school route)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Submission fee: $150 (non-refundable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Route fee: $10,000 for the work-permit-residence route ($9,000 refundable if denied); $5,000 for the school route ($4,000 refundable if denied)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no more than 5 consecutive years abroad, or the PRC may be revoked",
+    "switchable_to": ["tc_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_prc",
+      "tier": 1,
+      "url": "https://gov.tc/bordercontrol/services/prc",
+      "title": "Government of the Turks and Caicos Islands, Ministry of Immigration and Border Services -- Permanent Residence Certificate: work-permit-history route (10yr) and primary/secondary school route, fee schedule, 8-10 week processing, family endorsement rules, revocation grounds, naturalisation eligibility 12 months after grant",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build -- the sixth British Overseas Territory (BOT) this session. The PRC is TCI's PR-equivalent 'settled' status but is explicitly NOT the same as TCI Islander (Belonger) Status -- PRC holders gain indefinite residence and (for these two grounds) work rights, but not voting rights, Crown land eligibility, or scholarship eligibility, which are reserved for full TCI Status (see tc_islander_status_constitutional.json and related files). This is the richest single official source found this session: the gov.tc PRC page lists 11 distinct eligibility routes across residence, family, ancestry, and investment grounds -- split across four files by category per this dataset's convention (this file covers the two 'settled'-category, tenure/integration-based grounds; see tc_prc_family.json, tc_prc_ancestry.json, and tc_prc_investment.json for the rest). Spousal endorsements on a PRC last 11 years (renewable) and child endorsements expire at 19; endorsed family members must obtain their OWN PRC before they can naturalise -- not modelled as a separate route here since it is a contingent detail of this same certificate. citizenship_after_months (12) reflects the source's explicit statement that naturalisation as a BOTC becomes available 12 months after obtaining a PRC (any route), subject to additional criteria -- see tc_naturalisation_botc.json."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "ar_student_permit",
+  "country": "AR",
+  "name": "Temporary Residence as Student",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "arst_enrollment",
+          "attribute": "has_school_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an electronic enrollment certificate; interns and scholarship recipients additionally need an international agreement or acceptance letter.",
+          "fix_path": "Secure enrollment at a recognized Argentine institution.",
+          "fix_time_months": null,
+          "source_id": "migraciones_estudiante"
+        },
+        {
+          "id": "arst_criminal_record",
+          "attribute": "has_criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires an Argentine criminal background certificate and foreign criminal records from any country resided in for 1+ years during the past 3 years (applicants 16+).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_estudiante"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Electronic enrollment certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "For minors: legalized birth certificate and notarized parental authorization", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificates", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ar_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_estudiante",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/servicio/obtener-una-residencia-temporaria-como-estudiante",
+      "title": "Dirección Nacional de Migraciones -- Obtener una residencia temporaria como estudiante: full-time students, interns, and scholarship recipients; 1-year renewable; RaDEX process",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). No work rights are granted on this category per the source; consistent with several other countries in this dataset that bar student-visa work entirely rather than allowing restricted part-time hours."
+}

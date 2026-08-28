@@ -1,0 +1,73 @@
+{
+  "id": "cw_option_long_residence",
+  "country": "CW",
+  "name": "Dutch Nationality Option Procedure (Long-Term Residence)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cwol_long_residence",
+          "attribute": "months_in_country",
+          "operator": "exists",
+          "value": "long_term_kingdom_residence",
+          "hard": true,
+          "blocker_text": "The IND option-procedure page states this ground applies to a person who 'has been living in the Kingdom of the Netherlands for a long time,' without specifying an exact number of years in the content reviewed -- likely a shorter/different threshold than the 5-year naturalisation route, but not confirmed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_option"
+        },
+        {
+          "id": "cwol_public_order",
+          "attribute": "public_order_or_security_risk",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Must not pose a danger to public order or national security.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_option"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid identity and nationality documents", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Attendance at the naturalisation ceremony and Declaration of Solidarity", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ind_option",
+      "tier": 1,
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-option",
+      "title": "IND -- Becoming a Dutch national through option: five grounds including 'long-term residence in the Kingdom of the Netherlands', without a stated duration in the content reviewed",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of Curacao's initial build. This is the one ground of the IND's 5-ground option procedure (option, not naturalisation) that a migrant could plausibly qualify for through their own residence rather than through birth or parental recognition; the other four grounds (born in the Kingdom, recognised by a Dutch parent, born before 1985 to a Dutch mother, former Dutch national) are birth/family-status grounds rather than migration routes and are not modelled as their own files, consistent with this dataset's treatment of automatic-by-birth provisions elsewhere (see e.g. ai_belonger_status_descent.json's notes on the same issue for Anguilla). Marked draft because the fetched IND content did not state the actual residence-duration threshold for this ground (only 'a long time'), and the option procedure is understood in general Dutch-nationality-law terms to typically require a SHORTER residence period than the 5-year naturalisation route and/or to skip the language/civic-integration exam -- neither of which is confirmed here, so this route should not be treated as equivalent to or a clear shortcut over cw_naturalisation.json without further sourcing. Whether this ground also requires renouncing prior nationality was not confirmed either (dual_citizenship_allowed left null, unlike the false set on cw_naturalisation.json where the source was explicit)."
+}

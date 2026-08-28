@@ -1,0 +1,85 @@
+{
+  "id": "is_student_permit",
+  "country": "IS",
+  "name": "Residence Permit for Students",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "isst_enrolment",
+          "attribute": "enrolled_full_time_30_ects_per_semester",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires full-time enrolment in Iceland, defined as 30 ECTS credits per semester, confirmed by the educational institution.",
+          "fix_path": "Obtain admission and confirm full-time (30 ECTS/semester) enrolment.",
+          "fix_time_months": null,
+          "source_id": "island_student_requirements"
+        },
+        {
+          "id": "isst_means",
+          "attribute": "monthly_income_isk",
+          "operator": ">=",
+          "value": 259951,
+          "hard": true,
+          "blocker_text": "Minimum secure financial support of ISK 259,951/month (individual), ISK 415,922 for a couple, plus ISK 129,976 per additional dependent family member aged 18+, covering the entire permit validity period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_student_requirements"
+        },
+        {
+          "id": "isst_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health insurance valid in Iceland for at least 3 months from registration of legal domicile, minimum coverage ISK 2,000,000; national insurance applies automatically after 3 months of registered residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_student_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission/enrolment confirmation (30 ECTS/semester)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds for the permit's full duration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance (min. ISK 2,000,000 coverage)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "determined case-by-case, matched to the study program and financial support demonstrated",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["is_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "island_student_requirements",
+      "tier": 1,
+      "url": "https://island.is/en/residence-permit-students/requirements",
+      "title": "Island.is -- Residence Permit for Students: Requirements: 30 ECTS/semester full-time enrolment, ISK 259,951/month financial-means floor, health insurance",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). pr_after_months (48) reflects that former students on an eligible permit can reach permanent residence in 2 years after graduation IF the total including prior study reaches 4 years (per is_permanent_residence.json's exceptions) -- modeled here as the general 4-year baseline rather than assuming the faster former-student track applies automatically. family_can_join modeled false: no student-specific family reunification provision was located in this pass."
+}

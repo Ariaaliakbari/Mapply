@@ -1,0 +1,66 @@
+{
+  "id": "do_definitive_residence",
+  "country": "DO",
+  "name": "Definitive Residence (RD-1)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["do_permanent_residence"],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dord_pr_duration",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires having legally resided in the country for 10 years or more as a Permanent Resident (RP-1 holder).",
+          "fix_path": "Hold Permanent Residence continuously for 10 years.",
+          "fix_time_months": 120,
+          "source_id": "migracion_rd1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Current Permanent Residence Card (original and copy)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate from the Attorney General's Office with QR code", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Indefinite (described by DGM as a 10-year extension of the residence permit)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migracion_rd1",
+      "tier": 1,
+      "url": "https://migracion.gob.do/en/servicio/application-for-definitive-residence/",
+      "title": "Dirección General de Migración -- Definitive Residence (RD-1): 10 years as Permanent Resident required, RD$28,000 fee, 30 working days",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). leads_to_citizenship modeled false here: this is a status upgrade for long-term Permanent Residents, not itself a citizenship pathway -- Ordinary Naturalization is already reachable 2 years after RP-1 (see do_naturalisation.json), well before the 10-year RD-1 mark, so RD-1 is not on the practical path to citizenship for someone pursuing naturalization. DGM's own page frames RD-1 as essentially 'an extension of the residence permit for an additional ten (10) years' rather than a distinct legal status with new rights -- modeled work/study rights as unchanged from RP-1 accordingly."
+}

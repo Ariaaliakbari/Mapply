@@ -1,0 +1,91 @@
+{
+  "id": "se_family_reunification",
+  "country": "SE",
+  "name": "Residence Permit to Live with a Partner",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sefam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_se_resident_or_citizen", "registered_partner_of_se_resident_or_citizen", "cohabiting_partner_of_se_resident_or_citizen"],
+          "hard": true,
+          "blocker_text": "Both partners must be over 21 (exceptions for couples with children); must be married, registered partners, cohabiting, or planning one of these relationships.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_partner"
+        },
+        {
+          "id": "sefam_sponsor_status",
+          "attribute": "sponsor_status",
+          "operator": "in",
+          "value": ["se_citizen", "nordic_citizen", "se_permanent_resident"],
+          "hard": true,
+          "blocker_text": "The sponsoring partner must hold Swedish or Nordic citizenship, or Swedish permanent residence status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_partner"
+        },
+        {
+          "id": "sefam_maintenance",
+          "attribute": "sponsor_meets_maintenance_requirement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor must show sufficient income to support both partners (SEK 6,243/month single, SEK 10,314/month couple, plus per-child amounts) or taxable assets covering 2 years, AND housing large enough to accommodate both (minimum one room plus kitchen for a childless couple). Swedish-citizen sponsors in a well-established relationship (2+ years cohabiting, or 1+ year with children) may be exempt.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_maintenance"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate, partnership registration, or cohabitation evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's proof of income and housing", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Up to 2 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["se_permanent_residence", "se_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_partner",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/live-with-someone/live-with-a-partner-child-or-other-relative/live-with-a-partner.html",
+      "title": "Swedish Migration Agency -- Apply for a residence permit to live with your partner in Sweden: age 21+ requirement, sponsor status, well-established-relationship exemption, 2-year duration",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migrationsverket_maintenance",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/word-explanations/maintenance-requirement-for-the-person-in-sweden.html",
+      "title": "Swedish Migration Agency -- Maintenance requirement for the person in Sweden: 2026 income thresholds and housing-size standard for family sponsors",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). citizenship_after_months (84) reflects Swedish citizens' spouse/cohabitant naturalization track: 7 years, up from 3 years under the pre-June-2026 rules (see se_naturalisation.json) -- a very large, very recent tightening specific to this pathway, worth flagging prominently since it more than doubles the prior wait. pr_after_months (24) is not independently confirmed at tier-1 precision for this specific family route in this pass (unlike se_work_permit.json's explicit 4-year figure) -- modeled as an estimate based on the general pattern of shorter PR-eligibility windows for family-based residence versus work-based residence in comparable systems; flagged as unconfirmed rather than sourced. Family reunification rules are also set to tighten further from 1 January 2027 per Migrationsverket's own reform summary (stricter maintenance requirements, extended renewal conditions, 2-year waiting periods for certain groups) -- not yet reflected in the specific figures here since those changes postdate this research pass's effective date."
+}

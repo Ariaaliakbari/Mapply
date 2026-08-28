@@ -1,0 +1,72 @@
+{
+  "id": "mt_international_protection",
+  "country": "MT",
+  "name": "International Protection (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A third-country national or stateless person physically present in Malta with a well-founded fear of persecution (refugee status) or facing a real risk of serious harm if returned (subsidiary protection) may lodge an application in person with the International Protection Agency (IPA) at Fafner House, Hamrun.",
+    "evidence_hint": "A Refcom number and Asylum Seeker's Document (ASD) are issued on lodging; a personal interview follows."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mtip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_or_subsidiary_protection_criteria_met",
+          "hard": true,
+          "blocker_text": "Application is decided within 6 months of lodging, extendable to 9 months and, in complex cases, a further 3 months. A personal interview is required (legal representatives may attend only as observers and may intervene after the interview concludes). Labour-market access is only granted 9 months after lodging (JobsPlus may grant earlier access at its discretion). A negative decision may be appealed within 15 days, with free legal assistance available at the appeal stage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipa_lodge_application"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Personal interview with IPA", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Identity documents, if available", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "asylum-seeker phase typically 6-9+ months pending decision; recognised refugee status or subsidiary protection is indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mt_long_term_residence", "mt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipa_lodge_application",
+      "tier": 1,
+      "url": "https://ipa.gov.mt/asylum-procedures/how-to-make-lodge-an-application/",
+      "title": "International Protection Agency -- How To Make & Lodge an Application: procedure, 6-9+3 month timelines, interview process, 9-month work-access gate, appeal window",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ipa_about",
+      "tier": 1,
+      "url": "https://ipa.gov.mt/about-us/what-we-do/",
+      "title": "International Protection Agency -- What We Do: refugee status, subsidiary protection, and temporary humanitarian protection categories under the International Protection Act and CEAS",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1. IMPORTANT DISTINCTION flagged by the source: refugee status grants family reunification rights and a path to permanent residence; subsidiary protection does NOT include family reunification entitlements. The outcome fields above are modelled on the more generous refugee-status branch (family_can_join: true) -- applicants recognised only under subsidiary protection should not assume the same family rights apply. work_rights modelled as the eventual granted-status right ('full'); during the pre-decision asylum-seeker phase, labour-market access is restricted until 9 months after lodging (JobsPlus discretion aside). citizenship_after_months left null: eventual naturalisation would run through the general mt_naturalisation track once resident, but no dedicated reduced timeline for refugees was confirmed at tier-1 in this pass. A separate 'Temporary Humanitarian Protection' national-level category exists under the International Protection Act but is not separately modelled here given limited detail available."
+}

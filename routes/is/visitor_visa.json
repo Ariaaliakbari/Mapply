@@ -1,0 +1,74 @@
+{
+  "id": "is_visitor_visa",
+  "country": "IS",
+  "name": "Short-Stay Visa / Visa-Free Entry (Schengen)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "isv_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Iceland is a Schengen member (though not an EU member) and applies the standard 90 days within any 180-day period, whether entering visa-free or on a Schengen (Type C) visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_directorate_immigration"
+        },
+        {
+          "id": "isv_visa_requirement",
+          "attribute": "requires_schengen_visa",
+          "operator": "==",
+          "value": "depends_on_nationality",
+          "hard": false,
+          "blocker_text": "Nationals of countries not covered by EU Regulation 2018/1806's visa-exemption list must obtain a Schengen short-stay visa before travel; others may enter visa-free for the same 90/180-day allowance.",
+          "fix_path": "Apply for a Schengen visa at an Icelandic embassy/consulate (or a Nordic embassy representing Iceland) if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "island_directorate_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "island_directorate_immigration",
+      "tier": 1,
+      "url": "https://island.is/en/o/directorate-of-immigration",
+      "title": "Island.is (Icelandic government portal) -- Directorate of Immigration: overview of Iceland's Schengen short-stay framework and residence permit system",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). Iceland is an EEA/EFTA member and a Schengen member but NOT an EU member -- the visitor route follows the standard Schengen 90/180-day rule. Visa requirement is nationality-dependent per EU Regulation 2018/1806, modeled as a soft (hard:false) branch."
+}

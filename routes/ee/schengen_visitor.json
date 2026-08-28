@@ -1,0 +1,72 @@
+{
+  "id": "ee_schengen_visitor",
+  "country": "EE",
+  "name": "Schengen Short-Stay Visa (C-visa)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ees_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 70, "currency": "EUR", "unit": "day" },
+          "hard": true,
+          "blocker_text": "Requires sufficient financial means for the stay, calculated at EUR 70 per day, plus proof of accommodation and a return/onward travel plan.",
+          "fix_path": "Document at least EUR 70/day in available funds for the stay.",
+          "fix_time_months": null,
+          "source_id": "vm_ee_schengen_visa"
+        },
+        {
+          "id": "ees_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "travel_medical_insurance_30000_eur",
+          "hard": true,
+          "blocker_text": "Requires travel medical insurance with coverage of at least EUR 30,000, valid for the whole Schengen area for the full stay.",
+          "fix_path": "Purchase qualifying travel medical insurance before applying.",
+          "fix_time_months": null,
+          "source_id": "vm_ee_schengen_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (issued within 10 years, valid 3+ months beyond departure, 2+ blank pages)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel medical insurance certificate (EUR 30,000 minimum)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of purpose of travel and accommodation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within any 180-day period; can be issued single- or multiple-entry, with visa validity up to 5 years",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "vm_ee_schengen_visa",
+      "tier": 1,
+      "url": "https://vm.ee/en/consular-visa-and-travel-information/visa-information/application-schengen-visa",
+      "title": "Ministry of Foreign Affairs of Estonia (vm.ee) -- Application for a Schengen visa",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "FIRST ESTONIA ROUTE, part of this country's initial build. This models the short-stay (C-visa) Schengen route specifically for Estonia as the responsible consulate; the underlying legal framework is EU-wide (Visa Code), which is why this is thinner than a fully national route -- consistent with how other Schengen-member countries in this dataset handle their own schengen_visitor routes. Processing: applications submitted 15 days to 6 months before travel, decisions typically in 15 days (up to 45 for complex cases). Nationals of many countries do not need a visa at all for short stays; this route applies only to nationals who do."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "bg_eu_eea_free_movement",
+  "country": "BG",
+  "name": "EU/EEA/Swiss Right of Residence",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgeu_nationality",
+          "attribute": "nationality_region",
+          "operator": "==",
+          "value": "EU_EEA_or_Swiss",
+          "hard": true,
+          "blocker_text": "EU/EEA/Swiss citizens may reside in Bulgaria for up to 3 months on a valid ID card or passport alone, with no residence permit required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mvr_eu_citizens"
+        },
+        {
+          "id": "bgeu_registration",
+          "attribute": "registered_after_90_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Beyond 3 months, an EU/EEA/Swiss citizen must register for a long-term residence certificate (based on employment, self-employment, sufficient means plus insurance, or student status), submitted within 3 months of arrival; processed within 24 hours.",
+          "fix_path": "Register with the Migration Directorate within 3 months of arrival.",
+          "fix_time_months": null,
+          "source_id": "mvr_eu_citizens"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid EU/EEA/Swiss ID card or passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of employment, self-employment, sufficient means, or student status (for registration beyond 3 months)", "difficulty": "routine", "typical_time_days": 1 }
+  ],
+  "outcome": {
+    "duration_length": "long-term residence certificate valid up to 5 years; permanent residence available after 5 continuous years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bg_permanent_residence", "bg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mvr_eu_citizens",
+      "tier": 1,
+      "url": "https://www.mvr.bg/migration/en/legislation/citizens-of-eu",
+      "title": "Ministry of Interior, Migration Directorate -- Citizens of EU: free movement for up to 3 months on ID/passport alone, long-term residence certificate registration thereafter (employment/self-employment/means/student basis), permanent residence after 5 consecutive years",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Structurally distinct from the third-country-national routes: entry itself is automatic (no assessed application), but unlike some EU states, Bulgaria still requires EU/EEA/Swiss citizens to register for a long-term residence certificate after the initial 3-month period -- modeled as a second hard requirement rather than presenting the route as fully unconditional. citizenship_after_months (60) reflects the standard naturalisation residence bar (bg_naturalisation.json); EU citizens get no separate fast-track under the Citizenship Act provisions located in this pass."
+}

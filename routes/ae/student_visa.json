@@ -1,10 +1,10 @@
 {
   "id": "ae_student_visa",
   "country": "AE",
-  "name": "Student Visa",
+  "name": "Residence Visa for Studying in the UAE",
   "category": "study",
   "status": "published",
-  "verified_at": "2026-08-10",
+  "verified_at": "2026-08-27",
   "duration_type": "fixed",
   "selection_method": "assessed",
   "selection_odds": null,
@@ -13,53 +13,67 @@
   "prerequisites": null,
   "requirement_groups": [
     {
-      "id": "standard",
-      "name": "Standard route",
+      "id": "university_sponsored",
+      "name": "Sponsored by accredited university/college",
       "requirements": [
         {
-          "id": "st_enrolment",
-          "attribute": "qualifying_event",
-          "operator": "exists",
-          "value": "moe_khda_accredited_institution_enrolment",
+          "id": "aes_enrollment",
+          "attribute": "enrolled_at_accredited_institution",
+          "operator": "==",
+          "value": true,
           "hard": true,
-          "blocker_text": "This requires enrolment at a Ministry of Education or KHDA-accredited institution, sponsored by the university (or a UAE-resident parent for younger students).",
-          "fix_path": "Secure admission to an accredited institution.",
+          "blocker_text": "Must be enrolled at an accredited UAE university or institute, which sponsors the visa; requires a certificate specifying the duration of study.",
+          "fix_path": "Secure enrolment at an accredited UAE institution.",
           "fix_time_months": null,
-          "source_id": "uae_gov_student_visa"
+          "source_id": "gov_ae_student_visa"
+        }
+      ]
+    },
+    {
+      "id": "parent_sponsored",
+      "name": "Sponsored by a UAE-resident parent",
+      "requirements": [
+        {
+          "id": "aes_parent_resident",
+          "attribute": "has_uae_resident_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Alternatively, may be sponsored by a parent who is a UAE resident -- male children up to age 25, female children of any age until marriage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ae_student_visa"
         }
       ]
     }
   ],
   "evidence_required": [
-    {
-      "document": "Admission letter from an accredited institution",
-      "difficulty": "routine",
-      "typical_time_days": null
-    }
+    { "document": "University/institute enrolment certificate specifying study duration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's UAE residence proof (parent-sponsored route)", "difficulty": "routine", "typical_time_days": null }
   ],
   "outcome": {
-    "duration_length": "1 year at a time, renewable on proof of continued study",
+    "duration_length": "tied to duration of study",
     "renewable": true,
-    "work_rights": "restricted",
+    "work_rights": "none",
     "study_rights": "full",
     "family_can_join": false,
-    "family_can_work": null,
+    "family_can_work": false,
     "leads_to_pr": false,
     "pr_after_months": null,
     "leads_to_citizenship": false,
     "citizenship_after_months": null,
     "dual_citizenship_allowed": null,
     "physical_presence_requirement": null,
-    "switchable_to": ["ae_golden_visa", "ae_standard_employment_visa"]
+    "switchable_to": ["ae_work_permit", "ae_golden_visa"]
   },
   "sources": [
     {
-      "id": "uae_gov_student_visa",
+      "id": "gov_ae_student_visa",
       "tier": 1,
       "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/residence-visa-for-studying-in-the-uae",
-      "title": "Student visa - The Official Portal of the UAE Government",
-      "accessed_at": "2026-08-10"
+      "title": "The Official Portal of the UAE Government (u.ae) -- Residence Visa for Studying in the UAE: sponsorship either by an accredited university/college or by a UAE-resident parent (sons up to 25, daughters of any age until marriage), university-facilitated visa process",
+      "accessed_at": "2026-08-27"
     }
   ],
-  "notes": "Male children can be sponsored by resident parents up to age 25; students over that age need their own study visa — a real, specific age rule distinct from most other countries' family-sponsorship age limits in this dataset. Part-time work permitted with a MoHRE student work permit — exact current hours-per-week figure wasn't fully confirmed at tier-1 precision during the underlying research (tier-3 sources suggested roughly 15-20 hours/week during term). Genuine and distinctive post-study pathway: outstanding graduates (high GPA, typically 3.5-3.8+, with recommendation/graduation certificate) may apply DIRECTLY for the 10-year Golden Visa within a window after graduation — a materially more generous outcome than most other countries' student-to-settlement Journey chains in this dataset, even though the Golden Visa itself still carries no citizenship path."
+  "notes": "NEW ROUTE, part of the UAE's full build-out. No fee figures were found on this source. switchable_to reflects the page's own mention that outstanding student performers may qualify for the Golden Visa (see ae_golden_visa.json's talent category), and that graduates commonly transition to employment-based status (see ae_work_permit.json), though neither is a guaranteed or automatic conversion."
 }

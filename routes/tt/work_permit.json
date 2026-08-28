@@ -1,0 +1,74 @@
+{
+  "id": "tt_work_permit",
+  "country": "TT",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttw_duration_trigger",
+          "attribute": "planned_work_duration_days",
+          "operator": ">",
+          "value": 30,
+          "hard": true,
+          "blocker_text": "A work permit is required for any non-national working in Trinidad and Tobago for more than 30 days within a 12-month period; visits of 30 days or less do not require one.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ttconnect_work_permit"
+        },
+        {
+          "id": "ttw_employer_application",
+          "attribute": "employer_submitted_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applications are submitted by the employer on behalf of the foreign worker via TTBizLink.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ttconnect_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "TTBizLink registration and online application", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting documents (submitted at Ministry of National Security office)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Work permit fee (amount not disclosed on the pages reviewed)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tt_permanent_residence_general"]
+  },
+  "sources": [
+    {
+      "id": "ttconnect_work_permit",
+      "tier": 1,
+      "url": "https://ttconnect.gov.tt/work-permit/",
+      "title": "ttconnect, Government of Trinidad and Tobago -- Work Permit: 30-day threshold triggering the requirement, employer-submitted TTBizLink application (1-9 persons) or manual group application (10+), Work Permit Help Desk contact",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. No fee amount, permit duration, or explicit labour-market-test requirement was found on the ttconnect or Ministry of National Security/Homeland Security pages reviewed -- flagged as a gap; the process confirms employer-only submission but does not itemise a local-recruitment-first rule as clearly as some other countries' equivalent pages this session. leads_to_pr/pr_after_months (60 months) reflects the general 5-year continuous-lawful-residence route to permanent resident status (see tt_permanent_residence_general.json), for which work permits are an explicitly permissible qualifying permit type per secondary legal-commentary sources."
+}

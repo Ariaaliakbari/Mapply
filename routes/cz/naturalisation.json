@@ -1,0 +1,113 @@
+{
+  "id": "cz_naturalisation",
+  "country": "CZ",
+  "name": "Granting of Czech Citizenship (Naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["cz_permanent_residence"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "czn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must hold a permanent residence permit and have resided in Czechia for an uninterrupted period of at least 5 years (Section 14(1)(a)).",
+          "fix_path": "Accrue 5 years of permanent residence.",
+          "fix_time_months": 60,
+          "source_id": "mzv_citizenship_act"
+        },
+        {
+          "id": "czn_language",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "czech_language_knowledge",
+          "hard": true,
+          "blocker_text": "Must prove knowledge of the Czech language (Section 14(4)).",
+          "fix_path": "Pass the required Czech language test.",
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship_act"
+        },
+        {
+          "id": "czn_criminal_record",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Must not have been found guilty of a negligent crime resulting in imprisonment, or found guilty of an intentional crime (Section 14(3)(a)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship_act"
+        },
+        {
+          "id": "czn_income",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "documented_income_and_source_3yr",
+          "hard": true,
+          "blocker_text": "Must prove income and its source for the 3 years preceding the application (Section 14(7)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship_act"
+        },
+        {
+          "id": "czn_integration",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "demonstrated_integration_family_or_work",
+          "hard": true,
+          "blocker_text": "Must demonstrate integration into Czech society, particularly through a family or work environment (Section 13(1)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years of permanent residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Czech language test certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "3 years of income and income-source documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of social/family/work integration", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mzv_citizenship_act",
+      "tier": 1,
+      "url": "https://mzv.gov.cz/file/2400342/Citizenship_Act_No._186_2013_Sb._o_statnim_obcanstvi_CR.pdf",
+      "title": "Ministry of Foreign Affairs -- Act No. 186/2013 Coll. on Citizenship of the Czech Republic: Sections 13-14, naturalisation residence/language/character/income/integration requirements",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1 from the primary legislation's own English translation. Requires holding cz_permanent_residence (itself requiring 5 years of prior temporary residence) for a further 5 years before naturalisation eligibility -- meaning the realistic minimum timeline from initial arrival to citizenship is longer than the 5-year figures alone suggest, since the two 5-year clocks (temporary-to-permanent, then permanent-to-citizenship) are sequential, not overlapping, per the sources reviewed. dual_citizenship_allowed set true: the 2014 Citizenship Act reform removed the prior renunciation requirement, permitting dual citizenship generally."
+}

@@ -1,0 +1,89 @@
+{
+  "id": "aw_living_with_partner",
+  "country": "AW",
+  "name": "Living with Your Partner (Unmarried Partner Permit)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "An unmarried foreign partner of an Aruban-born Dutch national may apply for a residence permit to live with that partner, where the sponsor guarantees support and meets the income test.",
+    "evidence_hint": "Deed of registered partnership (from a European Dutch Kingdom area or BES island) or a notarial partnership deed from an Aruba-registered notary; proof of cohabitation at the same address."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "awlp_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "unmarried_long_term_partner_of_aruban_born_dutch_national",
+          "hard": true,
+          "blocker_text": "Requires a long-term, exclusive, unmarried relationship with a partner of a different gender who holds Dutch nationality and was born in Aruba, with both partners cohabiting at the same address.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_living_with_partner"
+        },
+        {
+          "id": "awlp_sponsor_income",
+          "attribute": "sponsor_meets_cbs_minimum_wage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The sponsoring partner must sign as guarantor and earn an annual income at or above the Aruban CBS (Central Bureau of Statistics) minimum wage norm.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_living_with_partner"
+        },
+        {
+          "id": "awlp_insurance",
+          "attribute": "has_private_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires private health insurance for one year (exempt for EU and US citizens).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_living_with_partner"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application Form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Deed of registered partnership or notarial partnership deed", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsorship statement and proof of sponsor's income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of private health insurance (unless EU/US citizen)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewed annually",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["aw_special_relationship_to_aruba"]
+  },
+  "sources": [
+    {
+      "id": "dimas_living_with_partner",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/living/living-with-your-partner/",
+      "title": "DIMAS, Government of Aruba -- Living with Your Partner: unmarried-partner permit requiring the Dutch-national sponsor to have been born in Aruba, a different-gender relationship, CBS minimum-wage sponsor income test, 1-year renewable permit, registered-partnership deed requirement",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build. This is a distinct, narrower route from aw_family_reunification.json: the DIMAS source page states this permit requires the sponsoring partner to be of a DIFFERENT GENDER from the applicant and to be a Dutch national specifically born in Aruba (not merely any Dutch national or resident) -- both stated plainly on the official page and reported here factually as the eligibility rule DIMAS itself publishes, not a judgment this dataset makes. Same-sex partners and partners of Dutch nationals not born in Aruba are not covered by this specific route per the source reviewed; no equivalent DIMAS route for those situations was found in this pass, which is flagged here as an open gap rather than assumed not to exist. leads_to_pr is not modelled since the page gives no path beyond annual renewal; a holder who marries the sponsor could potentially move to aw_family_reunification.json's married-sponsor ground instead, though that switch was not explicitly confirmed on either page."
+}

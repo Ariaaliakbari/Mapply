@@ -1,0 +1,90 @@
+{
+  "id": "gd_work_permit",
+  "country": "GD",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gdw_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Work permits cannot be granted to applicants under 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_gd_work_permit_guide"
+        },
+        {
+          "id": "gdw_not_visitor",
+          "attribute": "has_visitor_visa_status",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Work permits will NOT be processed for holders of Visitor Visas -- applicant must change immigration status first.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_gd_work_permit_guide"
+        },
+        {
+          "id": "gdw_labour_market_test",
+          "attribute": "employer_completed_labour_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employers must advertise the position locally for 3 consecutive weeks before engaging a foreign national, with evidence attached to the application.",
+          "fix_path": "Employer completes the 3-week local advertisement requirement.",
+          "fix_time_months": null,
+          "source_id": "gov_gd_work_permit_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed application form (in duplicate, with company stamp)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport bio-data page and arrival/extension details", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Original police clearance (within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notarized qualification certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two professional references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds (bank statement)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's business incorporation documents, tax compliance status, NIS registration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of 3-week local job advertisement", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gd_permanent_residence_general"]
+  },
+  "sources": [
+    {
+      "id": "gov_gd_work_permit_guide",
+      "tier": 1,
+      "url": "https://llca.gov.gd/labour/wp-content/uploads/sites/3/2023/12/LABOUR-WORK-PERMIT-GUIDE.pdf",
+      "title": "Ministry of Labour, Government of Grenada -- Work Permit Guidelines: 3-week local advertisement labour-market test, tiered annual fees (CARICOM XCD $1,000, Commonwealth/EU/UK/North America XCD $3,000, other XCD $5,000; OECS/CARICOM Skills Certificate/entertainers fee-exempt), 12-working-day processing target, non-transferable between employers, automatic cancellation on job loss or visa lapse, not available to Visitor Visa holders, under-18s excluded",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. Fee structure gives CARICOM nationals a large discount (XCD $1,000/yr) versus non-CARICOM/Commonwealth (XCD $3,000-$5,000/yr), and full fee exemption for OECS citizens and CARICOM Skills Certificate holders -- consistent with the CARICOM/CSME preferential pattern already modelled for Trinidad and Tobago and Saint Lucia this session (no separate CARICOM Skills Certificate route was located specifically for Grenada, though the fee exemption confirms the mechanism applies here too). pr_after_months (24) reflects the 'standard residency' 2-out-of-3-years PR pathway (see gd_permanent_residence_general.json) as the nearest confirmed onward route, not a work-permit-specific guarantee."
+}

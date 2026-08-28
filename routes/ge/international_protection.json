@@ -1,0 +1,82 @@
+{
+  "id": "ge_international_protection",
+  "country": "GE",
+  "name": "International Protection (Refugee and Humanitarian Status)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Refugee status requires a well-grounded fear of persecution on grounds of race, religion, nationality, affiliation to a particular social group, or political views, and an inability to return home. Humanitarian status applies where refugee criteria are not met but the person faces a serious threat of harm on return (e.g. death sentence, torture, threats from armed conflict or mass human rights violations).",
+    "evidence_hint": "Evidence supporting the persecution or serious-harm claim."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "geip_refugee",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_criteria_met",
+          "hard": true,
+          "blocker_text": "Requires meeting the well-grounded-fear-of-persecution criteria for refugee status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_international_protection_law_ge"
+        }
+      ]
+    },
+    {
+      "id": "humanitarian",
+      "name": "Humanitarian status",
+      "requirements": [
+        {
+          "id": "geip_humanitarian",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "humanitarian_criteria_met",
+          "hard": true,
+          "blocker_text": "Requires facing a serious threat of harm on return, without meeting the stricter refugee-status criteria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_international_protection_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for international protection", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution/serious-harm claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "refugee status: 3-year residence card; humanitarian status: granted annually, renewable if circumstances persist",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "matsne_international_protection_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/3452780",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Law of Georgia on International Protection",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. work_rights set 'full': the law states refugee and humanitarian status holders may work 'in the same manner as citizens of Georgia,' including self-employment -- a notably generous provision confirmed directly at tier-1, unlike several other countries in this dataset where protection-holder work rights are restricted or unconfirmed. The law also confirms holders of either status may apply for citizenship through standard naturalisation via the Public Service Development Agency, per its own text -- pr_after_months (120) is modelled on the standard 10-year naturalisation residence track (ge_naturalisation) since a distinct, shorter path for protection holders was not stated in the text fetched. A separate one-year, extendable 'temporary protection' status also exists per the law (for mass-influx situations) but is not modelled as its own route here since it is explicitly temporary and collective rather than an individual status with its own settlement pathway."
+}

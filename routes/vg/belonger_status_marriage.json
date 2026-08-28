@@ -1,0 +1,67 @@
+{
+  "id": "vg_belonger_status_marriage",
+  "country": "VG",
+  "name": "Belonger Status -- Marriage to a Belonger",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse of a Belonger may apply for Belonger status under the Immigration and Passport Ordinance after 5 years of continuous cohabitation as husband and wife.",
+    "evidence_hint": "Marriage certificate; proof of continuous cohabitation for 5 years; spouse's proof of Belonger status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vgbm_marriage_5yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_belonger_5yr_cohabitation",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Belonger with 5 years of continuous cohabitation as husband and wife.",
+          "fix_path": "Accumulate 5 years of continuous cohabitation with the Belonger spouse.",
+          "fix_time_months": 60,
+          "source_id": "bvi_belonger_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for Belonger Status form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5 years' continuous cohabitation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's proof of Belonger status", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vg_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "bvi_belonger_info",
+      "tier": 1,
+      "url": "http://crisvi.gov.vg/gis/netdata/forms/bvi_belonger_info.pdf",
+      "title": "Civil Registry and Immigration System of the Virgin Islands -- Belonger status: no automatic constitutional pathway via marriage, but a 5-year continuous-cohabitation route under the Immigration and Passport Ordinance, materially shorter than the 20-year Belonger-by-residence route",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the British Virgin Islands' initial build. The source is explicit that marriage to a Belonger creates NO automatic/constitutional right to Belonger status (unlike birth, descent, or adoption) -- it is instead an accelerated administrative route under the Immigration and Passport Ordinance, 5 years versus the 20-year general residence-based Belonger route (vg_belonger_status_residence.json). Modelled as a separate 'family' category file per this dataset's convention of splitting routes by category where the underlying ground differs materially from the constitutional grounds in vg_belonger_status_descent.json. Also distinct from the 'Spouses of British Overseas Territory Citizens' naturalisation fee category ($500, see vg_naturalisation_botc.json) -- that category is for a spouse naturalising directly as a BOTC, not for acquiring the separate, non-national Belonger status modelled here."
+}

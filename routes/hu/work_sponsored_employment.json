@@ -1,0 +1,64 @@
+{
+  "id": "hu_work_sponsored_employment",
+  "country": "HU",
+  "name": "Residence Permit for the Purpose of Employment",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "huw_employer_contract",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "employment_agreement_or_contract",
+          "hard": true,
+          "blocker_text": "Requires a preliminary employment agreement or formal employment contract to work for or under the direction of an employer, for remuneration. If employed by a third-country employer fulfilling a contract in Hungary, that arrangement must be separately documented. No general labour-market test or occupation-restriction communication is currently in force.",
+          "fix_path": "Secure a qualifying employment agreement or contract.",
+          "fix_time_months": null,
+          "source_id": "oif_employment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment agreement or contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of financial means (bank statements, income documentation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Housing documentation (lease, ownership, or employer-provided letter)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years initially, extendable by 1 additional year, maximum 3 years from first issuance",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "oif_employment",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/residence-permit-for-the-purpose-of-employment",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- Residence Permit for the Purpose of Employment: employer sponsorship, 2+1 year duration cap, Georgia/Armenia/Philippines procedural annex, required documents",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. A Government Decree annex names Georgia, Armenia, and the Republic of the Philippines with distinct extension/reissuance procedural rules under a readmission-agreement framework -- this is a PROCEDURAL sub-rule for those three nationalities, not a restriction of the whole permit category to them; the permit is generally open to third-country nationals of any nationality with a qualifying job offer. family_can_join set FALSE at the route level based on a notable, counterintuitive confirmation in oif.gov.hu's own family-reunification factsheet (see hu_family_reunification): standard-employment permit holders are explicitly EXCLUDED from the list of sponsors who can bring family members to Hungary, unlike EU Blue Card or National Residence Card holders. work_rights set to 'restricted' since employment is tied to the specific sponsoring employer/contract. Extensions require the applicant to have resided in Hungary at least 90 days within any 180-day period, submitted 30-90 days before expiry."
+}

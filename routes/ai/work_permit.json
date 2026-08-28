@@ -1,0 +1,102 @@
+{
+  "id": "ai_work_permit",
+  "country": "AI",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard (Employee) route",
+      "requirements": [
+        {
+          "id": "aiwp_advertised",
+          "attribute": "job_advertised_locally",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The position must be advertised (copy of the advertisement required) before a work permit application can be submitted, to demonstrate no qualified Belonger/Anguillian is available.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_labour"
+        },
+        {
+          "id": "aiwp_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a ten-year police record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_labour"
+        },
+        {
+          "id": "aiwp_medical",
+          "attribute": "medical_exam",
+          "operator": "exists",
+          "value": "medical_exam_report",
+          "hard": true,
+          "blocker_text": "Requires a medical examination report.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_labour"
+        },
+        {
+          "id": "aiwp_credentials",
+          "attribute": "credentials_certified",
+          "operator": "exists",
+          "value": "certified_academic_professional_credentials",
+          "hard": true,
+          "blocker_text": "Requires certified academic/professional credentials relevant to the position.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_labour"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Copy of job advertisement", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate and passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Ten-year police record", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Certified academic/professional credentials", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical examination report", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Four identical passport photos", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of Social Security registration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's business licence and tax clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Non-refundable EC$100 processing fee, plus a profession-based fee per position", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the tier-1 source reviewed (a distinct 'Renewal' permit category confirms permits are time-limited)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ai_labour",
+      "tier": 1,
+      "url": "https://gov.ai/service/immigration--labour/immigration--labour-labour",
+      "title": "Government of Anguilla -- Labour: work permit categories (Self Employed, Employee, Renewal, Temporary), required documents, and fees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. The Labour Department page confirms four work permit categories (Self Employed, Employee, Renewal, Temporary) but the fetched content did not break out distinct requirements per category beyond the shared document list -- this route models the general/Employee case (work_sponsored); the Self Employed category likely maps to work_independent or business but was not independently detailed enough to justify a separate file in this pass, and is flagged here as a gap rather than guessed. Permit duration and specific renewal terms are not stated in the source; renewable is set true solely because a 'Renewal' category exists, not because a term length was confirmed. work_rights is 'restricted' because the permit ties employment to a specific advertised position/employer, not general labour-market access. This route does not itself lead to Belonger Status, Permanent Residence, or naturalisation -- those are separate applications (see ai_belonger_status_residence.json and ai_naturalisation.json), though work permit history is one of the documents required for naturalisation."
+}

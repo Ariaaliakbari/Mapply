@@ -1,0 +1,63 @@
+{
+  "id": "co_pensioner_rentista_visa",
+  "country": "CO",
+  "name": "Visa de Migrante (M) -- Pensionado o Rentista",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "copr_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 1382, "currency": "USD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires a lifetime pension (or, for the rentista variant, other passive income) of at least 3 SMLMV/month (Colombia's legal monthly minimum wage unit -- approximately USD 1,382 at the source's implied conversion rate; the real legal threshold is denominated in SMLMV and drifts annually), from a government, publicly-held, or private pension source.",
+          "fix_path": "Document a qualifying lifetime pension or passive income of at least 3 SMLMV/month.",
+          "fix_time_months": null,
+          "source_id": "colombiavisas_com_retirement_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Pension certification letter (monthly amount, no less than 3 SMLMV)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance covering all risks and repatriation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background check from the country of prior residence (last 3 years)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years; holder must visit Colombia at least once every 180 days to keep the visa valid",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_resident_by_accumulated_time", "co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "colombiavisas_com_retirement_visa",
+      "tier": 3,
+      "url": "https://colombiavisas.com/how-to-get-colombia-retirement-visa/",
+      "title": "ColombiaVisas.com (immigration consultancy) -- Colombia M-Pensionado visa: 3 SMLMV income requirement, documents, 5-year path to PR",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. STATUS SET TO DRAFT: cancilleria.gov.co's own pensioner page (cancilleria.gov.co/v/pensionado) and the Miami consulate's page both returned errors (404) to automated fetching in this pass, so the 3 SMLMV figure is only tier-3 confirmed. The category's existence is confirmed at tier-1 (listed among the 14 M sub-categories on cancilleria.gov.co/node/26933). work_rights explicitly 'none' per the tier-3 source -- this visa does not permit employment. Colombia has NO distinct, separately-legislated 'digital nomad' visa category as of this research pass -- remote workers commonly use this Rentista sub-category or the Independent Professional M sub-category instead; not modelled as its own route to avoid inventing a category that does not exist in Colombian law."
+}

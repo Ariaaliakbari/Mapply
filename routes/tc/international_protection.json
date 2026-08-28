@@ -1,0 +1,62 @@
+{
+  "id": "tc_international_protection",
+  "country": "TC",
+  "name": "International Protection / Asylum (Government-Administered)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tcip_claim",
+          "attribute": "has_well_founded_fear_of_persecution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must establish a well-founded fear of persecution in the country of origin to the government of the Turks and Caicos Islands, which is directly responsible for receiving and processing asylum requests here (unlike most other BOTs in this dataset, where UNHCR itself conducts mandate determination).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_caribbean_local_gov"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents (where available)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal account/testimony to the government asylum process", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite pending government determination",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_caribbean_local_gov",
+      "tier": 2,
+      "url": "https://help.unhcr.org/caribbean/asylum/local-government/",
+      "title": "UNHCR Northern and Eastern Caribbean -- Apply for asylum with the government: the Turks and Caicos Islands government (not UNHCR) is responsible for receiving and processing asylum requests, grouped with the Bahamas, Cayman Islands, Jamaica, and Montserrat; UNHCR is 'not involved in the decision-making process' but provides procedural guidance via email",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. Unlike Anguilla, Antigua and Barbuda, Bermuda, and the BVI (all built earlier this session as places where UNHCR itself conducts mandate refugee status determination), TCI is grouped by UNHCR's own guidance among the territories where the LOCAL GOVERNMENT is directly responsible for asylum decisions -- consistent with how Cayman's international_protection.json was modelled. However, this UNHCR source does not name the responsible TCI government agency, describe the legal basis, or give any application/criteria detail beyond an email address for UNHCR's own procedural-guidance role -- no dedicated gov.tc asylum/refugee page was located in this pass despite a search of the Immigration Ordinance and related legal sources. STATUS: DRAFT for that reason (tier-2 sourcing, no named agency or process). Separately, contemporaneous news coverage confirms TCI has periodically resumed deportations of Haitian nationals, and reports the government issuing entry visas to Haitians who then significantly overstay them -- these facts describe migration enforcement patterns, not a specific, sourced finding that the asylum process itself denies protection systematically (unlike the clear Amnesty International findings for Curacao and Aruba built earlier this session) -- so this route is held in draft rather than excluded outright, pending a clearer primary source on whether/how the system functions in practice. work_rights, study_rights, and family_can_join are conservatively modelled as none/false pending that gap being closed."
+}

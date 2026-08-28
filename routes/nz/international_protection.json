@@ -1,0 +1,90 @@
+{
+  "id": "nz_international_protection",
+  "country": "NZ",
+  "name": "In-Country Refugee or Protected Person Claim",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Any person already in New Zealand (including on a temporary visa) who fears persecution in their home country may lodge an in-country claim for refugee or protected person status: a Confirmation of Claim form (INZ 1071) with identity evidence, a written statement, an interview with a Refugee and Protection Officer, a claim report, final submissions, and a decision. Current wait time from lodging to allocation to an officer is reported at 18-24 months.",
+    "evidence_hint": "INZ 1071 Confirmation of Claim form; passport/identity evidence; written statement of claim; interview attendance; supporting persecution/risk evidence where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "nzip_refugee",
+          "attribute": "meets_refugee_convention_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must meet the 1951 Refugee Convention definition. Around one-fifth of refugee and protection claims made are currently successful.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_incountry_claim"
+        }
+      ]
+    },
+    {
+      "id": "protected_person",
+      "name": "Protected person status",
+      "requirements": [
+        {
+          "id": "nzip_protected",
+          "attribute": "meets_protected_person_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Convention Against Torture / ICCPR-based protected-person grounds, for claimants who do not meet the refugee definition; excluded if previously rejected on specified Immigration Act 2009 grounds (e.g. s137(2) serious-acts exclusion).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_incountry_claim"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "INZ 1071 Confirmation of Claim form and identity evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written statement of claim (per INZ 1362 guidelines)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "RPO interview attendance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Successful claimants may apply for a Permanent Resident Visa on the basis of the recognition",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_incountry_claim",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/live/refugees-and-asylum-seeker-information/claiming-refugee-or-protected-person-status/",
+      "title": "Immigration New Zealand -- Claiming refugee or protected person status: 6-step in-country process, 18-24 month wait to RPO allocation, ~1-in-5 success rate",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "inz_incountry_outcome",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/opsmanual/43643.htm",
+      "title": "Immigration New Zealand Operations Manual -- successful refugee/protected person claimants may apply for a Permanent Resident Visa on the basis of that recognition, subject to exclusion grounds",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). work_rights and study_rights modeled 'restricted' to reflect conditions during the (often 18-24+ month) wait and assessment period before a decision, in contrast to nz_refugee_quota_programme.json's immediate full-rights Permanent Residence on arrival. The claimed-outcome source (opsmanual/43643.htm) displayed an archival caveat in the fetch but its stated outcome (direct eligibility for a Permanent Resident Visa) is treated as reliable since it aligns with the parallel quota-programme outcome and no contradicting current-policy source was found. The reported roughly 20% success rate is disclosed as a real-world caveat, not modeled as a formal selection_odds figure since it is not a quota-style allocation."
+}

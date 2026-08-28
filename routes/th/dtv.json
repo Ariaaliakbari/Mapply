@@ -3,8 +3,8 @@
   "country": "TH",
   "name": "Destination Thailand Visa (DTV)",
   "category": "work_independent",
-  "status": "draft",
-  "verified_at": "2026-08-19",
+  "status": "published",
+  "verified_at": "2026-08-26",
   "duration_type": "fixed",
   "selection_method": "assessed",
   "selection_odds": null,
@@ -22,21 +22,21 @@
           "operator": "==",
           "value": "remote_employment_foreign_company",
           "hard": true,
-          "blocker_text": "Requires employment by, or freelance contracts with, a company or clients registered outside Thailand -- working for Thai companies or Thai clients is not covered and remains subject to Non-B/work permit rules instead.",
-          "fix_path": "Confirm the employing or contracting entity is genuinely foreign-registered.",
+          "blocker_text": "Requires employment by, or freelance contracts with, a company or clients registered outside Thailand, plus a professional portfolio evidencing digital-nomad status -- working for Thai companies or Thai clients is not covered and remains subject to Non-B/work permit rules instead.",
+          "fix_path": "Confirm the employing or contracting entity is genuinely foreign-registered and compile a professional portfolio.",
           "fix_time_months": null,
-          "source_id": "issacompass_digital_nomads"
+          "source_id": "mfa_go_th_dtv_checklist"
         },
         {
           "id": "dtv_funds",
           "attribute": "savings",
           "operator": ">=",
-          "value": { "amount": 500000, "currency": "THB", "unit": "one_time" },
+          "value": { "amount": 500000, "currency": "THB", "unit": "one_time", "note": "MYR 65,000 accepted as an alternative for applicants documenting funds in Malaysian Ringgit." },
           "hard": true,
-          "blocker_text": "Requires proof of funds of at least THB 500,000 (roughly USD 14,000).",
-          "fix_path": "Document at least THB 500,000 in available funds.",
+          "blocker_text": "Requires bank statements from the preceding 3 months showing a minimum balance of THB 500,000 (or MYR 65,000).",
+          "fix_path": "Document at least THB 500,000 in available funds over a 3-month statement history.",
           "fix_time_months": null,
-          "source_id": "issacompass_digital_nomads"
+          "source_id": "mfa_go_th_dtv_checklist"
         }
       ]
     },
@@ -50,17 +50,18 @@
           "operator": "in",
           "value": ["culture", "sports", "arts"],
           "hard": true,
-          "blocker_text": "Covers participants in Muay Thai training, Thai culinary arts courses, medical treatment, professional seminars, or artistic/cultural festivals -- a genuinely distinct qualifying basis from remote employment, aimed at attracting participation in Thai cultural and soft-power activities specifically.",
+          "blocker_text": "Covers participants in Muay Thai training, Thai culinary arts courses, medical treatment, professional seminars, or artistic/cultural festivals, evidenced by an acceptance or appointment letter from the relevant institution -- a distinct qualifying basis from remote employment, aimed at Thai cultural and soft-power activities specifically.",
           "fix_path": "Enrol in or secure participation confirmation for a qualifying Thai soft-power activity.",
           "fix_time_months": null,
-          "source_id": "mbmg_dtv_ltr_guide"
+          "source_id": "mfa_go_th_dtv_checklist"
         }
       ]
     }
   ],
   "evidence_required": [
-    { "document": "Employment/freelance contract with a foreign-registered entity, or confirmation of a qualifying soft-power activity", "difficulty": "moderate", "typical_time_days": null },
-    { "document": "Proof of funds (THB 500,000)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment/freelance contract with a foreign-registered entity and professional portfolio, or acceptance/appointment letter for a qualifying soft-power activity", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "3 months' bank statements showing THB 500,000 (or MYR 65,000) minimum balance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of prolonged residence in Thailand of at least 6 months (rental/lease agreement) for certain applicant categories, plus 6 months' salary/income documentation", "difficulty": "moderate", "typical_time_days": null },
     { "document": "Health insurance for the stay", "difficulty": "routine", "typical_time_days": null }
   ],
   "outcome": {
@@ -80,19 +81,12 @@
   },
   "sources": [
     {
-      "id": "issacompass_digital_nomads",
-      "tier": 3,
-      "url": "https://www.issacompass.com/insights/visa-options-for-digital-nomads-in-thailand",
-      "title": "Issa Compass -- Visa Options for Digital Nomads in Thailand, describing the DTV's THB 500,000 funds requirement and foreign-employer test",
-      "accessed_at": "2026-08-19"
-    },
-    {
-      "id": "mbmg_dtv_ltr_guide",
-      "tier": 3,
-      "url": "https://mbmg-group.com/dtv-vs-ltr-the-definitive-guide-to-thailands-long-term-visas-2026-update/",
-      "title": "MBMG Group -- DTV vs. LTR: The Definitive Guide to Thailand's Long-Term Visas (2026 Update), describing the Workcation and Thai Soft Power & Activities categories",
-      "accessed_at": "2026-08-19"
+      "id": "mfa_go_th_dtv_checklist",
+      "tier": 1,
+      "url": "https://image.mfa.go.th/mfa/0/n3gTFT2TOE/Visa_Requirements/Checklist_DTV.pdf",
+      "title": "Ministry of Foreign Affairs of Thailand (mfa.go.th) -- Destination Thailand Visa (DTV) document checklist",
+      "accessed_at": "2026-08-26"
     }
   ],
-  "notes": "STATUS: DRAFT. HONEST SOURCING GAP: no direct fetch of a Thai e-Visa or MFA government page was achieved for this route in this research pass. STRUCTURAL FINDING: the DTV's legal status for remote work occupies a genuine grey area, confirmed across multiple independent sources -- the visa authorises the stay but does not explicitly grant formal work permission the way th_smart_visa or th_non_b_work_permit do, since Thailand's Foreign Business Act and Alien Employment Act frameworks were not written with remote/foreign-employer work in mind. DTV time explicitly does NOT count toward LTR visa eligibility or Thai Permanent Residency, confirmed across multiple sources -- a real structural dead-end distinguishing this route from most other work_independent routes in this dataset (contrast with Poland's D-8-4 or Italy's self-employment visa, both of which do lead toward settlement); leads_to_pr and leads_to_citizenship are correctly false rather than merely unpopulated. The 180-day exit/re-entry cycle (rather than a single continuous 5-year stay) is a genuinely distinctive maintenance requirement among this dataset's long-stay routes -- DTV holders routinely use these mandatory exits as informal regional travel opportunities (Malaysia, Singapore, Vietnam commonly cited), a real, documented practical pattern worth surfacing. The two qualifying groups (Workcation and Thai Soft Power & Activities) are genuinely distinct in purpose -- one economic/remote-work-oriented, one cultural-participation-oriented -- correctly modeled as separate OR-logic groups rather than blended into one generic 'DTV' test."
+  "notes": "STATUS UPGRADED from draft to published in this pass: the prior draft's two tier-3 sources (issacompass.com, mbmg-group.com) are now backed by a direct fetch of the Thai Ministry of Foreign Affairs' own official checklist document, which independently confirms the THB 500,000 funds threshold and the three-category structure (Workcation, Soft Power, and -- newly documented here -- Dependents). NEW DETAIL not in the prior draft: the checklist also accepts MYR 65,000 as an alternative currency for the funds requirement, and requires 'proof of prolonged residence in Thailand for at least 6 months' plus 6 months' salary documentation for certain applicant categories -- the checklist's phrasing on exactly which categories this applies to was not fully disambiguated in this pass. STRUCTURAL FINDING retained from the prior draft, not re-litigated here: the DTV's legal status for remote work occupies a genuine grey area -- it authorises the stay but does not explicitly grant formal work permission the way a work permit does, since Thailand's Foreign Business Act and Alien Employment Act frameworks were not written with remote/foreign-employer work in mind. leads_to_pr and leads_to_citizenship remain false, and the 180-day exit/re-entry cycle remains the defining maintenance requirement, both unchanged from the prior draft's findings and not contradicted by the tier-1 document fetched in this pass."
 }

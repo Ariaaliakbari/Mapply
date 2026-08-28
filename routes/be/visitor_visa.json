@@ -1,0 +1,74 @@
+{
+  "id": "be_visitor_visa",
+  "country": "BE",
+  "name": "Short-Stay Visa / Visa-Free Entry (Schengen)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bev_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "The C visa (Schengen short-stay visa) or visa-free entry is intended for stays of up to 90 days within any 180-day period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dofi_national_entries"
+        },
+        {
+          "id": "bev_visa_requirement",
+          "attribute": "requires_schengen_visa",
+          "operator": "==",
+          "value": "depends_on_nationality",
+          "hard": false,
+          "blocker_text": "Nationals of countries not covered by EU Regulation 2018/1806's visa-exemption list must obtain a Schengen short-stay (C) visa before travel; others may enter visa-free for the same 90/180-day allowance.",
+          "fix_path": "Apply for a C visa at a Belgian embassy/consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "dofi_national_entries"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dofi_national_entries",
+      "tier": 1,
+      "url": "https://dofi.ibz.be/en/themes/faq/long-stay/national-entries-visa-d",
+      "title": "IBZ (Belgian Immigration Office / FPS Home Affairs) -- National Entries (Visa D): distinguishes the C visa (Schengen, up to 90 days) from the D visa (national long-stay)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). Standard Schengen 90/180-day short-stay framework; visa requirement is nationality-dependent per EU Regulation 2018/1806, modeled as a soft (hard:false) branch. Belgium's official immigration portal (dofi.ibz.be, run by IBZ/FPS Home Affairs) intermittently returned robots.txt fetch failures during this research pass -- successfully fetched pages are cited directly; where a page could not be reached, a secondary source is used and the file is marked draft."
+}

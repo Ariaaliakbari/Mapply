@@ -1,0 +1,65 @@
+{
+  "id": "ar_citizenship_by_option",
+  "country": "AR",
+  "name": "Citizenship by Option (Children of Argentine Natives Born Abroad)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Children of native-born Argentine citizens who were themselves born abroad may opt for Argentine citizenship of origin.",
+    "evidence_hint": "Birth certificate; parent's proof of native Argentine citizenship (by birth, not naturalization); application before a competent civil-registry or consular authority."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Child of a native-born Argentine parent",
+      "requirements": [
+        {
+          "id": "arco_native_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_ar_native_born_parent",
+          "hard": true,
+          "blocker_text": "'Los hijos de Argentinos nativos, que habiendo nacido en pais estranjero optaren por la ciudadanía de origen' -- a person born abroad to a native-born Argentine parent may formally opt for citizenship of origin (Ley 346, Article 1(2)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_346"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of native (jus soli) Argentine citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ley_346",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-346-48854/actualizacion",
+      "title": "República Argentina -- Ley 346 de Ciudadanía y Naturalización (texto actualizado), Artículo 1(2): citizenship by option for children of native-born Argentine citizens born abroad",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). The extracted text specifies 'Argentinos NATIVOS' (native-born Argentines) as the qualifying parent -- read narrowly, this suggests the option route may not extend to children of NATURALIZED or by-option Argentine citizens born abroad, only to children of those who were themselves born Argentine (jus soli or a prior generation's option). This one-generation-only reading was not independently cross-confirmed against a second tier-1 source in this pass and is flagged as an interpretive judgment call, consistent with how similar one-generation-cap questions were handled for other countries in this dataset (e.g. Trinidad and Tobago's citizenship by descent). This route requires no residence in Argentina at all, unlike ar_naturalisation.json and ar_citizenship_by_investment.json."
+}

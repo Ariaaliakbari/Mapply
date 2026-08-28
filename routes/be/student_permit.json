@@ -1,0 +1,73 @@
+{
+  "id": "be_student_permit",
+  "country": "BE",
+  "name": "Student Residence Permit (Third-Country National)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "best_enrolment",
+          "attribute": "enrolled_full_time_54_credits",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires enrolment in full-time higher education at a recognised institution: at least 54 credits (or, for a preparatory year, at least 12 credit hours per week during the academic year). Enrolment at a private (unrecognised) institution does not confer student status.",
+          "fix_path": "Obtain admission to a recognised Belgian higher-education institution.",
+          "fix_time_months": null,
+          "source_id": "dofi_study"
+        },
+        {
+          "id": "best_means",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient means of subsistence is listed as a favourable factor in the application assessment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dofi_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter from a recognised institution (54+ credits full-time)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient means of subsistence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified at tier-1 precision in this pass; renewable for continuing studies, with a post-graduation 'search year' extension available",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["be_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "dofi_study",
+      "tier": 1,
+      "url": "https://dofi.ibz.be/en/themes/third-country-nationals/study",
+      "title": "IBZ -- Study (third-country nationals): 54-credit full-time enrolment standard, sufficient-means factor, private-institution exclusion, post-graduation search-year extension",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). Insurance requirement and exact permit duration were not stated at tier-1 precision on the page fetched in this pass -- flagged as a gap rather than assumed. family_can_join modeled false: no student-specific family reunification provision was located in this pass."
+}

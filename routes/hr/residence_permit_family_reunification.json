@@ -1,0 +1,115 @@
+{
+  "id": "hr_residence_permit_family_reunification",
+  "country": "HR",
+  "name": "Temporary Stay for the Purpose of Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_or_partner",
+      "name": "Spouse or common-law/life partner",
+      "requirements": [
+        {
+          "id": "hrfr_spouse_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being the spouse or common-law/life partner of a Croatian national, or of a third-country national holding permanent stay, temporary stay, long-term residence, or international protection in Croatia (partners: 3+ years' documented cohabitation, or shorter with a shared child).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_family_reunification"
+        },
+        {
+          "id": "hrfr_spouse_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_means_for_support",
+          "hard": true,
+          "blocker_text": "Requires proof of the purpose of stay and sufficient means for self-support.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_general"
+        }
+      ]
+    },
+    {
+      "id": "minor_child",
+      "name": "Minor child (biological or adopted)",
+      "requirements": [
+        {
+          "id": "hrfr_child_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires being the minor biological or adopted child of a Croatian national, or of a third-country national holding permanent stay, temporary stay, long-term residence, or international protection.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "parent_of_minor",
+      "name": "Parent or adoptive parent of a minor Croatian citizen/resident",
+      "requirements": [
+        {
+          "id": "hrfr_parent_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_or_grandparent_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires being the parent or adoptive parent of a minor who is a Croatian citizen, or who holds long-term residence or permanent stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (spouse) or proof of cohabitation 3+ years (partner)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate or adoption decision (child/parent grounds)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hr_long_term_residence", "hr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mup_hr_family_reunification",
+      "tier": 1,
+      "url": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-for-the-purpose-of-family-reunification/281662",
+      "title": "Ministarstvo unutarnjih poslova Republike Hrvatske (mup.gov.hr) -- Temporary stay for the purpose of family reunification",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "aliens_act_2020_general",
+      "tier": 1,
+      "url": "https://mup.gov.hr/UserDocsImages/zakoni/ALIENS%20ACT%20(Official%20Gazette%20No%20133_2020).pdf",
+      "title": "Croatian Parliament -- Aliens Act (Official Gazette No. 133/2020, as amended 114/22, 151/22)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. Sponsors holding only a seasonal work permit, or temporary stay for a purpose other than the listed grounds, cannot sponsor family reunification -- a real restriction, not encoded as its own requirement since it constrains who counts as a qualifying sponsor rather than the applicant. 'Exceptionally, any other relative' can be considered a close family member for special personal/humanitarian reasons per the source -- not built as its own group since it is a discretionary catch-all, not a defined test. HONEST GAP: no specific income/housing threshold figure was found in the fetched mup.gov.hr page for this route (unlike, e.g., Estonia's confirmed 'twice the subsistence level' figure) -- the general Aliens Act 'sufficient means' language is used instead of inventing a number. duration_length left as an explicit 'not specified' string rather than a guessed figure: not stated in the sources fetched in this pass. family_can_join set true: this route's own dependants (e.g. minor children of the sponsored spouse) can generally join through the same or a linked family-reunification filing, per the source's general framing of close family members."
+}

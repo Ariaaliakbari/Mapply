@@ -1,0 +1,75 @@
+{
+  "id": "lc_citizenship_by_registration_commonwealth",
+  "country": "LC",
+  "name": "Citizenship by Registration -- Commonwealth Citizens (Residence)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lcrc_commonwealth",
+          "attribute": "is_commonwealth_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be a Commonwealth citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s6"
+        },
+        {
+          "id": "lcrc_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Requires 7 years of ordinary residence in Saint Lucia prior to the application, though the Minister may combine discontinuous periods or accept a shorter period for special reasons.",
+          "fix_path": "Accumulate 7 years of ordinary residence (or a shorter period the Minister may accept for special reasons).",
+          "fix_time_months": 84,
+          "source_id": "lc_citizenship_act_s6"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Commonwealth citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 7 years' ordinary residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of allegiance (may be required at ministerial discretion)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lc_citizenship_act_s6",
+      "tier": 1,
+      "url": "https://attorneygeneralchambers.com/laws-of-saint-lucia/citizenship-of-saint-lucia-act/section-6",
+      "title": "Citizenship of Saint Lucia Act, Section 6 (primary legislation): Registration of Citizens -- Commonwealth citizens with 7 years' ordinary residence in Saint Lucia prior to application, ministerial discretion to combine discontinuous periods or shorten for special reasons",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. This is the parallel registration ground to lc_citizenship_by_marriage.json within the same Section 6 -- both grounds share the registration mechanism and ministerial discretion provisions (character/language refusal grounds, discontinuous-period combination), but this ground is available to any Commonwealth citizen with 7 years' residence, independent of marital status. Unlike Trinidad and Tobago's Citizenship Act (which explicitly bars non-Commonwealth nationals from its registration route, forcing them to naturalisation instead), the Saint Lucia Act text reviewed for this build does NOT state that this Commonwealth registration ground is the exclusive path for Commonwealth citizens, nor that Section 8 naturalisation (see lc_naturalisation.json) is barred to them -- in practice a Commonwealth citizen would likely prefer this lighter-touch registration ground over naturalisation's renunciation-of-other-citizenship requirement, but that is an inference about incentives, not a confirmed legal exclusivity rule."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "rs_self_employment_residence",
+  "country": "RS",
+  "name": "Temporary Residence -- Self-Employment",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rsse_registration",
+          "attribute": "registered_as_business_owner_in_serbia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registration as a business owner/founder (entrepreneur) with the Serbian Business Registers Agency (SBRA) is required. A foreigner with no residence in Serbia may register as an entrepreneur; no minimum share capital applies to entrepreneur registration.",
+          "fix_path": "Register a business (entrepreneur/'preduzetnik') with the SBRA.",
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        },
+        {
+          "id": "rsse_qualifications",
+          "attribute": "has_relevant_qualifications",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A document or certificate confirming the applicant holds the appropriate qualifications to perform the registered activity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "SBRA business registration confirming entrepreneur status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of qualifications for the registered activity", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rs_permanent_residence", "rs_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "mup_temp_residence",
+      "tier": 1,
+      "url": "https://www.mup.gov.rs/wps/portal/en/information/temporary+residence/temporary+residence",
+      "title": "Serbian Ministry of Interior (MUP) -- self-employment temporary residence ground: business-owner/founder registration with SBRA, qualifications certificate",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "zunic_company_formation",
+      "tier": 3,
+      "url": "https://zuniclaw.com/en/serbia-residence-permit-by-company-formation",
+      "title": "Zunic Law -- clarifies entrepreneur/founder self-employment applications are exempt from labour-market testing and do not require an employment contract, unlike a non-founder managing director's application",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). This is Serbia's route for a freelancer/sole trader working for themselves (registering as an individual entrepreneur, 'preduzetnik', with no minimum capital), distinct from rs_investor_residence.json (capital-based route into an existing/newly formed company) and from a non-founder managing director role (which is treated as employment and can be subject to labour-market testing per the tier-3 source). No formal 'digital nomad visa' by that name exists in Serbia; sources marketing one generally repackage this self-employment ground or the investor route rather than describing a distinct legal category -- disclosed here rather than inventing a separate 'digital nomad' file. work_rights modeled 'restricted' since authorization is tied to the specific registered business activity."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "al_citizenship_by_descent",
+  "country": "AL",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Anyone born to at least one parent holding Albanian citizenship automatically acquires Albanian citizenship, with no territorial restriction (applies whether the child is born in Albania or abroad). The right to register persists even after the child turns 18.",
+    "evidence_hint": "Birth certificate; parent's proof of Albanian citizenship; civil registry application."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Child of an Albanian citizen parent",
+      "requirements": [
+        {
+          "id": "ald_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_al_citizen_parent",
+          "hard": true,
+          "blocker_text": "Anyone born to at least one Albanian-citizen parent acquires Albanian citizenship automatically (Article 5), with no territorial restriction.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Albanian citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_law_113_2020",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Law%20No.%20113-2020%20(English).pdf",
+      "title": "Republic of Albania -- Law No. 113/2020 on Citizenship (official English translation), Article 5: automatic acquisition for children of at least one Albanian-citizen parent, no territorial restriction, registration right surviving age 18",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). Gender-neutral, either parent qualifies. This file covers ONLY direct jus sanguinis (a parent who is currently an Albanian citizen). A separate, broader route exists in the same law for people with more distant Albanian origin who do NOT have a currently-citizen parent -- see al_citizenship_by_ancestry.json, which requires an application, a documented kinship chain up to the third degree, and language/history knowledge, unlike this automatic route."
+}

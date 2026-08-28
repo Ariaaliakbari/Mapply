@@ -1,0 +1,103 @@
+{
+  "id": "aw_retiree_interest_rate_earner",
+  "country": "AW",
+  "name": "Retiree / Interest Rate Earner Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "guaranteed_income",
+      "name": "Guaranteed pension/annuity/investment income",
+      "requirements": [
+        {
+          "id": "awri_gi_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 55,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 55 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_retiree"
+        },
+        {
+          "id": "awri_gi_income",
+          "attribute": "annual_income_afl",
+          "operator": ">=",
+          "value": 50000,
+          "hard": true,
+          "blocker_text": "Requires guaranteed annual income of at least AFL 50,000 (about US$27,900) from pension, annuity, or investment yields, paid from an authorised bank in the Netherlands, an OECD country, a UNASUR member, a CARICOM member, or an EU partnership country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_retiree"
+        }
+      ]
+    },
+    {
+      "id": "non_guaranteed_income",
+      "name": "Non-guaranteed assets or rental income",
+      "requirements": [
+        {
+          "id": "awri_ngi_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_retiree"
+        },
+        {
+          "id": "awri_ngi_income",
+          "attribute": "annual_asset_or_rental_income_afl",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Requires at least AFL 100,000 (about US$55,900) per year from a bank-balance/investment asset, or an equivalent AFL 100,000 in annual rental income from real estate in an authorised country/region (Netherlands, OECD, UNASUR, CARICOM, EU partnership countries).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_retiree"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application Form B", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Income statement", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank statements showing average yearly income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Legal documentation (first applications only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually under the same conditions",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["aw_indefinite_residence"]
+  },
+  "sources": [
+    {
+      "id": "dimas_retiree",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/living/retiree-interest-rate-earner/",
+      "title": "DIMAS, Government of Aruba -- Retiree / Interest Rate Earner: two income-based grounds (guaranteed income, age 55+, AFL 50,000/yr; non-guaranteed assets/rental, age 18+, AFL 100,000/yr), authorised-country bank list, 1-year renewable permit, no paid work permitted",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build. Two OR-groups folded into one file since both lead to the identical Retiree/Interest Rate Earner permit with the same outcome, differing only in age threshold and the income test. No paid work is allowed on this permit -- a separate work permit is required, unlike some countries' retiree/passive-income routes in this dataset that permit limited local work. USD conversions in blocker_text are approximate (AFL is pegged near 1.79 per USD) and included only as an orientation aid -- the binding figures are the AFL amounts stated on the source page. leads_to_pr/pr_after_months (120 months) reflects the Indefinite Period Residence route's stated 120-month/10-year threshold (see aw_indefinite_residence.json), since annual renewal of this permit is one of the ways that clock accrues."
+}

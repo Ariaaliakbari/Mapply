@@ -1,0 +1,65 @@
+{
+  "id": "mx_international_protection",
+  "country": "MX",
+  "name": "Refugee Status (Condición de Refugiado, COMAR)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who fears returning to their country of origin due to persecution or serious harm may apply for refugee status through COMAR (Comisión Mexicana de Ayuda a Refugiados), physically present in Mexico.",
+    "evidence_hint": "Identity documents if available; evidence supporting the persecution/harm claim."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxip_deadline",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "applied_to_comar_within_30_working_days_of_arrival",
+          "hard": true,
+          "blocker_text": "Must apply at a COMAR office (Mexico City, Tapachula, Palenque, Tenosique, Oluta, Guadalajara, Tijuana, Saltillo, or Monterrey) within 30 working days of arrival in Mexico, or via INM/a migration station where no local COMAR office exists.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_mx_comar_process"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application filed in person at a COMAR office within the 30-working-day window", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Identity/supporting documentation for the protection claim", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed for the processing period itself; recognized refugees receive permanent residence directly",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_mx_comar_process",
+      "tier": 2,
+      "url": "https://help.unhcr.org/mexico/en/como-solicitar-la-condicion-de-refugiado-en-mexico/",
+      "title": "UNHCR Mexico -- How to apply for refugee status in Mexico (COMAR): offices, 30-day deadline, work authorisation, outcome",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. STATUS SET TO DRAFT: sourced from UNHCR Mexico (tier 2) rather than a Mexican government source -- a COMAR government page (gob.mx/comar/articulos/requisitos-para-solicitar-refugio-en-mexico) was located and is almost certainly the right tier-1 source, but it returned an HTTP 403 to automated fetching in this pass and so could not be read and cited directly; flagged here rather than silently substituted. Mexico's asylum system has grown rapidly into one of the world's largest by application volume, driven heavily by transiting/Central American and other claimants. Per UNHCR: applicants get a CONSTANCIA on filing, then may separately apply to INM for a Visitor Card for Humanitarian Reasons (TVRH) that permits work while the claim is processed -- work_rights set 'full' reflects this authorised-work provision during processing as well as post-recognition, not merely the recognized-refugee end state. Notably generous outcome: recognized refugees (and included family members) reportedly receive PERMANENT residence directly -- not a temporary-then-upgrade path as in many other countries in this dataset -- but this specific point also awaits tier-1 confirmation."
+}

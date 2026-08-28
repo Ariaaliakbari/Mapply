@@ -1,0 +1,79 @@
+{
+  "id": "co_investor_visa",
+  "country": "CO",
+  "name": "Visa de Migrante (M) -- Inversionista",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "direct_foreign_investment",
+      "name": "Direct foreign investment (via Banco de la República channel)",
+      "requirements": [
+        {
+          "id": "coiv_dfi",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 299000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires direct foreign investment exceeding 650 SMLMV (Colombia's legal monthly minimum wage unit -- approximately USD 299,000 at the source's implied conversion rate; the actual legal threshold is denominated in SMLMV and drifts annually), channelled through Colombia's Central Bank (Banco de la República) foreign-investment registration system.",
+          "fix_path": "Fund and register the qualifying direct investment.",
+          "fix_time_months": null,
+          "source_id": "cancilleria_visa_m_inversionista"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Real estate investment",
+      "requirements": [
+        {
+          "id": "coiv_realestate",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 161000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires real property held exclusively in the applicant's own name, valued above 350 SMLMV (approximately USD 161,000 at the source's implied conversion rate; the actual legal threshold is denominated in SMLMV and drifts annually).",
+          "fix_path": "Acquire and document qualifying real property.",
+          "fix_time_months": null,
+          "source_id": "cancilleria_visa_m_inversionista"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Banco de la República foreign investment registration (for direct investment group)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Property deed/registration (for real-estate group)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable if the investment is maintained",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_resident_by_accumulated_time", "co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_visa_m_inversionista",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/node/26979",
+      "title": "Cancillería de Colombia -- Visa M Inversionista: direct foreign investment (650+ SMLMV) and real estate (350+ SMLMV) categories, 3-year duration",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. TWO GENUINELY DIFFERENT INVESTMENT GROUNDS confirmed directly at tier-1 and modelled as OR-logic groups within one visa. work_rights set to 'none': the source describes this as an investment-holding status, not an employment-authorising one -- an investor wishing to also work would need a separate work-authorising route. pr_after_months (60) reflects the general 5-year 'investor' track under co_resident_by_accumulated_time (tier-3 sourced there, flagged accordingly rather than restated as certain here)."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "eg_citizenship_by_marriage",
+  "country": "EG",
+  "name": "Citizenship by Marriage (Foreign Wife of an Egyptian Man)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign woman who marries an Egyptian man may acquire Egyptian nationality after formally notifying the Ministry of Interior, provided the marriage subsists for 2 years from the date of notification.",
+    "evidence_hint": "Marriage certificate; formal notification to the Ministry of Interior."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "egm_wife_of_egyptian",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "wife_of_eg_citizen",
+          "hard": true,
+          "blocker_text": "Available to a foreign WOMAN who marries an Egyptian man (Article 7). No equivalent provision was found in the primary law for a foreign man marrying an Egyptian woman -- Article 12 instead confirms an Egyptian woman marrying a foreigner retains her own Egyptian nationality, but does not grant her husband Egyptian nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_26_1975"
+        },
+        {
+          "id": "egm_notification_period",
+          "attribute": "months_since_notification",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Marriage must subsist for 2 years from the date of formal notification to the Ministry of Interior, unless the marriage ends due to the husband's death.",
+          "fix_path": "Submit notification and remain married for 2 years from that date.",
+          "fix_time_months": 24,
+          "source_id": "law_26_1975"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Formal notification to the Ministry of Interior", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "law_26_1975",
+      "tier": 1,
+      "url": "https://clr.africanchildforum.org/Legislation%20Per%20Country/Egypt/egypt_nationality_1975_en.pdf",
+      "title": "Egypt -- Law No. 26 of 1975 Concerning Egyptian Nationality (official English translation), Article 7: foreign wife of an Egyptian man may acquire nationality after 2 years from notification; Article 12: Egyptian women retain their own nationality upon marrying a foreigner, with no reciprocal grant to the foreign husband",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). A genuinely gender-restricted marriage route, comparable to the pattern flagged for the UAE and Bahamas elsewhere in this dataset: the law provides a marriage-based citizenship route ONLY for a foreign woman marrying an Egyptian man. A foreign man marrying an Egyptian woman has NO equivalent marriage-based path under the text located in this pass -- he would need to rely on ordinary naturalization (see eg_naturalisation.json) like any other unrelated foreign resident, typically the far longer 10-year standard route. This asymmetry is sourced to the ORIGINAL 1975 text; it was not independently confirmed whether Law 154/2004 or any later amendment altered Article 7 or Article 12 specifically (that amendment's confirmed changes, per secondary sourcing, targeted descent/maternal-transmission provisions -- see eg_citizenship_by_descent.json -- not the marriage article), so this reflects the best-available primary-text reading rather than a fully current-verified one."
+}

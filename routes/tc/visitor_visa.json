@@ -1,0 +1,73 @@
+{
+  "id": "tc_visitor_visa",
+  "country": "TC",
+  "name": "Visitor Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tcv_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 6 months beyond departure (US, UK, and Canadian citizens need only be valid for the duration of the stay).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "visittci_entry_requirements"
+        },
+        {
+          "id": "tcv_return_ticket",
+          "attribute": "has_return_or_onward_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold a valid onward or return ticket.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "visittci_entry_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (validity per nationality)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Onward or return ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days, though officers commonly stamp for 30 days only; extensions available through the Immigration Department for a fee",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "visittci_entry_requirements",
+      "tier": 3,
+      "url": "https://www.visittci.com/travel-info/entry-requirements",
+      "title": "Visit Turks and Caicos Islands (tourism board) -- Entry Requirements, Visas, Passports: passport validity rules by nationality, visa-exempt nationalities, 30/90-day stay practice, return-ticket requirement, Russia/Ukraine added to visa-required list July 2022",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY, first route of the Turks and Caicos Islands' initial build -- the sixth British Overseas Territory (BOT) built this session, after Anguilla, Montserrat, Cayman, Bermuda, and the British Virgin Islands. Same core modelling decision applies as the other five BOTs: TCI Status (the local Islander/right-of-abode status) is NOT British nationality -- actual naturalisation as a British Overseas Territories Citizen is a separate route (see tc_naturalisation_botc.json). STATUS: DRAFT because no gov.tc/Border Force entry-requirements page was successfully retrieved in this pass (a direct fetch of borderforce.gov.tc's visas-and-permits page returned a 429/SSL error) -- sourced instead to the official tourism board's visitor-facing guide, tier 3. Re-verify against gov.tc/borderforce.gov.tc directly once accessible. No definitive visa-exempt nationality list was retrieved, though the source notes Russia and Ukraine were added to the visa-required list in July 2022 as an example of how this list changes."
+}

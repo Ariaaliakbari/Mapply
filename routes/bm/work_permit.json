@@ -1,0 +1,83 @@
+{
+  "id": "bm_work_permit",
+  "country": "BM",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmwp_employer_only",
+          "attribute": "employer_sponsored",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Only an employer can apply for a work permit -- employees cannot seek employment as tourists and must be approved before entering Bermuda for work. Non-Bermudians, persons not married to a Bermudian, and persons without a Permanent Resident's Certificate (PRC) all require a work permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_work_permit"
+        },
+        {
+          "id": "bmwp_recruitment",
+          "attribute": "genuine_local_recruitment_conducted",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must conduct a genuine job search (including posting on bermudajobboard.bm and in newspapers), give hiring preference to qualified Bermudians, spouses of Bermudians, or PRC holders who meet minimum requirements, and notify unsuccessful local candidates before submitting the work permit application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence of genuine local recruitment effort", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Standard/periodic work permit fee: $1,015 (1 year) to $6,510 (5 years)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Global or new business permit fee: $1,955-$7,460 depending on duration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Short-term permit fee: $705-$1,070 for 3-6 months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Working English proficiency (construction workers and Portuguese Accord workers)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "varies by permit type: short-term (3-6 months), standard/periodic and global/new business permits (1-5 years)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 240,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bm_permanent_residents_certificate"]
+  },
+  "sources": [
+    {
+      "id": "gov_bm_work_permit",
+      "tier": 1,
+      "url": "https://www.gov.bm/how-get-work-permit",
+      "title": "Government of Bermuda -- How to Get a Work Permit: employer-only application, recruitment/notification obligations, permit types (standard, global, new business, periodic)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "gov_bm_all_fees",
+      "tier": 1,
+      "url": "https://www.gov.bm/all-immigration-fees",
+      "title": "Government of Bermuda -- All Immigration Fees: work permit fee schedule by type and duration",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build. work_rights is 'restricted': employment is tied to the sponsoring employer and the specific approved position. pr_after_months (240 = 20 years) reuses the general Permanent Resident's Certificate residence threshold confirmed in bm_permanent_residents_certificate.json's source, on the assumption that time on a work permit counts toward that clock -- the PRC source's phrase 'ordinarily resident in Bermuda' supports this but it is not explicitly restated in the work permit page itself. Specific labour-market-test thresholds (how long a position must be advertised, what counts as a 'qualified' local candidate) were not detailed in the source reviewed."
+}

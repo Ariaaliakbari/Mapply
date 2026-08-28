@@ -1,0 +1,62 @@
+{
+  "id": "co_family_visa",
+  "country": "CO",
+  "name": "Visa de Migrante (M) -- Vínculo Familiar con Nacional Colombiano",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cofv_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being the spouse, permanent partner (companero/a permanente), or parent/adoptive parent of a Colombian national.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cancilleria_visa_m_migrante"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate, proof of permanent partnership, or birth/adoption certificate establishing the tie to the Colombian national", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Colombian relative's cédula (national ID)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_resident_by_accumulated_time", "co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_visa_m_migrante",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/node/26933",
+      "title": "Cancillería de Colombia -- Visa de Migrante (tipo M): 14 sub-categories listed including spouse/permanent-partner/parent of Colombian national, 3-year validity, 180-day absence rule",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. Confirmed at tier-1 that this is a distinct sub-category of the Migrant (M) visa. Migrant M visa holders get an 'open work permit' per the tier-1 source describing the broader M/R visa system, hence work_rights 'full'. pr_after_months (24) and citizenship_after_months (24) reflect the REDUCED tracks that apply specifically to spouses/permanent-partners of Colombian nationals: 2 years of M-visa holding for co_resident_by_accumulated_time's spouse/parent group, and separately 2 years of domicile for co_naturalisation's marriage-based group -- these two 2-year counts are not confirmed to be the same clock or stackable, flagged rather than assumed identical. Mercosur migrant and Andean migrant are two further distinct M sub-categories (regional-integration-agreement based) also confirmed to exist at tier-1 but not modelled as their own route files in this pass due to limited region-specific detail retrieved."
+}

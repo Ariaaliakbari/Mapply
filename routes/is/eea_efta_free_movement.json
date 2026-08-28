@@ -1,0 +1,72 @@
+{
+  "id": "is_eea_efta_free_movement",
+  "country": "IS",
+  "name": "EEA/EFTA Right of Residence",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "iseea_nationality",
+          "attribute": "nationality_region",
+          "operator": "==",
+          "value": "EEA_EFTA_or_Faroe",
+          "hard": true,
+          "blocker_text": "EEA/EFTA citizens (EU states plus Norway, Liechtenstein, Switzerland) may reside in Iceland without a residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_eea_registration"
+        },
+        {
+          "id": "iseea_registration",
+          "attribute": "registered_with_registers_iceland",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must register with Registers Iceland (Thjodskra) once resident beyond the threshold period, obtaining an Icelandic ID number (kennitala) and legal domicile status. General processing time up to 10 working days.",
+          "fix_path": "Register with Registers Iceland.",
+          "fix_time_months": null,
+          "source_id": "island_eea_registration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid EEA/EFTA ID card or passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "registration is not time-limited, subject to continuing residence",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["is_permanent_residence", "is_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "island_eea_registration",
+      "tier": 1,
+      "url": "https://island.is/en/registration-of-eea-efta-foreign-nationals",
+      "title": "Island.is -- Registration of EEA/EFTA Foreign Nationals: registration with Registers Iceland, Icelandic ID number, 10-working-day processing",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). STATUS: DRAFT -- the fetched source text was internally inconsistent about the registration deadline, stating in body text that registration applies to stays 'longer than three months' while the page's own title/form referenced a 'period exceeding six months.' Modeled the registration requirement as existing (hard:true) without picking one specific deadline figure, and flagged the conflict rather than guessing. pr_after_months (48) and citizenship_after_months (84) use is_permanent_residence.json's standard 4-year threshold and is_naturalisation.json's standard 7-year bar respectively, as conservative baselines -- not EEA/EFTA-specific figures, since none were found distinct from the general third-country-national tracks in this pass."
+}

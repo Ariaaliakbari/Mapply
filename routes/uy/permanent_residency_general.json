@@ -1,0 +1,63 @@
+{
+  "id": "uy_permanent_residency_general",
+  "country": "UY",
+  "name": "Residencia Legal Permanente",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uypr_means",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "sufficient_monthly_income_for_self_support",
+          "hard": true,
+          "blocker_text": "Requires demonstrating sufficient monthly income for self-support: notarial income certificates and BPS work history for employees, business registration and income documentation for the self-employed, or pension/retirement certificates for retirees.",
+          "fix_path": "Document qualifying income, employment history, business registration, or pension.",
+          "fix_time_months": null,
+          "source_id": "gub_uy_residencia_permanente"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Criminal record certificate (country of origin and any 6+ month residence in the past 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Current health and vaccination certificates", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage/birth certificate, if establishing family relationships (under 1 year old)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gub_uy_residencia_permanente",
+      "tier": 1,
+      "url": "https://www.gub.uy/tramites/residencia-legal-permanente",
+      "title": "Sitio oficial de la República Oriental del Uruguay -- Residencia Legal Permanente: open to any nationality, income/means documentation, national ID card issuance",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. Confirmed directly at tier-1: open to any foreign national regardless of nationality or prior visa history -- the source does not require having first held temporary residency, so this can plausibly be a direct first application. Cost is 557.30 UI (Unidad Indexada, an inflation-adjusted unit), with Brazilian and Paraguayan nationals exempt -- reproduced as a notable detail rather than smoothed into a flat fee figure. citizenship_after_months (36) reflects the 3-year 'family constituted' track under uy_naturalisation, on the assumption that a permanent resident with family in Uruguay would typically qualify for the reduced track -- this is an inference, not independently confirmed as automatic."
+}

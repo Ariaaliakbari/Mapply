@@ -1,0 +1,74 @@
+{
+  "id": "eg_work_permit",
+  "country": "EG",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "egwp_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "Requires an employment agreement and proof of at least 3 years' relevant experience in the same field, translated and certified by the applicant's home-country foreign ministry and the Egyptian consulate.",
+          "fix_path": "Secure a qualifying job offer and certify prior experience documentation.",
+          "fix_time_months": null,
+          "source_id": "mondaq_work_permit"
+        },
+        {
+          "id": "egwp_egyptianization_ratio",
+          "attribute": "employer_meets_egyptianization_ratio",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employers must maintain a 10:1 Egyptian-to-foreign worker ratio (foreign workers capped at roughly 10% of the workforce at any facility) -- exemptions exist for investors, staff under international agreements, and rare specialists.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mondaq_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment agreement", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certified proof of 3+ years' relevant experience", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Security clearance from competent authorities", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable; must register with the Ministry of Manpower within 60 days of entry",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["eg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mondaq_work_permit",
+      "tier": 3,
+      "url": "https://www.mondaq.com/employee-rights-labour-relations/1804652/hire-foreign-workers-in-egypt-|-work-permit-guide-2025",
+      "title": "Mondaq -- Hire Foreign Workers in Egypt: Work Permit Guide, citing Egypt's Labour Law No. 12/2003 and Ministry of Manpower regulations: 10:1 Egyptianization ratio, 1-year permits, 60-day registration window, 3-year experience requirement",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). STATUS: DRAFT -- the Ministry of Manpower's own site (manpower.gov.eg) could not be fetched during this research pass (robots.txt/SSL error), so this file relies on a law-firm secondary source (tier 3) summarizing Egypt's Labour Law No. 12/2003. The substance is specific and consistent with well-documented Egyptian labor policy (the 10:1 Egyptianization ratio is a long-standing, widely-cited rule), but no direct .gov.eg confirmation was obtained. citizenship_after_months (120) reflects Egypt's standard 10-year naturalization residence bar (see eg_naturalisation.json) -- Egypt has no distinct, faster work-based citizenship track found in this pass, so the standard figure is used as an illustrative estimate rather than a route-specific figure."
+}

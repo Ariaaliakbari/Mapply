@@ -1,0 +1,62 @@
+{
+  "id": "cr_work_permit",
+  "country": "CR",
+  "name": "Residente Temporal Trabajador (permiso de trabajo)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "crwp_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed",
+          "hard": true,
+          "blocker_text": "Requires a confirmed position with a Costa Rican legal entity (as an employee) or a qualifying basis for self-employment, per the migratory categories for company executives, technical staff, scientists/professionals/specialised technicians, or other specific occupations under Article 79.",
+          "fix_path": "Secure a confirmed qualifying position or self-employment basis.",
+          "fix_time_months": null,
+          "source_id": "dhr_go_cr_ley8764_titulo_vi"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract or self-employment documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police/criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cr_permanent_residence", "cr_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "dhr_go_cr_ley8764_titulo_vi",
+      "tier": 1,
+      "url": "https://www.dhr.go.cr/defensoria_transparente/participacion_ciudadana/migracion_refugio/ley_8764/titulo_vi.pdf",
+      "title": "Defensoría de los Habitantes de la República (dhr.go.cr) -- Ley General de Migración y Extranjería No. 8764, Título VI, Article 79 (categories including company executives/technical staff, scientists/professionals, credentialed athletes, press correspondents)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. Article 79 lists several distinct named occupational subcategories (executives/technical staff of companies, scientists/professionals/specialised technicians, credentialed athletes, press correspondents, religious personnel, transborder workers, project-specific workers) rather than one generic 'work permit' -- collapsed here into a single route with a general job-offer requirement rather than building out each named occupational subcategory separately, since their individual specific criteria were not itemised in the source text fetched. STATUS SET TO DRAFT: migracion.go.cr's own permit-specific pages returned HTTP 403 throughout this pass; permit duration was not stated in the tier-1 source fetched (dhr.go.cr covers Título VI/permanent residence primarily, only listing the temporary categories in passing)."
+}

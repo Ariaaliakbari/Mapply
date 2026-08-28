@@ -1,0 +1,66 @@
+{
+  "id": "id_permanent_stay_kitap",
+  "country": "ID",
+  "name": "Izin Tinggal Tetap (KITAP)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["id_work_kitas", "id_marriage_kitas", "id_golden_visa", "id_second_home_visa"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "idkp_time",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 consecutive years holding a KITAS (limited stay permit) before converting to KITAP (permanent stay permit). Some categories -- spouses/children of Indonesian citizens, former Indonesian citizens, and certain investors -- may qualify via alternative, less-clearly-specified paths.",
+          "fix_path": "Hold KITAS status continuously for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "golaw_id_kitas_kitap"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "5 years of continuous KITAS documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Sponsor/employer or spousal documentation, depending on prior KITAS category", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "permanent, but the physical card must be renewed every 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["id_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "golaw_id_kitas_kitap",
+      "tier": 3,
+      "url": "https://golaw.id/blog/panduan-kitas-dan-kitap-izin-tinggal-bagi-wna-di-indonesia/",
+      "title": "GoLaw -- KITAS/KITAP guide: 5-year consecutive KITAS requirement, permanent status with 5-year card renewal",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: imigrasi.go.id's own KITAP FAQ page (imigrasi.go.id/faq/izin-tinggal/apa-saja-syarat-pengajuan-izin-tinggal-tetap) returned an HTTP 403 in this pass, so this route is tier-3 sourced only. work_rights set 'restricted': KITAP holders generally still cannot freely take any job -- specific work authorisation depends on the underlying basis for the permit, consistent with Indonesia's broader pattern of tying employment rights to a specific sponsor/role rather than granting open work rights on residence status alone; this is an inference from the pattern seen across id_work_kitas and id_marriage_kitas rather than a directly confirmed KITAP-specific rule, flagged accordingly. required_prior_route_ids lists this dataset's KITAS-type routes that plausibly feed into the 5-year conversion; the source also mentions unspecified 'alternative eligibility paths' for spouses/children of citizens and certain investors, which were not independently detailed or separately modelled."
+}

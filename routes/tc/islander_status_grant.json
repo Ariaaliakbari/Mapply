@@ -1,0 +1,136 @@
+{
+  "id": "tc_islander_status_grant",
+  "country": "TC",
+  "name": "TCI Islander Status -- Grant to BOTC/British Citizens and Registered BOTC",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": {
+    "cap_type": "none",
+    "opens": "06-01",
+    "closes": "09-30",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["tc_prc_residence", "tc_prc_family", "tc_prc_ancestry", "tc_prc_investment"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "botc_or_british_citizen",
+      "name": "BOTC of TCI, or British Citizen with PRC/long residence",
+      "requirements": [
+        {
+          "id": "tcisg_botc_status",
+          "attribute": "is_botc_of_tci_or_british_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be a British Overseas Territories Citizen of TCI, or a British Citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        },
+        {
+          "id": "tcisg_british_citizen_tenure",
+          "attribute": "months_holding_prc_or_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "If applying as a British Citizen (not already a TCI BOTC): must have held a PRC for at least 5 years, OR have been legally resident in TCI for at least 10 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        },
+        {
+          "id": "tcisg_clean_record",
+          "attribute": "no_criminal_record_or_bankruptcy",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have no criminal record or bankruptcy in any country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        }
+      ]
+    },
+    {
+      "id": "registered_botc",
+      "name": "Registered BOTC under Section 15(4) of the British Nationality Act 1981",
+      "requirements": [
+        {
+          "id": "tcisg_born_in_islands",
+          "attribute": "born_in_territory",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have been born in the Islands, with both parents holding legal status at the time of the applicant's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        },
+        {
+          "id": "tcisg_registered_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        },
+        {
+          "id": "tcisg_registered_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires at least 10 years of legal residence.",
+          "fix_path": "Accumulate 10 years of legal residence.",
+          "fix_time_months": 120,
+          "source_id": "gov_tc_tci_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of BOTC/British citizenship or Section 15(4) registration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "PRC or residence history documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance (no criminal record/bankruptcy, all countries)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Administrative fee: $150", "difficulty": "routine", "typical_time_days": null },
+    { "document": "TCI Status (BOTC/British Citizen) fee: $5,000", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Newspaper advertising costs (separate)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_tc_tci_status",
+      "tier": 1,
+      "url": "https://gov.tc/immigration/tci-status",
+      "title": "Government of the Turks and Caicos Islands -- TCI Islander Status: acquisition by grant, BOTC/British Citizen route and registered-BOTC (Section 15(4) BNA 1981) route, annual June-September application window, Islander Status Commission review, public-interest/economic-impact assessment criteria, fee schedule",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. This route is for people who are ALREADY a British Overseas Territories Citizen or British Citizen (often via a PRC route -- see the tc_prc_*.json files, which are prerequisites here) but want the additional, higher-tier TCI Islander status itself (voting rights, Crown land, scholarships) -- it is emphatically NOT the BOTC naturalisation route (see tc_naturalisation_botc.json), which grants citizenship rather than local status. Two OR-groups folded into one file since both lead to the same TCI Status grant on the same application, differing only in the applicant's starting citizenship/status. application_window reflects the source's explicit June 1 - September 30 annual window for these (non-marriage) grant applications -- contrasted with tc_islander_status_marriage.json, which the same source states may be submitted at any time. Assessment also weighs public interest, economic impact on existing workers, and whether the applicant offers exceptional skills -- these qualitative criteria are noted here but not separately modelled as hard requirements since no quantifiable threshold was given."
+}

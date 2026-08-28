@@ -1,0 +1,112 @@
+{
+  "id": "al_naturalisation",
+  "country": "AL",
+  "name": "Naturalization (Standard Residence Route)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["al_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aln_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be 18 or older with full legal capacity (Article 8(1)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        },
+        {
+          "id": "aln_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Requires lawful residence for a continuous period of no less than 7 years, holding valid permanent residency at the time of application.",
+          "fix_path": "Accumulate 7 years of continuous lawful residence, including permanent residence status.",
+          "fix_time_months": 84,
+          "source_id": "citizenship_law_113_2020"
+        },
+        {
+          "id": "aln_housing_income",
+          "attribute": "has_lawful_income_and_housing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires compliant housing and lawful income meeting minimum living standards.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        },
+        {
+          "id": "aln_no_serious_crime",
+          "attribute": "has_criminal_conviction_over_3_years",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "No criminal convictions exceeding a 3-year sentence (with an exception for politically-motivated convictions).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        },
+        {
+          "id": "aln_language_history",
+          "attribute": "has_albanian_language_and_history_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires demonstrated knowledge of the Albanian language (spoken and written) plus basic Albanian history.",
+          "fix_path": "Pass the Albanian language and history assessment.",
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 7 years' continuous lawful residence, including current permanent residence status", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of lawful income and compliant housing", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Albanian language and history test results", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_law_113_2020",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Law%20No.%20113-2020%20(English).pdf",
+      "title": "Republic of Albania -- Law No. 113/2020 on Citizenship (official English translation), Article 8(1): standard naturalization conditions -- 7-year continuous lawful residence with valid permanent residency, income/housing standards, no convictions over 3 years, Albanian language and history knowledge",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). Treated the GLOBALCIT-hosted English translation as tier 1: GLOBALCIT (Global Citizenship Observatory, European University Institute) publishes official government-authored translations verbatim rather than its own summary or interpretation, consistent with this dataset's convention for primary-legislation mirrors hosted on reputable non-.gov domains. dual_citizenship_allowed modeled true: the law does not prohibit holding another citizenship alongside Albanian citizenship gained by naturalization -- Article 13's renunciation provisions apply specifically to Albanians seeking to RENOUNCE Albanian citizenship (a different, opposite-direction process), not to naturalizing foreigners retaining their prior nationality. This is the general residence-based path; see al_citizenship_by_marriage.json for the faster marriage-based track and al_citizenship_by_ancestry.json for the separate ancestry-based path requiring no residence at all in some readings of Article 8(1)(dh)/(ë)."
+}

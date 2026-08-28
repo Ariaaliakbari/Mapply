@@ -1,0 +1,115 @@
+{
+  "id": "pa_naturalisation",
+  "country": "PA",
+  "name": "Naturalización",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard_5yr",
+      "name": "Ordinary track (Constitution Article 10.1)",
+      "requirements": [
+        {
+          "id": "panat_residence_std",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 consecutive years of residence, having reached the age of majority, a declaration of intent to naturalise, renunciation of prior nationality, and proof of Spanish-language competency plus basic knowledge of Panamanian geography, history, and political organisation.",
+          "fix_path": "Accrue 5 consecutive years of residence and pass the language/civics assessment.",
+          "fix_time_months": 60,
+          "source_id": "constitucion_te_gob_pa_art10"
+        }
+      ]
+    },
+    {
+      "id": "reduced_3yr",
+      "name": "Reduced track (Constitution Article 10.2): married to a Panamanian, or has children born in Panama to Panamanian parents",
+      "prerequisites_override": {
+        "minimum_months_held": 36
+      },
+      "requirements": [
+        {
+          "id": "panat_residence_reduced",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires only 3 consecutive years of residence for those married to a Panamanian national, or who have children born in Panama to Panamanian parents -- same age, declaration, renunciation, and language/civics requirements as the ordinary track otherwise apply.",
+          "fix_path": "Accrue 3 consecutive years of residence while in a qualifying category, and pass the language/civics assessment.",
+          "fix_time_months": 36,
+          "source_id": "constitucion_te_gob_pa_art10"
+        }
+      ]
+    },
+    {
+      "id": "privileged_reciprocity",
+      "name": "Privileged track (Constitution Article 10.3): Spanish nationals or Latin-American-born applicants",
+      "requirements": [
+        {
+          "id": "panat_reciprocity",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "spanish_or_latin_american_born_under_reciprocal_terms",
+          "hard": true,
+          "blocker_text": "Spanish nationals, or those born in a Latin American country, may naturalise under whatever conditions that country itself requires for Panamanian nationals to naturalise there (a reciprocity principle) -- the Constitution does not specify a fixed residence term for this track, and the exact reciprocal terms vary by country and were not individually researched in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "constitucion_te_gob_pa_art10"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Power of attorney and formal application addressed to the President of the Republic", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sworn declaration renouncing prior nationality (notarised)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Permanent Resident Card, authenticated by the Electoral Tribunal", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record clearance (past 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate of good health (90-day validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Economic solvency proof (two of: tax returns, bank letter, employment letter with Social Security records, investment/property proof)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish language and Panamanian geography/history/civics assessment", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "constitucion_te_gob_pa_art10",
+      "tier": 1,
+      "url": "https://constitucion.te.gob.pa/constitucion-vigente/",
+      "title": "Tribunal Electoral de Panamá -- Constitución Política, Título II, Artículo 10: three naturalisation tracks (5yr ordinary, 3yr reduced, privileged reciprocity)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "migracion_pa_naturalizacion_pdf",
+      "tier": 1,
+      "url": "https://www.migracion.gob.pa/wp-content/uploads/REQUISITOS-DE-NATURALIZACION-2024.pdf",
+      "title": "Servicio Nacional de Migración de Panamá -- Requisitos de Naturalización 2024: full document checklist (does not itself restate the residence-year figures, which come from the Constitution)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. STATUS SET TO DRAFT despite tier-1 sourcing on both the Constitution and the document checklist: the Constitution's own text explicitly requires RENUNCIATION of prior nationality for naturalisation (dual_citizenship_allowed set false for this route specifically) -- yet Panama is widely described elsewhere as permitting dual nationality for those who acquire it by OTHER means (e.g. by descent, see pa_citizenship_descent, which does allow dual nationality) and even reportedly in practice for some naturalised citizens; this apparent tension between the literal constitutional renunciation requirement and common real-world reporting was not reconciled in this pass, so the route is held at draft rather than asserting either version confidently. THREE GENUINELY DIFFERENT TRACKS modelled as OR-logic groups since the Constitution itself presents them as one naturalisation process (Article 10, numerals 1-3) with alternative grounds. The privileged reciprocity track's actual terms depend on the applicant's specific country of origin/citizenship and were not researched country-by-country."
+}

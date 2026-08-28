@@ -1,0 +1,75 @@
+{
+  "id": "uy_temporary_residency_student",
+  "country": "UY",
+  "name": "Residencia Legal Temporaria -- Estudiante",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uyts_enrollment",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "official_institutional_enrollment_certificate",
+          "hard": true,
+          "blocker_text": "Requires an official certificate from the educational institution confirming enrollment.",
+          "fix_path": "Secure enrollment at a Uruguayan institution.",
+          "fix_time_months": null,
+          "source_id": "gub_uy_residencia_temporaria"
+        },
+        {
+          "id": "uyts_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_means_personal_family_or_foreign_remittance",
+          "hard": true,
+          "blocker_text": "Requires proof of sufficient financial means for living expenses -- personal funds, family support (with documented kinship), or foreign remittances, notarially certified.",
+          "fix_path": "Document qualifying financial means.",
+          "fix_time_months": null,
+          "source_id": "gub_uy_residencia_temporaria"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Institutional enrollment certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notarized certification of financial means (personal, family, or foreign remittance)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Current vaccination certificate and health record", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months to 2 years, renewable for equal periods",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uy_permanent_residency_general", "uy_naturalisation", "uy_temporary_residency_worker"]
+  },
+  "sources": [
+    {
+      "id": "gub_uy_residencia_temporaria",
+      "tier": 1,
+      "url": "https://www.gub.uy/tramites/residencia-legal-temporaria",
+      "title": "Sitio oficial de la República Oriental del Uruguay -- Residencia Legal Temporaria: student-category evidence requirements",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. Same underlying trámite as uy_temporary_residency_worker (Uruguay's general temporary residency), modelled as a separate route file here since the schema requires one category per route and 'study' and 'work_sponsored' are distinct categories. work_rights set 'none': the source does not describe employment authorisation under the student evidence pathway specifically."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "kn_work_permit",
+  "country": "KN",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "knw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must first secure employment in Saint Kitts and Nevis before a work visa/permit application can proceed.",
+          "fix_path": "Secure a job offer from an employer in the Federation.",
+          "fix_time_months": null,
+          "source_id": "gov_kn_work_visa"
+        },
+        {
+          "id": "knw_apply_via_consulate",
+          "attribute": "applies_via_consulate_or_immigration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application (with gathered supporting documents) must be submitted to the appropriate consulate or immigration authority.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_kn_work_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer/employment letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting documents per consulate/immigration checklist", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified on official source",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kn_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_kn_work_visa",
+      "tier": 1,
+      "url": "https://www.gov.kn/in-skn-work-visa-procurement/",
+      "title": "Government of Saint Kitts and Nevis -- In SKN Work Visa Procurement: 3-step process (secure employment, gather documents, submit to appropriate consulate); no labour-market-test, fee, or duration detail published",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. The official gov.kn page is thin -- no fee, processing time, labour-market-test, or permit duration was found; process appears to run through employer sponsorship and consulate submission rather than a domestic labour-market-test system like Trinidad and Tobago's or the BOTs'. pr_after_months (36) is an estimate carried over from the general Permanent Residency 'under-62' route's 3-year lawful-residence figure (see kn_permanent_residence.json) rather than a confirmed work-permit-specific rule -- flagged as an inference, not a sourced fact."
+}

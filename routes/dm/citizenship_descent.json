@@ -1,0 +1,65 @@
+{
+  "id": "dm_citizenship_descent",
+  "country": "DM",
+  "name": "Citizenship by Descent (born abroad to a Dominican-citizen parent)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born outside Dominica acquires Dominican citizenship if, at the date of birth, their father or mother was a citizen of Dominica (Constitution, Section 99).",
+    "evidence_hint": "Parent's proof of Dominican citizenship at the time of the applicant's birth; applicant's birth certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dmcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires that at least one parent was a Dominican citizen at the time of the applicant's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unwomen_constitution_dominica"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Dominican citizenship at time of applicant's birth", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unwomen_constitution_dominica",
+      "tier": 2,
+      "url": "https://constitutions.unwomen.org/en/countries/americas/dominica",
+      "title": "UN Women Constitutions Database -- Constitution of the Commonwealth of Dominica, Section 99 (citizenship by descent)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Dominica's initial build. STATUS SET TO DRAFT for the same reason as dm_naturalisation: the substance is a genuine, specific constitutional provision (Section 99), but the only source located reproducing it in this pass is an intergovernmental (UN Women) host, not a Dominica government domain -- the cbiu.gov.dm-hosted Citizenship Act PDF was not machine-readable, and no dominica.gov.dm-hosted copy of the Constitution was located. Revisit and upgrade to 'published' if a tier-1-hosted copy is found. Kept as its own route (category 'ancestry') rather than folded into dm_naturalisation since it is a genuinely distinct, automatic legal ground with no residence test, unlike naturalisation's 7-year test."
+}

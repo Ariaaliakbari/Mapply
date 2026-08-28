@@ -1,0 +1,73 @@
+{
+  "id": "lu_work_permit",
+  "country": "LU",
+  "name": "Salaried Worker Residence Permit (Third-Country National)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "luwp_job_offer",
+          "attribute": "has_luxembourg_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an employment contract compliant with Luxembourg labour law; the start date may be made conditional on obtaining the residence/work authorisation.",
+          "fix_path": "Secure a job offer from a Luxembourg employer.",
+          "fix_time_months": null,
+          "source_id": "guichet_salaried_worker"
+        },
+        {
+          "id": "luwp_labour_market_test",
+          "attribute": "adem_vacancy_declared_no_candidate_found",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must first declare the vacant position to ADEM (National Employment Agency); if no suitable candidate is found within 3 weeks, ADEM issues a certificate authorising the hire of a non-EU worker.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_salaried_worker"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "hard", "typical_time_days": null },
+    { "document": "ADEM authorisation certificate", "difficulty": "moderate", "typical_time_days": 21 }
+  ],
+  "outcome": {
+    "duration_length": "first permit up to 1 year, restricted to one profession/sector; renewals up to 3 years with access to any sector/profession after continuous employment",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lu_permanent_residence", "lu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "guichet_salaried_worker",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html",
+      "title": "Guichet.lu -- Conditions of Residence for Third-Country Salaried Workers in Luxembourg: ADEM labour market test, employment contract, permit restricted to one profession/sector initially, 5-year permit for EU long-term residents of another member state",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). No fixed minimum salary threshold was located in this pass -- unlike Finland's or Bulgaria's fixed-euro-figure work permits, Luxembourg's route gates on the ADEM labour market test and a compliant employment contract rather than a stated salary floor. work_rights modeled 'restricted' since the first permit is explicitly limited to one profession/sector."
+}

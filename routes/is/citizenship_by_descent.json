@@ -1,0 +1,65 @@
+{
+  "id": "is_citizenship_by_descent",
+  "country": "IS",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For children born on or after 1 July 2018, Icelandic citizenship is acquired automatically at birth if one parent is an Icelandic citizen at the time of birth, regardless of the other parent's nationality, the parents' marital status, or the child's place of birth.",
+    "evidence_hint": "Birth certificate; parent's proof of Icelandic citizenship at the time of birth."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (born on or after 1 July 2018)",
+      "requirements": [
+        {
+          "id": "isd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_is_citizen_parent",
+          "hard": true,
+          "blocker_text": "Automatic Icelandic citizenship if either parent held Icelandic citizenship at the time of the child's birth. Applies regardless of marital status or birthplace. If the Icelandic parent lost citizenship before the birth, this route does not apply.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_citizenship_children"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Icelandic citizenship at time of birth", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "island_citizenship_children",
+      "tier": 1,
+      "url": "https://island.is/en/citizenship-for-children-of-icelandic-citizens",
+      "title": "Island.is -- Citizenship for Children of Icelandic Citizens: automatic acquisition via either parent for children born on/after 1 July 2018, regardless of marital status or birthplace; historical pre-2018 gender/marital-status distinctions; age-22 retention rule for citizens born abroad",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). UNLIKE Finland's still-gender-asymmetric descent rule documented elsewhere in this dataset, Iceland's rule is now FULLY gender-neutral and marital-status-neutral for children born on or after 1 July 2018 -- a clean, complete fix rather than a partial one. Children born BEFORE that date faced materially different, historically gender/marital-status/birthplace-dependent rules (including a distinct restrictive regime for unmarried Icelandic fathers of children born abroad, 1998-2007) -- this is disclosed as historical context only, not modeled as a live route, since anyone affected is now an adult whose status was fixed at birth under the old rules. Also flagged: a Icelandic citizen born abroad who has never resided in Iceland may need to apply to RETAIN citizenship before turning 22, or risk losing it automatically -- a notable retention mechanic not modeled as a separate route but disclosed here."
+}

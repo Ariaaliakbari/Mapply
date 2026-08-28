@@ -1,0 +1,64 @@
+{
+  "id": "hr_residence_permit_business",
+  "country": "HR",
+  "name": "Temporary Stay for Self-Employment / Business Ownership",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hrb_registration",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "croatian_business_registered",
+          "hard": true,
+          "blocker_text": "Requires registering a Croatian business (typically a d.o.o./j.d.o.o. limited-liability company or an obrt sole proprietorship) and demonstrating financial viability through a business plan and proof of initial capital.",
+          "fix_path": "Register a qualifying Croatian business entity and prepare a business plan.",
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business registration documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Business plan", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of initial capital", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of ongoing financial viability at renewal", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hr_long_term_residence", "hr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "aliens_act_2020_general",
+      "tier": 1,
+      "url": "https://mup.gov.hr/UserDocsImages/zakoni/ALIENS%20ACT%20(Official%20Gazette%20No%20133_2020).pdf",
+      "title": "Croatian Parliament -- Aliens Act (Official Gazette No. 133/2020, as amended 114/22, 151/22), general work/self-employment provisions",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. STATUS SET TO DRAFT, deliberately, because this pass could not confirm current, euro-denominated figures at tier-1: no specific minimum investment amount, no minimum number of Croatian employees to hire, and no minimum owner-salary threshold were found in the Aliens Act excerpt retrieved, nor in mup.gov.hr's work-of-third-country-nationals page (which addresses self-employed individuals only as one of several labour-market-test exemption categories, without figures). Several tier-3/4 sources (law-firm and expat blogs) cite older, pre-euro figures denominated in Croatian kuna (e.g. 200,000-300,000 kn investment, hiring 3 Croatian nationals) dating to before Croatia's January 2023 euro adoption -- these are NOT used here since they are both outdated and not tier-1; they are noted only as context that a real, more demanding version of this route likely exists and should be revisited if a current tier-1 or tier-3 source with euro figures surfaces. Only the confirmed, non-quantified requirement (registration + business plan + capital) is encoded as hard, consistent with validate.py's rule that draft-status routes get a warning rather than a failure for weaker sourcing. work_rights set to 'restricted' (schema enum: self-employment in the registered business only, not open local employment); study_rights 'none' (no study entitlement described); family_can_join set true on the general basis that hr_residence_permit_family_reunification confirms temporary-stay holders (a category this route falls under) can sponsor family members, not from a business-route-specific source; duration_length left as an explicit 'not specified' string rather than a guessed figure."
+}

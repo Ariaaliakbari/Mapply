@@ -1,0 +1,79 @@
+{
+  "id": "by_permanent_residence",
+  "country": "BY",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bypr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "7 years of legitimate/legal residence in Belarus (Law on Legal Status of Foreign Citizens, Article 50).",
+          "fix_path": "Accumulate 7 years of legal residence.",
+          "fix_time_months": 84,
+          "source_id": "legislationline_foreigners_law"
+        }
+      ]
+    },
+    {
+      "id": "spouse_relative_of_citizen",
+      "name": "Spouse or close relative of a Belarusian citizen",
+      "requirements": [
+        {
+          "id": "bypr_family_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_close_relative_of_be_citizen",
+          "hard": true,
+          "blocker_text": "Spouses and close relatives of Belarusian citizens, and persons with family-reunification rights, may qualify for permanent residence without necessarily completing the full 7-year standard track -- exact reduced timeframe not stated as a precise figure in the source excerpt.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legislationline_foreigners_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence period or qualifying family tie", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite; holder must remain in-country at least 183 days/year or the permit may be annulled",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "at least 183 days per year",
+    "switchable_to": ["by_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "legislationline_foreigners_law",
+      "tier": 1,
+      "url": "https://legislationline.org/taxonomy/term/13835",
+      "title": "LegislationLine -- Law on Legal Status of Foreign Citizens and Persons without Citizenship in the Republic of Belarus, Article 50: 7-year standard residence route to permanent residence, plus reduced-condition routes for spouses/relatives of citizens, refugees, and investors (EUR 150,000+, see by_investor_residence.json)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). The 183-day/year physical-presence requirement to AVOID annulment is a genuinely distinctive and strict condition -- most 'permanent' residence statuses in this dataset carry no ongoing presence requirement once granted; Belarus's does. Termination/annulment grounds also include acquiring citizenship elsewhere, consistent with the country's general single-citizenship stance (see by_naturalisation.json)."
+}

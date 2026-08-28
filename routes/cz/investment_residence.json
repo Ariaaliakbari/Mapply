@@ -1,0 +1,73 @@
+{
+  "id": "cz_investment_residence",
+  "country": "CZ",
+  "name": "Long-Term Residence Permit for the Purpose of Investment",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "czir_investment",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 75000000, "currency": "CZK", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Minimum investment of CZK75,000,000 (up to 60% of which may be tangible or intangible assets, including technologies and know-how).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipc_investment"
+        },
+        {
+          "id": "czir_jobs",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "creates_20_eu_jobs_2yr_minimum",
+          "hard": true,
+          "blocker_text": "The investment must create at least 20 new jobs for EU citizens (or their family members) for a minimum period of 2 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipc_investment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment plan and proof of committed capital", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Job-creation plan (20+ EU-national positions)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable (60-day extension processing)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cz_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipc_investment",
+      "tier": 1,
+      "url": "https://ipc.gov.cz/en/visa-and-residence-permit-types/third-country-nationals/long-term-residence-permits/long-term-residence-permit-for-the-purpose-of-investment/",
+      "title": "ipc.gov.cz -- Long-Term Residence Permit for the Purpose of Investment: CZK75 million minimum investment, 20-job creation requirement, 2-year duration, Schengen free movement rights",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1. This is an active-entrepreneurship investment route (job creation required), distinct from a passive golden-visa-style scheme -- categorised as 'business' rather than 'settled' accordingly, consistent with this dataset's convention of reserving 'settled' for routes that themselves grant a long-term/permanent status. The source does not specify a path to permanent residence or family-member provisions for this specific permit; leads_to_pr set false pending clearer confirmation, though holders can presumably transition to cz_permanent_residence via the general 5-year continuous-residence route like any other long-term residence permit holder. Holders may travel within the Schengen Area without a separate visa."
+}

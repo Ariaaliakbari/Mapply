@@ -1,0 +1,66 @@
+{
+  "id": "uy_international_protection",
+  "country": "UY",
+  "name": "Condición de Refugiado (CORE)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution, physically present in Uruguay, may apply for refugee status through the Comisión de Refugiados (CORE), reachable at the border/airport, the Ministry of Foreign Affairs, SEDHU, the Migrant Reference Center in Montevideo, or any National Migration Directorate (DNM) office elsewhere in the country.",
+    "evidence_hint": "Completed personalized application form; identity document (or police report if unavailable); explanation of reasons for leaving the country of origin."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uyip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_criteria_met",
+          "hard": true,
+          "blocker_text": "Applicant must be physically present in Uruguay to file (verbally or in writing). A refugee applicant certificate is issued on filing; a Migrant Certificate and ID card follow within 5-90 days (same-day for children under 9), then a personal interview, then a final resolution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_uy_proceso_solicitud"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Personalized application form (not a generic template)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Identity document, or police report if unavailable", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview with CORE", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite upon recognition -- grants permanent residence directly",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_uy_proceso_solicitud",
+      "tier": 2,
+      "url": "https://help.unhcr.org/uruguay/como-solicitar-la-condicion-de-refugiado/",
+      "title": "ACNUR/UNHCR Uruguay -- Proceso de Solicitud: application locations, document requirements, 5-90 day ID processing, formal work rights during processing, permanent residence on recognition, 10-business-day judicial appeal",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. Notably generous system, confirmed at tier-2 (UNHCR) with corroborating tier-1 context (gub.uy/ministerio-interior confirms CORE as the administering body and references a related 'Programa de Residencias por Arraigo' for asylum applicants who entered regularly, and ACNUR itself has publicly commended Uruguay as a 'model country' for refugee protection): applicants may work FORMALLY once they receive their provisional ID card -- well before a final decision -- and recognition grants PERMANENT residence directly, not a renewable temporary status as in most other countries built in this dataset. Denied applicants have 10 business days to seek judicial review via a lawyer, or may pursue other migratory regularisation instead. citizenship_after_months (36) assumes the 3-year 'family constituted' naturalisation track would often apply to a settled refugee, though this specific linkage was not independently confirmed by the source. gub.uy's own CORE page returned only an index-level description in this pass (limited detail beyond confirming the agency and the Arraigo program's existence) -- the operational detail here comes from UNHCR's process page instead."
+}

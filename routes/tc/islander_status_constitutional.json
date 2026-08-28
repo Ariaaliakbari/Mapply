@@ -1,0 +1,100 @@
+{
+  "id": "tc_islander_status_constitutional",
+  "country": "TC",
+  "name": "TCI Islander Status -- Birth, Descent, or Adoption (As of Right)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born in the Islands to a TCI-status parent, born abroad to a TCI-status parent with a qualifying grandparent/parent tie, or adopted by a TCI-status holder, acquires TCI Islander status as of right -- no application required.",
+    "evidence_hint": "Birth certificate; parent's proof of TCI status; adoption order (adoption ground)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "birth_in_islands",
+      "name": "Birth inside the Islands",
+      "requirements": [
+        {
+          "id": "tcisc_birth_in",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "born_in_islands_to_status_parent",
+          "hard": true,
+          "blocker_text": "Requires birth in the Islands to a parent who held TCI status at the time of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        }
+      ]
+    },
+    {
+      "id": "birth_outside_islands",
+      "name": "Birth outside the Islands",
+      "requirements": [
+        {
+          "id": "tcisc_birth_out",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "born_abroad_to_status_parent_with_grandparent_or_settled_tie",
+          "hard": true,
+          "blocker_text": "Requires a parent who held TCI status at birth AND (at least one parent or grandparent born in the Islands, OR at least one parent settled in the Islands).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        }
+      ]
+    },
+    {
+      "id": "adoption",
+      "name": "Adoption",
+      "requirements": [
+        {
+          "id": "tcisc_adoption",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "adopted_under_18_by_status_holder",
+          "hard": true,
+          "blocker_text": "Requires adoption by a person holding TCI status while the adoptive parent held that status, with the child under 18 at the time of adoption (if adopted after 2015).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of TCI status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Adoption order (adoption ground)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_tci_status",
+      "tier": 1,
+      "url": "https://gov.tc/immigration/tci-status",
+      "title": "Government of the Turks and Caicos Islands -- TCI Islander Status: acquisition as of right under the Turks and Caicos Islander Status Ordinance 2015 and the Constitution Order 2011 (birth in/outside the Islands, adoption) -- no application required, distinguished from acquisition by grant",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. TCI Islander status is the local right-of-abode-equivalent, NOT British nationality -- consistent with the same modelling decision made for Anguilla, Montserrat, Cayman, Bermuda, and the BVI's Belonger status this session; leads_to_citizenship is false here since these are constitutional/automatic 'as of right' grounds under the TCI Islander Status Ordinance 2015, separate from actually naturalising as a BOTC (see tc_naturalisation_botc.json). These three grounds require NO APPLICATION -- status accrues automatically -- distinguishing this file from tc_islander_status_grant.json (application-required routes) and tc_islander_status_marriage.json (application-required, marriage ground). TCI status confers voting rights, Crown land eligibility, and government scholarship eligibility that the PRC-equivalent routes (tc_prc_*.json files) do NOT grant -- but per the source, TCI status alone does not guarantee a passport; the holder must also separately be or become a British Overseas Territories Citizen."
+}

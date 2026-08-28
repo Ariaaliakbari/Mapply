@@ -1,0 +1,84 @@
+{
+  "id": "bb_naturalisation",
+  "country": "BB",
+  "name": "Naturalisation (Barbados Citizenship Act, Cap. 186)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Naturalisation by residence",
+      "requirements": [
+        {
+          "id": "bbn_recent_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires 12 months of continuous residence in Barbados immediately preceding the date of application.",
+          "fix_path": "Establish 12 months' continuous residence immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "cap186_citizenship_act"
+        },
+        {
+          "id": "bbn_aggregate_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires at least 5 years' residence in Barbados in aggregate within the 7 years immediately preceding the date of application.",
+          "fix_path": "Accumulate at least 5 years of residence within the relevant 7-year window.",
+          "fix_time_months": null,
+          "source_id": "cap186_citizenship_act"
+        },
+        {
+          "id": "bbn_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires being of good character, assessed at the Minister's discretion, and an intention to reside in Barbados upon naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cap186_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous and aggregate residence (immigration records, permanent residence documentation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certificate of Character / police clearance", "difficulty": "moderate", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cap186_citizenship_act",
+      "tier": 1,
+      "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/BarbadosCitizenshipCAP186.pdf",
+      "title": "Barbados Judiciary (barbadoslawcourts.gov.bb) -- Barbados Citizenship Act, Cap. 186, Second Schedule",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Barbados' initial build. prerequisites is null rather than requiring bb_permanent_residence first: the Citizenship Act's Second Schedule tests residence and character directly and does not state that formal Permanent Resident status must be held first -- bb_permanent_residence's switchable_to listing this route describes a plausible real path, not a confirmed legal requirement to go through PR first. dual_citizenship_allowed is left null rather than guessed -- not confirmed against a tier-1 source in this pass (several tier-3 guides claim Barbados permits dual citizenship broadly, not independently verified here). UPDATE (gap-fill pass): the original build of this route found NO descent-based or marriage-based citizenship provision in the Cap. 186 text extracted from barbadoslawcourts.gov.bb, and flagged this as a surprising, likely-outdated gap. That gap is now RESOLVED: the Immigration Department's own citizenship page (immigration.gov.bb/pages/Citizenship.aspx) -- a different tier-1 source, using different section numbering (3, 3(3), 3A(1)(b), 4(3), 5(1), 6) than the Second Schedule cited here -- plainly describes both grounds, now modelled as bb_citizenship_descent (Section 5(1)) and bb_citizenship_marriage (Sections 3(1), 3(3), 3A(1)(b), 6). The section-numbering mismatch between the two tier-1 sources confirms the original suspicion that the barbadoslawcourts.gov.bb consolidation of Cap. 186 may be out of date relative to a later amendment -- flagged, not silently reconciled; this bb_naturalisation route itself (residence-based naturalisation) may also sit under different section numbers in the more current version, not re-verified in this pass. dual_citizenship_allowed remains the one still-open question from the original build."
+}

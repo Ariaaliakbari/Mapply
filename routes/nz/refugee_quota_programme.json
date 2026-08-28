@@ -1,0 +1,76 @@
+{
+  "id": "nz_refugee_quota_programme",
+  "country": "NZ",
+  "name": "Refugee Quota Programme (Offshore Resettlement)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "nomination_required",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "New Zealand resettles up to 1,500 refugees per year (combining the Refugee Quota Programme and Community Organisation Refugee Sponsorship) from offshore, selected from UNHCR-recognized and referred mandated refugees, allocated 50% Asia-Pacific, 20% Middle East, 20% Africa, 10% Americas. Immigration New Zealand additionally assesses credibility, settlement capacity, security, immigration risk, and health.",
+    "evidence_hint": "UNHCR mandated-refugee recognition and referral (or qualifying family-member exemption); INZ assessment on credibility/settlement/security/health grounds."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzrq_referral",
+          "attribute": "unhcr_mandated_and_referred",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be recognised as a mandated refugee and referred to New Zealand by UNHCR (with some exemptions for family members of a principal applicant).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_refugee_quota"
+        },
+        {
+          "id": "nzrq_quota",
+          "attribute": "quota_slot_available",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Capped at 1,500 places per year combined across the Refugee Quota Programme and Community Organisation Refugee Sponsorship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_refugee_quota"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "UNHCR mandated-refugee recognition and NZ referral", "difficulty": "hard", "typical_time_days": null },
+    { "document": "INZ assessment documentation (credibility, security, health)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (Permanent Resident status granted on arrival)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_refugee_quota",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/about-us/our-strategies-and-programmes/supporting-refugees-and-asylum-seekers/refugee-resettlement-strategy/refugee-quota-programme",
+      "title": "Immigration New Zealand -- Refugee Quota Programme: 1,500/year combined quota, UNHCR referral requirement, regional allocation, Permanent Residence granted on arrival, 5-week Mangere Refugee Resettlement Centre orientation, up to 2 years' settlement support",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). Distinct from nz_international_protection.json (the in-country claim process): quota refugees are referred by UNHCR from OFFSHORE and receive Permanent Residence immediately on arrival, with no residence-visa-then-conversion step, whereas an in-country claimant applies for a Resident Visa only after a successful claim (see nz_international_protection.json). selection_method modeled 'nomination_required' since UNHCR referral -- not individual application -- is the entry point."
+}

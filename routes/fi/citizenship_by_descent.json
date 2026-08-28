@@ -1,0 +1,100 @@
+{
+  "id": "fi_citizenship_by_descent",
+  "country": "FI",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child automatically acquires Finnish citizenship if the mother is a Finnish citizen at birth, regardless of marital status or the child's place of birth. If the father is a Finnish citizen, automatic acquisition depends on the parents' marital status and the child's birthplace -- see requirement groups.",
+    "evidence_hint": "Birth certificate; parent's proof of Finnish citizenship; for unmarried fathers, confirmation of paternity."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "maternal_line",
+      "name": "Child of a Finnish mother",
+      "requirements": [
+        {
+          "id": "fid_mother",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_fi_citizen_mother",
+          "hard": true,
+          "blocker_text": "Automatic Finnish citizenship if the mother is a Finnish citizen at the time of birth, regardless of the parents' marital status or the child's place of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_child"
+        }
+      ]
+    },
+    {
+      "id": "paternal_line_married",
+      "name": "Child of a Finnish father, parents married",
+      "requirements": [
+        {
+          "id": "fid_father_married",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_fi_citizen_father_parents_married",
+          "hard": true,
+          "blocker_text": "Automatic Finnish citizenship if the father is a Finnish citizen at birth AND the parents are married to each other at the time of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_child"
+        }
+      ]
+    },
+    {
+      "id": "paternal_line_unmarried_born_in_finland",
+      "name": "Child of a Finnish father, unmarried parents, born in Finland",
+      "requirements": [
+        {
+          "id": "fid_father_unmarried_fi",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_fi_citizen_father_unmarried_born_in_finland",
+          "hard": true,
+          "blocker_text": "Automatic Finnish citizenship once paternity is officially confirmed, if the child is born in Finland to an unmarried Finnish-citizen father.",
+          "fix_path": "Complete official confirmation of paternity.",
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_child"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Finnish citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Confirmation of paternity (unmarried-father groups)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migri_citizenship_child",
+      "tier": 1,
+      "url": "https://migri.fi/en/citizenship-for-a-child",
+      "title": "Maahanmuuttovirasto -- Finnish Citizenship for a Child: automatic acquisition rules by parent's citizenship, sex, marital status, and birthplace",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). IMPORTANT AND STILL-CURRENT ASYMMETRY, explicitly flagged: Finnish descent citizenship is NOT uniformly gender-neutral even today -- a Finnish MOTHER transmits citizenship automatically and unconditionally, while a Finnish FATHER transmits it automatically only if married to the mother at birth, or (if unmarried) only once paternity is officially confirmed AND the child is born in Finland. A fourth case -- unmarried Finnish father, child born ABROAD -- is NOT automatic at all: the child must acquire citizenship 'by declaration,' a distinct legal process (available for those born after 1 June 2003; children born abroad out of wedlock to a Finnish father before that date required a full citizenship APPLICATION instead). This declaration path is disclosed here rather than modeled as a fourth 'automatic' requirement group, since it is structurally a different (assessed, not automatic) mechanism -- consistent with this dataset's practice of disclosing rather than force-fitting edge cases that don't match the route's primary selection_method."
+}

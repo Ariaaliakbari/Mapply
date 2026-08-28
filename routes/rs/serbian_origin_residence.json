@@ -1,0 +1,65 @@
+{
+  "id": "rs_serbian_origin_residence",
+  "country": "RS",
+  "name": "Temporary Residence -- Serbian Origin",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national who can document blood or adoptive kinship, in a direct line, with an ancestor who was a citizen of the Republic of Serbia (or of a predecessor state) may obtain temporary residence on this basis, without needing an independent economic or family-sponsorship ground.",
+    "evidence_hint": "Public civil records establishing the lineage (birth/citizenship records of the ancestor), or, where public records are unavailable, church records -- the government's own guidance names a baptism record issued by the Serbian Orthodox Church as an acceptable form of documentary evidence of Serbian heritage."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rsso_lineage",
+          "attribute": "has_documented_serbian_ancestry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must document blood or adoptive kinship, in a direct line, with an ancestor who was a citizen of the Republic of Serbia or of a predecessor state (e.g. the Kingdom of Serbia, the Kingdom of Yugoslavia, or the SFRY), via public records or, where unavailable, church records including Serbian Orthodox Church baptism records.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Public civil/citizenship records documenting the ancestor's lineage", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Church records (e.g. Serbian Orthodox Church baptism record), where public records are unavailable", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rs_permanent_residence", "rs_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mup_temp_residence",
+      "tier": 1,
+      "url": "https://www.mup.gov.rs/wps/portal/en/information/temporary+residence/temporary+residence",
+      "title": "Serbian Ministry of Interior (MUP) -- 'Serbian origin' temporary residence ground: proof of direct-line blood or adoptive kinship with a citizen ancestor (current or predecessor state), evidenced by public records or church records including Serbian Orthodox Church baptism records",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). pr_after_months and citizenship_after_months modeled 0 (not a fixed wait) because MUP's own permanent-residence page (see rs_permanent_residence.json) explicitly exempts persons 'originating from or of Serbian descent' from the general 3-year continuous-residence requirement -- and the Law on Citizenship separately grants persons of Serbian origin (see rs_citizenship_serbian_origin.json, Article 23) a direct citizenship-admission route without needing residence in Serbia at all, so this residence permit is best understood as one of several parallel doors rather than a fixed-duration prerequisite step. work_rights modeled 'full' since no employer/activity restriction was described for this ground, unlike the employment- and business-based grounds. The requirement's evidentiary reliance on Serbian Orthodox Church baptism records (a specific, named religious institution) as government-accepted proof of ethnic/national heritage is modeled and disclosed exactly as MUP states it, since it is a factual feature of the eligibility criteria rather than an editorial choice."
+}

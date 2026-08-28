@@ -1,0 +1,62 @@
+{
+  "id": "cz_employee_card",
+  "country": "CZ",
+  "name": "Employee Card",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard (dual) route",
+      "requirements": [
+        {
+          "id": "cze_employer",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "employer_not_unreliable_registered_vacancy",
+          "hard": true,
+          "blocker_text": "Requires a Czech employer (not classified as an 'unreliable employer' under Czech law) and a job vacancy registered in the Central Database of Job Vacancies, unless the applicant already has free labour-market access.",
+          "fix_path": "Secure a qualifying job offer with a registered vacancy.",
+          "fix_time_months": null,
+          "source_id": "ipc_employee_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract or pre-employment agreement", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Confirmation of registered job vacancy (Central Database of Job Vacancies)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, may be restricted to the duration of employment or work-permit validity",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cz_permanent_residence", "cz_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipc_employee_card",
+      "tier": 1,
+      "url": "https://ipc.gov.cz/en/visa-and-residence-permit-types/third-country-nationals/long-term-residence-permits/employee-card/",
+      "title": "ipc.gov.cz -- Employee Card: employer/vacancy requirements, 2-year duration cap, 90-day grace period on job loss",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1. A separate 'non-dual' Employee Card variant exists for nationals of nine countries with free labour-market access (as of 1 July 2024) who can change employers freely with 3-day notification, and does not require a registered-vacancy match -- not modelled as a fully separate route here given limited detail on which nine countries qualify, but flagged as a materially easier variant of this same permit category. Minimum salary was not specified at tier-1 in this pass. family_can_join set false: not addressed in the source for this specific permit (family members would apply separately via cz_family_reunification, which requires the employee-card-holder sponsor to have resided in Czechia 6+ months). If employment ends without alternative labour-market access, holders have 90 days to secure new employment or another residence basis before losing status."
+}

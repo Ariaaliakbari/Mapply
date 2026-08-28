@@ -1,0 +1,76 @@
+{
+  "id": "ec_family_union",
+  "country": "EC",
+  "name": "Permanent Residence by Marriage or Common-Law Union",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For the foreign spouse or common-law partner of an Ecuadorian citizen, or of a foreign national holding indefinite/permanent residence in Ecuador. Grants permanent residence directly -- no prior temporary residence period is required.",
+    "evidence_hint": "Marriage certificate from the Civil Registry (or registration in Ecuador of a foreign marriage); common-law union registration with the Civil Registry; proof of lawful means of subsistence; interview with the Zonal Directorate or consular office."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecfu_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_civil_partner_of_ec_citizen_or_permanent_resident",
+          "hard": true,
+          "blocker_text": "Marriage certificate from the Civil Registry (registered in Ecuador if the marriage occurred abroad), or common-law union (unión de hecho) registered with the Civil Registry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_family_union"
+        },
+        {
+          "id": "ecfu_means",
+          "attribute": "has_lawful_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate lawful means of subsistence per Ministerial Agreement No. 70 (28 June 2024).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_family_union"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or registered common-law union", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of lawful means of subsistence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_family_union",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-permanente-matrimonio-union-hecho-ecuatoriano-extranjero-titular-visa-indefinida-permanente",
+      "title": "gob.ec (MREMH official portal) -- Permanent residence by marriage or common-law union: no minimum cohabitation/waiting period stated, grants Permanent Residence Visa directly (not a temporary/provisional step), online e-VISAS application, fee discounts for seniors and persons with disabilities",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). Notably, this route grants PERMANENT residence directly with no minimum relationship-duration or prior-temporary-residence requirement stated on the tier-1 source -- a materially faster structure than most other countries in this dataset, where marriage typically grants a temporary/provisional status first or only reduces (not eliminates) a residence-based naturalisation clock. No separate 'citizenship by marriage' fast-track exists in Ecuadorian naturalisation law per the source reviewed for ec_naturalisation.json -- marriage's advantage here is entirely at the RESIDENCE stage, not the citizenship stage."
+}

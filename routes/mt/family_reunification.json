@@ -1,0 +1,90 @@
+{
+  "id": "mt_family_reunification",
+  "country": "MT",
+  "name": "Family Members Policy (Family Reunification)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["mt_work_sponsored_single_permit", "mt_long_term_residence", "mt_permanent_residence_mprp", "mt_nomad_residence_permit", "mt_start_up_residence"],
+    "minimum_months_held": 12,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mtfr_sponsor_wait",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Sponsor must hold a Malta residence permit valid for at least one year and wait 12 calendar months from initial permit issuance before applying; applications submitted earlier are inadmissible.",
+          "fix_path": "Accrue 12 months of Malta residence before applying.",
+          "fix_time_months": 12,
+          "source_id": "identita_family"
+        },
+        {
+          "id": "mtfr_income",
+          "attribute": "annual_income",
+          "operator": ">=",
+          "value": { "amount": 18940, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Sponsor needs annual income of at least EUR18,940 (national median wage) plus 20% per additional family member, from employment, pension, benefits, rental income, or allowances, all declared with the Revenue Commissioner.",
+          "fix_path": "Increase documented sponsor income to the required threshold.",
+          "fix_time_months": null,
+          "source_id": "identita_family"
+        },
+        {
+          "id": "mtfr_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "Eligible relatives: spouse aged 21+ in a monogamous marriage; unmarried minor children (including adoptions recognised under Maltese law); and unmarried adult children with demonstrated financial or physical dependency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "identita_family"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Sponsor's proof of residence duration and income (6 months of payslips/documentation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Family member's full passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Civil status certificates (marriage/birth) proving the relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance of at least EUR100,000 covering the permit's full validity", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's own residence permit validity",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mt_long_term_residence", "mt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "identita_family",
+      "tier": 1,
+      "url": "https://identita.gov.mt/expatriates-unit-main-page/noneu-nationals/non-employment-permits/family-members-policy/",
+      "title": "Identità -- Expatriates Unit: Family Members Policy, eligible relatives, 12-month sponsor wait, EUR18,940+20%/dependant income test, EUR100,000 health insurance, 60-day processing",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1. A Key Employee Initiative / Specialist Employee Initiative income exception lets qualifying high-earner sponsors (EUR50,000+ gross income for sponsor plus one dependant, plus EUR6,000 per additional dependant, plus mandatory EUR100,000 health insurance per family member) apply sooner than the standard 12-month wait -- confirmed at tier-1 but not modelled as a separate requirement group here since the source frames it as an income-based exception to the same policy rather than a genuinely distinct legal route. Applications are rejected if the family member is already present in Malta, except minor children born there. Decisions issued within 60 days. work_rights for the reunified family member set to 'restricted' as a conservative placeholder: the tier-1 page did not specify the work-rights regime for admitted family members. pr_after_months / citizenship_after_months left null: no independently confirmed figure links this route to a specific timeline for mt_long_term_residence or mt_naturalisation."
+}

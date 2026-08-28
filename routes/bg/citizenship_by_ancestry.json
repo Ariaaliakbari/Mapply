@@ -1,0 +1,64 @@
+{
+  "id": "bg_citizenship_by_ancestry",
+  "country": "BG",
+  "name": "Naturalisation for Persons of Bulgarian Origin",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person of Bulgarian origin -- defined as anyone with at least one Bulgarian ascendant -- may naturalise without meeting the standard route's residence, income, language, or prior-citizenship-release conditions (Citizenship Act Article 15).",
+    "evidence_hint": "Documentation establishing Bulgarian ancestry (an ascendant, not necessarily a parent)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bga_ascendant",
+          "attribute": "has_bulgarian_ascendant",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must have at least one Bulgarian ascendant (a broader category than a parent -- includes grandparents and more remote ancestors per the Act's Supplementary Provisions definition of 'Bulgarian origin').",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Genealogical/documentary proof of Bulgarian ancestry", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/BUL%20Bulgarian%20Citizenship%20Act%20(version%202002%20English).pdf",
+      "title": "Bulgaria -- Bulgarian Citizenship Act, Article 15: exemption from standard naturalisation conditions for persons of Bulgarian origin (defined via the Act's Supplementary Provisions as anyone with at least one Bulgarian ascendant), adoptees of Bulgarian citizens, and children with a Bulgarian parent",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). STATUS: DRAFT -- existence of this exemption is tier-1 confirmed (Article 15), but the exact procedural mechanics (whether any residence period in Bulgaria is still required at all, what documentation standard proves 'Bulgarian origin' beyond a parent, and whether this is a discretionary or entitlement grant) were not independently confirmed at tier-1 precision in this pass -- the summary source described it only as an exemption from Article 12's standard conditions, not as a fully self-contained procedure. Distinguished from bg_citizenship_by_descent.json (Article 8, automatic for a PARENT who is a Bulgarian citizen) because Article 15 explicitly extends to more remote ascendants and is framed as a naturalisation exemption (assessed application) rather than an automatic acquisition -- same structural distinction used for Albania's Article 8(1)(dh)/(e) ancestry route elsewhere in this dataset. dual_citizenship_allowed modeled true on the assumption this exemption also waives Article 12's renunciation condition (an origin-based exemption would be largely pointless otherwise for dual nationals), but this was not explicitly confirmed and is flagged as an inference."
+}

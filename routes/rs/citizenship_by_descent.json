@@ -1,0 +1,100 @@
+{
+  "id": "rs_citizenship_by_descent",
+  "country": "RS",
+  "name": "Citizenship by Origin (Descent)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 7 of the Law on Citizenship of the Republic of Serbia grants citizenship by origin to a child if both parents are Serbian citizens at the time of birth; if one parent is a Serbian citizen at birth and the child is born in Serbia; or if one parent is a Serbian citizen, the other parent is unknown or of unknown citizenship or stateless, and the child is born abroad. A child born abroad to only one Serbian-citizen parent (where the other parent is a known foreign citizen) acquires citizenship under Article 9 by being registered with a Serbian diplomatic/consular office before age 18, plus an application to the competent state body. Under Article 12, citizenship acquired by origin is considered held since birth.",
+    "evidence_hint": "Birth certificate; parent's proof of Serbian citizenship; for children born abroad to one Serbian parent, registration with a Serbian diplomatic/consular mission before the child's 18th birthday."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents_citizens",
+      "name": "Both parents Serbian citizens",
+      "requirements": [
+        {
+          "id": "rscd_both_parents",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_two_rs_citizen_parents",
+          "hard": true,
+          "blocker_text": "Both parents are Serbian citizens at the time of the child's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_born_in_serbia",
+      "name": "One parent a citizen, child born in Serbia",
+      "requirements": [
+        {
+          "id": "rscd_one_parent_born_rs",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_one_rs_citizen_parent_born_in_rs",
+          "hard": true,
+          "blocker_text": "One parent is a Serbian citizen at birth and the child is born in the territory of Serbia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_born_abroad_registered",
+      "name": "One parent a citizen, child born abroad, registered before 18",
+      "requirements": [
+        {
+          "id": "rscd_one_parent_abroad",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_one_rs_citizen_parent_born_abroad",
+          "hard": true,
+          "blocker_text": "One parent is a Serbian citizen; the child, born abroad, must be registered with a Serbian diplomatic or consular office before turning 18, with an accompanying application to the competent state body.",
+          "fix_path": "Register the child with a Serbian embassy/consulate before their 18th birthday.",
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Serbian citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Consular registration (for children born abroad to one citizen parent)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "paragraf_citizenship_law",
+      "tier": 1,
+      "url": "http://demo.paragraf.rs/demo/combined/Old/t/t2022_10/EN_010_2022_001.htm",
+      "title": "Paragraf.rs -- consolidated English text of the Law on Citizenship of the Republic of Serbia, Articles 7, 9 and 12: citizenship by origin (descent) for children of Serbian-citizen parents, including the diplomatic/consular registration route for children born abroad to one citizen parent",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). Single-generation rule (direct parent-child), consistent with most other countries in this dataset. Distinct from rs_serbian_origin_residence.json (a temporary RESIDENCE permit for anyone with documented Serbian ancestry, of any generational distance) and from rs_citizenship_serbian_origin.json (a direct citizenship-admission route under Article 23 for members of the Serbian people generally, without needing a citizen parent specifically) -- this file covers only the automatic-at-birth descent route for children of an actual Serbian-citizen parent."
+}

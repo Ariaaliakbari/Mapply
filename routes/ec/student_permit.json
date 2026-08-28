@@ -1,0 +1,76 @@
+{
+  "id": "ec_student_permit",
+  "country": "EC",
+  "name": "Student Residence Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals enrolled full-time at an accredited Ecuadorian educational institution (any level, including language schools).",
+    "evidence_hint": "Enrollment or admission certificate from an accredited Ecuadorian institution; proof of lawful means of subsistence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecsp_enrollment",
+          "attribute": "has_enrollment_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrollment or admission certificate from an accredited Ecuadorian educational institution, confirming full-time student status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_student_visa"
+        },
+        {
+          "id": "ecsp_funds",
+          "attribute": "has_lawful_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate lawful means of subsistence per Ministerial Agreement No. 70 (28 June 2024); the tier-1 source does not state an exact dollar figure for the student category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment/admission certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of lawful means of subsistence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches the duration of the academic programme/internship, capped at 2 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_student_visa",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-estudiante",
+      "title": "gob.ec (MREMH official portal) -- Student residence visa: enrollment/admission requirement, lawful-means-of-subsistence requirement, duration capped at 2 years matching the study programme",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). work_rights modeled 'none' as a conservative default -- the tier-1 source did not explicitly address work authorization for student-visa holders either way, so no work right is asserted. switchable_to includes ec_permanent_residence.json since accumulated time on a valid temporary residence visa (student included) counts toward the 21-month permanent-residence conversion route."
+}

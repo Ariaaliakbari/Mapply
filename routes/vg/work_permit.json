@@ -1,0 +1,89 @@
+{
+  "id": "vg_work_permit",
+  "country": "VG",
+  "name": "Work Permit (New)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vgw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a signed employment contract with an employer holding a valid trade license.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_work_permit_checklist"
+        },
+        {
+          "id": "vgw_labour_market_test",
+          "attribute": "employer_advertised_role_locally",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must publish a full-page advertisement in two newspapers or reputable online outlets, consecutively for 2 weeks, and submit a cover letter to the Labour Commissioner explaining the hiring necessity together with correspondence/resumes from unsuccessful BVIslander/Belonger applicants and reasons for their rejection.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_work_permit_checklist"
+        },
+        {
+          "id": "vgw_qualifications",
+          "attribute": "has_verified_qualifications",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires verified degrees, diplomas, or certifications relevant to the job (translated into English if issued abroad in another language), plus any profession-specific credential (e.g. PADI certification for divers, medical/nursing council registration).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_work_permit_checklist"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two weeks of consecutive newspaper/online job advertisements", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Cover letter to the Labour Commissioner and records of rejected local applicants", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employer's valid trade license (and incorporation documents for new companies)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Verified qualifications/certifications, translated if needed", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport photo, passport signature page copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fee: $50 non-refundable application fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed; renewable via a separate renewal work permit application",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vg_residence_status"]
+  },
+  "sources": [
+    {
+      "id": "bvi_gov_work_permit_checklist",
+      "tier": 1,
+      "url": "https://bvi.gov.vg/sites/default/files/forms/checklist_of_requirements_-_new_work_permit_application_fillable.pdf",
+      "title": "Government of the Virgin Islands -- Checklist of Requirements: New Work Permit Application: labour-market-test advertising rule, Labour Commissioner cover letter, employer and employee document lists, $50 fee",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the British Virgin Islands' initial build. work_rights is 'restricted' (tied to the specific certified employer and job description). A self-employed variant (Application for Self-Employed Work Permit) and a Temporary Work Permit variant also exist per the forms located on bvi.gov.vg, but were not independently reviewed for their own distinct criteria in this pass -- flagged as a gap rather than assumed identical to this standard employer-sponsored route. No permit duration was found on the checklist itself; a separate Renewal Work Permit Application form confirms the permit is renewable. leads_to_pr/pr_after_months (120 months) reflects the Residence Status route's 10-year continuous-residence threshold (see vg_residence_status.json), the ordinary route a work-permit holder would use to settle permanently."
+}

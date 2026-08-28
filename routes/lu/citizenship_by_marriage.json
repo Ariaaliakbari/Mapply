@@ -1,0 +1,105 @@
+{
+  "id": "lu_citizenship_by_marriage",
+  "country": "LU",
+  "name": "Acquisition by Option -- Spouse of a Luxembourgish National",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A spouse of a Luxembourgish national may acquire Luxembourgish nationality by a declaration of option, subject to language and civics conditions and (if residing abroad) a minimum marriage duration.",
+    "evidence_hint": "Marriage certificate; Luxembourgish language test certificate; civics course completion."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "resident_in_luxembourg",
+      "name": "Spouse residing in Luxembourg",
+      "requirements": [
+        {
+          "id": "lum_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_lu_citizen",
+          "hard": true,
+          "blocker_text": "Must be married to a Luxembourgish national. Gender-neutral.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_option"
+        },
+        {
+          "id": "lum_language",
+          "attribute": "has_luxembourgish_language_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a Luxembourgish language test pass certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_option"
+        },
+        {
+          "id": "lum_civics",
+          "attribute": "completed_integration_course_or_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must complete the 'Vivre ensemble au Grand-Duche de Luxembourg' civics course, or pass an exam on its content.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_option"
+        }
+      ]
+    },
+    {
+      "id": "resident_abroad",
+      "name": "Spouse residing abroad",
+      "requirements": [
+        {
+          "id": "lum_marriage_duration",
+          "attribute": "months_married_to_lu_citizen",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "If residing outside Luxembourg, requires at least 3 years of marriage, unless the Luxembourgish spouse works for Luxembourg public authorities or an international organisation (in which case the duration requirement is waived per the source).",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "guichet_option"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Luxembourgish language test certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Civics course completion certificate or exam pass", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "guichet_option",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/citoyennete/nationalite-luxembourgeoise/acquisition-recouvrement/option.html",
+      "title": "Guichet.lu -- Acquiring Luxembourgish Nationality by Option: case 3, spouses of Luxembourgish nationals -- language test, civics course, 3-year marriage duration if residing abroad",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). Gender-neutral. Unlike the reduced-residence-bar marriage routes modeled for Bulgaria and Finland elsewhere in this dataset, Luxembourg's spouse route has NO stated residence-duration requirement for a spouse actually living in Luxembourg -- only the language test and civics course (same as standard naturalisation) -- while a spouse residing ABROAD instead faces a 3-year marriage-duration requirement in place of a residence requirement. This is a declaration ('option'), not a grand-ducal naturalisation decree, though the practical language/civics bar is the same either way."
+}

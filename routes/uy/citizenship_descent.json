@@ -1,0 +1,77 @@
+{
+  "id": "uy_citizenship_descent",
+  "country": "UY",
+  "name": "Ciudadanía Natural por Ascendencia (Avecindamiento + Registro Cívico)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child of a Uruguayan father or mother, born anywhere abroad, is a 'natural citizen' under Constitution Article 74 -- but UNLIKE most other countries' descent routes, this is NOT automatic or unconditional: it requires the person to establish residence in Uruguay ('avecinarse') AND register in the Civic Registry ('Registro Cívico').",
+    "evidence_hint": "Foreign birth certificate establishing the parental link; proof of establishing residence in Uruguay; Civic Registry inscription."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uycd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be a Uruguayan citizen, regardless of where the child was born.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "impo_constitucion_art74"
+        },
+        {
+          "id": "uycd_avecindamiento",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "established_residence_in_uruguay_and_registered_civic_registry",
+          "hard": true,
+          "blocker_text": "Requires actually establishing residence in Uruguay ('avecinarse') and registering with the Civic Registry -- this status is NOT conferred automatically at birth abroad, unlike jus sanguinis rules in most other countries built in this dataset. Until both conditions are met, the person is not yet a natural citizen despite having a Uruguayan parent.",
+          "fix_path": "Establish residence in Uruguay and register with the Civic Registry.",
+          "fix_time_months": null,
+          "source_id": "impo_constitucion_art74"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Foreign birth certificate establishing the Uruguayan parental link", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of established residence in Uruguay", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Civic Registry inscription", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "impo_constitucion_art74",
+      "tier": 1,
+      "url": "https://www.impo.com.uy/bases/constitucion/1967-1967/74",
+      "title": "IMPO (Centro de Información Oficial) -- Constitución de la República, Artículo 74: natural citizenship for children of Uruguayan parents born abroad, conditioned on avecindamiento and Civic Registry inscription",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. Confirmed directly at tier-1 from the Constitution's own text. STRUCTURALLY DISTINCTIVE compared to every other 'citizenship by descent' route built in this dataset: Uruguay does NOT grant automatic, unconditional nationality at birth abroad to children of its citizens -- the person remains a foreign national in practical/legal terms until they affirmatively establish residence in Uruguay and register with the Civic Registry. An applicant should not assume they are 'already' a Uruguayan citizen simply by having a Uruguayan parent; this route models the actual two-step activation process rather than treating it as a formality-only registration like most other countries' equivalent routes. physical_presence_requirement left null: the source did not specify a minimum duration of residence before registration is permitted, only that residence must be established."
+}

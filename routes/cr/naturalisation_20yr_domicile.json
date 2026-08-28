@@ -1,0 +1,76 @@
+{
+  "id": "cr_naturalisation_20yr_domicile",
+  "country": "CR",
+  "name": "Naturalización por Domicilio no menor a Veinte Años",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "crn20_domicile",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 240,
+          "hard": true,
+          "blocker_text": "Requires at least 20 years of domicile in Costa Rica. Unlike cr_naturalisation_residence, formal residence (migratory) status is explicitly NOT required to qualify -- long-standing de facto presence is sufficient.",
+          "fix_path": "Establish 20 years of domicile in Costa Rica.",
+          "fix_time_months": null,
+          "source_id": "tse_go_cr_naturalizacion_20anos"
+        },
+        {
+          "id": "crn20_test",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "spanish_and_social_studies_exam_pass",
+          "hard": true,
+          "blocker_text": "Requires passing the Ministry of Public Education's Spanish-language and Social Studies/civics exams, unless exempt (elderly applicants, or permanent health/cognitive conditions with medical certification).",
+          "fix_path": "Book and pass the Spanish/Social Studies naturalisation exams.",
+          "fix_time_months": 6,
+          "source_id": "tse_go_cr_naturalizacion_20anos"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written petition, valid ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled/translated birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two sworn witness statements (residency period, means of support, good conduct)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of means of livelihood", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish/Social Studies exam pass certificate (or exemption)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tse_go_cr_naturalizacion_20anos",
+      "tier": 1,
+      "url": "https://www.tse.go.cr/pdf/requisitosytramites/Naturalizacion-por-domicilio-no-menor-de-veinte-anos-en-CR-ley1902.pdf",
+      "title": "Tribunal Supremo de Elecciones (tse.go.cr) -- Naturalización por Domicilio no menor de Veinte Años en Costa Rica, Ley 1902",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build -- kept SEPARATE from cr_naturalisation_residence deliberately, since the source states directly: 'No es necesario que tenga Residencia Oficial (estatus migratorio)' (it is not necessary to have official residence/migratory status). This is a materially different eligibility gate -- it exists specifically for people who have lived in Costa Rica for two decades WITHOUT ever holding formal legal residence, a real population this dataset should not silently collapse into the standard, status-holding-based naturalisation route. Processing: 285 business days, free of charge."
+}

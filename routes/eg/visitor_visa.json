@@ -1,0 +1,80 @@
+{
+  "id": "eg_visitor_visa",
+  "country": "EG",
+  "name": "Tourist Visa / Business Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tourist",
+      "name": "Tourist visa",
+      "requirements": [
+        {
+          "id": "egv_tourist_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Requires a passport valid 6+ months with an empty visa page, a completed application form, and a recent 2x2 photo.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": null,
+          "source_id": "egypt_embassy_visas"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business visa",
+      "requirements": [
+        {
+          "id": "egv_business_letter",
+          "attribute": "has_company_invitation_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a company letter detailing the trip's purpose and a financial guarantee, plus a valid passport and application materials.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "egypt_embassy_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed visa application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport photo", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Company invitation letter (business visa only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Single or multiple entry, processed in 10+ business days (e-visa available for eligible nationalities)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["eg_work_permit", "eg_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "egypt_embassy_visas",
+      "tier": 1,
+      "url": "https://egyptembassy.net/consular-services/visas-travel/6874-2/",
+      "title": "Embassy of Egypt, Washington DC -- Consular Services: tourist visa ($27/$62), business visa ($62/$87, company letter required), student visa (school registration), 10+ business day processing, e-visa portal reference",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). Fees quoted are for US passport holders specifically; the source notes fees vary by nationality. Egypt also operates an official e-visa portal (visa2egypt.gov.eg) for eligible nationalities, referenced but not independently fetched in this pass -- the tourist-visa figures here reflect the traditional consular application route. Tourist visas can reportedly be extended up to 5 years under some conditions per a separate tier-1 government real-estate portal source (see eg_investor_residence.json's notes) -- not independently confirmed at tier-1 precision for this specific file and flagged as a gap."
+}

@@ -1,0 +1,114 @@
+{
+  "id": "nz_citizenship_by_grant",
+  "country": "NZ",
+  "name": "Citizenship by Grant (Naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzcg_resident_status",
+          "attribute": "months_as_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must have been living as a New Zealand resident (holding a Resident Visa or Permanent Resident Visa) for at least the last 5 years.",
+          "fix_path": "Hold resident status for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "govt_nz_citizenship"
+        },
+        {
+          "id": "nzcg_presence",
+          "attribute": "days_present_last_5yr",
+          "operator": ">=",
+          "value": 1350,
+          "hard": false,
+          "blocker_text": "Physically present in New Zealand for a minimum of 1,350 days during the 5 years immediately preceding the application, including at least 240 days in each of 12 of the 60 months -- these exact day figures are confirmed only by tier-3 legal-commentary sources, not stated numerically on the tier-1 govt.nz overview pages reviewed in this pass.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "duncancotterill_citizenship"
+        },
+        {
+          "id": "nzcg_language",
+          "attribute": "has_conversational_english",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be able to hold a basic conversation in English.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govt_nz_citizenship"
+        },
+        {
+          "id": "nzcg_character",
+          "attribute": "has_good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govt_nz_citizenship"
+        },
+        {
+          "id": "nzcg_intent",
+          "attribute": "intends_to_reside_in_nz",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must intend to continue living in New Zealand.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "govt_nz_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' resident status", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel records proving physical presence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character/police certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "1,350 days within the preceding 5 years, incl. 240+ days in each of 12 months",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "govt_nz_citizenship",
+      "tier": 1,
+      "url": "https://www.govt.nz/browse/passports-citizenship-and-identity/nz-citizenship/requirements-for-nz-citizenship/",
+      "title": "New Zealand Government (govt.nz) -- Requirements for NZ citizenship: 5-year residence, conversational English, good character, intent to remain; notes a citizenship test will be introduced for most applicants from late 2027 (not yet in force)",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "duncancotterill_citizenship",
+      "tier": 3,
+      "url": "https://duncancotterill.com/insights/new-zealand-citizenship/",
+      "title": "Duncan Cotterill (NZ law firm) -- New Zealand citizenship: exact presence-day figures (1,350 days over 5 years; 240 days in each of 12 months), Ministerial discretion for exceptional circumstances",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). dual_citizenship_allowed modeled TRUE -- New Zealand imposes no renunciation requirement, unlike several other countries in this dataset. A citizenship TEST (beyond the existing conversational-English and character checks) is confirmed by the tier-1 source to be introduced for most applicants from LATE 2027 -- NOT YET IN FORCE as of this verified_at date, so not modeled as a current requirement, consistent with this dataset's live-reform handling convention (see Finland's citizenship-test precedent). The Minister of Internal Affairs retains discretion to grant citizenship in exceptional circumstances to applicants who do not meet all standard criteria, per the tier-3 source -- not modeled as a separate route given its fully discretionary, non-criteria-based nature."
+}

@@ -1,0 +1,72 @@
+{
+  "id": "gr_citizenship_descent",
+  "country": "GR",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born to at least one Greek-citizen parent acquires Greek citizenship automatically at birth (Article 1.1), regardless of where the birth takes place.",
+    "evidence_hint": "Foreign birth certificate; Greek parent's citizenship documentation; civil registry declaration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be a Greek citizen at the time of the child's birth. Acquisition is automatic and does not require residence in Greece.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Foreign birth certificate, apostilled/translated", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Greek parent's citizenship documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_gr_codification_art1",
+      "tier": 1,
+      "url": "https://www.mfa.gr/images/docs/ethnikes_theoriseis/codification_of_legislation_en.pdf",
+      "title": "Greek Ministry of Foreign Affairs -- Codification of Legislation, Article 1.1 (automatic citizenship acquisition by descent at birth)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "globalcit_gr_citizenship_code",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/GRE%20Citizenship%20Code%20(as%20of%202010,%20English)_1.pdf",
+      "title": "GLOBALCIT -- Greek Citizenship Code (as of 2010), Article 1.1 and Article 11 (foreign-born children of Greek-origin parents through parental naturalisation)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. Article 1.1 (automatic citizenship for a child of a Greek-citizen parent) confirmed independently at BOTH tier-1 (MFA codification) and tier-2 (GLOBALCIT) -- unusually well corroborated for this dataset. A separate mechanism exists (Article 11) for foreign-born children of Greek-ORIGIN (not necessarily citizen) parents to acquire citizenship automatically as minors when the parent naturalises -- not modelled as its own route here since it is a derivative effect of the parent's own naturalisation (gr_naturalisation) rather than an independently reachable route for the child themselves."
+}

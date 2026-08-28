@@ -1,0 +1,133 @@
+{
+  "id": "fi_permanent_residence",
+  "country": "FI",
+  "name": "Permanent Residence Permit (P Permit)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Effective 8 January 2026, Finland replaced the previous flat 4-years-of-A-permit rule with 5 alternative qualification paths, each requiring a continuous (A) permit or Brexit permit as the base status.",
+    "evidence_hint": "Residence permit history, work/income/education records matching one of the 5 paths."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "path_1_residence_and_language",
+      "name": "Path 1: 6 years' residence + work history + B1 language",
+      "requirements": [
+        {
+          "id": "fipr_p1_residence",
+          "attribute": "months_as_a_permit_holder",
+          "operator": ">=",
+          "value": 72,
+          "hard": true,
+          "blocker_text": "6 years of residence under a continuous (A) permit or Brexit permit, with at least 2 years of work history in Finland and B1-level (satisfactory) Finnish or Swedish language skills.",
+          "fix_path": null,
+          "fix_time_months": 72,
+          "source_id": "migri_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "path_2_income",
+      "name": "Path 2: 4 years' residence + EUR 40,000/year income",
+      "requirements": [
+        {
+          "id": "fipr_p2_residence",
+          "attribute": "months_as_a_permit_holder",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years of residence under a continuous (A) permit or Brexit permit, with income subject to income tax of at least EUR 40,000 in the most recently completed tax assessment.",
+          "fix_path": null,
+          "fix_time_months": 48,
+          "source_id": "migri_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "path_3_degree_in_finland",
+      "name": "Path 3: higher education degree completed in Finland",
+      "requirements": [
+        {
+          "id": "fipr_p3_degree",
+          "attribute": "completed_higher_education_degree_in_finland",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A higher-education degree completed in Finland qualifies under a separate path; exact residence/work-history minimums for this specific path were not confirmed at tier-1 precision in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "path_4_degree_abroad",
+      "name": "Path 4: degree completed outside Finland + work history",
+      "requirements": [
+        {
+          "id": "fipr_p4_residence",
+          "attribute": "months_as_a_permit_holder",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years of residence, a recognised master's or doctoral degree completed outside Finland, and 2 years of work history in Finland.",
+          "fix_path": null,
+          "fix_time_months": 48,
+          "source_id": "migri_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "path_5_language",
+      "name": "Path 5: particularly good language skills",
+      "requirements": [
+        {
+          "id": "fipr_p5_residence",
+          "attribute": "months_as_a_permit_holder",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years of residence, 3 years of work history in Finland, and C1-level Finnish or Swedish language proficiency.",
+          "fix_path": null,
+          "fix_time_months": 48,
+          "source_id": "migri_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Residence permit history", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Work history records / tax assessment / degree certificate / language test certificate (matching chosen path)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (valid until further notice)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fi_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migri_permanent_residence",
+      "tier": 1,
+      "url": "https://migri.fi/en/amendments-to-aliens-act-regarding-permanent-residence-permits-2026",
+      "title": "Maahanmuuttovirasto -- Amendments to Aliens Act Regarding Permanent Residence Permits 2026: 5 alternative paths effective 8 January 2026 (6yr+B1 language / 4yr+EUR40k income / Finland degree / foreign degree+work / 4yr+C1 language)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). MAJOR REFORM, effective 8 January 2026 (already in force as of this build): replaced a flat 4-years-of-A-permit rule with 5 alternative qualification paths, modeled here as 5 OR-groups since satisfying any one path qualifies. Path 3 (degree completed in Finland) is thin -- the specific residence/work-history minimums for this path specifically were not confirmed at tier-1 precision, only that it exists as a qualifying path; flagged as a gap. citizenship_after_months (0) on the outcome reflects that permanent residence itself is not a prerequisite for naturalisation eligibility timing in this dataset's model (naturalisation counts from continuous residence generally, not specifically from P-permit grant) -- see fi_naturalisation.json."
+}

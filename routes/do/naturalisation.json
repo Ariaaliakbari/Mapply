@@ -1,0 +1,102 @@
+{
+  "id": "do_naturalisation",
+  "country": "DO",
+  "name": "Ordinary Naturalization",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["do_permanent_residence"],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard_residence",
+      "name": "Standard residence route",
+      "requirements": [
+        {
+          "id": "donat_pr_years",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires being a Permanent Resident (RP-1) for a minimum of 2 years, per current DGM practice, consistent with the 1948 Naturalization Law's 'uninterrupted residence of at least two years' standard.",
+          "fix_path": "Hold Permanent Residence continuously for 2 years.",
+          "fix_time_months": 24,
+          "source_id": "migracion_naturalizacion"
+        },
+        {
+          "id": "donat_no_crime",
+          "attribute": "has_criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "No criminal record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_1683"
+        }
+      ]
+    },
+    {
+      "id": "property_business_shortened",
+      "name": "Shortened residence for property/industry owners (1948 law, currency unconfirmed)",
+      "requirements": [
+        {
+          "id": "donat_property_industry",
+          "attribute": "owns_do_real_estate_or_industry",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "The 1948 Naturalization Law (Ley 1683) sets a reduced 6-month uninterrupted residence requirement for foreigners who establish an urban or rural industry, or own Dominican real estate, in place of the standard 2 years.",
+          "fix_path": null,
+          "fix_time_months": 6,
+          "source_id": "ley_1683"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Permanent Residence Card (RP-1) valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "National Identity Card and passport copies", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed DGM certification form (in person, with fingerprints)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migracion_naturalizacion",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/naturalizacion-ordinaria/",
+      "title": "Dirección General de Migración -- Naturalización Ordinaria: minimum 2 years as Permanent Resident, RD$4,000 certification fee, 15 business days",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "ley_1683",
+      "tier": 1,
+      "url": "https://dgii.gov.do/legislacion/leyesTributarias/Documents/Otras%20Leyes%20de%20Inter%C3%A9s/1683.pdf",
+      "title": "Ley No. 1683 sobre Naturalización (16 de abril de 1948), hosted by the Dirección General de Impuestos Internos (DGII) -- 2-year standard residence, 6-month reduced residence for property/industry owners, 3-month agricultural colonization path, privileged discretionary naturalization",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). Two tier-1 sources triangulated to build this file: the DGM's current certification-process page (confirms the 2-year-as-Permanent-Resident standard is still operative in 2026 practice) and the substantive 1948 Naturalization Law (Ley 1683, hosted on DGII's own .gov.do domain as verbatim primary legislation) for the underlying legal grounds, including the lesser-known 6-month shortened path for property/industry owners. The property/industry shortcut is modeled hard:false despite tier-1 sourcing because it comes from a 78-year-old statute with no current-practice confirmation found -- unlike the standard 2-year path, which DGM's own live service page independently corroborates. The actual naturalization GRANT is made by presidential decree via the Ministerio de Interior y Policía (MIP); MIP's own requirements page (mip.gob.do) returned a 403 error throughout this research pass and could not be directly verified -- DGM's certification-service page was used as the best available current-practice cross-check instead. This file does NOT cover the separate historical Law 169-14 special regularization/naturalization regime for children of undocumented migrants born in DR between 1929-2007, or the 2013 Constitutional Tribunal ruling (TC/0168-13) that stripped retroactive citizenship from many Dominican-born people of Haitian descent -- that regime's registration window (a 90-day deadline under Chapter II) closed years ago and is not a currently open route for new applicants; the underlying statelessness crisis it responds to is a serious, well-documented human rights issue (see UNHCR and IACHR sources) but does not map to a route a person can apply for today, so it was deliberately not modeled as one here rather than invented."
+}

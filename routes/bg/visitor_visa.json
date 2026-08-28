@@ -1,0 +1,92 @@
+{
+  "id": "bg_visitor_visa",
+  "country": "BG",
+  "name": "Short-Stay Visa / Visa-Free Entry (Schengen)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgv_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Bulgaria applies the Schengen short-stay rule: up to 90 days within any 180-day period, whether entering visa-free or on a Type C visa (Foreigners Act Article 14(1)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        },
+        {
+          "id": "bgv_means",
+          "attribute": "has_sufficient_funds_and_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Entrants must hold a valid travel document, proof of sufficient financial means for subsistence and return travel, and medical/travel insurance (Foreigners Act Article 19(1)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        },
+        {
+          "id": "bgv_visa_requirement",
+          "attribute": "requires_type_c_visa",
+          "operator": "==",
+          "value": "depends_on_nationality",
+          "hard": false,
+          "blocker_text": "Nationals of countries not covered by EU Regulation 2018/1806's visa-exemption list must obtain a Type C short-stay visa before travel; others may enter visa-free for the same 90/180-day allowance.",
+          "fix_path": "Apply for a Type C visa at a Bulgarian embassy/consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "mfa_short_stay_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "foreigners_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Foreigners_in_the_Republic_of_Bulgaria_Act_2.pdf",
+      "title": "Bulgaria -- Foreigners in the Republic of Bulgaria Act (English translation, verbatim primary legislation text), Articles 14 and 19: short-stay Type C visa (90/180 days, up to 5-year multiple-entry validity) and general entry requirements",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mfa_short_stay_visa",
+      "tier": 1,
+      "url": "https://www.mfa.bg/en/5632",
+      "title": "Ministry of Foreign Affairs of Bulgaria -- Schengen Short-Term Visas: General Information",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Bulgaria applies the full Schengen short-stay framework (90/180 days) since joining the Schengen area (air/sea borders March 2024, land borders January 2025). Visa requirement is nationality-dependent per EU Regulation 2018/1806, modeled as a soft (hard:false) branch since it varies by the applicant's nationality rather than being a fixed universal condition."
+}

@@ -1,0 +1,103 @@
+{
+  "id": "id_golden_visa",
+  "country": "ID",
+  "name": "Golden Visa (E28)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "individual_no_company",
+      "name": "Individual investor, no company established (bonds/shares/deposits)",
+      "requirements": [
+        {
+          "id": "idgv_individual",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 350000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 350,000 (5-year visa) or USD 700,000 (10-year visa) placed in Indonesian government bonds, publicly listed company shares, or bank savings/deposits.",
+          "fix_path": "Fund and document the qualifying investment.",
+          "fix_time_months": null,
+          "source_id": "ashtara_id_golden_visa"
+        }
+      ]
+    },
+    {
+      "id": "individual_with_company",
+      "name": "Individual investor establishing a company",
+      "requirements": [
+        {
+          "id": "idgv_individual_company",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 2500000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 2,500,000 (5-year visa) or USD 5,000,000 (10-year visa) invested in establishing a company in Indonesia.",
+          "fix_path": "Fund and document the qualifying company investment.",
+          "fix_time_months": null,
+          "source_id": "ashtara_id_golden_visa"
+        }
+      ]
+    },
+    {
+      "id": "corporate",
+      "name": "Corporate investor (director/commissioner of an investing company)",
+      "requirements": [
+        {
+          "id": "idgv_corporate",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 25000000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires the sponsoring company to have invested at least USD 25,000,000 (5-year visa) or USD 50,000,000 (10-year visa) in Indonesia, with the applicant serving as a director or commissioner of that company.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ashtara_id_golden_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Category-specific investment documentation (bond/share certificates, deposit statement, or company incorporation/investment records)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passport valid 36+ months", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 or 10 years depending on tier chosen, extendable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["id_permanent_stay_kitap", "id_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "evisa_imigrasi_golden_visa_faq",
+      "tier": 1,
+      "url": "https://evisa.imigrasi.go.id/front/faq/0e6b4213-6b94-450a-9d14-9c9cb971fd06",
+      "title": "Direktorat Jenderal Imigrasi eVisa portal -- Golden Visa FAQ: up to 5-year (extendable) duration, no employment, family can join, study permitted",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ashtara_id_golden_visa",
+      "tier": 3,
+      "url": "https://ashtara.id/2024/07/25/indonesias-golden-visa-policy-under-permenkumham-no-22-of-2023-and-pmk-no-82-of-2023/",
+      "title": "Ashtara (legal analysis) -- Golden Visa investment tiers under Permenkumham No. 22 of 2023 and PMK No. 82 of 2023: three investor categories x two duration tiers each",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: the tier-1 eVisa FAQ described a single IDR 2,000,000,000 (~USD 130,000) minimum bank-account figure and only a 5-year duration under the 'Golden Visa' FAQ entry -- this does NOT match the much higher, tiered thresholds (USD 350,000 up to USD 50,000,000) confirmed by the tier-3 legal-analysis source citing the actual regulations (Permenkumham 22/2023, PMK 82/2023) by number. Given how large this discrepancy is, it seems most likely the eVisa FAQ's IDR 2 billion figure is actually describing the SECOND HOME VISA (see id_second_home_visa, which cites the identical figure) and was mislabelled or cross-listed under the Golden Visa FAQ entry by the eVisa system -- but this is flagged as an inference, not confirmed. THREE GENUINELY DIFFERENT INVESTOR CATEGORIES, each with a 5-year/10-year choice, modelled as OR-logic groups per the regulation-citing tier-3 source."
+}

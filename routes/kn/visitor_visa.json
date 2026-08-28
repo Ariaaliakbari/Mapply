@@ -1,0 +1,76 @@
+{
+  "id": "kn_visitor_visa",
+  "country": "KN",
+  "name": "Visitor Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "knv_passport_validity",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 6 months from the date of entry.",
+          "fix_path": "Renew passport to have at least 6 months' validity remaining.",
+          "fix_time_months": 1,
+          "source_id": "hcuk_visa_immigration"
+        },
+        {
+          "id": "knv_no_work",
+          "attribute": "intends_paid_work",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Visitor visa does not authorise paid work in the Federation; a work permit is required for any employment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "hcuk_visa_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "2 passport photos", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank statements", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa fee (US$100, certified check or money order)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically up to 90 days per entry (exact maximum not confirmed on this source)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hcuk_visa_immigration",
+      "tier": 1,
+      "url": "https://stkittsnevishcuk.gov.kn/visa-immigration/",
+      "title": "High Commission for Saint Kitts and Nevis, UK -- Visa & Immigration: visitor visa requirements (2 photos, 6-month passport validity, US$100 fee via certified check/money order, bank statements, employer letter), ~2 week processing, no work without authorisation, visa-exempt country list, no visa needed for stays under 24 hours",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. Sourced from the UK High Commission's visa page rather than a central gov.kn immigration portal (none as authoritative was located) -- treated as tier 1 since it is an official diplomatic-mission page of the Government of Saint Kitts and Nevis. Exact maximum stay length in days was not confirmed on this source; flagged as a gap rather than assumed."
+}

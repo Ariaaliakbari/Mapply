@@ -1,0 +1,86 @@
+{
+  "id": "rs_permanent_residence",
+  "country": "RS",
+  "name": "Permanent Residence (Settling / Indefinite Leave to Remain)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 36,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "3 years of continuous temporary residence or asylum status",
+      "requirements": [
+        {
+          "id": "rspr_residence",
+          "attribute": "months_continuous_temp_residence_or_asylum",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years of continuous residence in Serbia on the basis of approved temporary residence or granted asylum. Continuous residence tolerates multiple absences totaling up to 10 months, or a single absence of up to 6 months, within the 3 years.",
+          "fix_path": "Accumulate 3 years of continuous temporary residence or hold asylum status, applying no earlier than 60 days before the 3-year mark.",
+          "fix_time_months": 36,
+          "source_id": "mup_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "exempt_serbian_origin_or_family",
+      "name": "Exempt: minor child of a citizen/PR holder, or of Serbian origin/descent",
+      "requirements": [
+        {
+          "id": "rspr_exempt",
+          "attribute": "exempt_from_3yr_via_origin_or_family_tie",
+          "operator": "in",
+          "value": ["minor_child_of_rs_citizen_or_pr_holder", "of_serbian_origin_or_descent", "residence_serves_serbias_interests"],
+          "hard": true,
+          "blocker_text": "A minor child with at least one parent holding Serbian citizenship or permanent residence, a person originating from or of Serbian descent, or a foreign national whose residence is deemed to serve Serbia's interests, may obtain permanent residence without completing the 3-year continuous-residence requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid personal document", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of subsistence (employment, savings, or financial guarantee)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residential address registration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supporting documents for the specific basis (employment contract, kinship certificate, property ownership, etc.)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rs_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mup_permanent_residence",
+      "tier": 1,
+      "url": "https://www.mup.gov.rs/wps/portal/en/information/Permanent+residence+(settling+or+an+indefinite+leave+to+remain)",
+      "title": "Serbian Ministry of Interior (MUP) -- permanent residence requirements: 3 years continuous residence on temporary-residence or asylum basis, continuity tolerances, application timing, exemptions for minor children of citizens/PR holders, persons of Serbian origin/descent, and cases serving Serbia's interests",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). MUP's own page did not explicitly state whether permanent residence itself expires/requires renewal or automatically confers work rights -- work_rights and duration_length ('indefinite', non-renewable status card aside) modeled based on the general pattern of 'permanent'/'settled' status across this dataset and corroborated by tier-3 legal-guide sources reviewed during search, not an exact tier-1 quote for those two specific fields; the 3-year residence figure and its exemptions are tier-1 quoted directly. citizenship_after_months (36) reuses rs_naturalisation.json's statutory 3-year domicile figure -- see that file's notes for the practical-vs-statutory timeline discrepancy."
+}

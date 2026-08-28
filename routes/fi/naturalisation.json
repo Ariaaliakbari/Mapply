@@ -1,0 +1,138 @@
+{
+  "id": "fi_naturalisation",
+  "country": "FI",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fin_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "8 years of continuous residence in Finland.",
+          "fix_path": "Accumulate 8 years of continuous residence.",
+          "fix_time_months": 96,
+          "source_id": "migri_citizenship_faq"
+        },
+        {
+          "id": "fin_financial_resources",
+          "attribute": "sufficient_financial_resources",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "As of 17 December 2025: must not have relied on unemployment benefit or social assistance for longer than 3 months during the past 2 years; income must be legal and adequate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_amendment_2025"
+        },
+        {
+          "id": "fin_identity",
+          "attribute": "identity_established",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "As of 17 December 2025: applicants issued an alien's passport must present a valid national passport or equivalent document to verify identity to a stricter standard than before.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_amendment_2025"
+        },
+        {
+          "id": "fin_conduct",
+          "attribute": "no_disqualifying_offences",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "No disqualifying criminal offences; a negative decision triggers a 1-8 year waiting period before reapplying (reformed December 2025). Serious offences including terrorism, treason, or high treason (6+ years' imprisonment) can bar citizenship or cause its loss.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_amendment_2025"
+        }
+      ]
+    },
+    {
+      "id": "language_reduced",
+      "name": "Reduced route with language proficiency",
+      "requirements": [
+        {
+          "id": "fin_reduced_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of continuous residence (instead of 8) if the applicant meets the required Finnish/Swedish language proficiency (via YKI certificate, Civil Service Language Proficiency Certificate, matriculation exam, or a higher-education degree completed in Finnish/Swedish), plus the same financial-resources, identity, and conduct conditions as the standard route.",
+          "fix_path": "Meet the language proficiency standard.",
+          "fix_time_months": 60,
+          "source_id": "migri_citizenship_faq"
+        }
+      ]
+    },
+    {
+      "id": "nordic_or_diplomat_spouse",
+      "name": "Nordic citizens / spouses of Finnish diplomats",
+      "requirements": [
+        {
+          "id": "fin_nordic_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "2 years of residence for citizens of other Nordic countries (Denmark, Iceland, Norway, Sweden), or for spouses of Finnish diplomats.",
+          "fix_path": null,
+          "fix_time_months": 24,
+          "source_id": "migri_citizenship_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence period matching the applicable category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Language proficiency certificate (standard/reduced routes)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid national passport or identity document", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient/legal income, no extended reliance on social assistance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migri_citizenship_faq",
+      "tier": 1,
+      "url": "https://migri.fi/en/faq-finnish-citizenship",
+      "title": "Maahanmuuttovirasto -- FAQ: Finnish Citizenship: 8-year standard / 5-year language-reduced / 2-year Nordic-and-diplomat-spouse residence requirements, language proficiency standards, dual citizenship allowed",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migri_citizenship_amendment_2025",
+      "tier": 1,
+      "url": "https://migri.fi/en/-/amendments-to-the-citizenship-act-in-december-2025-stricter-requirements-concerning-sufficient-financial-resources-establishment-of-identity-and-integrity",
+      "title": "Maahanmuuttovirasto -- Amendments to the Citizenship Act, effective 17 December 2025: sufficient financial resources requirement, stricter identity establishment, strengthened integrity/national-security conduct requirements, 1-8 year waiting periods after negative decisions",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). MAJOR REFORM, effective 17 December 2025 (already in force): added the financial-resources, stricter-identity, and strengthened-integrity conditions modeled here as new hard requirements on top of the pre-existing residence-duration framework, which itself was NOT changed by this reform. A further reform -- introduction of a citizenship TEST -- is scheduled to take effect 1 January 2027, i.e. AFTER this build's verification date; NOT modeled as a current requirement, flagged here as a near-future change for a later revisit. dual_citizenship_allowed modeled true per the FAQ page's explicit statement that acquiring another nationality does not cause automatic loss of Finnish citizenship."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "mx_work_permit_employer_sponsored",
+  "country": "MX",
+  "name": "Employer-Sponsored Temporary Resident Visa (Oferta de Empleo / NUT)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxwp_employer_registered",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_offer_from_inm_registered_employer",
+          "hard": true,
+          "blocker_text": "The Mexican employer must first obtain its own INM employer registration ('constancia de inscripción de empleador') before extending the job offer, then file the employment offer with INM to receive an authorisation letter with a unique case number (NUT).",
+          "fix_path": "Secure a job offer from an employer that is (or becomes) INM-registered.",
+          "fix_time_months": null,
+          "source_id": "embamex_colombia_nut_process"
+        },
+        {
+          "id": "mxwp_nut_consular",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "nut_authorization_presented_at_consular_appointment",
+          "hard": true,
+          "blocker_text": "The worker must present the NUT authorisation at a consular appointment abroad to obtain the visa, then exchange it for a resident card at INM upon entry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embamex_colombia_nut_process"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "NUT authorisation letter from INM (via employer)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid passport/travel document", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed visa application form and photograph", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "consular visa valid 6 months, single entry; exchanged for a Temporary Resident card with work permission upon arrival, duration then tied to the employment offer up to the general 4-year temporary-resident cap",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_permanent_residence_via_temporary", "mx_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "embamex_colombia_nut_process",
+      "tier": 1,
+      "url": "https://embamex.sre.gob.mx/colombia/index.php/comunicados-de-prensa-blog/33-servicios-consulares/770-visa-con-autorizacion-del-inm-nut-oferta-de-empleo",
+      "title": "Embassy of Mexico in Colombia (SRE) -- Visa con autorización del INM (NUT) por oferta de empleo: employer registration, NUT process, consular visa validity",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. This is genuinely distinct from mx_temporary_resident: that route is granted directly by a consulate on economic/property/investment grounds and does NOT include work rights; this route requires an INM-registered Mexican employer and an NUT authorisation number, and DOES grant work rights, tied specifically to the sponsoring employer. Sourced from a Mexican embassy's own consular page (tier-1) describing the nationwide NUT process (the specific page happens to be the Colombia embassy's version, but the NUT/employer-registration mechanism it describes is the general nationwide INM procedure, not Colombia-specific -- flagged since the exact document was jurisdiction-labelled)."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "rs_family_reunification",
+  "country": "RS",
+  "name": "Temporary Residence -- Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_or_partner",
+      "name": "Spouse or extramarital partner of a citizen or resident",
+      "requirements": [
+        {
+          "id": "rsfr_spouse_partner",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_rs_citizen", "spouse_of_rs_resident_or_protection_holder", "extramarital_partner_of_rs_citizen_or_resident"],
+          "hard": true,
+          "blocker_text": "Spouse of a Serbian citizen; spouse of a foreign national holding Serbian temporary/permanent residence or granted asylum; or a partner in a registered extramarital (common-law) union with a Serbian citizen or such a resident.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "welcome_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "other_family_member",
+      "name": "Other family member of a citizen or resident",
+      "requirements": [
+        {
+          "id": "rsfr_other_family",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "family_member_of_rs_citizen_or_resident",
+          "hard": true,
+          "blocker_text": "Family member (as defined by Serbian law -- e.g. minor child, dependent parent) of a Serbian citizen or of a foreign citizen holding temporary or permanent residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "welcome_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of extramarital union", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate or other proof of kinship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's proof of citizenship or residence/protection status", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable, generally tied to the sponsor's status",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rs_permanent_residence", "rs_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "welcome_family_reunification",
+      "tier": 1,
+      "url": "https://welcometoserbia.gov.rs/family-reunification",
+      "title": "Welcome to Serbia (official government portal) -- family reunification categories: spouse of a Serbian citizen or resident/asylum-grantee, extramarital partner, and other family members of a citizen or resident",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). No specific sponsor income or housing-adequacy threshold was found on the tier-1 government page reviewed -- the page explicitly defers documentation specifics to separate linked resources not captured in this pass, so no numeric financial requirement is modeled here (consistent with this dataset's practice of disclosing a gap rather than inventing a figure). work_rights modeled 'none' since no work authorization was described as bundled with this ground specifically. A foreign spouse of a Serbian CITIZEN can alternatively pursue rs_citizenship_by_marriage.json directly (after 3 years of marriage plus permanent residence) rather than only extending temporary residence indefinitely -- both are modeled as separate, valid routes."
+}

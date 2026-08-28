@@ -1,0 +1,78 @@
+{
+  "id": "sx_permanent_residence",
+  "country": "SX",
+  "name": "Permanent Residency (After 5 Years)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["sx_work_permit", "sx_family_reunification", "sx_business_director_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sxpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of consecutive legal residency in Sint Maarten.",
+          "fix_path": "Accumulate 5 years of consecutive legal residence.",
+          "fix_time_months": 60,
+          "source_id": "moj_sx_immigration"
+        },
+        {
+          "id": "sxpr_registration",
+          "attribute": "registered_at_civil_registry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must reside on the Dutch side and be registered at the Civil Registry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' consecutive legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Civil Registry registration", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Permanent residency application (via services.sintmaartengov.org)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "consecutive legal residence with no material gaps",
+    "switchable_to": ["sx_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "moj_sx_immigration",
+      "tier": 1,
+      "url": "https://www.ministryofjustice.sx/department/immigration/",
+      "title": "Ministry of Justice, Government of Sint Maarten -- Immigration and Border Protection Services: 'After 5 years of consecutive legal residency, applicants may pursue permanent residency', Civil Registry registration requirement, Dutch-side-only residence",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Sint Maarten's initial build -- Sint Maarten's PR-equivalent 'settled' status, materially shorter (5 years) than the equivalent routes for its Kingdom siblings Aruba (10 years/120 months) and Curacao (10 years, per that country's build earlier this session) -- flagged as a genuine difference across the three Kingdom constituent countries rather than an inconsistency in this dataset. No fee schedule or further eligibility detail (e.g. good-character, income) was found on the immigration overview page beyond the 5-year figure and the Civil Registry/Dutch-side residence requirement. leads_to_citizenship reflects the Kingdom-level naturalisation route (see sx_naturalisation.json), for which holding a valid residence permit -- which permanent residency certainly satisfies -- for the required period is the operative precondition."
+}

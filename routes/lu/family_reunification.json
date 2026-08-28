@@ -1,0 +1,114 @@
+{
+  "id": "lu_family_reunification",
+  "country": "LU",
+  "name": "Family Reunification (Third-Country National)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Spouse/registered partner and minor children",
+      "requirements": [
+        {
+          "id": "lufam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_or_registered_partner_of_resident", "minor_child_of_resident"],
+          "hard": true,
+          "blocker_text": "Available to the spouse or registered partner (18+, not in a polygamous marriage with the sponsor) and unmarried minor children (under 18, in the sponsor's or co-parent's custody) of a sponsor legally residing in Luxembourg.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_family_reunification"
+        },
+        {
+          "id": "lufam_income",
+          "attribute": "sponsor_monthly_income_gte_unskilled_minimum_wage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor's income over the 12 months prior to application must be at least equivalent to the average monthly minimum wage for an unskilled worker.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_family_reunification"
+        },
+        {
+          "id": "lufam_housing",
+          "attribute": "has_suitable_housing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Housing must meet legal habitability standards: minimum 12 sqm for the first occupant, 9 sqm per additional person, with adequate heating, water, electricity, and ventilation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_family_reunification"
+        },
+        {
+          "id": "lufam_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health insurance coverage required for the sponsor and joining family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "parents_discretionary",
+      "name": "Parents of the sponsor or spouse (discretionary)",
+      "requirements": [
+        {
+          "id": "lufam_parent_sponsor_residence",
+          "attribute": "sponsor_months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "The Minister may approve reunification with the sponsor's or spouse's parents at their discretion, if the sponsor has legally resided in Luxembourg for at least 12 months and the parents lack necessary family support in their home country. Not an entitlement.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "guichet_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/partnership certificate or proof of parentage/custody", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sponsor's income (12 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of suitable housing", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "initial permit 1 year, renewable; independent long-term resident status available after 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lu_permanent_residence", "lu_naturalisation", "lu_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "guichet_family_reunification",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html",
+      "title": "Guichet.lu -- Application for Family Reunification for Third-Country Nationals: spouse/partner and minor-child eligibility, sponsor income and housing standards, discretionary parent reunification",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). Distinct from lu_private_reasons_residence.json, which covers durable unmarried partnerships and other 'stable personal or family ties' not meeting formal spouse/registered-partner status -- two structurally separate residence permit types under Luxembourg law. The discretionary parent-reunification group is modeled as hard:true on the stated preconditions (12-month sponsor residence, lack of home-country support), but approval itself remains at ministerial discretion even when preconditions are met -- flagged as not a full entitlement."
+}

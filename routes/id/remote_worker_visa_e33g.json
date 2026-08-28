@@ -1,0 +1,73 @@
+{
+  "id": "id_remote_worker_visa_e33g",
+  "country": "ID",
+  "name": "Remote Worker Visa (E33G)",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "idrw_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 60000, "currency": "USD", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires annual income of at least USD 60,000 (~USD 5,000/month) from a foreign source, plus a personal bank statement showing at least USD 2,000 over the prior 3 months.",
+          "fix_path": "Document qualifying foreign-sourced income.",
+          "fix_time_months": null,
+          "source_id": "emerhub_id_remote_worker"
+        },
+        {
+          "id": "idrw_foreign_only",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "employment_or_clients_outside_indonesia_only",
+          "hard": true,
+          "blocker_text": "Requires an employment contract with a company registered outside Indonesia (or equivalent foreign client relationships). ANY local Indonesian client, employer, or payment breaks the permit -- there is no de minimis exception.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "emerhub_id_remote_worker"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract with a foreign-registered company, or foreign client contracts", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of annual income (USD 60,000+) and bank statement (USD 2,000+, 3 months)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, non-extendable",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "emerhub_id_remote_worker",
+      "tier": 3,
+      "url": "https://emerhub.com/indonesia/visas/remote-worker-visa/",
+      "title": "Emerhub -- E33G Remote Worker Visa: USD 60,000/year income, foreign-employer-only rule, 1-year non-extendable duration",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: imigrasi.go.id's own E33G page (imigrasi.go.id/wna/daftar-visa-indonesia/E33G) returned an HTTP 403 in this pass, so these figures are tier-3 only. work_rights set 'none' (not 'restricted'): unlike some other countries' remote/digital-nomad visas, this route's own local-work prohibition is absolute -- even a single local client voids it, per the source's own illustrative example (a freelance designer's permit breaks the moment ANY local client, even one, hires them). Non-extendable/non-renewable is a notably strict design choice reproduced here rather than softened -- holders must leave and reapply, or switch to a different permit category, to continue past 1 year. leads_to_pr and leads_to_citizenship left false: this is explicitly a short-term, non-cumulative status with no described settlement pathway."
+}

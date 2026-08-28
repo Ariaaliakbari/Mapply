@@ -1,0 +1,81 @@
+{
+  "id": "bm_economic_investment_certificate",
+  "country": "BM",
+  "name": "Economic Investment Certificate (EIC)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmeic_investment",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 2500000, "currency": "BMD" },
+          "hard": true,
+          "blocker_text": "Requires a Qualifying Investment of at least BM$2.5 million into the Bermudian economy, maintained for a minimum of 5 years. Qualifying investment types include real estate, new business development, government bonds, the Sinking Fund, the Bermuda Trust Fund, registered charities, equity in existing businesses, or other Minister-approved ventures benefiting Bermuda.",
+          "fix_path": "Make and maintain a qualifying investment of at least BM$2.5 million for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "gov_bm_eic_policy"
+        },
+        {
+          "id": "bmeic_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Must be at least 18 years old, of good character, with no indictable convictions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_eic_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Application fee: $2,755", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certificate of good conduct", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "does not expire while the investment and residency requirements are maintained",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "minimum 90 days in Bermuda each calendar year for 5 years",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_eic_policy",
+      "tier": 1,
+      "url": "https://www.gov.bm/articles/economic-investment-and-residential-certificate-policy-revision",
+      "title": "Government of Bermuda -- Economic Investment and Residential Certificate Policy Revision: confirms the BM$2.5 million minimum qualifying investment, and a March 2023 revision letting the Minister waive the prior 5-year wait before a Residential Certificate can be granted",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "conyers_bermuda_residence",
+      "tier": 3,
+      "url": "https://www.conyers.com/wp-content/uploads/2023/10/Establishing_Bermuda_Residence-BDA.pdf",
+      "title": "Conyers Dill & Pearman (Bermuda law firm) -- Establishing Bermuda Residence: corroborates the 90-day/year physical presence requirement, $2,755 fee, character requirements, and 'does not expire if maintained' duration, citing Bermuda Immigration and Protection Act (BIPA)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build. Published rather than draft because the core investment-amount hard requirement is confirmed directly by a Government of Bermuda article (a primary announcement of the policy, not third-party reporting) -- this differs from ky_direct_investment_certificate.json and ky_persons_independent_means.json in the Cayman build, where the equivalent thresholds could only be sourced at tier-3. The 90-day/year physical presence detail is corroborated only at tier-3 (Conyers) and is therefore placed in outcome.physical_presence_requirement (a descriptive field) rather than modelled as its own separately-sourced hard requirement, to avoid a sourcing mismatch on a published route. This certificate leads to eligibility for a Residential Certificate (Bermuda's route to indefinite/permanent status via this investment track) -- as of the March 2023 policy revision, the Minister can grant this without waiting the full 5 years, though the standard expectation remains 5 years of maintained investment and residence; pr_after_months is modelled as 0 to reflect that ministerial discretion can grant it immediately, while fix_time_months on the investment requirement (60 months) reflects the standard expectation. This is the direct successor to what several tier-3/4 sources call the 'Bermuda golden visa' or citizenship-by-investment program -- Bermuda has no citizenship-by-investment; this certificate leads only to residency and, separately, is not confirmed to shorten the path to Bermudian status or British Naturalisation (see bm_naturalisation_botc.json)."
+}

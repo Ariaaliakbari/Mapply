@@ -1,0 +1,106 @@
+{
+  "id": "ec_investor_residence",
+  "country": "EC",
+  "name": "Investor Residence Visa",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals investing at least 100x Ecuador's Salario Básico Unificado (SBU) in a qualifying vehicle: a term deposit of at least 730 days with a recognized lending institution, real estate registered in the cantonal property registry, shares/participations in an Ecuadorian company, or an active public investment/delegated-management contract with the state.",
+    "evidence_hint": "Proof of the qualifying investment (deposit certificate, property deed, company share registration, or state contract) meeting the minimum threshold."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "term_deposit",
+      "name": "Term deposit (CD)",
+      "requirements": [
+        {
+          "id": "ecinv_deposit",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 48200,
+          "hard": true,
+          "blocker_text": "A term deposit certificate/policy of at least 730 days, for at least 100x SBU -- USD 48,200 at the 2026 SBU of USD 482 -- issued by a recognized lending institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_investor_visa"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Real estate",
+      "requirements": [
+        {
+          "id": "ecinv_realestate",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 48200,
+          "hard": true,
+          "blocker_text": "Real estate ownership, registered by deed in the cantonal property registry, meeting the same 100x SBU (USD 48,200) minimum threshold.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_investor_visa"
+        }
+      ]
+    },
+    {
+      "id": "company_shares",
+      "name": "Company shares",
+      "requirements": [
+        {
+          "id": "ecinv_shares",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 48200,
+          "hard": true,
+          "blocker_text": "Shares or participations in an Ecuadorian company, registered with the Superintendence of Companies, meeting the 100x SBU (USD 48,200) minimum threshold.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_investor_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment proof matching the chosen category (deposit certificate, deed, share registration, or state contract)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Apostilled/legalized criminal background certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years; permits unlimited time outside Ecuador and multiple re-entries during validity",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 21,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_permanent_residence", "ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_investor_visa",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-inversionista",
+      "title": "gob.ec (MREMH official portal) -- Investor residence visa: 100x SBU minimum across term-deposit (730+ days), real estate, company-shares, or state-contract categories, 2-year duration with unlimited absence allowance",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "sbu_2026",
+      "tier": 3,
+      "url": "https://nmslaw.com.ec/blog/2025/12/22/ecuador-salario-basico-unificado-2026/",
+      "title": "NMS Abogados -- Ecuador sets the 2026 Salario Básico Unificado (SBU) at USD 482/month, giving a 100x SBU threshold of USD 48,200",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). Same SBU-conversion caveat as ec_rentista_visa.json and ec_digital_nomad_visa.json: the 100x multiplier is tier-1, the 2026 dollar figure (USD 48,200) is tier-3-derived. The USD 48,200 figure is independently corroborated by multiple immigration-consultancy sources reviewed during research, giving reasonable confidence despite the tier-3 sourcing. work_rights modeled 'restricted' -- this category authorizes the investment activity itself, not general employment."
+}

@@ -1,0 +1,111 @@
+{
+  "id": "bb_permanent_residence",
+  "country": "BB",
+  "name": "Permanent Resident Status (Immigration Act, Cap. 190, Section 5)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "via_immigrant_status",
+      "name": "5 years' continuous residence as an Immigrant",
+      "requirements": [
+        {
+          "id": "bbpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires at least 5 years' continuous residence in Barbados while holding Immigrant Status.",
+          "fix_path": "Continue residing in Barbados under Immigrant Status until the 5-year threshold is reached.",
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ],
+      "prerequisites_override": {
+        "required_prior_route_ids": ["bb_immigrant_status"],
+        "minimum_months_held": 60
+      }
+    },
+    {
+      "id": "spouse_of_citizen",
+      "name": "Spouse of a Barbadian citizen",
+      "requirements": [
+        {
+          "id": "bbpr_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being the spouse of a person who is a citizen of Barbados by birth or by descent. (The Act's own wording, as extracted from the consolidated statute, refers specifically to 'the husband of' a female citizen -- this may reflect genuinely gendered original drafting or a gap in the extracted text; not independently resolved in this pass.)",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ]
+    },
+    {
+      "id": "caricom_national",
+      "name": "CARICOM national granted the Order",
+      "requirements": [
+        {
+          "id": "bbpr_caricom",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": { "note": "Nationals of CARICOM Member States upon whom the relevant Order has been conferred become permanent residents immediately, along with spouses and minor children, without application fees." },
+          "hard": true,
+          "blocker_text": "Requires being a national of a CARICOM Member State upon whom the Order has been conferred.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cap190_immigration_act"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite, immediate on qualifying"
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate, valid passport, marriage certificate if applicable, divorce/death documentation if a previous marriage ended", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certificate of Character from the police of every country lived in for 6+ months in the past 3 years", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Medical clearance (standard form for 16+, general certificate for 16 and under)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "4 passport photos (1 certified by a Justice of the Peace or Notary Public), employment letter, proof of qualifications", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bb_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cap190_immigration_act",
+      "tier": 1,
+      "url": "https://www.barbadoslawcourts.gov.bb/assets/content/pdfs/statutes/ImmigrationCAP190.pdf",
+      "title": "Barbados Judiciary (barbadoslawcourts.gov.bb) -- Immigration Act, Cap. 190, Section 5(2)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "immigration_gov_bb_pr",
+      "tier": 1,
+      "url": "https://immigration.gov.bb/pages/Permanent_Residence.aspx",
+      "title": "Barbados Immigration Department (immigration.gov.bb) -- requirements for permanent resident status (document checklist)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Barbados' initial build. THIS ROUTE IS THE SAME NAMED STATUS reached via three genuinely different grounds -- modelled as OR-logic groups rather than three fake separate routes, per this dataset's core structural principle. A fourth ground in the Act -- permanent residence for a person born outside Barbados to a woman who is a citizen of Barbados by birth, 'subject to constitutional limitations' -- was deliberately NOT encoded as a group here: the source text itself flags an unresolved limitation on this provision, and building a requirement group around an unclear constitutional carve-out would risk asserting eligibility that doesn't reliably exist. Treat this as a genuine gap, not an oversight, and revisit if the constitutional limitation can be pinned down. leads_to_citizenship is true, but citizenship_after_months is deliberately left null rather than guessed: full naturalisation eligibility is governed by a separate aggregate-residence test under the Citizenship Act (see bb_naturalisation), which does not simply add a fixed number of months on top of gaining PR. pr_after_months is 0 for this route's own outcome (PR is the outcome itself); the real wait, where one applies, is modelled on bb_immigrant_status's pr_after_months (60) and the prerequisites_override on the via_immigrant_status group here. The immigration.gov.bb Permanent Residence page lists required documents but not eligibility criteria -- those came entirely from the Act itself (cap190_immigration_act), which is why it is listed first."
+}

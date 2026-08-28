@@ -1,0 +1,104 @@
+{
+  "id": "cr_naturalisation_residence",
+  "country": "CR",
+  "name": "Naturalización por Residencia (Ley 1155)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "central_american_spanish_ibero",
+      "name": "Central American, Spanish, or Ibero-American nationals",
+      "requirements": [
+        {
+          "id": "crnr_residence_short",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of official residence in Costa Rica.",
+          "fix_path": "Accumulate 5 years' official residence in Costa Rica.",
+          "fix_time_months": null,
+          "source_id": "tse_go_cr_naturalizacion_residencia"
+        },
+        {
+          "id": "crnr_test_short",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "spanish_and_social_studies_exam_pass",
+          "hard": true,
+          "blocker_text": "Requires passing the Ministry of Public Education's Spanish-language and Social Studies naturalisation exams (or recognised equivalent studies), unless exempt (elderly applicants, or permanent health/cognitive conditions with medical certification).",
+          "fix_path": "Book and pass the Spanish/Social Studies naturalisation exams.",
+          "fix_time_months": 6,
+          "source_id": "tse_go_cr_naturalizacion_residencia"
+        }
+      ]
+    },
+    {
+      "id": "other_nationalities",
+      "name": "All other nationalities",
+      "requirements": [
+        {
+          "id": "crnr_residence_long",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Requires 7 years of official residence in Costa Rica.",
+          "fix_path": "Accumulate 7 years' official residence in Costa Rica.",
+          "fix_time_months": null,
+          "source_id": "tse_go_cr_naturalizacion_residencia"
+        },
+        {
+          "id": "crnr_test_long",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "spanish_and_social_studies_exam_pass",
+          "hard": true,
+          "blocker_text": "Requires passing the Ministry of Public Education's Spanish-language and Social Studies naturalisation exams (or recognised equivalent studies), unless exempt (elderly applicants, or permanent health/cognitive conditions with medical certification).",
+          "fix_path": "Book and pass the Spanish/Social Studies naturalisation exams.",
+          "fix_time_months": 6,
+          "source_id": "tse_go_cr_naturalizacion_residencia"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written petition, valid ID, apostilled/translated birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two sworn witness statements (residency, means of support, good conduct)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of means of livelihood", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police/judicial clearance certificate (issued within 3 months), apostilled/translated", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Pass on Ministry of Public Education Spanish and Social Studies naturalisation exams (or recognised equivalent studies)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tse_go_cr_naturalizacion_residencia",
+      "tier": 1,
+      "url": "https://www.tse.go.cr/pdf/requisitosytramites/Naturalizacion-por-residencia-ley-1155.pdf",
+      "title": "Tribunal Supremo de Elecciones (tse.go.cr) -- Naturalización por Residencia, Ley 1155",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. Both groups additionally require passing the Ministry of Public Education's Spanish-language and Social Studies naturalisation exams (or recognised equivalent prior studies), with exemptions for elderly applicants and those with permanent health/cognitive conditions (medical-certificate-documented) -- the exam requirement is listed under evidence_required rather than duplicated as a separate hard requirement per group, to avoid redundancy, but is fully part of the qualifying test for both nationality groups. dual_citizenship_allowed set true: Costa Rica generally permits dual citizenship (naturalising does not require renouncing prior citizenship), consistent with common knowledge and not contradicted by the source. Processing time: 285 business days; the service itself is free (a fiscal stamp fee of 20 or 200 colones applies depending on nationality)."
+}

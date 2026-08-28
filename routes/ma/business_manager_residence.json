@@ -1,0 +1,79 @@
+{
+  "id": "ma_business_manager_residence",
+  "country": "MA",
+  "name": "Residence Card for a Foreign Company Manager/Director (Gérant/DG)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For a foreign national who is the manager (gérant) or managing director of a Moroccan company, on the basis of that role rather than an employment contract.",
+    "evidence_hint": "Company statutes and registration (J form); proof the company's registered capital is fully paid up ('libéré'); bank statements showing active business operations; lease/residence proof; criminal record extracts (Moroccan and home country); Moroccan medical certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mabm_capital",
+          "attribute": "company_capital_fully_paid",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The company's registered capital must be fully paid up ('libéré'); no specific minimum dirham figure was confirmed in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "westfield_gerant_residence"
+        },
+        {
+          "id": "mabm_active",
+          "attribute": "company_shows_active_operations",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Bank statements and financial records must show the company maintains active operational status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "westfield_gerant_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company statutes and J form (registration certificate)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of fully-paid company capital", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bank statements showing active operations", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record extracts (Morocco and home country)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Moroccan medical certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed to tier-1 precision in this pass; general carte d'immatriculation progression (1yr, then 2-3yr, 5yr, 10yr) is assumed to apply",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ma_long_term_residence", "ma_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "westfield_gerant_residence",
+      "tier": 4,
+      "url": "https://westfieldmorocco.com/2025/03/10/comment-obtenir-un-permis-de-residence-au-maroc-pour-un-gerant-ou-dg-etranger-dune-societe-marocaine/",
+      "title": "Westfield Morocco (relocation/company-formation consultancy blog) -- residence permit process for a foreign gérant/DG of a Moroccan company: document list, fully-paid-capital requirement, no permit duration stated",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT, tier-4 sourcing only -- this is the weakest-sourced file in this build. Morocco does NOT appear to have a formal, government-branded 'investor visa' or 'golden visa' scheme comparable to Ecuador's or Bulgaria's investor_residence routes built earlier in this dataset (no such official scheme was located despite multiple targeted searches) -- this file instead documents the more modest, commonly-used real-world path: a foreign national residing in Morocco on the strength of being a registered company's manager/director. No minimum capital figure in dirhams could be confirmed -- only the qualitative 'fully paid up' requirement. Flagged as the weakest-confidence file in this country's build; a stronger government-primary source should be sought before treating the specific document list as authoritative."
+}

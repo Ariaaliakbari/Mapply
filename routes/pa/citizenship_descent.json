@@ -1,0 +1,67 @@
+{
+  "id": "pa_citizenship_descent",
+  "country": "PA",
+  "name": "Nacionalidad Panameña por Nacimiento en el Exterior",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born abroad to at least one Panamanian parent acquires Panamanian nationality via civil registration of the birth, per Constitution Article 9, Section 2, Law 31 of 2006, and Executive Decree 3 of 2008.",
+    "evidence_hint": "Foreign birth certificate (consularly authenticated, apostilled, or via diplomatic channels); Panamanian parent's identity documents and residency certification."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pacd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be a Panamanian citizen, and registration of the birth through a Panamanian consulate or Panama's Civil Registry, including a sworn declaration confirming biological parentage.",
+          "fix_path": "Register the birth with the Civil Registry/Panamanian consulate.",
+          "fix_time_months": null,
+          "source_id": "panamadigital_registro_nacimiento_exterior"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Original foreign birth certificate, authenticated/apostilled/translated as needed", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Panamanian parent's identity documents, notarized", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sworn declaration (declaración jurada) of biological parentage", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residency certification for the Panamanian parent, issued by local police", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "panamadigital_registro_nacimiento_exterior",
+      "tier": 1,
+      "url": "https://www.panamadigital.gob.pa/InformacionTramite/solicitud-de-inscripcion-de-nacimiento-de-panamenos-en-el-exterior",
+      "title": "Panamá Digital (official government portal) -- Inscripción de nacimiento de panameños en el exterior: documents, ~10 business day processing, legal basis",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. Confirmed directly at tier-1, including the exact legal basis (Constitution Article 9 Section 2, Law 31 of 2006, Executive Decree 3 of 2008) and processing time (~10 business days, longer for births in Colombia per internal directives -- an oddly specific detail included in the source and reproduced here rather than smoothed over). Dual nationality allowed here despite pa_naturalisation's renunciation requirement -- these are different legal mechanisms (birth-based vs. application-based) and the dataset does not assume they carry the same dual-nationality treatment."
+}

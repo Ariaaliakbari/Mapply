@@ -1,0 +1,87 @@
+{
+  "id": "aw_student_permit",
+  "country": "AW",
+  "name": "Student / Intern-Trainee Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "enrolled_student",
+      "name": "Enrolled student",
+      "requirements": [
+        {
+          "id": "aws_enrollment",
+          "attribute": "has_institution_acceptance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires enrollment to follow a study programme in Aruba.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_student"
+        }
+      ]
+    },
+    {
+      "id": "intern_trainee",
+      "name": "Intern / trainee",
+      "requirements": [
+        {
+          "id": "aws_internship",
+          "attribute": "has_internship_or_traineeship_placement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a placement for a study internship, traineeship, or work-experience programme in Aruba.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_living_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application Form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Institution acceptance letter or internship/traineeship placement letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsorship statement", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary, tied to length of study/placement, annually reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["aw_work_permit", "aw_indefinite_residence"]
+  },
+  "sources": [
+    {
+      "id": "dimas_student",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/living/student/",
+      "title": "DIMAS (Department for the Integration, Management and Admission of Foreign Nationals), Government of Aruba -- Student permit: temporary residence permit to study, no paid work permitted",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "dimas_living_overview",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/living/",
+      "title": "DIMAS -- Living overview page: intern/trainee permit for study internships, traineeships, or gaining work experience, distinguished from the enrolled-student ground",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build. Both grounds explicitly prohibit paid employment -- only unpaid trainee-type work experience integral to the study programme is allowed, consistent with how student permits are modelled elsewhere in this dataset. No numeric duration, fee, or minimum-funds figures were found on either DIMAS page in this pass -- flagged as a gap; DIMAS's downloadable application form and sponsorship-statement documents were referenced but not independently reviewed for further detail."
+}

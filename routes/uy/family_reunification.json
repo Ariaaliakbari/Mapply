@@ -1,0 +1,79 @@
+{
+  "id": "uy_family_reunification",
+  "country": "UY",
+  "name": "Reunificación Familiar (Ley 18.250)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["uy_permanent_residency_general", "uy_permanent_residency_mercosur", "uy_temporary_residency_worker", "uy_temporary_residency_student", "uy_temporary_residency_mercosur"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uyfr_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Eligible relatives under Law 18.250: spouse, concubine partner (with judicial documentation of the relationship), single minor children (or adult children with disabilities), and parents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gub_uy_reunificacion_familiar"
+        },
+        {
+          "id": "uyfr_sponsor_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "sponsor_is_permanent_resident_or_residency_in_process_with_means",
+          "hard": true,
+          "blocker_text": "The sponsor in Uruguay must be a permanent resident, or have residency 'in process,' with proven means of support: monthly income at or above the National Minimum Wage, evidenced by BPS employment history (3+ months) or, for the self-employed, a BPS certificate plus accounting/notarial certification.",
+          "fix_path": "Establish qualifying sponsor status and income.",
+          "fix_time_months": null,
+          "source_id": "gub_uy_reunificacion_familiar"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed reunification form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's national ID (both sides, scanned)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Vital records (birth/marriage certificates), legalized/apostilled if foreign", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Recent color photograph, white background, under 6 months old", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches the sponsor's own residency validity; the reunified family member has 30 days after arrival to formalize their own residency",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uy_permanent_residency_general", "uy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gub_uy_reunificacion_familiar",
+      "tier": 1,
+      "url": "https://www.gub.uy/tramites/solicitud-reunificacion-familiar",
+      "title": "Sitio oficial de la República Oriental del Uruguay -- Solicitud de Reunificación Familiar: eligible relatives (Ley 18.250), sponsor income test, free of charge",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. Confirmed directly at tier-1, free of charge, processed by email (reunificacion@mrree.gub.uy). Notably, the sponsor need only have residency 'in process' (not necessarily already granted) provided they can show qualifying means -- a more permissive sponsor bar than many other countries in this dataset require. citizenship_after_months (36) reflects the 3-year 'family constituted' naturalisation track (see uy_naturalisation), which a reunified family member would plausibly qualify for once resident, though this specific linkage was not independently confirmed."
+}

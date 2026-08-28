@@ -1,0 +1,76 @@
+{
+  "id": "at_eu_eea_free_movement",
+  "country": "AT",
+  "name": "EU/EEA/Swiss Free Movement",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "EU, EEA (Iceland, Liechtenstein, Norway) and Swiss citizens have a right to enter, live, and work in Austria without a residence permit, under EU free-movement law. A 'Registration Certificate' (Anmeldebescheinigung) is required if staying beyond 3 months, but this is a formality, not a discretionary permit.",
+    "evidence_hint": "Valid EU/EEA/Swiss passport or ID card; registration with the residence authority after 3 months (proof of employment, self-employment, sufficient means, or study, plus health insurance)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ateea_nationality",
+          "attribute": "citizenship_in",
+          "operator": "in",
+          "value": "EU_EEA_CH",
+          "hard": true,
+          "blocker_text": "Only nationals of EU, EEA (Iceland, Liechtenstein, Norway), or Switzerland qualify for free movement into Austria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_eea"
+        },
+        {
+          "id": "ateea_self_sufficiency",
+          "attribute": "has_income_or_means_or_study",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Beyond 3 months, registration requires proof of employment/self-employment, sufficient means and health insurance (if economically inactive), or student status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_eea"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "EU/EEA/Swiss passport or national ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Registration Certificate (if staying beyond 3 months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_permanent_residence", "at_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "workinaustria_eea",
+      "tier": 1,
+      "url": "https://www.workinaustria.com/en/residence-employment/right-of-residence-for-eu-eea-nationals-in-austria",
+      "title": "workinaustria.com (AMS/ABA-run official relocation portal) -- Right of residence for EU/EEA nationals in Austria: free movement, Registration Certificate requirement after 3 months, self-sufficiency conditions",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). Same EU/EEA/EFTA free-movement structure modeled for Sweden, Bulgaria, Finland, Luxembourg, Iceland, and Belgium in this dataset. citizenship_after_months (120) mirrors at_naturalisation.json's standard 10-year track since EU/EEA residence does not shorten Austria's naturalisation clock under the sources reviewed."
+}

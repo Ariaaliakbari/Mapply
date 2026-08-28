@@ -1,0 +1,73 @@
+{
+  "id": "ky_permanent_residence_general",
+  "country": "KY",
+  "name": "Permanent Residence (General 8-Year Points-Based Category)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kypr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Requires being legally and ordinarily resident in the Cayman Islands for a minimum of 8 years (Immigration (Transition) Act, Section 37).",
+          "fix_path": "Accumulate 8 years of legal and ordinary residence in the Cayman Islands.",
+          "fix_time_months": 96,
+          "source_id": "ky_immigration_transition_act"
+        },
+        {
+          "id": "kypr_points",
+          "attribute": "points_score",
+          "operator": ">=",
+          "value": 110,
+          "hard": true,
+          "blocker_text": "A points system prescribed by Cabinet is applied to assess suitability; only applicants attaining 110 points or more are approved (Section 37(2)-(3)). The specific point criteria/weightings were not detailed in the Act text extracted in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 years' legal and ordinary residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Points-system supporting documentation (criteria not detailed in the source reviewed)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ky_caymanian_status_residence"]
+  },
+  "sources": [
+    {
+      "id": "ky_immigration_transition_act",
+      "tier": 1,
+      "url": "https://my.egov.ky/documents/d/worc/immigrationtransitionact_2022-revision-pdf?download=true",
+      "title": "Cayman Islands Immigration (Transition) Act (2022 Revision) -- Section 37: general permanent residence category (8 years' residence, 110-point threshold), issuing a Residency and Employment Rights Certificate (RERC)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Cayman Islands' initial build. Grant of this permit produces a 'Residency and Employment Rights Certificate' (RERC), which per Section 37 allows employment with any employer of choice but restricted to occupation(s) specified by the Board/Director -- work_rights is therefore 'restricted' rather than 'full', reflecting that occupational restriction rather than a bar on employment generally. The exact points-system criteria (what earns points, how many, for what) are set by Cabinet regulation, not the Act itself, and were not located at tier-1 in this pass -- flagged as a real gap, not a fabricated pass/fail threshold; only the 110-point bar itself is confirmed. Section 37(11) and 37(16)-(18) provide for dependants, later-born children, and a surviving-spouse's own right to apply -- these are treated as attributes of this certificate rather than separate routes, except for ky_spouse_of_permanent_resident.json, which is modelled separately because Section 37(16) gives the spouse an independently-held certificate application, not merely inclusion as a dependant. switchable_to points to ky_caymanian_status_residence.json since holding this permit is the presumed on-ramp described by Section 28(3)-(4)'s residence-based Caymanian-status grounds."
+}

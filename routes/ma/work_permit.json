@@ -1,0 +1,94 @@
+{
+  "id": "ma_work_permit",
+  "country": "MA",
+  "name": "Work Residence Card (Carte d'Immatriculation -- Travail)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals with a Moroccan employment contract. The employer must show the candidate has particular or rare skills unavailable locally (an ANAPEC -- Agence Nationale de Promotion de l'Emploi et des Compétences -- certificate documents this labour-market test), then obtain Ministry of Employment authorization, formalized as a visa stamped on the contract.",
+    "evidence_hint": "Employment contract; ANAPEC certificate showing no qualified Moroccan candidate is available; Ministry of Employment contract-visa stamp."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mawp_labour_test",
+          "attribute": "employer_obtained_anapec_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must obtain an ANAPEC certificate showing the candidate has particular/rare skills and that no qualified Moroccan candidate is available for the role.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gadem_carte_travail"
+        },
+        {
+          "id": "mawp_contract_visa",
+          "attribute": "contract_approved_by_ministry_of_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Ministry of Employment must authorize the contract, formalized as a visa stamped on it; the contract takes effect from the date of this visa. Any change to pay, working conditions, or other terms requires a new authorization.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gadem_carte_travail"
+        }
+      ]
+    },
+    {
+      "id": "bilateral_exempt",
+      "name": "Bilateral-agreement exemption",
+      "requirements": [
+        {
+          "id": "mawp_bilateral",
+          "attribute": "citizenship_in",
+          "operator": "in",
+          "value": "SN_TN_DZ",
+          "hard": true,
+          "blocker_text": "Senegalese, Tunisian, and Algerian nationals are exempt from the ANAPEC/Ministry authorization requirement under bilateral agreements.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gadem_carte_travail"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "ANAPEC certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Ministry of Employment contract-visa stamp", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable (general carte d'immatriculation progression: 1yr, then 2-3yr, 5yr, 10yr on successive renewals)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "card lapses after 6 months' continuous absence from Morocco",
+    "switchable_to": ["ma_long_term_residence", "ma_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gadem_carte_travail",
+      "tier": 3,
+      "url": "https://gadem-guide-juridique.info/category/sejour-travail/carte-travail/",
+      "title": "GADEM legal guide -- Carte d'immatriculation mention 'travail': ANAPEC labour-market-test certificate, Ministry of Employment contract-visa authorization, contract-modification re-authorization rule, Senegalese/Tunisian/Algerian bilateral exemption",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT -- entirely tier-3 sourced (GADEM), no primary government citation found this pass. work_rights modeled 'restricted' since the card is tied to the specific authorized contract/employer. No official Moroccan government page (Ministry of Employment, DGSN) was independently fetched with equivalent process detail in this pass -- sourced entirely to GADEM's Law 02-03 legal guide, a respected specialist NGO source but not a primary-government citation, hence tier-3. pr_after_months (120) uses ma_long_term_residence.json's 10-year legal-residence track since no separate work-specific fast-track to long-term residence was found."
+}

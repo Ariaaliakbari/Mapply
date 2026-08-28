@@ -1,0 +1,110 @@
+{
+  "id": "do_family_reunification",
+  "country": "DO",
+  "name": "Family Reunification (Spouse of a Dominican via RT-9; Dependent of a Resident via RT-7)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_of_dominican",
+      "name": "Spouse of a Dominican national (via Ordinary Temporary Residence RT-9)",
+      "requirements": [
+        {
+          "id": "dofam_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_do_citizen",
+          "hard": true,
+          "blocker_text": "Marriage certificate required; applies through the standard Ordinary Temporary Residence (RT-9) process.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_rt9"
+        },
+        {
+          "id": "dofam_solvency_reduced",
+          "attribute": "bank_balance_rd",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "Financial solvency threshold is reduced to RD$150,000 (from the standard RD$300,000) when the applicant is married to a Dominican national.",
+          "fix_path": "Show a Dominican bank balance of at least RD$150,000.",
+          "fix_time_months": null,
+          "source_id": "migracion_rt9"
+        }
+      ]
+    },
+    {
+      "id": "dependent_of_resident",
+      "name": "Dependent of an RT-3 (work) or RT-4 (religious) resident",
+      "requirements": [
+        {
+          "id": "dofam_dependent_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "dependent_of_rt3_or_rt4_holder",
+          "hard": true,
+          "blocker_text": "Applies through the RT-7 Dependent Temporary Residence process, tied to a principal holder's RT-3 (labor) or RT-4 (religious) status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_rt7"
+        },
+        {
+          "id": "dofam_dependent_docs",
+          "attribute": "has_relationship_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an apostilled and judicially translated birth certificate and, where applicable, marriage certificate proving the family tie.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_rt7"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Apostilled, translated marriage or birth certificate proving family tie", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical exam from a DGM-authorized institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Financial solvency proof (spouse route)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_permanent_residence", "do_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "migracion_rt9",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/residencia-temporal/",
+      "title": "Dirección General de Migración -- Ordinary Temporary Residence (RT-9): reduced RD$150,000 solvency threshold when married to a Dominican national (vs. standard RD$300,000)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migracion_rt7",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/solicitud-de-residencia-temporal-de-dependiente-rt-7/",
+      "title": "Dirección General de Migración -- Dependent Temporary Residence (RT-7): for dependents of RT-3 (labor) and RT-4 (religious) principal holders, 1-year validity",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). There is no single DGM page titled a generic 'family reunification' or 'spouse' visa -- the actual mechanism for a spouse of a Dominican is the standard RT-9 Ordinary Temporary Residence permit, which simply carries a reduced solvency threshold when the applicant is married to a Dominican national; this is the tier-1-confirmed evidence that a distinct, easier path exists for spouses, even though it is not a separately named route in DGM's own service catalogue. Separately, RT-7 exists specifically for dependents of RT-3/RT-4 holders (not spouses of citizens) -- the source does not define 'dependent' precisely or confirm whether it includes spouses of RT-3/RT-4 holders themselves; flagged as a gap rather than guessed. citizenship_after_months left null for this route since the spouse path's exact timeline runs through do_citizenship_by_marriage, whose duration requirement is itself unconfirmed in current practice (see that file's notes)."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "gd_citizenship_by_registration_minor",
+  "country": "GD",
+  "name": "Citizenship by Registration -- Minor Dependants",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A minor (under 18) may be registered as a citizen on application by their 'responsible parent' or guardian.",
+    "evidence_hint": "Child's birth certificate; proof of the responsible parent's identity/custody status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gdrm_minor",
+          "attribute": "age",
+          "operator": "<",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Route applies to minors (persons under 18 years).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s6_1"
+        },
+        {
+          "id": "gdrm_responsible_parent",
+          "attribute": "application_by_responsible_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application must be made by the 'responsible parent' -- defined as the father, OR, where the father is dead or a court has awarded custody to the mother, the mother.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_citizenship_act_s6_1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Child's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of the responsible parent's identity and (where relevant) custody order or father's death certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gd_citizenship_act_s6_1",
+      "tier": 1,
+      "url": "https://grenadaparliament.gd/wp-content/uploads/2021/08/Cap54-CITIZENSHIP-ACT.pdf",
+      "title": "Grenada Citizenship Act, Cap 54, Section 6(1) (primary legislation): registration of minors on application by the 'responsible parent' -- defined as the father, or the mother where the father is dead or has lost custody by court order",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. IMPORTANT, well-documented gender asymmetry confirmed directly from the primary Act text: the 'responsible parent' who may apply for a minor's registration defaults to the FATHER -- the mother gains that standing only if the father is dead or a court has specifically awarded her custody. This is a materially different (and more father-favouring) default than the gender-neutral constitutional descent rule in gd_citizenship_by_descent.json (Section 97, which lets either parent transmit citizenship automatically to a child born abroad) -- this registration route instead concerns WHO may apply on a minor's behalf, a distinct administrative gatekeeping question from whose citizenship the child inherits. Flagged prominently rather than smoothed over, consistent with how gender-asymmetric rules were flagged for the Bahamas earlier this session."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "ms_naturalisation",
+  "country": "MS",
+  "name": "Naturalisation/Registration as a British Overseas Territories Citizen (BOTC)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "msn_application",
+          "attribute": "botc_application_submitted",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application is processed through the Consular Division, Office of the Deputy Governor, with separate guidance notes and document requirements for adult applicants and for children under 16. The Consular Division's page did not itself state the substantive eligibility criteria (e.g. residence duration, character, language) in the content reviewed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ms_botc_process"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form (adult or under-16 variant)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Guidance-note-specified supporting documents (not itemised in the source reviewed)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ms_botc_process",
+      "tier": 1,
+      "url": "https://www.gov.ms/government/non-ministerial-departments/office-of-the-deputy-governor/botc-application-process/",
+      "title": "Government of Montserrat, Office of the Deputy Governor -- BOTC Application Process: confirms the process exists via the Consular Division, with separate guidance notes for adult and under-16 applicants",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of Montserrat's initial build. This is the genuine BOTC 'citizenship' track for Montserrat, distinct from the local Belonger status routes (see ms_belonger_status_descent.json's notes for that distinction). The tier-1 gov.ms page confirms the process and administering authority (Consular Division, Office of the Deputy Governor) but the actual substantive eligibility criteria -- residence duration, character requirements, fees, or a required Permanent Residence Permit as a precondition (as Anguilla's equivalent naturalisation-tips page states) -- were not present in the fetched content, which pointed instead to linked guidance-note documents not independently retrieved in this pass. Draft status reflects that gap: unlike Anguilla's ai_naturalisation.json, where a substantive tier-1 page with real criteria was found, here only the existence and administering office are confirmed. citizenship_after_months is left null rather than assuming immediate grant (0), since it is not clear whether a residence or PR-holding period is required beforehand, unlike Anguilla's equivalent route."
+}

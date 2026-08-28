@@ -1,0 +1,75 @@
+{
+  "id": "hu_white_card",
+  "country": "HU",
+  "name": "White Card (Residency for Digital Nomads)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "huwc_income",
+          "attribute": "annual_income",
+          "operator": ">=",
+          "value": { "amount": 3000, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Minimum net monthly income of EUR3,000, maintained for at least 6 months before entry and throughout the stay.",
+          "fix_path": "Increase and document qualifying net monthly income to at least EUR3,000, sustained 6+ months.",
+          "fix_time_months": 6,
+          "source_id": "oif_white_card"
+        },
+        {
+          "id": "huwc_remote_only",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "foreign_employer_remote_or_foreign_company_shares",
+          "hard": true,
+          "blocker_text": "Must have a verified employment relationship with an employer outside Hungary, performing the work remotely using advanced digital technology, OR hold shares in a profitable foreign company managed remotely from Hungary. Any Hungarian employment or Hungarian company stake disqualifies the applicant.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_white_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of foreign employment relationship or foreign company shareholding", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "6 months of income documentation at or above the threshold", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance (social security, international treaty, or proof of funds)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Accommodation proof (lease, ownership, courtesy statement, or paid reservation)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, extendable once for 1 additional year (2 years total)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "oif_white_card",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/white-card-residency-for-digital-nomads",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- White Card: EUR3,000/month income test, foreign-employer-only eligibility, 1+1 year cap, family reunification prohibition",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. Notably strict compared to some other countries' nomad-visa designs in this dataset: family reunification is fully prohibited (birth-in-Hungary is the sole exception), the permit is hard-capped at 2 years total with no further renewal, and there is no stated path to any settlement status. Any Hungarian-registered work or company stake -- including the very self-employment/business route modelled separately as hu_guest_self_employment -- is explicitly disqualifying for this permit; the two routes are mutually exclusive by design."
+}

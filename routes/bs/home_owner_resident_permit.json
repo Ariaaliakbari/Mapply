@@ -1,0 +1,88 @@
+{
+  "id": "bs_home_owner_resident_permit",
+  "country": "BS",
+  "name": "Home Owner's Resident Card",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bsho_owns_habitable_home",
+          "attribute": "owns_habitable_residence_in_country",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must own a registered, habitable residence in The Bahamas, evidenced by a deed of conveyance and an International Landholding Certificate under the International Persons Landholding Act (Chapter 140).",
+          "fix_path": "Purchase a qualifying habitable residence in The Bahamas.",
+          "fix_time_months": null,
+          "source_id": "gov_bs_home_owners"
+        },
+        {
+          "id": "bsho_primary_home_abroad",
+          "attribute": "owns_primary_residence_outside_country",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate ownership of a primary residence outside The Bahamas (home insurance, mortgage documents, or tax certificate).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_home_owners"
+        },
+        {
+          "id": "bsho_property_tax_current",
+          "attribute": "real_property_tax_current",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must show proof of current Real Property Tax payment on the Bahamian residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_home_owners"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registered deed of conveyance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "International Landholding Certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Current Real Property Tax payment proof", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of primary home ownership outside The Bahamas", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified; renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bs_home_owners",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/residence/home-owners/",
+      "title": "Bahamas Immigration Department -- Home Owner Identification: International Persons Landholding Act (Chapter 140), $200 processing fee, requires proof of a habitable Bahamian residence, a primary home abroad, and current Real Property Tax payment; applicants should not be in-country during initial processing",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. This is a residence-identification status for owners of a second/vacation home who maintain a primary residence elsewhere, NOT a route to work or long-term settlement -- work_rights and study_rights modelled as 'none' since the source describes it purely as home-owner identification rather than a general residence permit; no explicit stay-duration or work authorisation was found. Distinct from bs_permanent_residence_investment.json, which requires a much larger ($1M) investment specifically in real estate or bonds and confers full residence/work rights."
+}

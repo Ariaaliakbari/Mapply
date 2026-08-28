@@ -1,0 +1,104 @@
+{
+  "id": "aw_naturalisation",
+  "country": "AW",
+  "name": "Naturalisation as a Dutch National",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "awn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires at least 5 consecutive years of lawful residence in the Kingdom of the Netherlands (which includes Aruba) with a valid residence permit.",
+          "fix_path": "Accumulate 5 consecutive years of lawful residence with a valid residence permit.",
+          "fix_time_months": 60,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "awn_civic_integration",
+          "attribute": "civic_integration_exam_passed",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have passed the civic integration exam at Dutch language level A2 or higher (exemptions apply for demonstrated proficiency).",
+          "fix_path": "Pass the civic integration exam at A2 level or demonstrate equivalent Dutch proficiency.",
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "awn_adult",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "awn_no_threat",
+          "attribute": "poses_public_order_or_security_threat",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Applicant must not be a danger to public order or the national security of the Kingdom of the Netherlands.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Naturalisation application form and supporting documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Civic integration exam certificate (A2+), or proficiency exemption evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of 5 years' lawful residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ind_naturalisation",
+      "tier": 1,
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-naturalisation",
+      "title": "Immigratie- en Naturalisatiedienst (IND), Government of the Netherlands -- Becoming a Dutch national through naturalisation: 5-year lawful residence requirement, A2 civic integration exam, public order/security check, renunciation-of-prior-nationality rule with exemptions",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "ind_caribbean_naturalisation",
+      "tier": 1,
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-in-the-caribbean-part-of-the-kingdom",
+      "title": "IND -- Becoming a Dutch national in the Caribbean part of the Kingdom (Aruba, Curacao, Sint Maarten, and the BES islands): application steps, Declaration of Solidarity, naturalisation ceremony, dual-nationality renunciation process, exemption for minors",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build. Aruba is an autonomous constituent country of the Kingdom of the Netherlands, not a country with its own separate citizenship -- 'Antiguan and Barbudan'-style local citizenship does not exist here; the only citizenship is Dutch nationality, administered Kingdom-wide by the IND, with a dedicated Caribbean-part procedural page (application steps, Declaration of Solidarity, naturalisation ceremony) layered on the same substantive 5-year/A2 rule that applies in the European Netherlands. This mirrors exactly how Curacao's naturalisation.json was modelled earlier this session (same IND, same 5-year/A2 rule, same dual_citizenship_allowed: false default with case-by-case renunciation exemptions) -- both Kingdom constituent countries converge on identical Kingdom-level rules, as expected. A pending policy discussion to raise the standard naturalisation term from 5 to 10 years was noted in secondary sources during research but has NOT been confirmed as enacted on ind.nl -- modelled on the current, tier-1-confirmed 5-year rule; re-verify if the amendment progresses. dual_citizenship_allowed is modelled as false by default since renunciation of the prior nationality is the IND's stated general rule, though the same source notes exemptions exist (e.g. when the country of origin does not permit renunciation) -- not modelled as a separate OR-group since the exemption criteria are case-specific rather than a distinct alternative path."
+}

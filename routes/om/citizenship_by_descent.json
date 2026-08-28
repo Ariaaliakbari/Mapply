@@ -1,0 +1,89 @@
+{
+  "id": "om_citizenship_by_descent",
+  "country": "OM",
+  "name": "Nationality by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Under Oman's Nationality Law (Royal Decree 38/2014, replacing RD 3/1983), a child born to an Omani father automatically acquires Omani nationality. A child born to an Omani mother acquires nationality only where the father is unknown or paternity is not legally established -- there is no automatic maternal-line transmission where the father is a known, acknowledged foreign national.",
+    "evidence_hint": "Birth certificate; father's proof of Omani nationality (paternal-line cases); for maternal-line cases, evidence that the father is unknown or paternity is unestablished."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_line",
+      "name": "Child of an Omani father",
+      "requirements": [
+        {
+          "id": "omcd_father",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_omani_father",
+          "hard": true,
+          "blocker_text": "Automatic Omani nationality for a child born to an Omani father, regardless of the mother's nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "decree_om_nationality_paths"
+        }
+      ]
+    },
+    {
+      "id": "maternal_line_unknown_father",
+      "name": "Child of an Omani mother, father unknown/unproven",
+      "requirements": [
+        {
+          "id": "omcd_mother",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_omani_mother_father_unknown_or_unproven",
+          "hard": true,
+          "blocker_text": "A child born to an Omani mother acquires Omani nationality only if the father is unknown or paternity has not been legally established -- not available where the child has a known, acknowledged foreign father.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "decree_om_nationality_paths"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Omani nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "decree_om_nationality_paths",
+      "tier": 3,
+      "url": "https://blog.decree.om/2025/paths-to-omani-nationality-under-the-law/",
+      "title": "Decree.om -- a legal-commentary blog specializing in Omani law, summarizing the nationality-by-descent rules under Royal Decree 38/2014: paternal-line automatic transmission, maternal-line transmission only where the father is unknown/unproven, and the 2023 Royal Decree 23/2023 change removing mandatory government pre-approval of Omani-foreigner marriages",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "commoner_law_citizenship",
+      "tier": 3,
+      "url": "https://commoner-law.com/oman/immigration-pathways/citizenship-naturalization",
+      "title": "Commoner Law -- corroborates paternal-line automatic descent and cites Royal Decree 38/2014 (replacing RD 3/1983) as the current governing nationality law",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- the primary legislative text (Official Gazette PDF at oman.om, Royal Decree 38/2014) could not be independently fetched in this pass (robots.txt/certificate errors on repeated attempts), so this file relies on two independent tier-3 legal-commentary sources that both corroborate the same figures and decree citation, rather than a direct tier-1 read. The gendered asymmetry (father transmits automatically; mother transmits only if father unknown/unproven) is modeled precisely rather than smoothed over, consistent with this dataset's practice for Morocco's and Serbia's similarly asymmetric provisions built earlier."
+}

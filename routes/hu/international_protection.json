@@ -1,0 +1,66 @@
+{
+  "id": "hu_international_protection",
+  "country": "HU",
+  "name": "International Protection (Asylum Procedure)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution (refugee status) or facing a real risk of serious harm on return (subsidiary protection), who cannot or does not wish to seek their home country's protection, may apply for international protection with the National Directorate-General for Aliens Policing (Asylum Division, Regional Directorate of Budapest and Pest County). Since Government Decree 361/2024, a declaration of intent must generally be submitted at a designated embassy before the formal application can proceed.",
+    "evidence_hint": "Fingerprints and photographs (age 14+, checked against EURODAC); personal interview with interpreter assistance."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "huip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_subsidiary_or_tolerated_status_criteria_met",
+          "hard": true,
+          "blocker_text": "Standard procedure is decided within 60 days, including the personal interview (accelerated procedure: 15 days, at the authority's discretion). Dublin-responsibility checks can suspend the procedure for months if another EU state may be responsible. Detention is possible where the applicant's lawful residence depends solely on the pending application: 72 hours initially, extendable to 60 days by court order, 8 months maximum in aggregate. A negative decision may be appealed within the deadline stated in the rejection; a court may annul the decision and order re-examination.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_asylum_procedure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Personal interview with interpreter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "EURODAC fingerprinting and photograph (age 14+)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Identity documents, if available", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "processing typically 60-75+ days (longer under Dublin suspension); recognised refugee status remains valid until citizenship acquisition or lawful withdrawal; subsidiary protection reviewed every 3 years; tolerated status reviewed annually",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oif_asylum_procedure",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/asylum-procedure",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- Asylum Procedure: application process, 60/15-day timelines, Dublin suspensions, detention rules, refugee/subsidiary/tolerated/temporary protection categories, appeal process",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. work_rights and study_rights set to 'restricted' as CONSERVATIVE PLACEHOLDERS: the tier-1 factsheet, despite being unusually detailed on procedure, detention, and appeal, explicitly does not address work rights or study rights during processing -- an unusual gap. This should not be read as confirmation that restricted access is guaranteed; it is simply what could be verified. leads_to_pr set false: no path to hu_national_residence_card is stated in the source (unlike some other countries in this dataset where recognised refugee status directly grants permanent residence). leads_to_citizenship kept true because refugee status is described as remaining valid 'until Hungarian citizenship acquisition or withdrawal,' implying the framework anticipates eventual naturalisation via hu_naturalisation's reduced-3-year track (refugees are one of the named reduced-residence categories there), though no accelerated or automatic citizenship link is stated. 'Tolerated status' (residual protection for those who fail both refugee and subsidiary-protection criteria but cannot be removed) and 'temporary protection' (mass-displacement emergency category) exist per the source but are not modelled as separate routes given their narrower, non-standard nature. Hungary's asylum system has been the subject of EU Commission infringement proceedings and ECtHR rulings regarding border/transit-zone practices -- this route models only the tier-1-stated legal procedure, not enforcement practice, and that broader context is noted here rather than asserted as fact within the route's fields."
+}

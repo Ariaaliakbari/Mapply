@@ -1,0 +1,101 @@
+{
+  "id": "mx_naturalisation_latinamerican_iberian",
+  "country": "MX",
+  "name": "Carta de Naturalización -- Originario de País Latinoamericano o de la Península Ibérica",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxnl_nationality",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "national_of_latin_american_country_or_spain_or_portugal",
+          "hard": true,
+          "blocker_text": "Requires being a national/original of a Latin American country, Spain, or Portugal.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_latinoamericano_iberico"
+        },
+        {
+          "id": "mxnl_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires 2 years of continuous legal residence immediately preceding the application, evidenced by temporary or permanent resident cards. Time held as a temporary STUDENT resident does not count toward this period.",
+          "fix_path": "Accrue 2 continuous years of qualifying (non-student) legal residence.",
+          "fix_time_months": 24,
+          "source_id": "sre_naturalizacion_latinoamericano_iberico"
+        },
+        {
+          "id": "mxnl_exams",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "spanish_and_history_culture_exam_passed",
+          "hard": true,
+          "blocker_text": "Requires passing exams on Spanish language and Mexican history/culture. Refugees, minors, and applicants over 60 need only pass the Spanish-language exam.",
+          "fix_path": "Prepare for and pass the required exam(s).",
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_latinoamericano_iberico"
+        },
+        {
+          "id": "mxnl_criminal",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires clean federal and local criminal background checks.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_latinoamericano_iberico"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Temporary or permanent resident card (6+ months validity remaining, non-student)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled/translated foreign birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Federal and local criminal background clearances", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish language (and, unless exempt, history-culture) exam", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sre_naturalizacion_latinoamericano_iberico",
+      "tier": 1,
+      "url": "https://portales.sre.gob.mx/tramites-dgaj/naturalizacion/carta-de-naturalizacion-por-ser-originario-de-un-pais-latinoamericano-o-de-la-peninsula-iberica",
+      "title": "Secretaría de Relaciones Exteriores (SRE) -- Carta de naturalización por ser originario de un país latinoamericano o de la península ibérica: 2-year privileged track",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. This is Mexico's 'naturalización privilegiada' rooted in Article 20 of the Ley de Nacionalidad -- a genuinely distinct, nationality-of-origin-based reduced track (2 years vs. the ordinary 5), confirmed directly at tier-1. Not modelled under 'ancestry' category since it does not require Mexican ancestry, only origin from a qualifying country/region -- 'settled' fits better as a naturalisation-track category. Kept as its own file per the same reasoning as mx_naturalisation_residence and mx_naturalisation_marriage."
+}

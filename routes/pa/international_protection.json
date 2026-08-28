@@ -1,0 +1,66 @@
+{
+  "id": "pa_international_protection",
+  "country": "PA",
+  "name": "Condición de Refugiado (ONPAR)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person outside their country of nationality with a well-founded fear of persecution based on race, religion, nationality, political opinion, social group membership, or gender may apply for refugee status through ONPAR (Oficina Nacional para la Atención de Refugiados), part of the Ministry of Government.",
+    "evidence_hint": "Completed application form (all sections); information on family members/dependents; documentation supporting the danger of return."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "paip_deadline",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "applied_within_6_months_of_entry",
+          "hard": true,
+          "blocker_text": "Must submit the refugee application within 6 months of entering Panama. The process runs in two stages: ONPAR admissibility review, then a final decision by CONARE (Comisión Nacional para la Protección de Refugiados). A mandatory ONPAR interview is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mingob_onpar_tramite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Complete application form (no blank sections)", "difficulty": "hard", "typical_time_days": 180 },
+    { "document": "Supporting documentation for the persecution/danger claim", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Attendance at the mandatory ONPAR interview", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-year renewable refugee card upon recognition",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mingob_onpar_tramite",
+      "tier": 1,
+      "url": "https://www.mingob.gob.pa/onpar/tramite-de-solicitud-de-refugio/",
+      "title": "Ministerio de Gobierno de Panamá (ONPAR) -- Trámite de Solicitud de Refugio: 6-month application deadline, ONPAR/CONARE two-stage process, 1-year renewable refugee card, work-permit eligibility for recognized refugees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. Confirmed directly at tier-1. work_rights set 'full' based on the source's statement that recognized refugees may request a work permit as a refugee -- but the source did NOT explicitly confirm work rights during the (undetermined-length) processing/admissibility period itself, only post-recognition; treated here as describing the post-recognition outcome specifically. Rejected applicants get 5 business days to request reconsideration, then 3 days to appeal to the Minister of Government -- a notably short appeal window, reproduced here rather than smoothed into a vaguer 'appeal available' statement. leads_to_pr and pr_after_months left null/false: the source describes a path to naturalisation (see pa_naturalisation) but did not describe a distinct intermediate permanent-residence step specific to refugees."
+}

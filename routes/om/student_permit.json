@@ -1,0 +1,73 @@
+{
+  "id": "om_student_permit",
+  "country": "OM",
+  "name": "Student Visa",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "omsp_admission",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Admission and acceptance from an Oman-based higher education institution, which acts as sponsor and manages the visa application on the student's behalf.",
+          "fix_path": "Secure admission to an accredited Omani institution.",
+          "fix_time_months": null,
+          "source_id": "commoner_law_student"
+        },
+        {
+          "id": "omsp_medical",
+          "attribute": "passes_medical_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Medical testing on arrival is required before a residence card is issued.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "commoner_law_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission/enrollment letter from an Omani institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical test on arrival (OMR 20-50 fee)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually while enrolled",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["om_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "commoner_law_student",
+      "tier": 3,
+      "url": "https://commoner-law.com/oman/immigration-pathways/student-immigration",
+      "title": "Commoner Law -- Oman student visa guide: institution-sponsored, 1-year renewable visa, work restricted to university-approved internships/research, no automatic post-study work visa, medical test required on arrival",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- no tier-1 government page (Royal Oman Police or Ministry of Higher Education) with equivalent process detail was independently fetched in this pass; sourced entirely to a specialist immigration-law firm's guide. work_rights modeled 'restricted' since work is limited to university-approved internships/research, not general employment. Explicitly no automatic post-graduation work visa exists -- graduates must independently secure an employer sponsor, and Omanisation quotas (see om_work_permit.json) can make this difficult, disclosed here rather than assumed."
+}

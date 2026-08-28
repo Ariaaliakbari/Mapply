@@ -1,0 +1,102 @@
+{
+  "id": "cy_family_reunification",
+  "country": "CY",
+  "name": "Family Reunification Permit",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse",
+      "requirements": [
+        {
+          "id": "cyfr_sponsor_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "The sponsor must have resided lawfully in Cyprus for at least 2 years and hold a residence permit valid for at least 1 year with reasonable prospect of more permanent residence (exceptions apply for certain researcher/intra-corporate-transferee sponsors).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawyersincyprus_family_reunification"
+        },
+        {
+          "id": "cyfr_spouse_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "The spouse must be at least 21 years old and the marriage must have been celebrated at least 1 year before the application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawyersincyprus_family_reunification"
+        },
+        {
+          "id": "cyfr_income",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "stable_regular_resources_without_social_assistance",
+          "hard": true,
+          "blocker_text": "The sponsor must show stable and regular resources sufficient to maintain the family without relying on social assistance, suitable accommodation, and health insurance covering the sponsor and family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawyersincyprus_family_reunification"
+        }
+      ]
+    },
+    {
+      "id": "minor_child",
+      "name": "Minor child",
+      "requirements": [
+        {
+          "id": "cyfr_child_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires being the unmarried minor child (including adopted) of the sponsor or the sponsor's spouse, with the sponsor holding sole custody and responsibility for maintenance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawyersincyprus_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (spouse) or birth/adoption certificate (child)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor's stable income and suitable accommodation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance for sponsor and family members", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cy_long_term_residence", "cy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "lawyersincyprus_family_reunification",
+      "tier": 3,
+      "url": "https://www.lawyersincyprus.com/family-reunification-in-cyprus/",
+      "title": "Lawyers in Cyprus -- Family Reunification in Cyprus (sponsor and family-member requirements)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. This transposes the EU Family Reunification Directive into Cyprus's own statutory procedure -- the source explicitly notes parents and other relatives do NOT ordinarily qualify under this procedure (a real, worth-flagging limitation, unlike some other countries' broader family-tie lists in this dataset). STATUS SET TO DRAFT: gov.cy's own family-reunification page (gov.cy/mip-md/en/documents/family-members-of-certain-third-country-nationals...) returned HTTP 403 to automated fetching in this pass. family_can_join/family_can_work set false as a conservative default at the outcome level (this route IS the family-joining mechanism itself; a dependant's own further dependants were not addressed by the source)."
+}

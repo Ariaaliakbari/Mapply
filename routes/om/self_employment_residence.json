@@ -1,0 +1,74 @@
+{
+  "id": "om_self_employment_residence",
+  "country": "OM",
+  "name": "Self-Employment Residency (Individual Establishment / SPC)",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "omse_registration",
+          "attribute": "registered_as_business_owner_in_oman",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registration of a 100%-foreign-owned Individual Establishment (sole proprietorship) or Single Person Company (SPC) with the Ministry of Commerce, Industry and Investment Promotion (MOCIIP) via the Invest Easy portal, with no local sponsor required.",
+          "fix_path": "Register an Individual Establishment or SPC via Invest Easy.",
+          "fix_time_months": null,
+          "source_id": "jobbers_freelance"
+        },
+        {
+          "id": "omse_labour_permit",
+          "attribute": "employer_obtained_labour_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Ministry of Labour work permit application on the basis of the self-owned entity, plus a Royal Oman Police entry/residence permit, medical exam, and biometric registration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "jobbers_freelance"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "MOCIIP business registration (Individual Establishment or SPC)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Ministry of Labour work permit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical examination and biometric registration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 240,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["om_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "jobbers_freelance",
+      "tier": 3,
+      "url": "https://www.jobbers.io/freelancing-in-oman-2026-freelance-visa-tax-guide/",
+      "title": "Jobbers -- Oman freelance/self-employment pathway: sponsor-free 100%-foreign-owned Individual Establishment or Single Person Company via Invest Easy/MOCIIP, Ministry of Labour work permit, ROP residence permit, ~OMR 4,300 total setup cost, 2-year residence validity",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- sourced to a specialist relocation/freelance-visa guide rather than an independently fetched tier-1 MOCIIP or Ministry of Labour page in this pass; Invest Easy itself (oman.om/en/home-top-level/whole-of-government/central-initiative/invest-easy) is the genuine official government business-registration portal referenced by this route, but its own page content was not independently fetched for this specific self-employment/no-sponsor pathway. Distinct from om_investor_residency.json (a higher-capital, largely passive Golden/Silver Visa track) in that this route is built around actively working through one's own small registered entity, closer in spirit to Serbia's self-employment ground built earlier in this dataset."
+}

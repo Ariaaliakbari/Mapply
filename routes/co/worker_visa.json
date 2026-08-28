@@ -1,0 +1,63 @@
+{
+  "id": "co_worker_visa",
+  "country": "CO",
+  "name": "Visa de Migrante (M) -- Trabajador",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cowk_contract",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "labor_or_service_contract_with_colombian_domiciled_party",
+          "hard": true,
+          "blocker_text": "Requires a labor agreement or service contract with a natural or legal person domiciled in Colombia. Visa validity matches the contract's duration, up to 3 years. Applicants must apply from abroad at a Colombian consulate -- a tourist visa/visa-free entry cannot be converted to work authorization from inside Colombia.",
+          "fix_path": "Secure a qualifying contract and apply from a Colombian consulate abroad.",
+          "fix_time_months": null,
+          "source_id": "mintrabajo_co_extranjeros"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Labor or service contract with a Colombian-domiciled employer/client", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Professional license/qualification, if the occupation is regulated", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Foreign ID card (Cédula de Extranjería), required if employment exceeds 3 months", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches the underlying contract, up to 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_resident_by_accumulated_time", "co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mintrabajo_co_extranjeros",
+      "tier": 1,
+      "url": "https://www.mintrabajo.gov.co/empleo-y-pensiones/movilidad-y-formacion/grupo-de-gestion-de-la-politica-de-migracion-laboral/ii-poblacion-objetivo/trabajadores-extranjeros-en-colombia",
+      "title": "Ministerio del Trabajo de Colombia -- Trabajadores extranjeros en Colombia: contract-based work visa (TP-4), employer reporting obligations",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. Confirmed directly at tier-1 via the Ministry of Labour. Employers must notify Migración Colombia in writing within 15 calendar days of hiring/termination, and generally must cover return-home costs for internationally recruited workers. pr_after_months (60) reflects the general 5-year track for 'worker' under co_resident_by_accumulated_time (tier-3 sourced there; flagged accordingly in that file, not restated as certain here)."
+}

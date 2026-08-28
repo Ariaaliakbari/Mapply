@@ -1,0 +1,99 @@
+{
+  "id": "bb_work_permit",
+  "country": "BB",
+  "name": "Work Permit (Immigration Act, Cap. 190, Section 17)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "short_term",
+      "name": "Short-term work permit (up to 11 months)",
+      "requirements": [
+        {
+          "id": "bbwp_st_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "sponsored_employment_barbados_employer",
+          "hard": true,
+          "blocker_text": "Requires a Barbados-based employer or sponsor to apply on your behalf with a detailed cover letter describing the role.",
+          "fix_path": "Secure sponsorship from a Barbados-based employer.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_workpermit"
+        }
+      ]
+    },
+    {
+      "id": "long_term",
+      "name": "Long-term work permit (up to 3 years)",
+      "requirements": [
+        {
+          "id": "bbwp_lt_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "sponsored_employment_barbados_employer",
+          "hard": true,
+          "blocker_text": "Requires a Barbados-based employer or sponsor to apply on your behalf.",
+          "fix_path": "Secure sponsorship from a Barbados-based employer.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_workpermit"
+        },
+        {
+          "id": "bbwp_lt_labour_market_test",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "no_barbadian_national_available",
+          "hard": true,
+          "blocker_text": "Requires the employer to demonstrate that no resident or Barbadian national is capable and willing to fulfil the requirements of the position.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_workpermit"
+        },
+        {
+          "id": "bbwp_lt_medical",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "medical_exam_with_chest_xray",
+          "hard": true,
+          "blocker_text": "Requires a completed medical examination form, including a chest X-ray.",
+          "fix_path": "Complete the required medical examination.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_workpermit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer cover letter, Form C-3 (short-term) or Forms C-1/C-2 (long-term), passport bio-data copy, 4 passport photos", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "2 character references and documented qualifications (long-term)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "For entrepreneurs applying via this route: proof of fund transfers per Central Bank regulations, Certificate of Registration/Articles of Incorporation, and relevant business licences", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "short-term: up to 11 months; long-term: up to 3 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bb_immigrant_status"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_bb_workpermit",
+      "tier": 1,
+      "url": "https://immigration.gov.bb/pages/WorkPermit.aspx",
+      "title": "Barbados Immigration Department (immigration.gov.bb) -- Work Permits, Section 17 of the Immigration Act, Cap. 190",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Barbados' initial build. work_rights is 'restricted' rather than 'full' because the permit ties the holder to the specific sponsoring employer and role, not open work authorisation. STRUCTURAL FINDING, not fully resolved: the source page's 'For Entrepreneurs' documentation requirements (fund-transfer proof, incorporation certificate, business licences) sit inside the Work Permit page, alongside the entirely separate 'business, trade or agricultural enterprise' ground for Immigrant Status found in the Immigration Act itself (see bb_immigrant_status) -- it isn't fully clear from the sources fetched whether these are the same pathway described twice, or genuinely two different routes into running a business in Barbados. Flagged rather than resolved. leads_to_pr and leads_to_citizenship are set false for the Work Permit itself: it is a work authorisation, not a settlement track, but long-term employment can support a later, separate application for Immigrant Status (see switchable_to), which is where the real path to permanent residence and citizenship runs. Application fee Bds$300, due upfront; final fees vary by category and duration and were not itemised on the source page. family_can_join/family_can_work and study_rights are omitted rather than guessed -- not addressed by the source page fetched in this pass."
+}

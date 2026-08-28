@@ -1,0 +1,104 @@
+{
+  "id": "tt_naturalisation",
+  "country": "TT",
+  "name": "Naturalisation (Non-Commonwealth Nationals)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttn_non_commonwealth",
+          "attribute": "is_commonwealth_national",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Naturalisation is open only to nationals of non-Commonwealth countries; Commonwealth citizens, Irish citizens, and British protected persons instead use the registration route (see tt_registration_commonwealth.json).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tt_citizenship_act"
+        },
+        {
+          "id": "ttn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires 12 months' residence immediately preceding the application, plus an aggregate of 5 years' residence (or qualifying government service) during the 7 years before that 12-month period.",
+          "fix_path": "Accumulate 12 months immediately preceding application, plus 5 of the prior 7 years.",
+          "fix_time_months": 84,
+          "source_id": "gov_tt_citizenship_act"
+        },
+        {
+          "id": "ttn_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tt_citizenship_act"
+        },
+        {
+          "id": "ttn_language",
+          "attribute": "has_adequate_english_and_civic_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires adequate knowledge of the English language and understanding of the duties and responsibilities of citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tt_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Document Checklist (per Ministry of Homeland Security)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of residence history (12 months + 5-of-7-years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of Allegiance (on approval)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_tt_citizenship_act",
+      "tier": 1,
+      "url": "https://ebctt.com/wp-content/uploads/laws-of-tnt-chapter-1-50-citizenship.pdf",
+      "title": "Citizenship of the Republic of Trinidad and Tobago Act, Chapter 1:50 (primary legislation, privately hosted mirror of the official text): naturalisation limited to non-Commonwealth nationals, 12-months-plus-5-of-7-years residence formula, good character, English/civics knowledge, Minister's discretion to relax the 12-month timing, Oath of Allegiance",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "homelandsecurity_naturalised_citizenship",
+      "tier": 1,
+      "url": "https://homelandsecurity.gov.tt/appforms/naturalised-citizenship/",
+      "title": "Ministry of Homeland Security, Government of Trinidad and Tobago -- Naturalised Citizenship: confirms non-Commonwealth-only eligibility per the Immigration Act, Document Checklist, no published fee or detailed process on this page",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. Treated the Citizenship Act's text (Chapter 1:50) as tier 1 despite being hosted on a private (non-.gov.tt) mirror site, since it is the verbatim primary legislation rather than a secondary summary or interpretation -- flagged here so this judgment call is visible; re-verify against the official Ministry of the Attorney General and Legal Affairs 'Laws of Trinidad and Tobago' portal if a more authoritative copy is needed. The non-Commonwealth-only eligibility rule is a distinctive, easy-to-miss gate: most Caribbean, UK, Canadian, Australian, and other Commonwealth-country nationals CANNOT use this route at all and must use registration instead (see tt_registration_commonwealth.json) -- modelled as a hard blocking requirement rather than a note, since it determines which of the two routes applies before residence/character even come into play. No fee amount was found on either source."
+}

@@ -1,0 +1,94 @@
+{
+  "id": "do_student_permit",
+  "country": "DO",
+  "name": "Student Permit (E-1)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dost_enrollment",
+          "attribute": "has_school_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an enrollment/admission letter from an officially registered Dominican educational institution.",
+          "fix_path": "Secure admission to a registered school or university.",
+          "fix_time_months": null,
+          "source_id": "migracion_e1"
+        },
+        {
+          "id": "dost_e_visa",
+          "attribute": "has_student_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Student Visa (category E), valid 1 year with multiple entries, must be obtained at a Dominican consulate before entry.",
+          "fix_path": "Apply for the E visa at a Dominican consulate.",
+          "fix_time_months": null,
+          "source_id": "mirex_visas"
+        },
+        {
+          "id": "dost_solvency",
+          "attribute": "has_financial_solvency_proof",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires proof of financial solvency and valid medical insurance approved by migration authorities.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_e1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "School/university admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial solvency and approved medical insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical exam from a DGM-authorized institution", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually up to 6 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "migracion_e1",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/permisos-para-fines-de-estudios/",
+      "title": "Dirección General de Migración -- Student Permit (E-1): enrollment requirement, financial solvency, medical insurance, fees, 1-year renewable up to 6 years",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mirex_visas",
+      "tier": 1,
+      "url": "https://servicios360.mirex.gob.do/visas/",
+      "title": "MIREX Portal Único de Servicios de Relaciones Exteriores -- Student Visa (E): 1-year, multiple entries, university acceptance letter",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). The DGM page caps renewal at 6 years total -- a real, explicit ceiling worth flagging since most other countries' student routes in this dataset renew indefinitely alongside continued study. No work rights are granted on this permit per the source; this is a stricter no-work-at-all policy than many countries in this dataset that allow restricted part-time work for students."
+}

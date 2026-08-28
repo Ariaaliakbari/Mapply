@@ -1,0 +1,82 @@
+{
+  "id": "al_international_protection",
+  "country": "AL",
+  "name": "Asylum / Refugee Status and Subsidiary Protection",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution (race, religion, nationality, political opinion, or social group membership) or facing real risk of serious harm may apply for refugee status or subsidiary protection.",
+    "evidence_hint": "Oral or written application at a border crossing, police station, or migration authority; identity information and reasons for seeking protection."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "alip_persecution",
+          "attribute": "has_well_founded_fear_of_persecution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a well-founded fear of persecution based on race, religion, nationality, political opinion, or membership of a particular social group (Article 18).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asylum_law_10_2021"
+        }
+      ]
+    },
+    {
+      "id": "subsidiary_protection",
+      "name": "Subsidiary protection",
+      "requirements": [
+        {
+          "id": "alip_serious_harm",
+          "attribute": "faces_real_risk_of_serious_harm",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Available to those not qualifying as refugees but facing a real risk of serious harm, including death penalty, torture, or threats arising from armed conflict (Article 20).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asylum_law_10_2021"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written asylum application with identity information and grounds for protection", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting evidence of persecution or risk of serious harm", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Standard decision timeline 6 months, extendable up to 3 months for complex cases; maximum 21 months overall (Article 28)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["al_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "asylum_law_10_2021",
+      "tier": 1,
+      "url": "https://mb.gov.al/wp-content/uploads/2024/10/Ligji-per-Azilin-10.2021_-English.pdf",
+      "title": "Republic of Albania -- Law No. 10/2021 on Asylum, official English translation hosted by the Ministry of Interior: refugee status (Art. 18), subsidiary protection (Art. 20), application process (Art. 26-27), work rights after 9 months if undecided (Art. 61), reception/housing (Art. 43), decision timeline (Art. 28)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). Unusually well-documented for a humanitarian route in this dataset: the primary Asylum Law is hosted directly by the Ministry of Interior in English translation, with granular procedural detail (registration within 3-10 working days, free legal aid, pre-university education for minor applicants within 3 months, work rights kicking in automatically at the 9-month mark if no decision has issued). work_rights modeled 'restricted' to reflect this 9-month conditional trigger rather than 'none' or 'full' -- during the first 9 months (or until a decision, if earlier), applicants generally cannot work. pr_after_months/citizenship_after_months left null: the law confirms recognized refugees can eventually access family reunification (see al_family_reunification.json, which notes a 3-month expedited process for refugee family members) and, in principle, the general naturalization/permanent-residence tracks, but no refugee-specific accelerated timeline to PR or citizenship was found stated in this pass. Decision-making body: 'Authority responsible for asylum and refugees' at the relevant ministry, with the National Commission on Asylum and Refugees handling appeals and further recourse to administrative courts."
+}

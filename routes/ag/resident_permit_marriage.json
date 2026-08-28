@@ -1,0 +1,86 @@
+{
+  "id": "ag_resident_permit_marriage",
+  "country": "AG",
+  "name": "Resident Permit -- Marriage to a Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse of an Antiguan and Barbudan citizen may apply for a Resident Permit after at least 1 year of marriage.",
+    "evidence_hint": "Marriage certificate; proof of the citizen spouse's nationality; proof of cohabitation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "agrm_married_1yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_citizen_married_1yr",
+          "hard": true,
+          "blocker_text": "Requires being married to an Antiguan and Barbudan citizen for at least 1 year.",
+          "fix_path": "Reach 1 year of marriage to the citizen spouse.",
+          "fix_time_months": 12,
+          "source_id": "gov_ag_residency_faq"
+        },
+        {
+          "id": "agrm_conduct",
+          "attribute": "no_serious_criminal_convictions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must not have been convicted of a serious offence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_residency_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Resident Permit application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of citizen spouse's nationality", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance / character certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate and proof of insurance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years, unless a shorter period is specifically applied for; renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ag_citizenship_by_marriage", "ag_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_ag_residency_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/residency-permit-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Residency Permit FAQs: marriage ground, 1 year after marrying a citizen; general-services/residency page corroborates with the same 1-year figure and adds that residency can be revoked and reapplied for within 3 months upon death or divorce",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_ag_general_residency",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/general-services/residency/",
+      "title": "Immigration Department, Antigua and Barbuda -- Residency general-services page: marriage-to-citizen ground (1 year), revocation and 3-month reapplication window on death/divorce",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Antigua and Barbuda's initial build. Modelled as a separate 'family' category file from ag_resident_permit_general.json (which covers the general/student/independent-means/entrepreneur grounds, all 'settled') even though both are the same underlying Resident Permit under the Immigration and Passport Act 2014 -- split follows this dataset's convention of separating routes by category where the schema materially differs by ground. Distinct downstream route: a marriage-based Resident Permit holder can additionally register directly for citizenship after 3 years of marriage and cohabitation under ag_citizenship_by_marriage.json, a faster path than the general 7-year Resident Permit-to-citizenship figure also modelled here as a fallback. Per the general-services page, if the marriage ends in death or divorce, the Resident Permit can be revoked, but the (former) spouse may reapply within 3 months under the standard (non-marriage) eligibility grounds -- flagged here rather than modelled as a separate route, since it is a contingency on this same route rather than a distinct entry point."
+}

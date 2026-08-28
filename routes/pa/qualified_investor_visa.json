@@ -1,0 +1,113 @@
+{
+  "id": "pa_qualified_investor_visa",
+  "country": "PA",
+  "name": "Visa de Inversionista Calificado",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate_direct",
+      "name": "Direct real estate purchase",
+      "requirements": [
+        {
+          "id": "paqi_realestate",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 300000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires unencumbered ('libre de gravámenes') Panamanian real estate worth at least USD 300,000, funded from abroad.",
+          "fix_path": "Acquire and document qualifying, unencumbered property.",
+          "fix_time_months": null,
+          "source_id": "ipal_pa_inversionista_calificado"
+        }
+      ]
+    },
+    {
+      "id": "real_estate_promise",
+      "name": "Purchase-promise contract (via trust or developer)",
+      "requirements": [
+        {
+          "id": "paqi_promise",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 300000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 300,000 committed through a trust or direct payments to a developer under a purchase-promise contract, funded from abroad.",
+          "fix_path": "Fund and document the qualifying purchase-promise contract.",
+          "fix_time_months": null,
+          "source_id": "ipal_pa_inversionista_calificado"
+        }
+      ]
+    },
+    {
+      "id": "securities",
+      "name": "Panamanian stock exchange securities",
+      "requirements": [
+        {
+          "id": "paqi_securities",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 500,000 invested in securities issued by Panamanian companies, funded from abroad.",
+          "fix_path": "Fund and document the qualifying securities investment.",
+          "fix_time_months": null,
+          "source_id": "ipal_pa_inversionista_calificado"
+        }
+      ]
+    },
+    {
+      "id": "fixed_deposit",
+      "name": "Fixed-term bank deposit (5+ years)",
+      "requirements": [
+        {
+          "id": "paqi_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 750000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires at least USD 750,000 on fixed-term deposit at a general-license Panamanian bank, for a term of no less than 5 years, funded from abroad.",
+          "fix_path": "Fund and document the qualifying fixed-term deposit.",
+          "fix_time_months": null,
+          "source_id": "ipal_pa_inversionista_calificado"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof that all invested funds originated from abroad", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Category-specific investment documentation (deed, trust contract, brokerage statement, or CD certificate)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite -- immediate permanent residence, no provisional period, conditioned on maintaining the investment for at least 5 years",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipal_pa_inversionista_calificado",
+      "tier": 3,
+      "url": "https://www.ipal.com.pa/post/visa-inversionista-calificado-requisitos-y-beneficios",
+      "title": "IPAL (Panamanian legal/consulting firm) -- Visa Inversionista Calificado: four investment categories (real estate, purchase-promise, securities, fixed deposit), immediate permanent residence, 5-year naturalisation eligibility",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. STATUS SET TO DRAFT: migracion.gob.pa's own overview page (tier-1) confirms a 'Qualified Investor' category exists among Panama's permanent-resident special-policy grounds (grouped there with forest investment and macro-enterprise investment), but the specific dollar thresholds and category breakdown were only found and confirmed via a tier-3 Panamanian legal/consulting firm, since a matching migracion.gob.pa requirements PDF was not located and fetched in this pass. FOUR GENUINELY DIFFERENT INVESTMENT GROUNDS modelled as OR-logic groups. This is Panama's most 'golden visa'-like route: immediate permanent residence with no provisional stage, unlike most other Panamanian economic routes. Two related categories mentioned on migracion.gob.pa's overview but not independently researched or modelled here: the Forest/Reforestation Investor visa and the Macro-Empresa (macro-enterprise) investor visa -- flagged as gaps for a future revisit rather than folded into this file without their own sourcing."
+}

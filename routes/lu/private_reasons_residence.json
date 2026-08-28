@@ -1,0 +1,96 @@
+{
+  "id": "lu_private_reasons_residence",
+  "country": "LU",
+  "name": "Residence for Private Reasons (Durable Partnership / Personal Ties)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lupr_ties",
+          "attribute": "has_stable_long_standing_personal_or_family_ties",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must show stable, long-standing, and strong personal or family ties to a person legally residing in Luxembourg. For unmarried partnerships, neither partner may be married or in a registered partnership with anyone else.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_private_reasons"
+        },
+        {
+          "id": "lupr_sponsor_status",
+          "attribute": "sponsor_is_lu_national_or_1yr_legal_resident",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The person in Luxembourg must hold Luxembourg nationality or have held legal residence status for at least 1 year, and provide a signed financial-support statement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_private_reasons"
+        },
+        {
+          "id": "lupr_means",
+          "attribute": "monthly_resources_gte_revis",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must have stable, regular and sufficient resources at least equal to the social inclusion income (REVIS), without recourse to social assistance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_private_reasons"
+        },
+        {
+          "id": "lupr_housing",
+          "attribute": "has_suitable_housing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of suitable housing in Luxembourg required (rental agreement, property deed, or similar).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_private_reasons"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence of the personal/family relationship's duration and stability", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Sponsor's financial statement of support", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of suitable housing", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable; long-term resident status available after 5 years of lawful uninterrupted residence",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lu_permanent_residence", "lu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "guichet_private_reasons",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/raisons-privees/sejour-raisons-privees.html",
+      "title": "Guichet.lu -- Conditions of Residence in Luxembourg for Private Reasons for Third-Country Nationals: stable personal/family ties standard, sponsor requirements, REVIS-based income test, housing proof, up to 3-year permit",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). This is the route for unmarried durable partners and other close personal/family ties NOT covered by formal spouse/registered-partner family reunification (lu_family_reunification.json) -- a genuinely distinct legal basis under Luxembourg immigration law (residence 'for private reasons' vs. formal 'family reunification'). work_rights modeled 'restricted' since the source did not explicitly confirm unrestricted labour-market access on this specific permit type -- flagged as a conservative default, not confirmed either way."
+}

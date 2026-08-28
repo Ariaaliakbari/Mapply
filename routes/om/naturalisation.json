@@ -1,0 +1,121 @@
+{
+  "id": "om_naturalisation",
+  "country": "OM",
+  "name": "Nationality by Naturalisation (Grant)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "non_arab",
+      "name": "Non-Arab nationals",
+      "requirements": [
+        {
+          "id": "omn_residence_general",
+          "attribute": "months_continuous_residence",
+          "operator": ">=",
+          "value": 240,
+          "hard": true,
+          "blocker_text": "20 years of continuous legal residence in Oman.",
+          "fix_path": "Accumulate 20 years of continuous legal residence.",
+          "fix_time_months": 240,
+          "source_id": "commoner_law_citizenship"
+        },
+        {
+          "id": "omn_language",
+          "attribute": "has_arabic_language_skill",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Arabic language proficiency is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "commoner_law_citizenship"
+        },
+        {
+          "id": "omn_income",
+          "attribute": "has_lawful_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lawful, sufficient income is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "commoner_law_citizenship"
+        },
+        {
+          "id": "omn_conduct",
+          "attribute": "has_clean_criminal_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A clean criminal record is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "commoner_law_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "arab_national",
+      "name": "Arab nationals",
+      "requirements": [
+        {
+          "id": "omn_residence_arab",
+          "attribute": "months_continuous_residence",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "A reduced 10-year continuous residence requirement applies to nationals of Arab countries, alongside the same Arabic-language, income, and conduct conditions as the general track.",
+          "fix_path": "Accumulate 10 years of continuous legal residence.",
+          "fix_time_months": 120,
+          "source_id": "commoner_law_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence (10 or 20 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic-language proficiency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of lawful income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "commoner_law_citizenship",
+      "tier": 3,
+      "url": "https://commoner-law.com/oman/immigration-pathways/citizenship-naturalization",
+      "title": "Commoner Law -- Oman naturalisation requirements under Royal Decree 38/2014 (replacing RD 3/1983): 20 years' continuous residence for non-Arab nationals, 10 years for Arab nationals, Arabic proficiency, lawful income, clean criminal record, discretionary Royal Decree approval, no dual nationality permitted",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "decree_om_nationality_paths",
+      "tier": 3,
+      "url": "https://blog.decree.om/2025/paths-to-omani-nationality-under-the-law/",
+      "title": "Decree.om -- corroborates the 20-year general/naturalisation timeline and separately notes a 15-year reduced residence figure described for applicants married to an Omani woman, distinct from the dedicated marriage-based citizenship route",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- primary legislative text (Royal Decree 38/2014) could not be independently fetched (robots.txt/SSL errors on the Official Gazette PDF across repeated attempts); relies on two corroborating tier-3 legal-commentary sources for the 20-year/10-year figures. One of the two sources additionally describes a 15-year reduced-residence figure for (male) applicants married to an Omani woman, which was NOT modeled as a separate hard requirement here since it wasn't independently corroborated by the second source and risked conflating two distinct provisions (Arab-nationality reduction vs. marriage-based reduction) -- disclosed as a gap rather than guessed at. Discretionary: meeting the listed conditions makes an applicant eligible to apply, not automatically entitled to a grant -- naturalisation is by Royal Decree. dual_citizenship_allowed modeled FALSE; Oman does not permit dual nationality, and naturalisation requires renouncing prior citizenship. Oman has no separate 'permanent residence' status distinct from these citizenship routes -- long-term non-citizen residents (including Golden/Silver Visa holders) renew their residence status indefinitely rather than progressing through an intermediate PR tier."
+}

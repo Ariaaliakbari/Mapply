@@ -1,0 +1,73 @@
+{
+  "id": "is_family_reunification",
+  "country": "IS",
+  "name": "Residence Permit for Spouse / Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "isfam_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_cohabiting_partner_of_resident",
+          "hard": true,
+          "blocker_text": "Available to the spouse or registered cohabiting partner of a person legally resident in Iceland. Gender-neutral.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_spouse_permit"
+        },
+        {
+          "id": "isfam_means",
+          "attribute": "sponsor_has_secure_means_of_support",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor must have secure means of support; this is checked at renewal and affects rights in special circumstances (divorce, death of sponsor, domestic abuse).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_spouse_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or registered-cohabitation certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sponsor's secure means of support", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "generally 1 year at a time, up to a maximum of 2 years; cannot exceed the sponsor's own permit validity",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["is_permanent_residence", "is_naturalisation", "is_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "island_spouse_permit",
+      "tier": 1,
+      "url": "https://island.is/en/residence-permit-for-spouse/residence-rights",
+      "title": "Island.is -- Residence Permit for Spouse: Residence Rights: 1-2 year permit duration, secure means of support, protections after divorce/death/abuse (short marriage may disqualify continuation)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). pr_after_months (36) and citizenship_after_months (48) reflect the reduced 3-year permanent-residence and 4-year naturalisation thresholds specifically available to spouses of Icelandic citizens (see is_permanent_residence.json and is_citizenship_by_marriage.json) -- these reduced figures apply only when the sponsor is an Icelandic CITIZEN, not merely a resident; a family-reunification applicant whose sponsor is a foreign resident (not yet a citizen) would instead face the general is_permanent_residence.json/is_naturalisation.json timelines (4 years / 7 years). Modeled the citizen-sponsor case as the outcome shown since is_citizenship_by_marriage.json is listed as a switchable_to target; flagged as an assumption, not a universal guarantee for every sponsor type."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "vc_work_permit",
+  "country": "VC",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vcw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires either employment with a specific employer (Form 1) or authorisation to engage in self-employment (Form 2).",
+          "fix_path": "Secure employment or establish a qualifying self-employed occupation.",
+          "fix_time_months": null,
+          "source_id": "svghighcom_non_national"
+        },
+        {
+          "id": "vcw_not_visitor",
+          "attribute": "has_visitor_permit_status",
+          "operator": "==",
+          "value": false,
+          "hard": false,
+          "blocker_text": "Applications are made through the Prime Minister's Office rather than as an extension of visitor status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_vc_pmoffice_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed Form 1 (employed) or Form 2 (self-employed)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee (EC$150)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 6 months",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vc_residence_permit"]
+  },
+  "sources": [
+    {
+      "id": "svghighcom_non_national",
+      "tier": 1,
+      "url": "https://www.svghighcom.co.uk/site/Non-National.html",
+      "title": "High Commission for Saint Vincent and the Grenadines, UK -- Non-National: work permits via Form 1 (employed by a specific employer) or Form 2 (self-employed), medical elective students at Milton Cato Memorial Hospital exempt with a hospital acceptance letter",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_vc_pmoffice_citizenship",
+      "tier": 1,
+      "url": "https://pmoffice.gov.vc/pmoffice/index.php/citizenship",
+      "title": "Prime Minister's Office, Government of Saint Vincent and the Grenadines -- Citizenship (and related permit) page: Work Permit application fee EC$150, maximum validity 6 months",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Vincent and the Grenadines' initial build. NOTABLY SHORT maximum validity (6 months) compared to every other work permit built this session (most Caribbean/BOT equivalents run 1 year) -- confirmed on the official pmoffice.gov.vc fee page, not an assumption. No labour-market-test (job advertisement) requirement was found on any tier-1 source for Saint Vincent and the Grenadines, unlike Grenada's, Trinidad and Tobago's, or the BOTs' work permit regimes -- this may reflect a genuinely lighter-touch process, or simply a gap in the sources reviewed (the official 'Residence Work Permit and Citizenship Requirements' PDF exists but could not be read -- it appears to be an image-only scan with no extractable text). pr_after_months left null since no specific work-permit-to-residence timeline was found; switchable_to reflects the general possibility of applying for residence, not a guaranteed or timed conversion."
+}

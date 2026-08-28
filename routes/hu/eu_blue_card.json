@@ -1,0 +1,85 @@
+{
+  "id": "hu_eu_blue_card",
+  "country": "HU",
+  "name": "EU Blue Card",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hueb_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 883671, "currency": "HUF", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Minimum gross monthly salary of HUF883,671 (approx. EUR2,360) for 2025, rising to HUF1,001,048 in 2026. A reduced threshold of HUF706,937 (2025) / HUF800,838 (2026) applies to healthcare professionals (doctors, pharmacists, nurses, etc.).",
+          "fix_path": "Secure a qualifying job offer meeting the current salary threshold.",
+          "fix_time_months": null,
+          "source_id": "oif_blue_card"
+        },
+        {
+          "id": "hueb_qualification",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "tertiary_degree_or_3yr_experience_within_7yr_for_ict",
+          "hard": true,
+          "blocker_text": "Requires a tertiary education degree matching the job requirements, or, for ICT specialists and executives, at least 3 years of relevant professional experience acquired within the preceding 7 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_blue_card"
+        },
+        {
+          "id": "hueb_contract",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "fixed_term_contract_6mo_plus",
+          "hard": true,
+          "blocker_text": "Requires a valid employment contract for a fixed term of at least 6 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_blue_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract (6+ months)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Degree certificate or documented professional experience", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Salary documentation meeting the current threshold", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years, extendable for up to 4 years at a time",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hu_national_residence_card", "hu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oif_blue_card",
+      "tier": 1,
+      "url": "https://www.oif.gov.hu/factsheets/eu-blue-card",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- EU Blue Card: 2025/2026 salary thresholds (standard and healthcare-reduced), qualification pathways, 4-year duration, intra-EU mobility",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. work_rights set to 'restricted': a change of employer triggers a mandatory renewal application. Intra-EU mobility confirmed at tier-1: holders with 12 months' prior Blue Card experience in another EU member state, or 6 months in a second member state, may apply to move. family_can_join set true by INFERENCE: Blue Card holders were not named among the sponsor-ineligible categories (seasonal employment, investment-related work, standard employment, White Card, study/training/volunteer permits) in oif.gov.hu's family-reunification factsheet -- this is an inference by omission, not an explicit tier-1 confirmation either way, and should be verified directly before relying on it."
+}

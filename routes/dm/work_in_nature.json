@@ -1,0 +1,93 @@
+{
+  "id": "dm_work_in_nature",
+  "country": "DM",
+  "name": "Work in Nature (WIN) Visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dmwin_income",
+          "attribute": "annual_income",
+          "operator": ">=",
+          "value": { "amount": 50000, "currency": "USD", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Expected annual income of at least US$50,000 over the next 12 months, or otherwise sufficient means to support yourself and any accompanying family members without local employment.",
+          "fix_path": "Increase and document qualifying income to at least US$50,000/year, or demonstrate equivalent means.",
+          "fix_time_months": null,
+          "source_id": "windominica_eligibility"
+        },
+        {
+          "id": "dmwin_remote_work",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "able_to_work_remotely",
+          "hard": true,
+          "blocker_text": "Must demonstrate the ability to work remotely.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "windominica_eligibility"
+        },
+        {
+          "id": "dmwin_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Must be at least 18 years old and of good character, without a criminal record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "windominica_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of remote-work ability and income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police record", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Application fee US$100 (non-refundable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "WIN visa fee: US$800 (single applicant), US$1,200 (family), or US$800 + US$500/additional employee (business with 4+ employees)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 18 months",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "windominica_eligibility",
+      "tier": 1,
+      "url": "https://windominica.gov.dm/details/eligibility",
+      "title": "Government of Dominica -- Work in Nature (WIN) Visa: eligibility (age, character, income/means, remote-work ability, eligible dependants)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "windominica_fees",
+      "tier": 1,
+      "url": "https://windominica.gov.dm/details/fees",
+      "title": "Government of Dominica -- Work in Nature (WIN) Visa: fee structure (application fee, single/family/business visa fees), 18-month validity",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, filling a gap in Dominica's initial build (no work_independent-category route had been built). Confirmed directly at tier-1 (windominica.gov.dm, the official Work in Nature programme site). Eligible dependants explicitly include spouse/partner, children/stepchildren under 18, and dependants wholly reliant due to age or infirmity -- so family_can_join is set true, unlike Dominica's other routes in this dataset (work_permit, temporary_residence_permit), which conservatively defaulted to false for lack of confirmation; here the source explicitly names dependant categories. No nationality restriction is stated, unlike several other Caribbean/European digital-nomad-style visas in this dataset. work_rights set to 'restricted': the visa authorises remote work for foreign income sources, not local Dominica employment. No stated path to permanent residence or citizenship, and the visa is not described as renewable beyond its 18-month term -- both modelled conservatively as false/not-renewable given the absence of any such statement in the sources reviewed. Health-insurance requirements were not detailed in the pages fetched in this pass."
+}

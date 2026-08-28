@@ -1,0 +1,131 @@
+{
+  "id": "mx_temporary_resident",
+  "country": "MX",
+  "name": "Temporary Resident Visa",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "economic_solvency",
+      "name": "Economic solvency (savings or income)",
+      "requirements": [
+        {
+          "id": "mxtr_solvency",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 42164, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires bank statements showing an average monthly balance over USD 42,164 (12 months of statements), OR proof of employment/pension income exceeding USD 2,530/month (6 months of statements). Figures are consular conversions of a legal threshold denominated in days of Mexico City's general minimum wage, so exact USD/MXN amounts shift over time.",
+          "fix_path": "Document qualifying savings or income.",
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_temporary_resident"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Real estate ownership",
+      "requirements": [
+        {
+          "id": "mxtr_property",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 337308, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires ownership of Mexican real property valued at over USD 337,308 (or MXN 6,914,800), evidenced by a public deed.",
+          "fix_path": "Acquire and document qualifying property.",
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_temporary_resident"
+        }
+      ]
+    },
+    {
+      "id": "corporate_investment",
+      "name": "Investment in a Mexican corporation",
+      "requirements": [
+        {
+          "id": "mxtr_investment",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 168654, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires shares in a Mexican corporation where the amount effectively disbursed for the foreigner's shares exceeds USD 168,654 (or MXN 3,457,000).",
+          "fix_path": "Fund and document the qualifying share investment.",
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_temporary_resident"
+        }
+      ]
+    },
+    {
+      "id": "business_ownership",
+      "name": "Business/company property ownership with staff",
+      "requirements": [
+        {
+          "id": "mxtr_business",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "company_property_over_168654_usd_or_documented_business_with_3plus_employees",
+          "hard": true,
+          "blocker_text": "Requires either company property exceeding USD 168,654 (MXN 3,457,000), or a documented, operating business employing at least 3 people.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_temporary_resident"
+        }
+      ]
+    },
+    {
+      "id": "invitation_sponsored",
+      "name": "Invitation-based, non-remunerated activity",
+      "requirements": [
+        {
+          "id": "mxtr_invitation",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "institutional_invitation_for_nonremunerated_activity",
+          "hard": true,
+          "blocker_text": "Non-remunerated participation with institutional sponsorship: if the inviting institution covers expenses, requires an average monthly balance of USD 84,327; if self-funded, requires USD 42,164 average balance or USD 1,687/month income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_temporary_resident"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank statements or income/pension documentation (per group)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Property deed, share certificates, or business registration (per group)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "more than 180 days, less than 4 years (visa-holder chooses initial validity within this range, renewable within the 4-year cap)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_permanent_residence_via_temporary", "mx_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "consulmex_phoenix_temporary_resident",
+      "tier": 1,
+      "url": "https://consulmex.sre.gob.mx/phoenix/images/2022/MARZO/2022_Temporary_Resident.pdf",
+      "title": "Consulate of Mexico, Phoenix (SRE) -- Temporary Resident visa: qualifying categories and thresholds",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. FIVE GENUINELY DIFFERENT QUALIFYING GROUNDS modelled as OR-logic groups for the SAME visa (Temporary Resident) rather than split into separate route files -- the source presents them explicitly as alternative categories of one visa. work_rights set 'none': this consular economic/property-based temporary resident visa does not itself confer work authorisation -- employment requires the separate employer-sponsored route (mx_work_permit_employer_sponsored) or a subsequent permission change. Family-unity is a genuinely distinct, separately-documented visa (its own trámite, own eligible-relatives list, and an outcome that can itself be permanent residence) and is modelled as its own file, mx_family_unity_visa, rather than as a sixth group here. pr_after_months set to 48 based on the standard time-based change-of-status rule (see mx_permanent_residence_via_temporary); citizenship_after_months (60) reflects that naturalisation additionally requires its own residence count from mx_naturalisation_residence, not confirmed here as automatically cumulative with the PR wait."
+}

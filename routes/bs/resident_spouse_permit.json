@@ -1,0 +1,80 @@
+{
+  "id": "bs_resident_spouse_permit",
+  "country": "BS",
+  "name": "Resident Spouse Permit",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-Bahamian spouse of a Bahamian citizen, married less than 5 years and residing together, may apply for an annual Resident Spouse Permit.",
+    "evidence_hint": "Marriage certificate; proof of cohabitation; spouse's Bahamian citizenship documents."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bsrsp_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_bs_citizen",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Bahamian citizen, married less than 5 years at time of application, residing together.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_resident_spouse"
+        },
+        {
+          "id": "bsrsp_under_5yr",
+          "attribute": "months_married",
+          "operator": "<",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "This specific permit applies only while married less than 5 years; after 5 years the spouse instead applies for an extension of this permit, citizenship, or permanent residency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_resident_spouse"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "First Schedule Form 1A (notarized)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bahamian spouse's passport, birth certificate, employment letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificates for children under 18 (from the marriage or otherwise)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable until the 5-year marriage mark",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bs_permanent_residence_marriage", "bs_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "gov_bs_resident_spouse",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/residence/resident-spouse-permit/",
+      "title": "Bahamas Immigration Department -- Resident Spouse Permit: for non-Bahamian spouses married less than 5 years, $200 processing fee, extensive document list, dependents apply separately for Permit to Reside",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. This is the FIRST-STAGE spousal status, distinct from and prior to bs_permanent_residence_marriage.json (available after 5 years of marriage) and bs_citizenship_by_marriage.json (Form I, restricted to female spouses only -- see that file's notes). Work rights modelled as 'restricted' since the source does not explicitly confirm unrestricted work authorisation under this specific permit; not confirmed either way on this source, flagged as an inference from the general pattern of dependent/spousal permits in this dataset."
+}

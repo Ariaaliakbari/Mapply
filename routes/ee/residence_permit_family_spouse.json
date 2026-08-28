@@ -1,0 +1,71 @@
+{
+  "id": "ee_residence_permit_family_spouse",
+  "country": "EE",
+  "name": "Residence Permit for a Family Member (spouse)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "eef_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being the spouse of a person legally residing in Estonia (an Estonian citizen or a holder of an Estonian residence permit) who is inviting you.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_family_spouse"
+        },
+        {
+          "id": "eef_income",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "income_2x_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires sufficient income to support yourself in Estonia, set at twice the national subsistence level.",
+          "fix_path": "Document income at or above twice the current subsistence level.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_family_spouse"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of income at 2x the subsistence level", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years initially (not exceeding the inviting spouse's own permit validity), extendable up to 10 years at a time",
+    "renewable": true,
+    "work_rights": "full",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ee_long_term_resident", "ee_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_family_spouse",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/residence-permit-for-a-family-member/for-a-spouse",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Residence permit for a family member: for a spouse",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. The source page ties this permit's validity to the inviting spouse's own permit validity where the inviting spouse is not an Estonian citizen -- captured in duration_length rather than as a separate schema field. Politsei.ee also documents separate family-member routes for minor children and for parents/grandparents, not built as separate route files in this pass; flagged as a scope decision (spouse is the highest-volume, clearest case) rather than an oversight. leads_to_pr is false for this route directly since the source page doesn't confirm an automatic path, but 5 years' residence under it is exactly the kind of legal residence that can feed ee_long_term_resident's own 5-year test -- modelled via switchable_to."
+}

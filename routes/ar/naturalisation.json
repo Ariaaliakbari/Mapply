@@ -1,0 +1,73 @@
+{
+  "id": "ar_naturalisation",
+  "country": "AR",
+  "name": "Naturalization (Ordinary Residence Route)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "arn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be 18 or older (Ley 346, Article 2).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_346"
+        },
+        {
+          "id": "arn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires 2 years of continuous, legal, uninterrupted residence in Argentina immediately prior to application, without having left the country.",
+          "fix_path": "Accumulate 2 continuous years of legal residence without departing Argentina.",
+          "fix_time_months": 24,
+          "source_id": "ley_346"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 2 years' continuous, uninterrupted legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Naturalization certificate application via the National Directorate of Migration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "Must not have left Argentina during the qualifying 2-year period ('en forma continua').",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ley_346",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-346-48854/actualizacion",
+      "title": "República Argentina -- Ley 346 de Ciudadanía y Naturalización (texto actualizado), Artículo 2: 2 years' continuous, legal, uninterrupted residence for foreigners 18+",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). Among the shortest standard naturalization residence bars in this entire dataset -- 2 years, roughly a third of the typical 5-7 year international norm seen elsewhere in this build (compare Grenada's 5-of-7, Saint Lucia's 7, the UAE's 30). The 'en forma continua' (continuous) language is read here as requiring the applicant not to have left Argentina during the 2-year window -- modeled as an explicit physical_presence_requirement rather than folded silently into the residence-duration figure, since departing the country appears to reset or invalidate the qualifying period rather than merely pausing it. The current law text (as extracted from this source) does not contain a marriage-based expedited track or an explicit dual-citizenship restriction -- dual citizenship modeled as allowed based on the general absence of a renunciation requirement in the text found. See ar_citizenship_by_investment.json for the newer investment-based naturalization pathway added to this same law by recent decree, and ar_citizenship_by_option.json for the separate automatic route for children of Argentine natives born abroad."
+}

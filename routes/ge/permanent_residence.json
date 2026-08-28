@@ -1,0 +1,81 @@
+{
+  "id": "ge_permanent_residence",
+  "country": "GE",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "family_of_citizen",
+      "name": "Spouse or minor child of a Georgian citizen",
+      "requirements": [
+        {
+          "id": "gepr_family_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being the spouse or minor child of a Georgian citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite, granted directly on qualifying"
+      }
+    },
+    {
+      "id": "ten_years_temporary",
+      "name": "10 years on temporary residence permits",
+      "requirements": [
+        {
+          "id": "gepr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 years of residence held on temporary residence permits.",
+          "fix_path": "Accumulate 10 years' residence on qualifying temporary permits.",
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/birth certificate (family-of-citizen group) or 10 years' permit history (residence group)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "matsne_aliens_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2278806",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Law on the Legal Status of Aliens and Stateless Persons, Article 15(g)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is Article 15(g), reached via two genuinely different OR-logic groups (family tie to a citizen granted directly, vs. 10 years accumulated on temporary permits), per this dataset's core structural principle. Note the NEW 'Spouse of Georgian Citizen' category (Article 15(g1)), effective September 2026 per sda.gov.ge, appears to introduce a phased 1-year-then-2-year-renewals-then-5-year track specifically for spouses -- this may partially reform or narrow this route's family-of-citizen group going forward; not fully reconciled in this pass since the amendment is very recent and its interaction with the existing Article 15(g) text was not confirmed. Flagged for a future revisit rather than guessed at."
+}

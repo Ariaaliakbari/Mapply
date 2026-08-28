@@ -1,0 +1,88 @@
+{
+  "id": "nz_skilled_migrant_category",
+  "country": "NZ",
+  "name": "Skilled Migrant Category Resident Visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A points-based direct-to-residence pathway for skilled workers. Points are drawn from qualifications, registered-occupation experience requirements, and income (measured against the SMC wage threshold), plus a bonus for NZ skilled work experience. Applicants submit an Expression of Interest (EOI); if selected, they have 4 months to lodge a full application.",
+    "evidence_hint": "Skilled job offer or current skilled employment with an accredited employer (30+ hrs/week, permanent or 12+ month fixed-term, or 6+ month continuous contracts); qualification and registration evidence; income evidence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzsmc_points",
+          "attribute": "smc_skilled_resident_points",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "A minimum of 6 Skilled Resident Points, drawn from qualification points (4-6), occupational registration points (3-6), and income points (3-6, based on multiples of the SMC wage threshold), with up to 3 bonus points available for NZ skilled work experience.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_smc"
+        },
+        {
+          "id": "nzsmc_age",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 55,
+          "hard": true,
+          "blocker_text": "Applicants must be 55 years or younger at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_smc"
+        },
+        {
+          "id": "nzsmc_job",
+          "attribute": "has_skilled_job_with_accredited_employer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A skilled job offer or current skilled employment with an accredited employer, at least 30 hours/week, meeting pathway-specific pay requirements.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_smc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Skilled job offer or current skilled employment evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Qualification and/or occupational registration documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Income evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Resident Visa issued with 24 months of travel conditions",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_permanent_resident_visa", "nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_smc",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/skilled-migrant-category-resident-visa",
+      "title": "Immigration New Zealand -- Skilled Migrant Category Resident Visa: 6-point threshold, qualification/registration/income point bands, age limit 55, EOI-then-invitation process, employer/job requirements",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). The exact dollar-figure breakpoints for each income-points band (which multiple of the SMC wage threshold earns 3 vs 4 vs 6 points) were reported inconsistently across the sources reviewed in this pass and were NOT modeled as separate hard sub-requirements to avoid asserting an unverified number -- the smc_skilled_resident_points >= 6 threshold and the age/job gates are the only figures modeled as hard, all tier-1 sourced. The SMC wage threshold itself is pegged to NZ's median wage (NZD 35.00/hour effective 9 March 2026 per nz_work_permit.json's tier-3 source), which is used for income points here but is NOT the AEWV general pay floor (that requirement was removed in 2025 -- see nz_work_permit.json). Unlike this dataset's usual immediate-grant naturalisation modeling, work grants a Resident Visa with 24-month travel conditions first, converting to full Permanent Resident Visa only after a separate application (see nz_permanent_resident_visa.json) -- pr_after_months (24) and citizenship_after_months (60) reflect Resident Visa -> Permanent Resident Visa -> citizenship-by-grant's combined minimum timeline (2 years + NZ's 5-year, i.e. 1,350-day, presence requirement measured from resident status, not stacked sequentially -- see nz_citizenship_by_grant.json for the exact citizenship-clock mechanics)."
+}

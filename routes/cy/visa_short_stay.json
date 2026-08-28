@@ -1,0 +1,61 @@
+{
+  "id": "cy_visa_short_stay",
+  "country": "CY",
+  "name": "National Short-Stay (Pink Slip) Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cyv_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "travel_medical_insurance",
+          "hard": true,
+          "blocker_text": "Requires travel medical insurance and proof of financial means and accommodation for the stay.",
+          "fix_path": "Purchase qualifying travel medical insurance before applying.",
+          "fix_time_months": null,
+          "source_id": "cyprustaxlife_schengen_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport, proof of accommodation, return/onward travel, financial means, travel medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within any 180-day period (Cyprus's own national rule, run in parallel with the separate Schengen 90/180 count)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cyprustaxlife_schengen_status",
+      "tier": 3,
+      "url": "https://www.cyprustaxlife.com/blog/is-cyprus-in-schengen",
+      "title": "Cyprus Tax Life -- Is Cyprus in Schengen? Entry rules and 90/180-day count",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW COUNTRY, first Cyprus route. IMPORTANT, EASY-TO-MISS FACT: Cyprus is an EU member state but is NOT part of the Schengen Area (targeted accession was under discussion for 2027 at the time of this research, not yet in force) -- it operates its own national short-stay visa regime ('pink slip'), and a Schengen visa alone does not automatically grant entry to Cyprus, nor does a Cyprus visa grant Schengen access. This is a materially different visit route from every Schengen-member country already in this dataset and should not be modelled as a schengen_visitor route. STATUS SET TO DRAFT: gov.cy's own visa information subpages (e.g. /en/information/visas/) returned HTTP 403 to automated fetching throughout this research pass (the domain's root page loads, but Migration Department and Interior Ministry subpaths consistently blocked WebFetch) -- a genuine access limitation, not an indication that tier-1 sourcing doesn't exist. Specific financial-means figures were not found at any tier in this pass and are not invented here."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "ky_visitor_visa",
+  "country": "KY",
+  "name": "Visitor Visa / Visitor Extension",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kyvv_application",
+          "attribute": "visa_required_nationality",
+          "operator": "exists",
+          "value": "on_visa_required_list_or_exempt",
+          "hard": true,
+          "blocker_text": "Persons requiring a visa to visit, study, do business, or transit through the Cayman Islands must apply online to the Cayman Islands Visa Office; other nationalities may enter visa-free as visitors.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cbc_gov_ky"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Online visa application (visa-required nationalities only)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visitor extension application, if extending stay", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cbc_gov_ky",
+      "tier": 1,
+      "url": "https://gov.ky/web/cbc/travel/visas-extensions",
+      "title": "Cayman Islands Customs and Border Control (CBC) -- Visas & Extensions: confirms visa-required nationalities must apply online to the Cayman Islands Visa Office; visitor extensions available",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Cayman Islands' initial build -- the third British Overseas Territory (BOT) built this session, after Anguilla and Montserrat. Cayman's own local status, analogous to Belonger status elsewhere, is called 'Caymanian status' / 'the right to be Caymanian' -- see ky_caymanian_status_descent.json's notes for the full BOT-vs-citizenship framing decision applied throughout this country's routes. This visitor route itself is thin: the specific visa-required-nationality list, fees, and exact validity/extension periods were referenced but not detailed in the CBC pages fetched in this pass (deeper sub-pages exist but returned navigation-only content). CBC's own homepage text groups 'visit, study, do business or transit' under this same visa framework -- no evidence of a separate, longer-term dedicated student permit route was found in this pass, so study-purpose stays under this route rather than being split into its own file; flagged as a possible gap if a distinct student permit in fact exists."
+}

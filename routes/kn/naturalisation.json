@@ -1,0 +1,73 @@
+{
+  "id": "kn_naturalisation",
+  "name": "Citizenship by Residence (Naturalisation)",
+  "country": "KN",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "knn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 168,
+          "hard": true,
+          "blocker_text": "Requires 14 years of legal residence in the Federation.",
+          "fix_path": "Accumulate 14 years of legal residence.",
+          "fix_time_months": 168,
+          "source_id": "mofa_types_of_citizenship"
+        },
+        {
+          "id": "knn_certificate_of_citizenship",
+          "attribute": "obtained_certificate_of_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants must first obtain a Certificate of Citizenship before becoming eligible for a passport; this process can take up to 6 months.",
+          "fix_path": "Apply for and obtain the Certificate of Citizenship.",
+          "fix_time_months": 6,
+          "source_id": "mofa_types_of_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 14 years' legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Certificate of Citizenship application", "difficulty": "moderate", "typical_time_days": 180 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mofa_types_of_citizenship",
+      "tier": 1,
+      "url": "https://mofa.gov.kn/types-of-citizenship/",
+      "title": "Ministry of Foreign Affairs, Government of Saint Kitts and Nevis -- Types of Citizenship: Citizenship by Residence requires 14 years of legal residence; Certificate of Citizenship required before passport eligibility, up to 6 months",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. The 14-year residence requirement is notably the longest naturalisation period built anywhere this session -- more than double Aruba's/Curacao's/Sint Maarten's Kingdom-pattern 5 years and longer than Trinidad and Tobago's 12-month-plus-5-of-7-years formula. No good-character, language, or civics-knowledge sub-requirement was found on this source (unlike T&T's naturalisation route), which may reflect the source page's brevity rather than the absence of such conditions in the underlying Citizenship Act -- flagged as a possible gap rather than assumed not to exist."
+}

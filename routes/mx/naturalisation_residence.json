@@ -1,0 +1,91 @@
+{
+  "id": "mx_naturalisation_residence",
+  "country": "MX",
+  "name": "Carta de Naturalización por Residencia",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxnr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires continuous legal residence (temporary or permanent resident card) for the 5 years immediately preceding the application.",
+          "fix_path": "Accrue 5 continuous years of legal residence.",
+          "fix_time_months": 60,
+          "source_id": "sre_naturalizacion_por_residencia"
+        },
+        {
+          "id": "mxnr_exams",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "spanish_and_history_culture_exam_passed",
+          "hard": true,
+          "blocker_text": "Requires passing exams on Spanish language and knowledge of Mexican history and culture. Refugees, minors, and applicants over 60 need only pass the Spanish-language exam. Up to 2 attempts per exam, 15 days apart; after 2 failures, a 1-year wait applies before reapplying.",
+          "fix_path": "Prepare for and pass the required exam(s).",
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_por_residencia"
+        },
+        {
+          "id": "mxnr_criminal",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires clean federal and local criminal background checks.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_por_residencia"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Temporary or permanent resident card (6+ months validity remaining)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled/translated foreign birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Federal and local criminal background clearances", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration under oath of entries/exits over the prior 2 years", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spanish language / history-culture exam", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sre_naturalizacion_por_residencia",
+      "tier": 1,
+      "url": "https://portales.sre.gob.mx/tramites-dgaj/naturalizacion/carta-de-naturalizacion-por-residencia",
+      "title": "Secretaría de Relaciones Exteriores (SRE) -- Carta de naturalización por residencia: 5-year residence, exams, documents",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. Confirmed directly at tier-1 with a detailed, specific requirements list including exact exam-retry rules. Kept as a SEPARATE route file from mx_naturalisation_marriage and mx_naturalisation_latinamerican_iberian (rather than folded into one OR-logic route) since SRE itself publishes these as three distinctly named, separately numbered trámites with materially different residence periods and eligibility criteria -- following the same convention used for Costa Rica's naturalisation build, and treated as the better fit here than Greece's single-file approach since Mexico's own government structures them as separate procedures rather than one process with alternative grounds."
+}

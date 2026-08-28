@@ -1,0 +1,90 @@
+{
+  "id": "bs_work_permit",
+  "country": "BS",
+  "name": "Annual Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bsw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a job offer from a Bahamian-licensed employer, for a period exceeding 90 days.",
+          "fix_path": "Secure a qualifying job offer.",
+          "fix_time_months": null,
+          "source_id": "gov_bs_work_permit"
+        },
+        {
+          "id": "bsw_labour_certificate",
+          "attribute": "employer_obtained_labour_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must obtain a Labour Certificate with Notification of Vacancy from the Department of Labour, and place newspaper advertisements for three consecutive days in a nationally circulated paper, to demonstrate no suitably qualified Bahamian is available -- required for all positions except top Immigration Fee Scale 1 roles and certain Scale 2 roles.",
+          "fix_path": "Employer completes the labour-market test (Labour Certificate plus newspaper advertisements).",
+          "fix_time_months": null,
+          "source_id": "gov_bs_work_permit"
+        },
+        {
+          "id": "bsw_police_medical",
+          "attribute": "has_police_and_medical_certificates",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an original medical certificate (within 30 days) and an original police certificate (within 6 months, covering 5 years' residence; required for applicants 14+).",
+          "fix_path": "Obtain qualifying medical and police certificates.",
+          "fix_time_months": null,
+          "source_id": "gov_bs_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "First Schedule Form 1 application (notarized)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Labour Certificate with Notification of Vacancy", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Newspaper advertisements (3 consecutive days)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's Business License/Certificate of Incumbency/Incorporation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Two written references from previous employers", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Professional council/union authorisation (occupation-specific)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 240,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bs_permanent_residence_general"]
+  },
+  "sources": [
+    {
+      "id": "gov_bs_work_permit",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/residence/annual-work-permit/",
+      "title": "Bahamas Immigration Department -- Work Permit (New): eligibility for stays exceeding 90 days, $200 processing fee, labour-market test (Labour Certificate + 3-day newspaper advertisement) required for most Fee Scale positions, medical/police certificates, 8-12 week processing, dependents apply separately for Permit to Reside",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. Work permits are graded into Immigration Fee Scales (1 = most senior/exempt from labour-market test, through 8 = domestic workers, subject to tightened Labour Certificate rules from September 2025) -- this route models the general/median case rather than every scale variant. pr_after_months (240 = 20 years) reflects the 'Work Permit Holders' category in bs_permanent_residence_general.json requiring 20+ consecutive years on permit status, the most direct switchable pathway found; dependents require a separate Permit to Reside application (not modelled as its own route in this build)."
+}

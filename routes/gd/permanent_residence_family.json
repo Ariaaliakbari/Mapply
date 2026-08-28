@@ -1,0 +1,81 @@
+{
+  "id": "gd_permanent_residence_family",
+  "country": "GD",
+  "name": "Permanent Residence -- Family/Ancestry Route",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "marriage",
+      "name": "Spouse of a Grenadian citizen",
+      "requirements": [
+        {
+          "id": "gdprf_marriage_duration",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Spouses of Grenadian citizens become eligible for this Permanent Residence route after 3 years of marriage.",
+          "fix_path": "Remain married for 3 years.",
+          "fix_time_months": 36,
+          "source_id": "osher_gd_permanent_residency"
+        }
+      ]
+    },
+    {
+      "id": "ancestry",
+      "name": "Grenadian-born parent or grandparent",
+      "requirements": [
+        {
+          "id": "gdprf_ancestry_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_or_grandparent_born_in_grenada",
+          "hard": true,
+          "blocker_text": "Available to persons with a Grenadian-born parent or grandparent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "osher_gd_permanent_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate (marriage route)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's or grandparent's birth in Grenada (ancestry route)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5-year renewable residency card",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "osher_gd_permanent_residency",
+      "tier": 3,
+      "url": "https://osheradvisors.com/blog/grenada-permanent-residency/",
+      "title": "Osher Advisors -- Grenada Permanent Residency: family-based route (spouses eligible after 3 years of marriage; ancestry-based available to those with Grenadian-born parents or grandparents), 1-12 month processing",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. STATUS: DRAFT -- tier-3 sourcing only, same as gd_permanent_residence_general.json. IMPORTANT OVERLAP FLAG: the 'ancestry' OR-group here (grandparent OR parent born in Grenada) is BROADER than the constitutional citizenship-by-descent rule confirmed via tier-1 sourcing (Section 97 of the Constitution grants citizenship registration only to children of a Grenadian PARENT, not grandparent -- see gd_citizenship_by_descent.json). It is plausible this tier-3 source is conflating this PR route with that citizenship route, or that a genuinely separate, broader PR-only ancestry allowance exists reaching back a generation further -- NOT independently confirmed via a tier-1 source, so treat this specific group with extra caution. The marriage OR-group is likewise a genuinely separate track from gd_citizenship_by_marriage.json's direct-registration route (which has no stated residence-duration requirement) -- a spouse may in principle choose either the immediate citizenship registration route or this slower PR-first route, per the sources reviewed."
+}

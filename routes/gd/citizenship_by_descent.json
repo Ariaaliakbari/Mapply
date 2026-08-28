@@ -1,0 +1,107 @@
+{
+  "id": "gd_citizenship_by_descent",
+  "country": "GD",
+  "name": "Citizenship by Birth or Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Citizenship is conferred automatically at birth for persons born in Grenada on or after 7 February 1974 (independence), and by registration entitlement for persons born abroad to a Grenadian parent.",
+    "evidence_hint": "Birth certificate; for the descent case, proof of the parent's Grenadian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_territory",
+      "name": "Born in Grenada (jus soli)",
+      "requirements": [
+        {
+          "id": "gdd_born_in_grenada",
+          "attribute": "born_in_grenada_after_1974_02_07",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Automatic citizenship for anyone born in Grenada on or after 7 February 1974, EXCEPT where, at the time of birth, a parent is an enemy alien or a person not entitled to reside in Grenada under its immigration laws (Constitution, Section 96).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_constitution_s96"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_to_citizen_parent",
+      "name": "Born abroad to a Grenadian parent",
+      "requirements": [
+        {
+          "id": "gdd_parent_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_gd_citizen_parent",
+          "hard": true,
+          "blocker_text": "Born outside Grenada on or after 7 February 1974 to a mother OR father who is a Grenadian citizen -- entitled to be REGISTERED as a citizen (Constitution, Section 97), gender-neutral as to which parent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gd_constitution_s97"
+        },
+        {
+          "id": "gdd_registration_deadline",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 18,
+          "hard": false,
+          "blocker_text": "Registration must be made by the applicant's 18th birthday.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_gd_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's Grenadian citizenship (descent cases)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gd_constitution_s96",
+      "tier": 1,
+      "url": "https://grenadaparliament.gd/wp-content/uploads/2021/08/Cap128A-GRENADA-CONSTITUTION-ACT.pdf",
+      "title": "Constitution of Grenada, Chapter VII (Citizenship), Section 96 (primary legislation): jus soli citizenship for persons born in Grenada on or after 7 February 1974, with enemy-alien and no-immigration-status exceptions",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gd_constitution_s97",
+      "tier": 1,
+      "url": "https://grenadaparliament.gd/wp-content/uploads/2021/08/Cap128A-GRENADA-CONSTITUTION-ACT.pdf",
+      "title": "Constitution of Grenada, Chapter VII (Citizenship), Section 97 (primary legislation): entitlement to registration as a citizen for a person born outside Grenada on or after 7 February 1974 to a Grenadian father or mother",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "wikipedia_gd_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Grenadian_nationality_law",
+      "title": "Wikipedia -- Grenadian nationality law: confirms the descent-registration deadline as the applicant's 18th birthday",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. Unlike Grenada's own ordinary Citizenship Act (Cap 54), which does NOT contain birth/descent provisions, this route is sourced to the CONSTITUTION (Chapter VII) -- a structural distinction confirmed while researching this build (the Citizenship Act covers registration, naturalisation, and adoption; the Constitution covers citizenship at birth). The descent rule (Section 97) is gender-neutral (either parent transmits) and the Constitution text itself does not state a generational limit, but the 18th-birthday registration deadline is sourced only to Wikipedia (tier 4) -- modelled as hard: false accordingly (informational, not a confirmed blocker), flagged for re-verification against the Citizenship Act's regulations (which likely specify the exact registration procedure and deadline) rather than the Constitution text alone."
+}

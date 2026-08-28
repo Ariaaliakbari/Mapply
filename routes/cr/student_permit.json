@@ -1,0 +1,62 @@
+{
+  "id": "cr_student_permit",
+  "country": "CR",
+  "name": "Residente Temporal Estudiante",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "crst_enrollment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "enrolled_researcher_teacher_or_volunteer",
+          "hard": true,
+          "blocker_text": "Category covers students, researchers, teachers, and volunteers with a qualifying institutional basis in Costa Rica.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "navaslaw_cr_categorias"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of enrollment or qualifying institutional role", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police/criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cr_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "navaslaw_cr_categorias",
+      "tier": 3,
+      "url": "http://navaslaw.com/es/descargables/migracion_categorias_migratorias.pdf",
+      "title": "Navas & Navas -- Categorías Migratorias summary (student/researcher/teacher/volunteer category, explicitly 'no autorizado para trabajar')",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. work_rights set 'none' per the source's explicit statement that this category is 'no autorizado para trabajar en el país' (not authorised to work in the country) -- a directly confirmed restriction, not a conservative default. STATUS SET TO DRAFT: migracion.go.cr's own pages were not reachable (403) in this pass; sourced from a single tier-3 law-firm summary rather than a tier-1 original. leads_to_pr set false: student time is not described as counting toward the 3-year temporary-residence-to-permanent-residence track in the sources fetched -- an honest gap, not assumed either way."
+}

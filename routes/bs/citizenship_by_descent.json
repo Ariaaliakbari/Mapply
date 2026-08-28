@@ -1,0 +1,118 @@
+{
+  "id": "bs_citizenship_by_descent",
+  "country": "BS",
+  "name": "Citizenship by Descent (Automatic)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Citizenship is conferred automatically at birth (or adoption) in any of several scenarios involving a Bahamian parent.",
+    "evidence_hint": "Birth certificate; parents' marriage certificate (where relevant); proof of Bahamian citizenship of the relevant parent."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_bahamas_married_parents",
+      "name": "Born in The Bahamas to married parents, one a citizen",
+      "requirements": [
+        {
+          "id": "bsd_born_in_bahamas_married",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "born_in_bahamas_to_married_parents_one_bs_citizen",
+          "hard": true,
+          "blocker_text": "Born in The Bahamas to married parents with at least one Bahamian citizen parent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_citizenship_pathways"
+        }
+      ]
+    },
+    {
+      "id": "unmarried_bahamian_mother",
+      "name": "Born to an unmarried Bahamian mother",
+      "requirements": [
+        {
+          "id": "bsd_unmarried_mother",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_unmarried_bs_citizen_mother",
+          "hard": true,
+          "blocker_text": "Born (in or outside The Bahamas) to an unmarried Bahamian citizen mother.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_citizenship_pathways"
+        }
+      ]
+    },
+    {
+      "id": "married_bahamian_father_abroad",
+      "name": "Born abroad to a married Bahamian father not himself born abroad",
+      "requirements": [
+        {
+          "id": "bsd_married_father_abroad",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_married_bs_citizen_father_not_born_abroad",
+          "hard": true,
+          "blocker_text": "Born outside The Bahamas to a married Bahamian father who was not himself born abroad (i.e. citizenship by descent does not chain a second generation born abroad through the father).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_citizenship_pathways"
+        }
+      ]
+    },
+    {
+      "id": "adoption",
+      "name": "Adopted by a Bahamian",
+      "requirements": [
+        {
+          "id": "bsd_adoption",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "adopted_by_married_bs_male_or_single_bs_female",
+          "hard": true,
+          "blocker_text": "Adopted by a married Bahamian male, or by a single Bahamian female.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_citizenship_pathways"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parents' marriage certificate (where relevant)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of the relevant parent's Bahamian citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Adoption certificate (adoption cases)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bs_citizenship_pathways",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/applying-to-stay/applying-for-citizenship/",
+      "title": "Bahamas Immigration Department -- Pathways to Bahamian Citizenship: automatic citizenship for children born in The Bahamas to married parents with a Bahamian parent, children of unmarried Bahamian mothers, children born abroad to a married Bahamian father not himself born abroad, and adoptees of a married Bahamian male or single Bahamian female",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. IMPORTANT, well-documented gender asymmetry in Bahamian nationality law: a child born ABROAD to a married Bahamian MOTHER and foreign father does NOT receive automatic citizenship under this framework (that scenario instead routes to PR -- see bs_permanent_residence_general.json's 'children_born_abroad' group -- or to Form IV citizenship registration for minors -- see bs_citizenship_by_registration_family.json), whereas a child born abroad to a married Bahamian FATHER (not himself born abroad) DOES receive automatic citizenship. This asymmetry has been the subject of long-running constitutional-reform debate in the Bahamas (multiple failed referenda) -- flagged here rather than smoothed over, since it materially changes the practical answer depending on which parent is the citizen and whether they are married."
+}

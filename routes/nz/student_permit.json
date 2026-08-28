@@ -1,0 +1,88 @@
+{
+  "id": "nz_student_permit",
+  "country": "NZ",
+  "name": "Fee Paying Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For international students with a formal offer of place from an approved New Zealand education provider.",
+    "evidence_hint": "Offer of place letter; proof of funds; health/travel insurance; (under-18) accommodation/guardianship arrangements."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tertiary",
+      "name": "Tertiary / English-language study",
+      "requirements": [
+        {
+          "id": "nzsp_admission",
+          "attribute": "has_offer_of_place",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A formal offer of place from an approved education provider, stating course name, duration, and study mode.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_student_visa"
+        },
+        {
+          "id": "nzsp_funds",
+          "attribute": "annual_funds_nzd",
+          "operator": ">=",
+          "value": 20000,
+          "hard": true,
+          "blocker_text": "NZD 20,000 per year of study (or NZD 1,667/month for shorter programmes) in available funds.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_student_visa"
+        },
+        {
+          "id": "nzsp_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Travel and medical insurance acceptable to the education provider, covering from course start through visa expiry (PhD students exempt).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Offer of place from an approved provider", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of funds (NZD 20,000/year or NZD 1,667/month)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health/travel insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years, matched to paid study period or passport expiry, whichever is sooner",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_work_permit", "nz_skilled_migrant_category"]
+  },
+  "sources": [
+    {
+      "id": "inz_student_visa",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/visas/fee-paying-student-visa/",
+      "title": "Immigration New Zealand -- Fee Paying Student Visa: offer-of-place requirement, NZD 20,000/year (tertiary) or NZD 17,000/year (school) funds, health insurance, under-18 accommodation rules, up to 25 hrs/week work during study plus full-time in holidays, up to 4-year validity",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). work_rights modeled 'restricted' per the confirmed 25 hours/week (full-time during scheduled holidays) allowance, contingent on visa conditions and provider approval for minors. Compulsory-education (Years 1-13) funds figure (NZD 17,000/year or NZD 1,417/month) is lower than the tertiary figure modeled as the hard requirement here -- the lower school-age figure is disclosed but not separately gated since this file targets the more common tertiary/English-language case."
+}

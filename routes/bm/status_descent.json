@@ -1,0 +1,66 @@
+{
+  "id": "bm_status_descent",
+  "country": "BM",
+  "name": "Bermudian Status -- Qualifying Bermudian Connection (Section 19)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a qualifying family or ancestral connection to Bermuda may apply to the Department of Immigration for Bermudian status under Section 19.",
+    "evidence_hint": "Documentation establishing the specific ancestral/family connection to a Bermudian, per the requirement list published with Form BSA04 or Form 5(2)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmsd_connection",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "qualifying_bermudian_connection",
+          "hard": true,
+          "blocker_text": "Requires a qualifying family or ancestral connection to Bermuda under Section 19 of the applicable Bermuda status legislation; must be at least 18 years old and of good conduct and character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_status_application"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form BSA04 or Form 5(2), completed in black or blue ink", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Documentation of the qualifying ancestral/family connection", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: $625.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_status_application",
+      "tier": 1,
+      "url": "https://www.gov.bm/online-services/bermudian-status-application",
+      "title": "Government of Bermuda -- Bermudian Status Application: four pathways (Section 19 qualifying connection, Section 19A spousal, Section 20 youth, Section 20B long-term residence), fee schedule, application process",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build -- the fourth British Overseas Territory (BOT) built this session, after Anguilla, Montserrat, and Cayman. The same key modelling decision applies and is explained once here: 'Bermudian status' is Bermuda's own local legal status (a right-of-abode-equivalent), NOT British nationality -- formal British Overseas Territories Citizenship (BOTC) is billed and administered as a separate application, 'British Naturalisation,' through the same Department of Immigration but as its own distinct process (see bm_naturalisation_botc.json). leads_to_citizenship is therefore false here, even though a descent-based route leads directly to citizenship in every non-BOT country built this session. The exact fact pattern of what counts as a 'qualifying Bermudian connection' (e.g. specific degree of ancestry, whether grandparents count) was not detailed in the fetched content -- the source pointed to downloadable forms (BSA04, Form 5(2)) with fuller requirement lists not independently retrieved in this pass; flagged as a gap rather than guessed."
+}

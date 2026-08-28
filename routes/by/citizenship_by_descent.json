@@ -1,0 +1,82 @@
+{
+  "id": "by_citizenship_by_descent",
+  "country": "BY",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child whose parents are both Belarusian citizens is automatically Belarusian regardless of birthplace. If only one parent is Belarusian, citizenship is automatic if the child is born in Belarus or if either parent permanently resided in Belarus at the time of birth; if both parents lived abroad, a written parental declaration decides the child's citizenship.",
+    "evidence_hint": "Birth certificate; parents' proof of Belarusian citizenship and, where relevant, residence status at time of birth."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents",
+      "name": "Both parents Belarusian citizens",
+      "requirements": [
+        {
+          "id": "byd_both_parents",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_two_by_citizen_parents",
+          "hard": true,
+          "blocker_text": "Automatic Belarusian citizenship if both parents are Belarusian citizens at the time of birth, regardless of the child's birthplace (Article 9).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legislationline_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "one_parent",
+      "name": "One parent Belarusian citizen",
+      "requirements": [
+        {
+          "id": "byd_one_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_one_by_citizen_parent_born_in_by_or_parent_resident",
+          "hard": true,
+          "blocker_text": "Automatic citizenship if one parent is Belarusian and the child is born in Belarus, or if either parent permanently resided in Belarus at the time of birth (Article 10). If both parents were abroad at the time, the parents' written decision determines the child's citizenship instead.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legislationline_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent(s)' proof of Belarusian citizenship and residence status", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "legislationline_citizenship_law",
+      "tier": 1,
+      "url": "https://legislationline.org/taxonomy/term/13795",
+      "title": "LegislationLine -- Law of the Republic of Belarus on Citizenship, Article 9 (both parents Belarusian, automatic regardless of birthplace) and Article 10 (one parent Belarusian, conditions on birthplace/parental residence, or parental declaration if both abroad)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). Gender-neutral -- neither Article 9 nor Article 10 distinguishes between mother and father. Unlike by_naturalisation.json, descent citizenship's statutory basis (Articles 9-10) was not flagged by the GLOBALCIT secondary source as affected by the December 2020 reform, so this file is treated as reliably current despite being sourced to the same older (1991/1995) consolidated text -- published rather than draft, in contrast to the residence-duration figure in by_naturalisation.json which the reform did change."
+}

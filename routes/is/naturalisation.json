@@ -1,0 +1,175 @@
+{
+  "id": "is_naturalisation",
+  "country": "IS",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "isn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "7 years of legal domicile and continuous residence in Iceland. Foreign stays are capped at 90 days total per 12-month period; a single stay over 90 consecutive days breaks continuity (extended study absences up to 3 years may be excused with documentation, but the residence period requirement still applies in full).",
+          "fix_path": "Accumulate 7 years of continuous legal residence.",
+          "fix_time_months": 84,
+          "source_id": "island_citizenship_when"
+        },
+        {
+          "id": "isn_current_pr",
+          "attribute": "has_permanent_residence_at_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold permanent residence in Iceland both at the time of application and at the time of the decision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    },
+    {
+      "id": "nordic",
+      "name": "Nordic citizens",
+      "requirements": [
+        {
+          "id": "isn_nordic_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years of residence for citizens of other Nordic countries (Denmark, Finland, Norway, Sweden).",
+          "fix_path": null,
+          "fix_time_months": 48,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    },
+    {
+      "id": "cohabiting_partner",
+      "name": "Cohabiting partner of an Icelandic citizen",
+      "requirements": [
+        {
+          "id": "isn_cohab_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of residence while cohabiting with an Icelandic citizen who has held citizenship for at least 5 years.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    },
+    {
+      "id": "child_of_citizen",
+      "name": "Child of an Icelandic citizen",
+      "requirements": [
+        {
+          "id": "isn_child_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "2 years of residence for the child of an Icelandic citizen who has held citizenship for at least 5 years.",
+          "fix_path": null,
+          "fix_time_months": 24,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    },
+    {
+      "id": "refugee_humanitarian",
+      "name": "Refugees / humanitarian permit holders",
+      "requirements": [
+        {
+          "id": "isn_refugee_residence",
+          "attribute": "months_since_protection_granted",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of residence counted from the grant of refugee status or a humanitarian residence permit.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    },
+    {
+      "id": "stateless",
+      "name": "Stateless persons",
+      "requirements": [
+        {
+          "id": "isn_stateless_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of residence for stateless persons.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    },
+    {
+      "id": "former_citizens",
+      "name": "Former Icelandic citizens",
+      "requirements": [
+        {
+          "id": "isn_former_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "1 year of residence for a person who previously held Icelandic citizenship.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence period matching the applicable category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Current permanent residence permit", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "island_citizenship_when",
+      "tier": 1,
+      "url": "https://island.is/en/electronic-application-for-icelandic-citizenship/when-can-I-apply",
+      "title": "Island.is -- Application for Icelandic Citizenship: When Can I Apply: 7-year standard residence, reduced tracks for spouses (4yr, separate file), cohabiting partners (5yr), children of citizens (2yr), Nordic citizens (4yr), refugees/humanitarian (5yr post-grant), stateless (5yr), former citizens (1yr), 90-day-per-year continuity cap",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). The married-to-an-Icelandic-citizen track (4 years) is modeled as its own file, is_citizenship_by_marriage.json, per this dataset's convention. Language requirement, income thresholds, and criminal-record conditions specific to naturalisation itself (as opposed to the permanent-residence prerequisite already gating this route via isn_current_pr) were NOT explicitly detailed on this specific page -- the source only confirmed 'permanent residence... at the time when an application is submitted and decided on' as a condition; is_permanent_residence.json's language/income/conduct requirements would already have been satisfied to reach that PR status. Flagged as a possible gap if naturalisation itself adds further conditions beyond holding PR."
+}

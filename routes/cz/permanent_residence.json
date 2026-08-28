@@ -1,0 +1,91 @@
+{
+  "id": "cz_permanent_residence",
+  "country": "CZ",
+  "name": "Permanent Residence Permit After 5 Years of Temporary Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["cz_employee_card", "cz_eu_blue_card", "cz_business_residence", "cz_temporary_residency_student", "cz_family_reunification"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "czpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must have resided in Czechia continuously for at least 5 years as of the application date.",
+          "fix_path": "Accrue 5 years of continuous legal residence.",
+          "fix_time_months": 60,
+          "source_id": "ipc_permanent_residence"
+        },
+        {
+          "id": "czpr_language",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "czech_language_exam_certificate",
+          "hard": true,
+          "blocker_text": "A Czech language exam certificate is mandatory, though statutory exemptions exist.",
+          "fix_path": "Pass the required Czech language exam, or qualify for an exemption.",
+          "fix_time_months": null,
+          "source_id": "ipc_permanent_residence"
+        },
+        {
+          "id": "czpr_funds",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "proof_of_sufficient_funds",
+          "hard": true,
+          "blocker_text": "Must prove sufficient funds for residence (specific minimum amount not published in the source reviewed).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ipc_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years of continuous residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Czech language exam certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal-record-equivalent document and tax-disclosure consent (on request)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee CZK2,500 (CZK1,000 for minors under 15)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite status; residence document issued for 10 years (5 years for foreign nationals under 15)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cz_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ipc_permanent_residence",
+      "tier": 1,
+      "url": "https://ipc.gov.cz/en/visa-and-residence-permit-types/third-country-nationals/permanent-residence/permanent-residence-permit-after-5-years-of-temporary-residence-in-the-czech-republic/",
+      "title": "ipc.gov.cz -- Permanent Residence Permit After 5 Years of Temporary Residence: continuous-residence requirement, Czech language exam, funds and criminal-record checks, 10-year document, unrestricted labour-market and social-welfare access",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1. Holders gain unrestricted labour-market access, public health insurance eligibility, social welfare access, and potential pension entitlements per the source. citizenship_after_months set to 60 reflecting cz_naturalisation's own separate 5-year-as-permanent-resident requirement (i.e. this status must itself be held 5 years before citizenship eligibility, on top of whatever temporary-residence time preceded it -- see cz_naturalisation's notes on the two sequential 5-year clocks). Administrative fee: CZK2,500 (CZK1,000 for applicants under 15)."
+}

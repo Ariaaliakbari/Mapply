@@ -1,0 +1,64 @@
+{
+  "id": "id_international_protection",
+  "country": "ID",
+  "name": "UNHCR Refugee Registration / Perpres 125/2016 Handling",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person fearing persecution may register with UNHCR in Indonesia for refugee status determination. Indonesia itself is NOT a party to the 1951 Refugee Convention or its 1967 Protocol, so this is not a domestic asylum system in the sense used elsewhere in this dataset -- it is a UNHCR-mandate process that Indonesia tolerates and partially administers (housing/detention alternatives) under Presidential Regulation (Perpres) 125 of 2016, pending resettlement to a third country.",
+    "evidence_hint": "Identity documents if available; account of the persecution/danger faced."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "idip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "unhcr_refugee_status_determination_pending_resettlement",
+          "hard": true,
+          "blocker_text": "Registers with UNHCR for refugee status determination while physically present in Indonesia. Recognition does NOT grant Indonesian residency, work rights, or a path to Indonesian citizenship -- it is understood by all parties (Indonesia's own government included) as a temporary, transit arrangement pending resettlement to a third country, which in practice can take many years given very limited global resettlement quotas.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refugeecouncil_au_indonesia"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "UNHCR registration and interview", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite in practice while awaiting third-country resettlement, but with NO formal legal status or permanent Indonesian residence right -- commonly 8-13+ years in practice per the source reviewed",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refugeecouncil_au_indonesia",
+      "tier": 4,
+      "url": "https://www.refugeecouncil.org.au/refugees-live-in-destitution-in-indonesia/",
+      "title": "Refugee Council of Australia -- Indonesia is not a 1951 Refugee Convention signatory; no formal work rights for refugees; resettlement to a third country is the only intended durable solution, with typical waits of 8-13+ years and only 179 resettlements from Indonesia in the reported year against 11,000+ needing solutions",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: this is sourced only from a tier-4 advocacy/research NGO -- Indonesia's own tier-1 government sources (peraturan.bpk.go.id hosting Perpres 125/2016 itself, and UNHCR Indonesia's own pages) all returned HTTP 403 to automated fetching in this pass, despite being located and being the clearly correct primary sources. THIS ROUTE IS STRUCTURALLY DIFFERENT FROM EVERY OTHER 'international_protection' ROUTE BUILT IN THIS DATASET: it is not a path to settlement in the country at all. Indonesia is not a party to the 1951 Refugee Convention/1967 Protocol; UNHCR (not the Indonesian government) determines refugee status; recognized refugees get no formal Indonesian work rights, no permanent residence track, and no citizenship path -- the intended and near-universal actual outcome is resettlement to a third country, a process reported to often take 8-13+ years given how few resettlement places exist globally, with Indonesia functioning only as a transit/holding location. This is included in the dataset for completeness and honesty (an applicant should not mistake registering with UNHCR in Indonesia for a genuine domestic immigration route), not because it functions like the other countries' humanitarian routes. family_can_join set false and study_rights 'restricted' reflect the source's description of refugees lacking sustainable, legally secure conditions generally -- flagged as inferred from the broader described situation rather than a specific stated rule on those exact points."
+}

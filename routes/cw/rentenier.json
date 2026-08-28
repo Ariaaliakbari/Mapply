@@ -1,0 +1,62 @@
+{
+  "id": "cw_rentenier",
+  "country": "CW",
+  "name": "Rentenier (Retiree/Pensioner) Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cwrn_passive_income",
+          "attribute": "passive_income_or_pension",
+          "operator": "exists",
+          "value": "sufficient_retirement_income",
+          "hard": true,
+          "blocker_text": "Applicant must intend to live in Curacao on retirement/pension income and submit a request for a residence permit as a Rentenier.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_rentenier"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Payment order", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cw_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "immigrationcur_rentenier",
+      "tier": 1,
+      "url": "https://immigrationcur.org/en/dep/rentenier/",
+      "title": "Immigratiedienst Curacao -- Rentenier (Retiree/Pensioner) residence permit landing page",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. This is a genuinely thin source: no minimum pension/passive-income figure, permit duration, or work-rights statement was found on the official landing page, only that the category exists and requires a form and payment order. The hard requirement here is deliberately qualitative (that sufficient retirement income must be shown) rather than a fabricated number -- flagged as an open gap for a future pass with access to the underlying application/requirement checklist (downloadable on the source page but not independently retrieved here). work_rights is conservatively 'none' since a retirement-income-based status would not typically confer local labour-market access and nothing in the source suggests otherwise. switchable_to points to cw_permanent_residence.json on the same reasoning as cw_work_permit.json and cw_investors_permit.json: lawful residence here plausibly counts toward the 10-year clock, though not explicitly confirmed."
+}

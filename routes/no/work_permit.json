@@ -1,0 +1,98 @@
+{
+  "id": "no_work_permit",
+  "country": "NO",
+  "name": "Skilled Worker Residence Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For third-country nationals with a concrete job offer from a specific Norwegian employer, who meet one of the qualification tiers: 3+ years of upper-secondary vocational training, a university/college degree, or 6+ years of documented special-qualification work experience.",
+    "evidence_hint": "Job offer/employer confirmation code; qualification documents (vocational diploma, degree, or detailed employer experience certificates)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nowp_job_offer",
+          "attribute": "has_concrete_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A concrete job offer from a specific Norwegian employer is mandatory; the employer must submit confirmation before the application can proceed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_skilled_worker"
+        },
+        {
+          "id": "nowp_qualification",
+          "attribute": "meets_skilled_worker_qualification_tier",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "One of: a completed 3+ year upper-secondary vocational training programme, a university/college bachelor's degree or higher, or special qualifications shown through 6+ years of documented work experience.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_skilled_worker"
+        },
+        {
+          "id": "nowp_salary",
+          "attribute": "annual_salary_nok",
+          "operator": ">=",
+          "value": 341373,
+          "hard": true,
+          "blocker_text": "Minimum annual income of NOK 341,373 pre-tax, and pay/working conditions no worse than what is normal in Norway.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_skilled_worker"
+        },
+        {
+          "id": "nowp_hours",
+          "attribute": "employment_share_pct",
+          "operator": ">=",
+          "value": 80,
+          "hard": true,
+          "blocker_text": "The employer must offer at least 80% of full-time work.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_skilled_worker"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer / employer confirmation code", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Qualification documents (vocational, degree, or experience certificates)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year (vocational-level roles) or up to 3 years (university-degree roles; 1 year if via a staffing agency)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "cannot be outside Norway more than 7 months total during the 3-year qualifying period (up to 15 months for employer-sponsored travel, of which at least 8 months must be employer-sponsored)",
+    "switchable_to": ["no_permanent_residence", "no_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "udi_skilled_worker",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/work-immigration/skilled-workers/",
+      "title": "UDI -- Skilled workers: job offer requirement, 3 qualification tiers, NOK 341,373 salary threshold, 80% full-time employer obligation, up to 1-year (vocational) or 3-year (degree) duration, path to permanent residence after 3 years",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). work_rights modeled 'restricted' since the permit is tied to the specific job/employer. Applications for vocational roles (restaurant, automotive, construction) from a defined list of countries (Bangladesh, China, India, Iran, Kosovo, Nepal, Pakistan, Turkiye, Vietnam) face heightened fraud scrutiny per the tier-1 source -- disclosed as a real-world processing caveat, not modeled as a formal eligibility gate."
+}

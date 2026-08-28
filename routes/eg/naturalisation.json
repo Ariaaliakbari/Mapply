@@ -1,0 +1,125 @@
+{
+  "id": "eg_naturalisation",
+  "country": "EG",
+  "name": "Naturalization",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "egn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 consecutive years of residence in Egypt (Article 4).",
+          "fix_path": "Accumulate 10 consecutive years of residence.",
+          "fix_time_months": 120,
+          "source_id": "law_26_1975"
+        },
+        {
+          "id": "egn_conduct",
+          "attribute": "has_good_conduct_and_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of sound mind without being a societal burden, of good conduct with no criminal convictions, proficient in Arabic, and have a legitimate source of income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_26_1975"
+        }
+      ]
+    },
+    {
+      "id": "egyptian_origin",
+      "name": "Persons of Egyptian origin",
+      "requirements": [
+        {
+          "id": "egn_origin_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Persons of Egyptian origin need only 5 years of ordinary residence (Article 4), plus the same conduct/income/language conditions as the standard route.",
+          "fix_path": "Accumulate 5 years of residence.",
+          "fix_time_months": 60,
+          "source_id": "law_26_1975"
+        }
+      ]
+    },
+    {
+      "id": "born_in_egypt_arab_muslim",
+      "name": "Born in Egypt to foreign parents from an Arab or Muslim-majority country",
+      "requirements": [
+        {
+          "id": "egn_bornineg_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "A person born in Egypt to foreign parents from an Arabic-speaking or Muslim-majority country may apply after just 1 year of residence (Article 4).",
+          "fix_path": "Accumulate 1 year of residence.",
+          "fix_time_months": 12,
+          "source_id": "law_26_1975"
+        }
+      ]
+    },
+    {
+      "id": "exceptional",
+      "name": "Exceptional presidential grant (honorable services)",
+      "requirements": [
+        {
+          "id": "egn_exceptional",
+          "attribute": "rendered_honorable_services_to_egypt",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The President may grant citizenship by decree without the standard restrictions to a person who has rendered honorable services to Egypt, or who leads an Egyptian religious organization (Article 5).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_26_1975"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence period matching the applicable category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic language proficiency", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Good conduct and legitimate-income documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "law_26_1975",
+      "tier": 1,
+      "url": "https://clr.africanchildforum.org/Legislation%20Per%20Country/Egypt/egypt_nationality_1975_en.pdf",
+      "title": "Egypt -- Law No. 26 of 1975 Concerning Egyptian Nationality (official English translation, verbatim primary legislation text), Article 4: 10-year standard residence, 5-year Egyptian-origin route, 1-year route for those born in Egypt to Arab/Muslim-majority-country parents; Article 5: exceptional presidential grant",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). Treated the africanchildforum.org-hosted English translation as tier 1: it presents itself as a direct translation of the primary legislation text rather than a summary, consistent with this dataset's convention for verbatim-legislation mirrors on non-.gov domains. IMPORTANT CAVEAT: this specific document is the ORIGINAL 1975 text and does NOT incorporate the 2004 amendment (Law 154/2004) -- however, that amendment's confirmed substantive changes (per secondary academic sourcing, see eg_citizenship_by_descent.json's notes) affected descent/nationality-by-birth provisions (Articles 2-3), not the naturalization residence-duration figures in Article 4 used here, so this file's core figures are not believed to be affected by that gap. Still, flagging explicitly that a post-2004-amendment consolidated text was not independently verified for Article 4 specifically. dual_citizenship_allowed modeled true based on the general absence of an explicit renunciation requirement in the extracted naturalization provisions -- not an explicit statutory statement either way, flagged as an inference."
+}

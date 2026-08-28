@@ -1,0 +1,126 @@
+{
+  "id": "vc_citizenship_by_descent",
+  "country": "VC",
+  "name": "Citizenship by Birth or Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Citizenship is conferred automatically by birth in Saint Vincent and the Grenadines, or is available on registration to a person born abroad with a Vincentian parent or (since a 2023 amendment) grandparent.",
+    "evidence_hint": "Birth certificate; proof of the parent's or grandparent's Vincentian citizenship by birth or registration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_territory",
+      "name": "Born in Saint Vincent and the Grenadines",
+      "requirements": [
+        {
+          "id": "vcd_born_in_svg",
+          "attribute": "born_in_svg",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Automatic citizenship for anyone born within Saint Vincent and the Grenadines territory.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stvincenttimes_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "first_generation_descent",
+      "name": "Born abroad to a Vincentian parent",
+      "requirements": [
+        {
+          "id": "vcd_parent_born_in_svg",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_parent_born_in_svg",
+          "hard": true,
+          "blocker_text": "At least one parent must have been born in Saint Vincent and the Grenadines.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stvincenttimes_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "second_generation_descent",
+      "name": "Born abroad to a parent or grandparent who was a citizen (2023 amendment)",
+      "requirements": [
+        {
+          "id": "vcd_grandparent_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_parent_or_grandparent_who_was_svg_citizen",
+          "hard": true,
+          "blocker_text": "Following a 2023 amendment to Section 9 of the Citizenship Act, a person born outside Saint Vincent and the Grenadines with a parent OR grandparent who was a citizen (whether by birth or registration) may be considered for registration, without needing to establish physical residency or go through naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stvincenttimes_amendment_bill"
+        },
+        {
+          "id": "vcd_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "Applicant must be of good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stvincenttimes_amendment_bill"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's or grandparent's birth certificate/proof of Vincentian citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Citizenship Certificate (required before passport application, second-generation cases)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee EC$150 + registration fee EC$1,500-$2,200 (waived for 1 year from the 2023 amendment's enactment for second-generation applicants)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "stvincenttimes_citizenship",
+      "tier": 3,
+      "url": "https://www.stvincenttimes.com/understanding-citizenship-eligibility-for-st-vincent-passport/",
+      "title": "St Vincent Times -- Understanding Citizenship, Eligibility for St Vincent Passport: automatic citizenship for those born in the territory; first-generation descent for a child born abroad to a Vincentian-born parent",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "stvincenttimes_amendment_bill",
+      "tier": 3,
+      "url": "https://www.stvincenttimes.com/citizenship-amendment-bill-2023-passed-by-st-vincents-parliament/",
+      "title": "St Vincent Times -- Citizenship Amendment Bill 2023 Passed by St Vincent's Parliament: quotes the amended Section 9 permitting registration of a person born abroad with a parent OR grandparent who was a citizen, bypassing naturalisation's residence requirement, with a 1-year fee waiver for these applicants",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_vc_pmoffice_citizenship",
+      "tier": 1,
+      "url": "https://pmoffice.gov.vc/pmoffice/index.php/citizenship",
+      "title": "Prime Minister's Office, Government of Saint Vincent and the Grenadines -- Citizenship: confirms the general application fee (EC$150) and registration fee (EC$1,500-$2,200) applicable across citizenship applications, though it does not itself break out the descent-specific grounds",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Vincent and the Grenadines' initial build. STATUS: DRAFT -- the primary Citizenship Act and its 2023 Amendment Act could not be directly retrieved (the Amendment Act PDF on gov.vc timed out / was robots-disallowed; the general Citizenship Act text was not located online in a fetchable form), so the specific eligibility grounds here rely on tier-3 news reporting that quotes the amended Section 9 text directly rather than the primary document itself -- treated as tier 3 (not tier 1) since it is a secondary account of the legislation, not the legislation itself, unlike the Trinidad and Tobago and Grenada builds where the actual Act/Constitution PDF was fetched directly. The second-generation (grandparent) ground is notably recent (2023) and may not yet be reflected in older secondary sources or official forms -- re-verify directly against the Citizenship Act once a readable copy is available."
+}

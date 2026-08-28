@@ -1,0 +1,73 @@
+{
+  "id": "ms_work_permit",
+  "country": "MS",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mswp_permit_required",
+          "attribute": "belonger_status",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "A person not belonging to Montserrat may not engage in any occupation for profit or reward, or take employment for wage, salary, or other remuneration, without a valid work permit (Immigration Act, Section 21).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ms_immigration_act"
+        },
+        {
+          "id": "mswp_approval",
+          "attribute": "work_permit_application_status",
+          "operator": "exists",
+          "value": "submitted_to_governor_in_council",
+          "hard": true,
+          "blocker_text": "Application is submitted to the Governor in Council; approval or denial is discretionary. Approved permits require the employer to file an annual report (Form 'O') between 1-15 January.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ms_immigration_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Work permit application to the Governor in Council", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's annual report (Form 'O'), filed 1-15 January each year of the permit's validity", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the Immigration Act text reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ms_immigration_act",
+      "tier": 1,
+      "url": "http://agc.gov.ms/wp-content/uploads/2011/10/Immigration-Act.pdf",
+      "title": "Montserrat Chapter 13.01, Immigration Act -- Section 21 (work permits: prohibition on unauthorised employment for non-belongers, application to Governor in Council, employer annual reporting, penalties), Section 22 (exemptions)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Montserrat's initial build, sourced directly from primary legislation. Section 21 also criminalises unauthorised employment (fine up to $1,000 or 6 months' imprisonment, plus $100/day for a continuing offence) and Section 22 exempts categories such as High Court judges, government employees, diplomatic representatives, and certain international-organisation staff -- these exemptions are not modelled as their own route since they are narrow carve-outs, not a general immigration pathway. Permit duration, specific document/fee requirements, and category distinctions (e.g. skilled vs unskilled) are not detailed in the Act text itself -- these likely live in subsidiary Work Permit Regulations that were not located at tier-1 in this pass; flagged as a gap rather than guessed. renewable is set true based on the existence of annual employer reporting obligations implying an ongoing/renewing permit, not a confirmed fixed term."
+}

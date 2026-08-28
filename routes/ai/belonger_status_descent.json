@@ -1,0 +1,77 @@
+{
+  "id": "ai_belonger_status_descent",
+  "country": "AI",
+  "name": "Belonger Status by Descent/Parentage",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person whose parent(s) were born in Anguilla or hold Belonger status may apply to the Immigration Department for Belonger Status by descent/parentage.",
+    "evidence_hint": "Applicant's and parent(s)' birth certificates; parents' marriage certificate if applicable at time of birth; Belonger Certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aibsd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_belonger_or_anguilla_born_parent",
+          "hard": true,
+          "blocker_text": "Requires parent(s) born in Anguilla or holding Belonger status, proven via the applicant's birth certificate (which must include the father's name), the parent(s)' birth certificates, a Belonger Certificate, and the parents' marriage certificate if applicable at the time of the applicant's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_anguilla_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Two passport photographs", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Applicant's birth certificate (must include father's name)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent(s)' birth certificate(s)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate (if applicable at time of birth)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Belonger Certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Completed application, Section B", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Non-refundable fee: EC$200.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ai_anguilla_status",
+      "tier": 1,
+      "url": "https://gov.ai/service/immigration--labour/immigration--labour-anguilla-status",
+      "title": "Government of Anguilla -- Anguilla Status (Belonger Status): descent/parentage, marriage (5 years), and residence (15 years) grounds, documents, and fees",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "gov_ai_immigration_forms",
+      "tier": 1,
+      "url": "https://www.gov.ai/service/immigration--labour/immigration-forms",
+      "title": "Government of Anguilla -- Immigration Forms: separate Belonger Status application forms for Great Grandchild-Parentage, Born in Anguilla and resident for 10 or 15 years, Children of Applicant, Marriage of 5 years, and a General Application Form",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build, and the first British Overseas Territory (BOT) built this session -- this is an architecturally different case from every prior country and required a deliberate, non-obvious modelling decision explained here once. Anguilla is not a sovereign state: it has no citizenship of its own. 'Belonger Status' is Anguilla's own local legal status (akin to a right of abode/local nationality), while formal British nationality is held separately as a British Overseas Territories Citizen (BOTC), acquired through a distinct naturalisation process (see ai_naturalisation.json) that does not require Belonger Status as a precondition -- the naturalisation-tips source requires a Permanent Resident Permit, not a Belonger Certificate. Because of this, every Belonger Status route in this dataset (this file, ai_belonger_status_marriage.json, ai_belonger_status_residence.json) models leads_to_citizenship as false, even though Belonger Status functions as the practical 'you belong here' status and would, in a sovereign-state dataset entry, likely have been modelled as leading to citizenship. This is a deliberate departure from how ancestry/family/settled routes are modelled for every other country built this session, and should be read before comparing Anguilla's data to other countries'. The immigration-forms page also lists a 'Great Grandchild-Parentage' form as a distinct variant from the general parentage form used here -- the anguilla-status page content did not separately detail different requirements for great-grandchild-degree descent, so this is modelled as a single descent route; the possible distinction is flagged, not resolved."
+}

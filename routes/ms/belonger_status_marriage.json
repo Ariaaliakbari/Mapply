@@ -1,0 +1,65 @@
+{
+  "id": "ms_belonger_status_marriage",
+  "country": "MS",
+  "name": "Belonger Status by Marriage",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Under Section 2(2)(c) of the Immigration Act, the spouse of a person who belongs to Montserrat by birth, registration, or naturalisation may acquire Belonger status through marriage.",
+    "evidence_hint": "Marriage certificate; spouse's proof of Belonger status (birth, registration, or naturalisation documents)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "msbm_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_belonger",
+          "hard": true,
+          "blocker_text": "Requires being married to a person who belongs to Montserrat by birth, registration, or naturalisation, per Section 2(2)(c) of the Immigration Act.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ms_immigration_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Belonger status", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ms_immigration_act",
+      "tier": 1,
+      "url": "http://agc.gov.ms/wp-content/uploads/2011/10/Immigration-Act.pdf",
+      "title": "Montserrat Chapter 13.01, Immigration Act -- Section 2(2)(c), Belonger status by marriage to a Belonger",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Montserrat's initial build. See ms_belonger_status_descent.json's notes for why leads_to_citizenship is modelled as false. Unlike Anguilla's equivalent marriage ground, the Immigration Act text extracted in this pass does not state a minimum marriage duration (e.g. Anguilla requires 5 years) before a spouse can acquire Belonger status by marriage -- no duration figure was found and none is invented here; this should be treated as an open detail, not confirmation that no minimum duration applies. No lesser interim spousal status equivalent to Anguilla's Resident Stamp was found for Montserrat in this pass."
+}

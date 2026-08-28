@@ -1,0 +1,76 @@
+{
+  "id": "nz_partner_resident_visa",
+  "country": "NZ",
+  "name": "Partner of a New Zealander Resident Visa",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For the partner of a New Zealand citizen or resident. Either the applicant already holds a partnership-based resident visa with the same partner and the relationship continues, or they have lived together in a genuine and stable relationship for at least 12 months at the time of application.",
+    "evidence_hint": "Evidence of a genuine and stable relationship (cohabitation, joint finances, etc.); sponsor's written support; may include an interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzprv_relationship",
+          "attribute": "months_living_together_with_nz_partner",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Living together with the New Zealand citizen/resident partner in a genuine and stable relationship for at least 12 months at time of application (or continuation of an existing partnership-based resident visa with the same partner).",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "inz_partner_visa"
+        },
+        {
+          "id": "nzprv_sponsor",
+          "attribute": "sponsor_written_support",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The New Zealand partner must support the application in writing; immigration officers may request further evidence or interviews to verify genuineness.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_partner_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence of genuine, stable relationship (12+ months cohabitation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's written support", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Resident Visa issued with 24 months of multiple-entry travel conditions",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_permanent_resident_visa", "nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_partner_visa",
+      "tier": 1,
+      "url": "https://immigration.govt.nz/opsmanual/72339.htm",
+      "title": "Immigration New Zealand Operations Manual -- Partner of a New Zealander Resident Visa: 12-month genuine/stable relationship requirement, sponsor written support, direct grant of a second/subsequent Resident Visa with 24-month travel conditions (not a provisional pathway), dependent children provisions",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). Grants Resident Visa status directly (not a temporary/provisional visa first), same 24-month-travel-condition-then-Permanent-Resident-Visa structure as nz_skilled_migrant_category.json and nz_active_investor_plus.json -- see nz_permanent_resident_visa.json."
+}

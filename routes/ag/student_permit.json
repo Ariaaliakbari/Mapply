@@ -1,0 +1,105 @@
+{
+  "id": "ag_student_permit",
+  "country": "AG",
+  "name": "Student Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ags_acceptance",
+          "attribute": "has_institution_acceptance_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an acceptance letter from the educational institution and an acceptance letter from the Ministry of Education.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_student_faq"
+        },
+        {
+          "id": "ags_pre_arrival",
+          "attribute": "applied_before_arrival",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Approval must be obtained before arrival -- visitors who arrive on a vacation/visitor basis cannot change their status to student after entry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_student_faq"
+        },
+        {
+          "id": "ags_funds",
+          "attribute": "proof_of_financial_support",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires proof of financial support for the duration of study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_student_faq"
+        },
+        {
+          "id": "ags_insurance",
+          "attribute": "has_individual_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Current health insurance covering the student individually is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_student_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form and passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Institution acceptance letter and Ministry of Education acceptance letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial support", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate and individual health insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate; parent/guardian passports (minors)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewed annually",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ag_resident_permit_general", "ag_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "gov_ag_student_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/student-permit-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Student Permit FAQs: eligibility, required documents, annual renewal with school report, no paid or unpaid work, internship/work-permit exception",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_ag_residency_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/residency-permit-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Residency Permit FAQs: students may apply for a Resident Permit after 1 year at a tertiary institution",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Antigua and Barbuda's initial build. No work rights at all while on a pure student permit -- not even part-time -- unlike many countries' student routes in this dataset; internships exceeding 3 months that are integral to the course of study, or approved research programs, require a separate work permit rather than being folded into the student permit itself. leads_to_pr is modelled as true at 12 months specifically for tertiary-level students, per the Residency Permit FAQ's distinct 'students: after 1 year at a tertiary institution' ground -- see ag_resident_permit_general.json for how that ground sits alongside the other Resident Permit grounds. Renewal requires a sealed report from the school principal covering grades, attendance, and disciplinary record -- a distinctive continuous-good-standing check not seen in this form in other countries built this session."
+}

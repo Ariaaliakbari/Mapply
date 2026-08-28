@@ -1,0 +1,182 @@
+{
+  "id": "hu_national_residence_card",
+  "country": "HU",
+  "name": "National Residence Card",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "continuous_residence",
+      "name": "3-year continuous residence",
+      "requirements": [
+        {
+          "id": "hunrc_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Legal, uninterrupted residence in Hungary for at least 3 years immediately preceding the application.",
+          "fix_path": "Accrue 3 years of continuous legal Hungarian residence.",
+          "fix_time_months": 36,
+          "source_id": "oif_national_residence_card"
+        },
+        {
+          "id": "hunrc_means_a",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "sufficient_means_of_subsistence",
+          "hard": true,
+          "blocker_text": "Sufficient means of subsistence via bank savings certificates, property ownership, employment income, or family-member support declarations.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        },
+        {
+          "id": "hunrc_housing_a",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "housing_secured",
+          "hard": true,
+          "blocker_text": "Evidence of ownership or a legal right to use residential property in Hungary.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        },
+        {
+          "id": "hunrc_culture_exam_a",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "hungarian_cultural_knowledge_exam",
+          "hard": true,
+          "blocker_text": "Must pass a certificate exam in Hungarian cultural knowledge, and provide clean criminal record documentation (limited exemptions for children under 14).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        }
+      ]
+    },
+    {
+      "id": "dependent_family_member",
+      "name": "Dependent family member",
+      "requirements": [
+        {
+          "id": "hunrc_dependent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "dependent_of_qualifying_sponsor",
+          "hard": true,
+          "blocker_text": "Dependent family member who has lived together with a qualifying sponsor for at least 1 year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        },
+        {
+          "id": "hunrc_culture_exam_b",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "hungarian_cultural_knowledge_exam",
+          "hard": true,
+          "blocker_text": "Must pass a certificate exam in Hungarian cultural knowledge, and provide clean criminal record documentation (limited exemptions for children under 14).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_citizen",
+      "name": "Spouse of a Hungarian citizen",
+      "requirements": [
+        {
+          "id": "hunrc_spouse",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Spouse of a Hungarian citizen, married for at least 2 years.",
+          "fix_path": "Accrue 2 years of marriage to a Hungarian citizen.",
+          "fix_time_months": 24,
+          "source_id": "oif_national_residence_card"
+        },
+        {
+          "id": "hunrc_culture_exam_c",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "hungarian_cultural_knowledge_exam",
+          "hard": true,
+          "blocker_text": "Must pass a certificate exam in Hungarian cultural knowledge, and provide clean criminal record documentation (limited exemptions for children under 14).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        }
+      ]
+    },
+    {
+      "id": "former_citizen_or_descendant",
+      "name": "Former Hungarian citizen or descendant",
+      "requirements": [
+        {
+          "id": "hunrc_former",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "former_hungarian_citizen_or_descendant",
+          "hard": true,
+          "blocker_text": "Applicant is a former Hungarian citizen, or a descendant of one.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        },
+        {
+          "id": "hunrc_culture_exam_d",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "hungarian_cultural_knowledge_exam",
+          "hard": true,
+          "blocker_text": "Must pass a certificate exam in Hungarian cultural knowledge, and provide clean criminal record documentation (limited exemptions for children under 14).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_national_residence_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of the qualifying residence/family-tie ground", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank savings certificate, property ownership, or income verification", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Housing ownership or lease documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Hungarian cultural-knowledge exam certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite residence status; card issued for up to 10 years, renewable for further 10-year periods",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oif_national_residence_card",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/national-residence-card",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- National Residence Card: 3-year residence / dependent-family-member / spouse-of-citizen / former-citizen-or-descendant grounds, cultural-knowledge exam, 10-year renewable card, no automatic citizenship pathway",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. The source explicitly states this card 'does not provide automatic path to citizenship' -- leads_to_citizenship is nonetheless set true because holding it counts as ordinary legal residence toward hu_naturalisation's general 8-year (or 3-year reduced) track, not because the card itself confers any accelerated or automatic route; citizenship_after_months left null accordingly. EXPLICITLY EXCLUDED from ever qualifying for this card by their own permits' terms: hu_guest_worker and hu_guest_self_employment (both state outright that holders 'may not be granted a national residence card'). hu_white_card is not explicitly barred in this source, but its hard 2-year duration cap falls well short of the 3-year continuous-residence ground in practice. A parallel 'EC Permanent Residence Permit' (the EU Long-Term Residence Directive status, legally distinct from this NATIONAL card) is referenced in oif.gov.hu's own site navigation but its specific requirements could not be confirmed at tier-1 in this pass -- the linked factsheet page returned only site navigation, no substantive content -- and is therefore not modelled as a separate route pending clearer sourcing."
+}

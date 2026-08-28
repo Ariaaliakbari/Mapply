@@ -1,0 +1,73 @@
+{
+  "id": "mx_student_visa",
+  "country": "MX",
+  "name": "Temporary Resident Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxst_enrollment",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "letter_of_acceptance_from_mexican_institution",
+          "hard": true,
+          "blocker_text": "Requires a letter of acceptance from the Mexican educational institution, stating the student's name, degree/area of study, course, dates, and fees.",
+          "fix_path": "Secure enrollment/acceptance from a Mexican institution.",
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_student_visa"
+        },
+        {
+          "id": "mxst_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 8433, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires bank statements showing an average monthly balance over USD 8,433 (3 months), OR proof of monthly income from employment, pension, or scholarship of at least USD 843 (3 months).",
+          "fix_path": "Document qualifying funds.",
+          "fix_time_months": null,
+          "source_id": "consulmex_phoenix_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter of acceptance from the institution", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank statements or income/scholarship proof", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "more than 180 days, matching program length; must apply to INM for a temporary resident card within 30 days of entry",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_work_permit_employer_sponsored"]
+  },
+  "sources": [
+    {
+      "id": "consulmex_phoenix_student_visa",
+      "tier": 1,
+      "url": "https://consulmex.sre.gob.mx/phoenix/images/2022/MARZO/2022_Student_Temporary_Residence_Visa.pdf",
+      "title": "Consulate of Mexico, Phoenix (SRE) -- Student Temporary Resident Visa requirements",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. work_rights set to 'none': the fetched source did not address employment permission for student visa holders, and Mexico's own naturalisation-by-residence rules explicitly state student temporary residence 'does not generate residency rights' toward naturalisation either (per the separately-sourced privileged-naturalisation trámite page) -- treated conservatively as a non-work, and for naturalisation purposes non-qualifying, status rather than assumed otherwise. leads_to_pr left false accordingly: student residence time does not appear to count toward the standard residence-to-PR pathways based on sources reviewed."
+}

@@ -1,0 +1,102 @@
+{
+  "id": "mx_naturalisation_marriage",
+  "country": "MX",
+  "name": "Carta de Naturalización por Matrimonio",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxnm_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires 2 years of continuous legal residence immediately preceding the application.",
+          "fix_path": "Accrue 2 continuous years of legal residence.",
+          "fix_time_months": 24,
+          "source_id": "sre_naturalizacion_por_matrimonio"
+        },
+        {
+          "id": "mxnm_marriage_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires a marriage to a Mexican citizen, registered with the Mexican civil registry, celebrated at least 2 years before the application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_por_matrimonio"
+        },
+        {
+          "id": "mxnm_exams",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "spanish_and_history_culture_exam_passed",
+          "hard": true,
+          "blocker_text": "Requires passing exams on Spanish language and Mexican history/culture, same as the residence-based track.",
+          "fix_path": "Prepare for and pass the required exam(s).",
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_por_matrimonio"
+        },
+        {
+          "id": "mxnm_criminal",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires clean federal and local criminal background checks.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sre_naturalizacion_por_matrimonio"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Temporary or permanent resident card (6+ months validity remaining)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate from the Mexican civil registry", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Mexican spouse's birth certificate/nationality certificate/naturalisation letter and valid ID", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Federal and local criminal background clearances", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish language / history-culture exam", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sre_naturalizacion_por_matrimonio",
+      "tier": 1,
+      "url": "https://portales.sre.gob.mx/tramites-dgaj/naturalizacion/carta-de-naturalizacion-por-haber-contraido-matrimonio-con-varon-o-mujer-mexicanos",
+      "title": "Secretaría de Relaciones Exteriores (SRE) -- Carta de naturalización por haber contraído matrimonio con varón o mujer mexicanos",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. Genuinely reduced-period track compared to mx_naturalisation_residence: 2 years of residence here vs. the ordinary 5 years, PLUS a requirement that the marriage itself was celebrated at least 2 years before filing -- both conditions confirmed directly at tier-1. Kept as its own route file (see mx_naturalisation_residence's notes for why Mexico's separate SRE trámites are modelled as separate files rather than one OR-logic route)."
+}

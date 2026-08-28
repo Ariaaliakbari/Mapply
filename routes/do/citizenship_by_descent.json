@@ -1,0 +1,65 @@
+{
+  "id": "do_citizenship_by_descent",
+  "country": "DO",
+  "name": "Dominican Nationality by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child of a Dominican mother or father is Dominican by descent, regardless of birthplace. If born abroad, the person holds an option to formally claim/confirm dual nationality upon reaching age 18.",
+    "evidence_hint": "Birth certificate; parent's proof of Dominican nationality; consular registration or civil registry claim at/after age 18 for those born abroad."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Child of a Dominican parent",
+      "requirements": [
+        {
+          "id": "dodesc_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_do_citizen_mother_or_father",
+          "hard": true,
+          "blocker_text": "'Los hijos e hijas de madre o padre dominicanos' -- children of a Dominican mother or father are Dominican, gender-neutral on both parents' side, per Constitution Article 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "constitucion_art18"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Dominican nationality (cédula or passport)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "constitucion_art18",
+      "tier": 1,
+      "url": "https://presidencia.gob.do/sites/default/files/statics/transparencia/base-legal/Constitucion-de-la-Republica-Dominicana-2015-actualizada.pdf",
+      "title": "Constitución de la República Dominicana (2015, actualizada) -- Artículo 18: nationality by descent (child of a Dominican mother or father), by birthplace with exceptions, by marriage, and other pathways; Artículo 20: dual nationality is explicitly recognized",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). Gender-neutral on both sides -- a genuine contrast worth flagging against this dataset's other descent files, several of which (UAE, historically Bahamas) default to the father's line. IMPORTANT SCOPE LIMITATION, deliberately excluded rather than modeled: this file covers ONLY jus sanguinis (child of a Dominican-national parent). It deliberately does NOT model Dominican nationality by birthplace (jus soli) for children of foreign parents, because that area of Dominican law is the subject of the 2013 Constitutional Tribunal ruling (TC/0168-13), which retroactively reinterpreted 'in transit'/'residing illegally' exceptions to strip citizenship from an estimated 200,000+ Dominican-born people of Haitian descent, and the subsequent Law 169-14 special regularization regime, whose registration window (a 90-day deadline for Chapter II) closed years ago and is not open to new applicants today. This is a serious, extensively documented statelessness crisis (UNHCR, IACHR, and multiple academic sources cover it) but it is not a 'route' a person can currently apply for -- disclosed here and to the user directly rather than fabricated as an open pathway or silently omitted."
+}

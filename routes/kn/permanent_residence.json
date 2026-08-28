@@ -1,0 +1,111 @@
+{
+  "id": "kn_permanent_residence",
+  "country": "KN",
+  "name": "Permanent Residency",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "retiree_property",
+      "name": "Retiree property route",
+      "requirements": [
+        {
+          "id": "knpr_retiree_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 62,
+          "hard": true,
+          "blocker_text": "Retiree route requires the applicant to be at least 62 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nevisstylerealty_residency"
+        },
+        {
+          "id": "knpr_retiree_property",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 350000,
+          "hard": true,
+          "blocker_text": "Must own qualifying property valued at a minimum of US$350,000, maintained for at least 7 years.",
+          "fix_path": "Purchase and hold qualifying property for at least 7 years.",
+          "fix_time_months": 84,
+          "source_id": "nevisstylerealty_residency"
+        },
+        {
+          "id": "knpr_retiree_financial",
+          "attribute": "financially_self_sufficient",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate financial self-sufficiency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nevisstylerealty_residency"
+        }
+      ]
+    },
+    {
+      "id": "under_62_residence",
+      "name": "Under-62 lawful residence route",
+      "requirements": [
+        {
+          "id": "knpr_u62_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires evidence of lawful residence in the Federation for at least 3 years.",
+          "fix_path": "Accumulate 3 years of lawful residence.",
+          "fix_time_months": 36,
+          "source_id": "nevisstylerealty_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application fee (EC$200) plus approval fee (EC$3,800)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of property ownership (retiree route) or lawful residence history (under-62 route)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial self-sufficiency", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health exam", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "10-year clean criminal record check across countries of residence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 168,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "minimum physical presence must be maintained per immigration rules (exact threshold not specified on source)",
+    "switchable_to": ["kn_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "nevisstylerealty_residency",
+      "tier": 3,
+      "url": "https://www.nevisstylerealty.com/residency",
+      "title": "Nevis Style Realty -- How to Become a Resident of St. Kitts and Nevis: two routes (retiree age 62+ with US$350k qualifying property held 7 years; under-62 with 3 years' evidenced lawful residence), EC$200 application fee plus EC$3,800 approval fee, Permanent Residency does not automatically carry employment rights (distinguishing it from Annual Residency)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "osher_permanent_residency",
+      "tier": 3,
+      "url": "https://osheradvisors.com/blog/st-kitts-and-nevis-permanent-residency/",
+      "title": "Osher Advisors -- St Kitts and Nevis Permanent Residency: confirms investment-based (real estate/local business/government-approved development) and marriage-based (spouse of a citizen) pathways exist, 10-year clean criminal record check across countries of residence, financial self-sufficiency, health exam, legal entry/stay; rights include indefinite live/work, healthcare/education access, property ownership; obligations include tax compliance and minimum physical presence maintenance -- no specific residence-duration figure given for either pathway",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. STATUS: DRAFT -- both sources are tier-3 (a real estate agency and a law firm blog); no gov.kn immigration page confirming these figures was located, unlike the citizenship pathways covered by mofa.gov.kn. Two sources gave PARTIALLY CONFLICTING pictures of PR structure: nevisstylerealty.com describes two duration-based routes (retiree/under-62) with no work rights by default, while osheradvisors.com describes investment-based and marriage-based routes with full work rights implied and no duration figure -- both are plausible descriptions of overlapping but not identical PR categories (Saint Kitts and Nevis appears to route long-term non-citizen residence through several distinct administrative categories that may not be fully disambiguated by either source). work_rights modelled as 'none' per the more specific and internally detailed nevisstylerealty.com source, which explicitly states PR 'does not automatically carry employment rights' -- flagged as a potential inaccuracy for the investment/marriage sub-routes described by the other source. citizenship_after_months (168) reflects the 14-year Citizenship by Residence figure as the nearest confirmed naturalisation pathway, not a confirmed PR-to-citizenship fast-track."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "cr_tourist_stay",
+  "country": "CR",
+  "name": "Tourist Stay (entry stamp)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The Dirección General de Migración y Extranjería (DGME) sorts countries of origin into two groups with different maximum authorised stays: Group 1 nationalities may stay up to 180 days, Group 2 nationalities up to 30 days (extendable to a 90-day maximum). A few nationalities have further bilateral exceptions (e.g. Russia at 90 days).",
+    "evidence_hint": "Passport from a qualifying country; Group 2 nationalities need at least 90 days of passport validity remaining on entry."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "group_1",
+      "name": "Group 1 nationalities (up to 180 days)",
+      "requirements": [
+        {
+          "id": "crts_g1_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": { "note": "Nationalities DGME classifies into 'Group 1', entitled to up to 180 days." },
+          "hard": true,
+          "blocker_text": "Requires holding a passport from a Group 1 country per DGME's classification.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nacion_cr_stay_groups"
+        }
+      ]
+    },
+    {
+      "id": "group_2",
+      "name": "Group 2 nationalities (up to 30 days)",
+      "requirements": [
+        {
+          "id": "crts_g2_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": { "note": "Nationalities DGME classifies into 'Group 2', entitled to up to 30 days, extendable to a 90-day maximum, and requiring 90+ days of passport validity on entry." },
+          "hard": true,
+          "blocker_text": "Requires holding a passport from a Group 2 country per DGME's classification; passport must have at least 90 days' validity remaining.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nacion_cr_stay_groups"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (Group 2: 90+ days remaining validity)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 180 days (Group 1) or up to 30 days, extendable to a 90-day maximum (Group 2), per entry",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cr_rentista", "cr_pensionado", "cr_investor_residence", "cr_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "nacion_cr_stay_groups",
+      "tier": 4,
+      "url": "https://www.nacion.com/el-pais/180-o-30-dias-asi-otorga-costa-rica-estadia-maxima/S64E24QDWFEGBPEDAR5LCKPMTM/story/",
+      "title": "La Nación (Costa Rican newspaper) -- '180 or 30 days? How Costa Rica grants maximum stay to foreign tourists by nationality', describing DGME's own group classification",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW COUNTRY, first Costa Rica route. IMPORTANT, COMMONLY MISSTATED FACT: Costa Rica does NOT give a flat 90-day tourist stay to everyone -- DGME sorts nationalities into two groups with genuinely different maximums (up to 180 days vs. up to 30, extendable to 90). STATUS SET TO DRAFT: migracion.go.cr's own pages (the natural tier-1 source for this classification) returned HTTP 403 to automated fetching throughout this pass; sourced instead from a single tier-4 newspaper article describing the government's own classification, without independently reaching the classification criteria or the specific country-to-group mapping. No financial-means or return-ticket requirement was confirmed in the source, though these are commonly required in practice per other (unconfirmed) sources -- not invented here."
+}

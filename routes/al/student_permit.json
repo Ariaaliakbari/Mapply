@@ -1,0 +1,81 @@
+{
+  "id": "al_student_permit",
+  "country": "AL",
+  "name": "Residence Permit for Studies/Training",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "alst_enrollment",
+          "attribute": "has_school_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires enrollment at an educational institution; initial permit is issued for up to 1 year, extendable annually until studies are completed.",
+          "fix_path": "Secure admission to an Albanian educational institution.",
+          "fix_time_months": null,
+          "source_id": "mb_unified_permit"
+        },
+        {
+          "id": "alst_type_d_visa",
+          "attribute": "has_type_d_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Type D visa is normally required to enter and then apply for the residence permit in-country.",
+          "fix_path": "Apply for a Type D visa via e-visa.al or an Albanian consulate.",
+          "fix_time_months": null,
+          "source_id": "mfa_visa_regime"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter from an educational institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of suitable accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "47x36mm photo (taken within 6 months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Up to 1 year initially, extendable annually until completion of studies",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["al_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "mb_unified_permit",
+      "tier": 1,
+      "url": "https://mb.gov.al/procedura-dhe-dokumentacioni-per-pajisjen-me-leje-qendrimi-dhe-leje-unike-residence-unique-permit-al-en/",
+      "title": "Ministria e Brendshme (Ministry of Interior) -- Residence and Unified Permits: Education & Training category, up to 1 year initial, extendable annually; also covers unpaid trainees, au pairs (age 18-30), scientific research, youth exchanges",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mfa_visa_regime",
+      "tier": 1,
+      "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+      "title": "Ministry for Europe and Foreign Affairs of Albania -- Type D visa for stays exceeding 90 days",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). No fee/tuition threshold or financial-solvency figure was specified on the source page for students specifically (unlike several other countries in this dataset) -- not modeled as a hard requirement since none was stated. Fee exemption confirmed for a specific subgroup: Kosovo citizens and ethnic Albanians from regional countries studying in Albania pay only the biometric document fee, a real and notable carve-out worth flagging but not modeled as a separate route given it only affects cost, not eligibility. Source also covers adjacent short-stay categories not modeled as separate files here: unpaid trainees (max 1 year), au pairs (ages 18-30, 1 year + one 6-month renewal), scientific researchers and youth exchange participants (up to 1 year each) -- all structurally similar enough to be folded into this file's scope rather than split into five near-duplicate routes."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "do_rentista_residence",
+  "country": "DO",
+  "name": "Residence by Investment as Rentier (Rentista)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dorent_income",
+          "attribute": "monthly_foreign_income_usd",
+          "operator": ">=",
+          "value": 2000,
+          "hard": true,
+          "blocker_text": "Requires permanent monthly income of at least US$2,000 from foreign sources (dividends, property rental, or investment income) -- must show a 5-year documented history of the underlying shareholding, property, or investment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_rentista"
+        },
+        {
+          "id": "dorent_bank_cert",
+          "attribute": "has_bank_certification_of_income_received",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires bank certification attesting receipt of the rent/income within Dominican territory for the previous residency period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_rentista"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "5-year documented history of foreign shareholding, property, or investment generating the income", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bank certification of income received in the Dominican Republic", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificate (5-year history)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical exam from a DGM-authorized institution", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migracion_rentista",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/residencia-por-inversion-en-calidad-de-rentista/",
+      "title": "Dirección General de Migración -- Residence by Investment as Rentier: US$2,000/month minimum foreign income, 45 working days, fee breakdown (RD$28,800 + RD$3,500 + RD$6,300)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). Distinct from do_pensionado_residence: this route is for investment/dividend/rental income (US$2,000/month), while the pensioner route is specifically for pension/retirement income (US$1,500/month) -- two separate DGM service pages with different thresholds, not variants of the same route. work_rights modeled 'none' since the underlying qualifying basis is passive foreign income, not local employment or business operation -- not explicitly stated as a restriction on this specific page, flagged as an inference from the route's structure and consistent with how this dataset treats equivalent passive-income routes elsewhere (e.g. Costa Rica's rentista/pensionado routes)."
+}

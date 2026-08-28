@@ -1,0 +1,85 @@
+{
+  "id": "aw_visitor_visa",
+  "country": "AW",
+  "name": "Visitor Entry (ED Card)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "awv_passport",
+          "attribute": "passport_age_years",
+          "operator": "<=",
+          "value": 10,
+          "hard": true,
+          "blocker_text": "Passport must not be more than 10 years old and must remain valid for the whole stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aruba_com_immigration_regs"
+        },
+        {
+          "id": "awv_ed_card",
+          "attribute": "has_ed_card",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A completed and approved Embarkation and Disembarkation (ED) card is mandatory for entry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aruba_com_immigration_regs"
+        },
+        {
+          "id": "awv_return_ticket",
+          "attribute": "has_return_or_onward_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must prove ability to return to the country of departure or transit through another country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aruba_com_immigration_regs"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (under 10 years old, valid for whole stay)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed ED card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return or onward ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days standard (US nationals up to 90 days); extensions up to 180 days per calendar year possible with a local guarantor or property ownership",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["aw_student_permit", "aw_work_permit", "aw_one_happy_workation"]
+  },
+  "sources": [
+    {
+      "id": "aruba_com_immigration_regs",
+      "tier": 3,
+      "url": "https://www.aruba.com/us/plan-your-visit/getting-to-aruba/immigration-regulations",
+      "title": "Aruba Tourism Authority (aruba.com) -- Immigration Regulations: passport, ED card, visa-exempt nationalities, 30/90/180-day stay rules, return-ticket requirement (used because no equivalent gov.aw/DIMAS visitor-entry page was located in this pass -- see notes)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "STATUS: DRAFT (tier-3 sourcing on every hard requirement -- no DIMAS/gov.aw visitor-entry page located; see below). NEW COUNTRY, first route of Aruba's initial build. Aruba is an autonomous constituent country of the Kingdom of the Netherlands (ISO AW), like Curacao built earlier this session -- NOT a British Overseas Territory. Citizenship here is Dutch nationality via the Kingdom-level IND, not a local citizenship regime; see aw_naturalisation.json. Sourced to the Aruba Tourism Authority (ATA)'s own site rather than a DIMAS (immigration department) page, since no dedicated gov.aw/dimasaruba.aw visitor-entry/visa-policy page was surfaced in this pass -- ATA is Aruba's statutory tourism promotion authority, treated as tier 3 per this dataset's convention (not a tier-1 immigration authority, but an official government body with a direct operational role in entry logistics). Flagged as a gap to re-verify against a DIMAS-published entry-requirements page if one exists. No visa-required nationality list was retrieved -- modelled generally; citizens of the Netherlands, the US, and countries on the Netherlands' Schengen-linked visa-exempt list do not require a visa per this source."
+}

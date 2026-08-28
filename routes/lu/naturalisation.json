@@ -1,0 +1,97 @@
+{
+  "id": "lu_naturalisation",
+  "country": "LU",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lun_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of legal residence in Luxembourg, with the final year immediately preceding the application being uninterrupted.",
+          "fix_path": "Accumulate 5 years of legal residence, with the final year uninterrupted.",
+          "fix_time_months": 60,
+          "source_id": "guichet_naturalisation"
+        },
+        {
+          "id": "lun_language",
+          "attribute": "has_luxembourgish_language_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a Luxembourgish language test pass certificate.",
+          "fix_path": "Pass the Luxembourgish language test.",
+          "fix_time_months": null,
+          "source_id": "guichet_naturalisation"
+        },
+        {
+          "id": "lun_civics",
+          "attribute": "completed_integration_course_or_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must complete the 'Vivre ensemble au Grand-Duche de Luxembourg' civics/integration course, or pass an exam covering its content.",
+          "fix_path": "Complete the civics course or pass the exam.",
+          "fix_time_months": null,
+          "source_id": "guichet_naturalisation"
+        },
+        {
+          "id": "lun_conduct",
+          "attribute": "meets_good_repute_standard",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Refused for false statements, concealment, or fraud; or for criminal/custodial sentences of 12+ months or suspended sentences of 24+ months (foreign convictions count if they would constitute a Luxembourg crime, unless more than 15 years have passed or rehabilitation occurred).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' legal residence (final year uninterrupted)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Luxembourgish language test certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Civics course completion certificate or exam pass", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "guichet_naturalisation",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/citoyennete/nationalite-luxembourgeoise/acquisition-recouvrement/naturalisation.html",
+      "title": "Guichet.lu -- Acquiring Luxembourgish Nationality by Naturalisation: 5-year residence, Luxembourgish language test, 'Vivre ensemble' civics course/exam, good-repute conduct standard",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). Luxembourg's standard naturalisation bar (5 years) is notably short by this dataset's standards, offset by a genuinely mandatory Luxembourgish-language test (not merely one option among several languages, unlike e.g. Finland's Finnish/Swedish choice) and a dedicated civics course/exam -- both hard requirements, not soft/discretionary factors. This is a grand-ducal-decree naturalisation procedure, structurally distinct from the separate 'acquisition by option' declaration procedures (10 sub-cases covering descendants, spouses, long-term residents of 20+ years, protected persons, and others) -- see lu_citizenship_by_descent.json and lu_citizenship_by_marriage.json for the two option cases modeled as separate files in this dataset; the remaining option cases (parents of Luxembourgish minors, persons born in Luxembourg, 7-years-of-LU-schooling, 20-year long-term residents, integration-contract participants, early settlers, protected persons, volunteer soldiers) are not modeled as separate route files but are disclosed here for completeness."
+}

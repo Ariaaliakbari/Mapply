@@ -1,0 +1,62 @@
+{
+  "id": "ms_resident_permit_property_owner",
+  "country": "MS",
+  "name": "Residents Permit (Property Owners)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "msrp_ownership",
+          "attribute": "property_ownership",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be the owner of property in Montserrat and not a national of Montserrat.",
+          "fix_path": "Acquire property in Montserrat.",
+          "fix_time_months": null,
+          "source_id": "immigration_ms_residents"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of property ownership in Montserrat", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: US$50 per applicant, plus any additional family members", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_ms_residents",
+      "tier": 1,
+      "url": "https://www.immigration.ms/residents/guide",
+      "title": "Government of Montserrat -- Online Immigration & Customs Portal: Residents Permit guide for property owners, fee (US$50 per applicant/family member), 24-hour processing",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Montserrat's initial build. This is a distinct, lighter-weight residence status tied purely to property ownership, sourced from the same official eVisa/immigration portal as ms_visitor_visa.json -- it is NOT the same as the Section 19 Permanent Residence Permit or Economic Residence Permit (see ms_permanent_residence.json and ms_economic_residence.json), which have separate, more demanding legal bases. Duration, renewal terms, and work/study rights are not addressed in the source reviewed; work_rights and study_rights are conservatively set to 'none' since nothing in the source suggests this status confers them, and a separate Work Permit (ms_work_permit.json) would still be required for employment. This route's precise legal relationship to Section 19's permits (whether it is a subsidiary category, an alias, or a genuinely separate mechanism) is not clarified by the source and is flagged as an open question."
+}

@@ -1,0 +1,90 @@
+{
+  "id": "is_international_protection",
+  "country": "IS",
+  "name": "International Protection (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The Directorate of Immigration decides applications for international protection. Applicants must be physically present in Iceland; applications from abroad are not processed. Submitted in person (a verbal statement suffices) at Keflavik Airport police, the Reykjavik reception centre, or the nearest police station.",
+    "evidence_hint": "In-person application; interview with the Directorate of Immigration; supporting documents where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "isip_claim",
+          "attribute": "meets_refugee_or_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Directorate of Immigration assesses eligibility for refugee status or the lesser subsidiary protection status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_international_protection"
+        },
+        {
+          "id": "isip_presence",
+          "attribute": "physically_present_in_iceland",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be physically present in Iceland to apply; applications sent from abroad are not processed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_international_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "In-person application", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Grounds for protection presented at interview, with supporting documents where available", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: 3-year permit; Subsidiary protection: 2-year permit, renewable before expiration",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["is_permanent_residence", "is_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "island_international_protection",
+      "tier": 1,
+      "url": "https://island.is/en/international-protection-rights-and-applications",
+      "title": "Island.is -- International Protection, Rights and Application Procedure: Directorate of Immigration process, physical-presence requirement, in-person application at Keflavik Airport/Reykjavik reception centre/police stations",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "island_international_protection_permits",
+      "tier": 1,
+      "url": "https://island.is/en/residence-permits-on-grounds-of-international-protection",
+      "title": "Island.is -- Residence Permits on Grounds of International Protection: refugee status 3-year permit, unrestricted work rights, family reunification rules (before/after protection granted, 4-year prior work/study for post-grant spouses/children)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "island_subsidiary_protection",
+      "tier": 1,
+      "url": "https://island.is/en/residence-permit-on-grounds-of-subsidiary-protection",
+      "title": "Island.is -- Residence Permit on Grounds of Subsidiary Protection: 2-year permit, unrestricted work rights, labour/housing/language pathway to family reunification after 1 year (8+ months employment, ISK 259,951/month income, 80 hours Icelandic instruction, secured lease)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). Strong tier-1 sourcing throughout, unusual for this category in this dataset. Family reunification for international protection holders is genuinely two-tiered and disclosed precisely rather than simplified: family members who existed BEFORE protection was granted (spouse/cohabiting partner from before, children under 18 born before, parents 67+) qualify under one track; family formed AFTER protection was granted requires either 4 years of prior work/study in Iceland, OR (for subsidiary protection specifically) a 1-year labour/housing/language pathway with specific ISK income and Icelandic-instruction-hours conditions -- not fully modeled as separate requirement groups here to avoid excessive complexity, but flagged in detail since this materially affects real applicants. study_rights modeled 'restricted' as a conservative default since neither source explicitly confirmed study rights during status (only work rights were explicit)."
+}

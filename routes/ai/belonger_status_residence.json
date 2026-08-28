@@ -1,0 +1,79 @@
+{
+  "id": "ai_belonger_status_residence",
+  "country": "AI",
+  "name": "Belonger Status by Long-Term Residence (15 Years)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aibsr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "Requires 15 years of continuous residence in Anguilla, proven via a sworn affidavit from a Notary Public stating the average time spent in Anguilla for each year within the 15-year period, plus two affidavits from established Anguillians confirming residency, old passports, and work permits.",
+          "fix_path": "Accumulate 15 years of continuous residence in Anguilla.",
+          "fix_time_months": 180,
+          "source_id": "gov_ai_anguilla_status"
+        },
+        {
+          "id": "aibsr_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a police certificate and a health certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_anguilla_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Two passport photographs", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate and police certificate", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Health certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sworn affidavit (Notary Public) on average time spent in Anguilla per year over the 15-year period", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Old passports and work permits", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two affidavits from established Anguillians confirming residency", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Business documentation, if applicable", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Non-refundable fee: EC$200.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "15 years of continuous residence, evidenced year-by-year",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ai_anguilla_status",
+      "tier": 1,
+      "url": "https://gov.ai/service/immigration--labour/immigration--labour-anguilla-status",
+      "title": "Government of Anguilla -- Anguilla Status (Belonger Status): descent/parentage, marriage (5 years), and residence (15 years) grounds, documents, and fees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. See ai_belonger_status_descent.json's notes for why leads_to_citizenship is modelled as false. FLAGGED, NOT MODELLED: the Immigration Forms page (gov_ai_immigration_forms, cited in ai_belonger_status_descent.json) lists a form titled 'Belonger Status - Born in Anguilla and resident for 10 or 15 years', implying a shorter 10-year path for applicants actually born in Anguilla -- but the substantive Anguilla Status page content fetched in this pass only described the general 15-year continuous-residence ground and did not detail a separate born-in-Anguilla/10-year variant. Rather than guess at the terms of that shorter path, only the confirmed 15-year general-residence ground is modelled here; the possible 10-year variant is an open gap for a future pass with a source that details it."
+}

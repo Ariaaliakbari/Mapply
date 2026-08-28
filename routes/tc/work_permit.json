@@ -1,0 +1,94 @@
+{
+  "id": "tc_work_permit",
+  "country": "TC",
+  "name": "Work Permit (Employer-Sponsored, Self-Employed, or Freelancer)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "employer_sponsored",
+      "name": "Employer-sponsored",
+      "requirements": [
+        {
+          "id": "tcw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a job offer, with the application submitted by the employer (not the employee).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_work_permits"
+        },
+        {
+          "id": "tcw_labour_market_test",
+          "attribute": "employer_advertised_role_locally",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must show every effort to recruit a Turks and Caicos Islander, including advertising the position in two consecutive newspaper issues (detailing position, salary, and employer contact) and confirming with the Employment Services Department that no qualified Islander is available.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_work_permits"
+        }
+      ]
+    },
+    {
+      "id": "self_employed_or_freelancer",
+      "name": "Self-employed or freelancer",
+      "requirements": [
+        {
+          "id": "tcw_self_employed",
+          "attribute": "is_self_employed_or_freelancer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Self-employed and freelancer work permit applications may be submitted directly by the applicant rather than requiring an employer sponsor.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer or business plan (per category)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of local recruitment effort (2 consecutive newspaper issues) -- employer-sponsored only", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Administration fee: greater of $150 or 10% of the work permit fee (non-refundable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Labour clearance fee: $100 per application (where required)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fast Track fee (optional, 7-day processing): $500", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse/child endorsement: $150 administrative fee plus $500 per endorsee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years (self-employed, employed-skilled, freelancer); up to 3 years (employed-unskilled)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_prc_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_work_permits",
+      "tier": 1,
+      "url": "https://gov.tc/bordercontrol/services/work-permits",
+      "title": "Government of the Turks and Caicos Islands, Ministry of Immigration and Border Services -- Work Permits: employer-sponsored labour-market-test rule, self-employed/freelancer employee-submitted exception, fee schedule, permit-duration caps by category, Work Permit Board review, 15-25 day standard processing (7-day Fast Track)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. Two OR-groups folded into one file since both lead to the same Work Permit outcome, differing only in who submits the application and whether the labour-market test applies (self-employed/freelancer routes are exempt from the newspaper-advertising requirement since there is no local employer being asked to justify hiring a non-Islander). Permit-duration caps differ by sub-category (3 years for employed-unskilled vs. 5 years for the others) -- modelled as a range in outcome.duration_length rather than forced into a single number. leads_to_pr/pr_after_months (120 months) reflects the PRC work-permit-history route's own stated 10-year continuous-residence threshold (see tc_prc_residence.json)."
+}

@@ -1,0 +1,72 @@
+{
+  "id": "cz_international_protection",
+  "country": "CZ",
+  "name": "International Protection (Asylum / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person may apply for international protection (asylum or subsidiary protection) under Asylum Act No. 325/1999 Coll., administered by the International Protection Unit of the Ministry of the Interior's Department of Asylum and Migration Policy. Applications are made at land border checkpoints, Vaclav Havel Airport Prague, Foreign Police offices, or the Reception Centre in Zastavka u Brna; those in detention have 7 days from apprehension to apply.",
+    "evidence_hint": "Any proof or documentation supporting the claim; two interviews are conducted (a brief initial interview, then a substantive 2-3+ hour interview with interpreter support)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "czip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "asylum_or_subsidiary_protection_criteria_met",
+          "hard": true,
+          "blocker_text": "Application governed by Asylum Act No. 325/1999 Coll. and processed by the Ministry of Interior's International Protection Unit; a decision is expected within 6 months (extendable with notification), with a 15-day appeal window on rejection.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mv_international_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Initial and substantive interviews with interpreter support", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting documentation of the claim, if available", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "processing typically up to 6 months (extendable); recognised refugee status (asylum) grants a permanent residence permit directly; subsidiary protection grants a long-term residence permit, typically 1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cz_permanent_residence", "cz_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mv_international_protection",
+      "tier": 1,
+      "url": "https://mv.gov.cz/mvcren/article/entry-stay-permanent-residence-and-international-protection-in-the-czech-republic-international-protection.aspx",
+      "title": "Ministry of the Interior of the Czech Republic -- International Protection: governing Asylum Act No. 325/1999 Coll., International Protection Unit, application locations and contact details",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "unhcr_cz_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/czech/applying-for-asylum-in-czechia/",
+      "title": "UNHCR Czechia -- Applying for Asylum in Czechia: application locations, two-interview process, 6-month decision timeline, work eligibility after 6 months, accommodation/financial support, refugee-status-vs-subsidiary-protection outcome distinction",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. The core hard requirement (governing law, administering authority, application locations) is confirmed at tier-1 (mv.gov.cz); the Ministry's own procedural page returned mostly contact information rather than substantive process detail, so the richer procedural detail here (interview structure, 6-month/15-day timelines, work eligibility 6 months after registration, accommodation and financial support levels, and the key refugee-status-vs-subsidiary-protection distinction) is corroborated at tier-2 (UNHCR Czechia) rather than independently confirmed at tier-1 -- flagged rather than silently merged. IMPORTANT DISTINCTION: recognised refugee status leads DIRECTLY to a permanent residence permit per UNHCR's summary (reflected in pr_after_months: 0), while subsidiary protection instead grants only a renewable 1-year long-term residence permit -- a materially different, less generous outcome. The outcome fields here are modelled on the more generous refugee-status branch; subsidiary-protection recipients should not assume the same immediate permanent-residence outcome. work_rights set to 'restricted': work eligibility only begins 6 months after application registration, and applies to the pending/asylum-seeker phase as well as any restrictions on recognised subsidiary-protection holders not detailed further here."
+}

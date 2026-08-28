@@ -1,0 +1,109 @@
+{
+  "id": "by_naturalisation",
+  "country": "BY",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "byn_residence",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": false,
+          "blocker_text": "A December 2020 reform is reported to have REDUCED the standard permanent-residence requirement for naturalisation from 7 years to 5 years, with no absences exceeding 90 days in any calendar year. The primary legislative text located and hosted at tier-1 precision in this pass (LegislationLine's 1991/1995 consolidated translation) still states the OLD 7-year figure (Article 13) -- this file uses the REPORTED reformed figure (5 years) as the more current value but flags it as sourced only from a tier-3/4 secondary academic summary, not independently verified against a post-2020 consolidated primary text.",
+          "fix_path": "Accumulate 5 years (per the 2020 reform) or 7 years (per the older primary text) of permanent residence, without exceeding 90 days' absence in any calendar year.",
+          "fix_time_months": 60,
+          "source_id": "globalcit_2020_reform"
+        },
+        {
+          "id": "byn_language",
+          "attribute": "has_belarusian_or_russian_language_proficiency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Language proficiency in Belarusian or Russian is required per Article 13 of the Law on Citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legislationline_citizenship_law"
+        },
+        {
+          "id": "byn_conduct",
+          "attribute": "no_extremism_or_state_harm_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "As of the December 2020 reform, authorities have expanded discretion to reject naturalisation, or later revoke it, for a court-confirmed finding of participation in 'extremist activities' or causing serious harm to Belarus's interests -- notably, revocation is possible even if it would render the person stateless.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_2020_reform"
+        }
+      ]
+    },
+    {
+      "id": "former_ussr",
+      "name": "Former USSR citizens and descendants (registration procedure)",
+      "requirements": [
+        {
+          "id": "byn_ussr_proof",
+          "attribute": "proof_of_former_ussr_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A simplified REGISTRATION procedure (not full naturalisation) is available under Article 17-1 for former USSR residents and their descendants who left before the law's enactment, requiring only proof of former USSR citizenship and no other current state citizenship -- bypassing the standard residence requirement entirely.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "legislationline_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence period matching the applicable category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Belarusian or Russian language proficiency", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal/extremism record", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "legislationline_citizenship_law",
+      "tier": 1,
+      "url": "https://legislationline.org/taxonomy/term/13795",
+      "title": "LegislationLine -- Law of the Republic of Belarus on Citizenship (1991, as amended 1995, English translation): Article 13 (7-year residence + language, now reported reformed to 5 years -- see globalcit_2020_reform), Article 14 (marriage does NOT provide any reduced-residence exemption -- no spousal fast-track exists), Article 17-1 (simplified former-USSR registration)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "globalcit_2020_reform",
+      "tier": 3,
+      "url": "https://globalcit.eu/belarus-changes-its-citizenship-law/",
+      "title": "GLOBALCIT (Global Citizenship Observatory, European University Institute) -- Belarus Changes Its Citizenship Law: December 2020 reform reducing standard residence from 7 to 5 years, expanded discretionary/extremism-based denial and revocation grounds, statelessness risk on revocation",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). STATUS: DRAFT -- this is a genuine stale-primary-text situation, the same pattern flagged for UAE and Egypt earlier in this dataset: the only tier-1-hosted verbatim legislative text located (LegislationLine, citing the 1991 law as amended in 1995) predates a real December 2020 reform that a tier-3 academic secondary source (GLOBALCIT) confirms changed the residence figure from 7 to 5 years and added extremism-based revocation grounds -- a post-2020 consolidated primary text was not independently located/verified in this pass. IMPORTANT DISCLOSURE: Article 14 of the (older) primary text explicitly states NO reduced-residence exemption exists for spouses of Belarusian citizens -- marriage alone provides no fast-track whatsoever, a notable contrast to nearly every other European country built in this dataset, where a marriage-based reduction is standard. This is why no separate by_citizenship_by_marriage.json file was built for Belarus. dual_citizenship_allowed modeled FALSE reflecting Belarus's historical single-citizenship principle; the 2020 reform's statelessness-risk-on-revocation provision is consistent with, not contradictory to, this stance."
+}

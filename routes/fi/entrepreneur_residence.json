@@ -1,0 +1,109 @@
+{
+  "id": "fi_entrepreneur_residence",
+  "country": "FI",
+  "name": "Residence Permit for an Entrepreneur / Start-Up Entrepreneur",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_entrepreneur",
+      "name": "Standard entrepreneur",
+      "requirements": [
+        {
+          "id": "fient_viability",
+          "attribute": "business_deemed_profitable_by_ely_centre",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Economic Development Centre (ELY-keskus) assesses whether the business is profitable and can support the applicant; ownership alone is not sufficient -- the applicant must actually work in the company in Finland.",
+          "fix_path": "Obtain a positive assessment from the ELY-keskus.",
+          "fix_time_months": null,
+          "source_id": "migri_entrepreneur"
+        },
+        {
+          "id": "fient_self_support",
+          "attribute": "supported_by_own_business_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Means of support must come from the applicant's own income from the business, not external funding.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_entrepreneur"
+        }
+      ]
+    },
+    {
+      "id": "startup_entrepreneur",
+      "name": "Start-up entrepreneur",
+      "requirements": [
+        {
+          "id": "fient_bf_statement",
+          "attribute": "has_business_finland_eligibility_statement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a positive Business Finland Eligibility Statement, no more than 4 months old at application, for a first start-up-entrepreneur permit or a first extension.",
+          "fix_path": "Obtain a positive Eligibility Statement from Business Finland.",
+          "fix_time_months": null,
+          "source_id": "migri_startup"
+        },
+        {
+          "id": "fient_startup_funds",
+          "attribute": "monthly_net_income_eur",
+          "operator": ">=",
+          "value": 1030,
+          "hard": true,
+          "blocker_text": "Must hold sufficient documented funds in a personal bank account -- 2026 minimum net monthly equivalent is EUR 1,030-1,210 depending on region -- from savings, start-up income, company funding, or other regular income, covering at least 1 year (2 years of funding needed for a 2-year permit).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_startup"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business plan and financial statements", "difficulty": "hard", "typical_time_days": null },
+    { "document": "ELY-keskus assessment (standard route) or Business Finland Eligibility Statement (start-up route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bank statements showing required funds", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "standard entrepreneur: first/extended permit duration not specified at tier-1 precision in this pass; start-up entrepreneur: up to 2 years initial, up to 4 years extended with continuous income proof",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fi_permanent_residence", "fi_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migri_entrepreneur",
+      "tier": 1,
+      "url": "https://migri.fi/en/entrepreneur",
+      "title": "Maahanmuuttovirasto -- Residence Permit Application for an Entrepreneur: ELY-keskus profitability assessment, self-support-from-business-income requirement",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migri_startup",
+      "tier": 1,
+      "url": "https://migri.fi/en/start-up-entrepreneur",
+      "title": "Maahanmuuttovirasto -- Residence Permit Application for a Start-Up Entrepreneur: Business Finland Eligibility Statement, 2026 funds requirement (EUR 1,030-1,210/month by region), permit duration",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). Two structurally distinct sub-routes bundled into one file since both fall under the 'entrepreneur' residence-permit family: the standard entrepreneur route (assessed by ELY-keskus, no fixed threshold, business must already be profitable) and the start-up entrepreneur route (assessed by Business Finland, explicit monthly funds figures). The standard route's permit duration was not confirmed at tier-1 precision -- flagged as a gap."
+}

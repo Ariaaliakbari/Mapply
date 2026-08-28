@@ -1,0 +1,61 @@
+{
+  "id": "ge_short_term_property_permit",
+  "country": "GE",
+  "name": "Short-Term Residence Permit (property ownership)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gestp_property",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 150000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires ownership of real estate in Georgia valued at more than USD 150,000.",
+          "fix_path": "Purchase qualifying real estate.",
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property title deed and valuation showing >USD 150,000", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_investment_residence_permit"]
+  },
+  "sources": [
+    {
+      "id": "matsne_aliens_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2278806",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Law on the Legal Status of Aliens and Stateless Persons, Article 15(j)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is a genuinely lower-tier, distinct legal status from ge_investment_residence_permit (Article 15(h), USD 300,000, 5 years, leads onward to permanent status) -- this one (Article 15(j)) is a smaller USD 150,000 property threshold, renewable only annually, and the sda.gov.ge source does not describe it as leading toward permanent/unlimited residence the way the larger investment permit does -- kept separate rather than merged, per this dataset's principle of not collapsing genuinely different named legal statuses into one file. leads_to_pr set false: not described as counting toward Article 15(g)'s 10-year track or Article 15(k)'s 5-year investment track in the sources fetched -- an honest gap, not assumed."
+}

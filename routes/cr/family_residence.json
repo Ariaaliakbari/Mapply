@@ -1,0 +1,97 @@
+{
+  "id": "cr_family_residence",
+  "country": "CR",
+  "name": "Residente Temporal por Vínculo Familiar",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse or common-law partner of a Costa Rican citizen",
+      "requirements": [
+        {
+          "id": "crfr_spouse_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being the spouse or common-law partner of a Costa Rican citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "navaslaw_cr_categorias"
+        }
+      ]
+    },
+    {
+      "id": "child",
+      "name": "Child under 25 of a Costa Rican citizen",
+      "requirements": [
+        {
+          "id": "crfr_child_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires being the child (under 25) of a Costa Rican citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "navaslaw_cr_categorias"
+        }
+      ]
+    },
+    {
+      "id": "parent_or_sibling",
+      "name": "Parent or minor sibling of a Costa Rican citizen",
+      "requirements": [
+        {
+          "id": "crfr_parent_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_or_grandparent_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires being the parent, or a sibling under 18, of a Costa Rican citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "navaslaw_cr_categorias"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/birth certificate proving the family tie", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's Costa Rican identity/citizenship documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police/criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cr_permanent_residence", "cr_naturalisation_marriage", "cr_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "navaslaw_cr_categorias",
+      "tier": 3,
+      "url": "http://navaslaw.com/es/descargables/migracion_categorias_migratorias.pdf",
+      "title": "Navas & Navas -- Categorías Migratorias summary (vínculo familiar category)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. This is the general 'family ties' temporary residence category (distinct from cr_naturalisation_marriage, which is the CITIZENSHIP track available to a spouse who has already held this kind of residence for the required 2 years). citizenship_after_months (24) reflects the spouse group specifically feeding cr_naturalisation_marriage's 2-year track; the child/parent/sibling groups instead feed the general permanent-residence and standard-naturalisation tracks. STATUS SET TO DRAFT: migracion.go.cr's own pages were not reachable (403) in this pass; sourced from a single tier-3 summary."
+}

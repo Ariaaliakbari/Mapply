@@ -1,0 +1,74 @@
+{
+  "id": "sx_real_estate_investment_residence",
+  "country": "SX",
+  "name": "Residence by Real Estate Investment",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sxrei_investment",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Requires purchasing property on Sint Maarten and obtaining a local bank statement confirming an investment of at least USD 500,000 (NAF 900,000).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "century21_stmaarten_pr"
+        },
+        {
+          "id": "sxrei_outside_island",
+          "attribute": "applying_from_outside_island",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The applicant cannot be present on the island during the approval process -- an employer or legal representative must initiate the application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "century21_stmaarten_pr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property purchase documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Local bank statement confirming investment amount", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: NAF 500 per adult (temporary residence), NAF 45 statement of guarantee, NAF 200 per minor dependent (as of December 2021 fee schedule)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary, periodically renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sx_permanent_residence", "sx_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "century21_stmaarten_pr",
+      "tier": 3,
+      "url": "https://www.century21-stmaarten.com/st-maarten-permanent-residency/",
+      "title": "Century 21 St Maarten (real estate agency) -- St Maarten Permanent Residency by Investment in Real Estate: USD 500,000 / NAF 900,000 investment threshold, bank statement requirement, applicant-must-be-off-island rule, December 2021 fee schedule",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Sint Maarten's initial build. STATUS: DRAFT -- the only source found for this route is a real estate agency's marketing/informational page (tier 3), not a gov.sx or ministryofjustice.sx page; no official confirmation of this investment route or its threshold was located in this pass. Despite the name 'Permanent Residency,' the source's own fee schedule references 'Temporary Residence' fees, suggesting this may actually be a route to a renewable temporary residence permit that separately feeds into the general 5-year permanent-residence rule (sx_permanent_residence.json) rather than a distinct fast-track to permanent status -- this ambiguity is flagged rather than resolved, since the source itself is internally inconsistent on this point. Re-verify against an official government source before treating this as a confirmed, direct path to permanent residency."
+}

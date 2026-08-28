@@ -1,0 +1,63 @@
+{
+  "id": "ee_international_protection",
+  "country": "EE",
+  "name": "International Protection (asylum)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Available to foreign nationals meeting the criteria for refugee status, subsidiary protection, or temporary protection under EU law and Estonian legislation.",
+    "evidence_hint": "Evidence of persecution, serious harm, or a qualifying mass-displacement situation (e.g. the EU temporary protection mechanism for Ukraine)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status or subsidiary protection",
+      "requirements": [
+        {
+          "id": "eeip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_or_subsidiary_protection_criteria_met",
+          "hard": true,
+          "blocker_text": "Requires meeting the criteria for refugee status or subsidiary protection under EU and Estonian law, assessed via a border, accelerated, or substantive procedure depending on the case.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_international_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application submitted at a border crossing point or a PBGB service point (Northern Prefecture, Tallinn, for applicants already in Estonia)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence supporting the protection claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary residence permit valid up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "family_can_join": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ee_long_term_resident", "ee_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_international_protection",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/international-protection",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Applying for asylum: international protection",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. Unlike Barbados' bb_asylum (which is a 'never existed' closed case), Estonia has a real, EU-framework-compliant domestic asylum system with three procedure types: border procedure (up to 12 weeks, for weak claims or security risks), accelerated procedure (up to 3 months, for likely-unfounded claims), and substantive procedure (up to 6 months, the standard full assessment). work_rights is set 'restricted' as a common default for asylum seekers/protection holders across this dataset pending a confirmed source on exact employment rights, which the page fetched in this pass did not address. leads_to_pr (60 months, matching the 5-year residence permit) and leads_to_citizenship are inferred from this route's outcome feeding into the same long-term-residence and naturalisation tracks as any other legal residence in Estonia, not from a source stating this specifically for protection holders -- flagged as an inference, not a confirmed fact. Family members of a protection beneficiary may apply for residence permits valid until the beneficiary's own permit expires, confirmed at tier-1."
+}

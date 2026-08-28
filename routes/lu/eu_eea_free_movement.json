@@ -1,0 +1,80 @@
+{
+  "id": "lu_eu_eea_free_movement",
+  "country": "LU",
+  "name": "EU/EEA/Swiss Right of Residence",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lueu_nationality",
+          "attribute": "nationality_region",
+          "operator": "==",
+          "value": "EU_EEA_or_Swiss",
+          "hard": true,
+          "blocker_text": "EU/EEA/Swiss citizens may enter and reside in Luxembourg freely for up to 90 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_eu_citizen_stay"
+        },
+        {
+          "id": "lueu_registration",
+          "attribute": "registered_after_90_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Staying beyond 90 days requires declaring arrival at the commune within 8 days, then completing a registration certificate within 3 months, on grounds of employment/self-employment, self-sufficiency plus health insurance, or student status.",
+          "fix_path": "Register at the local commune within the required deadlines.",
+          "fix_time_months": null,
+          "source_id": "guichet_eu_citizen_stay"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid EU/EEA/Swiss ID card or passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of employment, self-employment, sufficient resources, or student status", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "registration certificate valid until further notice, subject to continuing to meet the grounds; EU permanent-residence attestation available after 5 years",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lu_permanent_residence", "lu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "guichet_eu_citizen_stay",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/citoyen-UE/conditions-entree/sejour-travail.html",
+      "title": "Guichet.lu -- Staying and/or Working in Luxembourg for More Than 90 Days as an EU Citizen: 8-day arrival declaration, 3-month registration deadline, employment/self-sufficiency/student grounds",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "guichet_eu_permanent",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/citoyen-UE/sejour-5-ans/attestation.html",
+      "title": "Guichet.lu -- Permanent Residence Permit for EU Citizens",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). pr_after_months (60) reflects the EU-citizen-specific permanent residence attestation, distinct from the general lu_permanent_residence.json EU long-term-resident track that non-EU nationals use."
+}

@@ -1,0 +1,82 @@
+{
+  "id": "bb_visitor_visa",
+  "country": "BB",
+  "name": "Entry Visa / Visitor Status",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Visitor entry",
+      "requirements": [
+        {
+          "id": "bbv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": { "note": "Nationals of countries on Barbados' published visa-required list must obtain an Entry Visa before travel: single-entry (one entry within a 3-month window) US$107, or multiple-entry (numerous entries within a 6-month window) US$211. Nationals not on that list may enter visa-free as visitors." },
+          "hard": true,
+          "blocker_text": "If your nationality requires an entry visa, you must obtain one (single- or multiple-entry) before travelling to Barbados.",
+          "fix_path": "Apply for and obtain the appropriate Entry Visa before travel.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_visa_req"
+        },
+        {
+          "id": "bbv_support",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "return_ticket_and_proof_of_support",
+          "hard": true,
+          "blocker_text": "Requires a return or onward ticket and evidence of the ability to support yourself for the duration of the stay, plus a specified intended address in Barbados.",
+          "fix_path": "Secure a return/onward ticket and documented evidence of financial support.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_visitor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the duration of the trip", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed online Immigration and Customs form (available from 72 hours before arrival)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarised parental consent letter for unaccompanied minors or minors travelling with a non-parent", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "length of stay granted on entry is at the immigration officer's discretion; not specified on the official pages fetched in this pass",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_bb_visa_req",
+      "tier": 1,
+      "url": "https://immigration.gov.bb/pages/visa_requirements.aspx",
+      "title": "Barbados Immigration Department (immigration.gov.bb) -- Visa Requirement Information",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "immigration_gov_bb_visitor",
+      "tier": 1,
+      "url": "https://immigration.gov.bb/pages/visitor.aspx",
+      "title": "Barbados Immigration Department (immigration.gov.bb) -- Visitor status entry requirements",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "FIRST BARBADOS ROUTE, part of this country's initial build. HONEST SOURCING GAP: neither official page fetched in this pass states the actual length of stay granted to a visitor on entry (many Commonwealth Caribbean states grant up to 28 days to 6 months at officer discretion, and allow extension applications through the Immigration Department, but this was not independently confirmed for Barbados specifically in this pass) -- duration_length is left descriptive rather than a specific invented number, and renewable is set true based on general regional practice, not a source fetched in this pass; both should be revisited if a clearer source surfaces. The Entry Visa fees (US$107 single-entry / US$211 multiple-entry) govern permission to travel to Barbados at all for nationals who need one, not the length of stay once admitted -- these are two different things and the source page does not fully separate them. family_can_work is set false as a placeholder based on general visitor-visa convention across this dataset, not a Barbados-specific confirmation."
+}

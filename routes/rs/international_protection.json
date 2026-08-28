@@ -1,0 +1,91 @@
+{
+  "id": "rs_international_protection",
+  "country": "RS",
+  "name": "Asylum (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national may express intent to seek asylum to police at the border or within Serbian territory, receive a Registration Certificate, and must report to an Asylum Centre within 72 hours. The formal application must be filed with the Asylum Office within 15 days of registration, after which the asylum procedure is considered initiated (Article 36). The Asylum Office assesses whether the applicant meets the refugee definition (Article 24: well-founded fear of persecution for race, religion, nationality, political opinion, or membership of a particular social group) or, failing that, qualifies for subsidiary protection (Article 25: serious harm on return, including the death penalty, torture, or indiscriminate violence from armed conflict).",
+    "evidence_hint": "Registration Certificate; biometric data (photograph, fingerprints, except for children under 14); a detailed, credible persecution or serious-harm account at interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "rsip_refugee",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution on account of race, religion, nationality, political opinion, or membership of a particular social group, and unable to avail oneself of one's country of origin's protection (Article 24).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_serbia_asylum_law"
+        }
+      ]
+    },
+    {
+      "id": "subsidiary_protection",
+      "name": "Subsidiary protection",
+      "requirements": [
+        {
+          "id": "rsip_subsidiary",
+          "attribute": "meets_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Does not meet the refugee definition, but faces serious harm on return -- including the death penalty, torture or inhuman/degrading treatment, or serious individual threat from indiscriminate violence in situations of armed conflict (Article 25).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_serbia_asylum_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registration Certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Biometric data (photograph, fingerprints)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Formal asylum application filed within 15 days of registration", "difficulty": "moderate", "typical_time_days": 15 },
+    { "document": "Detailed persecution/serious-harm account at interview", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "identity card for refugee status: 5 years; for subsidiary protection: 1 year",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rs_permanent_residence", "rs_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_serbia_asylum_law",
+      "tier": 1,
+      "url": "https://help.unhcr.org/serbia/wp-content/uploads/sites/45/2022/08/LawOnAsylumAndTemporaryProtectionRS.pdf",
+      "title": "UNHCR-hosted primary legislative text -- Law on Asylum and Temporary Protection of the Republic of Serbia: registration/application process (Articles 36 etc.), refugee status definition (Article 24), subsidiary protection definition (Article 25), applicant rights during the procedure (Article 49 and others), post-recognition identity card durations (5 years refugee / 1 year subsidiary protection)",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "unhcr_serbia_leaflet",
+      "tier": 2,
+      "url": "https://help.unhcr.org/serbia/wp-content/uploads/sites/45/2022/08/LifletEngleski.pdf",
+      "title": "UNHCR Serbia -- information leaflet for asylum seekers, corroborating the registration-to-Asylum-Centre process and applicant rights",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). Unlike Morocco's structure built earlier in this dataset, Serbia's own government (the Asylum Office, part of MUP) conducts refugee status determination directly under a codified national asylum law, with applicant rights (residence, movement, material reception conditions, healthcare, education, labour market access, legal aid) defined in statute during the pending-claim period -- not solely an UNHCR-run process. citizenship_after_months (36) reuses rs_naturalisation.json's general figure since persons granted asylum are noted in the law as enjoying status equivalent to permanent residents for most civil purposes, but no distinct reduced-residence citizenship track for refugees specifically was found in the Law on Citizenship text reviewed."
+}

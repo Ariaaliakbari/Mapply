@@ -1,0 +1,106 @@
+{
+  "id": "ky_caymanian_status_marriage",
+  "country": "KY",
+  "name": "Right to be Caymanian -- Spouse/Civil Partner of a Caymanian",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse or civil partner of a Caymanian may apply to the Caymanian Status and Permanent Residency Board for the right to be Caymanian, after 5 years (if the marriage predates 1 January 2004) or 7 years (if the marriage or civil partnership is from 1 January 2004 onward) immediately preceding the application (Immigration (Transition) Act, Section 28(5)).",
+    "evidence_hint": "Marriage/civil partnership certificate; proof of continuous cohabitation and residence; proof of spouse's/partner's Caymanian status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "pre_2004_marriage",
+      "name": "Marriage before 1 January 2004",
+      "requirements": [
+        {
+          "id": "kycm_pre2004_duration",
+          "attribute": "months_married_to_caymanian",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Marriage to a Caymanian dating from before 1 January 2004 requires 5 years immediately preceding the application, legally/ordinarily resident throughout, with no separation exceeding 3 months during the qualifying period.",
+          "fix_path": "Accumulate 5 years of qualifying marriage and residence.",
+          "fix_time_months": 60,
+          "source_id": "ky_immigration_transition_act"
+        },
+        {
+          "id": "kycm_pre2004_genuine",
+          "attribute": "marriage_of_convenience",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "The marriage/civil partnership must not be one of convenience; criminal-conviction restrictions apply.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    },
+    {
+      "id": "post_2004_marriage",
+      "name": "Marriage or civil partnership from 1 January 2004 onward",
+      "requirements": [
+        {
+          "id": "kycm_post2004_duration",
+          "attribute": "months_married_to_caymanian",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Marriage or civil partnership dating from 1 January 2004 onward requires 7 years immediately preceding the application, legally/ordinarily resident throughout, with no separation exceeding 3 months during the qualifying period.",
+          "fix_path": "Accumulate 7 years of qualifying marriage/civil partnership and residence.",
+          "fix_time_months": 84,
+          "source_id": "ky_immigration_transition_act"
+        },
+        {
+          "id": "kycm_post2004_genuine",
+          "attribute": "marriage_of_convenience",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "The marriage/civil partnership must not be one of convenience; criminal-conviction restrictions apply.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or civil partnership certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of continuous cohabitation/residence throughout the qualifying period", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of spouse's/partner's Caymanian status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "3 character references from Caymanians", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ky_immigration_transition_act",
+      "tier": 1,
+      "url": "https://my.egov.ky/documents/d/worc/immigrationtransitionact_2022-revision-pdf?download=true",
+      "title": "Cayman Islands Immigration (Transition) Act (2022 Revision) -- Section 28(5): spouse/civil partner of a Caymanian, 5-year (pre-2004 marriage) or 7-year (2004-onward) qualifying period; Section 28(7): surviving spouse/partner (7-year marriage duration); Section 33: revocation for marriage breakdown within 3 years of grant",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Cayman Islands' initial build. See ky_caymanian_status_descent.json's notes for why leads_to_citizenship is modelled as false. Modelled as two OR-groups (pre-2004 vs. 2004-onward marriage/partnership) since the Act itself splits the qualifying period on that date, not on any other distinguishing eligibility factor -- both groups share the same genuineness/character conditions, duplicated per this dataset's established convention for OR-groups with shared non-duration requirements. Section 28(7) additionally provides a surviving-spouse/partner ground requiring 7 years of marriage/partnership duration (not necessarily immediately preceding residence) -- not modelled as its own file since the Act frames it as a variant of this same marriage ground rather than a distinct legal mechanism, but flagged here as a real difference in the qualifying period's structure. Section 33 revocation grounds include marriage/partnership breakdown within 3 years of the grant -- a meaningful post-grant condition not modelled as a requirement but flagged since it affects the durability of this status."
+}

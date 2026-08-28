@@ -1,0 +1,95 @@
+{
+  "id": "ec_digital_nomad_visa",
+  "country": "EC",
+  "name": "Rentista Visa for Remote Work (Visa Nómada)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals performing autonomous professional or remote/digital/teleworking activities for a foreign employer, client, or company domiciled outside Ecuador.",
+    "evidence_hint": "Proof of remote work relationship with a foreign employer/client or ownership of a foreign-registered company; proof of foreign-source income; health insurance with Ecuador coverage."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecdn_income",
+          "attribute": "monthly_foreign_income_usd",
+          "operator": ">=",
+          "value": 1446,
+          "hard": true,
+          "blocker_text": "Foreign-source income of at least 3x Ecuador's Salario Básico Unificado (SBU) per month (USD 1,446/month at the 2026 SBU of USD 482), or 36x SBU annually.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_nomad_visa"
+        },
+        {
+          "id": "ecdn_foreign_employer",
+          "attribute": "works_remotely_for_foreign_entity",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Work must be for an employer, client, or company domiciled abroad, performed remotely/digitally/via telework.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_nomad_visa"
+        },
+        {
+          "id": "ecdn_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "National or international health insurance with coverage in Ecuador is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_nomad_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of remote work for a foreign entity", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of foreign-source income (USD 1,446+/month)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance with Ecuador coverage", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, renewable once",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 21,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_permanent_residence", "ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_nomad_visa",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-rentista-trabajo-remoto-visa-nomada",
+      "title": "gob.ec (MREMH official portal) -- Rentista visa for remote work (Visa Nómada): 3x SBU/month or 36x SBU/year foreign-source income requirement, foreign-employer/client requirement, health insurance, up to 2-year duration renewable once",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "sbu_2026",
+      "tier": 3,
+      "url": "https://nmslaw.com.ec/blog/2025/12/22/ecuador-salario-basico-unificado-2026/",
+      "title": "NMS Abogados -- Ecuador sets the 2026 Salario Básico Unificado (SBU) at USD 482/month",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). Distinct from ec_rentista_visa.json: this category requires an active remote-WORK relationship with a foreign entity (income from labour/services), whereas the general rentista visa covers passive income (pensions, rent, investments) with no work component -- both share the same 3x-SBU income structure and 2026 dollar-conversion caveat. work_rights modeled 'restricted' since the visa's own terms limit permitted work to the foreign employer/client relationship, not Ecuadorian employment -- the tier-1 source does not impose an explicit outright ban on Ecuadorian work but frames the category's entire purpose around foreign-domiciled work."
+}

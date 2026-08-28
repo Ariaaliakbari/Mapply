@@ -1,0 +1,127 @@
+{
+  "id": "do_visitor_visa",
+  "country": "DO",
+  "name": "Tourist Entry (Visa-Exempt E-Ticket) / Tourist Visa (TS/TM)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_exempt",
+      "name": "Visa-exempt nationalities (e-ticket)",
+      "requirements": [
+        {
+          "id": "dov_exempt_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["US", "CA", "GB", "EU", "RU", "UA", "KZ", "MX", "JP", "IL"],
+          "hard": false,
+          "blocker_text": "Most nationalities (US, Canada, UK, EU, Russia, Ukraine, Kazakhstan, Mexico, most South/Central American countries, Japan, Israel, and others) do not need a visa to enter as a tourist -- illustrative list, not exhaustive; the official site does not publish a single complete list.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "godominicanrepublic_entry"
+        },
+        {
+          "id": "dov_eticket",
+          "attribute": "has_completed_eticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "All passengers on commercial flights must complete a free electronic entry/exit form (e-Ticket) at eticket.migracion.gob.do before or on arrival.",
+          "fix_path": "Complete the e-Ticket online.",
+          "fix_time_months": null,
+          "source_id": "migracion_eticket"
+        },
+        {
+          "id": "dov_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least six months.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": null,
+          "source_id": "godominicanrepublic_entry"
+        },
+        {
+          "id": "dov_return_ticket",
+          "attribute": "has_return_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Round-trip airline, maritime, or land ticket is required, plus a permanent address in the Dominican Republic and proof of sufficient economic solvency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "godominicanrepublic_entry"
+        }
+      ]
+    },
+    {
+      "id": "visa_required",
+      "name": "Tourist Visa (TS/TM) for non-exempt nationalities",
+      "requirements": [
+        {
+          "id": "dov_tvisa_form",
+          "attribute": "has_visa_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Non-exempt nationals must apply at a Dominican consulate: visa form, 2x2 photo, proof of funds, return flight reservation, and hotel booking or invitation letter.",
+          "fix_path": "Apply at the nearest Dominican consulate.",
+          "fix_time_months": null,
+          "source_id": "mirex_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed e-Ticket (visa-exempt) or Tourist Visa TS/TM (non-exempt)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of economic solvency", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days standard tourist stay, extendable up to 120 days total via paid extension (RD$3,500-5,600); Tourist Visa TS/TM valid 60 days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_work_permit", "do_family_reunification", "do_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "godominicanrepublic_entry",
+      "tier": 1,
+      "url": "https://es.godominicanrepublic.com/planea-tu-viaje/requisitos-de-viaje",
+      "title": "Ministerio de Turismo República Dominicana -- official entry requirements: visa-exempt nationalities, passport validity, return ticket, economic solvency, exit tax",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migracion_eticket",
+      "tier": 1,
+      "url": "https://migracion.gob.do/servicio/prorroga-de-estadia/",
+      "title": "Dirección General de Migración -- tourist stay extension (PRÓRROGA DE ESTADÍA PARA TURISTAS): 30-day standard stay, e-Ticket requirement, extension fees and duration up to 120 days",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mirex_visas",
+      "tier": 1,
+      "url": "https://servicios360.mirex.gob.do/visas/",
+      "title": "MIREX Portal Único de Servicios de Relaciones Exteriores -- Tourist Visa (TS/TM): 60-day duration, single/multiple entry, requirements",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). The official Ministry of Tourism page gives an illustrative, not exhaustive, list of visa-exempt nationalities -- modeled the nationality check as hard:false since no single authoritative complete list was found at tier-1 precision. Standard tourist entry is 30 days; extensions are available up to 120 days total for a fee, confirmed directly on the DGM's own extension-service page. Non-exempt nationals go through a distinct Tourist Visa (TS/TM) process via MIREX consulates instead of the e-Ticket system -- modeled as a second OR-group. switchable_to reflects that DGM's own RT-9 page notes a reduced solvency threshold for those married to a Dominican, and that status changes in-country are a normal part of the DGM migratory-category-change process (see do_permanent_residence notes)."
+}

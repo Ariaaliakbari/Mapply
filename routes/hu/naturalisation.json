@@ -1,0 +1,147 @@
+{
+  "id": "hu_naturalisation",
+  "country": "HU",
+  "name": "Regular Naturalisation (Rendes Honositas)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_8yr",
+      "name": "Standard 8-year residence track",
+      "requirements": [
+        {
+          "id": "hun_residence_8yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Eight years of continuous residence in Hungary immediately preceding the application.",
+          "fix_path": "Accrue 8 years of continuous Hungarian residence.",
+          "fix_time_months": 96,
+          "source_id": "njt_citizenship_act"
+        },
+        {
+          "id": "hun_criminal_record_8",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Must be free of a criminal record under Hungarian law, with no pending Hungarian criminal proceedings, and naturalisation must not jeopardise public order or national security.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "njt_citizenship_act"
+        },
+        {
+          "id": "hun_subsistence_8",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "subsistence_and_housing_secured",
+          "hard": true,
+          "blocker_text": "Subsistence and housing in Hungary must be secured.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "njt_citizenship_act"
+        },
+        {
+          "id": "hun_exam_8",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "constitutional_knowledge_exam_or_language_exemption",
+          "hard": true,
+          "blocker_text": "Must pass a basic constitutional-knowledge exam in Hungarian, unless exempted by law or able to demonstrate Hungarian language competency in lieu of the exam.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "njt_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "reduced_3yr",
+      "name": "Reduced 3-year residence track (special ties)",
+      "requirements": [
+        {
+          "id": "hun_residence_3yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Three years of continuous Hungarian residence, replacing the standard 8-year requirement, available to: spouses of Hungarian citizens (marriage valid 3+ years), parents of a Hungarian-citizen minor child, adults adopted by a Hungarian citizen, recognised refugees, and stateless persons.",
+          "fix_path": "Accrue 3 years of continuous Hungarian residence while meeting one of the qualifying special-tie grounds.",
+          "fix_time_months": 36,
+          "source_id": "njt_citizenship_act"
+        },
+        {
+          "id": "hun_criminal_record_3",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Must be free of a criminal record under Hungarian law, with no pending Hungarian criminal proceedings, and naturalisation must not jeopardise public order or national security.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "njt_citizenship_act"
+        },
+        {
+          "id": "hun_subsistence_3",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "subsistence_and_housing_secured",
+          "hard": true,
+          "blocker_text": "Subsistence and housing in Hungary must be secured.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "njt_citizenship_act"
+        },
+        {
+          "id": "hun_exam_3",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "constitutional_knowledge_exam_or_language_exemption",
+          "hard": true,
+          "blocker_text": "Must pass a basic constitutional-knowledge exam in Hungarian, unless exempted by law or able to demonstrate Hungarian language competency in lieu of the exam.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "njt_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8-year or 3-year continuous Hungarian residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of secured subsistence and housing", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Constitutional-knowledge exam pass or Hungarian language proof", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "njt_citizenship_act",
+      "tier": 1,
+      "url": "https://njt.jog.gov.hu/jogszabaly/1993-55-00-00",
+      "title": "Nemzeti Jogtar (National Legislation Database) -- Act LV of 1993 on Hungarian Citizenship, Section 4: regular naturalisation (8-year residence) and reduced 3-year residence track for spouses/parents-of-citizen-children/adoptees/refugees/stateless persons",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1 from the primary legislation itself (Nemzeti Jogtar). This is Hungary's REGULAR naturalisation (rendes honositas), which REQUIRES physical residence in Hungary throughout -- distinct from the residence-free 'simplified naturalisation' mechanisms modelled separately as hu_citizenship_descent (Hungarian-ancestry ground) and hu_citizenship_marriage (10-year/5-year-plus-child marriage ground), both of which can be completed entirely via embassy application abroad with no Hungarian residence at all. The reduced-3-year track's spousal ground (3+ year marriage plus 3 years of Hungarian residence) should NOT be confused with hu_citizenship_marriage's residence-free marriage ground -- Hungary genuinely has two separate legal routes to citizenship via marriage, both real and both sourced from the same Citizenship Act, trading off marriage duration against a residence requirement."
+}

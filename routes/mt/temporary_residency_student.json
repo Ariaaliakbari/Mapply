@@ -1,0 +1,64 @@
+{
+  "id": "mt_temporary_residency_student",
+  "country": "MT",
+  "name": "Study Residence Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mts_enrollment",
+          "attribute": "enrollment_status",
+          "operator": "==",
+          "value": "accepted_full_time_higher_education_mqf5_plus",
+          "hard": true,
+          "blocker_text": "Must be accepted by an institution licensed by Malta's National Commission for Higher Education to pursue a full-time course of study leading to a higher-education qualification at MQF level 5 or above.",
+          "fix_path": "Secure acceptance to a licensed full-time MQF5+ programme.",
+          "fix_time_months": null,
+          "source_id": "identita_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter of acceptance from an MQF5+-licensed institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport valid at least 8 months at submission", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient financial means (exact threshold not published at tier-1)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance (commonly required; not detailed at tier-1 in this pass)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to course duration, typically issued and renewed annually for multi-year programmes",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "identita_study",
+      "tier": 1,
+      "url": "https://identita.gov.mt/expatriates-unit-main-page/noneu-nationals/non-employment-permits/study-research-trainees-volunteers-interns/",
+      "title": "Identità -- Expatriates Unit: Study, Research, Trainees, Volunteers & Interns permits, enrollment requirement, travel document validity, EUR50 fee",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Only the enrollment requirement is confirmed at tier-1 in this pass -- the tier-1 page did not detail financial-means thresholds, health insurance specifics, permit duration, part-time work-hour limits, or family-member provisions (these are commonly covered by the EU Students Directive 2016/801 as transposed into Maltese subsidiary legislation, but the exact figures were not independently confirmed here). work_rights set to 'restricted' as an inference consistent with the EU student-work pattern (limited part-time hours), not independently confirmed at tier-1. family_can_join set false because student sponsors are not confirmed to qualify family reunification under the family-members policy reviewed for mt_family_reunification. Application fee EUR50 (volunteers exempt); visa-exempt nationals must apply for a National Visa within 3 months of Schengen entry if the course exceeds 90 days."
+}

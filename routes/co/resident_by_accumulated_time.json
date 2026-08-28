@@ -1,0 +1,98 @@
+{
+  "id": "co_resident_by_accumulated_time",
+  "country": "CO",
+  "name": "Visa de Residente (R) -- Por Tiempo Acumulado",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["co_family_visa", "co_worker_visa", "co_business_owner_visa", "co_investor_visa", "co_pensioner_rentista_visa"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "short_track_2yr",
+      "name": "2-year track (spouse of Colombian, parent of Colombian by birth/adoption, Mercosur migrant, Andean migrant)",
+      "prerequisites_override": {
+        "minimum_months_held": 24
+      },
+      "requirements": [
+        {
+          "id": "cort_short_time",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires 2 continuous years holding a valid Migrant (M) visa in one of these specific categories, immediately before applying.",
+          "fix_path": "Hold the qualifying M visa continuously for 2 years.",
+          "fix_time_months": 24,
+          "source_id": "abogadosdemigracion_tiempo_acumulado"
+        }
+      ]
+    },
+    {
+      "id": "long_track_5yr",
+      "name": "5-year track (permanent partner, refugee, worker, partner/owner, independent professional, pensioner, investor, visa beneficiary)",
+      "prerequisites_override": {
+        "minimum_months_held": 60
+      },
+      "requirements": [
+        {
+          "id": "cort_long_time",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 continuous years holding a valid Migrant (M) visa in one of these categories, immediately before applying. A salvoconducto (temporary bridging document) does NOT count toward this accumulation.",
+          "fix_path": "Hold the qualifying M visa continuously for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "abogadosdemigracion_tiempo_acumulado"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Copies of all prior M visas and salvoconductos held", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Migration movement certificate from Migración Colombia", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Foreign ID card (Cédula de Extranjería)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (renewal of the card itself requested every 5 years; automatically lapses after 2 consecutive years of absence from Colombia)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "abogadosdemigracion_tiempo_acumulado",
+      "tier": 3,
+      "url": "https://www.abogadosdemigracion.com.co/visas-para-colombia/guia-visa-residente-por-tiempo-acumulado",
+      "title": "Abogados de Migración (immigration law firm) -- Visa R por tiempo acumulado: 2-year and 5-year tracks by prior M-visa category",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "cancilleria_visa_r_residente",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/node/26934",
+      "title": "Cancillería de Colombia -- Visa de Residente (tipo R): confirms 'por tiempo acumulado de permanencia' as one of 4 R sub-categories, open work permit, 5-year renewal cycle, 2-year absence lapse rule",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. STATUS SET TO DRAFT: the category's existence, the open-work-permit outcome, the 5-year renewal cycle, and the 2-year absence lapse rule are all confirmed directly at tier-1 (cancilleria.gov.co/node/26934) -- but the specific 2-year vs. 5-year breakdown by M-visa sub-category came only from a tier-3 immigration law firm's guide, since cancilleria's own resolución text (Resolution 5477 of 2022) could not be fully retrieved in this pass (truncated on fetch). required_prior_route_ids lists the M-visa-category routes built so far that plausibly feed into one track or the other; this dataset does not yet have route files for every M sub-category named in the tiempo-acumulado breakdown (e.g. independent professional, permanent partner as distinct from spouse) -- flagged as an incomplete cross-reference rather than silently narrowed."
+}

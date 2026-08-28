@@ -1,0 +1,104 @@
+{
+  "id": "rs_citizenship_serbian_origin",
+  "country": "RS",
+  "name": "Admission to Citizenship -- Emigrants, Their Descendants, and Persons of Serbian Origin",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 18 allows an emigrant from Serbia, and their descendant, to be admitted to citizenship without needing to reside in Serbia, provided they are 18+, have full legal capacity, and submit the required written statement; spouses of persons admitted under this provision may also be admitted. Article 23 extends this to members of the Serbian people who do not have domicile in Serbia at all (i.e. with no personal or ancestral emigration history from Serbia specifically), on the same Article 18 conditions, and -- distinctively -- WITHOUT requiring release from their existing foreign citizenship.",
+    "evidence_hint": "Proof of emigrant/descendant status (Article 18) or documented membership in/origin from the Serbian people (Article 23); written statement; for Article 18 spouses, marriage certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "emigrant_or_descendant",
+      "name": "Emigrant or their descendant (Article 18)",
+      "requirements": [
+        {
+          "id": "rsce_emigrant",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["rs_emigrant", "descendant_of_rs_emigrant", "spouse_of_article18_admittee"],
+          "hard": true,
+          "blocker_text": "An emigrant from Serbia, their descendant, or the spouse of a person admitted under this provision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rsce_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must be 18 or older with full legal capacity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "serbian_origin",
+      "name": "Member of the Serbian people, no domicile in Serbia (Article 23)",
+      "requirements": [
+        {
+          "id": "rsce_origin",
+          "attribute": "is_member_of_serbian_people",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A person who is a member of the Serbian people but does not have domicile in the Republic of Serbia may be admitted to citizenship on the Article 18 conditions, without needing to first give up their existing foreign citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rsce_origin_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must be 18 or older with full legal capacity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of emigrant/descendant status, or of Serbian-people origin", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Written statement recognizing Serbia as one's own state", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "paragraf_citizenship_law",
+      "tier": 1,
+      "url": "http://demo.paragraf.rs/demo/combined/Old/t/t2022_10/EN_010_2022_001.htm",
+      "title": "Paragraf.rs -- consolidated English text of the Law on Citizenship of the Republic of Serbia, Articles 18 and 23: citizenship admission for emigrants and their descendants (no residence requirement), and for members of the Serbian people generally under the same conditions but without a foreign-citizenship-release requirement",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). This is the diaspora-facing route distinct from rs_citizenship_by_descent.json's direct child-of-a-citizen-parent route and from rs_serbian_origin_residence.json's temporary RESIDENCE (not citizenship) permit. dual_citizenship_allowed modeled TRUE for both requirement groups: Article 18 does not repeat Article 14's foreign-citizenship-release condition, and Article 23 explicitly waives it. No residence in Serbia is required for either group -- this is a genuine no-physical-presence citizenship route, notably broader than most ancestry-based routes built elsewhere in this dataset (compare Ecuador's third-degree descent route, which still requires a family court/registry process but not necessarily Serbia-style ethnic-membership self-identification). 'Member of the Serbian people' (Article 23) is not further defined by documentary criteria in the text reviewed here -- how this is evidenced/assessed in practice was not independently confirmed and is disclosed as a gap rather than assumed to mirror the baptism-record evidence named for rs_serbian_origin_residence.json's separate residence-permit ground."
+}

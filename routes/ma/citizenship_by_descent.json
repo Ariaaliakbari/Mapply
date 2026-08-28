@@ -1,0 +1,76 @@
+{
+  "id": "ma_citizenship_by_descent",
+  "country": "MA",
+  "name": "Nationality by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 6 of the Code de la Nationalité Marocaine, as reformed by Law 62-06 of 2007, grants Moroccan nationality automatically to a child born of a Moroccan father OR a Moroccan mother, regardless of birthplace. This reform equalized paternal and maternal transmission, which prior to 2007 ran primarily through the father. Filiation must be legally established before the child reaches the age of majority.",
+    "evidence_hint": "Birth certificate; parent's proof of Moroccan nationality; legal establishment of filiation before the child turns 18."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "macd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_ma_citizen_father_or_mother",
+          "hard": true,
+          "blocker_text": "Automatic Moroccan nationality if either parent (father or mother, since the 2007 reform) is a Moroccan citizen, regardless of the child's birthplace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "macd_filiation",
+          "attribute": "filiation_established_before_majority",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Legal filiation to the Moroccan parent must be established before the child reaches the age of majority (18).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Moroccan nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "natlex_code_nationalite",
+      "tier": 1,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/117679/MAR-117679.pdf",
+      "title": "NATLEX (ILO) -- Code de la Nationalité Marocaine, consolidated 16 May 2024, Article 6 (as modified by Law 62-06 of 2007): 'Est Marocain, l'enfant né d'un père marocain ou d'une mère marocaine' -- gender-equal descent since 2007, filiation-before-majority requirement",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). Unlike ma_citizenship_by_marriage.json's still-gendered Article 10, descent-based nationality under Article 6 has been gender-EQUAL since the 2007 reform (Law 62-06) -- explicitly disclosed here as a contrast, since it would be easy to wrongly assume Moroccan nationality law is uniformly gendered across all routes. Single-generation rule (direct parent-child), consistent with most other countries in this dataset -- no multi-generational extension comparable to Ecuador's third-degree descent route was found."
+}

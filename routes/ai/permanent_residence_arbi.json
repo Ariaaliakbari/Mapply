@@ -1,0 +1,101 @@
+{
+  "id": "ai_permanent_residence_arbi",
+  "country": "AI",
+  "name": "Anguilla Residency by Investment (ARBI)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate",
+      "name": "Real estate investment",
+      "requirements": [
+        {
+          "id": "aipr_re_amount",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 750000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "Minimum US$750,000 investment in qualifying real estate (home, villa, condominium, or hotel unit) for a family of up to 4; additional family members add US$100,000 each. Property is subject to a 5-year lock-in and cannot be resold within that period.",
+          "fix_path": "Acquire qualifying Anguilla real estate at or above the required threshold.",
+          "fix_time_months": null,
+          "source_id": "gov_ai_arbi_presentation"
+        },
+        {
+          "id": "aipr_re_duediligence",
+          "attribute": "due_diligence_clearance",
+          "operator": "exists",
+          "value": "cleared",
+          "hard": true,
+          "blocker_text": "Must pass due diligence screening. Fees (Full Program): processing US$3,000 (family)/US$500 (each additional member); due diligence US$7,500 (per adult)/US$3,000 (per child); permit US$20,000 (family)/US$5,000 (each additional member).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_arbi_presentation"
+        }
+      ]
+    },
+    {
+      "id": "capital_development_fund",
+      "name": "Capital Development Fund contribution",
+      "requirements": [
+        {
+          "id": "aipr_cdf_amount",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 150000, "currency": "USD" },
+          "hard": true,
+          "blocker_text": "Minimum US$150,000 non-refundable contribution to Anguilla's Capital Development Fund, which finances public-sector projects and economic diversification.",
+          "fix_path": "Make the required non-refundable contribution to the Capital Development Fund.",
+          "fix_time_months": null,
+          "source_id": "gov_ai_arbi_presentation"
+        },
+        {
+          "id": "aipr_cdf_duediligence",
+          "attribute": "due_diligence_clearance",
+          "operator": "exists",
+          "value": "cleared",
+          "hard": true,
+          "blocker_text": "Must pass due diligence screening. Fee schedule for this track specifically was not broken out in the source reviewed (only the real estate track's fee schedule was itemised); a comparable processing/due-diligence/permit fee structure should be expected but is not confirmed here.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_arbi_presentation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment (real estate title/purchase agreement, or Capital Development Fund contribution receipt)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Due diligence documentation", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "renewable annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "at least 9 months of residence per year, for 5 consecutive years, to qualify for British Overseas Territories Citizenship",
+    "switchable_to": ["ai_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_ai_arbi_presentation",
+      "tier": 1,
+      "url": "https://gov.ai/document/finance/Anguilla%20Residency%20by%20Investment%20(ARBI)%20Presentation-%20General%20Public.pdf",
+      "title": "Government of Anguilla, Ministry of Finance -- Anguilla Residency by Investment (ARBI): real estate and Capital Development Fund investment options, eligibility, fees, and rights",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. Confirmed at tier-1 via an official Ministry of Finance presentation document -- this corroborates what several tier-3 sources (Arton Capital, Residency Routes, and others) had described as 'two residency-by-investment programs', though only this tier-1 source is cited. Modelled as category 'settled' rather than 'business' because the program's own name and stated outcome is a grant of Permanent Residence, not an operating-business requirement -- this is a judgment call, flagged for review. leads_to_citizenship and citizenship_after_months (60 months) and the 9-months/year physical presence rule are stated explicitly in the source, not estimated. Residents 'receive the right to live without restrictions' but 'must obtain work permits and cannot vote' -- work_rights is therefore 'restricted', and voting rights are explicitly withheld regardless of duration held. A 'Tax Residency' investment option is mentioned in the source as a third track but its criteria are described as 'still being developed' -- not modelled as a requirement group since no defined rules exist yet to cite. A 'Phase 1 Retroactive Fast Track' with reduced fees and 30-day approval is also described, apparently for already-established/retroactive investors; this reads as a transitional or promotional phase rather than the standing program rules and was not modelled as a separate route -- flagged in case it is still active. Fee schedule detail is confirmed only for the real estate track; the Capital Development Fund track's own fee breakdown is not itemised in the source and is flagged as an open gap in the cdf_duediligence requirement above."
+}

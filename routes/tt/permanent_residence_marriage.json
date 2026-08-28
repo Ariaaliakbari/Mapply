@@ -1,0 +1,80 @@
+{
+  "id": "tt_permanent_residence_marriage",
+  "country": "TT",
+  "name": "Permanent Resident Status -- Marriage to a Citizen",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse of a Trinidad and Tobago citizen may, after a sustained period of lawful residence on a spousal entry permit, apply for permanent resident status.",
+    "evidence_hint": "Marriage certificate; entry permits covering the full residence period; evidence of cohabitation and genuine relationship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttprm_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_tt_citizen",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Trinidad and Tobago citizen and a spousal entry permit -- marriage alone does not confer permanent residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "martingeorge_pr_marriage"
+        },
+        {
+          "id": "ttprm_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires approximately 3 to 5 years of continuous lawful residence as the spouse of the citizen, per established administrative practice (no fixed statutory minimum).",
+          "fix_path": "Accumulate continuous, unbroken residence as the spouse, documented with valid entry permits throughout.",
+          "fix_time_months": 36,
+          "source_id": "martingeorge_pr_marriage"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Character certificates (T&T and country of origin)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Entry permits covering the full residence period", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of cohabitation and financial self-sufficiency", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "martingeorge_pr_marriage",
+      "tier": 3,
+      "url": "https://law.martingeorge.net/permanent-resident-status-marriage-trinidad-tobago/",
+      "title": "Martin George & Company -- Permanent Resident Status Through Marriage to a Trinidad and Tobago Citizen: Immigration Act Chapter 18:01 Section 10, ministerial discretion with no reasons required, 3-5 year administrative-practice residence expectation",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. STATUS: DRAFT -- sourced only to a tier-3 law firm article; no fixed statutory residence minimum exists per the source itself, only administrative practice, and no gov.tt page was found confirming this specific figure. IMPORTANT CITATION CONFLICT: this article and the tier-3 article underlying tt_permanent_residence_general.json both cite 'Section 10' of the Immigration Act but describe it as governing two different things (this article: ministerial discretion to grant marriage-based PR; the other article: the 'prohibited immigrants' classification used as a disqualifying ground for the 5-year route) -- this inconsistency was not resolved against the Act's primary text in this pass (unlike the Citizenship Act, whose primary text was directly retrieved for tt_naturalisation.json and related files) and is flagged rather than silently picked one way. citizenship_after_months (60) mirrors the same 5-years-after-PR naturalisation rule used in tt_permanent_residence_general.json. Separately, the same source states citizenship may also become available via 'registration after 7 years of marriage' -- this claim directly conflicts with the primary Citizenship Act text reviewed for this build, which explicitly states marriage is NOT an independent registration ground (see tt_naturalisation.json's notes) -- that specific claim is NOT modelled as its own route here or elsewhere in this build precisely because of that conflict with primary legislation; disclosed in the chat summary rather than built as a route."
+}

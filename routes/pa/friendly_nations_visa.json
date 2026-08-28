@@ -1,0 +1,112 @@
+{
+  "id": "pa_friendly_nations_visa",
+  "country": "PA",
+  "name": "Visa de Países Amigos (Friendly Nations Visa)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "employment",
+      "name": "Employment contract with a Panamanian company",
+      "requirements": [
+        {
+          "id": "pafn_employment",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "active_employment_contract_with_panamanian_company",
+          "hard": true,
+          "blocker_text": "Requires an active employment agreement with a Panamanian company, plus nationality from one of the ~44 qualifying 'friendly nations'.",
+          "fix_path": "Secure a qualifying employment contract.",
+          "fix_time_months": null,
+          "source_id": "kraemerlaw_pa_friendly_nations"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Real estate ownership",
+      "requirements": [
+        {
+          "id": "pafn_realestate",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires Panamanian real property with a registered value of at least USD 200,000 (may be locally financed), plus qualifying nationality.",
+          "fix_path": "Acquire and document qualifying property.",
+          "fix_time_months": null,
+          "source_id": "kraemerlaw_pa_friendly_nations"
+        }
+      ]
+    },
+    {
+      "id": "fixed_deposit",
+      "name": "Fixed-term bank deposit",
+      "requirements": [
+        {
+          "id": "pafn_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a certificate of deposit of at least USD 200,000 in a Panamanian national bank, held for a minimum 3-year term, plus qualifying nationality.",
+          "fix_path": "Fund and document the qualifying fixed-term deposit.",
+          "fix_time_months": null,
+          "source_id": "kraemerlaw_pa_friendly_nations"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Category-specific documentation (employment contract, property deed, or CD certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate (within 90 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Repatriation fee (~USD 800) and application fee (~USD 250)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2-year provisional residency, then eligible for permanent residency (each stage ~6 months processing)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "kraemerlaw_pa_friendly_nations",
+      "tier": 3,
+      "url": "https://kraemerlaw.com/en/immigration/panama-friendly-nations-visa/",
+      "title": "Kraemer & Kraemer (immigration law firm) -- Panama Friendly Nations Visa: three routes (employment/real estate/deposit), USD 200,000 thresholds, 44 qualifying countries, 2-year provisional to permanent timeline",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "mitradel_pa_paises_amigos_trabajo",
+      "tier": 1,
+      "url": "https://www.mitradel.gob.pa/migracion-laboral2/permiso-de-trabajo-paises-amigos/",
+      "title": "Ministerio de Trabajo y Desarrollo Laboral de Panamá -- Permiso de Trabajo Países Amigos: 3-year provisional work permit, renewable, 9 Social Security contributions or tax filings required for renewal",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "migracion_pa_permisos_overview",
+      "tier": 1,
+      "url": "https://www.migracion.gob.pa/permisos-migratorios/",
+      "title": "Servicio Nacional de Migración de Panamá -- Permisos Migratorios overview, confirming a 'specific nationalities' special-policy permanent-resident category",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. STATUS SET TO DRAFT: the category's existence is confirmed at tier-1 (migracion.gob.pa's overview page, and mitradel.gob.pa's own work-permit-under-this-scheme page), and mitradel's page independently confirms a 3-year (not 2-year) provisional WORK permit duration with a renewal condition -- a detail that does not fully reconcile with the tier-3 source's 2-year timeline to permanent residency; both are cited honestly rather than merged, since they may describe two different things (the general residence permit vs. the specific work-authorization permit under the same visa). THREE GENUINELY DIFFERENT QUALIFYING GROUNDS modelled as OR-logic groups within one visa per the tier-3 source. The exact current list/count of qualifying 'friendly nations' was not independently confirmed at tier-1 in this pass. work_rights set 'restricted': only the employment-contract group plausibly includes work rights tied to that specific job; the real-estate and deposit groups do not confer employment rights on their own."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "bm_status_long_residence",
+  "country": "BM",
+  "name": "Bermudian Status -- Long-Term Residence (Section 20B)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmslr_since_1989",
+          "attribute": "resident_since_date",
+          "operator": "<=",
+          "value": "1989-07-31",
+          "hard": true,
+          "blocker_text": "Requires having resided in Bermuda continuously since 31 July 1989, a fixed historical cutoff date written into the Act -- this ground is closed to anyone who was not already resident in Bermuda before that date, regardless of how long they have lived there since.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_status_application"
+        },
+        {
+          "id": "bmslr_10yr_preceding",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires at least 10 years' residence immediately preceding the application, in addition to the residence-since-1989 requirement.",
+          "fix_path": null,
+          "fix_time_months": 120,
+          "source_id": "gov_bm_status_application"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form BSA04 or Form 5(2), completed in black or blue ink", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of continuous residence since 31 July 1989", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Fee: $630.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "continuous residence since 31 July 1989, plus 10 years immediately preceding application",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_status_application",
+      "tier": 1,
+      "url": "https://www.gov.bm/online-services/bermudian-status-application",
+      "title": "Government of Bermuda -- Bermudian Status Application: Section 20B long-term residence ground (resident since 31 July 1989, plus 10 years immediately preceding application), fee schedule",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build. See bm_status_descent.json's notes for why leads_to_citizenship is modelled as false. IMPORTANT: this is effectively a closed/legacy provision for NEW applicants going forward -- the fixed 31 July 1989 cutoff date means nobody who arrived in Bermuda after that date can ever use this specific ground, no matter how many decades they subsequently reside there. It remains 'published' rather than 'closed' because the Department of Immigration's own current application page still lists it as an active, applicable ground (for the shrinking pool of people who do meet the 1989 cutoff) -- this is not a route a newly-arrived resident should expect to age into, and that distinction is flagged here rather than left implicit in the date field alone."
+}

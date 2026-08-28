@@ -1,0 +1,79 @@
+{
+  "id": "pa_visitor_visa",
+  "country": "PA",
+  "name": "Tourist / Visa-Exempt Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "no_visa_required",
+      "name": "Nationals of 100+ visa-exempt countries",
+      "requirements": [
+        {
+          "id": "pav_exempt",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_exempt_nationality",
+          "hard": true,
+          "blocker_text": "Nationals of over 100 countries (most of the Americas and Western countries) may enter Panama visa-free for up to 3 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_panama_visas"
+        }
+      ]
+    },
+    {
+      "id": "visa_exemption_stamp",
+      "name": "Holders of a valid Canada/US/Australia/South Korea/Japan/UK/Singapore/EU visa",
+      "requirements": [
+        {
+          "id": "pav_exemption",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "holds_valid_visa_from_designated_country",
+          "hard": true,
+          "blocker_text": "Nationals who are not otherwise visa-exempt, but hold a valid visa from Canada, the US, Australia, South Korea, Japan, the UK, Singapore, or an EU country, may enter visa-free for up to 30 days, subject to proof of economic solvency of at least USD 500 (Decreto Ejecutivo No. 521).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_panama_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of economic solvency (USD 500 minimum, for the visa-exemption-stamp group)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 30 or 90 days depending on group",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "embassy_panama_visas",
+      "tier": 1,
+      "url": "https://www.embassyofpanama.org/visas",
+      "title": "Embassy of Panama -- Visa categories: visa-exempt nationalities (90 days), visa-exemption stamp for designated-visa holders (30 days, USD 500 solvency)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. Panama also has 'Authorized Visa' (up to 60 business days processing, African/Middle Eastern/South Asian nationals) and 'Stamped Visa' (faster, for Cuba/Dominican Republic/Philippines/Venezuela and others) categories confirmed at tier-1 -- not modelled as separate route files here since they are visa-required variants of the same visit purpose rather than distinct legal statuses, but flagged for completeness."
+}

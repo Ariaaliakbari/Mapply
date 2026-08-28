@@ -1,0 +1,85 @@
+{
+  "id": "nz_permanent_resident_visa",
+  "country": "NZ",
+  "name": "Permanent Resident Visa",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzprv2_holding",
+          "attribute": "months_holding_resident_visa",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Held a Resident Visa for at least 2 years in a row, and either currently hold it or it expired within the last 90 days.",
+          "fix_path": "Hold a Resident Visa continuously for 2 years.",
+          "fix_time_months": 24,
+          "source_id": "inz_permanent_resident_visa"
+        },
+        {
+          "id": "nzprv2_commitment",
+          "attribute": "days_in_nz_per_year_last_2yr",
+          "operator": ">=",
+          "value": 184,
+          "hard": true,
+          "blocker_text": "Evidence of commitment to New Zealand -- the time-based method requires at least 184 days in each of the last 2 years in NZ (four alternative commitment methods exist besides this one).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_permanent_resident_visa"
+        },
+        {
+          "id": "nzprv2_character",
+          "attribute": "has_good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character assessment, which may require police certificates, and compliance with existing Resident Visa conditions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_permanent_resident_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 2 years holding a Resident Visa", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel records showing commitment to NZ (e.g. 184+ days/year)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police certificate(s)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite; no ongoing conditions once granted",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_permanent_resident_visa",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/permanent-resident-visa",
+      "title": "Immigration New Zealand -- Permanent Resident Visa: 2-year Resident Visa holding requirement, 5 alternative commitment-to-NZ evidence methods (184+ days/year modeled here), good character assessment, removes travel-condition expiry, ~80% processed within 2 weeks",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). This is the conversion step from a conditional Resident Visa (granted by nz_skilled_migrant_category.json, nz_partner_resident_visa.json, nz_active_investor_plus.json, or nz_parent_resident_visa.json) to unconditional permanent residence -- distinct from a first-instance PR grant. Four other commitment-evidence methods besides the 184-days/year figure exist (e.g. tax residency, ongoing NZ business) but were not independently detailed in this pass; the time-based method is modeled as representative since it was the one confirmed with an exact figure. citizenship_after_months (36) reflects that most Resident Visa holders will have already accrued much of NZ's 5-year/1,350-day citizenship clock (see nz_citizenship_by_grant.json) by the time they reach Permanent Resident Visa status at the 2-year mark -- modeled as an approximate remaining-time estimate, not a separate independent bar."
+}

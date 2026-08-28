@@ -1,0 +1,62 @@
+{
+  "id": "eg_student_visa",
+  "country": "EG",
+  "name": "Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "egst_enrollment",
+          "attribute": "has_school_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a copy of school/university registration, plus standard visa application materials (passport, photos).",
+          "fix_path": "Secure enrollment at an Egyptian educational institution.",
+          "fix_time_months": null,
+          "source_id": "egypt_embassy_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "School/university registration confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid passport and photo", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Not specified by source; presumed to track enrollment duration, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["eg_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "egypt_embassy_visas",
+      "tier": 1,
+      "url": "https://egyptembassy.net/consular-services/visas-travel/6874-2/",
+      "title": "Embassy of Egypt, Washington DC -- Consular Services: student visa requires school registration copy; the source does not detail duration or work-rights specifics",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). This is a thin file: the tier-1 embassy source confirms the visa category exists and its core document requirement, but does not state a duration, financial-solvency threshold, or work-rights policy -- those fields are left conservative/unconfirmed (duration marked presumed, work_rights 'none') rather than guessed at a specific figure. A student residence permit (obtained after entry, separate from the entry visa itself) likely governs the actual duration and conditions in practice -- not independently located and fetched at tier-1 precision in this pass, flagged as a follow-up gap."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "mx_permanent_residence_direct_pensioner",
+  "country": "MX",
+  "name": "Permanent Resident Visa -- Retiree/Pensioner (Direct)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxpp_income_or_balance",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "pension_income_over_500_days_min_wage_or_balance_over_20000_days_min_wage",
+          "hard": true,
+          "blocker_text": "Requires either an average monthly bank balance equivalent to 20,000 days of Mexico City's general minimum wage, or pension income exceeding 500 days of that wage per month. (A related, separately-sourced INM trámite for changing FROM temporary TO permanent residence cites a similar but not identical pensioner threshold of 25,000/500 UMA units -- the two figures were not reconciled in this pass; both are cited honestly rather than merged.)",
+          "fix_path": "Document qualifying pension income or savings balance.",
+          "fix_time_months": null,
+          "source_id": "gob_mx_migratory_procedures"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Pension statements or bank balance documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "gob_mx_migratory_procedures",
+      "tier": 1,
+      "url": "https://www.gob.mx/cms/uploads/attachment/file/202842/Migratory_procedures..pdf",
+      "title": "Government of Mexico -- Migratory procedures overview (Permanent Resident category: retiree/pensioner and family-unity grounds)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. This is a DIRECT permanent-residence route obtainable from outside Mexico via consular application on retiree/pensioner grounds -- distinct from mx_permanent_residence_via_temporary, which is an in-country upgrade for people who already hold Temporary Resident status. Both are real, separately documented at tier-1, and are kept as separate route files since they are reached differently (consular application from abroad vs. INM status-change application from within Mexico) even though the financial test is similar. citizenship_after_months (60) reflects Mexico's standard 5-year naturalisation-by-residence requirement (see mx_naturalisation_residence), not a pensioner-specific shortcut."
+}

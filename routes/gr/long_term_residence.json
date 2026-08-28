@@ -1,0 +1,100 @@
+{
+  "id": "gr_long_term_residence",
+  "country": "GR",
+  "name": "EU Long-Term Resident Status",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grltr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 consecutive years of lawful residence in Greece. For international protection beneficiaries, half the period between lodging the asylum application and recognition counts (or the full period if the asylum procedure exceeded 18 months).",
+          "fix_path": "Accrue 5 consecutive years of lawful residence.",
+          "fix_time_months": 60,
+          "source_id": "aida_gr_long_term_residence"
+        },
+        {
+          "id": "grltr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "income_at_least_minimum_wage_plus_10pct_per_dependent",
+          "hard": true,
+          "blocker_text": "Requires sufficient income (without recourse to social assistance) at least equal to the annual minimum-wage income, increased by 10% per sponsored family member.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aida_gr_long_term_residence"
+        },
+        {
+          "id": "grltr_insurance",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "full_health_insurance_held",
+          "hard": true,
+          "blocker_text": "Requires full health insurance covering the same benefits provided to Greek nationals, for the applicant and family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aida_gr_long_term_residence"
+        },
+        {
+          "id": "grltr_integration",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "greek_language_and_history_knowledge_or_12_years_residence",
+          "hard": true,
+          "blocker_text": "Requires either good knowledge of the Greek language plus knowledge of Greek history/civilisation, OR 12 years of legal residence in lieu of the language/integration test. No formal standardised language exam is otherwise mandated by this route.",
+          "fix_path": "Demonstrate Greek language/integration knowledge, or wait until 12 years of residence is reached.",
+          "fix_time_months": null,
+          "source_id": "aida_gr_long_term_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous lawful residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Income and insurance documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Integration evidence (language/history knowledge, or 12-year residence proof)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed (EU long-term resident status is indefinite by EU Directive 2003/109/EC design, though the Greek permit card itself is periodically renewed in most member states)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "aida_gr_long_term_residence",
+      "tier": 3,
+      "url": "https://asylumineurope.org/reports/country/greece/content-international-protection/status-and-residence/long-term-residence/",
+      "title": "Asylum Information Database (AIDA/ECRE) -- Greece: Long-term residence (5-year requirement, income/insurance thresholds, integration test or 12-year alternative)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. STATUS SET TO DRAFT: sourced from AIDA/ECRE, a well-regarded specialist legal-research database, but not itself a Greek government or EU-institution source (kept at tier 3, not tier 2, since ECRE is an NGO umbrella rather than an intergovernmental body) -- migration.gov.gr's own residence-permits index page was fetched in this pass but did not cover EU long-term residence content directly. pr_after_months set to 0 and leads_to_pr false: this route IS effectively the settled/PR-equivalent status itself in the EU long-term-residence framework, not a stepping stone to a separate PR category -- modelled as its own terminal settled status with a path onward only to naturalisation."
+}

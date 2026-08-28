@@ -1,0 +1,64 @@
+{
+  "id": "cw_student_permit",
+  "country": "CW",
+  "name": "Study/Internship Residence Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cwsp_purpose",
+          "attribute": "enrollment_status",
+          "operator": "exists",
+          "value": "studying_or_interning_in_curacao",
+          "hard": true,
+          "blocker_text": "A person intending to study or undertake an internship in Curacao must submit a request for a residence permit for the purpose of study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_stage_studie"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Payment order", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Guarantee declaration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Student declaration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigrationcur_stage_studie",
+      "tier": 1,
+      "url": "https://immigrationcur.org/en/dep/stage-studie-2/",
+      "title": "Immigratiedienst Curacao -- Stage/Studie (Internship/Study) residence permit landing page",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. Another thin official source: fee, exact duration, and student-work-rights details were not present in the fetched content beyond confirming the category exists and requires a guarantee declaration and student declaration alongside the standard form. work_rights is conservatively 'none' pending confirmation of any student-work-permit carve-out (several other countries in this dataset, e.g. Anguilla and Malta, allow limited student work; this was not confirmed for Curacao in this pass)."
+}

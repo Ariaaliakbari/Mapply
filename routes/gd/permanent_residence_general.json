@@ -1,0 +1,69 @@
+{
+  "id": "gd_permanent_residence_general",
+  "country": "GD",
+  "name": "Permanent Residence -- Standard Route",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["gd_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gdprg_residence",
+          "attribute": "months_in_country_out_of_last_36",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires lawful residence for at least 2 out of the preceding 3 years, with a minimum of 3 consecutive months of physical presence each qualifying year.",
+          "fix_path": "Accumulate 2 years of lawful residence within a 3-year window, with at least 3 consecutive months present each qualifying year.",
+          "fix_time_months": 24,
+          "source_id": "osher_gd_permanent_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport and birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance certificates (countries resided in 6+ months over the past decade)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "12 months of bank statements", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Government fee (approx. US$2,780)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5-year renewable residency card",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "minimum 3 consecutive months' physical presence per qualifying year",
+    "switchable_to": ["gd_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "osher_gd_permanent_residency",
+      "tier": 3,
+      "url": "https://osheradvisors.com/blog/grenada-permanent-residency/",
+      "title": "Osher Advisors -- Grenada Permanent Residency: standard route requiring 2 of the preceding 3 years' lawful residence (minimum 3 consecutive months/year), ~US$2,780 government fee, 4-12 month processing, residency card renews every 5 years, revoked after 2+ years' absence or criminal conduct",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Grenada's initial build. STATUS: DRAFT -- sourced only to a tier-3 law firm blog; no official gov.gd or Immigration Department page describing Permanent Residency requirements was located (the Royal Grenada Police Force Immigration Department page returned an error on fetch). revoked_after_absence detail (2+ years) retained in evidence/notes rather than modelled as a separate field. citizenship_after_months (84 = 7 years) mirrors the naturalisation residence figure (see gd_naturalisation.json) as the nearest onward citizenship pathway -- not confirmed that PR time counts directly toward that clock."
+}

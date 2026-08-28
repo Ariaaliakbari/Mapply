@@ -1,0 +1,76 @@
+{
+  "id": "bg_citizenship_by_marriage",
+  "country": "BG",
+  "name": "Naturalisation via Marriage to a Bulgarian Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Marriage to a Bulgarian citizen does NOT change the foreign spouse's citizenship automatically (Citizenship Act Article 5). It instead reduces the residence bar for standard naturalisation from 5 to 3 years of permanent residence, provided the marriage has also lasted at least 3 years.",
+    "evidence_hint": "Marriage certificate; proof of at least 3 years of permanent residence and 3 years of marriage."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgm_marriage_duration",
+          "attribute": "months_married_to_bg_citizen",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Must be legally married to a Bulgarian citizen for at least 3 years (Citizenship Act Article 13). Available equally regardless of the spouse's or applicant's sex -- the Act does not distinguish by gender.",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "citizenship_act"
+        },
+        {
+          "id": "bgm_residence",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires 3 years holding PERMANENT residence status (reduced from the standard route's 5 years), which itself requires prior years of long-term residence to obtain -- this is a reduced naturalisation bar, not an accelerated marriage-only grant.",
+          "fix_path": "Hold permanent residence status continuously for 3 years while married to a Bulgarian citizen.",
+          "fix_time_months": 36,
+          "source_id": "citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 3 years' permanent residence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/BUL%20Bulgarian%20Citizenship%20Act%20(version%202002%20English).pdf",
+      "title": "Bulgaria -- Bulgarian Citizenship Act, Article 5 (marriage does not automatically change citizenship) and Article 13 (reduced 3-year-permanent-residence naturalisation bar for those married 3+ years to a Bulgarian citizen)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Unlike some countries in this dataset with a genuinely gender-restricted or near-automatic marriage-to-citizenship grant, Bulgaria's marriage route is gender-neutral but is really just a REDUCED naturalisation threshold (3 years permanent residence + 3 years marriage, vs. the standard 5 years permanent residence) -- not a fast automatic grant. dual_citizenship_allowed modeled FALSE for consistency with bg_naturalisation.json's standard route, since Article 13 does not appear to exempt this route from Article 12's prior-citizenship-release condition; this was not explicitly re-confirmed for Article 13 specifically and is flagged as an inference from the general naturalisation renunciation rule."
+}

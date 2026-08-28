@@ -1,0 +1,65 @@
+{
+  "id": "se_citizenship_by_descent",
+  "country": "SE",
+  "name": "Citizenship by Descent (Automatic, Born After 1 April 2015)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born on or after 1 April 2015 automatically acquires Swedish citizenship if either parent is a Swedish citizen at the time of birth, or if a deceased parent was Swedish at the time of their death -- regardless of where the child is born, the parents' marital status, or gender.",
+    "evidence_hint": "Birth certificate; parent's proof of Swedish citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Child of a Swedish citizen parent (born after 1 April 2015)",
+      "requirements": [
+        {
+          "id": "sed_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_se_citizen_parent",
+          "hard": true,
+          "blocker_text": "Either parent must be a Swedish citizen at the time of the child's birth (or have been Swedish at time of death, if deceased) -- gender- and marital-status-neutral, and independent of birthplace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_auto_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Swedish citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_auto_citizenship",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/swedish-citizenship/citizenship-for-children/automatic-citizenship-for-children.html",
+      "title": "Swedish Migration Agency -- When does a child automatically become a Swedish citizen?: post-1-April-2015 gender-neutral either-parent rule vs. the more complex, gender-asymmetric pre-2015 rules",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). This file models ONLY the current, simplified post-1-April-2015 rule. The SAME source confirms the pre-2015 rules were genuinely gender-asymmetric and worth flagging for historical/comparative context: a Swedish MOTHER always passed on citizenship automatically (born in Sweden or abroad), while a Swedish FATHER's child needed the parents to be married at the time of birth (if born abroad) for automatic citizenship -- an unmarried Swedish father's child born abroad did not automatically become a citizen and required the father to file a notification. That older regime is not modeled as a live route here since anyone born after 1 April 2015 falls under the current gender-neutral rule and the pre-2015 rule is now a historical/legacy determination rather than a route a person is actively pursuing today; flagged for completeness rather than built as a separate file."
+}

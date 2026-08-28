@@ -1,0 +1,86 @@
+{
+  "id": "rs_student_permit",
+  "country": "RS",
+  "name": "Temporary Residence -- Studying",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rssp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmation of enrollment at a higher education institution accredited by the Serbian Ministry of Education.",
+          "fix_path": "Obtain admission and enrollment confirmation from an accredited Serbian institution.",
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        },
+        {
+          "id": "rssp_means",
+          "attribute": "has_sufficient_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of subsistence for the duration of study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        },
+        {
+          "id": "rssp_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of health insurance valid in Serbia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment confirmation from an accredited institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of subsistence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid personal/travel document, photo, residential address registration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable for the duration of study",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "counts toward permanent residence's 3-year continuous-residence requirement if approved on the basis of temporary residence",
+    "switchable_to": ["rs_permanent_residence", "rs_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "mup_temp_residence",
+      "tier": 1,
+      "url": "https://www.mup.gov.rs/wps/portal/en/information/temporary+residence/temporary+residence",
+      "title": "Serbian Ministry of Interior (MUP) -- Temporary residence grounds, including studying: requires confirmation of enrollment at a Ministry of Education-accredited institution, plus proof of subsistence and health insurance; also covers schooling, Serbian language courses, student/pupil exchange, and scientific research as separate education-based grounds",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). Modeled around the general study ground; MUP's page also lists schooling, Serbian-language-course attendance, student/pupil exchange programs, and scientific research as distinct education-related grounds under the same general 'up to 3 years' temporary residence framework, not modeled as separate files here to avoid near-duplicate routes. work_rights modeled 'none' since MUP's study ground did not describe any work authorization bundled with the student permit (unlike some other countries in this dataset); no explicit part-time-work allowance was found in the tier-1 material reviewed. citizenship_after_months (36) reflects the statutory 3-year domicile figure in the Law on Citizenship (see rs_naturalisation.json) rather than a study-specific track -- disclosed there that the practical total timeline is described by tier-3 sources as longer in most cases."
+}

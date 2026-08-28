@@ -1,0 +1,135 @@
+{
+  "id": "vg_naturalisation_botc",
+  "country": "VG",
+  "name": "Naturalisation as a British Overseas Territories Citizen",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "mother_born_in_territory",
+      "name": "Applicant's mother born in the Territory",
+      "requirements": [
+        {
+          "id": "vgn_mother_born",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "mother_born_in_territory",
+          "hard": true,
+          "blocker_text": "Applicant's mother was born in the Virgin Islands.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "belonger_status_section_16",
+      "name": "Granted Belonger Status under Section 16",
+      "requirements": [
+        {
+          "id": "vgn_s16_belonger",
+          "attribute": "holds_belonger_status_section_16",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant was granted Belonger Status under Section 16 of the Immigration and Passport Ordinance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "deemed_to_belong_constitution",
+      "name": "Deemed to belong under the Constitution Order",
+      "requirements": [
+        {
+          "id": "vgn_constitution",
+          "attribute": "deemed_to_belong_under_constitution_order",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant is deemed to belong to the Virgin Islands under the Virgin Islands (Constitution) Order.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "spouse_of_botc",
+      "name": "Spouse of a British Overseas Territories Citizen",
+      "requirements": [
+        {
+          "id": "vgn_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_botc",
+          "hard": true,
+          "blocker_text": "Applicant is the spouse of a British Overseas Territories Citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "certificate_of_residence",
+      "name": "Holder of a Certificate of Residence",
+      "requirements": [
+        {
+          "id": "vgn_residence_cert",
+          "attribute": "holds_certificate_of_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant holds a Certificate of Residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form, checklist, and language requirement (collected in person)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth/marriage certificates", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of status (Belonger Card, Residence Certificate, etc., per ground)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Financial records and employment verification", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearances (local and foreign)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: $150 (mother born in territory), $400 (Section 16 Belonger Status), $500 (deemed to belong under Constitution Order), $500 (spouse of BOTC), or $700 (Certificate of Residence) -- stamp and application fees combined", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Attendance at naturalisation ceremony (Oath of Allegiance / Pledge of Loyalty)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 6,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "bvi_gov_naturalisation",
+      "tier": 1,
+      "url": "https://www.bvi.gov.vg/services/application-naturalisation-british-overseas-territory-citizen",
+      "title": "Government of the Virgin Islands -- Application for Naturalisation as British Overseas Territory Citizen: five eligibility categories with differentiated fees, 12-step process, ~6-month processing, naturalisation ceremony requirement",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the British Virgin Islands' initial build. This is the genuine British Overseas Territories Citizenship (BOTC) track -- distinct from the local Belonger status routes (vg_belonger_status_descent.json, vg_belonger_status_marriage.json, vg_belonger_status_residence.json) and from Residence Status (vg_residence_status.json), all of which feed INTO this route as eligibility grounds rather than being citizenship themselves. Unusually well-documented among this session's five BOTs: unlike Montserrat's, Cayman's, and Bermuda's equivalent naturalisation routes (all marked draft for lacking substantive eligibility detail beyond process/fee), this gov.vg page gives five explicit, named eligibility categories with distinct fees -- so this route is published rather than draft. citizenship_after_months (6) reflects the source's own stated ~6-month processing timeline from application to ceremony, not a residence-accrual period (the residence/status accrual itself happens under whichever feeder route -- Belonger status, Residence Status, marriage to a BOTC, etc. -- the applicant is naturalising from). The 'mother born in the territory' category is notable as a narrower, specifically matrilineal ground distinct from the general descent-based Belonger Status route -- flagged as a genuine, distinctly-fee-scheduled category rather than folded into vg_belonger_status_descent.json, since naturalisation via this ground is a different application (BOTC status) from Belonger status itself."
+}

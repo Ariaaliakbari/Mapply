@@ -1,0 +1,101 @@
+{
+  "id": "it_digital_nomad_visa",
+  "country": "IT",
+  "name": "Digital Nomad / Remote Worker Visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Self-employed highly-qualified remote worker",
+      "requirements": [
+        {
+          "id": "itdn_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 24789, "currency": "EUR", "unit": "year", "note": "Defined as 3x the minimum income threshold for exemption from Italy's healthcare-contribution requirement. One Italian consulate (New York) states EUR 24,789; another (London) states EUR 25,500 for the same rule -- both are official esteri.it pages and this discrepancy is not resolved here." },
+          "hard": true,
+          "blocker_text": "Requires annual income of at least approximately EUR 24,789 (three times the minimum threshold for exemption from Italy's healthcare contribution) from remote self-employment for clients based outside Italy.",
+          "fix_path": "Increase documented self-employment/remote income to the required threshold.",
+          "fix_time_months": null,
+          "source_id": "esteri_nyc_dnv"
+        },
+        {
+          "id": "itdn_qualification",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "degree_or_regulated_profession_or_experience",
+          "hard": true,
+          "blocker_text": "Requires a recognised bachelor's, master's or doctoral degree; an Italian-recognised regulated-profession licence; or at least 5 years' relevant professional experience (reduced to 3 years for ICT specialists, executives and senior managers).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "esteri_nyc_dnv"
+        },
+        {
+          "id": "itdn_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "health_insurance_min_30000_eur",
+          "hard": true,
+          "blocker_text": "Requires private health insurance covering medical expenses, hospitalisation, and repatriation with minimum coverage of EUR 30,000, valid for the full stay -- described by the source consulate as the single most common reason applications are rejected.",
+          "fix_path": "Purchase qualifying health insurance before applying.",
+          "fix_time_months": null,
+          "source_id": "esteri_nyc_dnv"
+        },
+        {
+          "id": "itdn_accommodation",
+          "attribute": "current_location",
+          "operator": "exists",
+          "value": "registered_lease_or_deed_full_duration",
+          "hard": true,
+          "blocker_text": "Requires a registered lease, rental contract, or property deed in the applicant's own name covering the full duration of the requested stay; hotel bookings or third-party hospitality letters are explicitly not accepted.",
+          "fix_path": "Secure a registered lease or property deed before applying.",
+          "fix_time_months": null,
+          "source_id": "esteri_nyc_dnv"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Degree certificate, professional licence, or documented 5 years' experience (3 for ICT/senior management)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of annual income above the threshold (tax returns, client contracts)", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Private health insurance certificate, minimum EUR 30,000 coverage", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Registered lease, rental contract, or property deed covering the full stay", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-year permesso di soggiorno, renewable locally while employment, housing and insurance requirements are maintained",
+    "renewable": true,
+    "work_rights": "restricted",
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "esteri_nyc_dnv",
+      "tier": 1,
+      "url": "https://consnewyork.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visas-to-enter-italy/digital-nomad-remote-worker-visa/",
+      "title": "Consulate General of Italy in New York (esteri.it) -- Digital Nomad / Remote Worker Visa: income, qualification, health insurance and accommodation requirements",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "esteri_london_dnv",
+      "tier": 1,
+      "url": "https://conslondra.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/digital-nomad-visa-for-self-employed-only/",
+      "title": "Consulate General of Italy in London (esteri.it) -- Digital nomad visa (for self-employed only), citing a EUR 25,500 income threshold",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, added in this pass: Italy had 11 other routes built but no route for its Digital Nomad Visa, in force since the 4 April 2024 implementing decree under Article 27-quater of Legislative Decree 286/1998 (the same statute cited by esteri.it's New York page). LIVE DISCREPANCY, flagged rather than silently resolved: two different Italian consulates' own esteri.it pages give two different income figures for the same rule -- New York states EUR 24,789, London states EUR 25,500 -- both tier-1, both presumably restating the same year's statutory reference figure with some transcription or rounding difference between consulates; not resolved to a single number in this pass, and applicants should confirm the current figure with their own consulate before relying on either. family_can_join and family_can_work are deliberately omitted rather than guessed, and dual_citizenship_allowed is left null: no source fetched in this pass addressed dependants or dual citizenship specifically for this route, as distinct from Italy's general family-reunification rules. leads_to_pr (60 months) and leads_to_citizenship (120 months) are NOT confirmed by a source specific to this visa -- they are inferred from Italy's general rule that ordinary work-based residence permits count toward the 5-year EU long-term residence permit and the 10-year non-EU naturalisation-by-residence threshold (Testo Unico Immigrazione), absent any source found stating an explicit carve-out for this route (unlike Thailand's DTV or the UAE's Virtual Work Visa, where sources positively state no such path exists). This inference should be treated as the weakest-sourced claim in this file and revisited if a route-specific source surfaces. The 120-day processing time and the characterisation of the accommodation requirement as the leading rejection cause are both stated plainly by the source consulate."
+}

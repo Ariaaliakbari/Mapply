@@ -1,0 +1,88 @@
+{
+  "id": "nz_parent_resident_visa",
+  "country": "NZ",
+  "name": "Parent Resident Visa",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For parents of an adult New Zealand citizen or resident sponsor, via a two-stage Expression of Interest then invitation-to-apply process, subject to an annual cap.",
+    "evidence_hint": "Adult child sponsor's income/support evidence; family relationship evidence; health, character, and English-language evidence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzparv_sponsor",
+          "attribute": "has_adult_child_sponsor_meeting_income_threshold",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "The sponsoring adult child (a NZ citizen or resident) must meet a minimum income threshold -- the exact current figure was not confirmed to tier-1 precision in this pass, only referenced generically as 'sponsorship (including minimum income thresholds)'.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_parent_visa_opsmanual"
+        },
+        {
+          "id": "nzparv_quota",
+          "attribute": "quota_slot_available",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Capped at 2,500 places per year across the Parent Category; selection is via an Expression of Interest pool with invitations issued against the annual cap.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_parent_visa_opsmanual"
+        },
+        {
+          "id": "nzparv_character",
+          "attribute": "meets_health_character_english_requirements",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health, character, English language, and family-relationship requirements must be met and assessed as credible at the EOI stage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_parent_visa_opsmanual"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Adult child sponsor's income and identity evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Parent-child relationship evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health, character, and English-language evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Resident Visa with travel conditions, convertible to Permanent Resident Visa",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_permanent_resident_visa", "nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_parent_visa_opsmanual",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/opsmanual/86045.htm",
+      "title": "Immigration New Zealand Operations Manual -- Parent Category residence instructions: two-stage EOI/invitation process, 2,500/year cap, sponsor income threshold, health/character/English/relationship requirements",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). STATUS: DRAFT -- the fetched Operations Manual page displayed an archival timestamp (12 October 2022) and Immigration New Zealand has published news articles since referencing 'changes to the Parent Resident Visa Category', so the specific sponsor-income figure and current programme details could not be confirmed as up to date in this pass; the 2,500/year cap and general structure (EOI, health/character/English) are treated as more durable and kept as separate hard requirements, while the income-threshold figure is marked non-hard pending a current-dated source."
+}

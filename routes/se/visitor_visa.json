@@ -1,0 +1,102 @@
+{
+  "id": "se_visitor_visa",
+  "country": "SE",
+  "name": "Schengen Visa / Visa-Free Entry (Up to 90 Days)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_exempt",
+      "name": "Schengen citizens / visa-exempt nationalities",
+      "requirements": [
+        {
+          "id": "sev_exempt",
+          "attribute": "nationality_visa_required",
+          "operator": "==",
+          "value": false,
+          "hard": false,
+          "blocker_text": "No visa is needed for Schengen-area citizens or nationals of countries on Sweden's visa-exempt list (published by the Swedish government); an official checkable list determines status by nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_schengen_visa"
+        }
+      ]
+    },
+    {
+      "id": "visa_required",
+      "name": "Schengen Visa (Type C)",
+      "requirements": [
+        {
+          "id": "sev_passport",
+          "attribute": "passport_validity_months_after_visa_expiry",
+          "operator": ">=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 3 months after the visa's expiration date.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": null,
+          "source_id": "migrationsverket_schengen_visa"
+        },
+        {
+          "id": "sev_insurance",
+          "attribute": "has_schengen_medical_insurance_eur",
+          "operator": ">=",
+          "value": 30000,
+          "hard": true,
+          "blocker_text": "Requires medical insurance valid across the Schengen area, covering at least EUR 30,000 for emergencies.",
+          "fix_path": "Purchase qualifying travel medical insurance.",
+          "fix_time_months": null,
+          "source_id": "migrationsverket_schengen_visa"
+        },
+        {
+          "id": "sev_funds",
+          "attribute": "daily_funds_sek",
+          "operator": ">=",
+          "value": 700,
+          "hard": true,
+          "blocker_text": "Requires SEK 700 per day of the visit, reduced if accommodation/meals are prepaid or a host provides financial support documentation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_schengen_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Schengen visa application form (119031), for non-exempt nationalities", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds and return travel", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Invitation or booking confirmation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Up to 90 days within any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["se_work_permit", "se_student_permit", "se_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_schengen_visa",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/visiting-sweden/visiting-sweden-for-up-to-90-days-entry-visa.html",
+      "title": "Swedish Migration Agency -- Apply for a Schengen visa (visiting Sweden for up to 90 days): visa-exempt list, passport validity, EUR 30,000 medical insurance, SEK 700/day funds requirement, EUR 90 fee",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). Sweden is a Schengen member; the visa-exempt nationality list is set at the EU level and published by the Swedish government at a linked URL not independently fetched in this pass -- modeled as hard:false since the specific nationality list wasn't captured at tier-1 precision within this file. A separate visitor's residence permit exists for stays over 90 days (a long-stay visit permit, distinct from a Schengen visa) -- not modeled as a separate file here since it is a narrow extension mechanism rather than a distinct settlement pathway."
+}

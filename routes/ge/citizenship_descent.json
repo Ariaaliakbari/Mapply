@@ -1,0 +1,65 @@
+{
+  "id": "ge_citizenship_descent",
+  "country": "GE",
+  "name": "Citizenship by Descent (Origin)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child acquires Georgian citizenship automatically if, at the time of the child's birth, at least one parent held Georgian citizenship (Article 10). Special provisions also cover children born via surrogacy in Georgia where neither parent's country of citizenship would recognise the child, and children of stateless persons with Georgian status. Article 11 additionally deems a minor found in Georgia with unknown parents to be a Georgian citizen unless proven otherwise.",
+    "evidence_hint": "Parent's proof of Georgian citizenship at the time of the child's birth; birth certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gecd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires that at least one parent held Georgian citizenship at the time of the applicant's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_citizenship_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Georgian citizenship at time of applicant's birth", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "matsne_citizenship_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2342552",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Organic Law of Georgia on Georgian Citizenship, Articles 10-11",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. dual_citizenship_allowed left null: Article 3(3)'s general dual-citizenship restriction (limited to Articles 17 and 21(1)) suggests a child acquiring Georgian citizenship by descent while also acquiring a second nationality at birth (e.g. via the other parent or place of birth) may face the same restriction as ordinary naturalisation -- but this was not explicitly addressed for the descent case specifically in the text fetched, so left as an open question rather than asserted either way. Article 5 additionally confirms a parent's marriage/divorce does not affect a child's citizenship under this route -- a real, worth-noting protection, not modelled as a separate field."
+}

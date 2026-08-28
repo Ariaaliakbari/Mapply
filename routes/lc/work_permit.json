@@ -1,0 +1,90 @@
+{
+  "id": "lc_work_permit",
+  "country": "LC",
+  "name": "Work Permit (Permission to Undertake Employment)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lcw_job_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a valid job offer from a Saint Lucian employer willing to sponsor the permit; the permit must be obtained BEFORE the foreign worker arrives in Saint Lucia.",
+          "fix_path": "Secure a qualifying job offer from a Saint Lucian employer.",
+          "fix_time_months": null,
+          "source_id": "michalanders_work_permit"
+        },
+        {
+          "id": "lcw_labour_market_test",
+          "attribute": "employer_completed_labour_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must demonstrate that no suitable Saint Lucian or CARICOM national is available to perform the job.",
+          "fix_path": "Employer completes the labour-market test.",
+          "fix_time_months": null,
+          "source_id": "stlucia_studio_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed work permit application form", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Job offer letter or employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance certificate from home country", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical fitness certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of qualifications or experience", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary up to 12 months, or long-term 1-3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lc_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "michalanders_work_permit",
+      "tier": 3,
+      "url": "https://michalanders.com/how-to-get-a-work-permit-in-st-lucia/",
+      "title": "How to Get a Work Permit in St. Lucia (private guide): job offer requirement, 5-step process via the Labour Department, permit must be secured before arrival, self-employment requires a business plan",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "stlucia_studio_immigration",
+      "tier": 3,
+      "url": "https://stlucia.studio/immigration",
+      "title": "St. Lucia Business Guide -- Immigration & Visas: CARICOM-preferential fees (EC$2,000 vs EC$7,500 for non-CARICOM), EC$100 application fee, 4-6 week processing, permit categories (Temporary, Long-Term, Self-Employment, Entertainment, Intra-Company Transfer, Volunteer/NGO, Sports)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_lc_work_permit_unit",
+      "tier": 1,
+      "url": "https://www.govt.lc/ministries/education/work-permit-unit-labour-relations-",
+      "title": "Government of Saint Lucia -- Work Permit Unit (Labour Relations), Ministry of Education, Youth Development, Sports and Digital Transformation: confirms the unit's existence and ministry placement, but the page carries no requirement, fee, or process detail",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. STATUS: DRAFT -- the Department of Labour's own official brochure PDF ('Permission to Undertake Employment in Saint Lucia') could not be retrieved (blocked by the hosting site's robots.txt), and the official govt.lc Work Permit Unit page confirms only the unit's existence, not its substantive requirements. All hard-requirement sourcing therefore comes from private third-party guides (tier 3), not the government directly. CARICOM-preferential fee structure (EC$2,000 vs EC$7,500) mirrors the same pattern already modelled for Trinidad and Tobago's work permit and CSME mechanism this session. pr_after_months (60) reflects the 5-year continuous-residence PR pathway (see lc_permanent_residence.json) as the nearest confirmed onward route, not a work-permit-specific guarantee."
+}

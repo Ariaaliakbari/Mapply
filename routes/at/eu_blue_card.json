@@ -1,0 +1,77 @@
+{
+  "id": "at_eu_blue_card",
+  "country": "AT",
+  "name": "EU Blue Card",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A separate combined work-and-residence permit (implementing the EU Blue Card Directive) for highly qualified third-country nationals with a university degree (3+ years) or, for IT/service-management roles, equivalent professional experience, and a job offer meeting the salary threshold.",
+    "evidence_hint": "University degree (3+ year programme) or IT/service-management professional-experience evidence; job offer meeting salary threshold; employer declaration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atbc_salary",
+          "attribute": "annual_salary_eur",
+          "operator": ">=",
+          "value": 55678,
+          "hard": true,
+          "blocker_text": "Gross annual salary (including special payments) must be at least the average gross annual income of full-time employees -- EUR 55,678 for 2026.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_bluecard"
+        },
+        {
+          "id": "atbc_degree",
+          "attribute": "has_qualifying_degree_or_it_experience",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A university/tertiary degree of at least 3 years' duration is required, unless applying for an IT/service-management role, where 3+ years of relevant professional experience within the last 7 years may substitute.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_bluecard"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University degree certificate or IT professional-experience evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment contract meeting the salary threshold", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer declaration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "24 months, tied to a specific employer",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_permanent_residence", "at_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gv_at_bluecard",
+      "tier": 1,
+      "url": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/eubluecard/",
+      "title": "migration.gv.at -- EU Blue Card: 2026 salary threshold (EUR 55,678/year), degree/IT-experience requirement, 3 application channels, upgrade to Red-White-Red Card Plus after 21 months of qualifying employment within 24 months",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). Modeled as a distinct route from at_work_permit.json (Red-White-Red Card) since the EU Blue Card has a separate EU-directive legal basis, a flat salary threshold rather than a points system, and its own upgrade path (to Red-White-Red Card Plus after 21/24 months, granting unrestricted labour-market access) confirmed directly on the tier-1 source. work_rights modeled 'restricted' for the same employer-tie reason as at_work_permit.json."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "ge_family_reunification",
+  "country": "GE",
+  "name": "Family Reunification Residence Permit",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gefr_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being a close family member of an alien holding a Georgian residence permit, with proof of the family relationship (kinship).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_residence_permits"
+        },
+        {
+          "id": "gefr_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "income_at_least_2x_minimum_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires monthly income equal to at least 2 times Georgia's official minimum subsistence level.",
+          "fix_path": "Document qualifying monthly income before applying.",
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_residence_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of kinship (marriage/birth certificate)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of the sponsor's own valid residence permit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds (2x minimum subsistence level)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months to 1 year initially, extendable up to a cumulative 12 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_permanent_residence", "ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "sda_gov_ge_residence_permits",
+      "tier": 1,
+      "url": "https://sda.gov.ge/en/products/migration-residence-permits/",
+      "title": "Public Service Development Agency of Georgia (sda.gov.ge) -- Migration/Residence Permits",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is Article 15(c). This route is for family members of an alien residence-permit holder generally -- distinct from ge_permanent_residence's own spouse-of-Georgian-CITIZEN group, which is a different, stronger status reached directly (Article 15(g)), not via this permit. work_rights set 'none': not described as permitted in the source; not asserted absent confirmation. HONEST GAP: exact qualifying degrees of kinship beyond 'family member' were not itemised in the source fetched (unlike some other countries' spouse/minor-child/parent breakdowns in this dataset) -- a single, undifferentiated family_tie requirement is used rather than inventing a list."
+}

@@ -1,0 +1,123 @@
+{
+  "id": "ee_naturalisation",
+  "country": "EE",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ee_long_term_resident"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Naturalisation by residence",
+      "requirements": [
+        {
+          "id": "een_total_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Requires at least 8 years' residence in Estonia in total.",
+          "fix_path": "Accumulate at least 8 years of residence in Estonia.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_citizenship_adult"
+        },
+        {
+          "id": "een_continuous_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires at least the last 5 years of that residence to be on a permanent basis immediately preceding the application, held under a long-term residence permit or the right of permanent residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_citizenship_adult"
+        },
+        {
+          "id": "een_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "Requires passing the Estonian language proficiency examination at B1, unless exempt (education completed in Estonian).",
+          "fix_path": "Pass the Estonian language proficiency examination at B1.",
+          "fix_time_months": 6,
+          "source_id": "politsei_ee_citizenship_adult"
+        },
+        {
+          "id": "een_civics",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "constitution_and_citizenship_act_exam_pass",
+          "hard": true,
+          "blocker_text": "Requires passing an examination on the Estonian Constitution and the Citizenship Act.",
+          "fix_path": "Book and pass the Constitution and Citizenship Act examination.",
+          "fix_time_months": 2,
+          "source_id": "politsei_ee_citizenship_adult"
+        },
+        {
+          "id": "een_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "permanent_legal_income",
+          "hard": true,
+          "blocker_text": "Requires a permanent legal income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_citizenship_adult"
+        },
+        {
+          "id": "een_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires demonstrating loyalty to the Estonian state.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_citizenship_adult"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 years' total and 5 years' immediately-preceding residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Estonian language proficiency certificate (or exemption evidence)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Constitution and Citizenship Act examination pass certificate", "difficulty": "moderate", "typical_time_days": 60 },
+    { "document": "Registered place of residence in Estonia's Population Register", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_citizenship_adult",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/estonian-citizenship-for-an-adult",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Estonian citizenship for an adult: conditions",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. prerequisites points to ee_long_term_resident because the source explicitly requires the residence to be held 'on the basis of a long-term residence permit or the right of permanent residence' -- unlike Barbados, where the equivalent link was not confirmed and left null. dual_citizenship_allowed is left null rather than guessed: Estonia's general rule (via the Ministry of the Interior's citizenship overview) was not resolved to a clear tier-1 statement on whether a second, non-EU nationality may be retained -- multiple tier-3 sources describe a historically restrictive stance with a narrower reform track, not independently confirmed here. The 96-month (8-year) and 60-month (5-year continuous) tests are modelled as two separate hard requirements within the same group (both AND-required), rather than one combined figure, to keep each one individually traceable to its own blocker/fix_path."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "vc_residence_permit",
+  "country": "VC",
+  "name": "Residence Permit (Temporary or Permanent)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vcrp_application",
+          "attribute": "has_lawful_basis_for_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Non-nationals seeking temporary or permanent residency must apply through the Prime Minister's Office.",
+          "fix_path": "Submit a residence application to the Prime Minister's Office.",
+          "fix_time_months": null,
+          "source_id": "svghighcom_non_national"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form (Prime Minister's Office)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting documents per the (image-only, unreadable) official requirements PDF", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary or permanent, per application category (not further specified on available sources)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vc_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "svghighcom_non_national",
+      "tier": 1,
+      "url": "https://www.svghighcom.co.uk/site/Non-National.html",
+      "title": "High Commission for Saint Vincent and the Grenadines, UK -- Non-National: confirms both temporary and permanent residency categories exist and are applied for through the Prime Minister's Office, but gives no residence-duration figures, income thresholds, or category-specific criteria",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Vincent and the Grenadines' initial build. STATUS: DRAFT -- this is the thinnest-documented residence route built this session. The official 'Residence Work Permit and Citizenship Requirements' PDF (pmoffice.gov.vc) exists and is linked from the government's own Forms page, but repeated fetch attempts returned no extractable text (it appears to be a scanned image PDF without an OCR text layer) -- a genuine access limitation, not an absence of a real process. No distinction between the temporary and permanent categories' specific requirements was found on any accessible source. citizenship_after_months (84 = 7 years) mirrors the naturalisation residence figure (see vc_naturalisation.json) as the nearest onward citizenship pathway, not a confirmed rule that residence-permit time counts directly toward it."
+}

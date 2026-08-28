@@ -1,0 +1,113 @@
+{
+  "id": "mt_naturalisation",
+  "country": "MT",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["mt_work_sponsored_single_permit", "mt_long_term_residence", "mt_permanent_residence_mprp", "mt_family_reunification", "mt_start_up_residence"],
+    "minimum_months_held": 48,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mtn_recent_12mo",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Must have resided in Malta throughout the 12 months immediately preceding the date of application.",
+          "fix_path": "Accrue 12 continuous months of Malta residence immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "komunita_acquisition"
+        },
+        {
+          "id": "mtn_aggregate_4of6",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Must show an aggregate minimum of 4 years of residence during the 6 years preceding the application, in addition to the immediately-preceding 12 months.",
+          "fix_path": "Accrue an aggregate 4 years of residence within the preceding 6-year window.",
+          "fix_time_months": 48,
+          "source_id": "komunita_acquisition"
+        },
+        {
+          "id": "mtn_sponsors",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "two_sponsors_incl_one_designated_profession",
+          "hard": true,
+          "blocker_text": "Requires two sponsors: at least one from a designated profession (Member of Parliament, judge, magistrate, advocate, notary, doctor, senior public officer, police inspector or above, Armed Forces captain or above, or parish priest) and a second adult Maltese citizen.",
+          "fix_path": "Secure two qualifying sponsors.",
+          "fix_time_months": null,
+          "source_id": "komunita_acquisition"
+        },
+        {
+          "id": "mtn_language",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "adequate_maltese_or_english",
+          "hard": true,
+          "blocker_text": "Adequate knowledge of the Maltese or English language is required.",
+          "fix_path": "Demonstrate adequate Maltese or English language ability.",
+          "fix_time_months": null,
+          "source_id": "komunita_acquisition"
+        },
+        {
+          "id": "mtn_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": "clean",
+          "hard": true,
+          "blocker_text": "Good character required; overall suitability as a citizen is assessed at ministerial discretion.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "komunita_acquisition"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 12-month continuous plus 4-year aggregate residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two sponsor declarations", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Language competency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police conduct certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Form E application (EUR450 + EUR50 on collection)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "komunita_acquisition",
+      "tier": 1,
+      "url": "https://komunita.gov.mt/services/acquisition-of-citizenship/",
+      "title": "Agenzija Komunita Malta -- Acquisition of Citizenship: naturalisation requirements (12-month + 4-of-6-year residence, sponsors, language, character), Form E, Oath of Allegiance",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1. Notably unusual sponsor system for a modern naturalisation process: a first sponsor must come from a specific, colonial-administrative-style list of designated professions -- this is confirmed at tier-1, not an assumption. The 'suitable citizen' clause gives the Minister broad discretion beyond the listed objective criteria; selection_method kept as 'assessed' rather than 'automatic' for this reason even though most named criteria are checklist-style. Oath of Allegiance required before the grant is completed. prerequisites.minimum_months_held (48) and continuity_required (false) reflect the aggregate 4-of-6-year rule; the SEPARATE immediately-preceding 12-continuous-month rule is modelled as its own hard requirement (mtn_recent_12mo) since the schema's top-level prerequisites block cannot represent both a continuous tail and a non-continuous aggregate at once."
+}

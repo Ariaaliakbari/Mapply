@@ -1,0 +1,83 @@
+{
+  "id": "ar_permanent_residence",
+  "country": "AR",
+  "name": "Permanent Residence (Radicación)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ar_work_permit", "ar_rentista_residence", "ar_pensionado_residence", "ar_family_reunification"],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "mercosur",
+      "name": "MERCOSUR nationals",
+      "requirements": [
+        {
+          "id": "arpr_mercosur_years",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "MERCOSUR nationals need 2 years of valid temporary residence before applying for permanent residence.",
+          "fix_path": "Accumulate 2 years of valid temporary residence.",
+          "fix_time_months": 24,
+          "source_id": "migraciones_faq_residencias"
+        }
+      ]
+    },
+    {
+      "id": "non_mercosur",
+      "name": "Non-MERCOSUR nationals",
+      "requirements": [
+        {
+          "id": "arpr_nonmercosur_years",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Non-MERCOSUR nationals need 3 years of valid temporary residence before applying for permanent residence.",
+          "fix_path": "Accumulate 3 years of valid temporary residence.",
+          "fix_time_months": 36,
+          "source_id": "migraciones_faq_residencias"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of physical presence exceeding 50% of the authorized residence period", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid temporary residence documentation for the full qualifying period", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "Must be physically present in Argentina for more than 50% of the authorized residence period to transition from temporary to permanent status.",
+    "switchable_to": ["ar_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_faq_residencias",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/migraciones/preguntas-frecuentes-residencias",
+      "title": "Dirección Nacional de Migraciones -- Preguntas Frecuentes Residencias: 2-year (MERCOSUR) vs. 3-year (non-MERCOSUR) temporary residence thresholds for permanent residence, 50%+ physical presence requirement, RaDEX-only applications",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). Also confirmed on this same source but not modeled as separate requirement_groups here, since they are alternate qualifying bases rather than typical applicant paths: descent from an Argentine national (native, naturalized, or by-option) grants direct eligibility for permanent residence; recognized refugees with sufficient territorial attachment qualify; Brazilian nationals have a distinct basis under Law 26.240. citizenship_after_months modeled as 0 here because Ley 346's 2-year continuous-legal-residence naturalization bar (see ar_naturalisation.json) is typically already satisfied by the time someone reaches permanent residence via the non-MERCOSUR 3-year track, and exactly satisfied for MERCOSUR nationals at the 2-year mark -- naturalization eligibility does not require holding permanent residence specifically, only continuous legal residence, so the two tracks can complete close together rather than strictly sequentially."
+}

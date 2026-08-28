@@ -1,0 +1,89 @@
+{
+  "id": "rs_citizenship_by_marriage",
+  "country": "RS",
+  "name": "Admission to Citizenship -- Spouse of a Serbian Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["rs_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rscm_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_rs_citizen",
+          "hard": true,
+          "blocker_text": "Married to a citizen of the Republic of Serbia for at least 3 years (Article 17).",
+          "fix_path": "Remain married to a Serbian citizen for at least 3 years.",
+          "fix_time_months": 36,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rscm_permanent_residence",
+          "attribute": "has_approved_permanent_domicile",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold approved permanent domicile (permanent residence) in Serbia.",
+          "fix_path": "Obtain Serbian permanent residence.",
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rscm_statement",
+          "attribute": "has_filed_statement_considering_serbia_own_state",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Written statement declaring that the applicant considers Serbia to be their own state.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of approved permanent residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written statement recognizing Serbia as one's own state", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "paragraf_citizenship_law",
+      "tier": 1,
+      "url": "http://demo.paragraf.rs/demo/combined/Old/t/t2022_10/EN_010_2022_001.htm",
+      "title": "Paragraf.rs -- consolidated English text of the Law on Citizenship of the Republic of Serbia, Article 17: admission to citizenship for a foreigner married to a Serbian citizen for at least 3 years, holding approved permanent domicile, submitting the required statement",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). Gender-neutral on its face -- Article 17 refers to 'a foreigner married to a citizen' without specifying the sex of either spouse, unlike some other marriage-based citizenship provisions built earlier in this dataset (e.g. Morocco's Article 10). Requires holding PERMANENT residence (not merely temporary), which itself normally requires 3 years of prior temporary residence -- so, similarly to rs_naturalisation.json, the marriage route's literal 3-year marriage-duration figure can sit on top of a longer practical residence-permit timeline; not modeled as a separate hard requirement here since Article 17 itself does not state a minimum prior-residence duration, only that permanent domicile must be 'approved' at the time of application. dual_citizenship_allowed modeled null (unknown) since Article 17, unlike Article 14's naturalisation route, does not explicitly repeat the foreign-citizenship-release condition, but this was not independently confirmed either way in the source reviewed -- disclosed as a gap rather than guessed."
+}

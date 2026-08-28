@@ -1,0 +1,82 @@
+{
+  "id": "no_citizenship_by_descent",
+  "country": "NO",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born on or after 1 September 2006 with a Norwegian mother or father automatically becomes a Norwegian citizen at birth, regardless of birthplace or the parents' marital status. Different, more restrictive rules applied to children born before that date.",
+    "evidence_hint": "Birth certificate; parent's proof of Norwegian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_2006_or_later",
+      "name": "Born on or after 1 September 2006",
+      "requirements": [
+        {
+          "id": "nocd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_no_citizen_parent",
+          "hard": true,
+          "blocker_text": "Automatic citizenship at birth if either parent (mother or father) is a Norwegian citizen, regardless of birthplace or the parents' marital status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_norwegian_by_birth"
+        }
+      ]
+    },
+    {
+      "id": "born_before_2006",
+      "name": "Born before 1 September 2006",
+      "requirements": [
+        {
+          "id": "nocd_pre2006",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_no_citizen_mother_or_married_no_citizen_father",
+          "hard": true,
+          "blocker_text": "Automatic citizenship applied if the mother was Norwegian, or if the father was Norwegian and married to the mother (including if he died before the birth). Children of unmarried Norwegian fathers did not automatically acquire citizenship, but could notify authorities before turning 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_norwegian_by_birth"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Norwegian citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "udi_norwegian_by_birth",
+      "tier": 1,
+      "url": "https://www.udi.no/en/word-definitions/norwegian-by-birth/",
+      "title": "UDI -- Norwegian by birth: automatic citizenship for children born on/after 1 September 2006 to either Norwegian parent regardless of birthplace, and the more restrictive pre-2006 rules (mother, or married father) with a notify-before-18 option for children of unmarried Norwegian fathers",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). Single-generation rule only -- no grandparent-based or multi-generational descent claim exists per this source, in contrast to Ecuador's third-degree extension built earlier in this dataset. Children born in Norway to two non-Norwegian parents do NOT automatically acquire citizenship (Norway does not have unconditional jus soli)."
+}

@@ -1,0 +1,82 @@
+{
+  "id": "ge_unlimited_residence_investment",
+  "country": "GE",
+  "name": "Unlimited (Indefinite) Residence Permit via Investment",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ge_investment_residence_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "via_investment_permit",
+      "name": "5 years holding the Investment Residence Permit",
+      "requirements": [
+        {
+          "id": "geuri_held",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires having held the Investment Residence Permit for 5 years with the required documented turnover maintained throughout.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ]
+    },
+    {
+      "id": "via_property_5yr",
+      "name": "5 years of qualifying real property ownership",
+      "requirements": [
+        {
+          "id": "geuri_property",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of qualifying real property ownership in Georgia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "5 years' documented turnover records or property ownership records", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "matsne_aliens_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2278806",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Law on the Legal Status of Aliens and Stateless Persons, Article 15(k)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is Article 15(k), reachable via two OR-logic groups per the source: 5 years holding the Investment Residence Permit (Article 15(h)) with turnover maintained, OR 5 years of qualifying real property ownership on its own (a route not gated behind ge_short_term_property_permit's annual renewal in the source as described). prerequisites lists only ge_investment_residence_permit since that is the one route in this dataset that maps cleanly onto the first group; the property-ownership group's own qualifying threshold was not itemised separately from the general 'real property ownership' language in the source, so no property-route prerequisite is asserted for that group specifically."
+}

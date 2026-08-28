@@ -1,0 +1,73 @@
+{
+  "id": "se_eu_eea_free_movement",
+  "country": "SE",
+  "name": "EU/EEA Right of Residence",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "seeu_nationality",
+          "attribute": "nationality_region",
+          "operator": "==",
+          "value": "EU_EEA_or_Swiss",
+          "hard": true,
+          "blocker_text": "Available to citizens of EU/EEA countries (and, by separate agreement, Switzerland) -- no residence permit application to the Migration Agency is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_eu_eea"
+        },
+        {
+          "id": "seeu_self_sufficiency",
+          "attribute": "has_work_study_business_or_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "To stay beyond 3 months, must have employment, self-employment (with an F-tax certificate), be a student, or have sufficient funds for self-support.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_eu_eea"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of employment, self-employment, study, or sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Population register application (Swedish Tax Agency) for stays of 1+ year", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Indefinite while conditions are met; permanent right of residence after 5 years",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["se_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_eu_eea",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/citizens-of-the-eu-eea-or-nordic-countries/eu-eea-citizens.html",
+      "title": "Swedish Migration Agency -- EU/EEA citizens who want to live in Sweden with right of residence: no permit required, self-sufficiency conditions, population register for 1+ year stays, permanent right of residence after 5 years",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). This route is structurally different from every other route in this dataset: EU/EEA citizens do NOT apply to or receive a decision from the Swedish Migration Agency at all -- right of residence exists automatically once the self-sufficiency conditions are met, and 'permanent right of residence' after 5 years is a status, not a card someone applies for. citizenship_after_months (24) reflects the 2-year Nordic-citizen naturalization track (see se_naturalisation.json) ONLY for Nordic (Denmark/Finland/Iceland/Norway) citizens specifically -- other EU/EEA nationals fall under the standard 8-year track, not this shorter figure; flagged as a simplification since this single file covers a nationality range with two different citizenship timelines. Nordic citizens specifically can also obtain Swedish citizenship via a simplified NOTIFICATION procedure rather than full application -- not modeled as a separate file given the substantive overlap with se_naturalisation.json's Nordic-citizen 2-year group."
+}

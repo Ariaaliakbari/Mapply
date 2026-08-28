@@ -1,0 +1,95 @@
+{
+  "id": "ec_rentista_visa",
+  "country": "EC",
+  "name": "Rentista Visa (Independent Means / Pension)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals with lawful, stable monthly income from abroad (pensions, rental income, investment income, etc.) not tied to employment in Ecuador.",
+    "evidence_hint": "Proof of lawful monthly income (rental contracts, investment certificates, pension statements); health insurance with Ecuador coverage; criminal background certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecrv_income",
+          "attribute": "monthly_income_usd",
+          "operator": ">=",
+          "value": 1446,
+          "hard": true,
+          "blocker_text": "Monthly income of at least 3x Ecuador's Salario Básico Unificado (SBU) -- USD 1,446/month at the 2026 SBU of USD 482.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_rentista_visa"
+        },
+        {
+          "id": "ecrv_dependent_income",
+          "attribute": "additional_monthly_income_per_dependent_usd",
+          "operator": ">=",
+          "value": 250,
+          "hard": true,
+          "blocker_text": "An additional USD 250/month in income is required for each dependent included in the application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_rentista_visa"
+        },
+        {
+          "id": "ecrv_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Active health insurance with coverage in Ecuador is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_rentista_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of lawful monthly income (USD 1,446+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance with Ecuador coverage", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled/legalized criminal background certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 21,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_permanent_residence", "ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_rentista_visa",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-temporal-rentista",
+      "title": "gob.ec (MREMH official portal) -- Rentista visa: 3x SBU monthly income requirement, USD 250/month per dependent, health insurance requirement, 2-year duration",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "sbu_2026",
+      "tier": 3,
+      "url": "https://nmslaw.com.ec/blog/2025/12/22/ecuador-salario-basico-unificado-2026/",
+      "title": "NMS Abogados -- Ecuador sets the 2026 Salario Básico Unificado (SBU) at USD 482/month",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). The USD 1,446 figure is calculated from the tier-1-confirmed '3x SBU' rule using the 2026 SBU (USD 482), which itself is only tier-3 sourced (the official annual SBU-setting decree was not independently fetched in this pass) -- the multiplier and structure are tier-1, the specific current dollar conversion is tier-3, disclosed here rather than asserted as fully tier-1. work_rights modeled 'none' since this category is explicitly for non-employment income."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "bm_visitor_visa",
+  "country": "BM",
+  "name": "Visitor Entry (MRV-Linked)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmvv_mrv",
+          "attribute": "holds_uk_us_or_canada_mrv",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "As of 11 August 2023, travellers on the designated nationality list (per Government Notice Gn07542023) must present a valid multi re-entry visa (MRV) for the UK, US, or Canada to enter Bermuda -- Bermuda does not issue its own separate tourist visa for these nationalities. The MRV and passport must both remain valid for at least 45 days after the visitor's stay ends. US Passport Cards cannot be used for air travel to Bermuda.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_entry_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid MRV for the UK, US, or Canada (designated nationalities only)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid at least 45 days beyond the stay", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source reviewed",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_entry_visas",
+      "tier": 1,
+      "url": "https://www.gov.bm/bermuda-entry-visas",
+      "title": "Government of Bermuda -- Bermuda Entry Visas: designated nationalities must hold a valid UK/US/Canada multi re-entry visa (MRV) rather than a separate Bermuda visa, per Government Notice Gn07542023",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build -- the fourth British Overseas Territory (BOT) built this session, after Anguilla, Montserrat, and Cayman. Bermuda's own local status, analogous to Belonger status elsewhere, is called 'Bermudian status' -- see bm_status_descent.json's notes for the full BOT-vs-citizenship framing decision applied throughout this country's routes. This entry model is structurally unusual among the BOTs built this session: rather than a self-standing Bermuda visitor visa, designated nationalities rely on already holding a UK, US, or Canada multi re-entry visa. The specific designated-nationality list (Government Notice Gn07542023) was referenced but not independently retrieved in this pass -- flagged as a gap. Nationalities not on the designated list, and not otherwise exempt, may have a different or no visa requirement; not confirmed here."
+}

@@ -1,0 +1,101 @@
+{
+  "id": "cy_long_term_residence",
+  "country": "CY",
+  "name": "EU Long-Term Resident Status",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["cy_work_permit", "cy_business_facilitation", "cy_family_reunification"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cyltr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of legal and continuous residence in Cyprus immediately preceding the application. Periods on a student/vocational-training permit, temporary-residence-only status, asylum-seeker status, or under diplomatic conventions do NOT count. Absences under 6 consecutive months (or under 10 months cumulative) do not interrupt continuity.",
+          "fix_path": "Accumulate 5 years' continuous, qualifying legal residence in Cyprus.",
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_ltr"
+        },
+        {
+          "id": "cyltr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "Requires passing the Examinations for the Verification of the Greek Language at A2 level (reading, listening, writing, speaking), held annually each May.",
+          "fix_path": "Pass the A2-level Greek language examination.",
+          "fix_time_months": 12,
+          "source_id": "gk_lawfirm_cy_ltr"
+        },
+        {
+          "id": "cyltr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "stable_regular_income",
+          "hard": true,
+          "blocker_text": "Requires a stable and regular source of income and health insurance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_ltr"
+        },
+        {
+          "id": "cyltr_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a clean criminal record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_ltr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous qualifying legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "A2 Greek language certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of stable income and health insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable indefinitely",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gk_lawfirm_cy_ltr",
+      "tier": 3,
+      "url": "https://gk-lawfirm.com/publications/cyprus-long-term-resident-after-five-years/",
+      "title": "GK Law Firm -- Long-term resident status after five years in Cyprus",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. This is the EU-directive long-term-resident status. STATUS SET TO DRAFT: gov.cy's own pages were not reachable (403) in this pass; sourced from a single tier-3 legal-guide article. prerequisites lists the plausible feeder routes (work, business facilitation, family reunification) per the source's own list of what counts, explicitly EXCLUDING cy_residence_permit_study and cy_digital_nomad_visa time (student/temporary-only periods do not count, per the same source) and cy_international_protection (asylum-seeker time does not count, though a GRANTED refugee/subsidiary-protection permit's status toward this route was not confirmed either way in this pass). Fee EUR 30; expected processing 6-12 months, per the source."
+}

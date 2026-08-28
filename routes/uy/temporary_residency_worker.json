@@ -1,0 +1,74 @@
+{
+  "id": "uy_temporary_residency_worker",
+  "country": "UY",
+  "name": "Residencia Legal Temporaria -- Trabajo",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uytw_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_offer_from_uruguayan_employer",
+          "hard": true,
+          "blocker_text": "Requires a letter from the Uruguayan employer (on letterhead) stating position, contract duration, and monthly salary, notarially verified, plus BPS (social security) employment history.",
+          "fix_path": "Secure a qualifying job offer.",
+          "fix_time_months": null,
+          "source_id": "gub_uy_residencia_temporaria"
+        },
+        {
+          "id": "uytw_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 1, "currency": "SMN", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires a monthly salary at or above Uruguay's national minimum wage (Salario Mínimo Nacional).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gub_uy_residencia_temporaria"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Criminal record certificate (country of birth and any country of 6+ months residence in the past 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Current vaccination certificate and health record", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer letter and notarial/BPS verification of employment", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months to 2 years, renewable for equal periods",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["uy_permanent_residency_general", "uy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gub_uy_residencia_temporaria",
+      "tier": 1,
+      "url": "https://www.gub.uy/tramites/residencia-legal-temporaria",
+      "title": "Sitio oficial de la República Oriental del Uruguay -- Residencia Legal Temporaria: worker/student/religious categories, minimum-wage salary threshold, 6mo-2yr duration",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. This is Uruguay's general (non-MERCOSUR) temporary residency trámite, confirmed directly at tier-1, modelled here as the WORKER-purpose category specifically since Uruguay's own page bundles worker/student/religious under one trámite with different evidence per activity type -- the schema's one-category-per-route design means these are split into separate files by category (see uy_temporary_residency_student) rather than merged, even though they share a single government process. Uruguay's minimum wage is a periodically-updated indexed figure (not a fixed USD amount) -- modelled with a placeholder 'SMN' currency unit and unit 'month' rather than a converted dollar figure, since a snapshot conversion would go stale and mislead; the source itself states the requirement as 'at least one national minimum wage', not a dollar amount. citizenship_after_months (60) reflects the 5-year without-family track under uy_naturalisation, since this worker route alone does not establish 'family constituted' status."
+}

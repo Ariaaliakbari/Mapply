@@ -1,0 +1,65 @@
+{
+  "id": "be_international_protection",
+  "country": "BE",
+  "name": "International Protection (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The CGRS (Commissioner-General for Refugees and Stateless Persons) investigates applications and decides whether to grant refugee status or subsidiary protection status. Fedasil (the Federal Agency for the Reception of Asylum Seekers) handles reception and social/legal/medical/psychological guidance separately from the CGRS's decision-making role.",
+    "evidence_hint": "Application submission; CGRS interview and assessment; supporting documents."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "beip_claim",
+          "attribute": "meets_refugee_or_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "CGRS assesses eligibility for refugee status or subsidiary protection status. Process steps and decision timeline were not confirmed at tier-1 precision in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cgrs_international_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application to CGRS", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Grounds for protection and supporting documents", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: limited right of residence for 5 years. Subsidiary protection: duration not confirmed at tier-1 precision in this pass.",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["be_permanent_residence", "be_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cgrs_international_protection",
+      "tier": 1,
+      "url": "https://www.cgrs.be/en/international-protection",
+      "title": "CGRS (Commissioner-General for Refugees and Stateless Persons) -- International Protection: CGRS as decision-maker, refugee status = 5-year limited right of residence, Fedasil's separate reception role",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). STATUS: DRAFT -- although the source is tier-1 (CGRS is the government body itself), the fetched page content was thin: it explicitly stated what CGRS does NOT handle (visas, family reunification, statelessness, returns) more than it detailed the application process, timeline, or subsidiary-protection-specific duration. work_rights and study_rights modeled 'full' as the general EU-directive-driven baseline for recognised protection statuses (consistent with most other international_protection.json builds in this dataset), not independently confirmed for Belgium specifically in this pass. citizenship_after_months and pr_after_months use the general be_naturalisation.json/be_permanent_residence.json figures, since no protection-specific reduced track was confirmed."
+}

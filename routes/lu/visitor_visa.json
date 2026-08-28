@@ -1,0 +1,74 @@
+{
+  "id": "lu_visitor_visa",
+  "country": "LU",
+  "name": "Short-Stay Visa / Visa-Free Entry (Schengen)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "luv_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Luxembourg applies the Schengen short-stay rule: up to 90 days within any 180-day period, whether entering visa-free or on a Schengen (Type C) visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_eu_citizen_stay"
+        },
+        {
+          "id": "luv_visa_requirement",
+          "attribute": "requires_schengen_visa",
+          "operator": "==",
+          "value": "depends_on_nationality",
+          "hard": false,
+          "blocker_text": "Nationals of countries not covered by EU Regulation 2018/1806's visa-exemption list must obtain a Schengen short-stay visa before travel; others may enter visa-free for the same 90/180-day allowance.",
+          "fix_path": "Apply for a Schengen visa at a Luxembourg embassy/consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "guichet_eu_citizen_stay"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "guichet_eu_citizen_stay",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/citoyen-UE/conditions-entree/sejour-travail.html",
+      "title": "Guichet.lu (Luxembourg public administration portal) -- Staying and/or Working in Luxembourg for More Than 90 Days as an EU Citizen: implies the Schengen 90-day short-stay baseline",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). Standard Schengen 90/180-day short-stay framework; visa requirement is nationality-dependent per EU Regulation 2018/1806, modeled as a soft (hard:false) branch."
+}

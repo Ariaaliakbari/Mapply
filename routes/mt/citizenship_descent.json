@@ -1,0 +1,83 @@
+{
+  "id": "mt_citizenship_descent",
+  "country": "MT",
+  "name": "Maltese Citizenship by Descent (Birth Abroad / Registration as Descendant)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born abroad to a Maltese-citizen parent acquires Maltese citizenship automatically by descent (formal proof via Form D). A person more distantly descended -- in direct line from an ancestor who was born in Malta and whose own parent was likewise born in Malta -- may instead acquire citizenship by registration (Form K, or Form M for minors).",
+    "evidence_hint": "Birth/marriage certificates establishing the ancestral chain; proof of the relevant ancestor's birth in Malta."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "birth_abroad_maltese_parent",
+      "name": "Born abroad to a Maltese-citizen parent",
+      "requirements": [
+        {
+          "id": "mtcd_parent_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Automatic citizenship for a person born abroad on or after 1 August 1989 to a parent who was a Maltese citizen at the time of birth; a formal certificate is obtained via Form D.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "komunita_acquisition"
+        }
+      ]
+    },
+    {
+      "id": "registration_descendant",
+      "name": "Registration as descendant of a Malta-born ancestor",
+      "requirements": [
+        {
+          "id": "mtcd_descendant_line",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "descendant_of_malta_born_ancestor_with_malta_born_parent",
+          "hard": true,
+          "blocker_text": "Registration available to a person in direct line of descent from an ancestor born in Malta, where that ancestor's own parent was also born in Malta -- reaching further back than a single Maltese parent (Form K for adults, Form M for minors).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "komunita_acquisition"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth/marriage certificates establishing the ancestral chain", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of the relevant ancestor's birth in Malta", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Application Form D, K, or M as applicable (EUR150 + EUR50 on collection)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "komunita_acquisition",
+      "tier": 1,
+      "url": "https://komunita.gov.mt/services/acquisition-of-citizenship/",
+      "title": "Agenzija Komunita Malta -- Acquisition of Citizenship: by birth, by registration (descendant, spouse, former citizen), by naturalisation, by naturalisation for exceptional services, and dual/multiple citizenship reacquisition",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1. IMPORTANT LIMIT flagged by the source itself: citizenship acquired by registration based on descent CANNOT be transmitted to the registrant's own children -- this materially caps how far a distant-descendant claim can cascade across further generations, unlike the automatic by-birth-abroad ground. Tier-3/tier-4 commentary (e.g. IMI Daily) frames 'hundreds of thousands' of foreign nationals as potentially eligible under the registration-descendant ground given Malta's emigration history; that framing is context only, not itself verified at tier-1. Historical eligibility windows differ by birth date (pre-Sept-1964, 1964-1989, post-1989) per the source's fuller 'By Birth' breakdown -- this route models the post-1989 rule as the current-relevance case; older birth-date variants exist but are not separately modelled given they apply to an aging cohort."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "ky_caymanian_status_residence",
+  "country": "KY",
+  "name": "Right to be Caymanian -- Long-Term Residence (BOTCs)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "resident_botc",
+      "name": "British Overseas Territories Citizen, resident in the Islands",
+      "requirements": [
+        {
+          "id": "kycr_botc_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "A British Overseas Territories Citizen may apply after 15 years' legal/ordinary residence in the Cayman Islands, or alternatively 5 years following a certificate of naturalisation or registration (Immigration (Transition) Act, Section 28(3)).",
+          "fix_path": "Accumulate 15 years of legal and ordinary residence, or 5 years following naturalisation/registration.",
+          "fix_time_months": 180,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    },
+    {
+      "id": "botc_from_other_territory",
+      "name": "BOTC from another Overseas Territory, holding a right to permanent residence",
+      "requirements": [
+        {
+          "id": "kycr_other_territory",
+          "attribute": "right_to_permanent_residence_held",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A British Overseas Territories Citizen connected to another Overseas Territory who holds a right to permanent residence there may apply after 15 years' legal/ordinary residence in the Cayman Islands (Section 28(4)).",
+          "fix_path": "Accumulate 15 years of legal and ordinary residence in the Cayman Islands.",
+          "fix_time_months": 180,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of British Overseas Territories Citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 15 years' (or 5 years' post-naturalisation) legal/ordinary residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "3 character references from Caymanians", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "15 years continuous legal/ordinary residence, or 5 years following naturalisation/registration",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ky_immigration_transition_act",
+      "tier": 1,
+      "url": "https://my.egov.ky/documents/d/worc/immigrationtransitionact_2022-revision-pdf?download=true",
+      "title": "Cayman Islands Immigration (Transition) Act (2022 Revision) -- Section 28(3) (BOTC, 15-year residence or 5-year post-naturalisation), Section 28(4) (BOTC from another Overseas Territory with a right to permanent residence there, 15-year residence), Section 28(10) (young persons aged 17+ with 5 of the last 7 years' residence, presumptive grant unless the Board has compelling reasons to refuse)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Cayman Islands' initial build. See ky_caymanian_status_descent.json's notes for why leads_to_citizenship is modelled as false. Both requirement_groups already presuppose BOTC status -- this route is specifically for people who are already British Overseas Territories Citizens (whether by birth in Cayman, by connection to another Overseas Territory, or otherwise) seeking Cayman's own local status through long residence, not a route to BOTC itself (see ky_naturalisation_botc.json for that separate track). Section 28(10) provides a related but distinct youth ground -- a person turning 18 whose derivative Caymanian status is expiring, with 5 of the preceding 7 years' residence, gets a presumptive grant 'unless the Board has compelling reasons for refusing' -- not modelled as its own file since it is a narrower variant of the same underlying residence-based logic, but flagged here given its materially different (and more favourable) presumption. Section 29's automatic-by-birth ground (born in the Islands 27 March 1977 - 1 January 1983, continuous residence since birth) is not modelled at all, consistent with this dataset's treatment of birth-based provisions as outside the scope of an immigration-route dataset."
+}

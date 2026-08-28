@@ -1,0 +1,75 @@
+{
+  "id": "bs_permanent_residence_investment",
+  "country": "BS",
+  "name": "Permanent Residence -- Economic Investment",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bspri_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "Requires a minimum US$1.0 million investment in Bahamian real estate or Central Bank Zero Coupon Bonds.",
+          "fix_path": "Make the qualifying investment.",
+          "fix_time_months": null,
+          "source_id": "gov_bs_permanent_residence"
+        },
+        {
+          "id": "bspri_holding_period",
+          "attribute": "investment_holding_period_months",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "The qualifying investment must be held for a minimum of 10 years.",
+          "fix_path": "Maintain the investment for at least 10 years.",
+          "fix_time_months": 120,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment (real estate deed or Central Bank Zero Coupon Bond certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (life, unless revoked)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bs_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_bs_permanent_residence",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/residence/permanent-residence/",
+      "title": "Bahamas Immigration Department -- Permanent Residence: Economic Investment category, minimum US$1.0 million in real estate or Central Bank Zero Coupon Bonds, held 10+ years; explicitly no accelerated/fast-track investor tiers (e.g. $500k/$750k) mentioned on this official page",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. IMPORTANT: several tier-3/4 sources online reference lower fast-track thresholds (commonly cited as $500,000, or $750,000 for expedited processing) for real-estate-based permanent residency in the Bahamas -- these were NOT found on the official immigration.gov.bs page itself, which states only the $1.0 million Economic Investment category with no accelerated tier. This route is built strictly on the confirmed tier-1 figure; the lower/expedited thresholds some private sources cite are not modelled here and may reflect either outdated information, a different (non-PR) fast-track process, or policy not yet reflected on the official page -- flagged as a gap rather than guessed."
+}

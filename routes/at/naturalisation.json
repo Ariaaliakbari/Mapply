@@ -1,0 +1,151 @@
+{
+  "id": "at_naturalisation",
+  "country": "AT",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 years of legal and continuous residence in Austria, of which at least 5 years must be on a residence permit (not merely tolerated stay).",
+          "fix_path": "Accumulate 10 years of legal continuous residence, at least 5 on a residence permit.",
+          "fix_time_months": 120,
+          "source_id": "migration_gv_at_citizenship"
+        },
+        {
+          "id": "atn_language",
+          "attribute": "has_b1_german",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "B1-level German proficiency is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_naturalisation"
+        },
+        {
+          "id": "atn_income",
+          "attribute": "has_stable_income_36mo_of_last_72mo",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Stable and regular resources of one's own (employment, income, maintenance claims, or insurance benefits) averaged over 36 months during the last 6 years before application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_naturalisation"
+        },
+        {
+          "id": "atn_civics",
+          "attribute": "passed_wertekurs_and_history_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Completion of the integration course/values course (Wertekurs) and a citizenship test covering basic democratic-system and Austrian-history knowledge, with exemptions for German native speakers or relevant Austrian schooling.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_naturalisation"
+        },
+        {
+          "id": "atn_conduct",
+          "attribute": "has_clean_record_and_positive_attitude",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "'Irreproachable integrity' -- no criminal convictions, no pending criminal proceedings, no serious administrative violations, and a positive attitude towards the Republic of Austria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_naturalisation"
+        },
+        {
+          "id": "atn_renounce",
+          "attribute": "willing_to_renounce_prior_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants must in principle renounce their prior nationality; dual citizenship is not permitted through standard naturalisation (narrow exceptions exist elsewhere in the dataset's separate marriage/descent files, e.g. Nazi-persecution descendants).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "exceptional_integration",
+      "name": "Reduced period -- exceptional integration",
+      "requirements": [
+        {
+          "id": "atn_ei_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 72,
+          "hard": false,
+          "blocker_text": "Reduced to 6 years of residence if the applicant shows B2-level German, OR B1-level German plus documented personal integration efforts including at least 3 years of voluntary work/activity in the social field. This reduced-period figure is sourced only from a tier-3 monitoring report, not independently confirmed against a tier-1 Austrian government citation in this pass -- treat as indicative, not certain.",
+          "fix_path": null,
+          "fix_time_months": 72,
+          "source_id": "asylumineurope_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 (or 6) years' legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "B1 (or B2) German certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of stable income over 36 of the last 72 months", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Wertekurs completion certificate and citizenship test pass", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migration_gv_at_citizenship",
+      "tier": 1,
+      "url": "https://www.migration.gv.at/en/living-and-working-in-austria/integration-and-citizenship/citizenship/",
+      "title": "migration.gv.at -- Citizenship: standard 10-year legal continuous residence with at least 5 years on a residence permit; dual citizenship generally not permitted; jus sanguinis descent rules",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "oesterreich_gv_naturalisation",
+      "tier": 1,
+      "url": "https://www.oesterreich.gv.at/en/themen/menschen_aus_anderen_staaten/staatsbuergerschaft/1/Seite.260421",
+      "title": "oesterreich.gv.at -- General conditions for naturalisation: income (36 of last 72 months), B1 German, Wertekurs/history test, irreproachable integrity, renunciation of prior citizenship",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "asylumineurope_naturalisation",
+      "tier": 3,
+      "url": "https://asylumineurope.org/reports/country/austria/content-international-protection/status-and-residence/naturalisation/",
+      "title": "Asylum Information Database (ECRE) -- Austria naturalisation: 6-year reduced period for exceptional integration (B2 German, or B1 + 3 years' documented volunteer work), 10-year track for recognized refugees, 15-year track for subsidiary protection beneficiaries",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). The two tier-1 government pages fetched in this pass confirm the standard 10-year/5-year-permit residence figure and the general conditions (income, language, civics, conduct, renunciation) but do NOT state the 6-year exceptional-integration reduced period in numeric terms -- that figure is sourced to the tier-3 Asylum Information Database (ECRE), a recognized EU-funded monitoring consortium, not an independent Austrian government citation, so the exceptional-integration requirement group carries weaker sourcing than the standard track despite the file overall being published (the standard track alone is fully tier-1 and is sufficient for a real, usable route). Recognized refugees naturalise on the SAME 10-year clock as the standard track per this source (not a reduced track); subsidiary-protection beneficiaries face an extended 15-year clock -- neither modeled as a separate file since they use the same requirement structure as the standard/exceptional tracks, just a different residence-length gate tied to protection status (see at_international_protection.json)."
+}

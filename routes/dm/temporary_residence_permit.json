@@ -1,0 +1,89 @@
+{
+  "id": "dm_temporary_residence_permit",
+  "country": "DM",
+  "name": "Residence Permit",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dmrp_extension",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "extension_of_stay_already_granted",
+          "hard": true,
+          "blocker_text": "Visitors must first obtain an Extension of Stay from Immigration before a residence permit application can be made.",
+          "fix_path": "Obtain an Extension of Stay from Immigration first.",
+          "fix_time_months": null,
+          "source_id": "dominica_gov_residence_permit"
+        },
+        {
+          "id": "dmrp_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "bankers_statement_or_sponsor_letter",
+          "hard": true,
+          "blocker_text": "Requires a banker's statement of financial position, or a letter from a friend/family member in Dominica accepting responsibility for the applicant if unemployed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dominica_gov_residence_permit"
+        },
+        {
+          "id": "dmrp_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a recent police record and two testimonials (one from a last employer, where applicable).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dominica_gov_residence_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity), 2 completed application forms, medical form (incl. HIV test, chest X-ray)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two testimonials, one from last employer", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Banker's statement of financial position", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Recent police record", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Proof of return ticket or travel-cost deposit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate, if applicable", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Cover letter requesting the permit; letter from friend/family accepting responsibility, if unemployed", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["dm_permanent_residence", "dm_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "dominica_gov_residence_permit",
+      "tier": 1,
+      "url": "https://dominica.gov.dm/services/residency/how-do-i-apply-for-a-residence-permit",
+      "title": "Government of Dominica Web Portal -- How Do I Apply for a Residence Permit?",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW COUNTRY, first Dominica route. This is a single, broadly discretionary 'Residence Permit' status (non-work), distinct from dm_work_permit (employment-based, which itself confers residency after 6+ months per source) and dm_permanent_residence (the 5-year settled status). category set to 'visit' as the closest existing enum fit for a general non-work temporary residence status; this dataset's category enum has no dedicated 'general temporary residence' bucket. HONEST GAP: the source page does not state the permit's duration, nor does it break out distinct qualifying grounds (e.g. spouse of a resident) with different requirements -- a marriage certificate is listed only as a conditional supporting document, not as its own qualifying pathway, so no separate family-based requirement group was invented here. family_can_join set false as a conservative default: no dependant-sponsorship right of this permit's own was described in the source (a spouse would need their own qualifying basis). Fee: EC$250 (CARICOM) / EC$800 (non-CARICOM)."
+}

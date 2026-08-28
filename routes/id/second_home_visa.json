@@ -1,0 +1,86 @@
+{
+  "id": "id_second_home_visa",
+  "country": "ID",
+  "name": "Second Home Visa (E33)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "bank_deposit",
+      "name": "State-owned bank deposit",
+      "requirements": [
+        {
+          "id": "idsh_deposit",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 2000000000, "currency": "IDR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a deposit of IDR 2 billion (approximately USD 130,000) in an Indonesian state-owned bank, placed within 90 days of visa approval or the visa lapses.",
+          "fix_path": "Fund the qualifying deposit within 90 days of approval.",
+          "fix_time_months": null,
+          "source_id": "emerhub_id_second_home"
+        }
+      ]
+    },
+    {
+      "id": "property_ownership",
+      "name": "Property under Hak Pakai (right-of-use) title",
+      "requirements": [
+        {
+          "id": "idsh_property",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 1000000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires Indonesian property valued at USD 1,000,000 or more, held under Hak Pakai (right-of-use) title, documented within 90 days of visa approval.",
+          "fix_path": "Acquire and document qualifying property within 90 days of approval.",
+          "fix_time_months": null,
+          "source_id": "emerhub_id_second_home"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank deposit certificate or Hak Pakai property documentation", "difficulty": "hard", "typical_time_days": 90 },
+    { "document": "Passport valid 36+ months", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 or 10 years (applicant's choice, likely tied to which financial tier is met), non-extendable beyond the chosen term",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["id_permanent_stay_kitap", "id_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "evisa_imigrasi_second_home_faq",
+      "tier": 1,
+      "url": "https://evisa.imigrasi.go.id/front/faq/b6469147-09ae-44c0-878e-74e2c4c2c14e",
+      "title": "Direktorat Jenderal Imigrasi eVisa portal -- Second Home Visa FAQ: 5-year (extendable) duration, no employment, family (including parents) can join, study permitted",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "emerhub_id_second_home",
+      "tier": 3,
+      "url": "https://emerhub.com/indonesia/visas/second-home-visa/",
+      "title": "Emerhub (immigration consultancy) -- Second Home Visa (E33): IDR 2 billion deposit or USD 1 million Hak Pakai property, 5 or 10 year options, parent-sponsorship allowed",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: an unreconciled discrepancy exists between the tier-1 eVisa FAQ (which describes a single 5-year, extendable duration) and the tier-3 source (which describes a fixed choice between 5-year and 10-year non-extendable terms) -- these were not resolved in this pass, so outcome.duration_length and renewable are stated per the tier-3 breakdown while flagging the tier-1 page's differing description explicitly rather than picking one silently. The specific deposit/property THRESHOLD figures are only tier-3 confirmed. Notably permissive family provision (confirmed at tier-1): parents of the principal may be sponsored, which most other Indonesian permit categories do not allow. TWO GENUINELY DIFFERENT FINANCIAL GROUNDS modelled as OR-logic groups. dual_citizenship_allowed set false per Indonesia's general no-dual-citizenship rule (Law 12/2006) -- not specific to this visa."
+}

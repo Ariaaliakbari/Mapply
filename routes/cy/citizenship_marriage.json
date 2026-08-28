@@ -1,0 +1,73 @@
+{
+  "id": "cy_citizenship_marriage",
+  "country": "CY",
+  "name": "Citizenship by Marriage to a Cypriot Citizen",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cycm_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being married to a Cypriot citizen for at least 3 years.",
+          "fix_path": "Remain married to the Cypriot-citizen spouse for 3 years.",
+          "fix_time_months": 36,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        },
+        {
+          "id": "cycm_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 3 years of marriage", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gk_lawfirm_cy_citizenship_law",
+      "tier": 3,
+      "url": "https://gk-lawfirm.com/publications/cyprus-citizenship-new-law/",
+      "title": "GK Law Firm -- Cyprus Citizenship New Law: 4 and 5 years criteria",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. Kept as its own route rather than a group within cy_naturalisation since the source explicitly describes it as a different legal track entirely (a 3-year marriage test, not a years-in-Cyprus residence test) -- it is not clear from this pass's sources whether physical residence IN Cyprus during the marriage is itself required, or only the marriage's duration; not asserted either way. STATUS SET TO DRAFT: gov.cy pages were not reachable (403) in this pass; sourced from a single tier-3 article, not independently cross-verified against a second source in this pass (unlike Croatia's and Estonia's equivalent figures, which had multiple corroborating sources)."
+}

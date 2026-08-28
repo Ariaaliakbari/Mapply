@@ -1,0 +1,75 @@
+{
+  "id": "hu_temporary_residency_student",
+  "country": "HU",
+  "name": "Residence Permit for the Purpose of Study",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hus_enrollment",
+          "attribute": "enrollment_status",
+          "operator": "==",
+          "value": "accepted_full_time_education",
+          "hard": true,
+          "blocker_text": "Must establish a learning relationship with a public education institution, or pursue full-time studies at a state-recognised higher education institution in Hungary.",
+          "fix_path": "Secure enrollment at a qualifying institution.",
+          "fix_time_months": null,
+          "source_id": "oif_student"
+        },
+        {
+          "id": "hus_funds",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "sufficient_funds_subsistence_accommodation_travel_healthcare",
+          "hard": true,
+          "blocker_text": "Must document ability to cover subsistence, accommodation, return/onward travel, and healthcare costs (bank statements, employer income letters, or scholarship certificates).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter of acceptance from a qualifying institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds (bank statement, income letter, or scholarship certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance or Hungarian social security eligibility", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declared Hungarian accommodation address", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years tied to training length, extendable for a further 1-3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "oif_student",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/residence-of-the-student-pupil",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- Residence of the Student, Pupil: enrollment, funds, health insurance, accommodation declaration, 30h/week or 90-day work limits, family reunification bar",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. work_rights set to 'restricted': holders may work a maximum of 30 hours/week during study periods, or full-time up to 90 days/year outside study periods. family_can_join set false: the source states student permit holders 'shall not be granted a residence permit for the purpose of family reunification,' with a narrow exception for children born in Hungary during the permit's validity."
+}

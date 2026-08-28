@@ -1,0 +1,77 @@
+{
+  "id": "al_citizenship_by_marriage",
+  "country": "AL",
+  "name": "Naturalization by Marriage (Expedited Track)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreigner married to an Albanian citizen for at least 3 years may naturalize under relaxed conditions, without needing to meet the standard 7-year residence and language/history requirements.",
+    "evidence_hint": "Marriage certificate; spouse's proof of Albanian citizenship; proof of 1 year continuous lawful residence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "alcm_marriage_duration",
+          "attribute": "months_married_to_al_citizen",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires being married to an Albanian citizen for at least 3 years.",
+          "fix_path": "Remain married for 3 years.",
+          "fix_time_months": 36,
+          "source_id": "citizenship_law_113_2020"
+        },
+        {
+          "id": "alcm_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires at least 1 year of continuous lawful residence in Albania -- distinctly shorter than the standard naturalization route's 7-year bar, and the language/history knowledge requirement does not apply on this track.",
+          "fix_path": "Accumulate 1 year of continuous lawful residence.",
+          "fix_time_months": 12,
+          "source_id": "citizenship_law_113_2020"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Albanian citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 1 year continuous lawful residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_law_113_2020",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Law%20No.%20113-2020%20(English).pdf",
+      "title": "Republic of Albania -- Law No. 113/2020 on Citizenship (official English translation): marriage-based expedited naturalization -- 3+ years married to an Albanian citizen plus 1 year continuous lawful residence, exempting the standard 7-year residence and language/history requirements",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). Gender-neutral on its face -- the law text extracted refers to 'a foreigner married to an Albanian citizen' without gendering either spouse, a genuine contrast worth noting against this dataset's other marriage-route files that carry explicit gender restrictions (e.g. UAE, historically Bahamas). This is a real, substantial fast-track: 1 year of residence plus a 3-year marriage clock (which can run concurrently with the residence period) versus the standard route's 7-year residence-plus-language-test bar -- see al_naturalisation.json."
+}

@@ -1,0 +1,104 @@
+{
+  "id": "mx_permanent_residence_via_temporary",
+  "country": "MX",
+  "name": "Change of Status: Temporary Resident to Permanent Resident",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["mx_temporary_resident", "mx_work_permit_employer_sponsored", "mx_family_unity_visa"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "time_based",
+      "name": "Time-based (4 years of temporary residence)",
+      "prerequisites_override": {
+        "minimum_months_held": 48
+      },
+      "requirements": [
+        {
+          "id": "mxpt_time",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Requires 4 years elapsed since the temporary resident permit was granted, applied for explicitly on this basis.",
+          "fix_path": "Hold Temporary Resident status continuously for 4 years.",
+          "fix_time_months": 48,
+          "source_id": "inm_cambio_temporal_permanente"
+        }
+      ]
+    },
+    {
+      "id": "pensioner",
+      "name": "Pensioner/retiree (while holding temporary residence)",
+      "requirements": [
+        {
+          "id": "mxpt_pension",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "balance_25000_uma_or_monthly_income_500_uma",
+          "hard": true,
+          "blocker_text": "Requires an average monthly bank balance of 25,000 UMA units (12 months of statements), or pension/income statements of 500 UMA units per month (6 months of statements). UMA (Unidad de Medida y Actualización) is Mexico's standard indexed unit and is updated periodically -- no fixed peso/dollar figure is stated in this source.",
+          "fix_path": "Document qualifying pension income or savings balance in UMA terms.",
+          "fix_time_months": null,
+          "source_id": "inm_cambio_temporal_permanente"
+        }
+      ]
+    },
+    {
+      "id": "points_based",
+      "name": "Points-based system",
+      "requirements": [
+        {
+          "id": "mxpt_points",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "minimum_points_score_met_per_official_indicators",
+          "hard": true,
+          "blocker_text": "Requires meeting a minimum score under an official points system based on government-defined indicators -- the exact indicators and scoring rubric were not located and confirmed in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inm_cambio_temporal_permanente"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport/travel document used for the original temporary resident status", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Current temporary resident card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Category-specific documentation (time-based statement, pensioner financials, or points-system evidence)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "inm_cambio_temporal_permanente",
+      "tier": 1,
+      "url": "https://www.inm.gob.mx/static/Tramites/cambio_residente_temporal-residente_permanente.pdf",
+      "title": "Instituto Nacional de Migración (INM) -- Cambio de residente temporal a residente permanente: three qualifying pathways (time, pensioner, points-based)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. THREE GENUINELY DIFFERENT QUALIFYING GROUNDS confirmed directly at tier-1 and modelled as OR-logic groups within the same status-change trámite. required_prior_route_ids lists the temporary-resident-type routes built so far that plausibly feed into this one (mx_temporary_resident, mx_work_permit_employer_sponsored, and the temporary-outcome group of mx_family_unity_visa) -- this is a reasonable inference that SOME prior temporary status is required (confirmed by the trámite's own name and the 'current temporary resident card' document requirement) but the source did not enumerate which specific temporary categories qualify, so this is flagged rather than asserted as exhaustive. The points_based group's exact scoring criteria were not found in this pass -- modelled honestly via an 'exists' operator rather than invented thresholds, while still keeping the route's overall status 'published' since the tier-1 source does confirm the category exists and cites it as an official option, even though the applicant-facing scoring detail is incomplete."
+}

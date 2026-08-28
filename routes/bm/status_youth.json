@@ -1,0 +1,85 @@
+{
+  "id": "bm_status_youth",
+  "country": "BM",
+  "name": "Bermudian Status -- Youth Application (Section 20)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmsy_age_min",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_status_application"
+        },
+        {
+          "id": "bmsy_age_max",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Applicant must be no older than 21.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bm_status_application"
+        },
+        {
+          "id": "bmsy_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous residence in Bermuda.",
+          "fix_path": "Accumulate 5 years of continuous residence in Bermuda before turning 21.",
+          "fix_time_months": 60,
+          "source_id": "gov_bm_status_application"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form BSA04 or Form 5(2), completed in black or blue ink", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5 years' continuous residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: $275.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "5 years' continuous residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_status_application",
+      "tier": 1,
+      "url": "https://www.gov.bm/online-services/bermudian-status-application",
+      "title": "Government of Bermuda -- Bermudian Status Application: Section 20 youth ground (ages 18-21, 5 years' continuous residence), fee schedule",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build. See bm_status_descent.json's notes for why leads_to_citizenship is modelled as false. Modelled separately from bm_status_long_residence.json (Section 20B) despite both being residence-based, because the Act itself treats them as distinct sections with materially different age windows, residence thresholds, and fees ($275 here vs. $630 for Section 20B) -- this is a narrower, cheaper, age-limited path for young long-term residents, not a variant of the general long-residence route."
+}

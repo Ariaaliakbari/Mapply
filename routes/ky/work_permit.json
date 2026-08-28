@@ -1,0 +1,73 @@
+{
+  "id": "ky_work_permit",
+  "country": "KY",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kywp_employer_sponsor",
+          "attribute": "employer_sponsored",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A non-Caymanian requires a work permit to engage in gainful occupation; the application is made through a prescribed form with fees, and generally requires employer sponsorship (Immigration (Transition) Act, Section 56), except for narrow exemptions under Section 53.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ky_immigration_transition_act"
+        },
+        {
+          "id": "kywp_vaccination",
+          "attribute": "approved_vaccine_course",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Persons specified under the Act's work-permit provisions (Part 7) must comply with an approved vaccine course, evidenced by a vaccination certificate obtained no later than 14 days before the relevant application, subject to medical-certificate exemptions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Prescribed work permit application form and fee", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Vaccination certificate (or medical-certificate exemption)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed (the Act references maximum periods and a 'final work permit' concept under Section 66, without stating the figures in the text extracted)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 96,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ky_permanent_residence_general"]
+  },
+  "sources": [
+    {
+      "id": "ky_immigration_transition_act",
+      "tier": 1,
+      "url": "https://my.egov.ky/documents/d/worc/immigrationtransitionact_2022-revision-pdf?download=true",
+      "title": "Cayman Islands Immigration (Transition) Act (2022 Revision) -- Part 7 (Work Permits): Sections 49 (specialist caregivers), 53 (exemptions), 56 (application requirements), 64 (change of employer), 66 (term limits), 67 (fees), 52A/53A (vaccination requirements)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Cayman Islands' initial build, sourced directly from primary legislation. Permit-processing authority varies by circumstance among the Work Permit Board, the Business Staffing Plan Board, and the Cayman Brac and Little Cayman Immigration Board -- not modelled as separate routes since the Act treats them as parallel administrative bodies for the same underlying permit, not distinct legal categories. Section 64 allows a change of employer under 'special circumstances' (redundancy, victimisation, corporate restructuring, or written employer consent) -- flagged as a partial mitigation of the employer-tie, not modelled as its own requirement. Specific fee amounts and term-limit figures are referenced by section number in the Act's structure but were not present in the excerpted text retrieved in this pass -- flagged as a gap rather than guessed. pr_after_months (96 = 8 years) reuses the general permanent-residence threshold confirmed in ky_permanent_residence_general.json's source, on the assumption that time on a work permit counts toward that clock -- the Act's own wording ('legally and ordinarily resident') supports this but it is not explicitly restated in this section."
+}

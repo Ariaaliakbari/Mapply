@@ -1,0 +1,77 @@
+{
+  "id": "hr_digital_nomad_visa",
+  "country": "HR",
+  "name": "Temporary Stay of Digital Nomads",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hrdn_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 3622.50, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires proof of average monthly income of at least EUR 3,622.50 (via bank statements or payslips), increased by 10% of the average monthly net salary for each additional accompanying family member or partner.",
+          "fix_path": "Document qualifying monthly income (or the savings alternative) before applying.",
+          "fix_time_months": null,
+          "source_id": "mup_hr_digital_nomad"
+        },
+        {
+          "id": "hrdn_foreign_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_work_for_foreign_employer_or_own_foreign_company",
+          "hard": true,
+          "blocker_text": "Must work exclusively for employers or clients outside Croatia, or through one's own foreign-registered company; performing work or providing services to Croatia-based employers is not permitted.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_digital_nomad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of remote employment/contract with a non-Croatian employer, or ownership of a foreign-registered company", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial means (income of EUR 3,622.50/month, or savings of EUR 43,470 for 12 months / EUR 65,205 for 18 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of accommodation address in Croatia", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 18 months maximum (initial grant plus one extension of up to 6 months, requested within 60 days before expiry)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mup_hr_digital_nomad",
+      "tier": 1,
+      "url": "https://mup.gov.hr/aliens-281621/temporary-stay-of-digital-nomads-286853/286853",
+      "title": "Ministarstvo unutarnjih poslova Republike Hrvatske (mup.gov.hr) -- Temporary stay of digital nomads",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. Explicitly, this permit does NOT lead to permanent residence -- confirmed at tier-1, unlike some other countries' digital nomad routes in this dataset. A new application may only be submitted 6 months after a previous digital-nomad stay expires (a cooldown, not modelled as a separate field). Close family members (including common-law/life partners together 3+ years, or shorter with children) may join, but their applications submitted before the primary applicant's approval are rejected -- an ordering rule, not encoded as a hard requirement here. work_rights marked 'restricted' (schema enum) rather than 'none' since work itself is the entire basis of the permit, just restricted to non-Croatian employers/clients -- the specific restriction is spelled out in requirement hrdn_foreign_employer and this note, not in the enum value itself. study_rights set to 'none': the source does not describe any study entitlement attached to this permit."
+}

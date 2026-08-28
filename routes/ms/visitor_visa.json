@@ -1,0 +1,70 @@
+{
+  "id": "ms_visitor_visa",
+  "country": "MS",
+  "name": "Visitor eVisa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "msvv_passport",
+          "attribute": "passport_validity",
+          "operator": "exists",
+          "value": "valid_for_duration_of_trip",
+          "hard": true,
+          "blocker_text": "Any holder of a valid passport wishing to enter Montserrat as a visitor or on business may apply; the passport must remain valid for the duration of the trip.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_ms_tourists"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Online eVisa application with passport and payment details", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Combined application/processing fee: US$50 (credit card only), non-refundable", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Invitation letter or supporting documents, if requested", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not fixed on the eVisa itself; the Immigration Act (Section 18) caps visitor/temporary admission at 6 months, extendable by the Chief Immigration Officer to a maximum of 12 months",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_ms_tourists",
+      "tier": 1,
+      "url": "https://www.immigration.ms/tourists/guide",
+      "title": "Government of Montserrat -- Online Immigration & Customs Portal: Tourist eVisa guide, eligibility, fee (US$50), 24-hour processing",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ms_immigration_act",
+      "tier": 1,
+      "url": "http://agc.gov.ms/wp-content/uploads/2011/10/Immigration-Act.pdf",
+      "title": "Montserrat Chapter 13.01, Immigration Act -- Section 18 (visitor/temporary admission periods), Section 18 OECS-citizen automatic 6-month provision",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Montserrat's initial build (first British Overseas Territory built after Anguilla -- see ms_belonger_status_descent.json's notes for the same BOT-vs-citizenship framing decision applied throughout this country's routes). The eVisa portal (immigration.ms) governs the online application step; the underlying legal duration/extension framework comes from the Immigration Act Section 18, which also grants citizens of Organisation of Eastern Caribbean States (OECS) member countries automatic 6-month residence rights on arrival, not modelled as a separate route since it is a nationality-based exemption within this same visitor framework rather than a distinct application. Whether every nationality can use the eVisa or must instead apply via embassy/consulate was not independently confirmed at tier-1 in this pass -- the source states some nationalities require a visa and refers applicants to a country-specific list not reviewed here."
+}

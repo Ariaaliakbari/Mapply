@@ -1,0 +1,77 @@
+{
+  "id": "ec_citizenship_by_descent",
+  "country": "EC",
+  "name": "Nationality by Descent (Recognition, up to 3rd Degree)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Ecuadorian nationality by descent extends up to the third degree of direct-line consanguinity -- i.e. children, grandchildren, and great-grandchildren of an Ecuadorian national -- born abroad. Nationality is not automatic in practice: it must be registered with an Ecuadorian consulate abroad, or with the General Directorate of Civil Registry (DGRCIC) in Ecuador if not done consularly. There is no stated registration deadline.",
+    "evidence_hint": "Apostilled birth certificate(s) (with Spanish translation if needed) establishing the direct-line chain of descent; proof of the Ecuadorian ancestor's identity/nationality; for grandparent/great-grandparent claims, additional ancestral documentation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecd_lineage",
+          "attribute": "direct_line_degree_from_ec_national",
+          "operator": "<=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "Must be a direct-line descendant (child, grandchild, or great-grandchild) of an Ecuadorian national, up to the third degree of consanguinity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_descent"
+        },
+        {
+          "id": "ecd_registration",
+          "attribute": "registered_with_civil_registry_or_consulate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be registered before an Ecuadorian consulate abroad, or before the DGRCIC in Ecuador if not done consularly.",
+          "fix_path": "Apply to register the birth/descent with an Ecuadorian consulate or the DGRCIC.",
+          "fix_time_months": null,
+          "source_id": "gob_ec_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Apostilled birth certificate(s) establishing the descent chain", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of the Ecuadorian ancestor's identity/nationality", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish translation of foreign-language documents (where required)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gob_ec_descent",
+      "tier": 1,
+      "url": "https://www.gob.ec/dgrcic/tramites/registro-nacimiento-ocurrido-exterior-reconocimiento-nacionalidad-0",
+      "title": "gob.ec (DGRCIC -- General Directorate of Civil Registry, Identification and Cedulation official portal) -- Registration of birth abroad / recognition of nationality: extends to the third degree of direct-line consanguinity, no stated registration deadline",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). Notably broader than most descent-citizenship routes in this dataset: Ecuador extends recognition to the THIRD degree of direct lineage (great-grandchildren), not just first-generation children of a citizen parent -- a genuinely distinctive feature worth flagging, consistent with Ecuador's reputation as an accessible ancestry-citizenship option. The tier-1 source does not address whether this three-degree extension itself has any further sub-conditions (e.g. whether the intermediate generations must also have registered) -- not independently resolved in this pass."
+}

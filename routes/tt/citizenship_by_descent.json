@@ -1,0 +1,84 @@
+{
+  "id": "tt_citizenship_by_descent",
+  "country": "TT",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born outside Trinidad and Tobago to a parent who is a citizen of Trinidad and Tobago otherwise than by descent is entitled to a certificate of citizenship by descent.",
+    "evidence_hint": "Birth certificate; parent's proof of T&T citizenship (not itself acquired by descent)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttd_parent_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_tt_citizen_not_by_descent",
+          "hard": true,
+          "blocker_text": "Requires a parent who is a citizen of Trinidad and Tobago otherwise than by descent (i.e. by birth in the territory, naturalisation, or registration) -- children of a parent who is themselves a citizen BY DESCENT do not qualify under this provision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tt_citizenship_act"
+        },
+        {
+          "id": "ttd_application_timing",
+          "attribute": "application_before_age_19_or_within_1yr_of_majority",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application must be made by the responsible parent/guardian before the child turns 18, or by the child within 1 year of attaining the age of majority.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tt_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of T&T citizenship (not by descent)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant Information for Passport Applications (citizens by descent) documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_tt_citizenship_act",
+      "tier": 1,
+      "url": "https://ebctt.com/wp-content/uploads/laws-of-tnt-chapter-1-50-citizenship.pdf",
+      "title": "Citizenship of the Republic of Trinidad and Tobago Act, Chapter 1:50 (primary legislation, privately hosted mirror): citizenship by descent for a child born abroad to a citizen-otherwise-than-by-descent parent, application timing rules, one-generation-only limit",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "foreign_gov_tt_descent_passport",
+      "tier": 1,
+      "url": "https://foreign.gov.tt/documents/185/Applicant-Information-Passport-Applications-for-citizens-by-descent1.pdf",
+      "title": "Ministry of Foreign and CARICOM Affairs, Government of Trinidad and Tobago -- Applicant Information for Passport Applications for Citizens of Trinidad and Tobago by Descent",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. IMPORTANT, easy-to-miss rule confirmed directly in the primary Act text: citizenship by descent does NOT chain across multiple generations born abroad -- a child of a parent who is themselves a citizen by descent does NOT qualify under this provision, meaning descent-based citizenship effectively skips at most one generation born outside the territory. This is a materially different (stricter) descent rule than most non-BOT sovereign countries built earlier this session, where descent citizenship is typically modelled without an explicit one-generation cutoff -- flagged prominently since it changes the practical answer for grandchildren of citizens born abroad."
+}

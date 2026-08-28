@@ -1,0 +1,74 @@
+{
+  "id": "gr_self_employment_permit",
+  "country": "GR",
+  "name": "Residence Permit for Independent Economic Activity (Article 24)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grse_capital",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 60000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum capital of EUR 60,000 deposited in a Greek bank account to fund the independent economic activity, which must be shown to contribute to the growth of the national economy.",
+          "fix_path": "Deposit the qualifying capital and prepare a business plan demonstrating economic contribution.",
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art24"
+        },
+        {
+          "id": "grse_visa",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "special_entry_visa_for_independent_activity_obtained",
+          "hard": true,
+          "blocker_text": "A special entry visa for the purpose of independent economic activity must be obtained before the residence permit application.",
+          "fix_path": "Apply for the special entry visa at a Greek consulate.",
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art24"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank deposit confirmation (EUR 60,000+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Business plan / documentation of economic contribution", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Special entry visa for independent economic activity", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_naturalisation", "gr_long_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "mfa_gr_codification_art24",
+      "tier": 1,
+      "url": "https://www.mfa.gr/images/docs/ethnikes_theoriseis/codification_of_legislation_en.pdf",
+      "title": "Greek Ministry of Foreign Affairs -- Codification of Legislation, Article 24 (independent economic activity, EUR 60,000 minimum capital, special visa requirement)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. work_rights set to 'restricted' since the permit only authorises the specific self-employed activity documented at application, not general employment -- this is an inference from the nature of the route rather than an explicit tier-1 statement of the enum-level restriction, flagged for honesty. duration_length left as a placeholder string: the codification excerpt fetched did not state the exact initial validity period for this specific article (distinguishable from Article 26's stated 2+3-year structure)."
+}

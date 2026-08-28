@@ -1,0 +1,73 @@
+{
+  "id": "dm_citizenship_marriage",
+  "country": "DM",
+  "name": "Citizenship by Marriage (registration)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dmcm_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires being married to a Dominican citizen and holding a valid residence and work permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dominica_consulate_marriage_summary"
+        },
+        {
+          "id": "dmcm_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires residing in Dominica for at least 3 years while remaining married to the Dominican-citizen spouse throughout that period.",
+          "fix_path": "Accumulate 3 years' residence in Dominica while remaining married.",
+          "fix_time_months": 36,
+          "source_id": "dominica_consulate_marriage_summary"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid residence and work permit", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dominica_consulate_marriage_summary",
+      "tier": 3,
+      "url": "https://dominicaconsulategreece.com/dominica/citizenship/by-marriage/",
+      "title": "Dominica Consulate (Greece) -- Commonwealth of Dominica Citizenship by Marriage summary",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Dominica's initial build. STATUS SET TO DRAFT and sourced only at tier 3: the Constitution's Section 100 (the only tier-1-adjacent text found) does not itself establish marriage-based citizenship -- it explicitly leaves room for Parliament to create further acquisition methods by ordinary statute (Section 101), and this 3-year figure is presumed to come from the Citizenship Act itself, which could not be read in this pass (PDF not machine-readable). The 3-year figure is corroborated by more than one independent tier-3/4 source (this consulate summary and separate law-firm advisory pages), which is why it is encoded here rather than omitted entirely -- but it is NOT independently confirmed against the Act's actual text, so treat it as provisional. If a Dominican citizen naturalised via dm_citizenship_by_investment as a single applicant later marries, the same tier-3 source states their spouse can apply at any time without the 3-year wait -- not modelled as a separate group here since it could not be corroborated at a stronger tier. Revisit if the Citizenship Act text becomes readable."
+}

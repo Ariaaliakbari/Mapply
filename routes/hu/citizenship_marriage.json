@@ -1,0 +1,117 @@
+{
+  "id": "hu_citizenship_marriage",
+  "country": "HU",
+  "name": "Simplified Naturalisation by Long Marriage to a Hungarian Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The foreign spouse of a Hungarian citizen may apply for simplified naturalisation (egyszerusitett honositas) directly through a Hungarian embassy or consulate abroad, WITHOUT any requirement to reside in Hungary, provided the marriage has lasted at least 10 years, or at least 5 years where the couple has a common child.",
+    "evidence_hint": "Marriage certificate with certified Hungarian translation; proof of marriage duration; child's birth certificate where relying on the 5-year/common-child ground."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "long_marriage",
+      "name": "10-year marriage",
+      "requirements": [
+        {
+          "id": "hucm_marriage_10",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Married to a Hungarian citizen for at least 10 years.",
+          "fix_path": "Accrue 10 years of marriage to a Hungarian citizen.",
+          "fix_time_months": 120,
+          "source_id": "embassy_simplified_naturalization"
+        },
+        {
+          "id": "hucm_language_long",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "intermediate_hungarian",
+          "hard": true,
+          "blocker_text": "Intermediate-level conversational Hungarian is required, assessed directly by the receiving officer.",
+          "fix_path": "Develop conversational Hungarian to an intermediate level.",
+          "fix_time_months": null,
+          "source_id": "embassy_simplified_naturalization"
+        }
+      ]
+    },
+    {
+      "id": "marriage_with_child",
+      "name": "5-year marriage with a common child",
+      "requirements": [
+        {
+          "id": "hucm_marriage_5",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Married to a Hungarian citizen for at least 5 years, with a common child.",
+          "fix_path": "Accrue 5 years of marriage to a Hungarian citizen while having a common child.",
+          "fix_time_months": 60,
+          "source_id": "embassy_simplified_naturalization"
+        },
+        {
+          "id": "hucm_child",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_of_hungarian_citizen_child",
+          "hard": true,
+          "blocker_text": "Must have a common child with the Hungarian-citizen spouse.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_simplified_naturalization"
+        },
+        {
+          "id": "hucm_language_short",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "intermediate_hungarian",
+          "hard": true,
+          "blocker_text": "Intermediate-level conversational Hungarian is required, assessed directly by the receiving officer.",
+          "fix_path": "Develop conversational Hungarian to an intermediate level.",
+          "fix_time_months": null,
+          "source_id": "embassy_simplified_naturalization"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate with certified Hungarian translation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of continuous marriage duration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Common child's birth certificate (5-year track only)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid passport or identity card", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "none -- can be completed entirely through a Hungarian embassy/consulate abroad without ever residing in Hungary",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "embassy_simplified_naturalization",
+      "tier": 1,
+      "url": "https://telaviv.mfa.gov.hu/en/egyszerusitett-honositas",
+      "title": "Embassy of Hungary -- Simplified Naturalisation: marriage grounds (10-year marriage, or 5-year marriage plus common child), no residence requirement, intermediate-Hungarian-language test",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1 (Hungarian embassy), same source as hu_citizenship_descent. IMPORTANT DISTINCTION flagged prominently: this residence-free marriage ground (10yr, or 5yr+common child) is a DIFFERENT legal mechanism from hu_naturalisation's reduced-3-year-residence spousal track (3+ year marriage PLUS 3 years of actual Hungarian residence). Both are real, both are sourced from Hungarian law, but they trade off differently -- this route requires a much longer marriage but zero residence and can be completed entirely from abroad, while the naturalisation route's spousal ground requires a shorter marriage but mandatory relocation and residence. Applicants should not assume these are the same pathway or that meeting one automatically satisfies the other."
+}

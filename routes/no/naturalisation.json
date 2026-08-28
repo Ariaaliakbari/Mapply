@@ -1,0 +1,131 @@
+{
+  "id": "no_naturalisation",
+  "country": "NO",
+  "name": "Citizenship by Application (Naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "non_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "8 years of continuous residence in Norway with a residence permit (standard track, since 1 January 2022).",
+          "fix_path": "Accumulate 8 years of continuous residence with a permit.",
+          "fix_time_months": 96,
+          "source_id": "une_citizenship"
+        },
+        {
+          "id": "non_language",
+          "attribute": "has_b1_spoken_norwegian",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spoken Norwegian at level B1 (raised from A2 on 1 October 2022).",
+          "fix_path": "Pass a Norwegian oral proficiency test at B1 level.",
+          "fix_time_months": null,
+          "source_id": "une_citizenship"
+        },
+        {
+          "id": "non_test",
+          "attribute": "passed_citizenship_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must pass the citizenship test (the separate social-studies-course requirement was removed in the October 2022 changes).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "une_citizenship"
+        },
+        {
+          "id": "non_conduct",
+          "attribute": "no_disqualifying_criminal_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Criminal convictions or police fines trigger a waiting period before eligibility; the length depends on the penal sanction imposed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "une_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "protection_based",
+      "name": "Persons granted protection",
+      "requirements": [
+        {
+          "id": "non_protection_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "7 years of continuous residence for persons granted protection (refugee status), instead of the standard 8.",
+          "fix_path": null,
+          "fix_time_months": 84,
+          "source_id": "une_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "sufficient_income",
+      "name": "Persons with sufficient income",
+      "requirements": [
+        {
+          "id": "non_income_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 72,
+          "hard": true,
+          "blocker_text": "6 years of continuous residence for applicants who meet a sufficient-income test, instead of the standard 8 -- the exact income threshold was not confirmed to tier-1 precision in this pass.",
+          "fix_path": null,
+          "fix_time_months": 72,
+          "source_id": "une_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 (or 7, or 6) years' continuous residence with a permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "B1 spoken Norwegian test result", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Citizenship test pass certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police certificate / criminal record check", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "une_citizenship",
+      "tier": 1,
+      "url": "https://www.une.no/en/case-types-and-countries/norwegian-citizenship/",
+      "title": "UNE (Norwegian Immigration Appeals Board) -- Norwegian citizenship by application: 8-year standard / 7-year protection-based / 6-year sufficient-income residence tracks (effective 1 January 2022), B1 spoken Norwegian (from 1 October 2022, up from A2), citizenship test retained, social-studies course removed, dual citizenship permitted, criminal-record waiting periods",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). dual_citizenship_allowed modeled TRUE -- Norway removed its renunciation requirement in 2020 and now permits dual citizenship generally (not conditioned on the other country's own rules, per this source, though applicants should still check the other country's position on dual nationality). No reduced-residence track for spouses of Norwegian citizens was found in the source reviewed -- unlike several other European countries in this dataset, Norway's marriage-related advantage sits entirely at the permanent-residence stage (see no_family_immigration.json's 3-year PR track vs. the 5-year track for other categories), not a citizenship-clock reduction. The exact income threshold for the 6-year 'sufficient income' track was not confirmed to tier-1 precision -- flagged as a gap rather than invented."
+}

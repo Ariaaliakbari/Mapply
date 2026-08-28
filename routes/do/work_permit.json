@@ -1,0 +1,94 @@
+{
+  "id": "do_work_permit",
+  "country": "DO",
+  "name": "Labor Temporary Residence (RT-3) / Work Visa (NM1)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dowp_job_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "Requires a notarized employment contract (fixed 1-year or indefinite) with a Dominican employer, plus Ministry of Labour certification of the company and a work proposal from the employer.",
+          "fix_path": "Secure a qualifying job offer from a registered Dominican employer.",
+          "fix_time_months": null,
+          "source_id": "migracion_rt3"
+        },
+        {
+          "id": "dowp_nm1_visa",
+          "attribute": "has_work_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Multiple Business/Work Visa (NM1) must be obtained at a Dominican consulate before entry, valid 1 year with multiple entries.",
+          "fix_path": "Apply for the NM1 visa at a Dominican consulate.",
+          "fix_time_months": null,
+          "source_id": "mirex_visas"
+        },
+        {
+          "id": "dowp_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least six months.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": null,
+          "source_id": "migracion_rt3"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Ministry of Labour certification of employer", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled birth certificate (Spanish translation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate from country of origin/residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical exam from a DGM-authorized institution", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable while employed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migracion_rt3",
+      "tier": 1,
+      "url": "https://migracion.gob.do/en/servicio/labor-temporary-residence-rt-3/",
+      "title": "Dirección General de Migración -- Labor Temporary Residence (RT-3): employment contract, Ministry of Labour certification, 1-year validity, fees, no ID card issued for this category",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mirex_visas",
+      "tier": 1,
+      "url": "https://servicios360.mirex.gob.do/visas/",
+      "title": "MIREX Portal Único de Servicios de Relaciones Exteriores -- Work Visa (NM1): 1-year, multiple entries, Labour Ministry work proposal, company certification",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). pr_after_months (60) and citizenship_after_months (84) are inferred, not route-specific: DGM's Permanent Residence (RP-1) page requires 'the first card plus 4 temporary residence renewals' before applying (read as ~5 years of continuous temporary residence, since each renewal is annual), and Ordinary Naturalization then requires a further 2 years as a Permanent Resident per both DGM's current page and the 1948 Naturalization Law (Ley 1683) -- see do_permanent_residence.json and do_naturalisation.json for the sourcing on each leg. This chained estimate is flagged as an inference, not a figure stated anywhere as a single number. DGM explicitly notes 'a Personal Identity Card is not issued' for RT-3 holders -- a real practical limitation worth surfacing, since most other residence categories in this dataset do issue one."
+}

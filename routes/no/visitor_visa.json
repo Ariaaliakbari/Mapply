@@ -1,0 +1,65 @@
+{
+  "id": "no_visitor_visa",
+  "country": "NO",
+  "name": "Schengen Visitor Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Norway is a Schengen member (via association, not EU membership). Nationals of visa-exempt countries enter visa-free for short stays; others must obtain a Schengen (Type C) visitor visa from a Norwegian consulate before travel.",
+    "evidence_hint": "Passport; travel purpose documentation; proof of funds; return travel evidence; travel/health insurance."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "novv_duration",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Valid for entry to all Schengen countries for up to 90 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_visitor_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds and return travel", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "udi_visitor_visa",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/visit-and-holiday/visitors-visa-to-norway/",
+      "title": "UDI (Norwegian Directorate of Immigration) -- Visitor visa: up to 90-day Schengen-wide validity",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). The UDI visitor-visa page fetched in this pass was thin on funds/insurance specifics (much of its detail sits on linked sub-pages not independently fetched) -- the standard Schengen-wide 90-day rule and general documentation categories are modeled as the reliable core, consistent with every other Schengen-associated country in this dataset. No route to any further status."
+}

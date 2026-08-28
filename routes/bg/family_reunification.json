@@ -1,0 +1,86 @@
+{
+  "id": "bg_family_reunification",
+  "country": "BG",
+  "name": "Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgfam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_resident", "minor_child_of_resident", "dependent_adult_child_of_resident"],
+          "hard": true,
+          "blocker_text": "Available to the spouse and unmarried children under 18 (or adult children with serious health needs requiring personal care) of a foreigner already holding a prolonged or permanent residence permit in Bulgaria (Foreigners Act Article 2(3), Article 24(1)(13)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        },
+        {
+          "id": "bgfam_sponsor_status",
+          "attribute": "sponsor_has_prolonged_or_permanent_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The sponsoring family member in Bulgaria must already hold a prolonged (up to 1 year, renewable) or permanent residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        },
+        {
+          "id": "bgfam_means",
+          "attribute": "sponsor_has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor must show means of subsistence sufficient not to resort to the national social assistance system, at least the minimum national monthly salary, plus mandatory health insurance and secured accommodation (Article 24(2)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or birth certificate proving family tie", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's residence permit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor's income and accommodation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically matches the sponsor's permit; long-term permit up to 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bg_permanent_residence", "bg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "foreigners_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Foreigners_in_the_Republic_of_Bulgaria_Act_2.pdf",
+      "title": "Bulgaria -- Foreigners in the Republic of Bulgaria Act, Articles 2(3), 23(1)(2), 24(1)(13) and 24(2): family reunification eligibility (spouse, minor/dependent children), sponsor residence-status requirement, income/housing/insurance conditions",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Modeled the sponsor as a foreign resident holding prolonged/permanent status per the Act text located in this pass; family reunification with a Bulgarian CITIZEN sponsor (rather than a foreign resident) is also referenced in secondary sourcing but the precise citizen-sponsor provision's article number was not independently pinned down in the primary text fetched -- treated as covered by the same general family-member framework given no distinct citizen-sponsor conditions were found to differ."
+}

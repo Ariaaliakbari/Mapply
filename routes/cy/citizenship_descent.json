@@ -1,0 +1,66 @@
+{
+  "id": "cy_citizenship_descent",
+  "country": "CY",
+  "name": "Citizenship by Descent / Registration (child of a Cypriot citizen)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born abroad (or born out of wedlock) may be registered as a Cypriot citizen where at least one parent was a registered Cypriot national at the time of the child's birth.",
+    "evidence_hint": "Apostilled birth certificate showing both parents' names; parents' Cypriot ID/passport copies; parents' marriage certificate (apostilled if performed abroad), where applicable."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cycd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires that at least one parent was a registered Cypriot citizen at the time of the applicant's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cyprus_high_commission_uk"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Apostilled birth certificate showing both parents' names", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Parents' Cypriot ID card and passport copies", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parents' marriage certificate, apostilled if performed abroad (where applicable)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cyprus_high_commission_uk",
+      "tier": 1,
+      "url": "https://cyprusinuk.com/citizenship/",
+      "title": "High Commission of the Republic of Cyprus in the United Kingdom -- Cypriot Citizenship and Registration of Newborns/Minors",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build, and the one route in this country's build with a genuine tier-1 source: an official Cypriot diplomatic mission (High Commission of Cyprus in the UK), consistent with how this dataset has treated other official-government-mission sources for countries whose main government portal blocked automated fetching. Physical presence of the child is explicitly NOT required for the application, per this source. HONEST GAP: no registration age deadline was found in this source (unlike, e.g., Estonia's/Croatia's age-21 deadline for the equivalent one-parent-abroad case) -- not invented here; the source only points to the Directorate of Civil Registry for comprehensive criteria, which was not independently reached in this pass."
+}

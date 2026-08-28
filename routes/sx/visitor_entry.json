@@ -1,0 +1,93 @@
+{
+  "id": "sx_visitor_entry",
+  "country": "SX",
+  "name": "Visitor Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sxv_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "Passport must remain valid for at least 3 months beyond the stay if a visa is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sxm_airport_entry"
+        },
+        {
+          "id": "sxv_return_ticket",
+          "attribute": "has_return_or_onward_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must present a confirmed return or onward ticket.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sxm_airport_entry"
+        },
+        {
+          "id": "sxv_no_paid_work",
+          "attribute": "intends_paid_work",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Visitor entry permits stays for relaxation, sports, health, family, study, religious, or business purposes for up to 3 months (duration varies by nationality), provided no paid work occurs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 3+ months beyond stay (where a visa is required)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Confirmed return or onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed St. Maarten Entry Form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days for visa-exempt nationalities (duration varies by nationality)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sx_work_permit", "sx_student_intern_permit"]
+  },
+  "sources": [
+    {
+      "id": "sxm_airport_entry",
+      "tier": 3,
+      "url": "https://www.sxmairport.com/airport-services/immigration-visas",
+      "title": "Princess Juliana International Airport (SXM) -- Immigration & Visas: passport validity, visa-exempt 90-day stay, return-ticket requirement, entry form",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "moj_sx_immigration",
+      "tier": 1,
+      "url": "https://www.ministryofjustice.sx/department/immigration/",
+      "title": "Ministry of Justice, Government of Sint Maarten -- Immigration and Border Protection Services: tourist stay up to 3 months (duration varies by country of origin) for specified purposes, no paid work permitted",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY, first route of Sint Maarten's initial build. Sint Maarten is the Dutch-administered half of the island of Saint Martin, and (like Aruba and Curacao, built earlier this session) an autonomous constituent country of the Kingdom of the Netherlands -- NOT a British Overseas Territory. Citizenship here is Dutch nationality via the Kingdom-level IND, not a local citizenship regime; see sx_naturalisation.json. STATUS: DRAFT because the passport-validity and return-ticket hard requirements are sourced to the airport authority's visitor-facing page (tier 3) rather than a dedicated gov.sx/ministryofjustice.sx entry-requirements page, which was not located in this pass; the no-paid-work rule and 3-month stay figure are tier-1 (ministryofjustice.sx) but the passport/ticket requirements pull the route to draft. No visa-exempt nationality list was retrieved."
+}

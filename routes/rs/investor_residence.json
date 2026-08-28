@@ -1,0 +1,81 @@
+{
+  "id": "rs_investor_residence",
+  "country": "RS",
+  "name": "Temporary Residence by Investment",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "initial",
+      "name": "Initial application",
+      "requirements": [
+        {
+          "id": "rsir_funds",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 50000,
+          "hard": true,
+          "blocker_text": "At least EUR 50,000 in funds held in a non-resident bank account in Serbia, intended for investment in a registered legal entity's tangible/intangible assets or business activity.",
+          "fix_path": "Deposit at least EUR 50,000 in a non-resident Serbian bank account earmarked for the investment.",
+          "fix_time_months": null,
+          "source_id": "welcome_org_investment"
+        }
+      ]
+    },
+    {
+      "id": "extension",
+      "name": "Extension (after initial 6-month permit)",
+      "requirements": [
+        {
+          "id": "rsir_capital_contribution",
+          "attribute": "capital_contribution_eur",
+          "operator": ">=",
+          "value": 5000,
+          "hard": true,
+          "blocker_text": "At least EUR 5,000 contributed in cash to the company's share capital to qualify for the 1-year extension.",
+          "fix_path": "Contribute at least EUR 5,000 to the company's registered share capital.",
+          "fix_time_months": null,
+          "source_id": "welcome_org_investment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank statement confirming funds/contribution", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residential address registration in Serbia", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months initially; extendable to 1 year on meeting the capital-contribution condition",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rs_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "welcome_org_investment",
+      "tier": 3,
+      "url": "https://welcometoserbia.org/en/services/residence-permit-by-real-estate-investment/",
+      "title": "Welcome to Serbia (welcometoserbia.org -- a private relocation-consultancy site, NOT the official welcometoserbia.gov.rs government portal despite the similar name): investor residence permit, EUR 50,000 initial non-resident account funds, EUR 5,000 capital-contribution extension, 6-month initial / 1-year extended duration",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). STATUS: DRAFT -- IMPORTANT SOURCING CAVEAT: this route's only source is welcometoserbia.org, a privately run relocation-consultancy site whose name closely mimics the official Serbian government portal welcometoserbia.gov.rs (used as a tier-1 source throughout the rest of this build). They are different domains and different publishers; this file's source is graded tier-3 (not tier-1) accordingly, and the near-identical branding is flagged here explicitly so it is not mistaken for an official citation on a future review. No independently corroborating tier-1 government page describing a named 'investor' temporary-residence ground with these figures was found in this pass, despite MUP's temporary-residence grounds list including 'investor' as one of its named categories. This is a real, marketed route (not fabricated), but the EUR figures should be treated as unverified against a primary source until a government citation is found."
+}

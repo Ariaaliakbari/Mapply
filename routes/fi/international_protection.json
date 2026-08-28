@@ -1,0 +1,90 @@
+{
+  "id": "fi_international_protection",
+  "country": "FI",
+  "name": "Asylum / International Protection",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The Finnish Immigration Service (Migri) decides on applications for international protection, in a 3-phase process: application (declare intent to police/border authorities/Migri), registration (within 5 days), and lodging the application with supporting grounds (within 21 days of registration; within 5 days under the border procedure).",
+    "evidence_hint": "Registration certificate; grounds for protection presented at the Migri meeting; supporting documents."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fiip_claim",
+          "attribute": "meets_refugee_or_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Migri assesses whether the applicant qualifies for refugee status (asylum) or the lesser subsidiary protection status, based on the grounds and evidence presented.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_asylum"
+        },
+        {
+          "id": "fiip_presence",
+          "attribute": "physically_present_in_finland",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be within Finnish territory to apply for international protection in Finland.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registration of asylum application certificate", "difficulty": "routine", "typical_time_days": 5 },
+    { "document": "Grounds for protection and supporting documentation", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: 3-year first/extended permit (reduced from 4 years); Subsidiary protection: 1-year first permit, 2-year extended permit (both reduced effective 2 January 2025)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fi_permanent_residence", "fi_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migri_asylum",
+      "tier": 1,
+      "url": "https://migri.fi/en/asylum-in-finland",
+      "title": "Maahanmuuttovirasto -- Asylum in Finland: 3-phase application process (application, registration within 5 days, lodging within 21 days), right to work and study during processing, reception-centre housing",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migri_protection_shortened",
+      "tier": 1,
+      "url": "https://migri.fi/en/-/the-validity-periods-of-international-protection-permits-will-be-shortened-and-protection-becomes-temporary",
+      "title": "Maahanmuuttovirasto -- The Validity Periods of International Protection Permits Will Be Shortened and Protection Becomes Temporary, effective 2 January 2025: refugee permits 4yr to 3yr; subsidiary protection first permit to 1yr, extended permit 4yr to 2yr",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migri_subsidiary_protection",
+      "tier": 1,
+      "url": "https://migri.fi/en/subsidiary-protection",
+      "title": "Maahanmuuttovirasto -- Subsidiary Protection: definition, 1-year initial permit, unrestricted work rights, family reunification access",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). MAJOR REFORM, effective 2 January 2025 (already in force): Finland shortened international-protection permit validity periods as part of a shift toward treating protection as temporary and requiring more frequent reassessment (refugee status 4yr to 3yr; subsidiary protection extended permit 4yr to 2yr, first permit newly set at just 1yr). This is a genuinely tier-1-sourced, well-documented reform (unlike several international_protection.json builds elsewhere in this dataset that rely on tier-2 UNHCR sourcing), so this file is PUBLISHED rather than draft. pr_after_months and citizenship_after_months use the general fi_permanent_residence.json / fi_naturalisation.json figures; no protection-specific reduced naturalisation track (e.g. a stateless/refugee-specific shortcut) was confirmed in this pass -- flagged as a possible gap, not modeled as guaranteed."
+}

@@ -1,0 +1,92 @@
+{
+  "id": "fi_family_reunification",
+  "country": "FI",
+  "name": "Family Reunification (Spouse/Registered Partner)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fifam_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_resident", "registered_partner_of_resident"],
+          "hard": true,
+          "blocker_text": "Available to the spouse or registered partner of a person holding a Finnish residence permit or Finnish citizenship. Marriage certificate required (legalised if from outside the Nordics/EU); gender-neutral, applies equally to registered partnerships.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_spouse"
+        },
+        {
+          "id": "fifam_age",
+          "attribute": "both_spouses_age_years",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "For applications from 16 June 2025 onward, both spouses must be at least 21 years old when the residence permit becomes valid; applications may be submitted up to 9 months before turning 21, but validity cannot start before both reach 21.",
+          "fix_path": "Wait until both spouses are 21.",
+          "fix_time_months": null,
+          "source_id": "migri_spouse"
+        },
+        {
+          "id": "fifam_income",
+          "attribute": "sponsor_net_monthly_income_eur",
+          "operator": ">=",
+          "value": 1030,
+          "hard": true,
+          "blocker_text": "Sponsor's net monthly income must meet the regional threshold: EUR 1,210 (Helsinki metro area), EUR 1,090 (other large municipalities), or EUR 1,030 (other municipalities) for a single adult, plus per-dependent add-ons. Income cannot be based on social assistance, labour market subsidy, or general unemployment benefit; salary, business income, pensions, assets, rental income, and dividends count.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_income_requirement"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or registered-partnership certificate (legalised if applicable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's residence permit or citizenship proof", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor's income meeting the regional threshold", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically matches the sponsor's permit type/duration",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fi_permanent_residence", "fi_naturalisation", "fi_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "migri_spouse",
+      "tier": 1,
+      "url": "https://migri.fi/en/spouse-in-finland-with-a-residence-permit",
+      "title": "Maahanmuuttovirasto -- Spouse in Finland with a Residence Permit: income requirement, marriage certificate, 21-year minimum age (from 16 June 2025), fees",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migri_income_requirement",
+      "tier": 1,
+      "url": "https://migri.fi/en/income-requirement-for-family-members-of-a-person-who-has-been-granted-a-residence-permit-in-finland",
+      "title": "Maahanmuuttovirasto -- Income Requirement for Family Members: regional net-income thresholds effective 1 November 2024 (Helsinki metro / other large municipalities / other municipalities), per-dependent add-ons",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). income threshold modeled at the lowest regional figure (EUR 1,030, other municipalities) as the baseline hard requirement, with the higher Helsinki-area and large-municipality figures disclosed in blocker_text rather than as separate requirement groups, since the underlying condition (meeting your specific region's threshold) is the same rule applied regionally, not a structurally different route. A 21-year minimum age for both spouses (effective for applications from 16 June 2025) is an unusually high bar compared to most countries in this dataset -- flagged explicitly, as it functions as an anti-forced-marriage/anti-fraud measure per the broader EU policy context, though this framing was not independently confirmed as Migri's own stated rationale."
+}

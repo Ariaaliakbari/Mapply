@@ -1,0 +1,65 @@
+{
+  "id": "hr_international_protection",
+  "country": "HR",
+  "name": "Asylum and Subsidiary Protection",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Asylum requires a well-founded fear of persecution owing to race, religion, nationality, membership of a particular social group, or political opinion. Subsidiary protection applies where asylum criteria aren't met but there are justified reasons to believe the person would face a real risk of serious harm (death penalty, torture, or serious threat from armed conflict) if returned to their country of origin.",
+    "evidence_hint": "Evidence supporting the persecution or serious-harm claim."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Refugee status or subsidiary protection",
+      "requirements": [
+        {
+          "id": "hrip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "asylum_or_subsidiary_protection_criteria_met",
+          "hard": true,
+          "blocker_text": "Requires meeting the criteria for asylum (well-founded fear of persecution) or subsidiary protection (real risk of serious harm if returned), assessed by the competent authority.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_asylum_subsidiary"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for international protection", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution/serious-harm claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "asylum: residence permit valid 5 years; subsidiary protection: residence permit valid 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hr_long_term_residence", "hr_permanent_stay", "hr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mup_hr_asylum_subsidiary",
+      "tier": 1,
+      "url": "https://mup.gov.hr/aliens-281621/international-protection/asylum-and-subsidiary-protection/281626",
+      "title": "Ministarstvo unutarnjih poslova Republike Hrvatske (mup.gov.hr) -- Asylum and subsidiary protection",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. Unlike Barbados' bb_asylum (a 'never existed' closed case), Croatia has a real, EU Common European Asylum System-compliant domestic protection framework, confirmed at tier-1. Asylees get immediate work authorisation without a separate permit and up to 2 years of state-funded accommodation; both are real entitlements, not modelled as separate schema fields. work_rights set to 'full' (not 'restricted') per the source's explicit 'immediate employment authorization without additional permits' -- a notable, confirmed difference from Estonia's international-protection route, where work rights were left 'restricted' for lack of a clear source statement. pr_after_months (60) reflects protection-holders' residence feeding hr_long_term_residence's or hr_permanent_stay's own tests (both allow asylum/subsidiary-protection time to count, per those routes' sourcing), not a separate stated figure for this route specifically. Obligations include registering residence within 15 days and attending Croatian language/history/culture courses -- procedural, not modelled as qualifying requirements."
+}

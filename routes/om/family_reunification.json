@@ -1,0 +1,114 @@
+{
+  "id": "om_family_reunification",
+  "country": "OM",
+  "name": "Family Joining Visa",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "expat_sponsor",
+      "name": "Sponsored by an expatriate employee",
+      "requirements": [
+        {
+          "id": "omfr_sponsor_seniority",
+          "attribute": "sponsor_is_senior_expatriate_employee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The sponsor must be an expatriate employee in a senior position (per GCC standards).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rop_family_visa"
+        },
+        {
+          "id": "omfr_sponsor_salary",
+          "attribute": "sponsor_monthly_salary_omr",
+          "operator": ">=",
+          "value": 600,
+          "hard": true,
+          "blocker_text": "The sponsor's monthly salary must be at least OMR 600.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rop_family_visa"
+        },
+        {
+          "id": "omfr_housing",
+          "attribute": "has_housing_in_sponsor_or_employer_name",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Housing must be rented under the sponsor's name or their employer's name.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rop_family_visa"
+        },
+        {
+          "id": "omfr_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_sponsor", "child_of_sponsor_under_21"],
+          "hard": true,
+          "blocker_text": "Available to the sponsor's spouse and children under 21.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rop_family_visa"
+        }
+      ]
+    },
+    {
+      "id": "foreign_wife_of_omani",
+      "name": "Foreign wife of an Omani citizen",
+      "requirements": [
+        {
+          "id": "omfr_omani_husband",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "foreign_wife_of_omani_citizen",
+          "hard": true,
+          "blocker_text": "A foreign wife of an Omani citizen may be sponsored on the husband's request, with an authenticated marriage certificate and Ministry of Interior approval of the marriage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rop_family_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's salary certificate (OMR 600+/month)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Housing/tenancy contract in sponsor's or employer's name", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "For foreign wives of Omani citizens: authenticated marriage certificate and Ministry of Interior marriage approval", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years, multi-entry, renewable while sponsor's status continues",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 240,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["om_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "rop_family_visa",
+      "tier": 1,
+      "url": "https://www.rop.gov.om/english/Visas.aspx?VisaName=FamilyJoiningVisa",
+      "title": "Royal Oman Police -- Family Joining Visa: senior expatriate employee sponsorship, OMR 600/month minimum sponsor salary, housing requirement, spouse and under-21 children eligible, 2-year multi-entry visa; separate route for foreign wives of Omani citizens with Ministry of Interior marriage approval",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). The 'senior position per GCC standards' sponsor-seniority requirement is quoted directly from ROP but not itself numerically defined on the fetched page -- disclosed as a soft/undefined threshold layered on top of the clear OMR 600 salary figure, rather than resolved into an invented job-title list. The foreign-wife-of-an-Omani-citizen route is gendered on its face (an Omani wife's foreign husband is not mentioned as a comparable sponsor category on this page) -- modeled precisely rather than assumed symmetric, consistent with this dataset's practice for Oman's other family/citizenship provisions (see om_citizenship_by_marriage.json). citizenship_after_months (240) reuses om_naturalisation.json's general 20-year figure since no family-specific reduced track to citizenship (short of the dedicated marriage-based citizenship route in om_citizenship_by_marriage.json) was found."
+}

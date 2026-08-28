@@ -1,0 +1,88 @@
+{
+  "id": "lc_permanent_residence",
+  "country": "LC",
+  "name": "Permanent Residence",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_residence",
+      "name": "Standard continuous residence route",
+      "requirements": [
+        {
+          "id": "lcpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous residence in Saint Lucia, though this period can be significantly reduced in certain circumstances.",
+          "fix_path": "Accumulate 5 years of continuous residence.",
+          "fix_time_months": 60,
+          "source_id": "lexology_lc_immigration"
+        }
+      ]
+    },
+    {
+      "id": "extended_temporary_residence",
+      "name": "Extended temporary residence route",
+      "requirements": [
+        {
+          "id": "lcpr_temp_residence",
+          "attribute": "months_on_extended_temporary_residence",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Those who have extended their temporary residency for a minimum of 2 years may instead apply for permanent residency through the Ministry of Labour.",
+          "fix_path": "Extend temporary residency for at least 2 years.",
+          "fix_time_months": 24,
+          "source_id": "lexology_lc_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence (5 years) or extended temporary residency (2 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Work permit history or property purchase evidence (special ministerial permission required for property purchase)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lc_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "lexology_lc_immigration",
+      "tier": 3,
+      "url": "https://www.lexology.com/library/detail.aspx?g=ff593a82-b32b-4afd-a8b1-92624093380d",
+      "title": "Lexology -- A General Introduction to Immigration Law and Policy in Saint Lucia: permanent residence after 5 years' continuous residence (reducible in certain circumstances) OR after 2 years on extended temporary residency; PR does NOT itself confer the right to work; initial residency requires a work permit or ministerially-permitted property purchase",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "stlucia_studio_immigration",
+      "tier": 3,
+      "url": "https://stlucia.studio/immigration",
+      "title": "St. Lucia Business Guide -- Immigration & Visas: corroborates the 5-year continuous-residence PR pathway",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. STATUS: DRAFT -- no official govt.lc page describing Permanent Residence requirements was located (a general web/site search for one came up empty); both sources are tier 3 (a law firm article and a business guide). IMPORTANT: unlike most other PR statuses modelled this session, Saint Lucia's Permanent Residence explicitly does NOT confer the right to work -- a separate work permit remains required even after achieving PR, per the Lexology source's direct quote. work_rights modelled as 'none' accordingly. citizenship_after_months (84 = 7 years) reflects the Section 8 Naturalisation residence figure (see lc_naturalisation.json) as the nearest onward citizenship pathway, though PR-holding time is not confirmed to count directly toward that 7-year naturalisation clock -- flagged as an inference, not a stated rule."
+}

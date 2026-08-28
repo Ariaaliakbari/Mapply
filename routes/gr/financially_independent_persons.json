@@ -1,0 +1,73 @@
+{
+  "id": "gr_financially_independent_persons",
+  "country": "GR",
+  "name": "Financially Independent Persons (FIP) Residence Permit",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grfip_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "stable_annual_income_at_ministerial_decision_threshold",
+          "hard": true,
+          "blocker_text": "Requires stable annual income (pension, investment income, etc., not from Greek employment) sufficient to cover living expenses, at a level set by joint ministerial decision under Article 90(2) -- the exact current EUR figure was not confirmed at tier-1 in this pass; third-party sources commonly cite figures in the ~USD/EUR 3,000-3,800/month range but these were not independently verified against the ministerial decision itself.",
+          "fix_path": "Document qualifying passive income at whatever threshold the current ministerial decision sets.",
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art36"
+        },
+        {
+          "id": "grfip_no_work",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "no_remunerated_work_in_greece",
+          "hard": false,
+          "blocker_text": "FIP status does not itself grant a right to work in Greece.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art36"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of stable annual income (pension statements, investment income, etc.)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police/criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable annually",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_naturalisation", "gr_long_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "mfa_gr_codification_art36",
+      "tier": 1,
+      "url": "https://www.mfa.gr/images/docs/ethnikes_theoriseis/codification_of_legislation_en.pdf",
+      "title": "Greek Ministry of Foreign Affairs -- Codification of Legislation, Article 36 (financially independent persons, 1-year renewable permit, income threshold set by ministerial decision under Article 90(2))",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. STATUS SET TO DRAFT: the law itself (confirmed at tier-1) does not state a fixed euro income figure -- it delegates the exact threshold to a joint ministerial decision that was not independently located and fetched in this pass. Rather than write a specific number sourced only from tier-3/4 aggregator guides (which vary and are not consistently cited against the actual ministerial decision), the requirement is modelled with operator 'exists' and an honest description of the gap. This is functionally similar to the Costa Rica rentista/pensionado passive-income routes but with materially less source certainty on the actual number."
+}

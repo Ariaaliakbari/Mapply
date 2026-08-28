@@ -1,0 +1,80 @@
+{
+  "id": "ma_international_protection",
+  "country": "MA",
+  "name": "Refugee Recognition (UNHCR / Bureau des Réfugiés et Apatrides)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "UNHCR (not a dedicated national asylum authority) conducts refugee status determination in Morocco: registration (by phone/WhatsApp helpline, in-person at the Rabat office, or via partner NGO OMDH in Oujda/Tangier/Nador/Casablanca for those outside Rabat), a biometric registration interview, a detailed RSD interview, a first-instance decision, and a 30-day appeal window if rejected.",
+    "evidence_hint": "Registration request (identity documents not required to register); biometric data (fingerprints, iris scan) at the registration interview; detailed persecution account at the RSD interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "maip_claim",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must meet the refugee definition per UNHCR's mandate assessment. First-instance decisions generally take about one month for straightforward cases but can take several months for complex ones; the registration-to-RSD-interview wait can range from several months to several years depending on case priority.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_morocco_register"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registration form (name, nationality, family details, reasons for leaving)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Biometric data (fingerprints, iris scan)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Detailed persecution account (RSD interview)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "National Refugee (BRA) card: 1 year. Residency card issued by police after the BRA card: 1 year, renewable.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ma_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_morocco_register",
+      "tier": 1,
+      "url": "https://help.unhcr.org/morocco/en/seeking-asylum-in-morocco/register-and-apply-for-asylum/",
+      "title": "UNHCR Morocco -- registration channels (helpline, Rabat office, OMDH partner offices), 6-stage process, ~1-month first-instance decisions (longer for complex cases), months-to-years registration-to-RSD wait, 30-day appeal window",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "unhcr_morocco_recognised",
+      "tier": 1,
+      "url": "https://help.unhcr.org/morocco/en/seeking-asylum-in-morocco/recognised-refugee/",
+      "title": "UNHCR Morocco -- post-recognition process: 1-year National Refugee (BRA) card issued by the Moroccan government, followed by a 1-year renewable Residency Card from the local police department",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "gadem_no_asylum_category",
+      "tier": 3,
+      "url": "https://gadem-guide-juridique.info/category/sejour-territoire/carte-immatriculation/",
+      "title": "GADEM legal guide -- explicitly notes Law 02-03 (Morocco's general immigration law) provides NO residence-permit category, short or long-term, specifically for asylum seekers",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT -- an important structural point: refugee status determination in Morocco is conducted by UNHCR itself (a UN agency), not a dedicated Moroccan government asylum authority, and per GADEM's legal guide, Morocco's general immigration statute (Law 02-03) contains NO formal residence-permit category for asylum SEEKERS during the (often months-to-years-long) determination process -- the National Refugee (BRA) card and subsequent police-issued residency card only materialize AFTER recognition, via administrative practice rather than a codified seekers' status. This is a materially different, more precarious structure than most other countries in this dataset, and is disclosed here rather than smoothed over. citizenship_after_months (60) uses ma_naturalisation.json's standard 5-year track since no refugee-specific reduced naturalisation track was found in the Code de la Nationalité Marocaine text reviewed (unlike Belarus's or Ecuador's reduced refugee tracks built earlier in this dataset)."
+}

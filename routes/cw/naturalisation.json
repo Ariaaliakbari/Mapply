@@ -1,0 +1,116 @@
+{
+  "id": "cw_naturalisation",
+  "country": "CW",
+  "name": "Naturalisation as a Dutch National",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cwn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must have lived in the Kingdom of the Netherlands (which includes Curacao) for at least 5 consecutive years with a valid residence permit; exceptions to this timeframe exist but were not detailed in the source reviewed.",
+          "fix_path": "Accumulate 5 consecutive years of lawful residence with a valid residence permit within the Kingdom of the Netherlands.",
+          "fix_time_months": 60,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "cwn_integration",
+          "attribute": "civic_integration_exam_passed",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have passed the civic integration exam at Dutch language level A2 or above; exemptions apply if sufficient Dutch proficiency (reading, writing, speaking, comprehension) is otherwise demonstrated.",
+          "fix_path": "Pass the civic integration exam at A2 level or demonstrate equivalent Dutch proficiency.",
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "cwn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "cwn_public_order",
+          "attribute": "public_order_or_security_risk",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Must not be a danger to public order or national security of the Kingdom of the Netherlands.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        },
+        {
+          "id": "cwn_renunciation",
+          "attribute": "willing_to_renounce_prior_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must generally renounce current nationality, with limited exemptions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ind_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid identity and nationality documents", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Civic integration exam certificate (A2+) or proof of exemption", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of 5 years' valid residence permit history", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Attendance at the mandatory naturalisation ceremony (within 1 year of approval) and Declaration of Solidarity", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fees (amount not specified in the pages reviewed; see IND's separate fees page)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 consecutive years, continuously, with a valid residence permit",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ind_naturalisation",
+      "tier": 1,
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-naturalisation",
+      "title": "Immigratie- en Naturalisatiedienst (IND), Kingdom of the Netherlands -- Becoming a Dutch national through naturalisation: 5-year residence requirement, A2 civic integration exam, age 18+, public order requirement, renunciation of prior nationality, naturalisation ceremony",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ind_caribbean_kingdom",
+      "tier": 1,
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-in-the-caribbean-part-of-the-kingdom",
+      "title": "IND -- Becoming a Dutch national in the Caribbean part of the Kingdom: naturalisation and option procedures, naturalisation ceremony and Declaration of Solidarity requirement, fees payable via the Curacao Admission Office (Immigratiedienst Curacao)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. Naturalisation for Curacao residents is administered under Kingdom-wide Dutch nationality law by the IND, not by a separate Curacao citizenship regime -- the Curacao Admission Office (Immigratiedienst Curacao) handles the local application/fee-collection step (fee confirmed there as XCG 615, not repeated here since it is a Kingdom-level, not Curacao-specific, figure). dual_citizenship_allowed is set to false based on the general renunciation requirement stated on the naturalisation page, though the same page notes 'limited exemptions' exist without detailing them -- treat this as the general rule, not an absolute one. An 'option procedure' (a faster, narrower route for specific grounds -- born in the Kingdom, recognised by a Dutch parent, long-term Kingdom residence, born before 1985 to a Dutch mother, or former Dutch nationals) also exists and is NOT modelled as this route; see cw_option_long_residence.json for the one option ground plausible for a migrant to actively pursue, modelled separately and in draft due to an unconfirmed duration figure. Notably, the IND option-procedure page as fetched in this pass did not list marriage/partnership to a Dutch national as its own option ground, which is somewhat surprising relative to general knowledge of Dutch nationality law -- flagged rather than assumed to be an omission in the source."
+}

@@ -1,0 +1,77 @@
+{
+  "id": "at_visitor_visa",
+  "country": "AT",
+  "name": "Schengen Visitor Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Austria is a Schengen member. Nationals of visa-exempt countries may enter visa-free for short stays; others must obtain a Schengen (Type C) visa from an Austrian consulate before travel.",
+    "evidence_hint": "Passport; travel purpose documentation; proof of funds; return travel evidence; travel/health insurance."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atvv_stay_length",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Short-stay Schengen visa/visa-free entry permits up to 90 days within any 180-day period across the whole Schengen area, not just Austria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_overview"
+        },
+        {
+          "id": "atvv_insurance",
+          "attribute": "has_travel_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Travel medical insurance covering at least EUR 30,000 is required for visa applicants (standard Schengen requirement).",
+          "fix_path": "Purchase Schengen-compliant travel medical insurance.",
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds and return travel", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/health insurance (visa applicants)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migration_gv_at_overview",
+      "tier": 1,
+      "url": "https://www.migration.gv.at/en/types-of-immigration/",
+      "title": "migration.gv.at -- Types of immigration overview: short-stay Schengen visa/visa-free entry (up to 90/180 days), general Schengen entry conditions",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). Standard Schengen short-stay entry -- same 90/180 rule and general conditions as every other Schengen member built in this dataset. No route to any further status."
+}

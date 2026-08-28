@@ -1,0 +1,118 @@
+{
+  "id": "at_work_permit",
+  "country": "AT",
+  "name": "Red-White-Red Card (Points-Based Skilled Worker Permit)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "merit_ranked",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A points-based combined work-and-residence permit for third-country nationals, with sub-categories for Very Highly Qualified Workers, Skilled Workers in Shortage Occupations, and Other Key Workers. Applicant must have a concrete job offer and score above the category's minimum points threshold.",
+    "evidence_hint": "Job offer/employment contract; qualification documents; points assessment; employer declaration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "very_highly_qualified",
+      "name": "Very Highly Qualified Workers",
+      "requirements": [
+        {
+          "id": "atwp_vhq_points",
+          "attribute": "rwr_points_score",
+          "operator": ">=",
+          "value": 70,
+          "hard": true,
+          "blocker_text": "Minimum 70 of 100 possible points (special qualifications up to 40, work experience up to 20, language skills up to 10, age up to 20, Austrian studies up to 10).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_rwr"
+        }
+      ]
+    },
+    {
+      "id": "shortage_occupation",
+      "name": "Skilled Workers in Shortage Occupations",
+      "requirements": [
+        {
+          "id": "atwp_shortage_points",
+          "attribute": "rwr_points_score",
+          "operator": ">=",
+          "value": 55,
+          "hard": true,
+          "blocker_text": "Minimum 55 of 90 (95 with English bonus) points, plus a job offer in an occupation on the annual shortage list; must be paid per the applicable collective bargaining agreement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_rwr"
+        }
+      ]
+    },
+    {
+      "id": "other_key_worker",
+      "name": "Other Key Workers",
+      "requirements": [
+        {
+          "id": "atwp_key_points",
+          "attribute": "rwr_points_score",
+          "operator": ">=",
+          "value": 55,
+          "hard": true,
+          "blocker_text": "Minimum 55 of 90 (95 with English bonus) points, and a gross minimum salary of EUR 3,465/month (2026).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_rwr"
+        },
+        {
+          "id": "atwp_key_salary",
+          "attribute": "monthly_salary_eur",
+          "operator": ">=",
+          "value": 3465,
+          "hard": true,
+          "blocker_text": "Gross minimum monthly salary of EUR 3,465 (2026) for the Other Key Workers sub-category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_rwr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer / employment contract (min. 24 months validity)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Qualification/experience documents for points assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid for at least the card's duration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, tied to a specific employer",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_permanent_residence", "at_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gv_at_permanent",
+      "tier": 1,
+      "url": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/",
+      "title": "migration.gv.at -- Permanent immigration overview: Red-White-Red Card categories (Very Highly Qualified Workers, Skilled Workers in Shortage Occupations, Other Key Workers, etc.)",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "workinaustria_rwr",
+      "tier": 1,
+      "url": "https://www.workinaustria.com/en/residence-employment/red-white-red-card/",
+      "title": "workinaustria.com (AMS/ABA-run official relocation portal) -- Red-White-Red Card: points thresholds per sub-category, 2026 salary figures, 2-year validity, path to Settlement Permit/Long-Term Resident EU status",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). work_rights modeled 'restricted' since the card is tied to a specific employer/job during its initial 2-year term (full labour-market access only comes with RWR Card Plus or Long-Term Resident EU status -- see at_permanent_residence.json). Salary figures other than the Other Key Workers EUR 3,465/month threshold are pegged to collective bargaining agreements rather than a flat number, so not modeled as a hard numeric requirement for the other two sub-categories. workinaustria.com is Austria's official government-run relocation/labour-market information portal (operated by AMS/ABA), treated as tier-1 alongside migration.gv.at."
+}

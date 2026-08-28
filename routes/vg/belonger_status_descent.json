@@ -1,0 +1,100 @@
+{
+  "id": "vg_belonger_status_descent",
+  "country": "VG",
+  "name": "Belonger Status -- Birth, Descent, or Adoption",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born in the Virgin Islands to a qualifying parent, born abroad to a Belonger/BOTC parent, or adopted in the Territory by a Belonger, acquires Belonger status under Section 2 of the Virgin Islands Constitution Order 2007.",
+    "evidence_hint": "Birth certificate; parent's proof of Belonger/BOTC status or settled status; adoption order (adoption ground)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "by_birth",
+      "name": "Birth in the Territory to a qualifying parent",
+      "requirements": [
+        {
+          "id": "vgbd_birth",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "born_in_territory_to_qualifying_parent",
+          "hard": true,
+          "blocker_text": "Requires birth in the Virgin Islands to a parent who is a BOTC by birth, naturalisation, or registration in the BVI; a person settled in the BVI; or a Belonger by birth or descent (including via a grandparent born in the Territory).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_belonger_info"
+        }
+      ]
+    },
+    {
+      "id": "by_descent",
+      "name": "Descent (born abroad to a Belonger/BOTC parent)",
+      "requirements": [
+        {
+          "id": "vgbd_descent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "born_abroad_to_belonger_or_botc_parent",
+          "hard": true,
+          "blocker_text": "Requires a parent who is a Belonger or British Overseas Territories Citizen at the time of the applicant's birth abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_belonger_info"
+        }
+      ]
+    },
+    {
+      "id": "by_adoption",
+      "name": "Adoption",
+      "requirements": [
+        {
+          "id": "vgbd_adoption",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "adopted_in_territory_by_belonger",
+          "hard": true,
+          "blocker_text": "Requires adoption in the Territory by a person who is a Belonger by birth or descent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_belonger_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application for Belonger Status form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Belonger/BOTC/settled status, or adoption order", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vg_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "bvi_belonger_info",
+      "tier": 1,
+      "url": "http://crisvi.gov.vg/gis/netdata/forms/bvi_belonger_info.pdf",
+      "title": "Civil Registry and Immigration System of the Virgin Islands (crisvi.gov.vg) -- Belonger status: constitutional grounds under Section 2 of the Virgin Islands Constitution Order 2007 (birth, descent, adoption), and historical 1946 Ordinance provisions (repealed 1969)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the British Virgin Islands' initial build. Three constitutional grounds folded into one file as OR-groups since all three grant the identical Belonger status outcome directly under Section 2 of the Constitution Order, without the discretionary Cabinet assessment or 20-year tenure required by vg_belonger_status_residence.json. IMPORTANT: per the source, Belonger status does NOT automatically pass from parent to child -- a child of a newly-Belonger parent must separately apply upon reaching 18, or register under the British Nationality Act; this is flagged rather than modelled as automatic inheritance. See vg_belonger_status_residence.json's notes for why leads_to_citizenship is modelled as true (Belonger status is itself one of the five BOTC naturalisation fee categories) while being a distinct status from actual British nationality."
+}

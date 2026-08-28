@@ -1,0 +1,81 @@
+{
+  "id": "be_work_permit",
+  "country": "BE",
+  "name": "Single Permit / EU Blue Card",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bewp_job_offer",
+          "attribute": "has_belgium_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A third-country national authorised to work in Belgium for more than 90 days must also obtain authorisation to reside for more than 90 days -- the two are linked via the single permit procedure. Work authorisation is applied for through the competent REGIONAL authority (Flanders, Brussels, or Wallonia each run their own procedure), not a single federal one.",
+          "fix_path": "Secure a job offer from a Belgian employer.",
+          "fix_time_months": null,
+          "source_id": "dofi_work"
+        },
+        {
+          "id": "bewp_salary",
+          "attribute": "annual_salary_eur",
+          "operator": ">=",
+          "value": 44441,
+          "hard": true,
+          "blocker_text": "Minimum salary thresholds for highly-skilled workers are set REGIONALLY and revised annually: Flanders EUR 47,500 (from 2 August 2026, up from EUR 45,420), Brussels EUR 44,441 (2025 level maintained into 2026), Wallonia EUR 53,220 (from January 2026). The EU Blue Card threshold is EUR 63,300 nationally.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "visasupdate_flanders_threshold"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Regional work authorisation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of qualifications/salary meeting the applicable regional threshold", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the single permit's validity period, matching the authorised employment",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["be_permanent_residence", "be_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dofi_work",
+      "tier": 1,
+      "url": "https://dofi.ibz.be/en/themes/third-country-nationals/work",
+      "title": "IBZ -- Work (third-country nationals): work authorisation for stays over 90 days is a REGIONAL competence, paired with the federal single-permit residence authorisation",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "visasupdate_flanders_threshold",
+      "tier": 3,
+      "url": "https://www.visasupdate.com/post/flanders-highly-skilled-single-permit-salary-threshold-2026",
+      "title": "VisasUpdate -- Flanders Raises Highly-Skilled Single Permit Salary Threshold to EUR 47,500 for 2026: also cites Brussels (EUR 44,441), Wallonia (EUR 53,220), and the national EU Blue Card threshold (EUR 63,300)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). STATUS: DRAFT -- Belgium's federal structure means work-permit salary thresholds are genuinely set REGIONALLY (Flanders, Brussels, Wallonia each publish their own annual figures) rather than nationally, which the tier-1 dofi.ibz.be source confirms structurally but does not itself state in euro figures; the specific numbers are tier-3 sourced from an immigration-news aggregator. Modeled the lowest of the three 2026 regional figures (Brussels, EUR 44,441) as the baseline hard requirement, with the higher Flanders/Wallonia figures and the separate EU Blue Card threshold disclosed in blocker_text. This regional fragmentation is structurally different from every other EU country built in this dataset so far, where a single national salary threshold applies."
+}

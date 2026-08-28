@@ -1,0 +1,82 @@
+{
+  "id": "ms_permanent_residence",
+  "country": "MS",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mspr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Historically required 8 years of continuous residence in Montserrat immediately preceding application, per reporting on the governing subsidiary regulations; not independently confirmed against the regulation text itself in this pass.",
+          "fix_path": "Accumulate 8 years of continuous residence in Montserrat.",
+          "fix_time_months": 96,
+          "source_id": "discovermni_pr_savings"
+        },
+        {
+          "id": "mspr_savings",
+          "attribute": "savings_balance",
+          "operator": ">=",
+          "value": { "amount": 5000, "currency": "XCD", "unit": "month_average" },
+          "hard": true,
+          "blocker_text": "Historically required proof of an average monthly savings account balance of at least EC$5,000 during the 6 months immediately preceding application, alongside gainful employment in that period, medical clearance, and police character certificates. A temporary policy in effect from 2019 to 1 June 2020 waived this savings requirement for non-nationals resident 12+ years, on economic/humanitarian grounds; it is not confirmed whether that waiver was ever made permanent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "discovermni_pr_savings"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 years' continuous residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank statements showing required average savings balance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of gainful employment in the preceding 6 months", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical clearance and police character certificate", "difficulty": "moderate", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ms_immigration_act",
+      "tier": 1,
+      "url": "http://agc.gov.ms/wp-content/uploads/2011/10/Immigration-Act.pdf",
+      "title": "Montserrat Chapter 13.01, Immigration Act -- Section 19 (Governor in Council may grant a permit of permanent residence or economic residence 'subject to such conditions as he may think fit'; references subsidiary Immigration (Permanent Residence Permits) Regulations, S.R.O. 66/2005), Section 20 (revocation grounds: 3+ years' absence, criminal imprisonment, conduct contrary to public interest, spousal separation/dissolution)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "discovermni_pr_savings",
+      "tier": 3,
+      "url": "https://discovermni.com/2019/08/08/montserrat-cabinet-removes-savings-option-on-permanent-residency-applications-for-non-nationals/",
+      "title": "Discover MNI (Montserrat news outlet) -- reporting on the 8-year residence and EC$5,000 average-savings requirements for Permanent Residence, and a temporary 2019-2020 policy waiving the savings requirement for 12+ year residents",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of Montserrat's initial build. The Immigration Act's Section 19 itself states no financial or residence criteria -- it grants the Governor in Council open discretion. The actual numeric criteria (8 years' residence, EC$5,000 average savings balance) live in the referenced Immigration (Permanent Residence Permits) Regulations, S.R.O. 66/2005, whose full text was not located at tier-1 in this pass despite a dedicated search; the figures here are sourced instead from a Montserrat news outlet's reporting on a 2019 Cabinet policy change, which is why this route is marked draft rather than published. The 2019 savings-requirement waiver for 12+ year residents was explicitly time-limited to 1 June 2020; whether it was extended or made permanent afterward is not confirmed, so the standing 8-year/EC$5,000 rule is modelled as the current baseline, not the temporary waiver. Revocation grounds (Section 20) are tier-1 confirmed and apply regardless of this draft flag. This route is distinct from the property-based ms_resident_permit_property_owner.json (a lighter, immediately-available status) and from ms_economic_residence.json (a Section 19 sibling permit for investors)."
+}

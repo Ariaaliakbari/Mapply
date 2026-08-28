@@ -1,0 +1,128 @@
+{
+  "id": "cw_family_reunification",
+  "country": "CW",
+  "name": "Family Reunification / Family Formation",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A spouse, partner (family formation), child, or parent of a Curacao resident or Dutch citizen may apply for a residence permit with family.",
+    "evidence_hint": "Marriage/partnership certificate or proof of relationship; proof of sponsor's income; proof of suitable housing."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "dutch_sponsor",
+      "name": "Sponsor is a Dutch citizen",
+      "requirements": [
+        {
+          "id": "cwfr_income_dutch",
+          "attribute": "sponsor_monthly_income",
+          "operator": ">=",
+          "value": { "amount": 1500, "currency": "ANG", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Where the sponsor is a Dutch citizen married to a foreigner, minimum household income of ANG 1,500/month is required, plus ANG 250/month per child under 5, ANG 350/month per child up to 11, and ANG 500/month per child 12+.",
+          "fix_path": "Increase and document household income to at least ANG 1,500/month (plus per-child amounts).",
+          "fix_time_months": null,
+          "source_id": "immigrationcur_family_faq"
+        },
+        {
+          "id": "cwfr_housing_dutch",
+          "attribute": "housing",
+          "operator": "exists",
+          "value": "sustainable_suitable_housing",
+          "hard": true,
+          "blocker_text": "Applicant must have sustainable, suitable housing effectively available.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_family_faq"
+        },
+        {
+          "id": "cwfr_character_dutch",
+          "attribute": "public_order_risk",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "The foreigner applying for admission, and their family members, must not pose a threat to public order.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_family_faq"
+        }
+      ]
+    },
+    {
+      "id": "foreign_sponsor",
+      "name": "Sponsor is a foreigner (marriage between two foreigners)",
+      "requirements": [
+        {
+          "id": "cwfr_income_foreign",
+          "attribute": "sponsor_monthly_income",
+          "operator": ">=",
+          "value": { "amount": 3000, "currency": "ANG", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Where the marriage is between two foreigners, minimum household income of ANG 3,000/month is required, plus the same per-child amounts as the Dutch-sponsor group.",
+          "fix_path": "Increase and document household income to at least ANG 3,000/month (plus per-child amounts).",
+          "fix_time_months": null,
+          "source_id": "immigrationcur_family_faq"
+        },
+        {
+          "id": "cwfr_housing_foreign",
+          "attribute": "housing",
+          "operator": "exists",
+          "value": "sustainable_suitable_housing",
+          "hard": true,
+          "blocker_text": "Applicant must have sustainable, suitable housing effectively available.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_family_faq"
+        },
+        {
+          "id": "cwfr_character_foreign",
+          "attribute": "public_order_risk",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "The foreigner applying for admission, and their family members, must not pose a threat to public order.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_family_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/partnership certificate or proof of family formation relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor's household income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sustainable, suitable housing", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration of no objection (for minor children only)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cw_permanent_residence", "cw_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "immigrationcur_family_faq",
+      "tier": 1,
+      "url": "https://immigrationcur.org/en/faq/family-reunification-family-formation/",
+      "title": "Immigratiedienst Curacao -- Family Reunification/Family Formation FAQ: income thresholds by sponsor nationality and per-child amounts, housing requirement, public-order requirement, unrestricted work rights for spouses of Dutch citizens",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. work_rights is 'full' specifically because the source states foreigners married to Dutch citizens receive a permit 'without work restrictions, allowing direct labour market participation' -- this was extended here to both requirement groups since the source did not state a different (more restrictive) work-rights rule for the foreigner-sponsor group; that extension is a judgement call, flagged. pr_after_months (120) reuses the general 10-year continuous-residence rule confirmed in cw_permanent_residence.json's source, since family-based residence permits are ordinary residence permits for that purpose -- not independently re-confirmed as applying to this specific category. No minimum marriage/partnership duration before the family permit can be granted was stated in the source (unlike several other countries in this dataset that specify e.g. a minimum years-of-marriage figure) -- not invented here. The two requirement_groups intentionally omit their own outcome_override since the FAQ did not distinguish the two sponsor groups on outcome, only on income threshold."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "ky_spouse_of_permanent_resident",
+  "country": "KY",
+  "name": "Residency and Employment Rights Certificate for Spouse/Civil Partner of a Permanent Resident",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse or civil partner of a person holding a Residency and Employment Rights Certificate (permanent residence) may apply for their own Residency and Employment Rights Certificate under the same conditions as the holder (Immigration (Transition) Act, Section 37(16)).",
+    "evidence_hint": "Marriage/civil partnership certificate; proof of the sponsoring spouse's own Residency and Employment Rights Certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kyspr_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_civil_partner_of_rerc_holder",
+          "hard": true,
+          "blocker_text": "Requires being the spouse or civil partner of a Residency and Employment Rights Certificate holder, applying under the same conditions as the holder.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ky_immigration_transition_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or civil partnership certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsoring spouse's Residency and Employment Rights Certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ky_caymanian_status_marriage"]
+  },
+  "sources": [
+    {
+      "id": "ky_immigration_transition_act",
+      "tier": 1,
+      "url": "https://my.egov.ky/documents/d/worc/immigrationtransitionact_2022-revision-pdf?download=true",
+      "title": "Cayman Islands Immigration (Transition) Act (2022 Revision) -- Section 37(16): spouse/civil partner of a Residency and Employment Rights Certificate holder may apply for their own certificate under the same conditions; Section 37(18): surviving spouse/partner may reapply within 3 months after the holder's death",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Cayman Islands' initial build. Modelled separately from ky_permanent_residence_general.json because Section 37(16) gives the spouse an independently-held certificate (their own status, not derivative dependant status), distinct from simply being listed as a dependant on the primary holder's certificate. work_rights follows the same 'restricted' logic as the underlying RERC (occupation-specified, not unrestricted). Section 37(18) additionally provides that if the primary certificate holder dies, the surviving spouse/civil partner's right to reside may be revoked at Board/Director discretion, but the survivor may reapply within 3 months for their own Residency and Employment Rights Certificate -- this is a meaningful protection not modelled as its own separate route but flagged here since it materially affects what happens to this status on the sponsor's death. switchable_to points to ky_caymanian_status_marriage.json, since a spouse holding Cayman residence in this way is a plausible route into the marriage-based Caymanian-status grounds under Section 28(5)."
+}

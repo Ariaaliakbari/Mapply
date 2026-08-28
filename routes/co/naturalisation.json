@@ -1,0 +1,139 @@
+{
+  "id": "co_naturalisation",
+  "country": "CO",
+  "name": "Naturalización (Carta de Naturaleza)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["co_resident_by_accumulated_time", "co_resident_venezuelan_etpv"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard_5yr",
+      "name": "Ordinary track",
+      "requirements": [
+        {
+          "id": "conat_residence_std",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 continuous years of domicile in Colombia, counted from the date the Resident (R) visa was issued.",
+          "fix_path": "Hold Resident visa status continuously for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "cancilleria_naturalizacion"
+        },
+        {
+          "id": "conat_docs",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a clean criminal record, and a formal memorial (application letter) requesting Colombian nationality; the Ministry may conduct home visits to verify residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cancilleria_naturalizacion"
+        }
+      ]
+    },
+    {
+      "id": "reduced_2yr",
+      "name": "Reduced-period track (spouse/permanent partner of a Colombian; parent of Colombian children; Spanish nationals)",
+      "prerequisites_override": {
+        "minimum_months_held": 24
+      },
+      "requirements": [
+        {
+          "id": "conat_residence_reduced",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires only 2 continuous years of domicile for: those married to or in a permanent partnership with a Colombian national; those with Colombian children; or Spanish nationals.",
+          "fix_path": "Hold Resident visa status continuously for 2 years while in one of the qualifying categories.",
+          "fix_time_months": 24,
+          "source_id": "cancilleria_naturalizacion"
+        },
+        {
+          "id": "conat_docs_reduced",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Same clean-criminal-record and formal-memorial requirements as the ordinary track.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cancilleria_naturalizacion"
+        }
+      ]
+    },
+    {
+      "id": "latinamerican_caribbean_1yr",
+      "name": "Latin American / Caribbean nationals (reciprocity-based, per Ley 43 de 1993)",
+      "prerequisites_override": {
+        "minimum_months_held": 12
+      },
+      "requirements": [
+        {
+          "id": "conat_residence_latam",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Ley 43 de 1993, Article 5, states Latin American and Caribbean nationals may naturalise after only 1 continuous year of domicile, subject to a reciprocity principle (i.e. Colombia's own nationals must receive equivalent treatment from that country). This reduced track was NOT mentioned on Cancillería's own current naturalización FAQ page (which cites only the 5-year, 2-year-spouse, 2-year-Colombian-children, and 2-year-Spanish-national tracks) -- it may have been narrowed, conditioned, or superseded by later regulation since 1993, or simply omitted from a simplified public FAQ. Not confirmed current in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley43_1993_acnur_hosted"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Active Resident (R) visa, as principal or beneficiary", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Foreign identity card and biographical passport page", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled/legalized birth certificate with Spanish translation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment verification (labor certificate, RUT, or chamber-of-commerce registration)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish language and constitutional-knowledge assessment (per Ley 43 Article 9)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cancilleria_naturalizacion",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/atencion-y-servicio-al-ciudadano/tramites-y-servicios/nacionalidad/naturalizacion",
+      "title": "Cancillería de Colombia -- Naturalización: 5-year ordinary track, 2-year reduced track (spouse/Colombian-children/Spanish nationals), documents",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ley43_1993_acnur_hosted",
+      "tier": 2,
+      "url": "https://www.acnur.org/fileadmin/Documentos/BDL/2008/6466.pdf",
+      "title": "Ley 43 de 1993 (Colombia's Nationality Law), hosted by ACNUR/UNHCR -- Article 5 (residence tracks including a 1-year Latin American/Caribbean reciprocity track), Article 9 (language/civics/character requirements)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. STATUS SET TO DRAFT: an unresolved discrepancy exists between Cancillería's current public FAQ page (tier-1, which lists only 5-year/2-year tracks) and the still-in-force 1993 Nationality Law (Ley 43, tier-2 as hosted by UNHCR though it is itself primary legislation) which additionally specifies a 1-year reciprocity-based track for Latin American/Caribbean nationals -- this was NOT re-confirmed at tier-1 in this pass, so rather than silently pick one source over the other, both are cited honestly and the whole route is held at draft pending reconciliation. THREE GENUINELY DIFFERENT RESIDENCE-LENGTH TRACKS (5yr/2yr/1yr) modelled as OR-logic groups for the same naturalisation process, following the same approach used for Greece's build -- Cancillería presents the 5-year and 2-year tracks as one unified process with alternative grounds, and the 1-year track (if still valid) would be a further alternative ground within that same process rather than a separate legal mechanism. required_prior_route_ids notes that Colombia's naturalisation clock runs from R-VISA issuance specifically, not M-visa time -- meaning the realistic TOTAL time to citizenship via the ordinary M-then-R-then-naturalisation chain can be as long as 5 (M, tiempo acumulado) + 5 (R, naturalización) = 10 years for someone with no family/nationality-based reduction, a materially longer combined timeline than either step suggests in isolation; flagged explicitly rather than left implicit."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "be_citizenship_by_marriage",
+  "country": "BE",
+  "name": "Declaration of Acquisition via Cohabitation with a Belgian Citizen",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Marriage to a Belgian citizen does not grant citizenship automatically. A reduced-condition declaration of acquisition is reported to be available for those who have cohabited with a Belgian-citizen spouse or partner in Belgium for at least 3 years.",
+    "evidence_hint": "Marriage or partnership certificate; proof of 3 years' cohabitation in Belgium."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bem_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_partner_of_be_citizen",
+          "hard": true,
+          "blocker_text": "Applicant must be married to, or a registered/legal cohabiting partner of, a Belgian citizen. Reported to be gender-neutral, though this was not independently confirmed against primary legislative text in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "expatica_citizenship"
+        },
+        {
+          "id": "bem_cohabitation",
+          "attribute": "months_cohabiting_in_belgium",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "At least 3 years of cohabitation with the Belgian-citizen spouse/partner in Belgium, reported as a condition additional to (not a replacement for) the standard declaration-of-acquisition framework.",
+          "fix_path": "Accumulate 3 years of cohabitation in Belgium with the Belgian-citizen spouse/partner.",
+          "fix_time_months": 36,
+          "source_id": "expatica_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or partnership certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 3 years' cohabitation in Belgium", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "expatica_citizenship",
+      "tier": 3,
+      "url": "https://www.expatica.com/be/moving/visas/belgian-citizenship-100133/",
+      "title": "Expatica -- Citizenship in Belgium: How to Become a Belgian Citizen: reports a 3-year cohabitation requirement for spouses/partners of Belgian citizens as part of the declaration-of-acquisition framework",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). STATUS: DRAFT -- justice.belgium.be's official declaration-of-acquisition page (see be_naturalisation.json), successfully fetched in this pass, described only the general 5-year/10-year framework and did NOT itself confirm a distinct 3-year spousal-cohabitation reduction; that specific figure comes only from a tier-3 secondary source (Expatica). Could not cross-verify against the primary Belgian Nationality Code text, which returned metadata-only via Refworld and was blocked by robots.txt on the official ejustice.just.fgov.be legislative database in this pass. Flagged as the weakest-sourced file in this country's build; a future pass should attempt to verify this figure directly against justice.belgium.be or the primary Code text."
+}

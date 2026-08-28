@@ -1,0 +1,86 @@
+{
+  "id": "cy_digital_nomad_visa",
+  "country": "CY",
+  "name": "Digital Nomad Visa",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": null,
+    "cap_type": "fixed_number",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cydn_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 3500, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires stable and sufficient net monthly income of at least EUR 3,500, from employment by a company registered outside Cyprus or self-employment serving overseas clients.",
+          "fix_path": "Document qualifying monthly income before applying.",
+          "fix_time_months": null,
+          "source_id": "kpmg_cy_digital_nomad"
+        },
+        {
+          "id": "cydn_foreign_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_work_for_foreign_employer_or_own_foreign_clients",
+          "hard": true,
+          "blocker_text": "Must not work for a Cyprus-based employer or perform local economic activity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kpmg_cy_digital_nomad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of remote employment/self-employment with non-Cyprus employer/clients", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of income at or above EUR 3,500/month", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Entry as a visitor, then application to the Civil Registry and Migration Department within 3 months of arrival", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable up to a total of 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "kpmg_cy_digital_nomad",
+      "tier": 3,
+      "url": "https://kpmg.com/cy/en/home/insights/2022/02/cyprus-digital-nomad-visa-scheme.html",
+      "title": "KPMG Cyprus -- Cyprus Digital Nomad Visa Scheme (summarising the Council of Ministers decision)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "visahq_cy_dn_cap_raise",
+      "tier": 4,
+      "url": "https://www.visahq.com/news/2025-10-31/cy/cyprus-digital-nomad-visa-cap-raised-to-1000-deputy-ministry-confirms-immediate-availability/",
+      "title": "VisaHQ news -- Cyprus Digital Nomad Visa Cap Raised to 1,000 (reporting a Deputy Ministry of Migration and International Protection announcement, Oct 2025)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. STATUS SET TO DRAFT: this scheme is a real, actively-administered Council of Ministers decision (confirmed by an official Deputy Ministry announcement per visahq's reporting), but gov.cy's own announcement page returned HTTP 403 to automated fetching in this pass -- the underlying figures are corroborated consistently across multiple independent tier-3/4 sources (KPMG's professional tax-alert summary and news coverage of the government's own October 2025 cap-raise announcement), which is reassuring but does not substitute for a directly-read tier-1 source. The annual cap (raised from 500 to 1,000 permits as of October 2025) is modelled via application_window.cap_type = 'fixed_number' rather than as a fake requirement; selection_method set to 'first_come' to reflect that permits are granted within that cap rather than merit-ranked, distinct from most other digital-nomad routes in this dataset which are uncapped ('assessed'). Does NOT lead to permanent residence or citizenship -- consistent with how most digital-nomad routes in this dataset are modelled."
+}

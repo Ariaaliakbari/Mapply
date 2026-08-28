@@ -1,0 +1,65 @@
+{
+  "id": "ma_independent_means_residence",
+  "country": "MA",
+  "name": "Residence Card for Persons of Independent Means (Visiteur)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A 'Visiteur' category residence card for foreign nationals living in Morocco on their own resources without working -- commonly used by retirees and people of independent means.",
+    "evidence_hint": "Proof of sufficient own resources (pension, savings, investment income); accommodation proof."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "maim_means",
+          "attribute": "has_sufficient_own_resources",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate sufficient means of existence from own resources (pension, savings, investment income) without working in Morocco; no specific minimum figure was confirmed in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "o_maroc_immatriculation_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of sufficient own resources", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Accommodation proof", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially, renewable (general carte d'immatriculation progression: 1yr, then 2-3yr, 5yr, 10yr on successive renewals)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "card lapses after 6 months' continuous absence from Morocco",
+    "switchable_to": ["ma_long_term_residence", "ma_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "o_maroc_immatriculation_categories",
+      "tier": 3,
+      "url": "https://o-maroc.com/permis-de-sejour-au-maroc",
+      "title": "o-maroc.com -- listed 'motifs' for a Moroccan residence card include 'Visiteur' (living off own resources) alongside travail, études, and regroupement familial; general 1yr/2-3yr/5yr/10yr renewal progression",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT -- this route's existence as a named category ('Visiteur') is corroborated by more than one secondary source, but no specific minimum income/resources figure (comparable to Ecuador's rentista visa or Austria's private-means route in this dataset) could be located from any source in this pass. work_rights and study_rights modeled 'none' as a conservative default consistent with the category's non-work, non-study purpose."
+}

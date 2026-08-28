@@ -1,0 +1,74 @@
+{
+  "id": "ge_work_residence_permit",
+  "country": "GE",
+  "name": "Work Residence Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gewp_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "income_at_least_5x_minimum_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires demonstrated monthly income of at least 5 times Georgia's official minimum subsistence level (a GEL figure set periodically by the state, not a fixed number in the source).",
+          "fix_path": "Document qualifying monthly income before applying.",
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_residence_permits"
+        },
+        {
+          "id": "gewp_employer_turnover",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_with_qualifying_employer_turnover",
+          "hard": true,
+          "blocker_text": "The sponsoring employer must show annual turnover of at least GEL 50,000 (GEL 35,000 for educational or medical institutions).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_residence_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of income (5x minimum subsistence level)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's financial statements showing qualifying turnover", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months to 1 year initially, extendable up to a cumulative 12 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_permanent_residence", "ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "sda_gov_ge_residence_permits",
+      "tier": 1,
+      "url": "https://sda.gov.ge/en/products/migration-residence-permits/",
+      "title": "Public Service Development Agency of Georgia (sda.gov.ge) -- Migration/Residence Permits",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is Article 15(a) of the Law on the Legal Status of Aliens and Stateless Persons, per matsne.gov.ge's own text corroborating the same permit category. Fee: GEL 300-600 depending on processing speed (10-30 days). pr_after_months (120) reflects Article 15(g)'s 10-year-on-temporary-permits route to permanent residence, per ge_permanent_residence's own sourcing. work_rights 'restricted': tied to the sponsoring employer, standard for this permit type."
+}

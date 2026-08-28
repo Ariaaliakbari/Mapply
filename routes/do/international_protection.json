@@ -1,0 +1,77 @@
+{
+  "id": "do_international_protection",
+  "country": "DO",
+  "name": "Refugee/Asylum Status (CONARE)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person unable to return to their home country due to a well-founded fear of persecution may apply for refugee status; applications are received by the National Office for Refugees (ONR) and decided by the National Commission for Refugees (CONARE).",
+    "evidence_hint": "Written testimony explaining the inability to return; supporting evidence (photos, certificates, reports); passport or sworn declaration if unavailable."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "doip_timing",
+          "attribute": "days_since_arrival",
+          "operator": "<=",
+          "value": 15,
+          "hard": true,
+          "blocker_text": "Applicants must be physically present in the Dominican Republic and apply within 15 days of arrival.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_do_asylum"
+        },
+        {
+          "id": "doip_documents",
+          "attribute": "has_supporting_testimony",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires written testimony explaining the inability to return home, plus any supporting evidence, six passport photos, and a medical certificate regarding infectious diseases.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_do_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written testimony", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting evidence (photos, certificates, reports)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate regarding infectious diseases", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Renewable 30-day evidence document while pending; final status duration not specified in source",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_do_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/dominicanrepublic/en/applying-for-refugee-status/how-to-request-asylum-in-the-dominican-republic/",
+      "title": "UNHCR Dominican Republic -- How to request asylum: 15-day filing window, ONR intake, CONARE decision, 30-day renewable evidence document, explicit bar on paid work while pending",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). STATUS: DRAFT -- sourced to UNHCR (tier 2), not a primary Dominican government page; no official CONARE or ONR government page was located and fetchable during this research pass (a Ministerio de Relaciones Exteriores transparency page for the Comisión Nacional Para Refugiados exists at mirex.gob.do/transparencia/comision-nacional-para-refugiados/ but was not fetched for substantive process detail in this pass). The explicit bar on paid work while an application is pending is a real, stated restriction worth flagging -- applicants can be in status limbo for extended periods without any lawful income. study_rights, family_can_join, and leads_to_pr/leads_to_citizenship are NOT stated in the source and are set to the schema's most conservative values (none/false) as a placeholder rather than a confirmed fact -- flagged explicitly since the schema does not allow null here. The 15-day filing deadline from arrival is notably strict compared to other countries in this dataset. This file is unrelated to the jus-soli statelessness issue discussed in do_citizenship_by_descent.json's notes -- that is a nationality/civil-registry problem for people born in DR, not an asylum/refugee process for people arriving from elsewhere."
+}

@@ -1,0 +1,106 @@
+{
+  "id": "gr_golden_visa_real_estate",
+  "country": "GR",
+  "name": "Golden Visa -- Investor Residence Permit (Real Estate)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "high_demand_zone",
+      "name": "Real estate in Attica, Thessaloniki area, Mykonos, Santorini, and islands with over 3,100 inhabitants",
+      "requirements": [
+        {
+          "id": "grgv_amount_high",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 800000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires real estate acquisition (or long-term lease with total rent equal to the required amount) of at least EUR 800,000, with a minimum main living area of 120 sqm for built properties.",
+          "fix_path": "Purchase or lease qualifying property.",
+          "fix_time_months": null,
+          "source_id": "wfw_gr_golden_visa_5100_2024"
+        }
+      ]
+    },
+    {
+      "id": "other_areas",
+      "name": "Real estate in the rest of Greece",
+      "requirements": [
+        {
+          "id": "grgv_amount_other",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 400000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires real estate acquisition (or long-term lease with total rent equal to the required amount) of at least EUR 400,000 outside the designated high-demand zones, with a minimum main living area of 120 sqm for built properties.",
+          "fix_path": "Purchase or lease qualifying property.",
+          "fix_time_months": null,
+          "source_id": "wfw_gr_golden_visa_5100_2024"
+        }
+      ]
+    },
+    {
+      "id": "change_of_use",
+      "name": "Conversion of non-residential (e.g. industrial) or preservable/heritage buildings to residential use",
+      "requirements": [
+        {
+          "id": "grgv_amount_conversion",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 250000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires acquisition of at least EUR 250,000, with the change of use to residential completed after 5 April 2024 (entry into force of Article 64 of Law 5100/2024) and before the application is filed. For former industrial buildings, no industrial activity for the preceding 5+ years must be documented.",
+          "fix_path": "Purchase and convert a qualifying property before applying.",
+          "fix_time_months": null,
+          "source_id": "mitos_gr_golden_visa_change_of_use"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarial certificate of the property transfer deed", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Land registry proof of registration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Engineer's technical report (change-of-use category only)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Private health/accident insurance contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Real estate tax declaration (E9)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable indefinitely while the qualifying investment is retained",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mitos_gr_golden_visa_change_of_use",
+      "tier": 1,
+      "url": "https://en.mitos.gov.gr/index.php/%CE%94%CE%94:Permanent_golden_visa_(change_of_use)_%E2%80%93_Initial_issuance",
+      "title": "National Registry of Administrative Public Services (mitos.gov.gr) -- Golden Visa (change of use), EUR 250,000, 5-year validity, no work rights, confirmed directly at tier-1",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "wfw_gr_golden_visa_5100_2024",
+      "tier": 3,
+      "url": "https://www.wfw.com/articles/understanding-the-new-golden-visa-law-%CE%BD%CE%BF-5100-2024-key-points-and-implications/",
+      "title": "Watson Farley & Williams -- Understanding the new Golden Visa Law No. 5100/2024 (zone thresholds: EUR 800,000 / 400,000 / 250,000, effective 1 September 2024)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. STATUS SET TO DRAFT: the EUR 250,000 change-of-use figure, the 5-year permit duration, the no-employment-rights rule, and the automatic-revocation-on-resale rule are all confirmed directly at tier-1 (mitos.gov.gr). However, the main EUR 800,000/EUR 400,000 zone-tiered real-estate thresholds -- the categories most investors actually use -- are only independently confirmed via a tier-3 international law firm source (Watson Farley & Williams) describing Law 5100/2024; migration.gov.gr's own 'golden visa' and 'dieukrinistika-golden-visa' (clarifying documents) pages reference these figures only via linked PDFs that could not be read inline in this pass. leads_to_pr left false / pr_after_months null: sources describe the investor permit itself as indefinitely renewable (a de facto permanent status) rather than converting into a separate PR category -- this is modelled as switchable directly to naturalisation once Greece's general residence-duration requirements are met, not asserted as a confirmed fast-track. citizenship_after_months left null since the applicable naturalisation track (ordinary 7-year, see gr_naturalisation) is what would apply and no investor-specific citizenship shortcut was found in sources reviewed."
+}

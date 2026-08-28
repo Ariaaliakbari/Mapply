@@ -1,0 +1,92 @@
+{
+  "id": "ai_naturalisation",
+  "country": "AI",
+  "name": "Naturalisation as a British Overseas Territories Citizen (BOTC)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ain_pr_permit",
+          "attribute": "permanent_resident_permit_held",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires holding a valid Permanent Resident Permit.",
+          "fix_path": "Obtain and hold a valid Permanent Resident Permit (e.g. via ai_permanent_residence_arbi.json).",
+          "fix_time_months": null,
+          "source_id": "gov_ai_naturalisation_tips"
+        },
+        {
+          "id": "ain_work_history",
+          "attribute": "months_with_work_permits",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must provide all work permits held over the last 5 years, together with job letters covering the same period.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "gov_ai_naturalisation_tips"
+        },
+        {
+          "id": "ain_interview",
+          "attribute": "interview_completed",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an interview at the Attorney General's Chambers, and possibly an English-language proficiency test; a letter of residency from an Anguillian or BOTC is also required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ai_naturalisation_tips"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Fully completed, signed, and dated application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "All pages of every passport held since first arrival in Anguilla", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificates (applicant, spouse, parents, grandparents)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage/divorce documentation, if applicable", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid Permanent Resident Permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "All work permits and job letters covering the last 5 years", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Letter of residency from an Anguillian or BOTC", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "School records, if applicable", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certified translations of any foreign-language documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Non-refundable processing fee: EC$100.00 (paid to Inland Revenue Department)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ai_naturalisation_tips",
+      "tier": 1,
+      "url": "https://gov.ai/service/vital-records/naturalisation-tips",
+      "title": "Government of Anguilla -- Naturalisation Tips: application requirements, documents, interview, and fees for naturalisation as a British Overseas Territories Citizen",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. This is the genuine 'citizenship' (British Overseas Territories Citizenship, BOTC) track for Anguilla -- the one route in this country's dataset where leads_to_citizenship=true actually applies, in contrast to the three Belonger Status routes (see ai_belonger_status_descent.json's notes for the full explanation of that distinction). A UK Overseas Territories passport is then issued via the Passport Office (a separate administrative step, not modelled as its own route since it is purely document-issuance once BOTC status is held). The originally targeted source for this route, bom.gov.ai/naturalisation.php, failed with a DNS resolution error during initial research -- that domain appears to be dead or a defunct legacy mirror; gov.ai/service/vital-records/naturalisation-tips is the correct, current, live tier-1 replacement found in this pass. prerequisites is left null rather than pointing specifically at ai_permanent_residence_arbi, because the source requires 'a valid Permanent Resident Permit' generically, without naming which PR route -- ARBI is the only Permanent Residence route built for Anguilla in this pass, but others may exist that were not found. The English-language test is described as conditional/possible ('potentially'), not stated as a universal requirement, and is flagged accordingly rather than modelled as its own hard requirement. dual_citizenship_allowed is left null: British Overseas Territories Citizenship's interaction with other nationalities is governed by UK nationality law and was not independently confirmed at tier-1 in this pass."
+}

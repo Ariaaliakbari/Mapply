@@ -1,0 +1,85 @@
+{
+  "id": "lu_student_permit",
+  "country": "LU",
+  "name": "Student Residence Permit (Third-Country National)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lust_enrolment",
+          "attribute": "enrolled_full_time_higher_education",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires enrolment in a full-time, complete study cycle at a Luxembourg higher-education establishment, leading to an academic degree or diploma.",
+          "fix_path": "Obtain admission from a Luxembourg higher-education institution.",
+          "fix_time_months": null,
+          "source_id": "guichet_student"
+        },
+        {
+          "id": "lust_means",
+          "attribute": "monthly_resources_pct_of_revis",
+          "operator": ">=",
+          "value": 80,
+          "hard": true,
+          "blocker_text": "Monthly resources must be at least 80% of the current social inclusion income (REVIS). Scholarship, student loan, bank certificates, sponsor financial-support statements, up to 15 hours/week of work income, and free housing all count toward this.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_student"
+        },
+        {
+          "id": "lust_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold a health insurance certificate covering illness in Luxembourg at the time of the initial application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter for a full-time degree program", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of resources (scholarship, loan, bank statements, or sponsor support letter)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "minimum 1 year or the duration of the study cycle if shorter, renewable while conditions are met",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lu_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "guichet_student",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html",
+      "title": "Guichet.lu -- Conditions for Residence in Luxembourg for Students from Third Countries: 80% of REVIS financial-resources standard, health insurance, up to 15 hours/week work rights during study",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). work_rights modeled 'restricted' reflecting the 15-hour/week cap that also functions as a partial income source counted toward the financial-resources test. family_can_join modeled false: no student-specific family reunification provision was located in this pass."
+}

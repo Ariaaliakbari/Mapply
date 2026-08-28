@@ -1,0 +1,79 @@
+{
+  "id": "ae_virtual_work_visa",
+  "country": "AE",
+  "name": "Virtual Work Residence Visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Remote employee of a foreign-based employer",
+      "requirements": [
+        {
+          "id": "avw_foreign_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_employment_foreign_company",
+          "hard": true,
+          "blocker_text": "Requires proof of remote employment with an employer based outside the UAE; the applicant is not sponsored by, and cannot take up employment with, a UAE-based entity.",
+          "fix_path": "Confirm the employing entity is genuinely based outside the UAE.",
+          "fix_time_months": null,
+          "source_id": "icp_gov_ae_virtual_work"
+        },
+        {
+          "id": "avw_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 3500, "currency": "USD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires a monthly salary of at least USD 3,500 (or the equivalent in another currency), evidenced by a salary certificate.",
+          "fix_path": "Document monthly salary at or above USD 3,500.",
+          "fix_time_months": null,
+          "source_id": "icp_gov_ae_virtual_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity) and personal photograph", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of remote employment outside the UAE and a salary certificate documenting the income threshold", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "ICP Smart Services / UAE Pass application; total government fees of AED 300 (application, issuance, and smart-services fees of AED 100 each)", "difficulty": "routine", "typical_time_days": 2 }
+  ],
+  "outcome": {
+    "duration_length": "1 year",
+    "renewable": false,
+    "work_rights": "restricted",
+    "family_can_join": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "icp_gov_ae_virtual_work",
+      "tier": 1,
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68e73fd45ae59b00117389f4",
+      "title": "Federal Authority for Identity, Citizenship, Customs & Port Security (icp.gov.ae) -- Issuance of Visa Virtual Work Residence (Virtual Work Employee)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "investindubai_gov_ae_remote_work",
+      "tier": 1,
+      "url": "https://www.investindubai.gov.ae/en/live-and-work/visas-and-entry/work-remotely-from-dubai",
+      "title": "Government of Dubai -- Invest in Dubai portal (investindubai.gov.ae) -- Work Remotely from Dubai, confirming the one-year duration",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, added in this pass: the existing ae_freelance route covers free-zone freelance permits, a genuinely different legal product -- this is the federal Virtual Work Residence Visa (marketed since 2021 as the 'Dubai Virtual Working Programme,' now issued federally via ICP rather than only through Dubai's GDRFA), which lets someone live in the UAE on remote income from a foreign employer with no local sponsor and no free-zone permit involved. The USD 3,500/month income threshold and the AED 300 total government fee are both confirmed directly on the federal ICP portal, icp.gov.ae. renewable is set to false based on tier-3 corroboration (emirates247.com) describing the visa as non-renewable in place, with a fresh application required after expiry rather than an in-place renewal -- this was not independently confirmed on icp.gov.ae itself, which does not address renewal on the page fetched. family_can_join is set true on the same tier-3 corroboration (sponsorship of spouse and children, with school access for dependants); family_can_work and study_rights are omitted rather than guessed, since no source addressed them. leads_to_pr and leads_to_citizenship are set false based on this dataset's own already-established, tier-1-sourced finding for the UAE generally (see ae_green_visa and the project's country notes): the UAE has no citizenship pathway from ordinary residency of any kind, and no source found suggests this specific visa is an exception -- flagged here as a general-fact inference rather than a route-specific tier-1 statement, in the same spirit as this file's other honestly-flagged inferences. A u.ae (\"The Official Portal of the UAE Government\") page for this same visa exists per search results but returned a 404 when fetched directly in this pass and is not cited as a working source."
+}

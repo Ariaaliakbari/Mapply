@@ -1,0 +1,62 @@
+{
+  "id": "co_visitor_visa",
+  "country": "CO",
+  "name": "Visa de Visitante (V)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cov_nationality_or_purpose",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_exempt_nationality_or_qualifying_visitor_purpose",
+          "hard": true,
+          "blocker_text": "Nationals of many countries may enter visa-free for tourism; others (and those seeking longer/business/other visitor-purpose stays) must obtain a Visa V, covering tourism, business, medical treatment, cultural exchange, and similar non-remunerated or short-term purposes.",
+          "fix_path": "Apply for a Visa V at a Colombian consulate if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "cancilleria_tipos_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of purpose of visit (tourism, business meeting invitation, etc.)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years depending on sub-category, but no single stay may generally exceed the visa-free/authorized period without a corresponding permit",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cancilleria_tipos_visa",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/node/26933",
+      "title": "Cancillería de Colombia -- overview referencing Visa V (Visitante) as one of Colombia's three visa categories (V, M, R)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. Colombia's visa system (Resolution 5477 of 2022) has three overarching types: Visitante (V), Migrante (M), Residente (R). This route covers V only. Duration varies significantly by V sub-category (tourist, business, medical, etc.) and the exact figures for each were not individually confirmed in this pass -- kept at a general level rather than fabricating a single duration figure for all V sub-types."
+}

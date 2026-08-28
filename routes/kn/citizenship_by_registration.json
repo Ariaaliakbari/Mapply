@@ -1,0 +1,80 @@
+{
+  "id": "kn_citizenship_by_registration",
+  "country": "KN",
+  "name": "Citizenship by Registration (Minor Dependants)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A minor (18 or under) whose parent becomes a citizen of Saint Kitts and Nevis by marriage, residence, or investment may be registered as a citizen alongside that parent.",
+    "evidence_hint": "Parent's approved citizenship application/certificate; child's birth certificate proving the parent-child relationship."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": ["kn_citizenship_by_marriage", "kn_naturalisation", "kn_citizenship_by_investment"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "knr_age",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Route applies to minors aged 18 and under.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_types_of_citizenship"
+        },
+        {
+          "id": "knr_parent_naturalising",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_parent_naturalising_by_marriage_residence_or_investment",
+          "hard": true,
+          "blocker_text": "Parent must be becoming a citizen via marriage, residence (naturalisation), or investment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_types_of_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Child's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's approved citizenship application/certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mofa_types_of_citizenship",
+      "tier": 1,
+      "url": "https://mofa.gov.kn/types-of-citizenship/",
+      "title": "Ministry of Foreign Affairs, Government of Saint Kitts and Nevis -- Types of Citizenship: registration pathway for minors 18 and under whose parents became citizens by marriage, residence, or investment",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. STATUS: DRAFT -- the source confirms this pathway exists and its basic eligibility gate, but gives no fee, process, or timeline detail; no secondary source was found to fill the gap, unlike this build's other draft routes. Modelled as a dependent-on-parent route via prerequisites rather than an independent one."
+}

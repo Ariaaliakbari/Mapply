@@ -1,0 +1,89 @@
+{
+  "id": "hr_long_term_residence",
+  "country": "HR",
+  "name": "Long-Term Residence (EU long-term resident status)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["hr_residence_permit_employment", "hr_residence_permit_business", "hr_residence_permit_family_reunification", "hr_residence_permit_study", "hr_international_protection"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hrltr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of uninterrupted legal stay in Croatia (temporary stay, asylum, or subsidiary protection all count). Absences totalling no more than 10 months over the 5 years are permitted, or a single absence of up to 6 months. University study counts at half-time toward this period; seasonal work, posted-worker permits, trainee stays, and secondary-school attendance do not count at all.",
+          "fix_path": "Accumulate 5 years' continuous qualifying legal stay in Croatia.",
+          "fix_time_months": null,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        },
+        {
+          "id": "hrltr_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_means_for_support",
+          "hard": true,
+          "blocker_text": "Requires funds to support oneself.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        },
+        {
+          "id": "hrltr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "basic",
+          "hard": true,
+          "blocker_text": "Requires knowledge of the Croatian language and Latin script, unless under preschool age, educated in Croatia, or over 65 and not employed. Tested by university humanities faculties and approved institutions.",
+          "fix_path": "Pass the required Croatian language and Latin-script test, or qualify for an exemption.",
+          "fix_time_months": 6,
+          "source_id": "mup_hr_ltr_permanent_stay"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous qualifying legal stay", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Croatian language and Latin-script certificate (or exemption evidence)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mup_hr_ltr_permanent_stay",
+      "tier": 1,
+      "url": "https://mup.gov.hr/aliens-281621/stay-and-work/long-term-residence-and-permanent-stay/281682",
+      "title": "Ministarstvo unutarnjih poslova Republike Hrvatske (mup.gov.hr) -- Long-Term Residence and Permanent stay",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. This is the EU-directive 'long-term resident' status (distinct from Croatia's own domestic 'permanent stay'/stalni boravak -- see hr_permanent_stay -- which the same government page addresses as a related but separate status with different, narrower category-specific thresholds). language_local value is 'basic' rather than a CEFR letter grade because the source describes the test as institution-administered without stating a specific CEFR level (unlike Estonia's explicit B1). No language requirement applies to hr_permanent_stay per the same source -- a real, worth-noting distinction between the two Croatian settled statuses. prerequisites lists the routes that plausibly feed this status per the source's 'temporary stay, asylum, or subsidiary protection' language; the business route is included despite its own draft status/sourcing gaps since time spent under it, once granted, would count the same way."
+}

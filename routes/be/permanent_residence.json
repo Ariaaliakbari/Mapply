@@ -1,0 +1,85 @@
+{
+  "id": "be_permanent_residence",
+  "country": "BE",
+  "name": "EU Long-Term Resident Status",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bepr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of legal and continuous residence immediately preceding the application. Absences up to 12 consecutive months (not exceeding 18 months total across the 5-year period) for specific/exceptional reasons do not break continuity.",
+          "fix_path": "Accumulate 5 years of continuous legal residence.",
+          "fix_time_months": 60,
+          "source_id": "emn_belgium_ltr"
+        },
+        {
+          "id": "bepr_means",
+          "attribute": "monthly_income_eur",
+          "operator": ">=",
+          "value": 855,
+          "hard": true,
+          "blocker_text": "Resources above EUR 855/month for a single-person household, plus EUR 285/month per dependent, assessed at the time of application, considering the nature and regularity of the resources.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "emn_belgium_ltr"
+        },
+        {
+          "id": "bepr_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mandatory health insurance required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "emn_belgium_ltr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of income meeting the household threshold", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite status; permit duration not specified at tier-1 precision in this pass",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["be_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "emn_belgium_ltr",
+      "tier": 1,
+      "url": "https://emnbelgium.be/sites/default/files/publications/EMN%20Inform%20Long-term%20resident%20status%20in%20the%20EU.pdf",
+      "title": "European Migration Network Belgium (national contact point coordinated by IBZ/FPS Home Affairs) -- Long-Term Resident Status in the EU: Belgium's 5-year residence requirement, EUR 855/EUR 285 income thresholds, absence rules, no integration requirement",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). Notably, Belgium does NOT impose a language or civics integration requirement for this status (explicitly confirmed by the source) -- unlike several other countries in this dataset (e.g. Iceland, Finland) where permanent residence carries a language bar. The physical permit card's own validity/renewal period was not specified at tier-1 precision -- flagged as a gap."
+}

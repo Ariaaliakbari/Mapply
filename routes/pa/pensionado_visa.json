@@ -1,0 +1,65 @@
+{
+  "id": "pa_pensionado_visa",
+  "country": "PA",
+  "name": "Permiso de Residente Permanente en Calidad de Jubilado/Pensionado (PRP-JP)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "papn_pension",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 1000, "currency": "USD", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires a lifetime monthly pension of at least B/.1,000 (Panamanian balboa, pegged 1:1 to USD) from a foreign government, international organization, or private company. Reduced to B/.750/month if the applicant also owns Panamanian property valued over USD 100,000. Spouses may combine pensions to meet the B/.1,000 threshold.",
+          "fix_path": "Document a qualifying lifetime pension.",
+          "fix_time_months": null,
+          "source_id": "migracion_pa_pensionado_pdf"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certification of lifetime pension/retirement benefit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of USD 250/month solvency per dependent", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "For private-company pensions: employer verification, company registration, bank statements", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite -- granted directly as permanent residence, no renewal required",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migracion_pa_pensionado_pdf",
+      "tier": 1,
+      "url": "https://www.migracion.gob.pa/wp-content/uploads/02-JUBILADO-PENSIONADO-1.pdf",
+      "title": "Servicio Nacional de Migración de Panamá -- Requisitos para Jubilado/Pensionado: B/.1,000/month (or B/.750 with qualifying property), indefinite permit",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. One of the world's most well-known retiree visa programs, confirmed directly and in detail at tier-1: this is a DIRECT grant of permanent residence (not a temporary-then-upgrade path), and requires NO renewal at all. work_rights 'none': the source does not authorise employment under this status. Dependent children get temporary permits until age 25 if studying (except those with profound disabilities) and do not independently qualify for pensionado status. citizenship_after_months (60) reflects Panama's general 5-year naturalisation track (see pa_naturalisation), not a pensionado-specific shortcut."
+}

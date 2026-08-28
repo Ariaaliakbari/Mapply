@@ -1,0 +1,63 @@
+{
+  "id": "mt_work_sponsored_single_permit",
+  "country": "MT",
+  "name": "Single Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mtw_employer_sponsor",
+          "attribute": "job_offer_status",
+          "operator": "exists",
+          "value": "employer_sponsored_single_permit_application",
+          "hard": true,
+          "blocker_text": "Requires a Malta-based employer to sponsor a Single Permit application under Subsidiary Legislation 217.17, combining an employment licence and residence permit for a defined period of over 6 months (renewable). The holder is tied to the sponsoring employer and role -- working elsewhere, performing unauthorised work, or accepting assignments outside Malta is not permitted, and a change of employer requires a fresh application.",
+          "fix_path": "Secure a qualifying job offer from a Malta-registered employer willing to sponsor a Single Permit application.",
+          "fix_time_months": null,
+          "source_id": "identita_single_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's Single Permit application", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Pre-departure orientation course (first-time applicants)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "defined contract period of over 6 months, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mt_long_term_residence", "mt_naturalisation", "mt_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "identita_single_permit",
+      "tier": 1,
+      "url": "https://identita.gov.mt/expatriates-unit-main-page/noneu-nationals/employment-related-permits/single-permit/",
+      "title": "Identità -- Expatriates Unit: Single Permit (SL 217.17), single application procedure combining employment licence and residence permit, employer-tied restrictions, renewal for change-of-employer",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1. work_rights set to 'restricted' because the permit ties the holder to one employer and role, not the open labour market. Labour market test details, exact processing timelines, and minimum salary thresholds (if any) were not specified on the tier-1 page reviewed in this pass. A separate Key Employee Initiative / Specialist Employee Initiative fast-track exists for specific high-earner roles (referenced at tier-1 in mt_family_reunification's income exception) but is not modelled as its own route here. family_can_join set false at the route level because family joining runs through the separate mt_family_reunification route (which requires 12 months of prior residence plus an income test) rather than being automatic with this permit. pr_after_months / citizenship_after_months left null: this route counts toward the residence thresholds in mt_long_term_residence (5 years) and mt_naturalisation (12 months immediately preceding + 4-of-6-year aggregate), but no single combined figure is independently confirmed."
+}

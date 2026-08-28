@@ -1,0 +1,83 @@
+{
+  "id": "ar_citizenship_by_investment",
+  "country": "AR",
+  "name": "Citizenship by Relevant Investment",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national who makes an investment the Ministry of Economy deems 'relevant' may apply for Argentine citizenship through a dedicated agency, bypassing the standard 2-year residence requirement.",
+    "evidence_hint": "Documented investment; application to the Agencia de Programas de Ciudadanía por Inversión; security-clearance review; National Migration Directorate approval."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "arci_relevant_investment",
+          "attribute": "has_ministry_certified_relevant_investment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an investment certified as 'relevant' by the Ministry of Economy -- the Ministry alone defines what qualifies, and no fixed public minimum investment amount or qualifying investment-type list had been published as of this research pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_346"
+        },
+        {
+          "id": "arci_security_clearance",
+          "attribute": "passes_security_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Agency obtains clearance reports on the applicant from the Security Ministry, the Financial Intelligence Unit, and intelligence agencies before issuing a recommendation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ar_investment_citizenship_news"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation of the qualifying investment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Security, financial-intelligence, and background clearance", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ley_346",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/normativa/nacional/ley-346-48854/actualizacion",
+      "title": "República Argentina -- Ley 346 de Ciudadanía y Naturalización (texto actualizado), Artículo 2: naturalization via 'una inversión relevante en el país' as certified by the Ministry of Economy, alongside the standard 2-year residence route",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gob_ar_investment_citizenship_news",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/noticias/los-extranjeros-que-realicen-inversiones-relevantes-en-el-pais-podran-solicitar-la",
+      "title": "Argentina.gob.ar official announcement -- Investment Citizenship Programs Agency (under the Ministry of Economy): process (application, Agency evaluation, security-clearance checks, recommendation to National Migration Directorate, 30 business days to decide); legal basis Decree 524/2025 amending Decree 366/25 and Ley 346",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). BRAND NEW PROGRAM, worth flagging prominently: this is described by multiple secondary sources as South America's first formal Citizenship-by-Investment program, created via Decree 524/2025 amending Ley 346, with an implementing Agency (Agencia de Programas de Ciudadanía por Inversión) further formalized by Decree 285/2026 (Boletín Oficial, published 2026-04-28). The legal existence, administering agency, and process steps are all tier-1 confirmed directly on argentina.gob.ar. HOWEVER, as of this research pass, no public minimum investment threshold or defined list of qualifying investment types had been published -- the Ministry of Economy is empowered to determine 'relevant investment' but the announcement itself states this was still pending definition. This is genuinely different from every other CBI-style route in this dataset (Caribbean nations all publish a specific dollar figure per fund/option) -- modeled the requirement as existence-only (hard:true) without a threshold, rather than inventing or guessing a number. Revisit this file once a concrete threshold is published in the Boletín Oficial or a Ministry of Economy resolution."
+}

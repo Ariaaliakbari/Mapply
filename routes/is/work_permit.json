@@ -1,0 +1,92 @@
+{
+  "id": "is_work_permit",
+  "country": "IS",
+  "name": "Residence Permit Based on Work",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "iswp_job_offer",
+          "attribute": "has_iceland_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a specific job with a specific employer; the permit is employer-specific and work cannot begin before the permit is granted.",
+          "fix_path": "Secure a job offer from an Icelandic employer.",
+          "fix_time_months": null,
+          "source_id": "island_work_requirements"
+        },
+        {
+          "id": "iswp_income",
+          "attribute": "monthly_income_isk",
+          "operator": ">=",
+          "value": 259951,
+          "hard": true,
+          "blocker_text": "Minimum secure means of support of ISK 259,951 per month, demonstrated for the entire duration of the requested permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_work_requirements"
+        },
+        {
+          "id": "iswp_labour_market_test",
+          "attribute": "labour_market_test_or_expertise_confirmed",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Under the labour-shortage category, the employer must show no suitable candidate exists in Iceland, the EEA/EFTA area, or the Faroe Islands. Under the expert-knowledge category, the applicant's expertise (university-level or technical training) must be shown essential to the employer.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_work_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of sufficient income", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance (min. ISK 2,000,000 coverage, valid 3+ months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initial permit, renewable to 2 years if no wage/tax issues; standard processing up to 180 days, expedited 30 days for qualified professionals",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["is_permanent_residence", "is_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "island_work_requirements",
+      "tier": 1,
+      "url": "https://island.is/en/permit-based-on-work/requirements",
+      "title": "Island.is -- Residence Permit Based on Work: Requirements: employer-specific permit, ISK 259,951/month income floor, labour-shortage vs expert-knowledge test categories, health insurance",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "work_iceland_residence",
+      "tier": 1,
+      "url": "https://work.iceland.is/working/residence-permit/",
+      "title": "Work in Iceland (Directorate of Labour / government-run relocation portal) -- Residence Permit: 1yr initial, 2yr renewal, permanent residence eligible after 4 continuous years, 180-day standard / 30-day expedited processing",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). work_rights and study_rights modeled 'restricted' since the permit is tied to the specific sponsoring employer and position, standard for employer-sponsored permits in this dataset. No self-employment/business-owner residence category was confirmed at tier-1 precision in this pass -- Iceland does not appear to run a formal investor/golden-visa residence program comparable to Bulgaria or Luxembourg; not modeled as a separate route, flagged as a gap should one emerge."
+}

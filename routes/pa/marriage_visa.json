@@ -1,0 +1,80 @@
+{
+  "id": "pa_marriage_visa",
+  "country": "PA",
+  "name": "Permiso de Residente Permanente como Casado con Panameño/a",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pamv_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Panamanian national, registered with Panama's Civil Registry, and proof of conjugal residence (lease, property deed, or utility bill).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_pa_casado_pdf"
+        },
+        {
+          "id": "pamv_provisional_time",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires 2 years holding the initial provisional permit before applying for the permanent step. Submission of the application does not guarantee approval -- the National Migration Service retains full discretion.",
+          "fix_path": "Hold provisional status for 2 years.",
+          "fix_time_months": 24,
+          "source_id": "migracion_pa_casado_pdf"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate from the Civil Registry", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's birth certificate and identity card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarized letter of responsibility and repatriation from the Panamanian spouse", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of conjugal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate and health certificate (provisional stage only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite once the permanent step is granted",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pa_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migracion_pa_casado_pdf",
+      "tier": 1,
+      "url": "https://www.migracion.gob.pa/wp-content/uploads/01-CASADO-CON-PANAMENO.pdf",
+      "title": "Servicio Nacional de Migración de Panamá -- Requisitos, Casado con Panameño: documents for the permanent step following 2 years of provisional residence",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Panama's initial build. The fetched tier-1 document specifically describes the PERMANENT step (after 2 years of provisional 'casado con panameño' residence) -- the initial provisional-stage requirements themselves were referenced ('los requisitos anteriores') but not independently re-fetched and itemised in this pass; the provisional stage is treated as implicit rather than separately modelled. citizenship_after_months (36) reflects Panama's constitutionally reduced 3-year naturalisation track for those married to a Panamanian national (Article 10.2 -- see pa_naturalisation), distinct from and likely NOT stacked with the 2-year provisional-to-permanent wait modelled here; not confirmed whether the two clocks run concurrently or must be sequential."
+}

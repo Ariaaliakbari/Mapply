@@ -1,0 +1,75 @@
+{
+  "id": "mt_nomad_residence_permit",
+  "country": "MT",
+  "name": "Nomad Residence Permit",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mtn_income",
+          "attribute": "annual_income",
+          "operator": ">=",
+          "value": { "amount": 42000, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Minimum gross annual income of EUR42,000 for applications submitted on or after 1 April 2024 (EUR32,400 grandfathered for applications submitted before that date).",
+          "fix_path": "Increase documented qualifying income to at least EUR42,000/year.",
+          "fix_time_months": null,
+          "source_id": "nomad_eligibility"
+        },
+        {
+          "id": "mtn_foreign_employer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "foreign_employer_or_foreign_clients_only",
+          "hard": true,
+          "blocker_text": "Must either work for an employer registered abroad under a contract of work, conduct business as a partner/shareholder in a foreign-registered company, or provide freelance/consulting services to clients whose permanent establishments are abroad. Persons contracted by a foreign company specifically to serve a Maltese subsidiary are ineligible.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nomad_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying remote employment, shareholding, or freelance contracts", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance covering the EU (incl. Malta) and UK", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Property rental or purchase agreement in Malta", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police conduct certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically issued for 1 year, renewable (exact maximum renewal period not confirmed at tier-1 in this pass)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nomad_eligibility",
+      "tier": 1,
+      "url": "https://nomad.residencymalta.gov.mt/nomad-eligibility/",
+      "title": "Residency Malta Agency -- Nomad Residence Permit eligibility: EUR42,000 income threshold (EUR32,400 grandfathered), eligible remote-work categories, health insurance, accommodation, police conduct",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Malta's initial build. Confirmed directly at tier-1 (Residency Malta Agency's dedicated Nomad Residence Permit subdomain). work_rights set to 'restricted': the permit only authorises the specific qualifying foreign remote-work arrangement, not local Maltese employment. family_can_join set false and leads_to_pr / leads_to_citizenship set false as a conservative inference consistent with this permit's non-settlement design (tier-3 sources describe dependants as includable and describe a flat 10% tax rate, but neither was independently confirmed at tier-1 in this pass, so they are not modelled here). Applicants should verify current family-inclusion and renewal-cap rules directly with Residency Malta Agency before relying on this route for a multi-year stay."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "by_visitor_visa",
+  "country": "BY",
+  "name": "Short-Stay Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_free_38_european",
+      "name": "Visa-free entry for citizens of 38 European countries",
+      "requirements": [
+        {
+          "id": "byv_freemove_days",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 30,
+          "hard": true,
+          "blocker_text": "Citizens of 38 named European countries may enter visa-free for up to 30 days per entry (90 days for Poland, Lithuania, and Latvia including Latvian non-citizens), capped at 90 total days per calendar year, via any international road/rail border crossing or airport. This regime is a unilateral, presidentially-extended temporary measure, currently valid through 31 December 2026 -- not a permanent legal status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_freemove_europe"
+        }
+      ]
+    },
+    {
+      "id": "type_c_visa",
+      "name": "Short-stay visa (Type C) for other nationalities",
+      "requirements": [
+        {
+          "id": "byv_typec_days",
+          "attribute": "stay_length_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Nationals not covered by the visa-free regime require a Type C short-stay visa, single/double/multiple-entry, valid for stays up to 90 days.",
+          "fix_path": "Apply for a Type C visa at a Belarusian embassy/consulate.",
+          "fix_time_months": null,
+          "source_id": "mfa_visa_types"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days per entry (90 for Poland/Lithuania/Latvia), capped at 90 days/year under the visa-free regime; up to 90 days under a Type C visa",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_freemove_europe",
+      "tier": 1,
+      "url": "https://mfa.gov.by/en/visa/freemove/europe/",
+      "title": "Ministry of Foreign Affairs of the Republic of Belarus -- Visa-Free Entry for Citizens of a Number of European Countries: 38 countries, 30/90-day allowances, 90-day annual cap, extended through 31 December 2026, no transit to Russia under this regime",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mfa_visa_types",
+      "tier": 1,
+      "url": "https://mfa.gov.by/en/visa/ru_visa_types/",
+      "title": "Ministry of Foreign Affairs of the Republic of Belarus -- Entry Visas: Type B (transit), Type C (short-stay, up to 90 days), Type D (long-stay, up to 5 years) categories",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). Belarus is under significant sanctions and travel-restriction pressure; several EU/Schengen countries maintain their own restrictions on issuing visas to Belarusian citizens or on land-border crossings with Belarus (not modeled here, since this route concerns FOREIGNERS entering Belarus, not Belarusians travelling out). The visa-free regime is explicitly a temporary, unilaterally-extended measure (currently through 31 December 2026) rather than a permanent treaty-based arrangement -- flagged since it could be discontinued, shortened, or further extended at the Belarusian president's discretion, unlike EU Schengen rules which are treaty-bound."
+}

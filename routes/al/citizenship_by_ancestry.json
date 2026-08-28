@@ -1,0 +1,76 @@
+{
+  "id": "al_citizenship_by_ancestry",
+  "country": "AL",
+  "name": "Citizenship for Persons of Albanian Origin (Extended Ancestry Route)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign citizen who establishes a direct lineal kinship up to the third degree with an ancestor of Albanian origin may apply for Albanian citizenship, without needing to meet the standard naturalization residence requirement.",
+    "evidence_hint": "Documentation establishing the kinship chain to the qualifying Albanian-origin ancestor; language and history assessment."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ala_kinship",
+          "attribute": "kinship_degree_to_albanian_origin_ancestor",
+          "operator": "<=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "Requires establishing a direct lineal kinship up to the third degree with an ancestor of Albanian origin, per Article 8(1)(dh)/(ë).",
+          "fix_path": "Document the kinship chain to a qualifying Albanian-origin ancestor.",
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        },
+        {
+          "id": "ala_language_history",
+          "attribute": "has_albanian_language_and_history_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires demonstrated knowledge of the Albanian language and basic history, same as the standard naturalization route.",
+          "fix_path": "Pass the Albanian language and history assessment.",
+          "fix_time_months": null,
+          "source_id": "citizenship_law_113_2020"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation establishing the kinship chain to the Albanian-origin ancestor (birth/marriage certificates spanning generations)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Albanian language and history test results", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_law_113_2020",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Law%20No.%20113-2020%20(English).pdf",
+      "title": "Republic of Albania -- Law No. 113/2020 on Citizenship (official English translation), Article 8(1)(dh) and (ë): citizenship for foreign citizens establishing lineal kinship up to the third degree with an ancestor of Albanian origin",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). STATUS: DRAFT -- the tier-1 primary law confirms this route EXISTS and its kinship-degree and language/history conditions, but the extraction pass could not confirm whether a residence requirement is waived entirely for this route or merely reduced, nor whether it exempts the language/history test that Article 8(1)'s chapeau otherwise seems to attach to all of subsection (1)'s pathways -- this file conservatively includes the language/history requirement rather than assume it is waived. This is functionally distinct from al_citizenship_by_descent.json: that file is AUTOMATIC for a child of a CURRENTLY-citizen parent (Article 5); this route is an ASSESSED APPLICATION for someone whose Albanian ancestor may be several generations back and who may hold no other tie to a living Albanian citizen. This is the kind of provision commonly marketed as 'Albanian citizenship by descent for diaspora' by immigration consultancies -- flagged as draft specifically because the precise mechanics (residence waiver scope, required generation-spanning documentation standard) were not confirmed at tier-1 precision and deserve a follow-up pass before publishing."
+}

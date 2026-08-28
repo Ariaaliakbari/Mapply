@@ -1,0 +1,107 @@
+{
+  "id": "rs_naturalisation",
+  "country": "RS",
+  "name": "Admission to Citizenship (Naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["rs_permanent_residence"],
+    "minimum_months_held": 36,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rsn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must be 18 or older and not deprived of working (legal) capacity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rsn_residence",
+          "attribute": "months_uninterrupted_domicile",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "At least 3 years of uninterrupted domicile in Serbia immediately prior to filing the application (Article 14).",
+          "fix_path": "Accumulate 3 years of uninterrupted domicile in Serbia.",
+          "fix_time_months": 36,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rsn_release",
+          "attribute": "released_from_foreign_citizenship_or_evidenced",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be released from foreign citizenship, or submit evidence that release will be granted upon admission to Serbian citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        },
+        {
+          "id": "rsn_statement",
+          "attribute": "has_filed_statement_considering_serbia_own_state",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Written statement declaring that the applicant considers Serbia to be their own state.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "paragraf_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of at least 3 years' uninterrupted domicile", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of release (or forthcoming release) from foreign citizenship", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Written statement recognizing Serbia as one's own state", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "paragraf_citizenship_law",
+      "tier": 1,
+      "url": "http://demo.paragraf.rs/demo/combined/Old/t/t2022_10/EN_010_2022_001.htm",
+      "title": "Paragraf.rs -- consolidated English text of the Law on Citizenship of the Republic of Serbia, Article 14: naturalisation (admission) requirements -- age 18+, legal capacity, release from/forthcoming release from foreign citizenship, 3 years' uninterrupted domicile, written statement",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "relocationserbia_6yr",
+      "tier": 3,
+      "url": "https://www.relocationserbia.com/serbian-citizenship-by-naturalization",
+      "title": "Relocation Serbia -- explains the practical 'roughly 6-year' total timeline (3 years temporary residence, then 3 years permanent residence, then 6-18 months processing) that sits on top of Article 14's literal 3-year domicile figure",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). dual_citizenship_allowed modeled FALSE since Article 14 requires release from foreign citizenship (or a forthcoming-release undertaking) as a precondition of naturalisation -- contrast with rs_citizenship_serbian_origin.json's Article 23 route, which explicitly does NOT require renouncing foreign citizenship. IMPORTANT SOURCING/MODELING NOTE: the statutory text (Article 14, tier-1) literally requires only 3 years of uninterrupted domicile, and that is what rsn_residence is sourced to and modeled as. However, tier-3 practitioner guides consistently describe a longer practical timeline (~6 years total, or ~6-7+ with processing) because domicile in practice is demonstrated by first completing 3 years of temporary residence, then holding permanent residence (itself requiring a further clean 3-year period per rs_permanent_residence.json) -- this file therefore also lists rs_permanent_residence as a prerequisite route with a 36-month minimum hold, which layers on top of Article 14's own 3-year figure rather than duplicating it, honestly reflecting the gap between the literal statute and described practice. No language requirement was found anywhere in the Law on Citizenship (unlike most other countries built in this dataset). Naturalisation is by discretionary admission (the Ministry decides), not an automatic grant on paper qualification."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "co_citizenship_descent",
+  "country": "CO",
+  "name": "Nacionalidad Colombiana por Nacimiento (Hijo de Padre o Madre Colombiana en el Exterior)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born abroad to a Colombian father or mother is entitled to Colombian nationality by birth, formalised via civil registration ('registro civil de nacimiento') at a Colombian consulate.",
+    "evidence_hint": "Legalized/apostilled foreign birth certificate; Colombian parent's cédula; blood type/RH certificate."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cocd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be a Colombian citizen at the time of the child's birth. Registration is NOT automatic -- the parent(s) must initiate civil registration at the Colombian consulate in the country of birth. No cost and no residence requirement for this consular process, though Article 1 of Ley 43 de 1993 separately contemplates children of Colombian parents who later establish domicile in Colombia -- this dataset follows the tier-1-confirmed consular-registration mechanism actually used in practice.",
+          "fix_path": "Register the birth at a Colombian consulate.",
+          "fix_time_months": null,
+          "source_id": "quito_consulado_registro_civil"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Legalized/apostilled foreign birth certificate (original, not a copy)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Blood type and RH certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Colombian parent's current cédula (with holograms), or authenticated death certificate if deceased", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "quito_consulado_registro_civil",
+      "tier": 1,
+      "url": "https://quito.consulado.gov.co/sala-de-prensa/noticias/pasos-para-el-registro-civil-de-nacimiento-o-nacionalidad-por-nacimiento",
+      "title": "Consulado de Colombia en Quito -- Pasos para el registro civil de nacimiento o nacionalidad por nacimiento: documents, process, no cost, no residence requirement stated",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ley43_1993_acnur_hosted",
+      "tier": 2,
+      "url": "https://www.acnur.org/fileadmin/Documentos/BDL/2008/6466.pdf",
+      "title": "Ley 43 de 1993 -- Article 1 (nationality by birth for children of Colombian parents born abroad) and Article 2 (retention of Colombian nationality alongside another)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. Confirmed at both tier-1 (consular process page) and tier-2 (the underlying 1993 law). Dual nationality explicitly preserved per Ley 43 Article 2. Kept SEPARATE from co_naturalisation's naturalization-based routes -- this is a jus sanguinis registration, not an application-and-assessment process."
+}

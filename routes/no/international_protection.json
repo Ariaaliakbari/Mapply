@@ -1,0 +1,66 @@
+{
+  "id": "no_international_protection",
+  "country": "NO",
+  "name": "Protection (Asylum)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Applicants must contact the police and request protection, registering at the National Arrival Centre in Råde (near Oslo, arranging their own travel there). They stay up to 21 days for police interviews, identity/fingerprint registration, and tuberculosis/health screening before their application is processed.",
+    "evidence_hint": "In-person registration with police at the National Arrival Centre; identification documents where available; interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "noip_claim",
+          "attribute": "meets_refugee_or_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must meet the refugee or protection-need definition. Applicants from countries on Norway's 'safe country of origin' list may have their applications rejected within 48 hours; applicants who passed through another Dublin-procedure country may be returned there without a full UDI interview.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_asylum_process"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Police registration at the National Arrival Centre (Råde)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Identification documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fingerprints, photographs, and health screening", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed to tier-1 precision in this pass -- see notes",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_permanent_residence", "no_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "udi_asylum_process",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/protection-asylum/protection-asylum-in-norway/",
+      "title": "UDI -- Applying for protection (asylum) in Norway: National Arrival Centre registration process, 21-day initial stay, 48-hour safe-country rejections, Dublin-procedure returns without full interview",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). STATUS: DRAFT -- the tier-1 UDI application-process page fetched in this pass did not state the granted permit's exact duration or renewability terms, and a follow-up fetch of UDI's 'granted protection' outcome page returned a 404. pr_after_months (60) and citizenship_after_months (84) are carried over from no_permanent_residence.json's confirmed 5-year protection-based PR track and no_naturalisation.json's confirmed 7-year protection-based citizenship track respectively -- both of those figures ARE tier-1 confirmed even though this file's own outcome duration_length is not, which is why this file is marked draft rather than published despite citing only a tier-1 source."
+}

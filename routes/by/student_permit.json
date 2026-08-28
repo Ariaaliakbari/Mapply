@@ -1,0 +1,75 @@
+{
+  "id": "by_student_permit",
+  "country": "BY",
+  "name": "Study Visa / Residence Permit",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "byst_enrolment",
+          "attribute": "has_university_invitation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an official invitation from a chosen Belarusian university, obtained by submitting an application with certified Russian translations of passport and academic credentials.",
+          "fix_path": "Obtain an invitation from a Belarusian educational institution.",
+          "fix_time_months": null,
+          "source_id": "embassy_uk_study"
+        },
+        {
+          "id": "byst_medical",
+          "attribute": "has_medical_and_hiv_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a medical report and HIV-negative certificate issued by an official health authority in the applicant's home country; full-time students additionally undergo a compulsory medical examination and obtain a Belarusian medical consultation commission certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_uk_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University invitation letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical report and HIV-negative certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certified translations of passport and academic credentials", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified at tier-1 precision in this pass; matched to the length of the study program via a long-stay (Type D) visa framework",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["by_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "embassy_uk_study",
+      "tier": 1,
+      "url": "http://uk.mfa.gov.by/en/study/",
+      "title": "Embassy of the Republic of Belarus to the United Kingdom (mfa.gov.by) -- Study in Belarus: university invitation process, medical/HIV certificate requirements, application deadlines by funding status",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). STATUS: DRAFT -- although the source is tier-1 (a Belarusian embassy page), it did not state a specific financial-means threshold or exact visa/residence-permit duration, both left as gaps rather than assumed. The compulsory HIV-negative certificate requirement is a genuinely distinctive and stricter condition than most other countries in this dataset -- flagged explicitly rather than smoothed over."
+}

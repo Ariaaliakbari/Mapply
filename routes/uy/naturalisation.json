@@ -1,0 +1,88 @@
+{
+  "id": "uy_naturalisation",
+  "country": "UY",
+  "name": "Carta de Ciudadanía (Ciudadanía Legal)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["uy_permanent_residency_general", "uy_permanent_residency_mercosur", "uy_temporary_residency_worker", "uy_temporary_residency_student", "uy_temporary_residency_mercosur"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "with_family",
+      "name": "With family constituted",
+      "prerequisites_override": {
+        "minimum_months_held": 36
+      },
+      "requirements": [
+        {
+          "id": "uync_residence_family",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires 3 years of habitual residence in Uruguay for applicants who have 'constituted family' (commonly understood as being married/in a registered partnership and/or having children), age 18+, able to speak Spanish, with proof of livelihood (employment, property, or business).",
+          "fix_path": "Accrue 3 years of habitual residence while having constituted family.",
+          "fix_time_months": 36,
+          "source_id": "gub_uy_carta_ciudadania"
+        }
+      ]
+    },
+    {
+      "id": "without_family",
+      "name": "Without family constituted",
+      "requirements": [
+        {
+          "id": "uync_residence_single",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of habitual residence in Uruguay for applicants without constituted family, age 18+, able to speak Spanish, with proof of livelihood.",
+          "fix_path": "Accrue 5 years of habitual residence.",
+          "fix_time_months": 60,
+          "source_id": "gub_uy_carta_ciudadania"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of nationality (birth certificate, marriage certificate, passport)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residency certificate and migration movement records", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of livelihood (employment history, property, or business registration)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spousal/partner cohabitation documentation (family-constituted group only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gub_uy_carta_ciudadania",
+      "tier": 1,
+      "url": "https://www.gub.uy/tramites/carta-ciudadania-ciudadania-legal-uruguaya",
+      "title": "Sitio oficial de la República Oriental del Uruguay -- Carta de Ciudadanía: 3-year (family) / 5-year (without family) tracks, Spanish-language requirement, free processing, Corte Electoral administration",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Uruguay's initial build. Uruguay's citizenship system is structurally distinctive: this is 'legal citizenship' (as distinct from 'natural citizenship', see uy_citizenship_descent), granted administratively by the Corte Electoral (Electoral Court) based on constitutional criteria (Article 75), rather than a typical executive-branch naturalisation process -- processing is entirely FREE OF CHARGE, and no criminal record documentation is required from the applicant (the Court obtains checks directly). TWO GENUINELY DIFFERENT RESIDENCE-LENGTH TRACKS (3yr with family / 5yr without) modelled as OR-logic groups within one process, confirmed directly at tier-1. The exact legal definition of 'family constituted' (constituir familia) -- e.g. whether unmarried cohabitation alone qualifies, or a specific marriage/registered-partnership status is required -- was not further detailed in the source fetched; treated at face value rather than narrowed by assumption. dual_citizenship_allowed set true: Uruguay does not require renouncing prior nationality for legal citizenship, unlike several other countries built in this dataset."
+}

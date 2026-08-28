@@ -1,0 +1,82 @@
+{
+  "id": "bg_citizenship_by_descent",
+  "country": "BG",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with at least one Bulgarian-citizen parent is a Bulgarian citizen by origin, automatically and regardless of place of birth (Citizenship Act Article 8). Gender-neutral -- either parent qualifies.",
+    "evidence_hint": "Birth certificate; parent's proof of Bulgarian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_bg_citizen_parent",
+          "hard": true,
+          "blocker_text": "At least one parent must be a Bulgarian citizen at the time of the child's birth (Article 8). Applies equally regardless of which parent, and regardless of the child's country of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "minor_via_parent_naturalisation",
+      "name": "Minor child of a parent who naturalises",
+      "requirements": [
+        {
+          "id": "bgd_minor_naturalising_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "minor_child_of_naturalising_bg_parent",
+          "hard": true,
+          "blocker_text": "A child under 14 automatically acquires Bulgarian citizenship when a parent naturalises; a child aged 14-18 acquires it only with the child's own consent (Article 17). A child with one Bulgarian parent may also acquire citizenship with parental consent under similar age rules (Article 18).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Bulgarian citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/BUL%20Bulgarian%20Citizenship%20Act%20(version%202002%20English).pdf",
+      "title": "Bulgaria -- Bulgarian Citizenship Act, Article 8 (citizenship by origin, either parent, gender-neutral), Articles 17-18 (minor children's acquisition on a parent's naturalisation or via a Bulgarian parent, with consent rules for ages 14-18)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Straightforward gender-neutral jus sanguinis rule, unlike several countries documented elsewhere in this dataset with historically gender-asymmetric descent rules (e.g. Egypt). dual_citizenship_allowed modeled true: Article 8 descent does not carry the renunciation condition that Article 12 standard naturalisation does (see bg_naturalisation.json's notes) -- citizenship by descent is an original-acquisition category, not naturalisation, so the same restriction does not apply."
+}

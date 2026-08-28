@@ -1,0 +1,62 @@
+{
+  "id": "mx_visitor_visa",
+  "country": "MX",
+  "name": "Visitor (Tourist/Business) Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxv_nationality_or_solvency",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_exempt_nationality_or_qualifying_economic_solvency",
+          "hard": true,
+          "blocker_text": "Nationals of visa-exempt countries (or valid US/Canada/Schengen/UK/Japan visa holders under Mexico's visa-waiver rules) may enter without a visa. Others must show economic solvency (monthly income over 100 days of Mexico City's general minimum wage, or bank statements averaging 300 days of that wage over 3 months) or personal ties (property + 2 years' employment/business history) to obtain a visitor visa.",
+          "fix_path": "Apply for a visitor visa at a Mexican consulate if not visa-exempt and not otherwise eligible for visa-free entry.",
+          "fix_time_months": null,
+          "source_id": "gob_mx_migratory_procedures"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of economic solvency or personal ties (for visa-required nationals)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gob_mx_migratory_procedures",
+      "tier": 1,
+      "url": "https://www.gob.mx/cms/uploads/attachment/file/202842/Migratory_procedures..pdf",
+      "title": "Government of Mexico -- Migratory procedures overview (visitor category: 180-day stay, economic solvency and personal-ties thresholds)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. Also documented separately in the same source: a rarer 'Long-Stay Visitor' category (up to 10 years) for high economic solvency, frequent travellers, or executives of foreign-subsidiary/Mexican-company operations -- not modelled as its own route file here since it is a visit-category variant rather than a distinct path to settlement, but flagged for completeness. Financial thresholds in Mexican law are denominated in 'days of the general minimum wage in Mexico City' (a unit that is updated periodically), not fixed peso/dollar amounts -- treated as an honesty flag throughout this country's build rather than restated as if permanently fixed."
+}

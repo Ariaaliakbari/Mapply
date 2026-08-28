@@ -1,0 +1,74 @@
+{
+  "id": "vc_naturalisation",
+  "country": "VC",
+  "name": "Naturalisation (Residency-Based Registration)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["vc_residence_permit", "vc_work_permit"],
+    "minimum_months_held": 84,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vcn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Requires a minimum of 7 years of continuous legal residence, maintained throughout with valid work and residency permits. Meeting the 7-year mark does not guarantee approval -- each application is investigated on its merits.",
+          "fix_path": "Accumulate 7 years of continuous legal residence with valid permits throughout.",
+          "fix_time_months": 84,
+          "source_id": "stvincenttimes_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 7 years' continuous legal residence with valid work/residency permits", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Application for Registration as a Citizen (official form)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee EC$150 + registration fee EC$1,500-$2,200", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "continuous residence with valid work/residency permits throughout the 7-year period",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "stvincenttimes_citizenship",
+      "tier": 3,
+      "url": "https://www.stvincenttimes.com/understanding-citizenship-eligibility-for-st-vincent-passport/",
+      "title": "St Vincent Times -- Understanding Citizenship, Eligibility for St Vincent Passport: naturalisation requires a minimum 7 years of continuous legal residence with valid work and residency permits throughout; each application investigated individually with no guarantee of approval at the 7-year mark",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_vc_pmoffice_citizenship",
+      "tier": 1,
+      "url": "https://pmoffice.gov.vc/pmoffice/index.php/citizenship",
+      "title": "Prime Minister's Office, Government of Saint Vincent and the Grenadines -- Citizenship: general application fee (EC$150) and registration fee (EC$1,500-$2,200)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Vincent and the Grenadines' initial build. STATUS: DRAFT -- the 7-year residence figure and its 'no guarantee even if met' character are sourced only to a tier-3 news outlet, not the primary Citizenship Act (which could not be retrieved in readable form for this build -- see vc_citizenship_by_descent.json's notes). No good-character, language, or oath-of-allegiance sub-requirement was confirmed (plausible given every other Commonwealth Caribbean naturalisation route built this session has one, but not found on any accessible source here) -- flagged as a likely gap in sourcing rather than an actual absence of such conditions. dual_citizenship_allowed left null, not confirmed either way."
+}

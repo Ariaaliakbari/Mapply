@@ -1,0 +1,89 @@
+{
+  "id": "is_citizenship_by_marriage",
+  "country": "IS",
+  "name": "Naturalisation via Marriage to an Icelandic Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Marriage to an Icelandic citizen does not grant citizenship automatically. It reduces the standard 7-year naturalisation residence requirement to 4 years, provided the Icelandic spouse has held citizenship for at least 5 years.",
+    "evidence_hint": "Marriage certificate; proof of 4 years' residence; spouse's proof of holding Icelandic citizenship for 5+ years."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ism_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_is_citizen",
+          "hard": true,
+          "blocker_text": "Must be married to an Icelandic citizen who has held Icelandic citizenship for at least 5 years. Gender-neutral.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_citizenship_when"
+        },
+        {
+          "id": "ism_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years of legal domicile and continuous residence in Iceland while married to the Icelandic citizen (reduced from the standard 7-year bar).",
+          "fix_path": "Accumulate 4 years of continuous residence while married.",
+          "fix_time_months": 48,
+          "source_id": "island_citizenship_when"
+        },
+        {
+          "id": "ism_current_pr",
+          "attribute": "has_permanent_residence_at_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold permanent residence in Iceland at the time of application and decision (see is_permanent_residence.json's spouse-of-citizen 3-year reduced track).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "island_citizenship_when"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 4 years' continuous residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Spouse's proof of 5+ years holding Icelandic citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Current permanent residence permit", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "island_citizenship_when",
+      "tier": 1,
+      "url": "https://island.is/en/electronic-application-for-icelandic-citizenship/when-can-I-apply",
+      "title": "Island.is -- Application for Icelandic Citizenship: When Can I Apply: 4-year reduced residence for spouses of Icelandic citizens who have held citizenship 5+ years",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iceland). Gender-neutral. Notably, the requirement is not just 'married for X years' but specifically 4 years of RESIDENCE while married, and the Icelandic spouse must independently have held citizenship for 5+ years (preventing two recently-naturalised people from fast-tracking each other). A separate, slower 5-year cohabiting-partner (non-married) track also exists -- see is_naturalisation.json's cohabiting_partner group."
+}

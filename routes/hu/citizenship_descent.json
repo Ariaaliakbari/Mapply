@@ -1,0 +1,78 @@
+{
+  "id": "hu_citizenship_descent",
+  "country": "HU",
+  "name": "Simplified Naturalisation by Hungarian Origin",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who can show that an ancestor was a Hungarian citizen, or who is likely of Hungarian origin, may apply for simplified naturalisation (egyszerusitett honositas) directly through a Hungarian embassy or consulate abroad, WITHOUT any requirement to reside in Hungary.",
+    "evidence_hint": "Birth/marriage/death certificates of ascendants with certified Hungarian translations; ecclesiastical records; documentation of the full ancestral chain."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hucd_ancestry",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "descendant_of_hungarian_citizen_or_hungarian_origin",
+          "hard": true,
+          "blocker_text": "Must demonstrate that an ancestor was a Hungarian citizen, or that the applicant is likely of Hungarian origin, via certified ancestral documentation (birth/marriage/death certificates, ecclesiastical records).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_simplified_naturalization"
+        },
+        {
+          "id": "hucd_language",
+          "attribute": "language_requirement",
+          "operator": "exists",
+          "value": "intermediate_hungarian",
+          "hard": true,
+          "blocker_text": "Intermediate-level conversational Hungarian is required -- assessed directly by the receiving officer at submission through two-way conversation. No statutory exemption is permitted for insufficient language knowledge; no formal exam certificate is required, but the officer's live assessment is decisive.",
+          "fix_path": "Develop conversational Hungarian to an intermediate level.",
+          "fix_time_months": null,
+          "source_id": "embassy_simplified_naturalization"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate with certified Hungarian translation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Ancestry documentation with certified translation and apostille", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid passport or identity card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Handwritten CV (applicants 14 and over)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "none -- can be completed entirely through a Hungarian embassy/consulate abroad without ever residing in Hungary",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "embassy_simplified_naturalization",
+      "tier": 1,
+      "url": "https://telaviv.mfa.gov.hu/en/egyszerusitett-honositas",
+      "title": "Embassy of Hungary -- Simplified Naturalisation: Hungarian-ancestry ground, intermediate-Hungarian-language test, no residence requirement, ~3-month (+60 day) processing, in-person appointment requirement",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1 (Hungarian embassy). Processing takes approximately 3 months, extendable by 60 days; the procedure itself is free (translation/apostille costs are separate). In-person appearance is still required at the embassy despite the lack of any Hungary-residence requirement, including for minors (with parental consent under 18). IMPORTANT DISTINCTION: this is Hungary's residence-free 'simplified naturalisation' mechanism (egyszerusitett honositas), NOT the same as hu_naturalisation's separate reduced-3-year-residence track for spouses of Hungarian citizens / parents of Hungarian-citizen children / adoptees / refugees / stateless persons, which DOES require physical residence in Hungary. The two mechanisms share some family-tie logic but are legally and procedurally distinct -- do not conflate them. A separate marriage-based ground of this same simplified-naturalisation mechanism (10-year marriage, or 5-year marriage plus a common child, again with no residence requirement) is modelled separately as hu_citizenship_marriage."
+}

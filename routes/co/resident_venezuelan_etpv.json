@@ -1,0 +1,79 @@
+{
+  "id": "co_resident_venezuelan_etpv",
+  "country": "CO",
+  "name": "Visa de Residente (R) -- Estatuto Temporal de Protección para Migrantes Venezolanos (ETPV)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "coet_nationality",
+          "attribute": "nationality",
+          "operator": "==",
+          "value": "venezuelan",
+          "hard": true,
+          "blocker_text": "Available specifically to Venezuelan migrants.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cancilleria_visa_etpv"
+        },
+        {
+          "id": "coet_permit_time",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 continuous years holding a Special Permanence Permit (PEP), a Temporary Protection Permit (PPT), or a combination of both, without gaps in coverage.",
+          "fix_path": "Accrue 5 continuous years under PEP and/or PPT status.",
+          "fix_time_months": 60,
+          "source_id": "cancilleria_visa_etpv"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation of continuous, uninterrupted PEP/PPT succession with no gaps", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Migratory movement certificate covering the past 6 years", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background record from country of origin", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of income/monthly amounts covering living expenses (may be requested at examiner's discretion)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (renewal of the card itself requested every 5 years; automatically lapses after 2 consecutive years of absence from Colombia)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_visa_etpv",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/sites/default/files/FOTOS2023/Visa%20ETPV.pdf",
+      "title": "Cancillería de Colombia -- Visa por aplicación del Estatuto Temporal de Protección para Migrantes Venezolanos: 5-year PEP/PPT requirement, application process, fees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. Colombia's response to the Venezuelan displacement crisis (one of the largest in the Western Hemisphere) includes the ETPV/PPT framework registering over 2 million Venezuelan migrants -- this route models the RESIDENT-VISA end of that pipeline (5 years of PEP/PPT time converting to an R visa), confirmed directly at tier-1 including fees (~USD 455 Americas/global, ~EUR 177 Europe/Cuba). The earlier-stage Temporary Protection Permit (PPT) itself -- the initial humanitarian registration that most Venezuelan migrants actually hold day-to-day, which grants work rights and regularization without yet reaching this 5-year R-visa threshold -- was NOT independently researched and sourced as its own route in this pass; it is arguably the more commonly used and more humanitarian-flavoured status, and is flagged here as a gap for a future revisit rather than assumed to be adequately covered by this R-visa route alone. Category set to 'settled' (not 'humanitarian') since this specific route's documented content is about the residency/settlement outcome, not the initial protection determination."
+}

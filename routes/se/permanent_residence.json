@@ -1,0 +1,91 @@
+{
+  "id": "se_permanent_residence",
+  "country": "SE",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["se_work_permit", "se_family_reunification", "se_student_permit"],
+    "minimum_months_held": 48,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "work_based",
+      "name": "Work-based route",
+      "requirements": [
+        {
+          "id": "sepr_work_years",
+          "attribute": "months_worked_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Requires having held a work permit for at least 4 years, and worked in Sweden for 4 of the past 7 years, while maintaining permit conditions throughout.",
+          "fix_path": "Accumulate 4 years of qualifying work-permit-based employment within a 7-year window.",
+          "fix_time_months": 48,
+          "source_id": "migrationsverket_work_pr"
+        }
+      ]
+    },
+    {
+      "id": "general",
+      "name": "General route",
+      "requirements": [
+        {
+          "id": "sepr_maintenance_conduct",
+          "attribute": "meets_maintenance_and_conduct_requirements",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires meeting maintenance (financial support) and good conduct requirements, plus having lived in Sweden with a residence permit for a category-specific qualifying period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_pr_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying residence period under work, family, or doctoral-student status", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of financial maintenance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Good conduct record", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["se_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_pr_general",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/permanent-residence-permit.html",
+      "title": "Swedish Migration Agency -- Apply for a permanent residence permit: overview of qualifying categories (living with someone, employee/self-employed, doctoral student), maintenance and good conduct requirements",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migrationsverket_work_pr",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-extend/work/employee-or-self-employed/employees.html",
+      "title": "Swedish Migration Agency -- confirms the 4-years-of-7 work-based threshold for permanent residence",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). IMPORTANT SCOPE NOTE: as of 12 July 2026, Sweden stopped granting NEW permanent residence permits specifically for asylum-related categories (refugees, subsidiary protection, quota refugees, exceptionally-distressing-circumstances grants, long-term-resident-status holders, certain enforcement-obstacle cases) -- those categories now receive a renewable 5-year temporary permit instead (see se_international_protection.json for detail). Work-based and family-based permanent residence, modeled in this file, were EXPLICITLY excluded from that reform ('Permanent residence on work or family grounds is not the target of this proposition') and continue to operate as before. citizenship_after_months (48) reflects that PR-holders on the work/family track can complete the remaining balance of Sweden's new 8-year naturalization residence bar (see se_naturalisation.json) -- since the 4-year PR threshold and the 8-year naturalization clock both count from the start of habitual residence and substantially overlap, 4 additional years is the more realistic remaining gap rather than a full second 8-year wait."
+}

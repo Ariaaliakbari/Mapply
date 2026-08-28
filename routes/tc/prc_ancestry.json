@@ -1,0 +1,90 @@
+{
+  "id": "tc_prc_ancestry",
+  "country": "TC",
+  "name": "Permanent Residence Certificate -- Great-Grandchild of an Islander",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The great-grandchild of a TCI Islander may apply for a Permanent Residence Certificate on documented lineage grounds.",
+    "evidence_hint": "Documented lineage tracing the applicant to a great-grandparent who held/holds TCI Islander status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tcprca_lineage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "great_grandchild_of_tci_islander",
+          "hard": true,
+          "blocker_text": "Requires documented lineage establishing the applicant as the great-grandchild of a TCI Islander.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprca_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires 3 years of continuous lawful residence.",
+          "fix_path": "Accumulate 3 years of continuous lawful residence.",
+          "fix_time_months": 36,
+          "source_id": "gov_tc_prc"
+        },
+        {
+          "id": "tcprca_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified passport photos, birth certificate, government ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Documented lineage to the Islander great-grandparent", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Character references and police certificate (within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Submission fee: $150 (non-refundable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Route fee: $5,000 ($4,000 refundable if denied)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_prc",
+      "tier": 1,
+      "url": "https://gov.tc/bordercontrol/services/prc",
+      "title": "Government of the Turks and Caicos Islands -- Permanent Residence Certificate: great-grandchild of Islander ground (3 years' residence, documented lineage), fee schedule",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. Split out as its own 'ancestry' category file from tc_prc_family.json since the qualifying tie here is documented multi-generational descent from a TCI Islander rather than a direct family relationship to a living sponsor -- consistent with this dataset's convention of categorising descent/lineage-based grounds as ancestry even where (as here) an additional residence requirement is layered on. Notably the shortest residence requirement (3 years) of any PRC route on the source page, reflecting that the lineage tie itself does most of the qualifying work."
+}

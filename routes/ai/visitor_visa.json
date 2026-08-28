@@ -1,0 +1,81 @@
+{
+  "id": "ai_visitor_visa",
+  "country": "AI",
+  "name": "Anguilla eVisa / Visitor Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "eVisa (approved-country nationals)",
+      "requirements": [
+        {
+          "id": "aivv_eligible",
+          "attribute": "nationality_eligible_for_evisa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold nationality of a country on the eVisa-eligible list, or already hold a valid UK, US, or Canadian visa (which permits entry without a separate Anguilla visa). Nationals who are not eVisa-eligible and lack a qualifying visa must instead apply for an Entry Clearance Visa at a British Embassy or High Commission before travel.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "evisa_gov_ai"
+        },
+        {
+          "id": "aivv_stay_length",
+          "attribute": "intended_stay_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Single-entry eVisa permits a stay of up to 90 days and must be used within 90 days of issue; multiple-entry eVisa is valid for 1 year with each individual stay capped at 90 consecutive days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "evisa_gov_ai"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed online eVisa application (apply, pay, print)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Non-refundable application processing fee: US$20", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa fee: US$140 (single entry) or US$250 (multiple entry)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days per entry; multiple-entry eVisa valid 1 year from issue",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "evisa_gov_ai",
+      "tier": 1,
+      "url": "https://evisa.gov.ai",
+      "title": "Government of Anguilla -- eVisa Portal: online visitor visa application, fees (US$140 single / US$250 multiple entry + US$20 processing), validity, 15-20 business day processing",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "gov_ai_visas_travel",
+      "tier": 1,
+      "url": "https://gov.ai/service/immigration--labour/immigration--labour-visas--travel",
+      "title": "Government of Anguilla -- Visas & Travel: visa-required nationals must apply via British Embassy/High Commission; UK-visa holders and diplomatic passport holders exempt; eVisa processing 8-10 business days",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build (first country built this session that is a British Overseas Territory rather than a sovereign state -- see ai_belonger_status_descent.json's notes for the full explanation of how this changes the category mapping for ancestry/family/settled routes). 'nationality_eligible_for_evisa' is modelled as a boolean flag, not a literal enumerated country list -- the specific eVisa-eligible-country list was not independently retrieved in this pass. The two tier-1 sources give conflicting processing-time figures (eVisa portal: 15-20 business days; Visas & Travel page: 8-10 business days) -- both cited as found, not silently reconciled. Entry Clearance Visa (the embassy-based route for non-eVisa-eligible nationals) is mentioned but not modelled as its own route: no fee or processing detail for it was found at tier-1 in this pass."
+}

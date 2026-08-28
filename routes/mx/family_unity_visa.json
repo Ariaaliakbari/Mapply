@@ -1,0 +1,94 @@
+{
+  "id": "mx_family_unity_visa",
+  "country": "MX",
+  "name": "Residence Visa by Family Unity (Unidad Familiar)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "sponsor_citizen_or_permanent",
+      "name": "Sponsor is a Mexican citizen or permanent resident",
+      "outcome_override": {
+        "duration_length": "indefinite (permanent residence granted directly)",
+        "renewable": false,
+        "work_rights": "full",
+        "leads_to_pr": true,
+        "pr_after_months": 0
+      },
+      "requirements": [
+        {
+          "id": "mxfu_tie_pr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Eligible relatives of a Mexican-citizen or permanent-resident sponsor: spouse or common-law partner (5+ years cohabitation, or any duration if there are children together), parents, minor/dependent children (including stepchildren and wards), and, for Mexican-citizen or permanent-resident sponsors specifically, minor/dependent siblings.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inm_visa_unidad_familiar"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_temporary",
+      "name": "Sponsor is a temporary resident or temporary student resident",
+      "outcome_override": {
+        "duration_length": "matches the sponsor's own temporary resident permit",
+        "renewable": true,
+        "leads_to_pr": false,
+        "pr_after_months": null
+      },
+      "requirements": [
+        {
+          "id": "mxfu_tie_temp",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Eligible relatives of a temporary-resident or temporary-student-resident sponsor: spouse or common-law partner (5+ years cohabitation, or any duration if there are children together), parents, and minor/dependent children (including stepchildren and wards) -- siblings do NOT qualify under a temporary-resident sponsor.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inm_visa_unidad_familiar"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Sponsor's valid ID or residency card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth/marriage certificate proving the family relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of dissolution of any prior marriage, if applicable", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Beneficiary's passport/travel document", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "variable by sponsor group (see requirement_groups outcome_override)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mx_naturalisation_marriage", "mx_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "inm_visa_unidad_familiar",
+      "tier": 1,
+      "url": "https://www.inm.gob.mx/static/Tramites/visa/Visa_por_unidad_familiar.pdf",
+      "title": "Instituto Nacional de Migración (INM) -- Visa por unidad familiar: eligible relatives and resulting residence status by sponsor type",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. TWO GENUINELY DIFFERENT OUTCOMES modelled as OR-logic groups within the SAME visa (family unity), using outcome_override since the resulting residence status differs by sponsor type per the tier-1 source: family of a Mexican citizen or permanent resident get PERMANENT residence directly (no temporary-then-upgrade step), while family of a temporary/student resident get a temporary permit matching the sponsor's own validity. This is a genuinely favourable, direct-to-permanent family route distinct from the general family_reunification-style routes seen in other countries' builds. work_rights conservatively set to 'none' at the route level (the source did not confirm work rights either way); note this may be overly conservative particularly for the permanent-residence outcome group, where Mexican permanent residents generally do have work rights -- flagged rather than asserted."
+}

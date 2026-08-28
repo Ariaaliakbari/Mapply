@@ -1,0 +1,67 @@
+{
+  "id": "ai_belonger_status_marriage",
+  "country": "AI",
+  "name": "Belonger Status by Marriage (5 Years)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person married to an Anguillian or Belonger for at least 5 years may apply to the Immigration Department for full Belonger Status.",
+    "evidence_hint": "Marriage certificate; proof of 5 years of marriage; original documents with English translations where applicable."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aibsm_marriage",
+          "attribute": "months_married_to_belonger",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of marriage to an Anguillian or Belonger.",
+          "fix_path": "Accumulate 5 years of marriage to an Anguillian or Belonger.",
+          "fix_time_months": 60,
+          "source_id": "gov_ai_anguilla_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Two passport photographs", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate and proof of 5 years' marriage", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Original documents with certified English translations where applicable", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Non-refundable fee: EC$200.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_ai_anguilla_status",
+      "tier": 1,
+      "url": "https://gov.ai/service/immigration--labour/immigration--labour-anguilla-status",
+      "title": "Government of Anguilla -- Anguilla Status (Belonger Status): descent/parentage, marriage (5 years), and residence (15 years) grounds, documents, and fees",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Anguilla's initial build. See ai_belonger_status_descent.json's notes for the full explanation of why leads_to_citizenship is modelled as false here (Belonger Status is Anguilla's own local status, distinct from British Overseas Territories Citizenship, which is acquired separately -- see ai_naturalisation.json). This is the full/permanent status a spouse can reach after 5 years of marriage, distinct from the lesser interim ai_resident_stamp_spouse.json status available to spouses before reaching (or without seeking) full Belonger Status -- prerequisites is left null rather than pointing at ai_resident_stamp_spouse because the source does not state that holding a Resident Stamp first is a legal precondition, only that both exist as spousal pathways. The source's page content did not itemise a full document list for this specific ground beyond passport photographs and translated originals; the marriage-certificate and proof-of-duration items are inferred from the qualifying-event description itself, not a separate documents list, and should be treated as likely-but-not-exhaustively-confirmed."
+}

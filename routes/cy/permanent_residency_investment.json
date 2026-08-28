@@ -1,0 +1,85 @@
+{
+  "id": "cy_permanent_residency_investment",
+  "country": "CY",
+  "name": "Permanent Residence Permit under Regulation 6(2) (Category F / 6.2)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cypri_investment",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 300000, "currency": "EUR", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum qualifying investment of EUR 300,000 in one of several categories (new-build residential real estate as a first sale from a developer, commercial property, Cyprus company shares with 5 employees and a physical presence, or units in a regulated investment fund), with funds transferred to Cyprus from abroad.",
+          "fix_path": "Fund the qualifying investment and document the transfer of funds from abroad.",
+          "fix_time_months": null,
+          "source_id": "mondaq_cy_reg62"
+        },
+        {
+          "id": "cypri_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 50000, "currency": "EUR", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Requires a secure annual income of at least EUR 50,000 from abroad for the main applicant, plus EUR 15,000 for a spouse and EUR 10,000 per minor child.",
+          "fix_path": "Document qualifying annual income from abroad.",
+          "fix_time_months": null,
+          "source_id": "mondaq_cy_reg62"
+        },
+        {
+          "id": "cypri_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a clean criminal record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mondaq_cy_reg62"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of investment and bank transfer of funds from abroad", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of secure annual income from abroad (bank statements, dividends, salary, pension, rentals)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (subject to the holder not remaining outside Cyprus for an extended period)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "must visit Cyprus at least once every 2 years to avoid revocation; no minimum days/year required to hold the permit",
+    "switchable_to": ["cy_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mondaq_cy_reg62",
+      "tier": 3,
+      "url": "https://www.mondaq.com/cyprus/general-immigration/1770630/cyprus-permanent-residency-under-regulation-62-category-62-a-comprehensive-legal-guide",
+      "title": "Mondaq -- Cyprus Permanent Residency Under Regulation 6(2) (Category 6.2): A Comprehensive Legal Guide",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. This is Cyprus's main investment-migration route today, distinct from the discontinued cy_citizenship_by_investment -- it grants PERMANENT RESIDENCE directly (not citizenship), with citizenship only reachable afterward through ordinary naturalisation (cy_naturalisation), which still requires its own years-of-residence test. work_rights set 'restricted': holders may not be employed in Cyprus (a defining, deliberate restriction of this residence category to keep it distinct from work-based routes) but may serve as directors of their own Cyprus company or engage in certain passive activities. STATUS SET TO DRAFT: the legal basis (Regulation 6(2) of the Aliens and Immigration Regulations, administered by the Civil Registry and Migration Department) is real and specific, but gov.cy's own migration department pages returned HTTP 403 to automated fetching throughout this pass -- the figures here (EUR 300,000 investment, EUR 50,000/15,000/10,000 income tiers) are sourced from a single tier-3 legal-guide article, not cross-verified against a second independent source or a tier-1 original in this pass, so treat the exact income tier figures as provisional pending a tier-1 confirmation."
+}

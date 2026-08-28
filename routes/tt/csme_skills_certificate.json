@@ -1,0 +1,88 @@
+{
+  "id": "tt_csme_skills_certificate",
+  "country": "TT",
+  "name": "CARICOM Skills Certificate (CSME Free Movement)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttcsme_nationality",
+          "attribute": "citizenship_country",
+          "operator": "in",
+          "value": ["Antigua and Barbuda", "Bahamas", "Barbados", "Belize", "Dominica", "Grenada", "Guyana", "Jamaica", "Saint Lucia", "Saint Kitts and Nevis", "Saint Vincent and the Grenadines", "Suriname"],
+          "hard": true,
+          "blocker_text": "Must be a national of a participating CARICOM Member State.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreign_gov_tt_csme"
+        },
+        {
+          "id": "ttcsme_category",
+          "attribute": "csme_skills_category",
+          "operator": "in",
+          "value": ["university_graduate", "artiste", "musician", "media_worker", "sportsperson", "nurse", "teacher", "artisan", "associate_degree_holder", "domestic_worker", "agricultural_worker", "private_security_officer"],
+          "hard": true,
+          "blocker_text": "Must fall within one of the 12 approved CSME skills categories (university graduates, artistes, musicians, media workers, sportspersons, nurses, teachers, artisans, associate degree holders, domestic workers, agricultural workers, private security officers) and hold a Certificate of Recognition of Caribbean Community Skills Qualification.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreign_gov_tt_csme"
+        },
+        {
+          "id": "ttcsme_police_cert",
+          "attribute": "has_police_certificate_of_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a Police Certificate of Character from the home country prior to the residency stamp being issued.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreign_gov_tt_csme"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid CARICOM member-state passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certificate of Recognition of Caribbean Community Skills Qualification", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Qualifications documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police Certificate of Character", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical forms (if applicable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport-sized photograph", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6-month automatic entry period, followed by indefinite stay once verified by the Competent Authority, subject to ongoing immigration requirements",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "verification by the Competent Authority required within 6 months of entry",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "foreign_gov_tt_csme",
+      "tier": 1,
+      "url": "https://foreign.gov.tt/services/csme/",
+      "title": "Ministry of Foreign and CARICOM Affairs, Government of Trinidad and Tobago -- CSME (CARICOM Single Market and Economy): 12 approved skills categories, eligibility, no-fee verification process, 6-month automatic entry then indefinite stay, spouse/dependant relocation rights, employment without a separate work permit",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. This is the CARICOM Single Market and Economy's free-movement-of-skilled-nationals mechanism -- a distinctly regional route not seen in any non-Caribbean country built this session, and the first time this specific mechanism has been modelled in this dataset. Explicitly does NOT grant automatic permanent residency or citizenship (source's own words) despite indefinite stay -- leads_to_pr and leads_to_citizenship are both false for that reason; a holder would need to separately pursue tt_permanent_residence_general.json or another route to convert this into a more secure status. Categorised as 'work_independent' as the closest schema fit -- the certificate grants the ability to work without a separate employer-sponsored work permit, though this is a regional-integration status rather than a typical remote-work/freelance route. The nationality list reflects only the CARICOM member states the source explicitly names as participating in this specific mechanism as of this pass; not all CARICOM/CARIFORUM members necessarily participate identically -- re-verify the full participant list against foreign.gov.tt if precision matters for a specific nationality."
+}

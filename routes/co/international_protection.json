@@ -1,0 +1,66 @@
+{
+  "id": "co_international_protection",
+  "country": "CO",
+  "name": "Condición de Refugiado",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with well-founded fear of persecution based on race, religion, nationality, group membership, or political opinion, or who was forced to flee due to generalized violence, foreign aggression, internal conflict, or massive human rights violations, or who fears torture/inhumane treatment, may request refugee status. Explicitly NOT a mechanism for economic migration.",
+    "evidence_hint": "Photograph; passport/ID copy; supporting documentation for the protection claim; for family beneficiaries, proof of the family relationship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "coip_qualifying",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "refugee_criteria_met",
+          "hard": true,
+          "blocker_text": "Applications are submitted to the Ministry of Foreign Affairs (Cancillería) via its official form; there is no fixed deadline after entry to apply. Admissibility decision within 30 business days; the complete process (admission through final decision) currently runs up to 4 years due to a backlog of 58,000+ pending requests since 2017.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cancilleria_guia_refugio"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form filed with Cancillería (solicitudesentramite@cancilleria.gov.co)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "3x4cm color photograph, passport/ID copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Family relationship proof for included beneficiaries (marriage/birth certificates)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed for the interim SC-2 Salvoconducto period; recognized refugees receive a Travel Document paired with a Type M visa",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_resident_by_accumulated_time", "co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_guia_refugio",
+      "tier": 1,
+      "url": "https://www.cancilleria.gov.co/sites/default/files/FOTOS2024/Guia%20Refugio%20en%20Colombia%2024.11.2023%20(1).pdf",
+      "title": "Cancillería de Colombia -- Guía Refugio en Colombia: eligibility criteria, application process, timelines, SC-2 Salvoconducto, outcome (Travel Document + Type M visa)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. Confirmed directly and in detail at tier-1. work_rights set to 'restricted': the source confirmed health and education access during processing via the SC-2 Salvoconducto, but did NOT explicitly confirm work authorisation during the (currently up to 4-year) processing period -- flagged as a gap rather than assumed either way, and set conservatively rather than 'full'. Recognized refugees are placed on a Type M visa per the source, which this dataset treats as entering the same 'refugee' category already listed among tiempo-acumulado's 5-year track (see co_resident_by_accumulated_time) -- pr_after_months (60) reflects that linkage. The processing backlog (58,000+ pending cases, up to 4-year total timelines) is itself an important, concretely sourced fact about the practical reality of this route, included here rather than only in narrative form."
+}

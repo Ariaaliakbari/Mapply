@@ -1,0 +1,79 @@
+{
+  "id": "do_permanent_residence",
+  "country": "DO",
+  "name": "Permanent Residence (RP-1)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["do_work_permit", "do_investor_residence", "do_rentista_residence", "do_pensionado_residence", "do_family_reunification"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dopr_renewals",
+          "attribute": "temporary_residence_renewals_completed",
+          "operator": ">=",
+          "value": 4,
+          "hard": true,
+          "blocker_text": "Requires the original temporary residence card plus 4 annual renewals (read as roughly 5 years of continuous temporary residence) before applying for Permanent Residence.",
+          "fix_path": "Hold and renew a temporary residence card annually for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "migracion_rp1"
+        },
+        {
+          "id": "dopr_solvency",
+          "attribute": "bank_balance_rd",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "Requires a bank letter showing a minimum RD$150,000 balance, or an insurance guarantee policy if solvency is insufficient.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migracion_rp1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Original temporary residence card with 4 prior renewals", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background certificate with QR code", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Change-of-category letter to the Director General", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Financial solvency documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Indefinite card, subject to Definitive Residence (RD-1) upgrade after 10 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_definitive_residence", "do_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migracion_rp1",
+      "tier": 1,
+      "url": "https://migracion.gob.do/en/servicio/permanent-residence-application/",
+      "title": "Dirección General de Migración -- Permanent Residence Application (RP-1): original card plus 4 temporary residence renewals required, RD$150,000 solvency, RD$16,800 fee, 90 working days",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). The '4 renewals' language is not stated as an explicit year count on the DGM page -- read as ~5 years total (1 initial card + 4 annual renewals) since every temporary residence category in this dataset for the Dominican Republic (RT-3, RT-9, investor, rentista, pensionado) is issued for 1 year at a time. This is an interpretive judgment call, flagged explicitly rather than presented as a stated figure. citizenship_after_months (24) reflects the Ordinary Naturalization requirement of 2 years as a Permanent Resident -- see do_naturalisation.json. This RP-1 status is distinct from, and precedes, Definitive Residence (RD-1), which requires a further 10 years as a Permanent Resident (see do_definitive_residence.json) -- RP-1 already carries full work/study rights and is itself sufficient to pursue naturalization after 2 more years, so RD-1 is not a prerequisite for citizenship in this dataset's modeling."
+}

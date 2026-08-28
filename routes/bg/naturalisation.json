@@ -1,0 +1,103 @@
+{
+  "id": "bg_naturalisation",
+  "country": "BG",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgn_residence",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years holding PERMANENT residence status specifically (Citizenship Act Article 12) -- not merely 5 years of any residence. Since permanent residence itself requires 5 prior years of long-term/prolonged residence (see bg_permanent_residence.json), the realistic total pipeline from arrival is roughly 10 years.",
+          "fix_path": "Hold permanent residence status continuously for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "citizenship_act"
+        },
+        {
+          "id": "bgn_conduct_income",
+          "attribute": "has_income_no_convictions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be an adult with no convictions for premeditated crimes, have a sufficient income source or occupation, and demonstrate Bulgarian language proficiency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act"
+        },
+        {
+          "id": "bgn_release_prior_citizenship",
+          "attribute": "released_or_will_release_prior_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must have been released from, or be released from, their previous citizenship as of the moment of acquiring Bulgarian citizenship (Article 12).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "stateless",
+      "name": "Stateless persons",
+      "requirements": [
+        {
+          "id": "bgn_stateless_residence",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Stateless persons may naturalise after 3 years of permanent residence, without the employment/language or prior-citizenship-release conditions of Article 12 (Article 14).",
+          "fix_path": "Hold permanent residence status continuously for 3 years.",
+          "fix_time_months": 36,
+          "source_id": "citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of permanent residence duration matching the applicable category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bulgarian language proficiency", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of release from prior citizenship (standard route only)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/BUL%20Bulgarian%20Citizenship%20Act%20(version%202002%20English).pdf",
+      "title": "Bulgaria -- Bulgarian Citizenship Act (official English translation, verbatim primary legislation text), Article 12: standard naturalisation (5 years permanent residence, conduct, income, language, release of prior citizenship); Article 14: stateless persons (3 years permanent residence, exempted conditions)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). dual_citizenship_allowed modeled FALSE for the standard route specifically because Article 12 explicitly conditions naturalisation on release from the applicant's prior citizenship -- an unusually strict renunciation requirement compared to most other routes in this dataset, which more commonly allow dual citizenship or are silent on the point. This is a genuine, clearly-stated statutory requirement, not an inference. The source text is a 2002-version translation hosted by GLOBALCIT; treated as tier-1 per this dataset's convention for verbatim-legislation mirrors, though a post-2002 consolidated/amended text was not independently cross-checked for later changes to Articles 12/14 specifically."
+}

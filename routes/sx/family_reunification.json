@@ -1,0 +1,77 @@
+{
+  "id": "sx_family_reunification",
+  "country": "SX",
+  "name": "Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A separated family member may join a sponsor in Sint Maarten if the sponsor holds Dutch nationality or a valid residence permit.",
+    "evidence_hint": "Proof of family tie; sponsor's proof of Dutch nationality or valid permit."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sxfr_sponsor_status",
+          "attribute": "sponsor_status",
+          "operator": "in",
+          "value": ["dutch_national", "valid_residence_permit_holder"],
+          "hard": true,
+          "blocker_text": "The sponsor must hold Dutch nationality or a valid Sint Maarten residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        },
+        {
+          "id": "sxfr_family_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "separated_family_member_of_qualifying_sponsor",
+          "hard": true,
+          "blocker_text": "All requirements for the family relationship must be satisfied before a permit can be issued.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of family relationship (marriage/birth certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's proof of Dutch nationality or valid residence permit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residence permit application (via services.sintmaartengov.org)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary, renewable; not specified in the source reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sx_permanent_residence", "sx_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "moj_sx_immigration",
+      "tier": 1,
+      "url": "https://www.ministryofjustice.sx/department/immigration/",
+      "title": "Ministry of Justice, Government of Sint Maarten -- Immigration and Border Protection Services: family reunification pathway for separated family members of a Dutch national or valid-permit holder",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Sint Maarten's initial build. No income threshold, marriage-duration figure, or fee schedule was found for this route on the pages reviewed -- unlike the more detailed family-reunification pages found for Aruba and Curacao earlier this session, Sint Maarten's own page gives only the sponsor-status rule ('one holds Dutch nationality or a valid permit') and states generically that 'all requirements must be satisfied' without itemising them. Modelled conservatively; work_rights is 'none' by default absent confirmation otherwise. leads_to_pr/pr_after_months (60 months) reflects the same general 5-year path to permanent residency stated on this page, applicable across Sint Maarten's residence-permit categories."
+}

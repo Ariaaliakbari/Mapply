@@ -1,0 +1,92 @@
+{
+  "id": "ag_visitor_visa",
+  "country": "AG",
+  "name": "Bona Fide Visitor Entry / Visitor Extension",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "agv_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 1,
+          "hard": true,
+          "blocker_text": "Passport or other appropriate documentation must be valid beyond the date of the return ticket.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_entry_requirements"
+        },
+        {
+          "id": "agv_return_ticket",
+          "attribute": "has_return_or_onward_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold a paid return ticket, or a ticket entitling travel to a next destination outside Antigua and Barbuda.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_entry_requirements"
+        },
+        {
+          "id": "agv_funds",
+          "attribute": "sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must satisfy the immigration officer of sufficient funds to maintain the applicant and any dependants for the period of stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_entry_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid beyond return date", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return or onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 6 months on entry, extendable in further periods of up to 6 months (each extension capped at 90 days per application) via the Chief Immigration Officer",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ag_work_permit", "ag_student_permit"]
+  },
+  "sources": [
+    {
+      "id": "gov_ag_entry_requirements",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/general-services/entry-requirements/",
+      "title": "Immigration Department, Antigua and Barbuda -- Entry and Departure Requirements: documentation, funds, return-ticket rules, up to 6-month initial stay",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_ag_extensions_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/extentions-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Extensions FAQs: 90-day extension cap, in-person application, sponsorship requirement, Immigration and Passport Act 2014's three lawful statuses (visitor, resident, citizen)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY, first route of Antigua and Barbuda's initial build. Antigua and Barbuda is a sovereign Commonwealth realm (ISO AG) -- not a British Overseas Territory -- so unlike the four BOTs built earlier this session (Anguilla, Montserrat, Cayman, Bermuda), citizenship here is genuine Antiguan and Barbudan nationality, not a local right-of-abode status plus a separate BOTC track. A 'bona fide visitor' under the Immigration and Passport Act 2014 has no legal right of abode and, per the Extensions FAQ, no automatic right to extend stay merely by holding a work permit -- work permit holders remain classified as visitors for immigration-status purposes even though they may work. No visa-required/visa-exempt nationality list was found in the pages reviewed this pass; modelled as a general entry-and-extension route applicable regardless of nationality, flagged as a gap re: which nationalities require a visa in advance versus visa-on-arrival/visa-exempt entry."
+}

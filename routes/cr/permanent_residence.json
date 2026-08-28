@@ -1,0 +1,100 @@
+{
+  "id": "cr_permanent_residence",
+  "country": "CR",
+  "name": "Residente Permanente",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "three_years_temporary",
+      "name": "3 consecutive years of temporary residence",
+      "requirements": [
+        {
+          "id": "crpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Requires having enjoyed temporary residence for 3 consecutive years (extends to the holder's spouse and first-degree blood relatives).",
+          "fix_path": "Accumulate 3 consecutive years of temporary residence.",
+          "fix_time_months": null,
+          "source_id": "dhr_go_cr_ley8764_titulo_vi"
+        }
+      ],
+      "prerequisites_override": {
+        "required_prior_route_ids": ["cr_rentista", "cr_pensionado", "cr_investor_residence", "cr_work_permit"],
+        "minimum_months_held": 36
+      }
+    },
+    {
+      "id": "first_degree_family",
+      "name": "First-degree blood relative of a Costa Rican citizen",
+      "requirements": [
+        {
+          "id": "crpr_family_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_or_grandparent_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires a first-degree blood relationship (parent, child -- with or without disability --, or minor/disabled sibling) with a Costa Rican citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dhr_go_cr_ley8764_titulo_vi"
+        }
+      ]
+    },
+    {
+      "id": "special_commission",
+      "name": "Restricted Visas and Refugee Commission grant",
+      "requirements": [
+        {
+          "id": "crpr_commission",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "granted_by_restricted_visas_refugee_commission",
+          "hard": true,
+          "blocker_text": "Requires a discretionary grant by Costa Rica's Restricted Visas and Refugee Commission.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dhr_go_cr_ley8764_titulo_vi"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 3 consecutive years of temporary residence, OR proof of first-degree family tie to a Costa Rican citizen", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Continuous CCSS (social security) insurance from the time residency is granted", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (subject to maintaining continuous CCSS insurance)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cr_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "dhr_go_cr_ley8764_titulo_vi",
+      "tier": 1,
+      "url": "https://www.dhr.go.cr/defensoria_transparente/participacion_ciudadana/migracion_refugio/ley_8764/titulo_vi.pdf",
+      "title": "Defensoría de los Habitantes de la República (dhr.go.cr) -- Ley General de Migración y Extranjería No. 8764, Título VI, Article 78",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. Three genuinely different OR-logic groups model this SAME 'Residente Permanente' status, per Article 78: (1) 3 years on any qualifying temporary residence, extending to spouse and first-degree relatives; (2) a direct first-degree blood tie to a Costa Rican citizen, with no residence-duration test of its own; (3) a discretionary Commission grant (this third group covers, among others, certain recognised refugees). A continuing CCSS (Caja Costarricense de Seguro Social) insurance requirement applies throughout, confirmed directly at tier-1 -- an unusual, worth-flagging ongoing condition beyond the initial qualifying test."
+}

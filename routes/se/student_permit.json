@@ -1,0 +1,85 @@
+{
+  "id": "se_student_permit",
+  "country": "SE",
+  "name": "Residence Permit for Higher Education Studies",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sest_admission",
+          "attribute": "has_school_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires final admission to full-time studies (30 credits/semester at university, or 20+ teaching hours/week for other programs).",
+          "fix_path": "Secure admission to a Swedish institution.",
+          "fix_time_months": null,
+          "source_id": "migrationsverket_student"
+        },
+        {
+          "id": "sest_funds",
+          "attribute": "monthly_funds_sek",
+          "operator": ">=",
+          "value": 10656,
+          "hard": true,
+          "blocker_text": "Requires SEK 10,656/month in personal funds (bank savings, scholarship, sponsorship, employment, or student loan), plus SEK 4,440/month per spouse/partner and SEK 2,664/month per child, reduced if free food/housing is provided.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_student"
+        },
+        {
+          "id": "sest_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Required for studies under 1 year, if not registering in Sweden's population register; must cover emergency/other medical care, hospitalization, and emergency dental care.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of financial means", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance (short courses only)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-2 years depending on institution, never exceeding study duration or passport validity",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["se_work_permit", "se_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_student",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/study/higher-education.html",
+      "title": "Swedish Migration Agency -- Apply for a residence permit for studies at higher education: financial thresholds, insurance, 1-2 year duration, 15hr/week work cap for permits granted after 11 June 2026",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). work_rights modeled 'restricted' rather than 'none': bachelor's/master's students with permits granted after 11 June 2026 may work up to 15 hours/week, with exceptions for internships, student representation, research roles, and summer employment (June-August) -- a real, recent liberalization worth flagging, in the same reform wave that tightened work-permit salary thresholds elsewhere. Doctoral students and researchers are treated as a distinct, more favorable category under the 2026 reforms (faster PR access, extended post-study employment) -- not modeled as a separate file here given time constraints, but flagged as a gap: a dedicated se_researcher_permit.json could be built as a follow-up given how substantively different its rules now are from ordinary higher-education students."
+}

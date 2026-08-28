@@ -1,0 +1,92 @@
+{
+  "id": "at_citizenship_by_marriage",
+  "country": "AT",
+  "name": "Naturalisation -- Reduced Period for Spouses of Austrian Citizens",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atcm_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_registered_partner_of_at_citizen",
+          "hard": true,
+          "blocker_text": "Marriage or registered partnership to an Austrian citizen reduces the residence requirement to 6 years, while all other naturalisation criteria (language, income, conduct, civics) still apply. Authorities are reported to scrutinize relationship authenticity closely.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenx_marriage_track"
+        },
+        {
+          "id": "atcm_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 72,
+          "hard": false,
+          "blocker_text": "6 years of residence while married/partnered to an Austrian citizen, in place of the standard 10-year track -- figure sourced only to tier-3/4 secondary guides, not confirmed against a tier-1 Austrian government citation in this pass.",
+          "fix_path": null,
+          "fix_time_months": 72,
+          "source_id": "citizenx_marriage_track"
+        },
+        {
+          "id": "atcm_general",
+          "attribute": "meets_general_naturalisation_conditions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "All general naturalisation conditions still apply: B1 German, stable income, Wertekurs/history test, clean record, and renunciation of prior citizenship (see at_naturalisation.json).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oesterreich_gv_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/registered partnership certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 6 years' residence while married/partnered", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Standard naturalisation documents (language, income, civics, conduct)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenx_marriage_track",
+      "tier": 3,
+      "url": "https://citizenx.com/insights/austria-citizenship-exception",
+      "title": "CitizenX -- Austria naturalisation tracks: 6-year reduced residence period for spouses/registered partners of Austrian citizens, noting increased authenticity scrutiny",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "oesterreich_gv_naturalisation",
+      "tier": 1,
+      "url": "https://www.oesterreich.gv.at/en/themen/menschen_aus_anderen_staaten/staatsbuergerschaft/1/Seite.260421",
+      "title": "oesterreich.gv.at -- General conditions for naturalisation (apply on top of the reduced residence period)",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). STATUS: DRAFT -- neither tier-1 government page fetched in this pass (oesterreich.gv.at, migration.gv.at) mentions a spousal reduced-residence track at all; its existence and the specific 6-year figure come only from a tier-3 immigration-consultancy guide. This is a real, commonly cited provision of the Staatsbürgerschaftsgesetz (Citizenship Act), but this pass could not independently verify it against a tier-1-hosted legislative text (RIS.bka.gv.at, Austria's official legal information system, blocked this session's fetch via robots.txt). Marked draft and the residence-length requirement marked non-hard pending stronger sourcing."
+}

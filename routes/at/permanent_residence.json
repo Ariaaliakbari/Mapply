@@ -1,0 +1,85 @@
+{
+  "id": "at_permanent_residence",
+  "country": "AT",
+  "name": "Long-Term Resident EU Permit (Daueraufenthalt -- EU)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of uninterrupted legal residence in Austria under an eligible permit (e.g. Red-White-Red Card, EU Blue Card, Settlement Permit).",
+          "fix_path": "Accumulate 5 years of uninterrupted legal residence.",
+          "fix_time_months": 60,
+          "source_id": "workinaustria_ltr"
+        },
+        {
+          "id": "atpr_language",
+          "attribute": "has_b1_german",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "B1-level German proficiency, demonstrated via the OeIF Integration Exam Certificate (exemptions/substitutions for children).",
+          "fix_path": "Pass the OeIF Integration Exam at B1 level.",
+          "fix_time_months": 12,
+          "source_id": "workinaustria_ltr"
+        },
+        {
+          "id": "atpr_means",
+          "attribute": "has_sufficient_means_and_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient financial means and continuous health insurance coverage over the 5-year period must be shown.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workinaustria_ltr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' uninterrupted legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "OeIF Integration Exam Certificate (B1 German)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of financial means and continuous health insurance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "permit card valid 5 years, but underlying residence status is indefinite as long as continuous Austrian residence continues",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "workinaustria_ltr",
+      "tier": 1,
+      "url": "https://www.workinaustria.com/en/residence-employment/long-term-resident-eu-permit",
+      "title": "workinaustria.com (AMS/ABA-run official relocation portal) -- Long-Term Resident EU permit: 5-year residence requirement, B1 German via OeIF exam, financial means/insurance, EUR 275 fee, unrestricted labour-market access, 5-year card validity",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). citizenship_after_months (120) mirrors at_naturalisation.json's standard 10-year track since holding this status does not itself shorten the naturalisation clock under the sources reviewed. Card must be renewed every 5 years but the underlying residence right does not expire, distinguishing it from a fixed-term permit."
+}

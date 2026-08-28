@@ -1,0 +1,144 @@
+{
+  "id": "id_naturalisation",
+  "country": "ID",
+  "name": "Pewarganegaraan (Naturalisasi)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["id_permanent_stay_kitap"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Ordinary track (Article 9)",
+      "requirements": [
+        {
+          "id": "idnat_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Requires being at least 18 years old, or already married.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        },
+        {
+          "id": "idnat_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 consecutive years of residence in Indonesia, OR 10 years cumulative (non-consecutive) residence.",
+          "fix_path": "Accrue 5 consecutive years, or 10 cumulative years, of residence.",
+          "fix_time_months": 60,
+          "source_id": "ahu_go_id_uu12_2006"
+        },
+        {
+          "id": "idnat_language",
+          "attribute": "language_local",
+          "operator": "exists",
+          "value": "bahasa_indonesia_and_pancasila_knowledge",
+          "hard": true,
+          "blocker_text": "Requires the ability to speak Indonesian and recognition of Pancasila and the 1945 Constitution.",
+          "fix_path": "Demonstrate Indonesian-language ability and civic knowledge.",
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        },
+        {
+          "id": "idnat_criminal",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires no criminal sentence exceeding 1 year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        },
+        {
+          "id": "idnat_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "stable_income_or_employment",
+          "hard": true,
+          "blocker_text": "Requires stable income or employment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        },
+        {
+          "id": "idnat_no_dual",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "will_not_result_in_dual_citizenship",
+          "hard": true,
+          "blocker_text": "Acquiring Indonesian citizenship must not result in dual citizenship -- prior nationality must be renounced (Indonesia does not generally permit dual citizenship for adults naturalising this way).",
+          "fix_path": "Arrange renunciation of prior nationality as required.",
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        }
+      ]
+    },
+    {
+      "id": "spouse_statement",
+      "name": "Reduced track for spouses of Indonesian citizens (Article 19 statement procedure)",
+      "prerequisites_override": {
+        "minimum_months_held": null
+      },
+      "requirements": [
+        {
+          "id": "idnat_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "A foreign spouse of an Indonesian citizen may acquire citizenship via a simpler written statement ('pernyataan') before an official, rather than full naturalisation, after meeting a residence requirement -- unless this would result in dual citizenship. The EXACT years-of-marriage/residence figure for this statement procedure was not confirmed at tier-1 in this pass (a dedicated Ministry of Law page on this could not be fetched due to site errors); commonly cited secondary figures (e.g. 2 years) are NOT independently verified here.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ahu_go_id_uu12_2006"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Naturalisation application with supporting documents", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bahasa Indonesia and Pancasila/civics assessment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Naturalisation fee paid to the state treasury", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence that naturalisation will not create dual citizenship (e.g. renunciation arrangement)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ahu_go_id_uu12_2006",
+      "tier": 1,
+      "url": "https://portal.ahu.go.id/uploads/_uploads/dl/PP_UU/Dit.Tatanegara/UU%20No.%2012%20Th%202006.pdf",
+      "title": "Direktorat Jenderal Administrasi Hukum Umum (AHU), Kementerian Hukum -- Undang-Undang No. 12 Tahun 2006 tentang Kewarganegaraan Republik Indonesia: Articles 9 (ordinary naturalisation) and 19 (spouse statement procedure)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. STATUS SET TO DRAFT: while the ordinary Article 9 track is solidly confirmed at tier-1 with full detail, the reduced spouse track (Article 19) is confirmed to EXIST at tier-1 but its exact residence/marriage-duration threshold could not be independently verified (the Ministry of Law's own regional-office pages describing it returned DNS/robots errors throughout this pass) -- held at draft rather than asserting a commonly-cited but unverified figure. Indonesia's naturalisation, both tracks, generally requires renouncing prior nationality (no dual citizenship for adults naturalising) -- a materially different, stricter stance than several other countries built earlier in this dataset, reproduced here plainly rather than softened. TWO GENUINELY DIFFERENT NATURALISATION MECHANISMS (full naturalisation vs. the simpler spousal statement) modelled as OR-logic groups since Law 12/2006 presents them within the same statute as alternative routes to the same citizenship outcome."
+}

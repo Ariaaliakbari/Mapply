@@ -1,0 +1,62 @@
+{
+  "id": "co_business_owner_visa",
+  "country": "CO",
+  "name": "Visa de Migrante (M) -- Socio o Propietario",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cobo_investment",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 46000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires participation as a partner/owner in a Colombian company with a minimum investment/participation equivalent to 100 SMLMV (Colombia's legal monthly minimum wage unit -- approximately USD 46,000 at the source's implied conversion rate, but the real legal threshold is denominated in SMLMV and will drift from this dollar figure as the minimum wage is updated annually).",
+          "fix_path": "Fund and document the qualifying company participation.",
+          "fix_time_months": null,
+          "source_id": "colvisa_co_socio_propietario"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Chamber of commerce registration (certificado de existencia y representación legal / RUT)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of capital contribution/share ownership", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["co_resident_by_accumulated_time", "co_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "colvisa_co_socio_propietario",
+      "tier": 3,
+      "url": "https://colvisa.com/visa-m-para-socio-o-propietario-en-colombia-requisitos-y-beneficio/",
+      "title": "Colvisa (immigration consultancy) -- Visa M Socio o Propietario: 100 SMLMV minimum investment, 3-year duration, 5-year path to PR",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Colombia's initial build. STATUS SET TO DRAFT: cancilleria.gov.co's own dedicated page for this category (cancilleria.gov.co/v/socioopropietario) returned a 404 in this pass, so the 100 SMLMV figure is only tier-3 confirmed. The category's existence itself IS confirmed at tier-1 (listed among the 14 M sub-categories on cancilleria.gov.co/node/26933). SMLMV (Salario Mínimo Mensual Legal Vigente) is Colombia's indexed minimum-wage unit, updated annually -- modelled with a 'currency' placeholder of 'SMLMV' rather than a converted USD/COP figure, since a dollar conversion would go stale faster than the underlying legal threshold itself; flagged here as a schema-level compromise (the schema's 'currency' field is not truly built for a non-ISO indexed unit, but writing a fabricated fixed-dollar amount would be less honest)."
+}

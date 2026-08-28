@@ -1,0 +1,74 @@
+{
+  "id": "vg_visitor_visa",
+  "country": "VG",
+  "name": "Virgin Islands Visa (Visitor Entry)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vgv_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 6 months from the date of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_vi_visa"
+        },
+        {
+          "id": "vgv_documents",
+          "attribute": "supporting_documents_certified",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Supporting documents in a foreign language require notarized English translation and apostille certification.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bvi_gov_vi_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supporting documents (color, legible; notarized/apostilled translation if not in English)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Non-refundable visa fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed; processing takes approximately 4 weeks",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vg_work_permit", "vg_work_in_paradise"]
+  },
+  "sources": [
+    {
+      "id": "bvi_gov_vi_visa",
+      "tier": 1,
+      "url": "https://bvi.gov.vg/services/application-virgin-islands-visa",
+      "title": "Government of the Virgin Islands -- Application for Virgin Islands VISA: passport validity, document certification requirements, non-refundable fee, ~4-week processing",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY, first route of the British Virgin Islands' initial build -- the fifth British Overseas Territory (BOT) built this session, after Anguilla, Montserrat, Cayman, and Bermuda. Same core modelling decision applies as the other four BOTs and is explained once here: Belonger status is BVI's own local right-of-abode-equivalent, NOT British nationality -- actual British Overseas Territories Citizenship (BOTC) is a separate naturalisation track (see vg_naturalisation_botc.json). This visa page does not specify which nationalities require a visa, nor the permitted length of stay for those who do not -- both flagged as gaps; the fee amount was also not disclosed on the page reviewed. Only the confirmed hard requirements (passport validity, document certification) are modelled; no stay-duration or nationality list was invented."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "ge_study_residence_permit",
+  "country": "GE",
+  "name": "Study Residence Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gest_enrollment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "enrolled_at_authorised_georgian_institution",
+          "hard": true,
+          "blocker_text": "Requires enrollment in higher or vocational education at an authorised Georgian institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_residence_permits"
+        },
+        {
+          "id": "gest_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "income_at_least_2x_minimum_subsistence_level",
+          "hard": true,
+          "blocker_text": "Requires monthly funds equal to at least 2 times Georgia's official minimum subsistence level.",
+          "fix_path": "Document qualifying monthly funds before applying.",
+          "fix_time_months": null,
+          "source_id": "sda_gov_ge_residence_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of enrollment at an authorised institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds (2x minimum subsistence level)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months to 1 year initially, extendable up to a cumulative 12 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_work_residence_permit"]
+  },
+  "sources": [
+    {
+      "id": "sda_gov_ge_residence_permits",
+      "tier": 1,
+      "url": "https://sda.gov.ge/en/products/migration-residence-permits/",
+      "title": "Public Service Development Agency of Georgia (sda.gov.ge) -- Migration/Residence Permits",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is Article 15(b) of the Law on the Legal Status of Aliens and Stateless Persons. Fee: GEL 300-600 (10-30 days). work_rights set 'none': the source does not describe any student work-rights allowance, unlike several other countries in this dataset; not asserted as permitted absent confirmation. leads_to_pr set false since this source does not describe study time as counting toward the 10-year temporary-residence-to-permanent-residence track -- an honest gap, not independently confirmed either way, so treated conservatively rather than assumed to count."
+}

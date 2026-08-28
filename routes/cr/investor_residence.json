@@ -1,0 +1,108 @@
+{
+  "id": "cr_investor_residence",
+  "country": "CR",
+  "name": "Residente Temporal Inversionista",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_ley_8764",
+      "name": "General investor category (Ley 8764, Article 79)",
+      "requirements": [
+        {
+          "id": "crinv_amount_std",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum investment of USD 200,000 in businesses, real property, vehicles, or securities (or USD 100,000+ in forestry/reforestation projects), fully documented and authenticated.",
+          "fix_path": "Fund and document the qualifying investment.",
+          "fix_time_months": null,
+          "source_id": "navaslaw_cr_categorias"
+        },
+        {
+          "id": "crinv_no_work",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "no_remunerated_work_in_costa_rica",
+          "hard": false,
+          "blocker_text": "Investor status holders may not perform remunerated work (manual or intellectual) in Costa Rica.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consortiumlegal_cr_9996_reglamento"
+        }
+      ]
+    },
+    {
+      "id": "special_ley_9996",
+      "name": "Special attraction regime (Ley 9996, reduced threshold + tax benefits)",
+      "requirements": [
+        {
+          "id": "crinv_amount_9996",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 150000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum investment of USD 150,000 in real estate, securities, shares, national-interest or productive projects, venture capital funds, or sustainable infrastructure projects, registered personally (not via a legal entity, for real property). In exchange, grants duty-free import of household goods and a vehicle, and up to 20% exemption on property transfer taxes -- but ONLY within the law's benefits window (reported as the first 5 years after the regulation's 2023 publication, i.e. roughly through early-to-mid 2028; not independently reconfirmed as still open as of this research date).",
+          "fix_path": "Fund and document the qualifying investment before the benefits window closes.",
+          "fix_time_months": null,
+          "source_id": "consortiumlegal_cr_9996_reglamento"
+        },
+        {
+          "id": "crinv_no_work_9996",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "no_remunerated_work_in_costa_rica",
+          "hard": false,
+          "blocker_text": "Investor status holders and dependents may not perform remunerated work (manual or intellectual) in Costa Rica.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consortiumlegal_cr_9996_reglamento"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment (real estate title, share certificates, fund statements, etc.)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Police/criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years initially, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cr_permanent_residence", "cr_naturalisation_residence"]
+  },
+  "sources": [
+    {
+      "id": "navaslaw_cr_categorias",
+      "tier": 3,
+      "url": "http://navaslaw.com/es/descargables/migracion_categorias_migratorias.pdf",
+      "title": "Navas & Navas -- Categorías Migratorias summary (general investor category under Ley 8764)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "consortiumlegal_cr_9996_reglamento",
+      "tier": 3,
+      "url": "https://consortiumlegal.com/2023/02/24/costa-rica-se-publica-el-reglamento-de-ley-para-la-atraccion-de-inversionistas-residentes-rentistas-y-residentes-pensionados/",
+      "title": "Consortium Legal -- Reglamento de la Ley 9996 (special investor attraction regime, quoting the regulation directly)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. TWO GENUINELY DIFFERENT LEGAL BASES modelled as OR-logic groups for the same underlying 'Investor' migratory status: the long-standing general category under the base migration law (USD 200,000, Article 79) and a separate, later, TIME-LIMITED special attraction regime under Ley 9996 (USD 150,000, plus real tax/customs benefits, but explicitly reported as available 'únicamente durante los primeros 5 años' of the regulation, published Feb 2023). STATUS SET TO DRAFT for two reasons: (1) migracion.go.cr's and pgrweb.go.cr's own texts were not reachable in this pass (403 / robots-blocked), so neither figure is tier-1 confirmed; (2) the Ley 9996 benefits window's exact closing date could not be confirmed, and this research is being done in August 2026, plausibly at or past that window -- an applicant should verify the special regime is still open before relying on the 150,000/tax-benefit terms; the 200,000 general category should still apply regardless. This is exactly the kind of time-sensitive detail this dataset is meant to flag rather than silently assume."
+}

@@ -1,0 +1,82 @@
+{
+  "id": "be_citizenship_by_descent",
+  "country": "BE",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child is reported to acquire Belgian nationality automatically, without further formality, if at least one parent WAS BORN IN BELGIUM (not merely a Belgian citizen). If neither parent was born in Belgium, even where both hold Belgian citizenship, the Belgian parent must file a declaration claiming nationality for the child within 5 years of the child's birth.",
+    "evidence_hint": "Birth certificate; parent's proof of Belgian citizenship and place of birth."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "automatic_parent_born_in_belgium",
+      "name": "Automatic acquisition -- parent born in Belgium",
+      "requirements": [
+        {
+          "id": "bed_parent_born_in_be",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_be_citizen_parent_born_in_belgium",
+          "hard": true,
+          "blocker_text": "Automatic Belgian citizenship, no further formalities, if at least one parent was BORN IN BELGIUM (regardless of the child's own birthplace).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_belgium_descent"
+        }
+      ]
+    },
+    {
+      "id": "declaration_parent_not_born_in_belgium",
+      "name": "Declaration required -- Belgian-citizen parent(s) born abroad",
+      "requirements": [
+        {
+          "id": "bed_declaration",
+          "attribute": "declaration_filed_within_5_years_of_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "If neither parent was born in Belgium (even though one or both hold Belgian nationality), the Belgian parent must file a declaration claiming Belgian nationality for the child within 5 years of the child's birth. This is a required affirmative step, not automatic.",
+          "fix_path": "File the declaration of nationality within 5 years of the child's birth.",
+          "fix_time_months": null,
+          "source_id": "immigration_belgium_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Belgian citizenship and place of birth", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_belgium_descent",
+      "tier": 3,
+      "url": "https://immigration-belgium.com/citizenship-by-descent-in-belgium/",
+      "title": "Immigration-Belgium.com (Belgian immigration-law consultancy) -- Citizenship by Descent in Belgium: parent-born-in-Belgium automatic rule vs. 5-year declaration window for Belgian-citizen parents born abroad, birth-year transition rules (pre-1967, 1967-1984, post-1985)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belgium). STATUS: DRAFT, tier-3 only -- this is a genuinely counter-intuitive rule worth flagging clearly: unlike most 'citizenship by descent' routes in this dataset, simply having a Belgian-citizen PARENT is not sufficient for automatic acquisition in Belgium; the parent must additionally have been BORN in Belgium, or else an affirmative 5-year declaration window applies instead. Could not verify this against the primary Belgian Nationality Code (Code de la nationalite belge) directly -- Refworld's mirror returned only metadata, and the official ejustice.just.fgov.be legislative database was blocked by robots.txt in this pass. The source also references materially different rules for children born before 1967 and 1967-1984 (particularly for children born out of wedlock), which are NOT modeled here as they concern historical cases only, not a currently applicable route for a new applicant."
+}

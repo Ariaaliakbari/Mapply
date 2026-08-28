@@ -1,0 +1,65 @@
+{
+  "id": "mx_citizenship_descent",
+  "country": "MX",
+  "name": "Mexican Nationality by Birth to a Mexican Parent (Declaratoria)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born abroad to at least one Mexican-citizen parent is Mexican by birth (jus sanguinis), confirmed via a 'Declaratoria de Nacionalidad Mexicana por Nacimiento' issued by the SRE.",
+    "evidence_hint": "Foreign birth certificate; Mexican parent's nationality documentation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mxcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to be a Mexican citizen. Per Mexico's Ley de Nacionalidad (D.O.F. 23/01/1998) and its Reglamento (D.O.F. 17/06/2009), the SRE issues a 'Declaratoria de Nacionalidad Mexicana por Nacimiento' confirming the status; the exact documentary/procedural requirements were not fully retrievable from the government page in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sre_declaratoria_nacionalidad_nacimiento"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Foreign birth certificate, apostilled/translated", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Mexican parent's nationality documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sre_declaratoria_nacionalidad_nacimiento",
+      "tier": 1,
+      "url": "https://sre.gob.mx/declaratoria-de-nacionalidad-mexicana-por-nacimiento/123",
+      "title": "Secretaría de Relaciones Exteriores (SRE) -- Declaratoria de Nacionalidad Mexicana por Nacimiento (service page: cost MXN 1,590, 1 business day processing, legal basis cited)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Mexico's initial build. STATUS SET TO DRAFT: the fetched government page confirmed the service exists, its cost (MXN 1,590), processing time (1 business day), and legal basis (Ley de Nacionalidad D.O.F. 23/01/1998), but a fetch limitation meant the actual eligibility/documentary text of the statute was not retrieved in this pass -- the core rule (at least one Mexican parent confers nationality by birth, including abroad, per Article 30 of the Constitution and the Ley de Nacionalidad) is well-established and not seriously in doubt, but this route is marked draft rather than published until the primary legal text itself is directly confirmed, consistent with this dataset's sourcing discipline. No residence requirement is asserted, consistent with jus sanguinis systems generally, but not independently re-verified here."
+}

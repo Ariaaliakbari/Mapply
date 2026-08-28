@@ -1,0 +1,109 @@
+{
+  "id": "no_permanent_residence",
+  "country": "NO",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (work, family with Norwegian/Nordic citizen, other)",
+      "requirements": [
+        {
+          "id": "nopr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years of continuous residence under a qualifying permit (work immigration, family immigration with a Nordic/Norwegian citizen, or other non-protection permit types), with no permit gap exceeding 3 months total.",
+          "fix_path": "Accumulate 3 years of continuous qualifying residence.",
+          "fix_time_months": 36,
+          "source_id": "udi_pr_calculation"
+        },
+        {
+          "id": "nopr_absence",
+          "attribute": "months_absent_during_qualifying_period",
+          "operator": "<=",
+          "value": 7,
+          "hard": true,
+          "blocker_text": "Cannot have been outside Norway for more than 7 months in total during the 3-year qualifying period (up to 15 months allowed for skilled workers if at least 8 of those months were employer-sponsored travel).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_pr_calculation"
+        },
+        {
+          "id": "nopr_self_support",
+          "attribute": "meets_financial_self_support_requirement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must meet a financial self-support requirement, updated as of 26 March 2024 -- exact current figures were not confirmed to tier-1 precision in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_pr_summary"
+        }
+      ]
+    },
+    {
+      "id": "protection_based",
+      "name": "Asylum, humanitarian grounds, or family of refugees",
+      "requirements": [
+        {
+          "id": "nopr_protection_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of continuous residence for asylum-based permits, humanitarian-grounds permits, or family members of refugees, with no more than 10 months' total absence.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "udi_pr_calculation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous qualifying residence (3 or 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Travel records showing absences within the allowed limit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Financial self-support evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "udi_pr_calculation",
+      "tier": 1,
+      "url": "https://www.udi.no/en/word-definitions/calculating-the-residence-period-for-permanent-residence-permits/",
+      "title": "UDI -- Calculating the residence period for permanent residence permits: 3-year (work/Nordic-family/other) vs 5-year (asylum/humanitarian/refugee-family) tracks, absence limits (7 vs 10 months), 3-month maximum permit gap, skilled-worker travel exception",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "udi_pr_summary",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/permanent-residence/permanent-residence-permit/",
+      "title": "UDI -- Permanent residence permit: references a financial self-support requirement (updated 26 March 2024) and Norwegian language/social studies test changes effective 1 July 2025, without full text reproduced on the fetched page",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). The UDI summary page referenced a Norwegian-language and social-studies test requirement for PERMANENT RESIDENCE specifically (distinct from the citizenship-level B1 test in no_naturalisation.json), effective from 1 July 2025, but the fetched content did not include the specific level or hours required -- not modeled as a separate hard requirement to avoid asserting an unconfirmed figure; disclosed here as a real gap. citizenship_after_months (36) reflects PR holders needing to reach no_naturalisation.json's 8-year (96-month) standard bar, with the 3 (or 5) years already spent as temporary/PR-qualifying residence counting toward it -- not independently confirmed as a stacking rule, treated as a reasonable approximation consistent with this dataset's general convention."
+}

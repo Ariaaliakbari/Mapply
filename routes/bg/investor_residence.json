@@ -1,0 +1,108 @@
+{
+  "id": "bg_investor_residence",
+  "country": "BG",
+  "name": "Investor Residence Permit (Real Estate, Business, or Job Creation)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate",
+      "name": "Real estate investment",
+      "requirements": [
+        {
+          "id": "bginv_re_amount",
+          "attribute": "real_estate_investment_bgn",
+          "operator": ">=",
+          "value": 600000,
+          "hard": true,
+          "blocker_text": "Invest at least BGN 600,000 (approx. EUR 307,000) per foreigner to obtain title on real estate in Bulgaria, with bank-verified payment (Foreigners Act Article 24(1)(19)).",
+          "fix_path": "Purchase qualifying real estate at or above the BGN 600,000 threshold.",
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        }
+      ]
+    },
+    {
+      "id": "job_creation",
+      "name": "Commercial activity creating jobs for Bulgarian citizens",
+      "requirements": [
+        {
+          "id": "bginv_jobs",
+          "attribute": "full_time_bulgarian_jobs_created",
+          "operator": ">=",
+          "value": 10,
+          "hard": true,
+          "blocker_text": "Engage in commercial activity in Bulgaria that creates and maintains at least 10 full-time jobs for Bulgarian citizens for the duration of residence (Article 24(1)(2)).",
+          "fix_path": "Register a company and create at least 10 qualifying jobs.",
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        }
+      ]
+    },
+    {
+      "id": "disadvantaged_region",
+      "name": "Investment in a designated disadvantaged region",
+      "requirements": [
+        {
+          "id": "bginv_region_capital",
+          "attribute": "capital_contribution_bgn",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "Contribute at least BGN 250,000 in capital to a company operating in a designated disadvantaged region, holding at least a 50% ownership stake (Article 24(1)(20)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        },
+        {
+          "id": "bginv_region_jobs",
+          "attribute": "full_time_bulgarian_jobs_created",
+          "operator": ">=",
+          "value": 5,
+          "hard": true,
+          "blocker_text": "Create and maintain at least 5 jobs for Bulgarian nationals throughout the residence period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "foreigners_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property purchase deed or company incorporation and capital deposit records", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bank verification of investment payment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment records for job-creation routes", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "long-term residence permit, initial term up to 5 years, renewable while the investment/jobs are maintained",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bg_permanent_residence", "bg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "foreigners_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Foreigners_in_the_Republic_of_Bulgaria_Act_2.pdf",
+      "title": "Bulgaria -- Foreigners in the Republic of Bulgaria Act, Article 24(1)(19): BGN 600,000 real estate investment; Article 24(1)(2): 10-job company route; Article 24(1)(20): BGN 250,000 disadvantaged-region investment with 5-job requirement",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Note this is a RESIDENCE route only -- Bulgaria terminated its citizenship-by-investment (fast-track naturalisation for investors) program effective 5 April 2022; no direct investment-to-citizenship shortcut exists any more (see bg_naturalisation.json for the standard/only paths to citizenship, which an investor would still need to satisfy on ordinary residence-duration terms). Secondary sources (e.g. getgoldenvisa.com) also describe an alternative EUR 512,000 Alternative-Investment-Fund/ETF-based route said to grant permanent residence directly -- this could not be verified against primary legislative text in this pass and is NOT modeled as a separate requirement group; flagged for a future revisit."
+}

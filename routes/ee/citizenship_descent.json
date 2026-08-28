@@ -1,0 +1,65 @@
+{
+  "id": "ee_citizenship_descent",
+  "country": "EE",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child acquires Estonian citizenship at birth if at least one parent is an Estonian citizen at the time of the child's birth, regardless of where the child is born. Separately, a child born in Estonia to stateless parents who have lawfully resided in Estonia for at least 5 years also acquires citizenship at birth.",
+    "evidence_hint": "Parent's proof of Estonian citizenship (passport or citizenship certificate) and the child's birth certificate showing the parental relationship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Child of an Estonian citizen",
+      "requirements": [
+        {
+          "id": "eecd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires at least one parent to have been an Estonian citizen at the time of your birth, regardless of your country of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "siseministeerium_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's Estonian citizenship documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate establishing the parental relationship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "siseministeerium_citizenship",
+      "tier": 1,
+      "url": "https://www.siseministeerium.ee/en/activities/efficient-population-management/citizenship",
+      "title": "Ministry of the Interior of Estonia (siseministeerium.ee) -- Citizenship",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. This is genuine, unconditional jus sanguinis: citizenship passes through EITHER parent, at birth, with no registration deadline or generational cap mentioned on the source page -- a cleaner rule than several other countries in this dataset (contrast with Portugal's and Canada's recent generational-cap changes noted elsewhere in this project). dual_citizenship_allowed is deliberately left null: the source page states 'every citizen of Estonia also holds citizenship of the European Union' but does not address Estonia's policy on holding a non-EU second nationality, which multiple tier-3 sources describe as historically restricted with recent liberalisation -- not resolved to a confident answer with a tier-1 source in this pass. selection_method is 'automatic' since this is an at-birth entitlement, not an application assessed against discretion, which is also why status is 'published' despite citing only one source -- the fact pattern here is simple enough that one clear government statement was judged sufficient, unlike more contested figures elsewhere in this dataset."
+}

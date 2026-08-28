@@ -1,0 +1,65 @@
+{
+  "id": "by_international_protection",
+  "country": "BY",
+  "name": "Asylum (Refugee Status / Complementary Protection)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The state migration authority (regional departments on citizenship and migration) decides asylum applications; UNHCR provides legal counselling but does not itself receive applications. Applicants must explicitly state their intent to seek asylum to migration authorities, border guards, or police.",
+    "evidence_hint": "In-person application; certificate of application; interview; certificate of registration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "byip_claim",
+          "attribute": "meets_refugee_or_complementary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Migration authorities assess eligibility for refugee status or complementary protection following an interview; absence of supporting documents/evidence is not itself cause for rejection. Current processing is reported to take one month or longer due to high workload.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_belarus_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "In-person application declaring intent to seek asylum", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supporting documents where available (not required for the claim to proceed)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: grants a PERMANENT residence permit directly. Complementary protection: temporary residence permit for up to 1 year, renewable.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["by_permanent_residence", "by_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_belarus_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/belarus/how-to-apply-for-asylum-in-belarus/",
+      "title": "UNHCR Belarus -- How to Apply for Asylum in Belarus: migration-authority decision process, work rights for adult asylum-seekers on par with permanent residents, refugee status grants permanent residence directly, complementary protection gets a renewable 1-year permit, 15/7-day appeal windows",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). STATUS: DRAFT, tier-2 UNHCR sourcing only -- no Belarusian government primary source (e.g. a Citizenship and Migration Department page) was located with equivalent process detail in this pass. Notably generous on paper: refugee status grants PERMANENT residence immediately, not a multi-year temporary permit as in most countries in this dataset (pr_after_months modeled 0 for the refugee sub-case) -- work_rights modeled 'restricted' as a conservative default despite the source stating asylum-seekers may work 'on a par with foreign citizens permanently residing in Belarus' during PROCESSING specifically, since this is before a final grant and the source's language did not fully confirm unrestricted post-grant work rights either way. citizenship_after_months (60) uses by_naturalisation.json's reduced-but-unverified 5-year figure. Given Belarus's broader human-rights and rule-of-law context, the practical reliability and consistency of this process for applicants from countries at odds with the Belarusian government could not be independently assessed from official sourcing in this pass -- flagged as a real-world caveat distinct from the stated legal framework."
+}

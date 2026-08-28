@@ -1,0 +1,74 @@
+{
+  "id": "sx_business_director_permit",
+  "country": "SX",
+  "name": "Business Director Residence Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sxbd_business_license",
+          "attribute": "has_business_license",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a business license from the Department of Economic Affairs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        },
+        {
+          "id": "sxbd_director_license",
+          "attribute": "has_director_license",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a director's license from the Department of Economic Affairs, obtained before applying for the residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business license (Department of Economic Affairs)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Director's license (Department of Economic Affairs)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Residence permit application (via services.sintmaartengov.org)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary, tied to the business/director license",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sx_permanent_residence", "sx_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "moj_sx_immigration",
+      "tier": 1,
+      "url": "https://www.ministryofjustice.sx/department/immigration/",
+      "title": "Ministry of Justice, Government of Sint Maarten -- Immigration and Border Protection Services: Business Director residence pathway, requiring director's and business licenses from the Department of Economic Affairs before the residence permit application",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Sint Maarten's initial build. No minimum capital, employee count, or fee figure was found for this route -- distinct from the real-estate/investment PR route (sx_real_estate_investment_residence.json), this is a business-ownership/directorship residence pathway rather than a passive-investment one, and the two are not interchangeable per the sources reviewed. work_rights is 'restricted' to the applicant's own business (not general employment), consistent with how equivalent business-director/entrepreneur routes are modelled elsewhere in this dataset. leads_to_pr/pr_after_months (60 months) reflects Sint Maarten's general 5-year path to permanent residency applicable across residence-permit categories."
+}

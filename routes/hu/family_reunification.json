@@ -1,0 +1,90 @@
+{
+  "id": "hu_family_reunification",
+  "country": "HU",
+  "name": "Residence Permit for the Purpose of Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["hu_eu_blue_card", "hu_national_residence_card"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hufr_sponsor_status",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "eligible_sponsor_status",
+          "hard": true,
+          "blocker_text": "Eligible sponsors: holders of a residence permit (EXCLUDING seasonal-employment, investment-related-work, standard-employment, White Card, or study/training/traineeship/volunteer-service permits), holders of immigration/settlement permits or permanent residence cards, Hungarian citizens, recognised refugees (if the marriage predates entry to Hungary), and parents of unaccompanied minors with refugee status. Guest self-employment permit holders must have held that status for at least 1 year before sponsoring.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_family_reunification"
+        },
+        {
+          "id": "hufr_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "child"],
+          "hard": true,
+          "blocker_text": "Eligible relatives: spouses (including registered partners); minor children (biological, adopted, or foster); dependent minor children under the applicant's parental custody; and persons with parental custody of a minor Hungarian-citizen child in the same household.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_family_reunification"
+        },
+        {
+          "id": "hufr_means",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "credit_institution_certified_means",
+          "hard": true,
+          "blocker_text": "Requires a certificate from a credit institution demonstrating sufficient financial means (no fixed minimum amount published).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth, marriage, or adoption certificate proving the relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Credit-institution certificate of financial means", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Housing documentation (lease or ownership)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance proof", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's own residence permit validity",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hu_national_residence_card", "hu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oif_family_reunification",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/residence-permit-for-the-purpose-of-family-reunification",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- Residence Permit for the Purpose of Family Reunification: eligible relatives, sponsor eligibility and exclusions, 21/70-day processing",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. Standard processing: 21 days; 70 days when combined with an employment application. UNUSUALLY LONG SPONSOR-EXCLUSION LIST confirmed at tier-1: holders of standard-employment permits (hu_work_sponsored_employment), White Card (hu_white_card), seasonal-employment, and investment-related-work permits CANNOT sponsor family reunification at all -- a materially more restrictive design than most other countries in this dataset, where the main employment route typically does confer family-sponsorship rights. 'Investment-related work' is not further defined in the source; out of caution this is treated as potentially covering hu_guest_investor, which is therefore excluded from required_prior_route_ids pending clearer confirmation. work_rights for the reunified family member set to 'restricted' as a conservative placeholder -- the tier-1 page did not specify the work-rights regime for admitted family members."
+}

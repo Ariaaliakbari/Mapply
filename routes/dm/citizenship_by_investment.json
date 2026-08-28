@@ -1,0 +1,124 @@
+{
+  "id": "dm_citizenship_by_investment",
+  "country": "DM",
+  "name": "Citizenship by Investment",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "edf_option",
+      "name": "Economic Diversification Fund contribution",
+      "requirements": [
+        {
+          "id": "dmcbi_edf_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Main applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cbiu_dominica_citizenship"
+        },
+        {
+          "id": "dmcbi_edf_amount",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a non-refundable contribution to the Economic Diversification Fund starting at USD 200,000 for a single applicant, increasing with additional dependents.",
+          "fix_path": "Fund the required EDF contribution.",
+          "fix_time_months": null,
+          "source_id": "cbiu_dominica_citizenship"
+        },
+        {
+          "id": "dmcbi_due_diligence",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires passing background checks and due diligence (USD 7,500 for the main applicant; USD 4,000 per dependent aged 16+), plus a mandatory interview (USD 1,000 per application) for applicants aged 16+.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cbiu_dominica_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "real_estate_option",
+      "name": "Approved real estate investment",
+      "requirements": [
+        {
+          "id": "dmcbi_re_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Main applicant must be at least 18 years old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cbiu_dominica_citizenship"
+        },
+        {
+          "id": "dmcbi_re_amount",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 200000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires a minimum USD 200,000 investment in an Approved Project real estate development, held for a minimum of 3 years (5 years if resold to another CBI applicant), plus government fees starting from USD 75,000 per applicant.",
+          "fix_path": "Fund the required real estate investment and government fees.",
+          "fix_time_months": null,
+          "source_id": "cbiu_dominica_citizenship"
+        },
+        {
+          "id": "dmcbi_re_due_diligence",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires passing background checks and due diligence (USD 7,500 for the main applicant; USD 4,000 per dependent aged 16+), plus a mandatory interview (USD 1,000 per application) for applicants aged 16+.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "cbiu_dominica_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application submitted via an Authorised Agent (direct submissions not accepted)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport, birth certificate, police clearance, medical certificate, proof of funds/source of funds", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Processing fee (USD 1,000 per application) and Certificate of Naturalisation fee (USD 500 per person)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cbiu_dominica_citizenship",
+      "tier": 1,
+      "url": "https://www.cbiu.gov.dm/dominica-citizenship/how-to-apply/",
+      "title": "Dominica Citizenship by Investment Unit (cbiu.gov.dm) -- How to Get Dominica Citizenship / requirements and process",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Dominica's initial build. This is the country's flagship, highest-volume citizenship route and the reason Dominica is on this dataset's expansion shortlist. dual_citizenship_allowed set true: CBI applicants are not required to renounce prior citizenship, and Dominica's programme is explicitly marketed on dual-citizenship retention -- consistent with common knowledge of Caribbean CBI programmes and not contradicted by any source fetched. Modelled as two OR-logic groups (EDF vs. real estate) for the SAME 'Citizenship by Investment' status, per this dataset's core structural principle, rather than as two separate routes. physical_presence_requirement left null: no minimum days-in-country requirement was found in the sources fetched (a distinguishing, real feature of CBI programmes generally, but not independently reconfirmed for Dominica specifically here -- treated as an open point, not asserted as zero). The legal basis is the Commonwealth of Dominica Citizenship Act 1978, ss.8-9, per cbiu.gov.dm's own legislation page, though the Act's PDF itself was not machine-readable in this pass -- the programme's operative terms are instead sourced directly from cbiu.gov.dm's current published guidance, which is itself the primary tier-1 government source for applicants."
+}

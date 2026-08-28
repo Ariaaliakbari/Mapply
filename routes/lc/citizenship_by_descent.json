@@ -1,0 +1,89 @@
+{
+  "id": "lc_citizenship_by_descent",
+  "country": "LC",
+  "name": "Citizenship by Birth or Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Citizenship is conferred automatically at birth: either by birth in Saint Lucia (jus soli, with narrow diplomatic/wartime exceptions) or by descent from a citizen parent for births abroad.",
+    "evidence_hint": "Birth certificate; for descent cases, proof of the citizen parent's own citizenship and how it was acquired."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_territory",
+      "name": "Born in Saint Lucia (jus soli)",
+      "requirements": [
+        {
+          "id": "lcd_born_in_territory",
+          "attribute": "born_in_saint_lucia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Automatic citizenship for anyone born in Saint Lucia after the appointed date (independence), EXCEPT where neither parent is a citizen and the father has diplomatic immunity, or where the father is a citizen of a country at war with Saint Lucia and the birth occurs in enemy-occupied territory.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s4"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_to_citizen_parent",
+      "name": "Born abroad to a citizen parent",
+      "requirements": [
+        {
+          "id": "lcd_parent_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen_parent_not_by_descent_or_s3_2",
+          "hard": true,
+          "blocker_text": "Born outside Saint Lucia to a mother OR father who is a citizen at the time of the birth, provided that parent's own citizenship was NOT itself acquired by descent under this same provision or under Section 3(2) -- i.e. descent-based citizenship does not chain across multiple generations born abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s5"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of citizenship and its basis of acquisition (descent cases)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lc_citizenship_act_s4",
+      "tier": 1,
+      "url": "https://attorneygeneralchambers.com/laws-of-saint-lucia/citizenship-of-saint-lucia-act/section-4",
+      "title": "Citizenship of Saint Lucia Act, Section 4 (primary legislation): Acquisition of Citizenship by Birth -- jus soli by birth in Saint Lucia after the appointed date, with diplomatic-immunity and enemy-occupation exceptions",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "lc_citizenship_act_s5",
+      "tier": 1,
+      "url": "https://attorneygeneralchambers.com/laws-of-saint-lucia/citizenship-of-saint-lucia-act/section-5-01",
+      "title": "Citizenship of Saint Lucia Act, Section 5 (primary legislation): Persons Born Outside Saint Lucia After the Appointed Date -- citizenship by descent from either a citizen mother or father, one-generation-only limit (excludes parents whose own citizenship derives from this same section or Section 3(2))",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. Two notable features confirmed directly from the primary Act text: (1) Saint Lucia's jus soli rule (Section 4) is broader/simpler than the Bahamas' equivalent -- there is no post-1973-style cutoff date complication and no gender asymmetry in the exceptions (both exceptions turn on the FATHER's status specifically -- diplomatic immunity or enemy nationality -- which is itself a residual gender-specific drafting quirk worth flagging, though it only narrows an otherwise near-universal jus soli rule rather than gating it); (2) the descent rule (Section 5) is explicitly GENDER-NEUTRAL (either the mother or the father transmitting citizenship) and, like Trinidad and Tobago's equivalent, caps at one generation born abroad -- a grandchild of a citizen born abroad to a parent who is themselves a citizen only by descent does NOT qualify."
+}

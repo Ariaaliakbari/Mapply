@@ -1,0 +1,78 @@
+{
+  "id": "aw_family_reunification",
+  "country": "AW",
+  "name": "Family Reunification / Family Formation",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse or minor child of a qualifying sponsor may apply for a residence permit to join that sponsor in Aruba. Qualifying sponsors are: holders of non-compulsory status under LTUV (National Ordinance on Admission and Expulsion) article 1A or 1B; permanent residence permit holders; temporary residence permit holders with at least 3 years of legal residence; or temporarily admitted government/immigrant workers.",
+    "evidence_hint": "Marriage registry excerpt (DBSB); birth certificate or adoption proof for minors; original legal documentation for applicants 18 or older."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "awfr_family_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_minor_child_of_qualifying_sponsor",
+          "hard": true,
+          "blocker_text": "Requires being the spouse, or a minor child (or adopted/recognised child), of a qualifying sponsor in Aruba.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_family_reunification"
+        },
+        {
+          "id": "awfr_sponsor_status",
+          "attribute": "sponsor_status",
+          "operator": "in",
+          "value": ["ltuv_1a_or_1b_status_holder", "permanent_residence_permit_holder", "temporary_residence_permit_holder_3yr_plus", "temporarily_admitted_government_or_immigrant_worker"],
+          "hard": true,
+          "blocker_text": "The sponsor must hold one of: non-compulsory LTUV article 1A/1B status; a permanent residence permit; a temporary residence permit held for at least 3 years; or temporarily-admitted government/immigrant worker status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage registry excerpt (DBSB)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate or adoption proof (minors)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Original legal documentation (applicants 18+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sponsor's qualifying status", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's status; not specified in the source reviewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dimas_family_reunification",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/living/family-reunificationfamily-formation/family-reunification/",
+      "title": "DIMAS, Government of Aruba -- Family Reunification: four qualifying sponsor-status categories, required documentation, explicit no-paid-work rule for family members joining under most sponsor categories",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build. Distinct from aw_living_with_partner.json (a narrower, unmarried-partner-specific route requiring the Dutch sponsor to be born in Aruba) -- this route instead turns on the SPONSOR's immigration status (LTUV status holder, PR holder, 3-year+ temporary resident, or admitted government/immigrant worker) rather than the sponsor's nationality or place of birth, and explicitly covers married spouses and minor children. No sponsor income-threshold figure was found on this page (unlike aw_living_with_partner.json's explicit CBS-minimum-wage test) -- not invented here; flagged as a gap. work_rights is 'none' per the source's explicit statement that family members admitted under the permanent-residence-holder, temporary-residence-holder, and admitted-worker sponsor categories may not work -- the LTUV 1A/1B category's work-rights treatment was not separately specified and is conservatively modelled the same way pending clarification."
+}

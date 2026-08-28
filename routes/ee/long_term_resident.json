@@ -1,0 +1,89 @@
+{
+  "id": "ee_long_term_resident",
+  "country": "EE",
+  "name": "Long-Term Resident's Residence Permit (EU long-term residence)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ee_residence_permit_employment", "ee_residence_permit_business", "ee_residence_permit_family_spouse", "ee_residence_permit_study"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "eeltr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years' residence in Estonia on the basis of a temporary residence permit, immediately prior to applying.",
+          "fix_path": "Continue residing in Estonia on a temporary residence permit until the 5-year threshold is reached.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_ltr"
+        },
+        {
+          "id": "eeltr_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "Requires Estonian language proficiency at level B1 or equivalent, unless exempt (education completed in Estonian; under 15 or over 65; limited legal capacity).",
+          "fix_path": "Pass an Estonian language exam at B1, or qualify for an exemption.",
+          "fix_time_months": 6,
+          "source_id": "politsei_ee_ltr"
+        },
+        {
+          "id": "eeltr_income",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "stable_legal_income",
+          "hard": true,
+          "blocker_text": "Requires a stable legal income to live in Estonia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_ltr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous residence under a temporary residence permit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Estonian language certificate at B1 (or exemption evidence)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Estonian Health Insurance Fund coverage", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "permanent validity",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ee_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_ltr",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/residence-permit-for-a-permanent-resident/long-term-resident-s-residence-permit",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Long-term resident's residence permit",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. This IS the permanent-residence outcome (pr_after_months: 0 on this route's own record); the 5-year wait is modelled upstream via prerequisites, pointing at the various temporary residence permits that can feed it. leads_to_citizenship is true but citizenship_after_months is left null rather than guessed -- naturalisation has its own separate 8-year (5 continuous) residence test under the Citizenship Act (see ee_naturalisation) that does not simply stack on top of this permit's own 5-year requirement in an automatically additive way based on the sources fetched in this pass. The B1 language requirement here is a HIGHER bar than the A2 requirement politsei.ee cites for merely extending a 5-year-old employment permit (see ee_residence_permit_employment) -- a real, worth-flagging distinction between staying employed long-term versus converting to permanent status."
+}

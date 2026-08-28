@@ -1,0 +1,108 @@
+{
+  "id": "ma_naturalisation",
+  "country": "MA",
+  "name": "Naturalisation by Decree",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "man_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of habitual and regular residence in Morocco immediately preceding the application (Article 11).",
+          "fix_path": "Accumulate 5 years of habitual, regular residence.",
+          "fix_time_months": 60,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "man_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must have reached the age of legal majority (18).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "man_language",
+          "attribute": "has_sufficient_arabic_or_amazigh",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient knowledge of Arabic, Amazigh (Tamazight), or either language.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "man_conduct",
+          "attribute": "has_good_conduct_and_no_disqualifying_conviction",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "'Bonne conduite et bonnes moeurs', with no conviction for crimes, dishonorable offenses, terrorism, or acts violating Moroccan law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "man_income",
+          "attribute": "has_sufficient_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Adequate means of support ('moyens d'existence suffisants').",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' habitual, regular residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic or Amazigh language evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record / good conduct evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient means", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "natlex_code_nationalite",
+      "tier": 1,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/117679/MAR-117679.pdf",
+      "title": "NATLEX (ILO's national-legislation database) -- Code de la Nationalité Marocaine, consolidated version of 16 May 2024, Article 11: 5-year residence, age 18+, Arabic/Amazigh language, good conduct, sufficient means. Grants naturalisation by decree (ministerial/royal discretion -- meeting Article 11's conditions makes an applicant eligible to apply, not automatically entitled to a grant).",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). dual_citizenship_allowed modeled TRUE -- Moroccan law does not require renunciation of prior nationality for naturalisation. Naturalisation 'by decree' retains an element of state discretion beyond meeting Article 11's listed conditions (it is issued by ministerial/royal decree, not an automatic grant on paper qualification) -- this discretionary character is disclosed here rather than modeled as an additional hard requirement, since the schema's hard/soft distinction is about SOURCING confidence, not about discretion itself. No reduced-residence track for spouses of Moroccan MEN exists under this Article -- see ma_citizenship_by_marriage.json for the separate, narrower Article 10 route available only to a foreign woman married to a Moroccan man."
+}

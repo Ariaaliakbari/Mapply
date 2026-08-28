@@ -1,0 +1,76 @@
+{
+  "id": "no_eea_efta_free_movement",
+  "country": "NO",
+  "name": "EU/EEA Free Movement",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Norway is an EEA member (via EFTA, not the EU). EU/EEA nationals have the right to live, work, and study in Norway without a residence permit, though registration with the police/UDI is generally required for stays beyond a short period.",
+    "evidence_hint": "Valid EU/EEA passport or national ID; registration certificate; proof of employment, self-employment, sufficient means, or study status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "noeea_nationality",
+          "attribute": "citizenship_in",
+          "operator": "in",
+          "value": "EU_EEA",
+          "hard": true,
+          "blocker_text": "Only EU/EEA nationals qualify for free movement into Norway under this route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_eea"
+        },
+        {
+          "id": "noeea_self_sufficiency",
+          "attribute": "has_income_or_means_or_study",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Right of residence requires employment/self-employment, sufficient means and insurance (if economically inactive), or student status -- consistent with the general EU/EEA free-movement framework, though the UDI page fetched in this pass did not spell out the specific registration deadline or exact self-sufficiency figures for Norway.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_eea"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "EU/EEA passport or national ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Registration certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_permanent_residence", "no_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "udi_eea",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/residence-under-the-eueeu-regulations/",
+      "title": "UDI -- Residence under the EU/EEA regulations: confirms EU/EEA nationals' right to live, work and study in Norway, notes much of the detailed content is Norwegian-language only",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). STATUS: DRAFT -- the UDI page itself flagged that 'not all the content on this page is available in English', and the specific registration-certificate deadline (typically 3 months under the general EU Free Movement framework used elsewhere in this dataset for Iceland/Bulgaria/Finland/etc.) and exact self-sufficiency income figures for Norway specifically were not independently confirmed to tier-1 precision in this pass. pr_after_months (60) uses Norway's standard EEA-adjacent PR track figure (see no_permanent_residence.json's 3-year work/family track does NOT directly apply to pure EEA free movement, which instead generally follows the EU 5-year continuous-residence convention used across this dataset) -- flagged as a reasonable but not independently Norway-confirmed assumption. citizenship_after_months (96) mirrors no_naturalisation.json's reduced 8-year track only partially -- modeled conservatively at 96 months (8 years) as the standard naturalisation bar, since EEA residence does not appear to shorten it under the sources reviewed."
+}

@@ -1,0 +1,89 @@
+{
+  "id": "lu_citizenship_by_descent",
+  "country": "LU",
+  "name": "Citizenship by Descent (Automatic at Birth, and by Option for Missed Descendants)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child is automatically Luxembourgish by operation of law if either parent is Luxembourgish at birth (or at the establishment of filiation), regardless of the child's birthplace or the parents' marital status. Descendants whose Luxembourgish ancestry was not automatically transmitted (e.g. a Luxembourgish grandparent) may instead acquire nationality by a declaration of option.",
+    "evidence_hint": "Birth certificate; parent's or grandparent's proof of Luxembourgish nationality."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "automatic_filiation",
+      "name": "Automatic acquisition at birth (filiation)",
+      "requirements": [
+        {
+          "id": "lud_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_lu_citizen_parent",
+          "hard": true,
+          "blocker_text": "Automatic Luxembourgish nationality if either parent is Luxembourgish at the time of birth or of the establishment of filiation, regardless of birthplace or marital status. Gender-neutral.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_law_effect"
+        }
+      ]
+    },
+    {
+      "id": "option_descendant",
+      "name": "Acquisition by option -- descendant of a Luxembourgish parent/grandparent",
+      "requirements": [
+        {
+          "id": "lud_grandparent_option",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "descendant_of_lu_citizen_parent_grandparent_not_transmitted",
+          "hard": true,
+          "blocker_text": "A person with a parent, adoptive parent, or grandparent who is or was Luxembourgish, but to whom nationality was not automatically transmitted, may acquire it via a declaration of option (an assessed administrative declaration, not an automatic grant).",
+          "fix_path": "File a declaration of option with supporting proof of Luxembourgish ancestry.",
+          "fix_time_months": null,
+          "source_id": "guichet_option"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's or grandparent's proof of Luxembourgish nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "guichet_law_effect",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/citoyennete/nationalite-luxembourgeoise/possession-automatique/effet-loi.html",
+      "title": "Guichet.lu -- Obtaining Luxembourgish Nationality by Simple Operation of Law: automatic acquisition via filiation to either parent, regardless of birthplace/marital status",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "guichet_option",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/citoyennete/nationalite-luxembourgeoise/acquisition-recouvrement/option.html",
+      "title": "Guichet.lu -- Acquiring Luxembourgish Nationality by Option: 10 eligibility cases including descendants of a Luxembourgish parent/grandparent (case 1), spouses (case 3, see lu_citizenship_by_marriage.json), long-term residents, protected persons, and others",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). Two structurally different mechanisms bundled here since both are descent/ancestry-based: (1) fully automatic filiation-based citizenship at birth (gender-neutral, gets the route's overall selection_method of 'automatic'), and (2) 'acquisition by option' for a broader ancestry pool (parent, adoptive parent, OR grandparent) whose nationality was not automatically transmitted -- this second path is an assessed declaration, not automatic, disclosed as its own requirement group with selection nuance noted in blocker_text rather than force-fit into the automatic framing. Unlike Finland's still-gender-asymmetric descent rules documented elsewhere in this dataset, Luxembourg's automatic filiation rule is fully gender-neutral with no marital-status distinction."
+}

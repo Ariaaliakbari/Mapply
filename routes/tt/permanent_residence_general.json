@@ -1,0 +1,81 @@
+{
+  "id": "tt_permanent_residence_general",
+  "country": "TT",
+  "name": "Permanent Resident Status -- Five-Year Continuous Residence",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["tt_work_permit", "tt_student_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttprg_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of continuous lawful residence, with every day covered by a valid, unexpired work permit, student permit, dependant/spousal permit, or business permit -- even brief gaps reset the clock.",
+          "fix_path": "Accumulate 5 years of unbroken, continuously-permitted residence.",
+          "fix_time_months": 60,
+          "source_id": "martingeorge_pr_5yr"
+        },
+        {
+          "id": "ttprg_not_prohibited",
+          "attribute": "is_prohibited_immigrant",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Must not fall under the Immigration Act's 'prohibited immigrants' classification.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "martingeorge_pr_5yr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (12+ months)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "T&T police character certificate (within 3 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Home country police certificate (apostilled)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate including HIV/TB screening", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Complete unbroken permit chain (originals)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employer/sponsor letter and financial evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no continuous absence of 2+ years, or PR may be revoked",
+    "switchable_to": ["tt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "martingeorge_pr_5yr",
+      "tier": 3,
+      "url": "https://law.martingeorge.net/permanent-resident-status-five-year-trinidad-tobago/",
+      "title": "Martin George & Company (immigration law firm) -- Permanent Resident Status in Trinidad and Tobago: The Five-Year Continuous Residence Route: Immigration Act Chapter 18:01 Section 14, ministerial discretion, permissible permit types, 18-48 month realistic processing time, revocation grounds",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. STATUS: DRAFT -- the Ministry of Homeland Security's own PR application page (homelandsecurity.gov.tt/faq/faq-5/) confirms the Citizenship and Residency Unit exists and links to a separate application-procedure page, but does not itself state the 5-year figure, criteria, or legal citation; this file is instead sourced to a tier-3 immigration law firm's detailed article. Notably, the source states PR approval is fully discretionary -- 'no automatic right exists' even after 5 years of qualifying residence -- a materially different framing from most PR routes in this dataset, where meeting stated criteria is presented as sufficient. citizenship_after_months (60) reflects the same source's statement that naturalisation becomes available after holding PR status for 5 years -- see tt_naturalisation.json, whose own tier-1 Citizenship Act source independently confirms a 12-months-immediately-preceding-plus-5-of-7-years formula; the two figures are consistent in substance even though sourced separately."
+}

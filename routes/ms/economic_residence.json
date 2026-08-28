@@ -1,0 +1,80 @@
+{
+  "id": "ms_economic_residence",
+  "country": "MS",
+  "name": "Economic Residence Permit",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "msec_investment",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 400000, "currency": "XCD" },
+          "hard": true,
+          "blocker_text": "Reported minimum investment of EC$400,000 in real estate, a bank deposit, or government bonds, maintained for at least 5 years; not independently confirmed against the governing regulation's text in this pass.",
+          "fix_path": "Make and maintain a qualifying EC$400,000+ investment for at least 5 years.",
+          "fix_time_months": 60,
+          "source_id": "imidaily_economic_residence"
+        },
+        {
+          "id": "msec_net_worth",
+          "attribute": "net_worth",
+          "operator": ">=",
+          "value": { "amount": 400000, "currency": "XCD" },
+          "hard": true,
+          "blocker_text": "Reported requirement to demonstrate net worth exceeding EC$400,000, plus an intention to invest in a commercial enterprise (no specific minimum reported for the commercial-enterprise component).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "imidaily_economic_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment (real estate, bank deposit, or government bonds)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Net worth documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ms_immigration_act",
+      "tier": 1,
+      "url": "http://agc.gov.ms/wp-content/uploads/2011/10/Immigration-Act.pdf",
+      "title": "Montserrat Chapter 13.01, Immigration Act -- Section 19 (permit of economic residence, granted at Governor in Council's discretion; references subsidiary Immigration (Economic Residence Permit) Regulations, Section 39, S.R.O. 8/1998, in force 24 February 1998)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "imidaily_economic_residence",
+      "tier": 3,
+      "url": "https://www.imidaily.com/montserrat-residency-by-investment-program/",
+      "title": "IMI Daily (residency/citizenship-by-investment industry outlet) -- reported Montserrat Economic Residence investment options (EC$400,000 in real estate, bank deposit, or government bonds) and net-worth requirement; this source itself cites no government document",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of Montserrat's initial build. This is the Section 19 sibling of ms_permanent_residence.json -- the Immigration Act itself confirms an 'economic residence' permit exists and names the governing subsidiary regulation (Immigration (Economic Residence Permit) Regulations, S.R.O. 8/1998), but the regulation's full text, containing the actual investment thresholds, was not located at tier-1 despite a dedicated search. The EC$400,000 figure and investment-type options here come from an industry/marketing outlet (IMI Daily) that itself cites no government source -- explicitly the weakest sourcing tier used in this pass, hence draft status; treat these figures as indicative, not confirmed. work_rights is 'restricted' as a conservative default consistent with other investment-residence routes in this dataset, not because the source stated a work-rights rule -- it did not. This route is distinct from ms_permanent_residence.json (residence-based, non-investment PR) and from ms_resident_permit_property_owner.json (a much lighter property-ownership status)."
+}

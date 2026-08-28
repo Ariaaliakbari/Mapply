@@ -1,0 +1,76 @@
+{
+  "id": "no_student_permit",
+  "country": "NO",
+  "name": "Student Residence Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign nationals admitted to a NOKUT-accredited Norwegian educational institution (university, university college, vocational, upper secondary, folk high school, or bible school).",
+    "evidence_hint": "Admission letter from a NOKUT-accredited institution; proof of funds (loans, grants, savings, or employment income)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "University / vocational / upper secondary",
+      "requirements": [
+        {
+          "id": "nosp_admission",
+          "attribute": "has_admission_at_accredited_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Admission to an institution on NOKUT's (Norwegian Agency for Quality Assurance in Education) list of accredited institutions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_student_permit"
+        },
+        {
+          "id": "nosp_funds",
+          "attribute": "annual_funds_nok",
+          "operator": ">=",
+          "value": 170368,
+          "hard": true,
+          "blocker_text": "At least NOK 15,488/month or NOK 170,368/year in funds (loans, grants, savings, or employment income permitted).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_student_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter from a NOKUT-accredited institution", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of funds (NOK 170,368/year, or category-specific figure)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to length of study programme (folk high school/bible school permits are 1 year, non-renewable)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_work_permit", "no_job_seeker_permit"]
+  },
+  "sources": [
+    {
+      "id": "udi_student_permit",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/studies/studietillatelse/",
+      "title": "UDI -- Study permit: NOKUT-accreditation requirement, NOK 15,488/month (NOK 170,368/year) university/vocational funds figure, NOK 130,745/year folk high school and NOK 154,880/year bible school figures, 20 hrs/week work rights, permit duration tied to study length",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). work_rights modeled 'restricted' per the confirmed 20 hours/week (full-time during holidays) allowance, which only starts once the permit is granted. leads_to_pr modeled FALSE and switchable_to excludes no_permanent_residence.json directly: the tier-1 source states time on a study permit 'generally does not count toward permanent residence eligibility' -- a materially different, stricter rule than most other countries in this dataset, where study time typically counts at least partially. Switching to a work or job-seeker permit after study is the actual path toward permanent residence."
+}

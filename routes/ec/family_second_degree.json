@@ -1,0 +1,76 @@
+{
+  "id": "ec_family_second_degree",
+  "country": "EC",
+  "name": "Permanent Residence for Relatives up to the Second Degree",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For foreign relatives up to the second degree of consanguinity or affinity (parents, children, siblings, grandparents, grandchildren, and equivalent in-laws) of an Ecuadorian citizen, or of a foreign national holding permanent residence in Ecuador.",
+    "evidence_hint": "Proof of the qualifying family relationship (birth/marriage certificates establishing the chain of consanguinity/affinity); proof of lawful means of subsistence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecfsd_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "relative_within_2nd_degree_of_ec_citizen_or_permanent_resident",
+          "hard": true,
+          "blocker_text": "Relationship up to the second degree of consanguinity or affinity with an Ecuadorian citizen or a foreign permanent resident of Ecuador (e.g. parent, child, sibling, grandparent, grandchild).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_family_2nd_degree"
+        },
+        {
+          "id": "ecfsd_means",
+          "attribute": "has_lawful_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate lawful means of subsistence per Ministerial Agreement No. 70 (28 June 2024).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_family_2nd_degree"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentary proof of the qualifying family relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of lawful means of subsistence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gob_ec_family_2nd_degree",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-residencia-permanente-extranjeros-hasta-segundo-grado-consanguinidad-afinidad-ciudadano-ecuatoriano-ciudadano-extranjero-residencia-permanente-ecuador",
+      "title": "gob.ec (MREMH official portal) -- Permanent residence for relatives up to the second degree of consanguinity/affinity of an Ecuadorian citizen or permanent resident",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). STATUS: DRAFT -- this route's existence, title, and general qualifying relationship (second-degree consanguinity/affinity) are confirmed from the gob.ec trámite page title itself, but the page content was not independently fetched and read in this pass (only surfaced via search), so specific procedural details (exact documents, fees, any income multiplier) are not confirmed beyond the general lawful-means-of-subsistence rule applied dataset-wide under Ministerial Agreement No. 70. Distinct from ec_family_union.json (spouse/common-law partner only) -- this covers the broader family circle (parents, siblings, grandparents, grandchildren, etc.)."
+}

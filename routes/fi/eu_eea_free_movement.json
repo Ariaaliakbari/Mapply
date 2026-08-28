@@ -1,0 +1,80 @@
+{
+  "id": "fi_eu_eea_free_movement",
+  "country": "FI",
+  "name": "EU/EEA/Swiss Right of Residence",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fieu_nationality",
+          "attribute": "nationality_region",
+          "operator": "==",
+          "value": "EU_EEA_or_Swiss",
+          "hard": true,
+          "blocker_text": "EU/EEA/Swiss citizens may reside in Finland freely for up to 3 months without any registration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_eu_citizen"
+        },
+        {
+          "id": "fieu_registration",
+          "attribute": "registered_after_90_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Staying longer than 3 months continuously requires registering the right of residence, on grounds of employment/self-employment, studies, family ties to an EU citizen, or sufficient funds not requiring social assistance. The 3-month clock restarts on re-entry after travel abroad.",
+          "fix_path": "Register the right of residence with the Finnish Immigration Service.",
+          "fix_time_months": null,
+          "source_id": "migri_eu_citizen"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid EU/EEA/Swiss ID card or passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of employment, self-employment, sufficient funds, or student status (for registration beyond 3 months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "registration is valid until further notice, subject to continuing to meet the grounds",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fi_permanent_residence", "fi_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migri_eu_citizen",
+      "tier": 1,
+      "url": "https://migri.fi/en/eu-citizen",
+      "title": "Maahanmuuttovirasto -- Registering an EU Citizen's Right of Residence: 3-month free-residence period, registration grounds (employment, studies, family, sufficient funds)",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migri_permanent_residence_eu",
+      "tier": 1,
+      "url": "https://migri.fi/en/right-of-permanent-residence",
+      "title": "Maahanmuuttovirasto -- Right of Permanent Residence of EU Citizens: 5 continuous years of legal residence, permitted-absence rules, EUR 53 fee",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). pr_after_months (60) reflects the EU-specific 'right of permanent residence' (5 years), which is a separate, EU-citizen-only status from the general fi_permanent_residence.json P-permit track that non-EU nationals use (which itself was overhauled by 5 new paths effective 8 January 2026 -- see that file). citizenship_after_months (96) uses fi_naturalisation.json's standard 8-year bar as the conservative default; a reduced 5-year path exists for applicants who meet the language-proficiency requirement (see fi_naturalisation.json), not modeled here as guaranteed."
+}

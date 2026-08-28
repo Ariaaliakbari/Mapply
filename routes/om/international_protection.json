@@ -1,0 +1,64 @@
+{
+  "id": "om_international_protection",
+  "country": "OM",
+  "name": "Political Refugee Status (Royal Decree) -- No Formal Asylum System",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Oman is not a party to the 1951 Refugee Convention or its 1967 Protocol, and has no national asylum law or administrative system for determining refugee status -- there is no Omani equivalent of an Asylum Office or standard refugee-status-determination procedure. All non-citizens, including asylum seekers, are governed by general immigration law (residence tied to work, investment, or family sponsorship -- see this dataset's other Oman routes). The one narrow exception: Oman's Foreign Residency Law contains a provision for 'political refugees,' whose status can be granted by Royal Decree at the Sultan's discretion. Article 36 of Oman's Constitution prohibits refoulement (forced return to persecution) as a general constitutional protection, independent of any asylum procedure.",
+    "evidence_hint": "No standardized application or documentary process exists for the general population of asylum seekers; a political-refugee grant by Royal Decree is a discretionary, individual act of the Sultan rather than an applied-for status with defined evidentiary requirements."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "political_refugee_decree",
+      "name": "Political refugee status by Royal Decree",
+      "requirements": [
+        {
+          "id": "omip_royal_decree",
+          "attribute": "granted_political_refugee_status_by_royal_decree",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Status is granted at the Sultan's sole discretion by Royal Decree under a provision of the Foreign Residency Law -- there is no application process, eligibility test, or appeal mechanism available to the general public.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_rimap_oman"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "None -- no standard application exists; grant is a discretionary sovereign act", "difficulty": "often_impossible", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not standardized -- no codified residence-card regime for asylum seekers or the general refugee population exists",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_rimap_oman",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/countries/oman",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Oman is not a party to the 1951 Refugee Convention or 1967 Protocol; no national asylum law or RSD system exists; non-citizens fall under general immigration law; Foreign Residency Law contains a political-refugee-by-Royal-Decree provision; Article 36 of the Constitution prohibits refoulement; as of the data cited, Oman hosted 289 refugees and 415 asylum-seekers, most holding ordinary residence permits",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- this file exists to document a genuine structural ABSENCE rather than to describe a workable, applied-for immigration route, consistent with this dataset's practice of disclosing gaps rather than fabricating process detail (see also Morocco's asylum-seeker-category gap built earlier in this dataset). The vast majority of the small recorded refugee/asylum-seeker population in Oman reportedly holds ordinary residence permits obtained through Oman's general immigration channels (work, investment, family) rather than through any refugee-specific status -- meaning a person fleeing persecution in practice depends on qualifying for one of this dataset's OTHER Oman routes (om_work_permit.json, om_family_reunification.json, etc.), not this one. work_rights, study_rights, and family_can_join are modeled 'none'/false specifically for the narrow, undefined political-refugee-by-decree status itself, not for asylum seekers generally, since no rights framework for that specific status was found described anywhere in the source reviewed."
+}

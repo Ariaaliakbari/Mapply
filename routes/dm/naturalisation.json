@@ -1,0 +1,62 @@
+{
+  "id": "dm_naturalisation",
+  "country": "DM",
+  "name": "Naturalisation by Registration (residence)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "commonwealth_citizens",
+      "name": "Commonwealth citizens, by ordinary residence",
+      "requirements": [
+        {
+          "id": "dmn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Requires 7 years' ordinary residence in Dominica (Constitution, Section 100), for applicants who are citizens of a Commonwealth country.",
+          "fix_path": "Accumulate 7 years' ordinary residence in Dominica.",
+          "fix_time_months": null,
+          "source_id": "unwomen_constitution_dominica"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 7 years' ordinary residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of Commonwealth citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unwomen_constitution_dominica",
+      "tier": 2,
+      "url": "https://constitutions.unwomen.org/en/countries/americas/dominica",
+      "title": "UN Women Constitutions Database -- Constitution of the Commonwealth of Dominica, Section 100 (registration/naturalisation)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Dominica's initial build. STATUS SET TO DRAFT, deliberately: the substance (7-year ordinary residence for Commonwealth-citizen applicants, per Section 100 of the Constitution) is a genuine constitutional provision, but the only source found reproducing it in this pass is a UN Women legal database (an intergovernmental host, tier 2 by this dataset's convention), not a Dominica government domain. The Citizenship Act PDF hosted at cbiu.gov.dm (the natural tier-1 source) returned no machine-readable text when fetched; a Dominica-government-hosted copy of the Constitution or Act was not located either. This route should be revisited and upgraded to 'published' if a dominica.gov.dm-hosted or Official Gazette copy of the Constitution/Citizenship Act can be fetched to confirm the same figure at tier-1. Non-Commonwealth-citizen naturalisation grounds (if they differ) are not covered here -- only the Commonwealth-citizen ground stated in Section 100 was found. prerequisites is null: the Constitution does not explicitly require formal PR status before this ground, so no sequencing requirement is asserted; dm_permanent_residence's own switchable_to lists this route as a plausible (not confirmed-required) next step instead."
+}

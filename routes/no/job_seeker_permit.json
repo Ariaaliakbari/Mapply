@@ -1,0 +1,76 @@
+{
+  "id": "no_job_seeker_permit",
+  "country": "NO",
+  "name": "Job Seeker Permit for Skilled Workers",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For skilled workers seeking employment in Norway without yet having a job offer -- meeting one of the same qualification tiers as the Skilled Worker permit, plus sufficient own funds.",
+    "evidence_hint": "Qualification documents (vocational, degree, or experience certificates); proof of own funds, typically in a Norwegian bank account."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nojs_qualification",
+          "attribute": "meets_skilled_worker_qualification_tier",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "One of: a completed 3+ year upper-secondary vocational training programme, a university/college degree, or 6+ years of documented equivalent work experience.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_job_seekers"
+        },
+        {
+          "id": "nojs_funds",
+          "attribute": "monthly_funds_nok",
+          "operator": ">=",
+          "value": 28448,
+          "hard": true,
+          "blocker_text": "At least NOK 28,448/month (approx. NOK 341,373/year) in own funds, typically in a Norwegian bank account (PhD candidates need only NOK 85,344 regardless of stay length).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "udi_job_seekers"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Qualification documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of own funds (Norwegian bank account)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, not renewable as a job-seeker permit",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["no_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "udi_job_seekers",
+      "tier": 1,
+      "url": "https://www.udi.no/en/want-to-apply/work-immigration/job-seekers/",
+      "title": "UDI -- Job seekers: same 3 qualification tiers as skilled worker permit, NOK 28,448/month funds requirement (NOK 85,344 for PhD holders), up to 1-year permit, full/part-time work allowed excluding self-employment",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Norway). Distinct bridge route from no_work_permit.json: holders may work full-time or part-time WHILE job-hunting (including in jobs that don't require skilled qualifications), but cannot be self-employed or run their own business. Once a qualifying job offer is secured, the applicant switches to no_work_permit.json rather than renewing this permit -- it does not itself lead to permanent residence or citizenship, and time on it does not appear to count toward either clock per the sources reviewed."
+}

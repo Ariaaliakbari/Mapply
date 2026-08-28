@@ -1,0 +1,82 @@
+{
+  "id": "cz_citizenship_descent",
+  "country": "CZ",
+  "name": "Declaration of Citizenship (Former Citizens and Their Descendants)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who lost their Czech or Czechoslovak citizenship, or who is a direct descendant of a former Czech/Czechoslovak citizen, may acquire Czech citizenship by declaration under Sections 31-32 of the Citizenship Act (No. 186/2013 Coll.) -- a simplified process requiring minimal documentation and NO residency period, unlike ordinary naturalisation.",
+    "evidence_hint": "Documentation proving the applicant's own former citizenship, or the ancestral chain to a former Czech/Czechoslovak citizen."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "former_citizen",
+      "name": "Former Czech/Czechoslovak citizen",
+      "requirements": [
+        {
+          "id": "czcd_former_citizen",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "lost_czech_or_czechoslovak_citizenship",
+          "hard": true,
+          "blocker_text": "A physical person who lost their Czech or Czechoslovak citizenship may acquire citizenship by declaration (Section 31(1)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "direct_descendant",
+      "name": "Direct descendant of a former citizen",
+      "requirements": [
+        {
+          "id": "czcd_descendant",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "direct_descendant_of_former_czech_or_czechoslovak_citizen",
+          "hard": true,
+          "blocker_text": "A physical person who is a direct descendant of a former Czech or Czechoslovak citizen may acquire citizenship by declaration (Section 32(2)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of the applicant's own former Czech/Czechoslovak citizenship, or the ancestral chain to a former citizen", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration form", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mzv_citizenship_act",
+      "tier": 1,
+      "url": "https://mzv.gov.cz/file/2400342/Citizenship_Act_No._186_2013_Sb._o_statnim_obcanstvi_CR.pdf",
+      "title": "Ministry of Foreign Affairs -- Act No. 186/2013 Coll. on Citizenship of the Czech Republic: Sections 31-32, declaration procedure for former citizens and their direct descendants, no residency requirement",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Czechia's initial build. Confirmed directly at tier-1 from the primary legislation's own English translation, hosted by the Ministry of Foreign Affairs. The Act's text describes this declaration process as requiring 'minimal documentation and no residency period, differing substantially from naturalization requirements' -- the exact generational limit on 'direct descendant' (e.g. whether it extends indefinitely down the line or is capped) was not further specified in the excerpt reviewed; applicants with more distant Czech ancestry should confirm current scope directly with a Czech consulate. This mechanism is historically significant given 20th-century emigration waves (post-1948, post-1968) during which many Czechoslovaks lost citizenship upon naturalising abroad under the era's rules."
+}

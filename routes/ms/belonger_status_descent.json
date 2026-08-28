@@ -1,0 +1,66 @@
+{
+  "id": "ms_belonger_status_descent",
+  "country": "MS",
+  "name": "Belonger Status by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Belonger status attaches by descent under Section 2(2) of the Immigration Act to: (a) a person born in Montserrat before 1 January 1983, or registered/naturalised as a citizen of the United Kingdom and Colonies before that date; (b) a person born in Montserrat on or after 1 January 1983 to a parent who was a British Dependent Territories Citizen or 'settled' in Montserrat at the time; (c) a person whose parent or grandparent was born, registered, or naturalised in Montserrat under the British Nationality Act 1948, or who was born outside Montserrat after 1983 to a parent born, registered, or naturalised there; and (d) certain Commonwealth citizens with a grandparent born or naturalised in Montserrat, and children under 18 of a Belonger.",
+    "evidence_hint": "Birth certificates (applicant, parent, grandparent as relevant); citizenship/registration/naturalisation documents; proof of parent's 'settled' status where applicable."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "msbd_lineage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "descent_from_belonger_under_s2_2",
+          "hard": true,
+          "blocker_text": "Requires meeting one of the descent/birth grounds in Section 2(2) of the Immigration Act: birth in Montserrat before 1983 (or naturalisation/registration before then), birth after 1983 to a settled/BDTC parent, descent from a parent or grandparent born/naturalised in Montserrat, or (for certain Commonwealth citizens) a grandparent born/naturalised in Montserrat.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ms_immigration_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's and/or grandparent's birth, registration, or naturalisation documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of parent's British Dependent Territories citizenship or 'settled' status, where the applicant was born after 1983", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ms_immigration_act",
+      "tier": 1,
+      "url": "http://agc.gov.ms/wp-content/uploads/2011/10/Immigration-Act.pdf",
+      "title": "Montserrat Chapter 13.01, Immigration Act -- Section 2(2), definition of 'belonger' by birth, descent, and registration/naturalisation",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Montserrat's initial build; Montserrat is the second British Overseas Territory (BOT) built this session, after Anguilla. Same key modelling decision as Anguilla applies and is only explained once here for Montserrat: Belonger status is Montserrat's own local legal status (a right-of-abode-equivalent), not British nationality -- formal British Overseas Territories Citizenship (BOTC) is a separate track (see ms_naturalisation.json), so leads_to_citizenship is modelled as false here even though descent-based routes lead directly to citizenship in every non-BOT country built this session. Unlike Anguilla, Montserrat's Immigration Act does not appear to include a long-term-residence-only ground for Belonger status (no equivalent of Anguilla's 15-year residence path was found in Section 2(2)) -- so no ms_belonger_status_residence.json file was created; this is a genuine legal difference between the two territories' Belonger regimes, not an oversight, and is flagged here in case a residence-based ground exists elsewhere in the Act and was missed in this pass. Section 2(2)'s birth-before-1983 and birth-after-1983-to-settled-parent grounds are automatic-by-birth provisions rather than something a person migrates to qualify for -- they are included in this route's qualifying_event description for completeness of the legal definition, but the requirement_groups model the descent/lineage grounds most relevant to an immigration dataset (a person establishing Belonger status via ancestry rather than their own birth in Montserrat)."
+}

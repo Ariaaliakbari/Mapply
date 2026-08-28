@@ -1,10 +1,10 @@
 {
   "id": "ae_golden_visa",
   "country": "AE",
-  "name": "Golden Visa (10-year long-term residence)",
+  "name": "Golden Visa (Long-Term Residence)",
   "category": "business",
   "status": "published",
-  "verified_at": "2026-08-10",
+  "verified_at": "2026-08-27",
   "duration_type": "fixed",
   "selection_method": "assessed",
   "selection_odds": null,
@@ -13,91 +13,126 @@
   "prerequisites": null,
   "requirement_groups": [
     {
-      "id": "investor_public",
-      "name": "Investor — public investment (10 years)",
-      "requirements": [
-        {
-          "id": "gv1_capital",
-          "attribute": "investment_capacity",
-          "operator": ">=",
-          "value": { "amount": 2000000, "currency": "AED" },
-          "hard": true,
-          "blocker_text": "This requires a minimum capital of AED 2,000,000 in an accredited investment fund, or a commercial/industrial licence with capital of at least AED 2,000,000, or paying the government at least AED 250,000/year in taxes. Capital must not be loan-financed.",
-          "fix_path": "Secure and commit the required capital.",
-          "fix_time_months": null,
-          "source_id": "uae_gov_golden_visa"
-        }
-      ]
-    },
-    {
       "id": "real_estate",
-      "name": "Real estate investor",
+      "name": "Real Estate Investment",
       "requirements": [
         {
-          "id": "gv2_property",
-          "attribute": "investment_capacity",
+          "id": "aeg_re_amount",
+          "attribute": "investment_amount_aed",
           "operator": ">=",
-          "value": { "amount": 2000000, "currency": "AED", "note": "as of 20 Feb 2026, only the total assessed property value matters — the prior 50%/AED 1,000,000 down-payment requirement was removed; ready, off-plan, and mortgaged properties all qualify" },
+          "value": 2000000,
           "hard": true,
-          "blocker_text": "This requires property valued at a total of at least AED 2,000,000, assessed by the relevant land department, regardless of mortgage balance.",
-          "fix_path": "Acquire qualifying property.",
+          "blocker_text": "Wholly-owned property valued at a minimum of AED 2,000,000 (loans permitted only from locally-approved banks).",
+          "fix_path": "Purchase a qualifying wholly-owned property.",
           "fix_time_months": null,
-          "source_id": "uae_gov_golden_visa"
+          "source_id": "moet_gov_ae_golden_visa"
+        },
+        {
+          "id": "aeg_re_insurance",
+          "attribute": "has_comprehensive_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires comprehensive health insurance for the investor and family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moet_gov_ae_golden_visa"
         }
       ]
     },
     {
-      "id": "entrepreneur",
-      "name": "Entrepreneur (5 years)",
-      "outcome_override": {
-        "citizenship_after_months": null
-      },
+      "id": "business_sme_revenue",
+      "name": "Active SME",
       "requirements": [
         {
-          "id": "gv3_project",
-          "attribute": "investment_capacity",
+          "id": "aeg_sme_revenue",
+          "attribute": "business_annual_revenue_aed",
           "operator": ">=",
-          "value": { "amount": 500000, "currency": "AED" },
+          "value": 1000000,
           "hard": true,
-          "blocker_text": "This requires an innovative/technical project valued at least AED 500,000 (per accredited auditor), plus a business-incubator or authority endorsement letter.",
-          "fix_path": "Secure the qualifying project valuation and endorsement.",
-          "fix_time_months": 3,
-          "source_id": "uae_gov_golden_visa"
+          "blocker_text": "Owns an active SME generating at least AED 1,000,000 in annual revenue.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moet_gov_ae_golden_visa"
         }
       ]
     },
     {
-      "id": "specialised_talent",
-      "name": "Specialised talents / skilled professionals (10 years)",
+      "id": "business_prior_exit",
+      "name": "Prior Business Sale",
       "requirements": [
         {
-          "id": "gv4_salary",
-          "attribute": "current_salary",
+          "id": "aeg_exit_value",
+          "attribute": "prior_business_sale_value_aed",
           "operator": ">=",
-          "value": { "amount": 30000, "currency": "AED", "unit": "month" },
+          "value": 7000000,
           "hard": true,
-          "blocker_text": "This requires a basic monthly salary of at least AED 30,000, a valid employment contract, and an attested bachelor's degree classified level 1 or 2 by the Ministry of Education (doctors, scientists, inventors, creatives in culture and arts, executives, athletes, PhD holders, and specialists in priority scientific/engineering fields also qualify via profession-specific criteria).",
-          "fix_path": "Negotiate a salary meeting the threshold, or qualify via profession-specific criteria.",
+          "blocker_text": "Founder of a previous venture (or ventures) sold for a total value of at least AED 7,000,000.",
+          "fix_path": null,
           "fix_time_months": null,
-          "source_id": "uae_gov_golden_visa"
+          "source_id": "moet_gov_ae_golden_visa"
+        }
+      ]
+    },
+    {
+      "id": "business_incubator",
+      "name": "Recognized Incubator Approval",
+      "requirements": [
+        {
+          "id": "aeg_incubator_approval",
+          "attribute": "has_recognized_incubator_approval",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Holds approval from a recognized UAE business incubator.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moet_gov_ae_golden_visa"
+        }
+      ]
+    },
+    {
+      "id": "public_investment",
+      "name": "Public Investment",
+      "requirements": [
+        {
+          "id": "aeg_pub_amount",
+          "attribute": "investment_amount_aed",
+          "operator": ">=",
+          "value": 2000000,
+          "hard": true,
+          "blocker_text": "AED 2,000,000 deposited in an investment fund or national bank, OR an enterprise established with AED 2,000,000 capital, OR a partnership stake worth AED 2,000,000+; alternatively, ownership of a business paying AED 250,000+ in annual federal tax, or a partnership share equivalent to that tax contribution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moet_gov_ae_golden_visa"
+        }
+      ]
+    },
+    {
+      "id": "talent",
+      "name": "Exceptional Talent",
+      "requirements": [
+        {
+          "id": "aeg_talent_category",
+          "attribute": "talent_category",
+          "operator": "in",
+          "value": ["culture", "innovation", "sports", "ai_blockchain_key_sectors", "scientist", "specialized_professional", "top_graduate", "humanitarian_worker"],
+          "hard": true,
+          "blocker_text": "Recognized exceptional talent in culture, innovation, sports, AI/blockchain and other key sectors, science, specialized professions, or as a top graduate or humanitarian worker -- assessed on a discretionary, merit basis rather than a fixed numeric threshold.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moet_gov_ae_golden_visa"
         }
       ]
     }
   ],
   "evidence_required": [
-    {
-      "document": "Investment/property/salary evidence matching the applicable group",
-      "difficulty": "moderate",
-      "typical_time_days": 60
-    },
-    {
-      "document": "Clean criminal record certificate",
-      "difficulty": "routine",
-      "typical_time_days": 30
-    }
+    { "document": "Proof of qualifying investment/business/talent category", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Comprehensive health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supporting evidence per category (title deed, financial statements, sale agreements, incubator letter, awards/recommendation letters)", "difficulty": "moderate", "typical_time_days": null }
   ],
   "outcome": {
-    "duration_length": "10 years (investor/talent groups) or 5 years (entrepreneur group), automatically renewable indefinitely while criteria are met",
+    "duration_length": "long-term, renewed every 10 years depending on category and continued eligibility",
     "renewable": true,
     "work_rights": "full",
     "study_rights": "full",
@@ -108,17 +143,17 @@
     "leads_to_citizenship": false,
     "citizenship_after_months": null,
     "dual_citizenship_allowed": null,
-    "physical_presence_requirement": "no minimum stay requirement; holders exempt from the standard 180-day absence rule that applies to shorter-term UAE residency",
+    "physical_presence_requirement": null,
     "switchable_to": []
   },
   "sources": [
     {
-      "id": "uae_gov_golden_visa",
+      "id": "moet_gov_ae_golden_visa",
       "tier": 1,
-      "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/golden-visa",
-      "title": "Golden Visa - The Official Portal of the UAE Government",
-      "accessed_at": "2026-08-10"
+      "url": "https://www.moet.gov.ae/en/investment-faqs",
+      "title": "Ministry of Economy and Tourism, Government of the UAE -- Investment FAQs: Golden Visa routes -- real estate (AED 2M), business/entrepreneurship (SME AED 1M revenue, or prior exit AED 7M, or incubator approval), public investment (AED 2M deposit/capital/partnership or AED 250k annual tax), and talent categories (culture, innovation, sports, AI/blockchain, science, top graduates, humanitarian workers); renewed every 10 years",
+      "accessed_at": "2026-08-27"
     }
   ],
-  "notes": "CRITICAL STRUCTURAL FACT for this whole country's dataset: leads_to_pr and leads_to_citizenship are FALSE even for the UAE's flagship long-term residency product — the Golden Visa is renewable indefinitely but is genuinely a permanent CEILING, not a pipeline to citizenship, unlike every investor-adjacent route encoded elsewhere in this dataset (Portugal, Spain-formerly, France). This is the single most important structural fact to get right for the entire UAE country dataset. MAJOR STALE-DATA WARNING, one of the highest-confidence catches across the whole research pass: a viral claim of an 'AED 100,000 lifetime nomination Golden Visa' circulated in mid-2025 — the UAE's own ICP authority PUBLICLY DENIED this via state news agency WAM on 8 July 2025, stating the claims 'have no legal basis' and threatening legal action against parties spreading it; the consultancy involved (Rayad Group) retracted and apologized on 10 July 2025, admitting the AED 100,000 was their own service fee, not a government visa price. No such visa exists; the Golden Visa is NOT a lifetime visa and NOT citizenship-by-investment. LIVE POLICY CHANGE confirmed effective 20 February 2026: the real-estate route's 50%/AED 1,000,000 down-payment requirement was REMOVED — only total assessed property value matters now, a genuine liberalization many secondary sites still don't reflect. UNRESOLVED SOURCE CONFLICT flagged honestly: the real-estate group's duration is listed as 5 years on one official page and 10 years by most other sources — encoded here as matching the other investor/talent groups (10 years) as the more commonly corroborated figure, but this should be re-verified against the live ICP service page before being treated as fully settled."
+  "notes": "NEW ROUTE, part of the UAE's full build-out. leads_to_citizenship modelled as false: the UAE has no pathway to citizenship from ordinary or long-term residence of any kind, including the Golden Visa -- confirmed via the primary Nationality Law's structure (see ae_naturalisation.json), which conditions naturalisation on decades of residence under DIFFERENT visa categories, not specifically Golden Visa status, and via this dataset's general finding that residency (however prestigious) does not lead to citizenship in the UAE. The talent category's eligibility criteria are inherently qualitative/discretionary rather than numeric -- modelled with an enumerated category list rather than a single threshold, consistent with how the source itself describes it."
 }

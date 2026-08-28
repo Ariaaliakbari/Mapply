@@ -1,0 +1,96 @@
+{
+  "id": "gr_family_reunification",
+  "country": "GR",
+  "name": "Family Reunification Residence Permit",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grfr_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse",
+          "hard": true,
+          "blocker_text": "Eligible family members are the sponsor's spouse (18+), the minor children of the sponsor and/or spouse (including adopted), and other minor dependent children where the sponsor/spouse has custody. Reunification of a second spouse under polygamous marriage is prohibited.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art53_54"
+        },
+        {
+          "id": "grfr_sponsor_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "The sponsor must have lawfully resided in Greece for at least 2 years before family members can be sponsored.",
+          "fix_path": "Wait until the sponsor reaches 2 years of lawful residence.",
+          "fix_time_months": 24,
+          "source_id": "mfa_gr_codification_art53_54"
+        },
+        {
+          "id": "grfr_income",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "steady_income_at_least_unskilled_worker_annual_wage_plus_20pct_spouse_15pct_child",
+          "hard": true,
+          "blocker_text": "Sponsor must show steady, regular annual income (not social assistance) at least equal to the annual wage of an unskilled worker, increased by 20% for a spouse and 15% for each child (the 15% child increase is waived if both spouses already lawfully reside in Greece and are reuniting with their own children).",
+          "fix_path": "Document qualifying sponsor income.",
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art53_54"
+        },
+        {
+          "id": "grfr_insurance",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "full_health_insurance_for_sponsor_and_family",
+          "hard": true,
+          "blocker_text": "Sponsor must maintain full health insurance covering all risks at the level provided to Greek nationals, for themselves and reunited family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gr_codification_art53_54"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Recent civil status certificate (marriage/birth) from foreign authorities, certified and translated, issued within 6 months", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's income and insurance documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport-style photograph (physical and digital)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "variable, tied to the sponsor's own permit duration",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_naturalisation", "gr_long_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "mfa_gr_codification_art53_54",
+      "tier": 1,
+      "url": "https://www.mfa.gr/images/docs/ethnikes_theoriseis/codification_of_legislation_en.pdf",
+      "title": "Greek Ministry of Foreign Affairs -- Codification of Legislation, Articles 53-54 (family reunification: eligible members, sponsor's 2-year residence, income and insurance requirements)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. Confirmed directly at tier-1 via the MFA's own codification document, with exact article numbers and the income formula. work_rights set to 'restricted' as a conservative default (family reunification permits commonly carry conditional/derivative work access in many jurisdictions) -- this specific point was not explicitly confirmed either way in the fetched excerpt, flagged here rather than asserted as 'full' or 'none' without a source. A separate, more generous family-reunification track exists for recognized refugees (per UNHCR Greece) that was not modelled as its own file in this pass -- refugees' family reunification rights are referenced in gr_international_protection's outcome instead."
+}

@@ -1,0 +1,66 @@
+{
+  "id": "tc_naturalisation_botc",
+  "country": "TC",
+  "name": "Naturalisation as a British Overseas Territories Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["tc_prc_residence", "tc_prc_family", "tc_prc_ancestry", "tc_prc_investment"],
+    "minimum_months_held": 12,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tcn_prc_held",
+          "attribute": "months_held_prc",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires having held a Permanent Residence Certificate for at least 12 months, and meeting additional criteria not detailed on the PRC page reviewed.",
+          "fix_path": "Hold a PRC for at least 12 months.",
+          "fix_time_months": 12,
+          "source_id": "gov_tc_prc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "PRC (held 12+ months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application form and supporting documents (not itemised in the source reviewed)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_tc_prc",
+      "tier": 1,
+      "url": "https://gov.tc/bordercontrol/services/prc",
+      "title": "Government of the Turks and Caicos Islands -- Permanent Residence Certificate page: confirms naturalisation as a BOTC becomes available 12 months after obtaining a PRC, 'provided they meet additional criteria' -- those additional criteria are not detailed on this page",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. STATUS: DRAFT -- the only confirmed hard requirement is the 12-months-since-PRC timing rule; the source explicitly says 'provided they meet additional criteria' without stating what those are (language, character, residence-since-PRC, fees), and no dedicated gov.tc naturalisation-application page (analogous to the BVI's or Anguilla's) was located in this pass. This mirrors how Montserrat's and Cayman's equivalent BOTC naturalisation routes were also marked draft earlier this session, for the same reason: confirmed existence and a partial timing rule, but no full eligibility criteria. Endorsed family members on a PRC must obtain their OWN PRC before naturalising (per the PRC page) -- flagged here as a contingent detail rather than modelled as a separate blocking requirement, since it is already implicit in requiring PRC-holder status. Re-verify against a dedicated naturalisation page if one exists on gov.tc, along the lines of the BVI's or Anguilla's Governor's Office / Passport Office pages."
+}

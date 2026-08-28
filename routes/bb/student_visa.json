@@ -1,0 +1,73 @@
+{
+  "id": "bb_student_visa",
+  "country": "BB",
+  "name": "Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bbs_acceptance",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "acceptance_letter_from_ministry_registered_institution",
+          "hard": true,
+          "blocker_text": "Requires an acceptance letter from an institution registered with the Ministry of Education, plus a course outline and proof of accommodation.",
+          "fix_path": "Secure admission to a Ministry of Education-registered institution.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_student"
+        },
+        {
+          "id": "bbs_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "adequate_funds_for_school_living_medical_expenses",
+          "hard": true,
+          "blocker_text": "Requires evidence of financial support adequate to cover school, living, and medical expenses for the course duration -- no fixed minimum amount is published.",
+          "fix_path": "Document sufficient funds or sponsorship for the full course duration.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_bb_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate, marriage certificate if applicable, passport bio-data page", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certificate of Character from the police of each country lived in for 6+ months in the past 3 years (adult applicants)", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "School acceptance letter, course outline, and proof of accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarised parental consent for applicants under 18", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "provisional visa up to 4 months, followed by a final student visa valid up to 3 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_bb_student",
+      "tier": 1,
+      "url": "https://immigration.gov.bb/pages/studentvisa.aspx",
+      "title": "Barbados Immigration Department (immigration.gov.bb) -- Student Visa Application Guidelines",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Barbados' initial build. CARICOM nationals under 16 face reduced form requirements per the source page -- not modelled as a separate group here given the thinness of the distinction, but worth a second pass if CARICOM-specific student rules turn out to matter more broadly. work_rights is set to 'none' as a placeholder based on common Commonwealth Caribbean student-visa practice, NOT independently confirmed by the source page fetched in this pass, which does not address employment rights at all -- flagged explicitly rather than silently assumed. family_can_join/family_can_work are omitted rather than guessed, since the source addresses minors travelling with a parent/guardian but not a dependant-sponsorship mechanism for adult students. Application fee: Bds$300, due at submission."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "cw_work_permit",
+  "country": "CW",
+  "name": "Work Permit (Employee Residence Permit)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cwwp_employer_application",
+          "attribute": "work_permit_application_status",
+          "operator": "exists",
+          "value": "submitted_by_employer",
+          "hard": true,
+          "blocker_text": "An application for a work permit must be submitted at the Vergunningenloket (Permit Office) in Saliña, generally by or on behalf of the employer.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_faq_general"
+        },
+        {
+          "id": "cwwp_financial_or_employer",
+          "attribute": "financial_resources_or_employer_backed",
+          "operator": "exists",
+          "value": "own_financial_resources_or_employer_work_permit_request",
+          "hard": true,
+          "blocker_text": "Applicant must demonstrate their own financial resources, or provide evidence of an employer's work permit request, to support a change to an employment-based residence status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrationcur_faq_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer declaration / work permit request", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application form and payment order", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cw_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "immigrationcur_faq_general",
+      "tier": 1,
+      "url": "https://immigrationcur.org/en/faq/algemene-vragen/",
+      "title": "Immigratiedienst Curacao -- General FAQ: work permit applications at the Vergunningenloket in Saliña; residence status changes require own financial resources or an employer's work permit request",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. Fee, permit duration, and job-category/labour-market-test details were not found in the tier-1 sources reviewed in this pass -- flagged as a gap rather than guessed. switchable_to points to cw_permanent_residence.json because that route's 10-year continuous-residence clock (per the same FAQ source) can be built up while holding a work-based residence permit, though the FAQ does not explicitly confirm that work permits count toward that clock without interruption -- treat the linkage as plausible, not confirmed."
+}

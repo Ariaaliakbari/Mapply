@@ -1,0 +1,88 @@
+{
+  "id": "ma_citizenship_by_marriage",
+  "country": "MA",
+  "name": "Nationality by Marriage (Article 10 -- Foreign Wife of a Moroccan Husband)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 10 of the Code de la Nationalité Marocaine allows a foreign woman married to a Moroccan man to acquire Moroccan nationality by declaration, filed with the Minister of Justice during the marriage, after at least 5 years of the couple's habitual and regular joint residence in Morocco. This is a gendered provision: the Code does not extend an equivalent simplified declaration route to a foreign man married to a Moroccan woman, who must instead use the standard naturalisation route (ma_naturalisation.json).",
+    "evidence_hint": "Marriage certificate; declaration filed with the Minister of Justice; proof of at least 5 years' joint habitual residence in Morocco."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "macm_gender_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "foreign_wife_of_ma_citizen_husband",
+          "hard": true,
+          "blocker_text": "Available only to a foreign woman married to a Moroccan man (Article 10) -- there is no equivalent simplified declaration route for a foreign man married to a Moroccan woman under this Code.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "macm_residence",
+          "attribute": "months_joint_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "At least 5 years of the couple's habitual and regular joint residence ('résidence habituelle et régulière au Maroc du ménage') in Morocco.",
+          "fix_path": "Accumulate 5 years of joint habitual residence in Morocco during the marriage.",
+          "fix_time_months": 60,
+          "source_id": "natlex_code_nationalite"
+        },
+        {
+          "id": "macm_declaration",
+          "attribute": "declaration_filed_during_marriage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A declaration must be filed with the Minister of Justice while the marriage subsists; nationality is acquired from the date of declaration, and a later dissolution of the marriage does not invalidate an already-filed declaration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_code_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Declaration filed with the Minister of Justice", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 5 years' joint habitual residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "natlex_code_nationalite",
+      "tier": 1,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/117679/MAR-117679.pdf",
+      "title": "NATLEX (ILO) -- Code de la Nationalité Marocaine, consolidated 16 May 2024, Article 10: declaration route for a foreign wife of a Moroccan husband, 5-year joint-residence requirement, declaration filed with the Minister of Justice, effect from declaration date",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). This route is explicitly gendered in the primary legislative text itself (Article 10 applies only to a foreign woman marrying a Moroccan man) -- modeled precisely rather than smoothed into gender-neutral language, consistent with this dataset's practice of representing a law's actual asymmetries accurately (see also Austria's citizenship-by-descent asymmetry built earlier). A foreign man married to a Moroccan woman has no equivalent simplified declaration path and must use the standard 5-year naturalisation route in ma_naturalisation.json instead, without any marriage-based reduction to that route's own residence requirement (both happen to be 5 years, but Article 11's standard track is not itself shortened by marriage for a foreign husband)."
+}

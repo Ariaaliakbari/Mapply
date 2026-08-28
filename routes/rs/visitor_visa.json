@@ -1,0 +1,90 @@
+{
+  "id": "rs_visitor_visa",
+  "country": "RS",
+  "name": "Short-Stay Entry (Visa-Free / Visa C)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Serbia grants visa-free entry, for up to 90 days within a 180-day period, on two separate bases: (1) nationality -- citizens of the US, UK, EU member states, and many other countries do not need a visa at all; and (2) a specific rule for holders of a valid Schengen, UK, or US visa, or a residence permit in the Schengen area, EU, or US, regardless of their own nationality. Nationals not covered by either basis need a short-stay Visa C (tourism/business, up to 90 days) or, for stays of 90-180 days, a long-stay Visa D.",
+    "evidence_hint": "Valid passport (90+ days beyond departure); for visa applicants: proof of purpose of stay, invitation letter (where applicable), travel medical insurance, proof of sufficient funds and return travel."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "nationality_exempt",
+      "name": "Visa-exempt by nationality",
+      "requirements": [
+        {
+          "id": "rsvv_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": "visa_exempt_nationality_list",
+          "hard": true,
+          "blocker_text": "Citizens of the US, UK, EU member states, and many other countries can enter Serbia without a visa for up to 90 days in a 180-day period. The full nationality-by-nationality list is published by the Ministry of Foreign Affairs per-country and was not fully reproduced here.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gcs_visa_free"
+        }
+      ]
+    },
+    {
+      "id": "third_country_visa_holder",
+      "name": "Holder of a Schengen/UK/US visa or residence permit",
+      "requirements": [
+        {
+          "id": "rsvv_third_visa",
+          "attribute": "holds_schengen_uk_us_visa_or_residence_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign national holding a valid Schengen, UK, or US visa, or a residence permit in the Schengen area, EU, or US, may enter, transit, and stay in Serbia for up to 90 days in a 6-month period, regardless of their own nationality's visa regime.",
+          "fix_path": "Obtain a valid Schengen, UK, or US visa or residence permit.",
+          "fix_time_months": null,
+          "source_id": "mfa_visa_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (valid 90+ days beyond intended departure)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds and return travel (for visa applicants)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel medical insurance (for visa applicants)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in a 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_visa_requirements",
+      "tier": 1,
+      "url": "https://www.mfa.gov.rs/en/citizens/travel-serbia/visa-requirements",
+      "title": "Serbian Ministry of Foreign Affairs -- visa requirements: exemption for holders of a valid Schengen/UK/US visa or Schengen/EU/US residence permit, 90 days in 6 months; Visa C (up to 90 days) and Visa D (90-180 days) for others; general document/funds/insurance requirements",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "gcs_visa_free",
+      "tier": 3,
+      "url": "https://www.globalcitizensolutions.com/serbia-passport-visa-free-countries/",
+      "title": "Global Citizen Solutions -- confirms Serbia's inbound visa-free regime covers US/UK/EU and many other nationalities for up to 90 days, separate from the Schengen/UK/US-visa-holder exemption",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). STATUS: DRAFT -- the MFA's own visa-requirements page (tier-1) confirms the visa-holder/residence-permit exemption in detail, but its full nationality-by-nationality visa-free list is published per-country on a separate portal (mfa.gov.rs/en/citizens/travel-serbia/visa-regime) as an A-Z index of individual country pages rather than a single reproducible list, so the general nationality-based exemption here is corroborated only by a tier-3 secondary source. Two genuinely distinct legal bases for visa-free entry are modeled as separate requirement groups (OR logic) rather than conflated into one, since a traveler can qualify via either nationality alone or via holding a third-country visa/permit regardless of their own nationality."
+}

@@ -1,0 +1,120 @@
+{
+  "id": "hr_residence_permit_study",
+  "country": "HR",
+  "name": "Temporary Stay for the Purpose of Education (secondary school or university)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "university",
+      "name": "University studies",
+      "requirements": [
+        {
+          "id": "hrst_enrollment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "enrolled_at_croatian_higher_education_institution",
+          "hard": true,
+          "blocker_text": "Requires enrollment at a Croatian higher education institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_art73"
+        },
+        {
+          "id": "hrst_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_means_for_return",
+          "hard": true,
+          "blocker_text": "Requires sufficient means to support the stay and to return home after studies conclude.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_art73"
+        },
+        {
+          "id": "hrst_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "health_insurance",
+          "hard": true,
+          "blocker_text": "Requires health insurance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_art73"
+        }
+      ]
+    },
+    {
+      "id": "secondary_school",
+      "name": "Secondary school education",
+      "requirements": [
+        {
+          "id": "hrst_school_enrollment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "enrolled_at_croatian_secondary_school",
+          "hard": true,
+          "blocker_text": "Requires enrollment at a Croatian secondary-level educational establishment, generally while under 18 (or in a final year), with parental/legal-guardian consent and the school accepting responsibility for accommodation and costs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_art72"
+        },
+        {
+          "id": "hrst_school_insurance",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "health_insurance",
+          "hard": true,
+          "blocker_text": "Requires health insurance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aliens_act_2020_art72"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of enrollment (university or secondary school)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of financial means", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year at a time, i.e. until the end of the academic year (up to 2 years for recognised EU student-mobility programmes)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["hr_residence_permit_employment"]
+  },
+  "sources": [
+    {
+      "id": "aliens_act_2020_art73",
+      "tier": 1,
+      "url": "https://mup.gov.hr/UserDocsImages/zakoni/ALIENS%20ACT%20(Official%20Gazette%20No%20133_2020).pdf",
+      "title": "Croatian Parliament -- Aliens Act (Official Gazette No. 133/2020, as amended 114/22, 151/22), Article 73",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "aliens_act_2020_art72",
+      "tier": 1,
+      "url": "https://mup.gov.hr/UserDocsImages/zakoni/ALIENS%20ACT%20(Official%20Gazette%20No%20133_2020).pdf",
+      "title": "Croatian Parliament -- Aliens Act (Official Gazette No. 133/2020, as amended 114/22, 151/22), Article 72",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. Two groups model the two distinct legal grounds (university vs. secondary school) under the same Aliens Act, both issued as 'temporary stay for the purpose of education' rather than separate government-named permits -- consistent with the OR-logic modelling principle for one status reached different ways, adapted here for two adjoining Aliens Act articles under one practical route. HONEST GAP: whether/how many hours of work are permitted alongside university study was not confirmed in the fetched excerpt of the Act (large PDF; this pass could not retrieve the full work-rights clause) -- work_rights set to 'restricted' as a conservative default pending confirmation, not 'full' or 'none'. Work rights for secondary students not addressed in the source at all. family_can_join set false as a conservative default: the fetched sources describe this permit as tied to the individual student, with no stated dependant-sponsorship right of its own (family members of a student would need their own qualifying route, e.g. hr_residence_permit_family_reunification, not confirmed as automatic here) -- not the same as a confirmed 'no' from a source, but the safer default given the article text found."
+}

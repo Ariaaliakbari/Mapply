@@ -1,0 +1,80 @@
+{
+  "id": "ar_family_reunification",
+  "country": "AR",
+  "name": "Temporary Residence by Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "family_of_citizen",
+      "name": "Spouse, parent, or child of an Argentine citizen",
+      "requirements": [
+        {
+          "id": "arfam_citizen_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_parent_or_child_of_ar_citizen",
+          "hard": true,
+          "blocker_text": "Sponsor must be a native, naturalized, or by-option Argentine citizen. Authorization lasts up to 3 years maximum.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_reunificacion"
+        }
+      ]
+    },
+    {
+      "id": "family_of_resident",
+      "name": "Spouse, minor child, or disabled adult child of a temporary/permanent resident",
+      "requirements": [
+        {
+          "id": "arfam_resident_tie",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_dependent_child_of_ar_resident",
+          "hard": true,
+          "blocker_text": "Sponsor must be a temporary or permanent resident; qualifying dependents are spouse, unmarried child under 18 (not emancipated), or an adult child with disabilities. Residence is granted for the same period as the sponsor's own status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_reunificacion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Legalized birth or marriage certificate proving the family tie", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's proof of citizenship or residence status", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal background certificates (applicants 16+)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Matches sponsor's residence period; up to 3 years if sponsor is an Argentine citizen or permanent resident",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ar_permanent_residence", "ar_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reunificacion",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/servicio/obtener-una-residencia-temporaria-por-reunificacion-familiar",
+      "title": "Dirección Nacional de Migraciones -- Obtener una residencia temporaria por reunificación familiar: qualifying relationships for citizen-sponsor and resident-sponsor tracks, up to 3-year duration when sponsor is a citizen",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). pr_after_months and citizenship_after_months (24) both reflect Ley 346's standalone 2-year continuous-legal-residence naturalization bar, which applies regardless of family sponsorship -- Argentina does not appear to have a distinct, faster marriage-to-citizen naturalization track the way several other countries in this dataset do; the spouse of an Argentine gets easier RESIDENCE (this file) but the same 2-year CITIZENSHIP clock as any other legal resident (see ar_naturalisation.json). A separate, faster non-MERCOSUR-specific family reunification service page exists (argentina.gob.ar/servicio/obtener-una-residencia-temporaria-por-reunificacion-familiar-no-mercosur) but was not independently fetched in this pass -- flagged as a gap since it may carry different documentation specifics for non-MERCOSUR sponsors/applicants."
+}

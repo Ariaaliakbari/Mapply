@@ -1,0 +1,94 @@
+{
+  "id": "bg_student_permit",
+  "country": "BG",
+  "name": "Long-Term Residence for Higher Education (Type D Student Visa)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgst_enrolment",
+          "attribute": "enrolled_full_time_higher_education",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires admission to full-time study at an accredited Bulgarian higher education institution, approved by the Ministry of Education and Science (Foreigners Act Article 24c(1)).",
+          "fix_path": "Obtain admission from an accredited Bulgarian university.",
+          "fix_time_months": null,
+          "source_id": "swu_student_visa"
+        },
+        {
+          "id": "bgst_means",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must show sufficient means of subsistence, at least the minimum monthly salary or pension, for the intended period of stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "swu_student_visa"
+        },
+        {
+          "id": "bgst_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Insurance policy from an EU-licensed insurer required, minimum EUR 30,000 coverage for repatriation, emergency medical assistance and hospital treatment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "swu_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University admission letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health/travel insurance (min. EUR 30,000 coverage)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate (if 18+)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable for the duration of study; up to 9 months post-graduation for job-seeking registration",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bg_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "swu_student_visa",
+      "tier": 1,
+      "url": "https://www.swu.bg/en/prospsten/afsen/239-afsenc/1409-visadenart",
+      "title": "South-West University 'Neofit Rilski' (Bulgarian state university) -- Requirements for the Issuance of a Type D Study Visa: enrolment, financial means, EUR 30,000 health insurance, accommodation, criminal record certificate",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "foreigners_act",
+      "tier": 1,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Foreigners_in_the_Republic_of_Bulgaria_Act_2.pdf",
+      "title": "Bulgaria -- Foreigners in the Republic of Bulgaria Act, Article 24c: long-term residence permit for full-time higher-education students (up to 1 year, renewable) and up to 9-month post-graduation job-seeking extension",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). Sourced primarily from a Bulgarian state university's official admissions page (swu.bg) cross-checked against the Foreigners Act's Article 24c -- treated as tier 1 given it is a state institution directly administering the statutory visa requirement, consistent with government-portal sourcing elsewhere in this dataset. family_can_join modeled false: no student-specific family reunification provision was located in this pass (family reunification for residents generally requires prolonged/permanent status per bg_family_reunification.json, which a 1-year student permit does not confer)."
+}

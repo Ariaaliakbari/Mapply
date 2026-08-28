@@ -1,0 +1,111 @@
+{
+  "id": "aw_indefinite_residence",
+  "country": "AW",
+  "name": "Indefinite Period Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["aw_work_permit", "aw_retiree_interest_rate_earner", "aw_student_permit", "aw_family_reunification"],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "awir_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires at least 10 years (120 months) of legal residence in Aruba on a temporary residence permit or declaration.",
+          "fix_path": "Accumulate 120 months of legal residence on renewable temporary permits.",
+          "fix_time_months": 120,
+          "source_id": "dimas_indefinite_residence"
+        },
+        {
+          "id": "awir_permit_cap",
+          "attribute": "each_temporary_permit_max_years",
+          "operator": "<=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "No single temporary residence permit in the qualifying history may exceed 3 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_indefinite_residence"
+        },
+        {
+          "id": "awir_continuity",
+          "attribute": "max_gap_years",
+          "operator": "<=",
+          "value": 2,
+          "hard": true,
+          "blocker_text": "No gap in residence may exceed 2 years, unless justified by health or study reasons.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_indefinite_residence"
+        },
+        {
+          "id": "awir_registration",
+          "attribute": "registered_in_population_register",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be registered in the population register at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_indefinite_residence"
+        },
+        {
+          "id": "awir_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be at least 18 years old (minors may be issued the permit without work authorisation).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dimas_indefinite_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "All previous residence permits/declarations and payment certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Judicial documentation (ages 18-65)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Deposit guarantee payment proof", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "no gap in residence exceeding 2 years without a health or study justification",
+    "switchable_to": ["aw_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dimas_indefinite_residence",
+      "tier": 1,
+      "url": "https://www.dimasaruba.aw/en/applicants/living/stay-for-an-indefinite-period/",
+      "title": "DIMAS, Government of Aruba -- Stay for an Indefinite Period: 120-month (10-year) residence requirement, 3-year cap per temporary permit, 2-year maximum continuity gap, population-register requirement, adult work rights",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Aruba's initial build -- Aruba's PR-equivalent 'settled' status. This is a materially longer road than most non-BOT, non-Kingdom countries' PR routes built this session (120 months vs. the more common 48-96), and notably longer than Curacao's equivalent 10-year permanent-residence rule -- consistent with it, in fact (both Kingdom constituent countries independently converge on 10 years). citizenship_after_months (60) reflects the separate Kingdom-level naturalisation clock in aw_naturalisation.json (5 years as a Kingdom national with a valid residence permit) rather than a citizenship rule specific to this route -- indefinite residence is not itself a precondition for naturalisation under the IND's general rule, but is the most natural on-ramp into holding a 'valid residence permit' for the full 5 years. prerequisites lists the temporary routes most likely to feed into the 120-month clock; minimum_months_held is set to 120 to reflect the accumulated-history requirement rather than a single prior route's duration."
+}

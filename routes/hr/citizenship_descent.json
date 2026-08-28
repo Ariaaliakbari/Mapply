@@ -1,0 +1,107 @@
+{
+  "id": "hr_citizenship_descent",
+  "country": "HR",
+  "name": "Citizenship by Origin (descent)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child acquires Croatian citizenship by origin if both parents were Croatian citizens at the time of the child's birth, or if one parent was a Croatian citizen and the child was born in Croatia. A child born abroad to one Croatian-citizen parent (the other a foreign national) acquires citizenship if registered as such with a diplomatic/consular mission or the competent registry office before turning 21, or if the child would otherwise be stateless.",
+    "evidence_hint": "Parent's proof of Croatian citizenship at the time of the child's birth; the child's birth certificate; for the one-parent-abroad case, registration before age 21."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents_citizens",
+      "name": "Both parents Croatian citizens at birth",
+      "requirements": [
+        {
+          "id": "hrcd_both_parents",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires both parents to have been Croatian citizens at the time of the child's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_hr_acquiring_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_born_in_croatia",
+      "name": "One parent a citizen, child born in Croatia",
+      "requirements": [
+        {
+          "id": "hrcd_one_parent_born_hr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires one parent to be a Croatian citizen and the child to be born in Croatia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_hr_acquiring_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_born_abroad",
+      "name": "One parent a citizen, child born abroad",
+      "requirements": [
+        {
+          "id": "hrcd_one_parent_abroad",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires one parent to be a Croatian citizen and the child to be registered as a Croatian citizen with a diplomatic/consular mission or the competent registry office before the child's 21st birthday.",
+          "fix_path": "Register the child's Croatian citizenship before their 21st birthday.",
+          "fix_time_months": null,
+          "source_id": "narodne_novine_2019_amendment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Croatian citizenship at the time of the child's birth", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Child's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Registration filing before age 21 (one-parent-abroad case only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_hr_acquiring_citizenship",
+      "tier": 1,
+      "url": "https://gov.hr/en/acquiring-croatian-citizenship/460",
+      "title": "Government of the Republic of Croatia (gov.hr) -- Acquiring Croatian citizenship",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "narodne_novine_2019_amendment",
+      "tier": 1,
+      "url": "https://narodne-novine.nn.hr/",
+      "title": "Narodne novine (Official Gazette of the Republic of Croatia) -- 2019 amendment to the Croatian Citizenship Act, age-21 registration deadline for descent-based citizenship registered abroad",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build, and a genuinely distinct legal ground from hr_naturalisation (no residence test, automatic or near-automatic on proof of parentage) -- kept as its own route rather than folded into naturalisation, consistent with the dataset's principle of not merging genuinely different qualifying mechanisms into one route file when each has its own named legal basis and (for the one-parent-abroad case) its own distinct age-21 procedural deadline confirmed directly in the Official Gazette."
+}

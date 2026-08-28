@@ -1,0 +1,74 @@
+{
+  "id": "tt_registration_commonwealth",
+  "country": "TT",
+  "name": "Registration as a Citizen (Commonwealth/Irish/British Protected Persons)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttrc_qualifying_nationality",
+          "attribute": "is_commonwealth_irish_or_bpp",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be a Commonwealth citizen, a citizen of Ireland, or a British protected person -- non-Commonwealth nationals instead use naturalisation (see tt_naturalisation.json).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tt_citizenship_act"
+        },
+        {
+          "id": "ttrc_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of residence in Trinidad and Tobago, though the Minister may accept a shorter period at their discretion.",
+          "fix_path": "Accumulate 5 years of residence (or a shorter period the Minister may accept).",
+          "fix_time_months": 60,
+          "source_id": "gov_tt_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form for registration as a citizen", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of Commonwealth/Irish/British-protected-person status", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5 years' residence (or shorter, at ministerial discretion)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_tt_citizenship_act",
+      "tier": 1,
+      "url": "https://ebctt.com/wp-content/uploads/laws-of-tnt-chapter-1-50-citizenship.pdf",
+      "title": "Citizenship of the Republic of Trinidad and Tobago Act, Chapter 1:50, Section 7 (primary legislation, privately hosted mirror): registration route for Commonwealth citizens, citizens of Ireland, and British protected persons, 5-year residence with ministerial discretion to shorten",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. This is the parallel track to tt_naturalisation.json for the large population of Commonwealth-country nationals (most of the Caribbean, the UK, Canada, Australia, and dozens of other countries) who are explicitly barred from the naturalisation route -- the two are mutually exclusive gates on the same underlying goal (becoming a T&T citizen by residence) rather than alternative preferences. IMPORTANT: per the primary Citizenship Act text reviewed for this build, Section 7 does NOT include an independent marriage-based registration ground -- a secondary (tier-3) source claimed one exists ('registration after 7 years of marriage'), but this was not corroborated by the primary legislation and is therefore NOT modelled as a route in this dataset; see tt_permanent_residence_marriage.json's notes for the full disclosure of that conflict. No fee amount was found for this route."
+}

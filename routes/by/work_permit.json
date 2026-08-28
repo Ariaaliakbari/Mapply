@@ -1,0 +1,91 @@
+{
+  "id": "by_work_permit",
+  "country": "BY",
+  "name": "Special Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bywp_job_offer",
+          "attribute": "has_belarusian_employer_sponsor",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer, not the worker, applies for the special permit to the Citizenship and Migration Department, naming the specific foreign worker.",
+          "fix_path": "Secure a job offer from a Belarusian employer willing to sponsor the permit.",
+          "fix_time_months": null,
+          "source_id": "mfa_finland_employment_pdf"
+        },
+        {
+          "id": "bywp_labour_market_test",
+          "attribute": "vacancy_posted_15_working_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must post the vacancy in the Republican Vacancy Bank and with the district employment department for at least 15 working days before applying for the permit, to show no suitable Belarusian citizen or permanently-residing foreigner was available.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_finland_employment_pdf"
+        }
+      ]
+    },
+    {
+      "id": "exempt_highly_qualified",
+      "name": "Exempt from labour market test -- highly qualified workers",
+      "requirements": [
+        {
+          "id": "bywp_hq_exempt",
+          "attribute": "meets_highly_qualified_exemption",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Exempt from the labour-market-test requirement if the worker has 5+ years of relevant professional experience and a salary exceeding 15 times the minimum monthly salary rate; is a citizen of an EAEU member state (Russia, Kazakhstan, Kyrgyzstan, Armenia); or is a head of a representative office or commercial organisation they founded/own.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_finland_employment_pdf"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment offer/contract", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employer's vacancy-posting records (Republican Vacancy Bank, 15+ working days)", "difficulty": "moderate", "typical_time_days": 15 },
+    { "document": "Proof of qualifications/experience/salary (for exemption categories)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years for highly qualified workers; 1 year for others; renewable once, then requires a new application",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 84,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["by_permanent_residence", "by_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mfa_finland_employment_pdf",
+      "tier": 1,
+      "url": "https://finland.mfa.gov.by/kcfinder/upload/finland/files/employment-of-a-foreigner_1.pdf",
+      "title": "Embassy of the Republic of Belarus in Finland (mfa.gov.by) -- Employment of a Foreigner in the Republic of Belarus: employer-sponsored special permit, 15-working-day vacancy posting, highly-qualified-worker exemptions, 1yr/2yr permit durations, processing timelines",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Belarus). pr_after_months (84) uses by_permanent_residence.json's standard 7-year residence figure per the Law on Legal Status of Foreign Citizens; citizenship_after_months (60) uses by_naturalisation.json's REDUCED 5-year figure per the 2020 citizenship law reform (see that file's notes on the stale-primary-text conflict between the 7-year figure in the tier-1-hosted 1991/1995 law text and the 5-year figure confirmed only via a tier-3/4 academic secondary source). dual_citizenship_allowed modeled FALSE reflecting Belarus's general historical restrictiveness on dual nationality -- flagged as an inference from country-level context rather than a citation specific to this route; see by_naturalisation.json for the direct citizenship-law sourcing."
+}

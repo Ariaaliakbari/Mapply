@@ -1,0 +1,66 @@
+{
+  "id": "cr_citizenship_descent",
+  "country": "CR",
+  "name": "Costa Rican by Birth Abroad (Inscripción por Descendencia)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born abroad to a Costa Rican father or mother is registered as Costa Rican by birth by recording the birth with the Civil Registry (via the Tribunal Supremo de Elecciones). No residence in Costa Rica and no age limit apply to this registration.",
+    "evidence_hint": "Apostilled/translated foreign birth certificate; the Costa Rican parent's identity documentation; DNA marker testing if the foreign certificate does not clearly establish the parental link."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "crcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_citizen",
+          "hard": true,
+          "blocker_text": "Requires that the father or mother is a Costa Rican citizen, and that the birth abroad is registered with Costa Rica's Civil Registry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "tse_go_cr_inscripcion_nacimiento_extranjero"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Original, apostilled foreign birth certificate (with official Spanish translation if needed)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid ID of the applicant (if 18+) or of the Costa Rican parent making the declaration (if the applicant is a minor)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "DNA marker test, if the foreign certificate does not clearly establish the Costa Rican parent's link (free for minors, at the applicant's cost if an adult)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tse_go_cr_inscripcion_nacimiento_extranjero",
+      "tier": 1,
+      "url": "https://www.tse.go.cr/pdf/requisitosytramites/Inscripcion-de-un-nacimiento-de-una-persona-nacida-en-el-extranjero-hijo-a-de-padre-o-madre-costarricense.pdf",
+      "title": "Tribunal Supremo de Elecciones (tse.go.cr) -- Inscripción de un nacimiento de una persona nacida en el extranjero, hijo/a de padre o madre costarricense",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Costa Rica's initial build. This is a genuinely distinct, no-residence, no-age-limit registration process -- confirmed directly at tier-1 ('no address requirement,' free of charge). Kept SEPARATE from the TSE naturalisation processes for adults 'born abroad, child of a Costa Rican-by-birth parent' (which DO require the standard 5/7-year residence test) -- this dataset's research found that the residence-based process appears to be a fallback route for people who did not (or could not) complete this simpler descent-based registration earlier in life, rather than the same mechanism under a different name; this distinction is real per the two TSE documents' materially different requirements, though the exact legal reason someone would end up needing the residence-based process instead of this one was not fully reconciled in this pass (e.g. whether a deadline before age 25 applies to keep this automatic path open, versus needing to naturalise afterward) -- flagged as a genuine open question rather than resolved by assumption."
+}

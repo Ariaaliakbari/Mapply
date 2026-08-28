@@ -1,0 +1,82 @@
+{
+  "id": "ar_international_protection",
+  "country": "AR",
+  "name": "Refugee Status (CONARE)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution, or fleeing generalized violence, foreign aggression, internal conflict, or massive human rights violations, may apply for refugee status.",
+    "evidence_hint": "Verbal or written application to CONARE's Executive Secretariat; personal interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "persecution",
+      "name": "Persecution-based",
+      "requirements": [
+        {
+          "id": "arip_persecution",
+          "attribute": "has_well_founded_fear_of_persecution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution based on race, religion, nationality, membership of a particular social group, or political opinion.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_26165"
+        }
+      ]
+    },
+    {
+      "id": "generalized_violence",
+      "name": "Generalized violence / mass rights violations",
+      "requirements": [
+        {
+          "id": "arip_violence",
+          "attribute": "fled_generalized_violence_or_mass_rights_violations",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Life, security, or liberty threatened by generalized violence, foreign aggression, internal conflict, or massive human rights violations in the country of origin.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ley_26165"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written or verbal application to CONARE's Executive Secretariat", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Personal interview", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Provisional residence certificate issued within 20 business days; work-authorized documentation within 30 days of recognition",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ar_permanent_residence", "ar_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ley_26165",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/normativa/nacional/norma-122609/texto",
+      "title": "República Argentina -- Ley 26.165, Ley General de Reconocimiento y Protección al Refugiado: CONARE composition and decision process, refugee definition (persecution and generalized-violence grounds), 20-business-day provisional certificate, 30-day work authorization, appeal to the Interior Minister within 10 days",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). Unusually favorable outcome relative to most humanitarian routes in this dataset: recognized refugees get full work rights within 30 days and access to basic humanitarian assistance (housing, food, health, education) while the claim is pending, per the law's explicit text. citizenship_after_months (24) reflects that recognized refugees appear to access the same standalone 2-year Ley 346 naturalization clock as any other legal resident (see ar_naturalisation.json and ar_permanent_residence.json, which notes refugees with sufficient territorial attachment can also access permanent residence directly) -- no refugee-specific accelerated citizenship timeline was found stated in this pass, so this is the general-route figure, not a refugee-specific one. Decision body: CONARE (5 commissioners: Interior, Foreign Affairs, Justice/Human Rights, Social Development, National Institute Against Discrimination), two-thirds quorum, simple-majority decision; appeal to the Interior Minister within 10 days of notification."
+}

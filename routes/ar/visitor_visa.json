@@ -1,0 +1,89 @@
+{
+  "id": "ar_visitor_visa",
+  "country": "AR",
+  "name": "Tourist Entry / Tourist Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "id_card_exempt",
+      "name": "South American national ID exemption",
+      "requirements": [
+        {
+          "id": "arv_id_card_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["BR", "BO", "UY", "PY", "CL", "PE", "VE", "EC", "CO"],
+          "hard": false,
+          "blocker_text": "Citizens of Brazil, Bolivia, Uruguay, Paraguay, Chile, Peru, Venezuela, Ecuador, and Colombia may enter with a valid national ID card or travel document instead of a passport.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_turista_docs"
+        }
+      ]
+    },
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "arv_document",
+          "attribute": "has_valid_travel_document",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a valid passport (or, for the listed South American nationalities, a valid national ID card).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_turista_docs"
+        },
+        {
+          "id": "arv_no_paid_work",
+          "attribute": "will_perform_paid_work",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Tourists may not perform paid work during their stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_turista_docs"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or, for exempt nationalities, national ID card", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Up to 3 months, extendable for an equivalent additional period",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ar_work_permit", "ar_student_permit", "ar_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_turista_docs",
+      "tier": 1,
+      "url": "https://www.argentina.gob.ar/migraciones/documentacion-para-ingresar-al-pais-como-turista",
+      "title": "Dirección Nacional de Migraciones -- Documentación para ingresar al país como turista: 3-month stay extendable once, ID-card exemption for 9 named South American nationalities, no paid work",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Argentina). This source page focuses specifically on the ID-card exemption for neighboring South American nationalities; it does not enumerate the broader visa-exempt nationality list (which includes most of Europe, North America, and many others under Argentina's general tourist visa waiver policy) or detail the separate Tourist Visa process for non-exempt nationalities (a linked but unfetched page, 'Obtener visa de turista para ingresar a la Argentina', exists at argentina.gob.ar for that group) -- flagged as a scope gap in this pass rather than guessed at a full nationality list."
+}

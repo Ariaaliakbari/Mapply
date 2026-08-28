@@ -1,0 +1,61 @@
+{
+  "id": "ky_naturalisation_botc",
+  "country": "KY",
+  "name": "Naturalisation/Registration as a British Overseas Territories Citizen (BOTC)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kyn_application",
+          "attribute": "botc_application_submitted",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application is made through the Office of the Deputy Governor's online portal for 'British Overseas Territories Citizenship Registration and Naturalisation.' The portal's public-facing login page does not itself state the substantive eligibility criteria (residence duration, character, fees) in the content reviewed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "odg_botc_portal"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Online portal registration and application (specific document list not itemised in the source reviewed)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "odg_botc_portal",
+      "tier": 1,
+      "url": "https://online.odg.gov.ky/WebPortal/login",
+      "title": "Office of the Deputy Governor, Cayman Islands -- BOTC Registration and Naturalisation online portal (login page confirms the process and administering authority; substantive criteria are behind account registration)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of the Cayman Islands' initial build. This is the genuine BOTC 'citizenship' track for the Cayman Islands, distinct from the local 'right to be Caymanian' routes (see ky_caymanian_status_descent.json's notes for that distinction). Same gap pattern as Montserrat's ms_naturalisation.json: the official portal confirms the process and administering authority (Office of the Deputy Governor) but the actual eligibility criteria sit behind a login wall not accessible in this pass. citizenship_after_months is left null rather than assumed immediate, since it is not confirmed whether holding Cayman's own permanent residence or Caymanian status is a precondition, unlike Anguilla's equivalent route where a Permanent Resident Permit was explicitly required."
+}

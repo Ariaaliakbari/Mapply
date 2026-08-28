@@ -1,0 +1,78 @@
+{
+  "id": "bm_status_marriage",
+  "country": "BM",
+  "name": "Bermudian Status -- Spousal Connection (Section 19A)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse, or widow/widower, of a Bermudian may apply to the Department of Immigration for Bermudian status under Section 19A.",
+    "evidence_hint": "Marriage certificate; proof of continuous cohabitation as husband and wife for the last 2 years; proof of spouse's Bermudian status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bmsm_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_widow_widower_of_bermudian",
+          "hard": true,
+          "blocker_text": "Requires being married to, or the widow/widower of, a Bermudian, with continuous cohabitation as husband and wife for the last 2 years.",
+          "fix_path": "Accumulate 2 years of continuous cohabitation as husband and wife with the Bermudian spouse.",
+          "fix_time_months": 24,
+          "source_id": "gov_bm_status_application"
+        },
+        {
+          "id": "bmsm_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Ordinarily resident status required, typically 7 years for spousal cases per the general residency-continuity rules described alongside this ground.",
+          "fix_path": "Accumulate the required years of ordinary residence.",
+          "fix_time_months": 84,
+          "source_id": "gov_bm_status_application"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form BSA04 or Form 5(2), completed in black or blue ink", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 2 years' continuous cohabitation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: $625.00", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bm_status_application",
+      "tier": 1,
+      "url": "https://www.gov.bm/online-services/bermudian-status-application",
+      "title": "Government of Bermuda -- Bermudian Status Application: Section 19A spousal connection, 2-year continuous cohabitation requirement, general 7-year residency figure for spousal cases",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Bermuda's initial build. See bm_status_descent.json's notes for why leads_to_citizenship is modelled as false. The source's residency figure for spousal cases (7 years, versus a typical 10 years for other grounds) was stated as a general rule alongside this ground rather than tied explicitly and exclusively to Section 19A -- modelled here as the applicable figure for this route but flagged as a point worth re-confirming against the Bermuda Immigration and Protection Act text directly. This dataset does not separately model an interim/lesser spousal status (unlike Anguilla's Resident Stamp) -- no evidence of one was found for Bermuda in this pass."
+}

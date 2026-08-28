@@ -1,0 +1,86 @@
+{
+  "id": "bg_work_permit",
+  "country": "BG",
+  "name": "Single Permit / EU Blue Card",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgwp_job_offer",
+          "attribute": "has_bulgarian_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an employment contract with a Bulgarian employer, who initiates the Single Residence and Work Permit (or EU Blue Card, internal corporate transfer, or posted-worker permit) process with the Employment Agency.",
+          "fix_path": "Secure a job offer from a Bulgarian employer.",
+          "fix_time_months": null,
+          "source_id": "mi_hiring_foreigners"
+        },
+        {
+          "id": "bgwp_labour_market_test",
+          "attribute": "labour_market_permit_granted",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must obtain a labour market access permit from the Employment Agency (up to 30 days, BGN 100-400) before the worker applies for a Type D visa and residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mi_hiring_foreigners"
+        },
+        {
+          "id": "bgwp_means",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must demonstrate sufficient funds for subsistence, at least the minimum monthly wage, without recourse to social assistance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mi_hiring_foreigners"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bulgarian employment contract", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employer's labour market access permit", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Type D visa", "difficulty": "moderate", "typical_time_days": 35 },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "residence permit issued up to 14 days after application, annual renewal; overall process (labour market permit + visa + residence permit + ID document) can take 2-3 months",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bg_permanent_residence", "bg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mi_hiring_foreigners",
+      "tier": 1,
+      "url": "https://www.mi.government.bg/en/general/naemane-na-slujiteli-grajdani-na-drugi-darjavi/",
+      "title": "Ministry of Economy, Investments and Industry -- Hiring Employees Who Are Citizens of Other (Non-EU) States: four-stage process (labour market permit, Type D visa, residence permit, ID document), permit types (Single Permit, EU Blue Card, internal corporate transfer, seasonal), fees and timelines",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). work_rights modeled 'restricted' because the permit is tied to the specific sponsoring employer/position, standard for employer-sponsored permits in this dataset. Did not model separate EU Blue Card salary-threshold specifics (a higher-skill variant with a different qualifying salary multiple exists per KPMG secondary sourcing on 2023 EU Blue Card amendments) as a distinct requirement group in this pass -- flagged as a gap for a future revisit if granular Blue Card salary figures are needed."
+}

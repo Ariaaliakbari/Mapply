@@ -1,0 +1,73 @@
+{
+  "id": "ge_investment_residence_permit",
+  "country": "GE",
+  "name": "Investment Residence Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "geinv_amount",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 300000, "currency": "USD", "unit": "one_time" },
+          "hard": true,
+          "blocker_text": "Requires either a USD 300,000+ investment in Georgia or ownership of non-agricultural property exceeding that value.",
+          "fix_path": "Fund the qualifying investment or property purchase.",
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        },
+        {
+          "id": "geinv_turnover",
+          "attribute": "current_salary",
+          "operator": "exists",
+          "value": "documented_annual_turnover_50k_y1_100k_y2_120k_y3_5",
+          "hard": true,
+          "blocker_text": "Requires documented annual turnover of at least USD 50,000 in year 1, USD 100,000 in year 2, and USD 120,000 in years 3-5 to maintain the permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_aliens_law_ge"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of investment or non-agricultural property valued over USD 300,000", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Annual turnover documentation (escalating over the 5-year permit)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_unlimited_residence_investment", "ge_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "matsne_aliens_law_ge",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2278806",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Law on the Legal Status of Aliens and Stateless Persons, Article 15(h)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Georgia's initial build. This is Georgia's main property/business-based investment migration route -- the commonly-cited older figure of USD 100,000 found in several tier-3/4 blog posts during this research pass appears OUTDATED; the current tier-1 (matsne.gov.ge) and tier-1-adjacent (sda.gov.ge) figure is USD 300,000, which is used here instead. work_rights 'restricted': tied to the investment/business activity itself, not open local employment. pr_after_months (60) reflects Article 15(k)'s route to unlimited residence after 5 years holding this permit with documented turnover, per ge_unlimited_residence_investment's own sourcing."
+}

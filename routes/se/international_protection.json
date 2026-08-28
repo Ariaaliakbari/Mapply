@@ -1,0 +1,96 @@
+{
+  "id": "se_international_protection",
+  "country": "SE",
+  "name": "International Protection (Asylum)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person physically present in Sweden with a well-founded fear of persecution, or facing death, corporal punishment, torture, or serious harm from armed conflict, may apply for refugee status or subsidiary protection.",
+    "evidence_hint": "Application at a border control point or a Migration Agency Reception and Return Centre (Malmo, Gothenburg, Stockholm, or Boden); identity documents; interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "seip_persecution",
+          "attribute": "has_well_founded_fear_of_persecution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution due to race, nationality, religion, political views, gender, sexual orientation, or social group membership, where national authorities cannot or will not protect the applicant.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_asylum"
+        }
+      ]
+    },
+    {
+      "id": "subsidiary",
+      "name": "Subsidiary protection",
+      "requirements": [
+        {
+          "id": "seip_serious_harm",
+          "attribute": "faces_death_torture_or_conflict_harm",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Facing death, corporal punishment, torture, inhumane or degrading treatment, or serious injury as a civilian from armed conflict.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents (passport or alternative)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Supporting evidence for the protection claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: 3-year permit (renewable); Subsidiary protection: 13-month permit (renewable)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["se_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_asylum",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/asylum/applying-for-asylum.html",
+      "title": "Swedish Migration Agency -- International protection (asylum) in Sweden: application locations, refugee (3-year permit) vs. subsidiary protection (13-month permit) outcomes, interview process, work rights on approval",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migrationsverket_no_pr_asylum",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/nyheter/news-archive/2026-06-18-no-permanent-residence-permits-for-former-asylum-seekers-or-their-family-members.html",
+      "title": "Swedish Migration Agency -- No permanent residence permits for former asylum seekers or their family members: confirms the 12 July 2026 change, scope limited to asylum-related categories",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migrationsverket_citizenship_exemption",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/nyheter/news-archive/2026-07-12-exemptions-from-the-requirement-for-a-permanent-residence-permit-to-obtain-swedish-citizenship.html",
+      "title": "Swedish Migration Agency -- Exemptions from the requirement for a permanent residence permit to obtain Swedish citizenship: refugees/subsidiary-protection holders can naturalize without PR if they show 'well-founded prospects' of permit renewal, or automatically after 10 years' residence",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). MAJOR RECENT REFORM, worth flagging prominently and distinctly from se_permanent_residence.json's general notes: as of 12 July 2026, Sweden stopped granting new PERMANENT residence permits to refugees, subsidiary-protection holders, quota (resettled) refugees, exceptionally-distressing-circumstances grantees, long-term-resident-status holders, and certain enforcement-obstacle cases -- previously, these categories eventually converted their initial permit (3 years for refugees, 13 months for subsidiary protection, as still modeled in this file's outcome) into a PERMANENT residence permit after a further qualifying period. Now, at that same conversion point, they instead receive a renewable 5-YEAR temporary permit (not modeled as a separate route here since it functions as a straightforward renewal of the same underlying protection status, not a new application). leads_to_pr is modeled FALSE specifically because of this reform -- a genuine, very recent change from how this route worked before. Citizenship remains reachable WITHOUT ever holding a permanent residence permit: the exemption rules let a refugee/subsidiary-protection holder apply for naturalization if they can show 'well-founded prospects' their permit will keep being renewed, or automatically once they hit 10 years' Swedish residence regardless of that prospects test -- citizenship_after_months (84) reflects the refugee-specific 7-year naturalization residence bar under se_naturalisation.json's refugee group, the most directly applicable figure. Existing permanent residence permits granted before 12 July 2026 are unaffected and not withdrawn by this reform."
+}

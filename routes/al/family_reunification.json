@@ -1,0 +1,80 @@
+{
+  "id": "al_family_reunification",
+  "country": "AL",
+  "name": "Family Reunification Residence Permit",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "with_albanian_citizen",
+      "name": "Family member of an Albanian citizen",
+      "requirements": [
+        {
+          "id": "alfam_tie_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "family_of_al_citizen",
+          "hard": true,
+          "blocker_text": "Spouse or qualifying family member of an Albanian citizen -- initial permit is issued for 1 year, then renewable for 2-year periods.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mb_unified_permit"
+        }
+      ]
+    },
+    {
+      "id": "with_foreign_resident",
+      "name": "Family member of a foreign resident",
+      "requirements": [
+        {
+          "id": "alfam_tie_resident",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "family_of_al_resident",
+          "hard": true,
+          "blocker_text": "Spouse or qualifying family member of a lawfully resident foreign national -- initial permit is issued for 1 year, renewable.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mb_unified_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of qualifying family relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of suitable accommodation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's proof of legal status/citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initial, then 2-year renewals (with Albanian citizen) or 1-year renewals (with foreign resident)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["al_permanent_residence", "al_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "mb_unified_permit",
+      "tier": 1,
+      "url": "https://mb.gov.al/procedura-dhe-dokumentacioni-per-pajisjen-me-leje-qendrimi-dhe-leje-unike-residence-unique-permit-al-en/",
+      "title": "Ministria e Brendshme (Ministry of Interior) -- Family Reunification category: with Albanian citizen (1-year initial, 2-year renewals) vs. with foreign family members (1-year initial, renewable); refugee family reunification gets 3-month expedited processing",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). citizenship_after_months (12) reflects the fastest legal path available to a spouse -- the marriage-based naturalization track requires only 1 year of continuous lawful residence while married 3+ years to an Albanian (see al_citizenship_by_marriage.json) -- distinctly faster than the standard 7-year naturalization bar. The source also confirms a distinct, faster refugee-family-reunification process (3-month expedited processing for spouses/dependent children of recognized refugees) -- not modeled as a separate route here since it is a processing-speed variant of the same underlying family-reunification mechanism, tied to al_international_protection.json's outcome rather than a standalone eligibility path."
+}

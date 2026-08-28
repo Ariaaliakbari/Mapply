@@ -1,0 +1,98 @@
+{
+  "id": "vg_residence_status",
+  "country": "VG",
+  "name": "Residence Status",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["vg_work_permit"],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vgrs_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 consecutive years of residence in the Virgin Islands, without any single absence exceeding 1 year.",
+          "fix_path": "Accumulate 10 consecutive years of residence.",
+          "fix_time_months": 120,
+          "source_id": "gov_vg_residence_status"
+        },
+        {
+          "id": "vgrs_presence",
+          "attribute": "max_annual_absence_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Absences from the Territory must not exceed 90 days per year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_vg_residence_status"
+        },
+        {
+          "id": "vgrs_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of good character and provide positive references, including at least one from a BVIslander or a Belonger.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_vg_residence_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Immigration eForms Platform application and supporting documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references (including one from a BVIslander/Belonger)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of self-sufficiency and accommodation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police certificates of character (birth country and country of residence)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Initial application fee: $250 (non-refundable), plus a further status fee on approval (amount varies)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite; certificate must be renewed every 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no more than 90 days' absence per year",
+    "switchable_to": ["vg_belonger_status_residence", "vg_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_vg_residence_status",
+      "tier": 1,
+      "url": "https://gov.vg/service-details/apply-residence-status-virgin-islands",
+      "title": "Government of the Virgin Islands -- Apply for Residence Status: 10-year continuous residence, 90-day annual absence cap, character/reference requirements, $250 application fee, Immigration Board point-based assessment, Cabinet decision",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_vg_belonger_pr_policy",
+      "tier": 1,
+      "url": "https://bvi.gov.vg/sites/default/files/belonger_status_and_permanent_residence_policy_for_the_virgin_islands.pdf",
+      "title": "Government of the Virgin Islands -- Belonger Status and Permanent Residence Policy: confirms Residence Status (10 years) as the tier below Belonger Status (20 years total, including 10 years held under a Residence Status certificate), 5-year certificate renewal cycle, right of abode without land-ownership or voting rights",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the British Virgin Islands' initial build. IMPORTANT SOURCE DISCREPANCY: an older page on the bvi.gov.vg domain ('Acquiring Residence Status') states a 20-year continuous-residence requirement and describes the outcome as issuance of a 'Belonger Card and Certificate' -- this appears to actually be describing what the dedicated Belonger Status and Permanent Residence Policy PDF calls BELONGER status (20 years total), not Residence Status (10 years) as this current gov.vg service page defines it; the two pages use overlapping language inconsistently. This file follows the newer gov.vg service page and the dedicated policy PDF (10 years for Residence Status), which agree with each other, and treats the older bvi.gov.vg page's '20 years' figure as describing vg_belonger_status_residence.json instead -- flagged here rather than silently resolved. leads_to_citizenship is true because 'Certificate of Residence' is explicitly one of the five fee categories on the BOTC naturalisation schedule ($700, see vg_naturalisation_botc.json) -- but no source reviewed states how long a Residence Status holder must wait before naturalising, so citizenship_after_months is left null rather than estimated from the Belonger tenure figures. Residence Status itself does NOT grant land ownership without a Non-Belonger license, nor voting rights, unlike Belonger status."
+}

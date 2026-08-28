@@ -1,0 +1,73 @@
+{
+  "id": "gr_work_permit_employed",
+  "country": "GR",
+  "name": "Single Permit (Employed Work)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grwp_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_offer_from_greek_employer",
+          "hard": true,
+          "blocker_text": "Requires a confirmed job offer from a Greek employer, who must initiate the invitation/hiring procedure with the competent authority.",
+          "fix_path": "Secure a qualifying job offer.",
+          "fix_time_months": null,
+          "source_id": "ypergasias_gr_third_country_work"
+        },
+        {
+          "id": "grwp_quota",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "position_included_in_biennial_joint_ministerial_decision_quota",
+          "hard": true,
+          "blocker_text": "The position and specialty must fall within the maximum-numbers Joint Ministerial Decision issued every two years under Article 11 of Law 4251/2014, setting quotas for third-country workers by region and specialty.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ypergasias_gr_third_country_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's application/invitation procedure documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Work visa from Greek consular authority (for those applying from abroad)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed for the general single permit (seasonal work capped at up to 9 months per 12-month period, extendable to 5 years total, is a distinct sub-category)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_naturalisation", "gr_long_term_residence", "gr_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "ypergasias_gr_third_country_work",
+      "tier": 1,
+      "url": "https://ypergasias.gov.gr/en/labour-relations/individual-employment-relations/work-for-third-country-nationals-in-greece/",
+      "title": "Greek Ministry of Labour and Social Affairs -- Work for third-country nationals in Greece (biennial quota system, employer-initiated procedure, single permit)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. Confirmed directly at tier-1 (Ministry of Labour): a mandatory biennial quota system under Article 11 of Law 4251/2014 gates most employer-sponsored work, alongside the employer-initiated invitation procedure. Also note Law 5275/2026 (published 6 February 2026, per EY Greece, tier-3) introduced several new specialised short-term work/visa categories (EU Blue Card validity extended to 3 years; a 12-month Tech Visa for Elevate-Greece-registered startup employees; a post-study 1-year job-search permit for graduates/researchers; visiting-professor and graduate-jobs visas) -- these are recent enough that this pass did not independently verify each at tier-1 beyond the EY summary, and are not modelled as separate route files here to avoid fragmenting the dataset on unconfirmed specifics; flagged for a future revisit once the underlying gazette text is checked. EU Blue Card itself also not modelled as its own separate route in this pass -- it is a distinct legal category from the general single permit and should be added once specifically researched."
+}

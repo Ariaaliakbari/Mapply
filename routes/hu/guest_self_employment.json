@@ -1,0 +1,73 @@
+{
+  "id": "hu_guest_self_employment",
+  "country": "HU",
+  "name": "Residence Permit for Guest Self-Employment",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hugse_means",
+          "attribute": "annual_income",
+          "operator": "exists",
+          "value": "sufficient_means_of_subsistence",
+          "hard": true,
+          "blocker_text": "Must prove sufficient means of subsistence via bank statements, tax-authority income certificates, or business-activity declarations. No fixed minimum capital amount is specified.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oif_guest_self_employment"
+        },
+        {
+          "id": "hugse_business_activity",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "detailed_business_activity_declaration",
+          "hard": true,
+          "blocker_text": "Requires a detailed declaration of business activity supported by credible evidence (business contract, service contract, agreement, sales/purchase contract), for either independently performed self-employed work, or a chief-executive role managing a business organisation, cooperative, or other legal entity established for gainful activity.",
+          "fix_path": "Prepare a documented business-activity declaration with supporting contracts.",
+          "fix_time_months": null,
+          "source_id": "oif_guest_self_employment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business-activity declaration with supporting contracts", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of financial means (bank statements, tax certificates)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year initially, extendable by up to 2 additional years, maximum 3 years from first issuance",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "oif_guest_self_employment",
+      "tier": 1,
+      "url": "https://oif.gov.hu/factsheets/residence-permit-for-guest-self-employment",
+      "title": "National Directorate-General for Aliens Policing (OIF) -- Residence Permit for Guest Self-Employment: means-of-subsistence and business-activity-declaration requirements, 1+2 year duration cap, 1-year family-reunification bar, explicit National Residence Card exclusion",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Hungary's initial build. Confirmed directly at tier-1. family_can_join set false at the route level as a conservative simplification: family reunification is restricted for the FIRST YEAR from permit issuance only (birth-in-Hungary exception aside), then becomes available -- the schema's boolean cannot represent this time-gated eligibility, so it is flagged here rather than asserted as a blanket 'no'. UNUSUAL STATUTORY SPLIT flagged: the source explicitly states holders 'may not be granted a national residence card' (hu_national_residence_card is barred to this route by law), yet time on this permit still plausibly counts toward the general 8-year (or 3-year reduced) residence clock for hu_naturalisation -- meaning this route can lead toward ordinary Hungarian citizenship eligibility while never leading toward Hungary's own national permanent-residence card. leads_to_pr set false to reflect that specific statutory bar."
+}

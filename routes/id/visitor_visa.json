@@ -1,0 +1,62 @@
+{
+  "id": "id_visitor_visa",
+  "country": "ID",
+  "name": "Visa on Arrival / Visa-Exempt Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "idv_nationality",
+          "attribute": "nationality",
+          "operator": "exists",
+          "value": "visa_exempt_or_voa_eligible_nationality",
+          "hard": true,
+          "blocker_text": "Nationals of visa-exempt countries may enter without a visa; nationals of Visa-on-Arrival-eligible countries may obtain one on entry (also available as an e-VOA in advance via evisa.imigrasi.go.id). Others must obtain a visit visa in advance.",
+          "fix_path": "Apply for an e-VOA or visit visa if not visa-exempt.",
+          "fix_time_months": null,
+          "source_id": "evisa_imigrasi_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Onward/return ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days, extendable once for a further 30 days (VOA); up to 60-90 days for some visit visa categories",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "evisa_imigrasi_general",
+      "tier": 1,
+      "url": "https://evisa.imigrasi.go.id/web/visa-selection",
+      "title": "Direktorat Jenderal Imigrasi -- official eVisa portal, visa-exempt/VOA/visit-visa selection",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Indonesia's initial build. Most of imigrasi.go.id's own main-domain pages returned HTTP 403 to automated fetching throughout this build; the eVisa subdomain (evisa.imigrasi.go.id) was more consistently reachable and is used as the primary tier-1 source across this country's routes. Exact visa-exempt/VOA country lists and precise duration-by-category were not exhaustively itemised in this pass."
+}

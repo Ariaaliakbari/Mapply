@@ -1,0 +1,72 @@
+{
+  "id": "bs_permanent_residence_marriage",
+  "country": "BS",
+  "name": "Permanent Residence -- Spouse of a Bahamian",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "After 5 years of marriage to a Bahamian citizen, with a subsisting and cohabiting relationship, the non-Bahamian spouse may apply for a Certificate of Permanent Residence.",
+    "evidence_hint": "Marriage certificate; proof of continuous cohabitation over the 5-year period."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": ["bs_resident_spouse_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bsprm_marriage_duration",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years of marriage to a Bahamian citizen with a subsisting, cohabiting relationship.",
+          "fix_path": "Remain married and cohabiting for 5 years.",
+          "fix_time_months": 60,
+          "source_id": "gov_bs_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of subsisting, cohabiting marriage over 5 years", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (life, unless revoked)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bs_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_bs_permanent_residence",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/residence/permanent-residence/",
+      "title": "Bahamas Immigration Department -- Permanent Residence: spousal eligibility category (5 years of marriage with subsisting, cohabiting relationship), $200 processing fee, life-duration Certificate of Permanent Residence giving right to reside and/or work",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. dual_citizenship_allowed left null -- not confirmed on this source (this file models Permanent Residence, not citizenship itself, so dual citizenship rules do not directly apply to this status). citizenship_after_months set to 0 since PR itself is one of the qualifying statuses that can support a subsequent citizenship application via Form I (see bs_citizenship_by_marriage.json), though a separate application and timeline apply. Right to work under PR is 'and/or' per the source (some PR holders may be granted residence only) -- modelled as full work rights as the general case, per the source's own definition ('gives him/her the right to reside and/or work')."
+}

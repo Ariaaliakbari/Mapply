@@ -1,0 +1,107 @@
+{
+  "id": "om_visitor_visa",
+  "country": "OM",
+  "name": "Visa-Free Entry / Tourist eVisa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Oman exempts two groups of nationalities from a visa: a first group of 54 countries (most Western nations -- US, UK, Canada, Australia, France, Germany, Japan, etc.) plus GCC nationals (Bahrain, Kuwait, Qatar, Saudi Arabia, UAE), and a second group of 24 countries (including Algeria, Egypt, India, Jordan, Mexico, Morocco, Tunisia, Vietnam) who additionally must hold a valid US, Canadian, Australian, UK, Schengen, or Japanese visa, or GCC residency, to enter visa-free. All other nationalities need an eVisa or consular visa via the Royal Oman Police (ROP) eVisa system, e.g. the Tourist Visit Visa (Unsponsored).",
+    "evidence_hint": "Valid passport; for second-group nationals, a valid visa from a named third country or GCC residence; for eVisa applicants, an online application through the ROP eVisa portal."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "first_group_gcc",
+      "name": "Group 1 / GCC nationals -- visa-free",
+      "requirements": [
+        {
+          "id": "omvv_group1",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": "oman_visa_exempt_group1_or_gcc",
+          "hard": true,
+          "blocker_text": "Nationals of the 54-country first group (most Western nations) or the GCC states may enter Oman without a visa, for a period of 14 days which cannot be extended or converted to a residence visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fm_gov_om_entry_visas"
+        }
+      ]
+    },
+    {
+      "id": "second_group_conditional",
+      "name": "Group 2 nationals -- conditional visa-free entry",
+      "requirements": [
+        {
+          "id": "omvv_group2",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": "oman_visa_exempt_group2",
+          "hard": true,
+          "blocker_text": "Nationals of the 24-country second group (e.g. Algeria, Egypt, India, Jordan, Mexico, Morocco, Tunisia, Vietnam) may enter visa-free for 14 days only if they hold a valid entry visa for the US, Canada, Australia, the UK, a Schengen country, or Japan, or GCC residency.",
+          "fix_path": "Obtain a valid visa for the US, Canada, Australia, UK, Schengen area, or Japan, or GCC residency.",
+          "fix_time_months": null,
+          "source_id": "fm_gov_om_entry_visas"
+        }
+      ]
+    },
+    {
+      "id": "evisa",
+      "name": "eVisa / consular visa",
+      "requirements": [
+        {
+          "id": "omvv_evisa",
+          "attribute": "has_evisa_or_consular_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "All other nationalities must obtain an eVisa (e.g. the unsponsored Tourist Visit Visa) or a consular visa through the Royal Oman Police eVisa system before travel.",
+          "fix_path": "Apply for an eVisa via the ROP eVisa portal.",
+          "fix_time_months": null,
+          "source_id": "rop_evisa_portal"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Third-country visa or GCC residency proof (group 2 nationals)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "eVisa application (other nationalities)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "14 days for visa-exempt entry, non-extendable and not convertible to a residence visa; eVisa duration varies by type and was not confirmed in this pass",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "fm_gov_om_entry_visas",
+      "tier": 1,
+      "url": "https://www.fm.gov.om/en/visitors/entry-visas/",
+      "title": "Oman Ministry of Foreign Affairs -- entry visas: two-group visa-exemption structure, 14-day non-extendable stay for visa-exempt entrants, GCC exemption, second-group conditional exemption via third-country visas",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "rop_evisa_portal",
+      "tier": 1,
+      "url": "https://evisa.rop.gov.om/en/home",
+      "title": "Royal Oman Police -- official eVisa portal, confirms Tourist Visa as an eVisa category but did not surface a duration figure or full requirements list without an account login in this pass",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Oman). STATUS: DRAFT -- the exempt-nationality lists (which specific 54 and 24 countries) were described by the MFA page in summary form (naming examples) rather than reproduced in full, and the eVisa route's exact duration (commonly cited elsewhere as up to 30 days for the unsponsored tourist visa, but not independently confirmed on a tier-1 page in this pass) is disclosed as unconfirmed rather than guessed. The 14-day, non-extendable, non-convertible figure for visa-exempt entry is a direct tier-1 quote and is treated as solid."
+}

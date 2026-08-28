@@ -1,0 +1,78 @@
+{
+  "id": "ma_long_term_residence",
+  "country": "MA",
+  "name": "Long-Term Residence (Automatic Entitlement by Years in Morocco)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "legal_residence",
+      "name": "10 years of legal residence",
+      "requirements": [
+        {
+          "id": "maltr_legal",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 years of legal residence in Morocco under a regular residence card entitles the holder to automatic renewal/upgrade under Article 17 of Law 02-03.",
+          "fix_path": "Accumulate 10 years of legal residence under a regular residence card.",
+          "fix_time_months": 120,
+          "source_id": "gadem_plein_droit"
+        }
+      ]
+    },
+    {
+      "id": "de_facto_residence",
+      "name": "15 years of continuous presence (any status)",
+      "requirements": [
+        {
+          "id": "maltr_defacto",
+          "attribute": "months_continuous_presence",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "15 years of continuous residence in Morocco (evidenced by any means -- utility bills, medical records, testimonies), regardless of legal status during that time, or residence since age 10.",
+          "fix_path": null,
+          "fix_time_months": 180,
+          "source_id": "gadem_plein_droit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' legal residence, OR 15 years' continuous presence by any evidentiary means", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 10 years, renewable indefinitely",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ma_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gadem_plein_droit",
+      "tier": 3,
+      "url": "http://gadem-guide-juridique.info/sejour-territoire/carte-residence/les-cas-de-delivrance-de-plein-droit/",
+      "title": "GADEM legal guide -- Article 17 of Law 02-03, automatic entitlement for long-term residents: 15 years' continuous residence (any evidentiary means) or residence since age 10, or 10 years' legal residence",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT -- sourced to GADEM's Article 17 summary, not an independently verified primary legislative text. citizenship_after_months modeled 0 since by the time either threshold is met (10 or 15 years), the applicant will already exceed ma_naturalisation.json's 5-year residence bar many times over -- this route functions as an upgrade to a longer-duration, more secure residence card rather than a distinct step in the citizenship timeline. This is Morocco's closest equivalent to a 'permanent residence' status in this dataset's schema, though structurally it remains a renewable long-duration card (up to 10 years) rather than a formally indefinite permit."
+}

@@ -1,0 +1,85 @@
+{
+  "id": "gr_study_permit",
+  "country": "GR",
+  "name": "Student Residence Permit (Type D.1)",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "grst_enrollment",
+          "attribute": "education_level",
+          "operator": "exists",
+          "value": "enrolled_or_approved_at_greek_higher_education_institution",
+          "hard": true,
+          "blocker_text": "Requires a certificate of enrollment and fee payment, or a letter of approval, from a Greek university, plus certification of the total study duration.",
+          "fix_path": "Secure university enrollment/approval.",
+          "fix_time_months": null,
+          "source_id": "uoa_gr_student_rights_guide"
+        },
+        {
+          "id": "grst_funds",
+          "attribute": "savings",
+          "operator": ">=",
+          "value": { "amount": 400, "currency": "EUR", "unit": "month" },
+          "hard": true,
+          "blocker_text": "Requires proof of sufficient resources of at least EUR 400 per month (including any scholarship), renewable for the duration of study, via deposit account, bank transfer, scholarship certificate, or part-time employment proof.",
+          "fix_path": "Document the qualifying monthly resources.",
+          "fix_time_months": null,
+          "source_id": "uoa_gr_student_rights_guide"
+        },
+        {
+          "id": "grst_insurance",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "qualifying_health_insurance_policy_held",
+          "hard": true,
+          "blocker_text": "Requires a health insurance policy covering at least EUR 10,000/year hospital care, EUR 15,000/year permanent disability, and EUR 1,500/year illness/accident medical expenses (each with up to 20% copay), valid in Greece/EU.",
+          "fix_path": "Obtain a qualifying insurance policy.",
+          "fix_time_months": null,
+          "source_id": "uoa_gr_student_rights_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University enrollment/approval certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of funds (EUR 400+/month)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Qualifying health insurance policy", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initially (or matching a shorter program), renewable up to the standard study period plus 4 semesters (undergraduate) or half the program duration (postgraduate)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gr_work_permit_employed", "gr_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "uoa_gr_student_rights_guide",
+      "tier": 3,
+      "url": "https://issu.uoa.gr/fileadmin/depts/uoa.gr/issu/uploads/Students_rights_international_students_2022.pdf",
+      "title": "National and Kapodistrian University of Athens student union -- International students' rights guide (Type D.1 residence permit requirements)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Greece's initial build. STATUS SET TO DRAFT: sourced from a public university's own official student-services guide (detailed and internally consistent, citing specific euro figures and insurance-coverage minimums) rather than migration.gov.gr or mitos.gov.gr directly -- treated as tier-3 (institutional but not the immigration authority itself) since it was not cross-confirmed against a Ministry of Migration and Asylum page in this pass, and the guide itself is dated 2022 so some figures could have changed. family_can_join set false: no family-accompaniment provision for student permits was found in the source; not to be confused with the sponsor-side family reunification route (gr_family_reunification), which a student could separately use once meeting its own 2-year residence threshold."
+}

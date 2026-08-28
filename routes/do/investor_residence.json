@@ -1,0 +1,76 @@
+{
+  "id": "do_investor_residence",
+  "country": "DO",
+  "name": "Investment Residence (Investor Quality)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "doinv_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 200000,
+          "hard": true,
+          "blocker_text": "Requires a minimum foreign-capital investment of US$200,000 (or equivalent in national currency), registered through CEI-RD (Centro de Exportación e Inversión de la República Dominicana). Other regimes (free zones, executive contracts, incentive laws) may carry different or no minimum.",
+          "fix_path": "Register the qualifying investment with CEI-RD.",
+          "fix_time_months": null,
+          "source_id": "migracion_investor"
+        },
+        {
+          "id": "doinv_visa",
+          "attribute": "has_residence_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Residence Visa (RS) must be obtained at a Dominican consulate before applying.",
+          "fix_path": "Apply for the RS visa at a Dominican consulate.",
+          "fix_time_months": null,
+          "source_id": "migracion_investor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company authorization letter with board certification and chamber of commerce endorsement", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "CEI-RD investment registration proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled birth certificate (Spanish translation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate (apostilled, translated)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical exam (within 3 days of payment)", "difficulty": "routine", "typical_time_days": 3 }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["do_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migracion_investor",
+      "tier": 1,
+      "url": "https://migracion.gob.do/en/servicio/investment-residence-in-investment-quality/",
+      "title": "Dirección General de Migración -- Investment Residence (Investment Quality): US$200,000 minimum via CEI-RD, 1-year permit, 45 working days processing, fee breakdown",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Dominican Republic). The source explicitly notes other investment regimes (free zones, executive contracts, incentive laws) may have different or no minimum -- not modeled as separate groups here given no tier-1 breakdown of those alternate thresholds was found; flagged as a gap. pr_after_months/citizenship_after_months are the same chained inference used across this country's routes (see do_permanent_residence.json and do_naturalisation.json) -- not a figure stated for this specific route."
+}

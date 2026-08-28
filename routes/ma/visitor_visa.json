@@ -1,0 +1,77 @@
+{
+  "id": "ma_visitor_visa",
+  "country": "MA",
+  "name": "Tourist Entry (Visa-Free / eVisa / Consular Visa)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Morocco exempts nationals of roughly 72 countries (EU states, several non-EU European countries, most of the Americas and Asia-Pacific, and select Middle East/Africa nations) from a visa for tourism. Most exempt nationalities get 90 visa-free days (30 days for Hong Kong/Macao/Maldives, 60 for the Dominican Republic). Non-exempt nationalities need either an eVisa (available to a limited set of nationalities/residents) or a traditional consular visa.",
+    "evidence_hint": "Passport valid for the full stay (national ID cards not accepted); proof of accommodation; proof of sufficient funds; return ticket."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mavv_passport",
+          "attribute": "has_valid_passport",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A passport valid for the entire stay is required; national ID cards are not accepted even for otherwise-exempt nationalities.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "visapourmaroc_exemptions"
+        },
+        {
+          "id": "mavv_funds",
+          "attribute": "has_sufficient_funds_and_return_ticket",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of accommodation, sufficient funds, and a return ticket are required even for visa-exempt travelers.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "visapourmaroc_exemptions"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days for most exempt/visa nationalities (30 or 60 days for a small number of exceptions)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "visapourmaroc_exemptions",
+      "tier": 3,
+      "url": "https://visapourmaroc.fr/pays-sans-visa-maroc/",
+      "title": "visapourmaroc.fr -- Morocco visa-exemption list: ~72 exempt countries, 90-day standard stay (30/60-day exceptions), eVisa (7 nationalities, EUR 117, 4 business days) or consular visa for others",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Morocco). STATUS: DRAFT -- entry-requirement figures (exemption list, day counts, funds/return-ticket requirement) are tier-3 sourced only; no official Moroccan government portal (diplomatie.ma's own visa-requirements page) gave the specific exemption list or duration figures in this pass -- the fetched official page deferred to a separate eligibility-checker tool (acces-maroc.ma) without reproducing the list. This file is therefore tier-3 sourced from a specialist visa-information site rather than a primary government citation; the general structure (broad exemption list, 90-day default, eVisa for a narrow set of non-exempt nationalities) is corroborated across multiple independent sources reviewed."
+}

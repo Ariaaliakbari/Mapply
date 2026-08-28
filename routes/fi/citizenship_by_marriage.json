@@ -1,0 +1,77 @@
+{
+  "id": "fi_citizenship_by_marriage",
+  "country": "FI",
+  "name": "Naturalisation via Marriage to a Finnish Citizen",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Marriage to a Finnish citizen does not grant citizenship automatically. It instead reduces the standard naturalisation residence requirement from 8 years to 5 years.",
+    "evidence_hint": "Marriage or registered-partnership certificate; proof of 5 years' continuous residence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fim_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_or_registered_partner_of_fi_citizen",
+          "hard": true,
+          "blocker_text": "Applicant must be married to, or in a registered partnership with, a Finnish citizen. Gender-neutral -- applies equally to same-sex registered partnerships.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_citizenship_faq"
+        },
+        {
+          "id": "fim_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of continuous residence in Finland (reduced from the standard 8-year bar), plus the same financial-resources, identity, and conduct conditions applied to all naturalisation routes since the December 2025 reform.",
+          "fix_path": "Accumulate 5 years of continuous residence while married to/partnered with a Finnish citizen.",
+          "fix_time_months": 60,
+          "source_id": "migri_citizenship_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or registered-partnership certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5 years' continuous residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of sufficient/legal income", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migri_citizenship_faq",
+      "tier": 1,
+      "url": "https://migri.fi/en/faq-finnish-citizenship",
+      "title": "Maahanmuuttovirasto -- FAQ: Finnish Citizenship: reduced 5-year residence requirement for spouses of Finnish citizens",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). Unlike some countries in this dataset with a genuinely gender-restricted marriage route, Finland's is gender-neutral and explicitly extends to registered partnerships. It is a reduced naturalisation threshold (5 years residence vs. the standard 8), not an accelerated automatic grant -- consistent in structure with Bulgaria's Article 13 marriage route documented elsewhere in this dataset. Also carries the same December 2025 financial-resources/identity/conduct conditions as fi_naturalisation.json's standard route."
+}

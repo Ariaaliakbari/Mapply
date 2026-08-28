@@ -1,0 +1,95 @@
+{
+  "id": "nz_work_permit",
+  "country": "NZ",
+  "name": "Accredited Employer Work Visa (AEWV)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For migrants with a job offer from a New Zealand employer that is accredited with Immigration New Zealand and has an approved Job Check for the specific position.",
+    "evidence_hint": "Job offer/employment agreement; employer's accreditation and approved Job Check; identity and (where required) qualification/experience evidence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nzwp_accreditation",
+          "attribute": "employer_accredited_with_job_check",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must hold current AEWV accreditation and an approved Job Check for the specific role.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_aewv"
+        },
+        {
+          "id": "nzwp_pay",
+          "attribute": "paid_at_market_rate_for_role",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "As of March 2025 the general median-wage pay floor was removed for standard AEWV jobs; pay must instead be at least NZ minimum wage and on par with what NZ workers doing the same job are paid ('market rate'), assessed occupation-by-occupation via Immigration New Zealand's wage-rate tool.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_aewv"
+        },
+        {
+          "id": "nzwp_hours",
+          "attribute": "weekly_hours",
+          "operator": ">=",
+          "value": 30,
+          "hard": true,
+          "blocker_text": "The job must offer at least 30 hours of work per week with the specific accredited employer, job, and location listed on the visa; a second job is not permitted.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_aewv"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment agreement / job offer", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's accreditation and Job Check approval", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Qualification/experience evidence (role-dependent)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years for most occupations; up to 3 years for ANZSCO skill levels 4-5",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["nz_skilled_migrant_category"]
+  },
+  "sources": [
+    {
+      "id": "inz_aewv",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/accredited-employer-work-visa",
+      "title": "Immigration New Zealand -- Accredited Employer Work Visa: employer accreditation and Job Check requirement, occupation-specific market-rate pay (median-wage floor removed March 2025), 30 hrs/week minimum, single-employer/job/location restriction, up to 5-year (or 3-year, skill level 4-5) duration",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "inz_median_wage_removed",
+      "tier": 3,
+      "url": "https://www.livinginnz.co.nz/blog/median-wage-increase-march-2026/",
+      "title": "livinginnz.co.nz -- confirms the 'general' AEWV median-wage requirement was removed in 2025 in favour of market rates, while the NZD 35.00/hour median wage (effective 9 March 2026) continues to govern Skilled Migrant Category points, Green List Residence, and Parent Category thresholds",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). AEWV pay policy has been genuinely volatile: a flat median-wage threshold applied historically, was removed in March 2025 in favour of occupation-specific 'market rate' pay (confirmed directly on the tier-1 page's current wording), while the median wage itself (now NZD 35.00/hour as of 9 March 2026 per tier-3 reporting) continues to apply to OTHER categories -- see nz_skilled_migrant_category.json. A separately-referenced 2x-2024-median-wage figure (NZD 67.12/hour) for skipping skill-requirement verification appears stale on the official page (still labelled '2024 median wage') and was not modeled as a current hard figure. pr_after_months left null since this visa itself does not directly grant residence -- see nz_skilled_migrant_category.json for the points-based residence pathway it feeds into."
+}

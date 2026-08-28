@@ -1,0 +1,153 @@
+{
+  "id": "cy_naturalisation",
+  "country": "CY",
+  "name": "Naturalisation by Years of Residence",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cyn_residence_total",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Requires 7 years of lawful residence within the last 10 years, plus a continuous 12 months immediately before applying (8 years total). Time on a student permit does not count.",
+          "fix_path": "Accumulate 7 years' lawful residence within the last 10, plus 12 continuous months immediately before applying.",
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        },
+        {
+          "id": "cyn_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "Requires Greek language proficiency at B1, verified by the Greek Language Certification Examinations or University of Cyprus certification.",
+          "fix_path": "Pass a B1-level Greek language examination.",
+          "fix_time_months": 12,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        },
+        {
+          "id": "cyn_civics",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "civics_exam_pass_60pct",
+          "hard": true,
+          "blocker_text": "Requires passing an examination on the basic elements of Cyprus's contemporary political and social reality, with a 60% passing mark.",
+          "fix_path": "Book and pass the civics examination.",
+          "fix_time_months": 3,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        },
+        {
+          "id": "cyn_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires good character, stable accommodation, financial means, and an intention to reside in Cyprus.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "highly_skilled_a2",
+      "name": "Highly-skilled employee, A2 Greek",
+      "requirements": [
+        {
+          "id": "cyn_hs_a2_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires 5 years total as a highly-skilled employee, with Greek proficiency at A2 level.",
+          "fix_path": "Accumulate 5 years' qualifying residence as a highly-skilled employee.",
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        },
+        {
+          "id": "cyn_hs_a2_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "A2",
+          "hard": true,
+          "blocker_text": "Requires Greek language proficiency at A2.",
+          "fix_path": "Pass an A2-level Greek language examination.",
+          "fix_time_months": 6,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "highly_skilled_b1",
+      "name": "Highly-skilled employee, B1 Greek",
+      "requirements": [
+        {
+          "id": "cyn_hs_b1_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Requires 4 years total as a highly-skilled employee, with Greek proficiency at B1 level.",
+          "fix_path": "Accumulate 4 years' qualifying residence as a highly-skilled employee.",
+          "fix_time_months": null,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        },
+        {
+          "id": "cyn_hs_b1_language",
+          "attribute": "language_local",
+          "operator": ">=",
+          "value": "B1",
+          "hard": true,
+          "blocker_text": "Requires Greek language proficiency at B1.",
+          "fix_path": "Pass a B1-level Greek language examination.",
+          "fix_time_months": 12,
+          "source_id": "gk_lawfirm_cy_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying years of residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Greek language certificate (A2 or B1 depending on group)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Civics examination pass certificate", "difficulty": "moderate", "typical_time_days": 90 },
+    { "document": "Proof of stable accommodation and financial means", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gk_lawfirm_cy_citizenship_law",
+      "tier": 3,
+      "url": "https://gk-lawfirm.com/publications/cyprus-citizenship-new-law/",
+      "title": "GK Law Firm -- Cyprus Citizenship New Law: 4 and 5 years criteria (amendment of 30 November 2023 to the Civil Registry Law)",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. Three OR-logic groups model the SAME 'naturalisation by residence' legal status reached via genuinely different qualifying tracks introduced by the same 2023 amendment (standard 7+1 years; highly-skilled 5 years at A2 Greek; highly-skilled 4 years at B1 Greek), per this dataset's core structural principle. dual_citizenship_allowed set true: Cyprus permits dual citizenship generally, consistent with common knowledge and not contradicted by any source in this pass. STATUS SET TO DRAFT: gov.cy's Ministry of Interior page for this exact process (form M127) returned HTTP 403 to automated fetching in this pass; sourced instead from a single tier-3 legal-alert article. Citizenship by marriage (cy_citizenship_marriage) is modelled as a wholly separate route, not a group here, since the source explicitly describes it as 'a different route entirely' with its own 3-year marriage-based test rather than a variant of the residence-based naturalisation groups above."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "bs_citizenship_by_marriage",
+  "country": "BS",
+  "name": "Citizenship by Marriage (Form I)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The female spouse of a Bahamian citizen may apply for registration as a citizen using Form I.",
+    "evidence_hint": "Marriage certificate; spouse's proof of Bahamian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bscm_female_spouse",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "female_spouse_of_bs_citizen",
+          "hard": true,
+          "blocker_text": "This route (Form I) is available only to the FEMALE spouse of a Bahamian citizen -- male spouses of female Bahamian citizens are not eligible for citizenship registration by marriage under this form.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_citizenship_pathways"
+        },
+        {
+          "id": "bscm_certificates",
+          "attribute": "has_medical_and_police_certificates",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires medical and police certificates alongside the marriage certificate and spouse's documentation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bs_citizenship_pathways"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Bahamian citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two character references from a Bahamian knowing the applicant 5+ years", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bs_citizenship_pathways",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/applying-to-stay/applying-for-citizenship/",
+      "title": "Bahamas Immigration Department -- Pathways to Bahamian Citizenship: Form I, spousal route restricted to the female spouse of a Bahamian citizen, requiring marriage certificate, spouse's documentation, medical and police certificates",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. IMPORTANT: this route is explicitly gender-restricted on the official government source -- only the FEMALE spouse of a Bahamian citizen may apply for citizenship by marriage via Form I. No equivalent Form was found on this source for a male spouse of a female Bahamian citizen; such a person appears to be limited to the residence-based routes (bs_resident_spouse_permit.json, then bs_permanent_residence_marriage.json, then bs_naturalisation.json after accumulating the required PR duration) rather than a direct marriage-based citizenship registration. This is a real, sourced restriction (part of the same gender-asymmetric nationality-law pattern flagged in bs_citizenship_by_descent.json's notes, long subject to constitutional-reform debate in the Bahamas), not an oversight in this build -- disclosed prominently since it changes the practical answer depending on the applicant's and spouse's sex. No marriage-duration figure was found for this specific route (unlike the Resident Spouse Permit's 5-year threshold); may require a shorter or different timeline than the residence-based routes."
+}

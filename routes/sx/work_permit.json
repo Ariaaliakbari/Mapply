@@ -1,0 +1,81 @@
+{
+  "id": "sx_work_permit",
+  "country": "SX",
+  "name": "Employment Permit and Residence Permit (Employed)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sxw_employer_request",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The prospective employer must request an employment permit from the Department of Labor Affairs before the applicant can apply for a residence permit -- an employee cannot self-initiate this route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        },
+        {
+          "id": "sxw_outside_island",
+          "attribute": "applying_from_outside_island",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "First-time applicants generally cannot be present on the island while the residence permit application is being processed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moj_sx_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment permit issued by the Department of Labor Affairs", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Residence permit application (Model 1, via services.sintmaartengov.org)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary, extendable (Model 3 extension applications may be filed up to 4 months before expiry)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sx_permanent_residence", "sx_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "moj_sx_immigration",
+      "tier": 1,
+      "url": "https://www.ministryofjustice.sx/department/immigration/",
+      "title": "Ministry of Justice, Government of Sint Maarten -- Immigration and Border Protection Services: employer-obtained employment permit precondition, 6-week-to-3-month residence permit processing, applicant must be outside the island during first-time processing, 4-month pre-expiry extension window, 5-year path to permanent residency",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "sintmaartengov_labor_affairs",
+      "tier": 1,
+      "url": "https://www.sintmaartengov.org/Ministries/Departments/Pages/Labor-Affairs.aspx",
+      "title": "Government of Sint Maarten -- Department of Labor Affairs: Section Permits processes employment permit requests (contact details only; no published fee or detailed criteria)",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Sint Maarten's initial build. No fee schedule or numeric duration cap was found on either official page reviewed -- flagged as a gap; the Department of Labor Affairs page in particular gave almost no substantive detail beyond confirming the office exists and handles permit processing. work_rights is 'restricted' (tied to the specific employer/position underlying the employment permit). leads_to_pr/pr_after_months (60 months) reflects the immigration overview page's own explicit statement that 'after 5 years of consecutive legal residency, applicants may pursue permanent residency' -- see sx_permanent_residence.json."
+}

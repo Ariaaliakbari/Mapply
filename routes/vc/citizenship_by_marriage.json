@@ -1,0 +1,74 @@
+{
+  "id": "vc_citizenship_by_marriage",
+  "country": "VC",
+  "name": "Citizenship by Registration -- Marriage to a Citizen",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The foreign spouse of a Saint Vincent and the Grenadines citizen may apply for registration as a citizen.",
+    "evidence_hint": "Marriage certificate; spouse's proof of Vincentian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vcm_spouse_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_svg_citizen",
+          "hard": true,
+          "blocker_text": "Requires marriage to a Saint Vincent and the Grenadines citizen, and completion of a formal application procedure through the Ministry of National Security / Prime Minister's Office.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "stvincenttimes_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Vincentian citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Application for Registration as a Citizen (official form)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee EC$150 + registration fee EC$1,500-$2,200", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "stvincenttimes_citizenship",
+      "tier": 3,
+      "url": "https://www.stvincenttimes.com/understanding-citizenship-eligibility-for-st-vincent-passport/",
+      "title": "St Vincent Times -- Understanding Citizenship, Eligibility for St Vincent Passport: foreign spouses of citizens registered via specific application forms and a formal procedure through the Ministry of National Security",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "gov_vc_pmoffice_citizenship",
+      "tier": 1,
+      "url": "https://pmoffice.gov.vc/pmoffice/index.php/citizenship",
+      "title": "Prime Minister's Office, Government of Saint Vincent and the Grenadines -- Citizenship: general application fee (EC$150) and registration fee (EC$1,500-$2,200), applicable across citizenship application types including the spousal application form referenced on this page",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Vincent and the Grenadines' initial build. STATUS: DRAFT -- no marriage-duration figure, residence requirement, or oath-of-allegiance detail was found on any accessible source (unlike Grenada's and Saint Lucia's marriage routes, both sourced to primary legislation with these details spelled out). The official Application for Registration as a Citizen form (pmoffice.gov.vc/Updated_Reference_Form.pdf) exists and is linked from the government's Forms page but was not independently fetched/read for this build -- worth reviewing directly if more precise criteria are needed."
+}

@@ -1,0 +1,110 @@
+{
+  "id": "at_family_reunification",
+  "country": "AT",
+  "name": "Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Spouses/registered partners (min. age 21) and unmarried minor children (including adopted/step-children) of an Austrian citizen, an EU Blue Card/Red-White-Red Card holder, a researcher, or a Settlement Permit holder may apply to join the sponsor. Permit type and quota exposure depend on the sponsor's status.",
+    "evidence_hint": "Proof of family relationship (marriage/partnership/birth certificate); sponsor's status documents; income, insurance, and housing evidence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "atfr_relationship",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_partner_or_minor_child_of_qualifying_sponsor",
+          "hard": true,
+          "blocker_text": "Spouses/registered partners must be at least 21 years old; unmarried minor children (including adopted/step-children) also qualify; certain dependent relatives may qualify with a sponsor's liability declaration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_family"
+        },
+        {
+          "id": "atfr_income",
+          "attribute": "sponsor_monthly_income_eur",
+          "operator": ">=",
+          "value": 1273.99,
+          "hard": true,
+          "blocker_text": "Sponsor must show fixed and regular income enabling the family to meet its livelihood without welfare -- at least EUR 1,273.99/month (2025 single rate).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_family"
+        },
+        {
+          "id": "atfr_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health insurance covering all risks in Austria is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_family"
+        },
+        {
+          "id": "atfr_housing",
+          "attribute": "has_legal_accommodation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Legal accommodation meeting local size/standard norms is required (lease or ownership documentation).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_family"
+        },
+        {
+          "id": "atfr_language",
+          "attribute": "has_a1_german",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A1-level German from a recognized institution is required before the visa is issued, with exemptions for minors under 14, researchers' families, and refugees' families.",
+          "fix_path": "Obtain an A1 German certificate from a recognized provider (e.g. Goethe-Institut, OeSD).",
+          "fix_time_months": 6,
+          "source_id": "migration_gv_at_family"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/partnership or birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's income, insurance, and housing evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "A1 German certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "varies by sponsor category (Red-White-Red Card Plus, Family Member permit, Settlement Permit, or Settlement Permit -- Dependent)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["at_permanent_residence", "at_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gv_at_family",
+      "tier": 1,
+      "url": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/",
+      "title": "migration.gv.at -- Family reunification: qualifying relatives, income/insurance/housing/A1-German requirements, 4 permit sub-types by sponsor status, quota rules, fees (EUR 100 + EUR 20)",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). work_rights modeled 'restricted' since two of the four sub-permit types (Settlement Permit and Settlement Permit -- Dependent) carry work restrictions (self-employment only, or none) -- only Family Member (relatives of Austrian citizens) and Red-White-Red Card Plus grant unrestricted work. No quotas apply for family of Red-White-Red Card/EU Blue Card holders, Austrian citizens, or researchers; other sponsor categories face annual numeric limits, not modeled as a hard requirement here since the applicant does not control this."
+}

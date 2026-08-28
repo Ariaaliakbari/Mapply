@@ -1,0 +1,64 @@
+{
+  "id": "ge_visa_free_entry",
+  "country": "GE",
+  "name": "Visa-Free Entry (365 days)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Citizens of countries listed in the Government of Georgia's ordinance (which includes most EU/EEA states, the UK, the US, Canada, Australia, Japan, and many others) may enter and remain in Georgia without a visa for one full year (365 days), holding a valid passport (or, for EU citizens, an EU-issued identity card, or a UN Laissez-Passer for eligible holders).",
+    "evidence_hint": "Valid passport or qualifying travel document from a listed country."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gevf_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": { "note": "Nationals of the countries listed in the Government of Georgia ordinance annex." },
+          "hard": true,
+          "blocker_text": "Requires citizenship of a country listed in the ordinance's annex.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "matsne_visa_free_citizens_ordinance"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport, EU identity card, or UN Laissez-Passer (as applicable)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 365 days (1 full year) per stay",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ge_work_residence_permit", "ge_investment_residence_permit", "ge_it_professional_permit"]
+  },
+  "sources": [
+    {
+      "id": "matsne_visa_free_citizens_ordinance",
+      "tier": 1,
+      "url": "https://matsne.gov.ge/en/document/view/2867361",
+      "title": "Legislative Herald of Georgia (matsne.gov.ge) -- Government of Georgia Ordinance on the List of Countries Whose Citizens May Enter Georgia Without a Visa",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW COUNTRY, first Georgia route. This is an unusually generous visa-free allowance by international standards -- 365 days, not the more typical 90/180-day Schengen-style rule -- confirmed directly from the government's own ordinance text. A SEPARATE ordinance (matsne.gov.ge/en/document/view/2867377) grants a narrower 90-days-per-180-days allowance specifically to holders of a valid visa or residence permit from a second list of ~50 countries (even if they are not citizens of those countries) -- a distinct, additional route not modelled separately here since it is a narrower variant of the same 'visit' category rather than a materially different legal status. No financial-means or purpose-of-visit conditions are stated in the ordinance itself. This visa-free period is commonly used in practice by remote workers/'digital nomads' -- Georgia does not currently operate a dedicated digital-nomad-visa legal category (its pandemic-era 'Remotely from Georgia' program has lapsed into ordinary business/work-permit channels), so no separate digital_nomad route is modelled for this country; see ge_it_professional_permit and ge_investment_residence_permit for the actual legal pathways remote workers use to stay longer term."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "ec_international_protection",
+  "country": "EC",
+  "name": "Refugee Status Determination (Refugio)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Any person in Ecuador fearing persecution in their home country may apply for refugee status determination, entirely online via the gob.ec portal ('Determinación de la condición de refugiado o apátrida'). No supporting documents are required to start the claim, though applicants may submit them if available. A renewable 6-month humanitarian visa is issued after the interview while the claim is pending.",
+    "evidence_hint": "Online application via gob.ec with personal information and email verification; supporting persecution evidence where available (not mandatory to file)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecip_claim",
+          "attribute": "meets_refugee_or_stateless_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must meet the refugee or stateless-person definition; application should be submitted as soon as possible after entering the country, though no fixed deadline is stated.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_ecuador_refugio"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Online application (gob.ec, no supporting documents mandatory to file)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supporting persecution evidence where available (optional)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "If approved: international protection visa, valid 2 years as temporary residence. While pending: renewable 6-month humanitarian visa issued after interview.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 21,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ec_permanent_residence", "ec_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_ecuador_refugio",
+      "tier": 1,
+      "url": "https://help.unhcr.org/ecuador/en/bienvenido-a/acceso-a-la-condicion-de-personas-refugiada-asilo-y-tramites-migratorios/solicitud-refugiado/",
+      "title": "UNHCR Ecuador help site, republishing the official gob.ec application procedure -- fully online claim process, no mandatory documents to file, 6-month renewable humanitarian visa pending decision, 2-year international protection visa on approval",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). work_rights modeled 'restricted' for the pending-decision humanitarian-visa period since the source did not confirm unrestricted work rights at that stage; citizenship_after_months (24) uses ec_naturalisation.json's reduced 2-year refugee/stateless naturalisation track rather than the standard 3-year track. No processing-time figure is stated by the source beyond 'may take time... due to high application volume' -- not modeled as a numeric selection_odds or timeframe to avoid inventing a figure. Ecuador has historically hosted one of the largest refugee populations in Latin America (predominantly Colombian and more recently Venezuelan) -- source tier for this file's sole citation counted as tier-1 since it verbatim republishes the official gob.ec procedure, though it is hosted on a UNHCR (tier-2 organization) domain rather than gob.ec directly."
+}

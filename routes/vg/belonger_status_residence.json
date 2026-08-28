@@ -1,0 +1,92 @@
+{
+  "id": "vg_belonger_status_residence",
+  "country": "VG",
+  "name": "Belonger Status -- Long Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["vg_residence_status"],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vgbsr_total_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 240,
+          "hard": true,
+          "blocker_text": "Requires 20 years ordinarily resident in the Territory in total.",
+          "fix_path": "Accumulate 20 years of ordinary residence in the Territory.",
+          "fix_time_months": 240,
+          "source_id": "gov_vg_belonger_pr_policy"
+        },
+        {
+          "id": "vgbsr_certificate_held",
+          "attribute": "months_held_residence_status_certificate",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "At least 10 of those 20 years must have been held under a Certificate of Residence Status.",
+          "fix_path": "Hold a Certificate of Residence Status for at least 10 years.",
+          "fix_time_months": 120,
+          "source_id": "gov_vg_belonger_pr_policy"
+        },
+        {
+          "id": "vgbsr_assessment",
+          "attribute": "meets_cabinet_assessment_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Cabinet assesses community participation, cultural integration, law-abiding conduct, environmental responsibility, economic contribution, financial self-sufficiency, and personal/professional references -- tenure alone is not sufficient.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_vg_belonger_pr_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid identification and bank statements", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of self-sufficiency (social security benefits or equivalent)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Accommodation evidence", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Two police certificates of character (birth country and country of residence)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (on approval)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Community/character references demonstrating cultural integration", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vg_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_vg_belonger_pr_policy",
+      "tier": 1,
+      "url": "https://bvi.gov.vg/sites/default/files/belonger_status_and_permanent_residence_policy_for_the_virgin_islands.pdf",
+      "title": "Government of the Virgin Islands -- Belonger Status and Permanent Residence Policy: 20-year total residence with a minimum 10 years under a Residence Status certificate, 11-factor Cabinet assessment framework, planned point-based system, unrestricted land ownership and voting rights on grant",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the British Virgin Islands' initial build -- fifth British Overseas Territory (BOT). Belonger status is BVI's own local right-of-abode-equivalent, NOT British nationality -- leads_to_citizenship is modelled as true here in the sense that Belonger status is one of the five eligibility grounds on the BOTC naturalisation fee schedule ($400, Section 16 grant -- see vg_naturalisation_botc.json), but this is Belonger status ITSELF, distinct from actually naturalising as a British Overseas Territories Citizen, consistent with how this dataset models the same distinction for Anguilla, Montserrat, Cayman, and Bermuda. Unusually among this dataset's BOT builds, this policy explicitly states that tenure alone is insufficient -- Cabinet weighs 11 qualitative factors (community participation, cultural integration, environmental responsibility, etc.) via a planned point-based system not yet published in the Virgin Islands Gazette as of this pass -- meaning this route is significantly more discretionary than the simpler duration-only Belonger/status grounds built for the other four BOTs. See vg_residence_status.json's notes for the discrepancy between this policy PDF's figures and an older bvi.gov.vg page describing what appears to be the same route under different terminology."
+}

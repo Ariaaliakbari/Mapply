@@ -1,0 +1,92 @@
+{
+  "id": "se_work_permit",
+  "country": "SE",
+  "name": "Work Permit (Employee)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sewp_contract",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed_employer",
+          "hard": true,
+          "blocker_text": "Requires an employment contract signed by both employee and employer.",
+          "fix_path": "Secure a qualifying job offer from a Swedish employer.",
+          "fix_time_months": null,
+          "source_id": "migrationsverket_work_permit"
+        },
+        {
+          "id": "sewp_salary",
+          "attribute": "monthly_salary_sek",
+          "operator": ">=",
+          "value": 34470,
+          "hard": true,
+          "blocker_text": "Requires a monthly salary of at least SEK 34,470 (90% of the median salary published by Statistics Sweden, effective June 2026), also meeting any higher collective-agreement or profession-specific standard. Certain professions qualify at a reduced 75% threshold (SEK 28,725).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_work_permit"
+        },
+        {
+          "id": "sewp_employer_insurance",
+          "attribute": "employer_provides_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must secure health, life, industrial injuries, and occupational pension insurance by the applicant's start date (or, for positions of 1 year or less, health insurance covering urgent/other medical care for the full stay).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migrationsverket_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer insurance confirmation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Maximum 2 years per grant (limited also by contract term and passport validity), renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "Must have worked in Sweden for 4 of the past 7 years, maintaining permit conditions throughout, to reach permanent residence.",
+    "switchable_to": ["se_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migrationsverket_work_permit",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-apply/work/employee-or-self-employed/employees.html",
+      "title": "Swedish Migration Agency -- Apply for a work permit in Sweden: SEK 34,470/month salary threshold (90% of median, effective June 2026), employer insurance, 2-year maximum duration",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "migrationsverket_work_pr",
+      "tier": 1,
+      "url": "https://www.migrationsverket.se/en/you-want-to-extend/work/employee-or-self-employed/employees.html",
+      "title": "Swedish Migration Agency -- Apply for an extension of a work permit: confirms 4 years of work permit held, worked 4 of the past 7 years, as the threshold for permanent residence eligibility",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sweden). The SEK 34,470 salary threshold is very recent (effective June 2026, up from a lower pre-2026 figure) -- part of a broader tightening wave across Swedish migration law this year, alongside the citizenship reform (see se_naturalisation.json) and the asylum permanent-residence abolition (see se_international_protection.json). citizenship_after_months (96) is a chained estimate: 48 months to permanent residence eligibility on this route, plus Sweden's new standard 8-year (96-month) naturalization residence bar (see se_naturalisation.json) counted from the start of habitual residence generally -- these two clocks substantially overlap rather than stack sequentially in practice, so 96 months (matching the naturalization bar alone) is used as the more accurate total rather than a literal 48+96 sum."
+}

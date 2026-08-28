@@ -1,0 +1,103 @@
+{
+  "id": "dm_permanent_residence",
+  "country": "DM",
+  "name": "Permanent Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["dm_temporary_residence_permit", "dm_work_permit"],
+    "minimum_months_held": 60,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dmpr_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Requires having been resident in, or employed in, Dominica for 5 years.",
+          "fix_path": "Accumulate 5 years' residence or employment in Dominica.",
+          "fix_time_months": null,
+          "source_id": "dominica_gov_permanent_residence"
+        },
+        {
+          "id": "dmpr_health",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "medical_certificate_no_communicable_disease_3yrs",
+          "hard": true,
+          "blocker_text": "Requires a medical certificate confirming good health and no communicable disease within the past 3 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dominica_gov_permanent_residence"
+        },
+        {
+          "id": "dmpr_character",
+          "attribute": "criminal_record",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Requires a recent police record and two character references.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dominica_gov_permanent_residence"
+        },
+        {
+          "id": "dmpr_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "bankers_statement_or_employer_letter",
+          "hard": true,
+          "blocker_text": "Requires a statement of financial position from a reputable banker, or a letter from the applicant's employer accepting responsibility, or (if unemployed) a letter from friend/family accepting responsibility.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dominica_gov_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Completed application form (Labour Division)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical certificate (good health, no communicable disease in past 3 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two character references", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Recent police record", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Marriage certificate, if applicable", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Copies of all work/resident permits held in Dominica", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["dm_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dominica_gov_permanent_residence",
+      "tier": 1,
+      "url": "https://dominica.gov.dm/services/residency/how-do-i-apply-for-permanent-residence",
+      "title": "Government of Dominica Web Portal -- How Do I Apply for Permanent Residence",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Dominica's initial build. The decision is explicitly stated as subject to the discretion of the Minister for Foreign Affairs, Immigration and Labour -- selection_method 'assessed' reflects this, and no fixed pass/fail formula beyond the listed documentary requirements is claimed. The source does not mention special reduced-requirement categories for spouses of citizens, investors, or retirees -- unlike Barbados' equivalent status, no such distinct grounds were found here, so none were invented. prerequisites lists both feeder routes at 60 months since the source itself states 'resident OR employed on island for five years' as alternative satisfying conditions."
+}

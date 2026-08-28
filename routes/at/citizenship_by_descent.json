@@ -1,0 +1,82 @@
+{
+  "id": "at_citizenship_by_descent",
+  "country": "AT",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born to an Austrian mother acquires Austrian citizenship automatically at birth, regardless of birthplace. If the parents are married and the father is Austrian, citizenship is also automatic. For a non-marital child with only an Austrian father, citizenship follows if the father recognizes parenthood (or it is determined by court) within 8 weeks of birth; recognition after that deadline allows citizenship via a simplified procedure instead.",
+    "evidence_hint": "Birth certificate; parents' proof of Austrian citizenship; (non-marital, father-only cases) paternity recognition/court determination documentation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "mother_or_married_father",
+      "name": "Austrian mother, or married parents with Austrian father",
+      "requirements": [
+        {
+          "id": "atd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_at_citizen_mother_or_married_at_citizen_father",
+          "hard": true,
+          "blocker_text": "Automatic citizenship at birth if the mother is an Austrian citizen, or if the parents are married and the father is an Austrian citizen -- regardless of birthplace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "nonmarital_father",
+      "name": "Non-marital child, Austrian father only",
+      "requirements": [
+        {
+          "id": "atd_paternity",
+          "attribute": "paternity_recognized_within_8_weeks",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "If only the father is Austrian and the parents are not married, citizenship follows if the Austrian father recognizes parenthood (or it is court-determined) within 8 weeks of birth; recognition after this deadline instead requires a simplified subsequent procedure.",
+          "fix_path": "Complete the simplified subsequent recognition procedure if the 8-week window has passed.",
+          "fix_time_months": null,
+          "source_id": "migration_gv_at_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Austrian citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migration_gv_at_citizenship",
+      "tier": 1,
+      "url": "https://www.migration.gv.at/en/living-and-working-in-austria/integration-and-citizenship/citizenship/",
+      "title": "migration.gv.at -- Citizenship: jus sanguinis rules (Austrian mother, or married Austrian father; non-marital father-only cases with an 8-week paternity-recognition window), dual citizenship treatment for children of mixed-nationality parents",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Austria). Distinct from at_naturalisation.json's general renunciation requirement: dual_citizenship_allowed modeled TRUE here because a child born to parents of different nationalities may hold dual citizenship automatically where the other country also grants citizenship by descent, and Austria does not require choosing between them at adulthood (though the other country might). Not gender-neutral at the statutory level as written -- the automatic-at-birth route runs through the mother (any case) or a married father, with a separate 8-week recognition mechanism for a non-marital father-only case, reflecting the actual asymmetric structure found in the source rather than an assumed symmetric rule."
+}

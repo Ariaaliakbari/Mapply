@@ -1,0 +1,141 @@
+{
+  "id": "cw_investors_permit",
+  "country": "CW",
+  "name": "Investors Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tier_1_three_year",
+      "name": "ANG 500,000+ investment (3-year permit)",
+      "requirements": [
+        {
+          "id": "cwip_t1_amount",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 500000, "currency": "ANG" },
+          "hard": true,
+          "blocker_text": "Minimum business investment of ANG 500,000 (approx. US$281,000), which may include property purchases or business ventures.",
+          "fix_path": "Make a qualifying business investment of at least ANG 500,000.",
+          "fix_time_months": null,
+          "source_id": "athome_curacao_investors"
+        },
+        {
+          "id": "cwip_t1_insurance_character",
+          "attribute": "health_insurance_and_character",
+          "operator": "exists",
+          "value": "private_health_insurance_and_good_conduct",
+          "hard": true,
+          "blocker_text": "Requires private health insurance coverage and documentation of good behaviour, plus a valid passport.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "athome_curacao_investors"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "3 years, renewable if conditions persist"
+      }
+    },
+    {
+      "id": "tier_2_five_year",
+      "name": "ANG 750,000+ investment (5-year permit)",
+      "requirements": [
+        {
+          "id": "cwip_t2_amount",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 750000, "currency": "ANG" },
+          "hard": true,
+          "blocker_text": "Minimum business investment of ANG 750,000, which may include property purchases or business ventures.",
+          "fix_path": "Make a qualifying business investment of at least ANG 750,000.",
+          "fix_time_months": null,
+          "source_id": "athome_curacao_investors"
+        },
+        {
+          "id": "cwip_t2_insurance_character",
+          "attribute": "health_insurance_and_character",
+          "operator": "exists",
+          "value": "private_health_insurance_and_good_conduct",
+          "hard": true,
+          "blocker_text": "Requires private health insurance coverage and documentation of good behaviour, plus a valid passport.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "athome_curacao_investors"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "5 years, renewable if conditions persist"
+      }
+    },
+    {
+      "id": "tier_3_indefinite",
+      "name": "ANG 1,500,000+ investment (indefinite permit)",
+      "requirements": [
+        {
+          "id": "cwip_t3_amount",
+          "attribute": "investment_amount",
+          "operator": ">=",
+          "value": { "amount": 1500000, "currency": "ANG" },
+          "hard": true,
+          "blocker_text": "Minimum business investment of ANG 1,500,000, which may include property purchases or business ventures.",
+          "fix_path": "Make a qualifying business investment of at least ANG 1,500,000.",
+          "fix_time_months": null,
+          "source_id": "athome_curacao_investors"
+        },
+        {
+          "id": "cwip_t3_insurance_character",
+          "attribute": "health_insurance_and_character",
+          "operator": "exists",
+          "value": "private_health_insurance_and_good_conduct",
+          "hard": true,
+          "blocker_text": "Requires ongoing private health insurance coverage and documentation of good behaviour, plus a valid passport, even though the permit itself does not require renewal.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "athome_curacao_investors"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "indefinite (no renewal required)",
+        "renewable": false
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying business/property investment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Private health insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certificate of good conduct and valid passport", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Permit fees and charges (amount not specified in the source reviewed)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3, 5, or indefinite years depending on investment tier (see requirement_groups)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cw_permanent_residence", "cw_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "athome_curacao_investors",
+      "tier": 1,
+      "url": "https://athomeincuracao.com/investors/",
+      "title": "Curacao Tourist Board / Government of Curacao Immigration Services -- Investors Permit: tiered investment thresholds (ANG 500,000 / 750,000 / 1,500,000), corresponding permit durations (3 years / 5 years / indefinite), and eligibility",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Curacao's initial build. The source itself states the program is issued by the Government of Curacao through its Immigration Services, referencing 'Guidelines Investors Permit 2014' -- corroborated by the existence of a dedicated 'Investeer' (Investor) page on the official immigrationcur.org portal (not independently fetched for full text in this pass; that fetch attempt returned a 404). Modelled as three OR-groups with outcome_override on duration_length (and renewable for the top tier) rather than one group with a vague range, since the investment amount deterministically maps to a specific, materially different permit length -- consistent with this dataset's established pattern for tiered/graduated investment routes. Fee amounts for the permit itself are referenced ('fees and charges apply') but not quantified in the source. work_rights is 'restricted': the permit is residence-based, not an open local-labour-market work authorisation -- the underlying investment/business activity is presumably permitted, but general employment is not confirmed. switchable_to lists both cw_permanent_residence.json (via the 10-year residence clock) and cw_naturalisation.json (via the Kingdom-wide 5-year IND naturalisation track), since holding this permit is a form of lawful residence that plausibly counts toward both, though neither linkage is explicitly confirmed by a source reviewed in this pass."
+}

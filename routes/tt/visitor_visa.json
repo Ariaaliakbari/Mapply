@@ -1,0 +1,75 @@
+{
+  "id": "tt_visitor_visa",
+  "country": "TT",
+  "name": "eVisa (Short-Term Visitor)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ttv_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 6 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ttconnect_visa_student"
+        },
+        {
+          "id": "ttv_fee",
+          "attribute": "paid_evisa_fee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires payment of the non-refundable TTD 400 eVisa fee by Visa or Mastercard.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ttconnect_visa_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Digital passport-sized photo (JPEG)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supporting documents (PDF)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Fee: TTD 400 (non-refundable)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "duration of the approved stay (multiple-entry eVisa)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tt_work_permit", "tt_student_permit"]
+  },
+  "sources": [
+    {
+      "id": "ttconnect_visa_student",
+      "tier": 1,
+      "url": "https://ttconnect.gov.tt/visa-student-permit/",
+      "title": "ttconnect, Government of Trinidad and Tobago -- Visa & Student Permit: eVisa for visa-required nationals, TTD 400 fee, 6-month passport validity, multiple-entry, 5-step online process",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY, first route of Trinidad and Tobago's initial build. Trinidad and Tobago is a sovereign Commonwealth republic (ISO TT) -- not a British Overseas Territory and not a Kingdom-of-the-Netherlands constituent country, so it has its own independent citizenship regime under the Citizenship of the Republic of Trinidad and Tobago Act, Chapter 1:50 (see tt_naturalisation.json, tt_registration_commonwealth.json, tt_citizenship_by_descent.json). This eVisa applies only to nationals of visa-required countries; visa-exempt nationals (including CARICOM and many Commonwealth/EU/North American nationals) enter without this process -- no separate visa-exempt entry route was modelled since the source describes only the paid-visa process in detail. No maximum stay duration in days was stated beyond 'the duration of their approved stay' -- flagged as a gap rather than assumed."
+}

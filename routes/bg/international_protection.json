@@ -1,0 +1,83 @@
+{
+  "id": "bg_international_protection",
+  "country": "BG",
+  "name": "Refugee Status / Subsidiary Protection",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The State Agency for Refugees (SAR) examines all applications for international protection made in Bulgaria. Applicants must declare intent to seek protection immediately to Border Police or National Police, or apply directly at SAR or from immigration detention.",
+    "evidence_hint": "Registration with SAR; fingerprinting; medical screening; RSD interview."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bgip_claim",
+          "attribute": "meets_refugee_or_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "SAR determines eligibility for full refugee status or the lesser subsidiary/humanitarian protection status, via registration, interview, and assessment. General procedure decisions arrive within 6 months; accelerated procedure within 14 working days; complex cases up to 21 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_bulgaria_asylum"
+        },
+        {
+          "id": "bgip_interview",
+          "attribute": "attended_rsd_interview",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must attend the RSD interview and provide detailed, consistent reasons for leaving their country with supporting documentation; missing the appointment risks termination of the procedure.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_bulgaria_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Consistent testimony across RSD interview(s)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Refugee status: 5-year residence document; Subsidiary/humanitarian protection: 3-year residence document. Both statuses themselves are granted indefinitely; only the identity document requires periodic renewal.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bg_permanent_residence", "bg_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_bulgaria_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/bulgaria/applying-for-asylum-in-bulgaria/",
+      "title": "UNHCR Bulgaria -- Applying for Asylum in Bulgaria: State Agency for Refugees process, registration, interview, decision timelines (6 months standard / 14 days accelerated / up to 21 months complex cases), appeal windows",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "asylumineurope_bg_status",
+      "tier": 4,
+      "url": "https://asylumineurope.org/reports/country/bulgaria/content-international-protection/status-and-residence/residence-permit/",
+      "title": "Asylum Information Database (ECRE/European Council on Refugees and Exiles) -- Bulgaria: Residence Permit -- refugee status residence document valid 5 years, subsidiary protection valid 3 years, both statuses granted indefinitely",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bulgaria). STATUS: DRAFT -- the core process (SAR as decision-maker, interview, timelines) is tier-2 UNHCR-sourced; the specific residence-document durations (5yr refugee / 3yr subsidiary protection) come only from a tier-4 NGO database (ECRE's Asylum Information Database), not an SAR/mvr.bg primary source, so kept as draft pending a tier-1 confirmation. work_rights and study_rights modeled 'restricted' as conservative placeholders reflecting general practice for pending/recent-status holders in this dataset's pattern -- not explicitly confirmed for Bulgaria specifically. citizenship_after_months (96) is a rough estimate combining the tier-4-sourced 5-year path-to-permanent-residence figure with the standard naturalisation 3-year-permanent-residence bar under a possible reduced route for refugees/stateless persons (Article 14) -- NOT independently confirmed that recognized refugees specifically get the reduced stateless-persons track; flagged as speculative."
+}

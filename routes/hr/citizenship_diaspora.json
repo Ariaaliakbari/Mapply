@@ -1,0 +1,71 @@
+{
+  "id": "hr_citizenship_diaspora",
+  "country": "HR",
+  "name": "Citizenship for Croatian Emigrants and Their Descendants (diaspora)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Available to Croatian emigrants (iseljenici) and their descendants, and to members of the Croatian people (diaspora) demonstrating cultural and national affiliation to Croatia, without the ordinary 8-year residence requirement applied to standard naturalisation.",
+    "evidence_hint": "Documentation of Croatian ethnic/national origin or emigrant lineage; evidence of ties to Croatian culture, language, or national tradition; no need to reside in Croatia first."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Croatian emigrant or descendant / diaspora affiliation",
+      "requirements": [
+        {
+          "id": "hrcdi_affiliation",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "recognised_croatian_emigrant_or_diaspora_status",
+          "hard": true,
+          "blocker_text": "Requires recognised status as a Croatian emigrant or descendant of an emigrant, or as a member of the Croatian people demonstrating cultural/national affiliation, assessed without a residence-in-Croatia requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_hr_acquiring_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence of Croatian emigrant lineage or diaspora/national affiliation", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_hr_acquiring_citizenship",
+      "tier": 1,
+      "url": "https://gov.hr/en/acquiring-croatian-citizenship/460",
+      "title": "Government of the Republic of Croatia (gov.hr) -- Acquiring Croatian citizenship (emigrants and diaspora ground)",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "narodne_novine_2019_amendment",
+      "tier": 1,
+      "url": "https://narodne-novine.nn.hr/",
+      "title": "Narodne novine (Official Gazette of the Republic of Croatia) -- 2019 amendment to the Croatian Citizenship Act, Article 16 diaspora provisions",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Croatia's initial build. Kept as its own route rather than folded into hr_naturalisation or hr_citizenship_descent because it is a genuinely distinct legal ground (Article 16 of the Citizenship Act, per narodne-novine.nn.hr) available WITHOUT the 8-year residence test that defines standard naturalisation, and without requiring the direct parent-child relationship that defines the descent route -- it instead applies to a broader diaspora/emigrant-lineage population. HONEST GAP: the precise evidentiary bar for 'affiliation to the Croatian nation' (how distant an ancestor qualifies, what documentation the Ministry actually accepts) was not fully specified in the tier-1 sources fetched in this pass -- qualifying_event is modelled as a single assessed fact rather than a detailed, possibly-invented checklist. This route is genuinely selection_method 'assessed' (Ministry discretion involved per gov.hr's general framing of naturalisation grounds), not 'automatic' like direct descent."
+}

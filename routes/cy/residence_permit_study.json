@@ -1,0 +1,75 @@
+{
+  "id": "cy_residence_permit_study",
+  "country": "CY",
+  "name": "Student Residence Permit",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cyst_enrollment",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "enrolled_full_time_at_recognised_institution",
+          "hard": true,
+          "blocker_text": "Requires full-time enrollment at a recognised institution of higher education or accredited institute, pursuing a diploma, postgraduate diploma, doctorate, or other higher-education qualification.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eu_home_affairs_cy_student"
+        },
+        {
+          "id": "cyst_funds",
+          "attribute": "savings",
+          "operator": "exists",
+          "value": "sufficient_financial_resources_and_health_insurance",
+          "hard": true,
+          "blocker_text": "Requires sufficient financial resources for living expenses and health insurance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eu_home_affairs_cy_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of full-time enrollment", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of financial means and health insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate, passport copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical examination within 10 days of arrival, police registration", "difficulty": "routine", "typical_time_days": 10 }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable (renewal application due 1 month before expiry)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cy_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "eu_home_affairs_cy_student",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-cyprus_en",
+      "title": "European Commission EU Immigration Portal -- Student, Cyprus",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Cyprus's initial build. work_rights 'restricted': up to 20 hours/week in designated sectors (domestic activities, waste management, restaurants, recreation centres, cleaning services), with the employment contract certified by the Department of Labour -- a narrower list of permitted sectors than typical for student work rights elsewhere in this dataset. STATUS SET TO DRAFT: sourced only via the EU's own immigration portal (tier 2, intergovernmental per this dataset's convention), since gov.cy's Migration Department pages returned HTTP 403 to automated fetching throughout this pass; the EU portal itself states it reflects Cyprus's national transposition, so the substance should be reliable, but a tier-1 (.gov.cy) confirmation was not achieved in this pass. Time on this permit explicitly does NOT count toward cy_long_term_residence's 5-year residence test, per that route's own sourcing -- a materially important exclusion, flagged rather than assumed away."
+}

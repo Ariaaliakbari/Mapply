@@ -1,0 +1,109 @@
+{
+  "id": "lc_naturalisation",
+  "country": "LC",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lcn_residence_recent",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires 12 months' continuous residence immediately before the application (the Minister may allow this 12-month period to end up to 6 months before the application).",
+          "fix_path": "Accumulate 12 months' continuous residence immediately preceding application.",
+          "fix_time_months": 12,
+          "source_id": "lc_citizenship_act_s8"
+        },
+        {
+          "id": "lcn_residence_antecedent",
+          "attribute": "months_in_country_before_final_year",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "During the 7 years prior to that final 12-month period, the applicant must have resided in Saint Lucia or served under the Government for a combined total of at least 7 years (the Minister may accept a shorter period for special reasons).",
+          "fix_path": "Accumulate the required residence or government service during the antecedent 7-year period (or a shorter period the Minister may accept).",
+          "fix_time_months": 84,
+          "source_id": "lc_citizenship_act_s8"
+        },
+        {
+          "id": "lcn_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s8"
+        },
+        {
+          "id": "lcn_language",
+          "attribute": "has_adequate_english_and_civic_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires adequate knowledge of the English language and of the duties of a citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s8"
+        },
+        {
+          "id": "lcn_renounce",
+          "attribute": "willing_to_renounce_other_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must renounce citizenship of any other country and take the oath of allegiance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lc_citizenship_act_s8"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence history (12 months + antecedent 7-year period)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Character references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "English language/civics assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Renunciation of prior citizenship", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Oath of Allegiance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lc_citizenship_act_s8",
+      "tier": 1,
+      "url": "https://attorneygeneralchambers.com/laws-of-saint-lucia/citizenship-of-saint-lucia-act/section-8",
+      "title": "Citizenship of Saint Lucia Act, Section 8 (primary legislation): Naturalisation -- 12 months' immediate residence plus a combined 7-year antecedent residence/government-service period, good character, English language and civics knowledge, renunciation of other citizenship, oath of allegiance, ministerial discretion to shorten periods for special reasons",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Lucia's initial build. IMPORTANT AMBIGUITY: the source's phrasing on the antecedent period is genuinely unclear -- it could mean 5-out-of-7 years (the common Commonwealth Caribbean pattern used by Trinidad and Tobago and others built this session) or a full 7-year continuous/combined requirement as literally extracted here. This build models the literal extraction (a combined total of at least 7 years during the 7-year antecedent window, i.e. effectively the whole window) rather than assuming the more common 5-of-7 pattern, since no source confirmed a 5-year sub-threshold specifically for Saint Lucia -- flagged for re-verification against the full statutory text if a more precise reading is needed. IMPORTANT DIVERGENCE: this route requires renouncing other citizenship (dual_citizenship_allowed modelled as false) -- a notably stricter rule than every other citizenship route built for Saint Lucia in this session (descent, marriage, Commonwealth registration, and CBI all allow dual citizenship), and stricter than most naturalisation routes built elsewhere this session. This may reflect either a genuine policy distinction specific to naturalisation, or an older/superseded provision -- flagged prominently since Saint Lucia is otherwise marketed (via its CBI program) as broadly dual-citizenship-friendly."
+}

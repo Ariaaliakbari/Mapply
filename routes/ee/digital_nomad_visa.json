@@ -1,0 +1,71 @@
+{
+  "id": "ee_digital_nomad_visa",
+  "country": "EE",
+  "name": "Digital Nomad Visa",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Location-independent remote worker",
+      "requirements": [
+        {
+          "id": "eedn_income",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "amount": 4500, "currency": "EUR", "unit": "month", "note": "calculated as the average gross monthly income over the 6 months immediately preceding application" },
+          "hard": true,
+          "blocker_text": "Requires gross income of at least EUR 4,500/month, averaged over the 6 months before applying.",
+          "fix_path": "Document average monthly income at or above EUR 4,500 over the preceding 6 months.",
+          "fix_time_months": null,
+          "source_id": "mfa_ee_digital_nomad"
+        },
+        {
+          "id": "eedn_remote_only",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "remote_employment_foreign_company",
+          "hard": true,
+          "blocker_text": "Requires location-independent work performed via telecommunications technology for an employer registered abroad, or for your own company registered abroad, or for foreign clients -- not for an Estonia-based employer.",
+          "fix_path": "Confirm the employing or contracting entity is genuinely foreign-registered.",
+          "fix_time_months": null,
+          "source_id": "mfa_ee_digital_nomad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment or client contracts with foreign-registered entities", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "6 months' income documentation meeting the EUR 4,500/month average", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_ee_digital_nomad",
+      "tier": 1,
+      "url": "https://canberra.mfa.ee/en/digital-nomad-visa/",
+      "title": "Ministry of Foreign Affairs of Estonia, Embassy in Canberra (mfa.ee) -- Digital Nomad Visa requirements",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build -- Europe's first dedicated digital nomad visa (2020). Issued as a visa (short-stay C-visa for up to 90 days, or long-stay D-visa for longer stays up to 1 year) rather than a residence permit -- a genuinely different legal instrument from every other route in this file set, which is why it sits with the Ministry of Foreign Affairs rather than the Police and Border Guard Board. The source page explicitly states this visa does NOT lead to permanent residency, hence leads_to_pr: false and switchable_to: []. This is administratively distinct from Estonian e-Residency (a digital-ID/business-administration programme that grants no right to live or work in Estonia at all) -- worth flagging clearly since the two are frequently and understandably confused; e-Residency itself is out of scope for this dataset since it isn't an immigration/relocation route. Fees: EUR 90 (C-visa) / EUR 120 (D-visa); processing approximately 30 days."
+}

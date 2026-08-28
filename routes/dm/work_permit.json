@@ -1,0 +1,74 @@
+{
+  "id": "dm_work_permit",
+  "country": "DM",
+  "name": "Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "dmwp_offer",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "confirmed",
+          "hard": true,
+          "blocker_text": "Requires an employer's letter stating the type of employment and wages, an offer of employment for at least one year, and the employer accepting responsibility for the employee.",
+          "fix_path": "Secure a confirmed job offer of at least 1 year from a Dominica-based employer.",
+          "fix_time_months": null,
+          "source_id": "invest_dominica_work_permit"
+        },
+        {
+          "id": "dmwp_lmt",
+          "attribute": "qualifying_event",
+          "operator": "exists",
+          "value": "vacancy_advertised_locally",
+          "hard": true,
+          "blocker_text": "Requires the employer to submit newspaper advertisements of the vacant position (a labour-market test showing the role could not be filled locally).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "invest_dominica_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's offer letter (type, wages, 1-year minimum term, responsibility acceptance)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Three copies of newspaper vacancy advertisements", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate, police record (home country), valid passport, photographs, return-travel proof", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["dm_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "invest_dominica_work_permit",
+      "tier": 1,
+      "url": "https://investdominica.com/talent/work-residency-permit/",
+      "title": "Invest Dominica Authority (investdominica.com) -- Work & Residency Permit -- statutory Government of Dominica investment-promotion body",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Dominica's initial build. Source treated as tier-1: Invest Dominica Authority is the Government of Dominica's statutory investment-promotion agency, not a .gov.dm domain but an official government body, consistent with how this dataset has treated equivalent statutory-authority sources for other countries. A work permit of 6+ months' term automatically confers residency status per this source -- captured via leads_to_pr/pr_after_months feeding dm_permanent_residence's 5-year test, not as a separate field. family_can_join set false as a conservative default: the source does not describe a dependant-sponsorship right attached to this permit itself. Fee: EC$800/US$295 (non-CARICOM), EC$250/US$93 (CARICOM)."
+}

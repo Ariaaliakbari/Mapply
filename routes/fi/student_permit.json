@@ -1,0 +1,85 @@
+{
+  "id": "fi_student_permit",
+  "country": "FI",
+  "name": "Residence Permit for Studies",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fist_enrolment",
+          "attribute": "enrolled_degree_or_vocational_program",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires acceptance as a student at a Finnish higher-education or other educational institution, in studies leading to a degree or vocational qualification.",
+          "fix_path": "Obtain admission from a Finnish educational institution.",
+          "fix_time_months": null,
+          "source_id": "migri_studying"
+        },
+        {
+          "id": "fist_means",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have sufficient funds for the entire validity period of the permit, and the ability to pay tuition fees where applicable.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_studying"
+        },
+        {
+          "id": "fist_insurance",
+          "attribute": "has_private_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold private insurance covering medical and pharmaceutical expenses for the duration of study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migri_studying"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Private health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "for the entire duration of studies",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fi_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "migri_studying",
+      "tier": 1,
+      "url": "https://migri.fi/en/studying-in-finland",
+      "title": "Maahanmuuttovirasto -- Studying in Finland: residence permit for degree/vocational studies, funds and insurance requirements, up to 30 hours/week (~1,560 hours/year) work rights during studies, post-graduation job-seeking permit",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Finland). work_rights modeled 'restricted' reflecting the stated cap of an average 30 hours/week (~1,560 hours/year), uncapped for required internships/diploma work credited toward the degree. A separate post-graduation 'residence permit to look for work' exists per the source but its specific duration was not confirmed at tier-1 precision in this pass; not modeled as a distinct route. family_can_join modeled false: no student-specific family reunification provision was located in this pass -- family reunification generally requires the sponsor to hold a continuous (A) or permanent permit (see fi_family_reunification.json)."
+}

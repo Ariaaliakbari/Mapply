@@ -1,0 +1,76 @@
+{
+  "id": "tt_student_permit",
+  "country": "TT",
+  "name": "Student Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tts_acceptance",
+          "attribute": "has_institution_acceptance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires acceptance into a full-time academic programme at a designated learning institution in Trinidad and Tobago.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ttconnect_visa_student"
+        },
+        {
+          "id": "tts_passport",
+          "attribute": "passport_validity_months",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 12 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ttconnect_visa_student"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Acceptance letter from a designated learning institution", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid 12+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Digital passport-sized photo (JPEG)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Assessment form (renewals)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fee: TTD 100 (CARICOM nationals) or TTD 200 (non-CARICOM nationals), non-refundable", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the academic programme, renewable annually via assessment form",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tt_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "ttconnect_visa_student",
+      "tier": 1,
+      "url": "https://ttconnect.gov.tt/visa-student-permit/",
+      "title": "ttconnect, Government of Trinidad and Tobago -- Visa & Student Permit: student permit eligibility, CARICOM/non-CARICOM fee differential, renewal assessment form, 5-step online process",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Trinidad and Tobago's initial build. Notable CARICOM-preferential fee structure (TTD 100 vs. TTD 200) consistent with Trinidad and Tobago's role as a CARICOM Single Market and Economy (CSME) member state -- see tt_csme_skills_certificate.json for the broader CARICOM free-movement mechanism. No work rights confirmed, including for internships -- modelled conservatively as none absent evidence otherwise."
+}

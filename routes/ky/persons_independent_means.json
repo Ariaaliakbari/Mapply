@@ -1,0 +1,88 @@
+{
+  "id": "ky_persons_independent_means",
+  "country": "KY",
+  "name": "Residency Certificate for Persons of Independent Means",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "passive_income",
+      "name": "Continuous passive income",
+      "requirements": [
+        {
+          "id": "kypim_income",
+          "attribute": "annual_income",
+          "operator": ">=",
+          "value": { "amount": 120000, "currency": "KYD", "unit": "year" },
+          "hard": true,
+          "blocker_text": "Reported requirement of a continuous source of annual income of CI$120,000 (approx. US$146,341), for Grand Cayman; not independently confirmed against the governing regulation's text in this pass.",
+          "fix_path": "Demonstrate a continuous source of annual income of at least CI$120,000.",
+          "fix_time_months": null,
+          "source_id": "ogier_cayman_residency"
+        }
+      ]
+    },
+    {
+      "id": "assets_and_real_estate",
+      "name": "Asset deposit plus real estate investment",
+      "requirements": [
+        {
+          "id": "kypim_deposit",
+          "attribute": "asset_deposit",
+          "operator": ">=",
+          "value": { "amount": 400000, "currency": "KYD" },
+          "hard": true,
+          "blocker_text": "Reported requirement of a minimum deposit of at least CI$400,000 in assets, plus a total investment in Grand Cayman of at least CI$1,000,000 (approx. US$1,200,000), of which at least CI$500,000 (approx. US$610,000) must be in developed real estate; not independently confirmed against the governing regulation's text in this pass.",
+          "fix_path": "Hold the required asset deposit and make the required real estate investment.",
+          "fix_time_months": null,
+          "source_id": "ogier_cayman_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application fee: CI$500 (approx. US$610)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Issue fee: CI$20,000 (approx. US$24,390)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Per-dependant annual fee: CI$1,000 (approx. US$1,220)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of income, assets, or real estate investment as applicable", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "renewable period of 25 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ky_immigration_transition_act",
+      "tier": 1,
+      "url": "https://my.egov.ky/documents/d/worc/immigrationtransitionact_2022-revision-pdf?download=true",
+      "title": "Cayman Islands Immigration (Transition) Act (2022 Revision) -- Sections 41-46: confirms the Residency Certificate for Persons of Independent Means exists, with revocation grounds for fraud or failure to maintain eligibility, but does not itself state the income/asset thresholds in the text extracted",
+      "accessed_at": "2026-08-26"
+    },
+    {
+      "id": "ogier_cayman_residency",
+      "tier": 3,
+      "url": "https://www.ogier.com/news-and-insights/insights/securing-cayman-residency-via-independent-means-or-direct-investment/",
+      "title": "Ogier (offshore law firm) -- Securing Cayman Residency via Independent Means or Direct Investment: reported income/asset thresholds and fee schedule",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "STATUS: DRAFT, part of the Cayman Islands' initial build. The Immigration (Transition) Act confirms this certificate exists (Sections 41-46) but the specific income/asset thresholds are set by subsidiary regulation, not the Act itself, and that regulation's text was not reachable at tier-1 in this pass -- the official immigration.gov.ky domain that historically hosted this page returned a DNS failure, consistent with the gov.ky redesign that moved immigration services to the my.egov.ky/WORC portal. The figures here instead come from Ogier, a well-regarded offshore law firm, which is a stronger tier-3 source than a marketing blog but still not government-published -- hence draft status. Modelled as two OR-groups (passive income vs. asset-deposit-plus-real-estate) since the source frames them as alternative qualifying paths, not cumulative requirements. work_rights is 'none': this certificate is explicitly a non-working residency status for persons who do not need to work. Fee figures, while sourced at the same tier-3 level as the thresholds, are included as evidence_required rather than hard requirements and so do not themselves trigger the draft-sourcing distinction beyond what the thresholds already require."
+}

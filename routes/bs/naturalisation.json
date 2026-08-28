@@ -1,0 +1,80 @@
+{
+  "id": "bs_naturalisation",
+  "country": "BS",
+  "name": "Citizenship via Permanent Residence (Naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["bs_permanent_residence_general", "bs_permanent_residence_marriage", "bs_permanent_residence_investment"],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bsn_pr_duration",
+          "attribute": "months_as_permanent_resident",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Must have held legal permanent resident status for 10 years, including the 12 months immediately preceding the application.",
+          "fix_path": "Hold Certificate of Permanent Residence status continuously for 10 years.",
+          "fix_time_months": 120,
+          "source_id": "gov_bs_citizenship_pathways"
+        },
+        {
+          "id": "bsn_pre_pr_residence",
+          "attribute": "months_in_country_before_pr",
+          "operator": ">=",
+          "value": 72,
+          "hard": true,
+          "blocker_text": "A minimum of 6 years residing in The Bahamas prior to the 10-year permanent-residency period is also required.",
+          "fix_path": "Accumulate 6 years of residence in The Bahamas before qualifying for Permanent Residence.",
+          "fix_time_months": 72,
+          "source_id": "gov_bs_citizenship_pathways"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certificate of Permanent Residence held for 10+ years", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of 6 years' residence prior to PR", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (within 30 days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police certificate (within 6 months, covering 5 years)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two character references (from a Bahamian knowing applicant 5+ years)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bs_citizenship_pathways",
+      "tier": 1,
+      "url": "https://www.immigration.gov.bs/applying-to-stay/applying-for-citizenship/",
+      "title": "Bahamas Immigration Department -- Pathways to Bahamian Citizenship: Permanent Residence Route (Form II or III), requiring 10 years as a legal permanent resident (including the 12 months immediately before application) plus a minimum 6 years' residence in The Bahamas prior to that 10-year PR period",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Bahamas' initial build. The source's phrasing is genuinely ambiguous about whether the '6 years prior residence' is additional to, or overlapping with, the 10-year PR period -- modelled here as an ADDITIONAL antecedent period (i.e. roughly 16 years of Bahamas ties in total: 6 years building toward PR eligibility, then 10 years holding PR) since that is the more natural reading of 'minimum 6 years residing in The Bahamas prior to the 10-year residency period' -- flagged explicitly as an interpretive judgment call rather than a directly quoted total figure. No separate language, good-character, or civics-knowledge requirement was found on this source (unlike Trinidad and Tobago's naturalisation route) -- may be a gap in the source rather than confirmation such conditions don't exist."
+}

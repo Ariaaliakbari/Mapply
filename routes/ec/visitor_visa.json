@@ -1,0 +1,77 @@
+{
+  "id": "ec_visitor_visa",
+  "country": "EC",
+  "name": "Tourist Visitor Visa (90 Days) / Visa-Free Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Citizens of countries not on Ecuador's 'Special Regime' list (which includes China, Cuba, Egypt, India, Iran, Iraq, Nigeria, Pakistan, Venezuela, Vietnam, and others) may enter visa-free as tourists; Special Regime nationals must obtain this visa before travel.",
+    "evidence_hint": "Passport; proof of lawful means of subsistence; return/onward travel tickets."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecvv_funds",
+          "attribute": "has_lawful_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must prove lawful means of subsistence per Ministerial Agreement No. 70 (28 June 2024).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_tourist_visa"
+        },
+        {
+          "id": "ecvv_return",
+          "attribute": "has_return_travel_evidence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Outbound and return flight tickets or a travel itinerary are required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_tourist_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward travel tickets", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within a year of first entry, renewable once for up to 90 additional days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gob_ec_tourist_visa",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/concesion-visa-visitante-temporal-turista-90-dias",
+      "title": "gob.ec (MREMH -- Ministry of Foreign Affairs and Human Mobility official portal) -- 90-Day Tourist Visa: Special Regime nationality list, lawful-means-of-subsistence and return-travel requirements, 90+90 day stay/extension rule",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). Ecuador's baseline tourism policy is unusually open -- most nationalities enter visa-free; this visa applies specifically to a defined 'Special Regime' list of countries. No route to any further status."
+}

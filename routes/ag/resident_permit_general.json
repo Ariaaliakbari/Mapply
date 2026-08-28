@@ -1,0 +1,138 @@
+{
+  "id": "ag_resident_permit_general",
+  "country": "AG",
+  "name": "Resident Permit -- General, Student, Independent Means and Entrepreneur/Investor Grounds",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general_residence",
+      "name": "General residence ground",
+      "requirements": [
+        {
+          "id": "agr_general_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Requires lawful, continuous residence in Antigua and Barbuda for at least 4 years, with no single break exceeding 6 months.",
+          "fix_path": "Accumulate 4 years' lawful continuous residence.",
+          "fix_time_months": 48,
+          "source_id": "gov_ag_residency_faq"
+        },
+        {
+          "id": "agr_conduct",
+          "attribute": "no_serious_criminal_convictions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must not have been convicted of a serious offence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_residency_faq"
+        }
+      ]
+    },
+    {
+      "id": "student_progression",
+      "name": "Tertiary student progression ground",
+      "requirements": [
+        {
+          "id": "agr_student_1yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Requires at least 1 year of lawful residence while enrolled at a tertiary institution.",
+          "fix_path": "Complete 1 year of tertiary study on a Student Permit.",
+          "fix_time_months": 12,
+          "source_id": "gov_ag_residency_faq"
+        },
+        {
+          "id": "agr_student_status",
+          "attribute": "held_valid_student_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have held a valid Student Permit while enrolled at a tertiary institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_ag_residency_faq"
+        }
+      ]
+    },
+    {
+      "id": "independent_means",
+      "name": "Independent means ground",
+      "requirements": [
+        {
+          "id": "agr_im_2yr",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires at least 2 years of lawful residence while classified as a person of independent means.",
+          "fix_path": "Accumulate 2 years' lawful residence as a person of independent means.",
+          "fix_time_months": 24,
+          "source_id": "gov_ag_residency_faq"
+        }
+      ]
+    },
+    {
+      "id": "entrepreneur_investor",
+      "name": "Entrepreneur/investor ground",
+      "requirements": [
+        {
+          "id": "agr_ei_2yr_permits",
+          "attribute": "months_on_work_permit",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires at least 2 years held on Work Permits as an entrepreneur/investor before applying for a Resident Permit.",
+          "fix_path": "Accumulate 2 years of Work Permit status as an entrepreneur/investor.",
+          "fix_time_months": 24,
+          "source_id": "gov_ag_residency_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Resident Permit application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of the qualifying residence period (dated per ground)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance / character certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health certificate and proof of insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment verification (where applicable)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years, unless a shorter period is specifically applied for; renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no single break in residence exceeding 6 months, per the general ground",
+    "switchable_to": ["ag_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_ag_residency_faq",
+      "tier": 1,
+      "url": "https://immigration.gov.ag/frequently-asked-questions/residency-permit-faqs/",
+      "title": "Immigration Department, Antigua and Barbuda -- Residency Permit FAQs: four residence-based grounds (general 4yr, tertiary student 1yr, independent means 2yr, entrepreneur/investor 2yr on work permits), 3-year permit duration, citizenship eligibility after 7 years of legal residence, work/study rights, dependants cannot work",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Antigua and Barbuda's initial build. This is the Resident Permit issued under the Immigration and Passport Act 2014 -- Antigua and Barbuda's PR-equivalent 'settled' status, distinct from the marriage-to-citizen ground (see ag_resident_permit_marriage.json, modelled separately since it is a 'family' category route with only a 1-year prerequisite, not a 'settled' one). Four grounds are folded into one file as OR-groups because all four lead to the identical outcome: the same Resident Permit, on the same form, at the Immigration Department. citizenship_after_months is set at 84 (7 years) per this FAQ's own stated figure -- note this does not cleanly match the separately-sourced Citizenship Act naturalisation formula in ag_naturalisation.json (12 months immediately preceding plus 5 of the prior 7 years, i.e. a minimum of 6 years total); the discrepancy (6 vs. 7 years) is flagged here rather than silently resolved, and may reflect this FAQ rounding up, describing a different administrative practice, or the Resident Permit itself needing to be held (not just accrued residence) for a period before a citizenship application is accepted. A more general-services/residency page on the same site gives a similar but not identical figure (4 years general / 1 year if married) -- this FAQ page was treated as the more detailed and current source and used as the basis for the OR-group structure. The general-services page's separate 1-year-if-married ground is intentionally NOT folded in here; see ag_resident_permit_marriage.json."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "al_visitor_visa",
+  "country": "AL",
+  "name": "Visa-Free Entry / Type C Visa (Tourism, Short Stay)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "per_entry",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_exempt",
+      "name": "Visa-exempt entry",
+      "requirements": [
+        {
+          "id": "alv_exempt_basis",
+          "attribute": "entry_document_status",
+          "operator": "in",
+          "value": ["schengen_multi_entry_visa_used", "eu_us_uk_residence_permit_or_visa", "eu_travel_document"],
+          "hard": false,
+          "blocker_text": "Visa-free entry is granted to holders of a valid multiple-entry Schengen visa previously used in a Schengen state, holders of valid EU/US/UK residence permits or visas, and holders of EU travel documents (refugee travel documents, stateless-person documents). A time-limited tourism-only exemption also applies to Saudi and Qatari nationals (15 April - 31 December 2026).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_visa_regime"
+        }
+      ]
+    },
+    {
+      "id": "type_c_visa",
+      "name": "Type C Visa (short stay, non-exempt nationalities)",
+      "requirements": [
+        {
+          "id": "alv_c_duration",
+          "attribute": "requested_stay_days",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "Type C visa permits stays of up to 90 days within any 180-day period, single/double/multiple entry, with visa validity of up to 5 years.",
+          "fix_path": "Apply for a Type C visa via e-visa.al or a Dominican -- Albanian consulate.",
+          "fix_time_months": null,
+          "source_id": "mfa_visa_regime"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and purpose of visit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Up to 90 days within any 180-day period (Type C visa valid up to 5 years for repeat entries)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["al_work_permit", "al_student_permit", "al_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "mfa_visa_regime",
+      "tier": 1,
+      "url": "https://punetejashtme.gov.al/en/regjimi-i-vizave-per-te-huajt/",
+      "title": "Ministry for Europe and Foreign Affairs of Albania -- Visa regime for foreign citizens entering Albania: Type C (90/180 days, up to 5-year validity) and Type D visas, visa-free entry categories",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Albania). The source page's visa-free list is not exhaustive on its face -- Albania has separate long-standing unilateral visa waivers for many non-EU nationalities (a well-known tourism policy) not itemized on this specific MFA page, which focuses on the EU/US/UK-residence-based and Schengen-transit-based exemptions plus the time-limited Saudi/Qatari waiver. Modeled the listed exemption bases as hard:false since the true scope of visa-exempt nationalities is broader and not fully captured at tier-1 precision in this pass. Switchable_to reflects that Type D visa holders (see al_work_permit, al_student_permit) can obtain a residence permit after entering Albania, per the same source."
+}

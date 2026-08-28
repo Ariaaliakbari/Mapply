@@ -1,0 +1,103 @@
+{
+  "id": "ec_naturalisation",
+  "country": "EC",
+  "name": "Naturalisation (Carta de Naturalización)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ecn_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "At least 3 years of regular and continuous residence in Ecuador.",
+          "fix_path": "Accumulate 3 years of regular, continuous legal residence.",
+          "fix_time_months": 36,
+          "source_id": "gob_ec_naturalisation"
+        },
+        {
+          "id": "ecn_language",
+          "attribute": "speaks_and_writes_spanish",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must speak and write Spanish (exemptions for university graduates educated in Spanish in Ecuador and certain applicants with disabilities).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_naturalisation"
+        },
+        {
+          "id": "ecn_civics",
+          "attribute": "passed_history_geography_culture_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A knowledge examination on Ecuadorian history, geography, and culture, plus an interview on motivation for naturalisation, both conducted in person (no proxies) before the MREMH.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gob_ec_naturalisation"
+        }
+      ]
+    },
+    {
+      "id": "refugee_stateless",
+      "name": "Refugees and stateless persons",
+      "requirements": [
+        {
+          "id": "ecn_refugee_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Recognized refugees and stateless persons need only 2 years of residence, instead of the standard 3.",
+          "fix_path": null,
+          "fix_time_months": 24,
+          "source_id": "gob_ec_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Apostilled/legalized birth certificate from country of origin", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of continuous legal residence with a permanent visa", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certificate of no criminal record from country of origin", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application and processing fees (USD 50 + USD 350)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gob_ec_naturalisation",
+      "tier": 1,
+      "url": "https://www.gob.ec/mremh/tramites/obtencion-nacionalidad-ecuatoriana-carta-naturalizacion",
+      "title": "gob.ec (MREMH official portal) -- Naturalisation by letter (carta de naturalización): 3-year standard / 2-year refugee-stateless residence requirement, Spanish language requirement, history/geography/culture exam and interview, USD 50 + USD 350 fees, indefinite validity",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ecuador). dual_citizenship_allowed modeled TRUE -- Ecuador imposes no renunciation requirement per the source reviewed. No marriage-based reduced-residence track exists for naturalisation in the source reviewed (unlike most European countries in this dataset) -- marriage's advantage in Ecuador is entirely at the residence stage (see ec_family_union.json's direct-to-permanent-residence grant), not a citizenship-clock reduction. Requires legal residence 'with a permanent visa' per the evidence list, meaning the 3-year (or 2-year) clock is understood here to run primarily on PERMANENT residence rather than temporary residence, though the requirements text itself says only 'regular y continua' residence without specifying visa type at the eligibility-gate level -- flagged as a minor internal ambiguity in the source, not independently resolved in this pass."
+}

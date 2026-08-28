@@ -1,0 +1,113 @@
+{
+  "id": "lu_investor_residence",
+  "country": "LU",
+  "name": "Investor Residence Permit (Third-Country National)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "new_business",
+      "name": "New business creation",
+      "requirements": [
+        {
+          "id": "luinv_newbiz_amount",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Invest at least EUR 500,000 in a new business still to be created in Luxembourg, creating at least 5 jobs within 3 years, coordinated through ADEM.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_investor"
+        }
+      ]
+    },
+    {
+      "id": "existing_company",
+      "name": "Investment in an existing company",
+      "requirements": [
+        {
+          "id": "luinv_existing_amount",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Invest at least EUR 500,000 in an existing company registered in Luxembourg, maintaining the investment and employment levels for at least 5 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_investor"
+        }
+      ]
+    },
+    {
+      "id": "management_structure",
+      "name": "Management/investment structure",
+      "requirements": [
+        {
+          "id": "luinv_structure_amount",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 3000000,
+          "hard": true,
+          "blocker_text": "Invest at least EUR 3,000,000 in a management and investment structure (existing or to be created), maintaining appropriate substance in Luxembourg.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_investor"
+        }
+      ]
+    },
+    {
+      "id": "financial_deposit",
+      "name": "Financial deposit",
+      "requirements": [
+        {
+          "id": "luinv_deposit_amount",
+          "attribute": "deposit_amount_eur",
+          "operator": ">=",
+          "value": 20000000,
+          "hard": true,
+          "blocker_text": "Deposit at least EUR 20,000,000 with a financial institution established in Luxembourg, retained for a minimum of 5 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "guichet_investor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment project opinion from the Ministry of Finance", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of funds and investment/deposit records", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years, renewable; long-term resident status available after 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lu_permanent_residence", "lu_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "guichet_investor",
+      "tier": 1,
+      "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/investisseur/investisseur-pays-tiers.html",
+      "title": "Guichet.lu -- Conditions of Residence for Investors from Third Countries: EUR 500,000 new-business/existing-company routes, EUR 3,000,000 management-structure route, EUR 20,000,000 financial-deposit route, all requiring Ministry of Finance opinion",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Luxembourg). Among the highest and most precisely tier-1-documented investor thresholds in this dataset -- all 4 routes explicitly figured, sourced directly from the government portal, no conflicting secondary figures. No citizenship-by-investment fast-track exists; investors follow the same lu_naturalisation.json/lu_permanent_residence.json timelines as any other resident."
+}

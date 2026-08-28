@@ -1,0 +1,92 @@
+{
+  "id": "rs_work_permit",
+  "country": "RS",
+  "name": "Single Temporary Residence and Work Permit (Employment)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rswp_contract",
+          "attribute": "has_job_offer_or_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A draft employment contract, or another contract by which the foreign national exercises employment rights, is required.",
+          "fix_path": "Secure an employment contract with a Serbian employer.",
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        },
+        {
+          "id": "rswp_qualifications",
+          "attribute": "has_relevant_qualifications",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of qualifications relevant to the contracted role is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        },
+        {
+          "id": "rswp_employer_registration",
+          "attribute": "employer_is_registered",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An excerpt confirming the employer's registration in Serbia is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mup_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Draft employment contract or equivalent", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of qualifications", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's business registration excerpt", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 years (issued for the contract period, up to a 36-month maximum), renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "continuous residence for permanent residence allows multiple absences up to 10 months total, or one absence up to 6 months, within the 3 years",
+    "switchable_to": ["rs_permanent_residence", "rs_self_employment_residence"]
+  },
+  "sources": [
+    {
+      "id": "mup_temp_residence",
+      "tier": 1,
+      "url": "https://www.mup.gov.rs/wps/portal/en/information/temporary+residence/temporary+residence",
+      "title": "Serbian Ministry of Interior (MUP) -- employment-based temporary residence grounds: employment contract, qualifications proof, employer registration excerpt; single permit (electronic-only) combines residence and work authorization",
+      "accessed_at": "2026-08-28"
+    },
+    {
+      "id": "welcome_residence_work",
+      "tier": 1,
+      "url": "https://welcometoserbia.gov.rs/residence-and-work-permit",
+      "title": "Welcome to Serbia (official government portal) -- unified Single Temporary Residence and Work Permit issued for up to 36 months when employment is the basis of stay; Visa D route for stays under 180 days; short-term (up to 90 days) work exemptions for specific professional categories",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Serbia). work_rights modeled 'restricted' since the permit is tied to the specific employer/contract that founded the application; a change of employer generally requires a new application. No labour-market test (equivalent to a vacancy-advertising or local-candidate-priority requirement) was found described on either tier-1 source for the general single-permit route -- unlike, for example, Morocco's ANAPEC certificate requirement built earlier in this dataset. pr_after_months and citizenship_after_months reuse rs_permanent_residence.json's and rs_naturalisation.json's general 3-year figures since no work-specific fast-track was found."
+}

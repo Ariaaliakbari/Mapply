@@ -1,0 +1,77 @@
+{
+  "id": "kn_citizenship_by_descent",
+  "country": "KN",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born outside the Federation whose parent or grandparent was born in Saint Kitts and Nevis is entitled to apply for citizenship by descent.",
+    "evidence_hint": "Birth certificate; parent's or grandparent's birth certificate/proof of birth in the Federation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "knd_ancestor_born_in_federation",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "parent_or_grandparent_born_in_federation",
+          "hard": true,
+          "blocker_text": "A parent OR grandparent must have been born in Saint Kitts and Nevis.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_types_of_citizenship"
+        },
+        {
+          "id": "knd_certificate_of_citizenship",
+          "attribute": "obtained_certificate_of_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants must first obtain a Certificate of Citizenship before becoming eligible for a passport; this process can take up to 6 months.",
+          "fix_path": "Apply for and obtain the Certificate of Citizenship.",
+          "fix_time_months": 6,
+          "source_id": "mofa_types_of_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's or grandparent's birth certificate/proof of birth in the Federation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certificate of Citizenship application", "difficulty": "moderate", "typical_time_days": 180 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mofa_types_of_citizenship",
+      "tier": 1,
+      "url": "https://mofa.gov.kn/types-of-citizenship/",
+      "title": "Ministry of Foreign Affairs, Government of Saint Kitts and Nevis -- Types of Citizenship: five pathways (descent, marriage, registration, residence, investment); descent requires a parent OR grandparent born in the Federation; Certificate of Citizenship required before passport eligibility, up to 6 months",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. Unlike Trinidad and Tobago's descent rule (capped at one generation born abroad), this source explicitly extends to a GRANDPARENT born in the Federation, meaning descent-based citizenship reaches at least two generations born outside the territory -- flagged as a materially different (broader) descent rule than T&T's. No further generational limit was stated or implied on this source; if one exists it was not found."
+}

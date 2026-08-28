@@ -1,0 +1,66 @@
+{
+  "id": "ag_citizenship_by_marriage",
+  "country": "AG",
+  "name": "Citizenship by Registration -- Marriage",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse of an Antiguan and Barbudan citizen who has been married to and living with the citizen for at least 3 years may register for citizenship.",
+    "evidence_hint": "Marriage certificate; proof of the citizen spouse's nationality; proof of continuous cohabitation for at least 3 years."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "agcm_married_3yr",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_citizen_married_and_living_together_3yr",
+          "hard": true,
+          "blocker_text": "Requires being married to, and living with, an Antiguan and Barbudan citizen for a minimum of 3 years.",
+          "fix_path": "Accumulate 3 years of marriage and cohabitation with the citizen spouse.",
+          "fix_time_months": 36,
+          "source_id": "wiki_ag_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registration application form (form not itemised in the sources reviewed)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 3 years' continuous cohabitation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wiki_ag_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Antiguan_and_Barbudan_nationality_law",
+      "title": "Wikipedia -- Antiguan and Barbudan nationality law: registration for citizenship by spouses of nationals married and living together for a minimum of 3 years",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Antigua and Barbuda's initial build. STATUS: DRAFT for the same reason as ag_citizenship_by_descent.json -- this hard requirement is sourced only to a tier-4 secondary summary of the Citizenship Act, with no gov.ag registration-for-citizenship page or primary legislative text retrieved in this pass (the Immigration Department's own FAQs cover the Resident Permit's 1-year marriage ground -- see ag_resident_permit_marriage.json -- but not this separate, faster registration-for-citizenship track). Feeds from ag_resident_permit_marriage.json as a natural next step for a spouse who has already been married to and living with the citizen for the full 3 years, but is modelled as its own route since registration for citizenship is a distinct application from the Resident Permit itself."
+}

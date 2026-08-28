@@ -1,0 +1,96 @@
+{
+  "id": "kn_citizenship_by_marriage",
+  "country": "KN",
+  "name": "Citizenship by Marriage",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Marriage to a citizen of Saint Kitts and Nevis, followed by a minimum marriage duration, allows the foreign spouse to apply for registration as a citizen.",
+    "evidence_hint": "Marriage certificate; proof of ongoing marriage/cohabitation for the qualifying period."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "knm_spouse_citizen",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_kn_citizen",
+          "hard": true,
+          "blocker_text": "Requires marriage to a citizen of Saint Kitts and Nevis.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "osher_citizenship_marriage"
+        },
+        {
+          "id": "knm_marriage_duration",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "General minimum of 3 years of marriage under the Citizenship Act, Cap. 1.05, though this may be shortened for couples cohabiting in-country; not automatic -- requires formal registration application, financial self-sufficiency, and good character.",
+          "fix_path": "Remain validly married (and, ideally, cohabiting in the Federation) for the qualifying period.",
+          "fix_time_months": 36,
+          "source_id": "osher_citizenship_marriage"
+        },
+        {
+          "id": "knm_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": false,
+          "blocker_text": "Must be of good character and financially self-sufficient.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "osher_citizenship_marriage"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of ongoing marriage/cohabitation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references/police clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Registration fee (EC$1,050-$2,050 plus legal representation EC$2,000-$5,000)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "osher_citizenship_marriage",
+      "tier": 3,
+      "url": "https://osheradvisors.com/blog/st-kitts-and-nevis-citizenship-by-marriage/",
+      "title": "Osher Advisors -- St Kitts and Nevis Citizenship by Marriage: Citizenship Act Cap. 1.05, general 3-year marriage minimum (shortenable for in-country cohabitation), not automatic, requires formal registration, financial self-sufficiency, good character, 6-12 month processing, EC$1,050-$2,050 fees plus EC$2,000-$5,000 legal representation",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "mofa_types_of_citizenship",
+      "tier": 1,
+      "url": "https://mofa.gov.kn/types-of-citizenship/",
+      "title": "Ministry of Foreign Affairs, Government of Saint Kitts and Nevis -- Types of Citizenship: confirms marriage to a citizen as one of five citizenship pathways, but does not state a specific duration on this page",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Saint Kitts and Nevis' initial build. STATUS: DRAFT -- the official mofa.gov.kn page confirms marriage as a pathway but gives no duration figure; the specific 3-year minimum and process detail come only from a tier-3 law firm blog, not corroborated by the primary Citizenship Act text itself (unlike Trinidad and Tobago's build, where the Act text was directly fetched and quoted). Re-verify against the Citizenship Act, Cap. 1.05 directly if a more authoritative figure is needed."
+}

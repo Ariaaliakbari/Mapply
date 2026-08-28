@@ -1,0 +1,92 @@
+{
+  "id": "tc_islander_status_marriage",
+  "country": "TC",
+  "name": "TCI Islander Status -- Spouse of an Islander",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "The spouse of a TCI Islander (who did not themselves acquire status through marriage) may apply for TCI Islander status after 10 years of cohabitation and 2 years of TCI residence.",
+    "evidence_hint": "Marriage certificate; proof of 10 years' cohabitation; proof of 2 years' TCI residence; spouse's proof of TCI status acquired other than by marriage."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tcism_spouse_status",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_islander_not_via_marriage",
+          "hard": true,
+          "blocker_text": "The Islander spouse must not have acquired their own TCI status through marriage (i.e. the spouse must hold status by birth, descent, adoption, or grant).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_tc_tci_status"
+        },
+        {
+          "id": "tcism_cohabitation",
+          "attribute": "months_cohabiting_with_spouse",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Requires 10 years of cohabitation with the Islander spouse immediately preceding the application.",
+          "fix_path": "Accumulate 10 years of cohabitation with the Islander spouse.",
+          "fix_time_months": 120,
+          "source_id": "gov_tc_tci_status"
+        },
+        {
+          "id": "tcism_residence",
+          "attribute": "months_in_country",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Requires 2 years of residence in TCI immediately preceding the application.",
+          "fix_path": "Accumulate 2 years of TCI residence.",
+          "fix_time_months": 24,
+          "source_id": "gov_tc_tci_status"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 10 years' cohabitation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 2 years' TCI residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's proof of TCI status (non-marriage-derived)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Administrative fee: $150", "difficulty": "routine", "typical_time_days": null },
+    { "document": "TCI Status (Marriage) fee: $1,500", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Newspaper advertising costs (separate)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["tc_naturalisation_botc"]
+  },
+  "sources": [
+    {
+      "id": "gov_tc_tci_status",
+      "tier": 1,
+      "url": "https://gov.tc/immigration/tci-status",
+      "title": "Government of the Turks and Caicos Islands -- TCI Islander Status: spouse-of-Islander grant route (10-year cohabitation, 2-year residence, applicable year-round unlike the annual non-marriage application window), fee schedule, Turks and Caicos Islander Status Commission review",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW ROUTE, part of the Turks and Caicos Islands' initial build. Notable rule confirmed on the source page: marriage-based applications may be submitted at any time once the qualifying period is met, unlike all other (non-marriage) TCI Status grant applications, which are restricted to a June 1 - September 30 annual window each year -- flagged prominently since it materially affects timing for anyone using this route versus tc_islander_status_grant.json. Also notable: the spouse's OWN status must not itself have been acquired through marriage -- i.e. this route cannot be chained (a spouse who became an Islander via marriage cannot pass status on to a subsequent spouse the same way). Applications are reviewed by the Turks and Caicos Islander Status Commission against public-interest and good-character criteria in addition to the tenure requirements."
+}

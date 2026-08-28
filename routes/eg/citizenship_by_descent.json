@@ -1,0 +1,106 @@
+{
+  "id": "eg_citizenship_by_descent",
+  "country": "EG",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-27",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born to an Egyptian father acquires Egyptian nationality automatically, regardless of birthplace. Since a 2004 legal reform, a child of an Egyptian mother is reported to acquire nationality on the same basis as a child of an Egyptian father.",
+    "evidence_hint": "Birth certificate; parent's proof of Egyptian nationality."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_line",
+      "name": "Child of an Egyptian father",
+      "requirements": [
+        {
+          "id": "egd_father",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_eg_citizen_father",
+          "hard": true,
+          "blocker_text": "Anyone born of an Egyptian father acquires Egyptian nationality automatically, regardless of birthplace (Article 2).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_26_1975"
+        }
+      ]
+    },
+    {
+      "id": "maternal_line_post_2004",
+      "name": "Child of an Egyptian mother (post-2004 reform)",
+      "requirements": [
+        {
+          "id": "egd_mother_reformed",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_eg_citizen_mother",
+          "hard": true,
+          "blocker_text": "Law 154 of 2004 is reported to have equalized maternal and paternal jus sanguinis, so that a child of an Egyptian mother acquires nationality on the same basis as a child of an Egyptian father, for children born after the amendment took effect.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_2004_reform"
+        }
+      ]
+    },
+    {
+      "id": "maternal_line_pre_2004_exception",
+      "name": "Child of an Egyptian mother, unknown or stateless father (pre-2004 rule)",
+      "requirements": [
+        {
+          "id": "egd_mother_unknown_father",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_eg_citizen_mother_father_unknown_or_stateless",
+          "hard": true,
+          "blocker_text": "Under the original 1975 text, a child born in Egypt to an Egyptian mother and a father whose nationality is unknown or who is stateless acquires nationality; if born abroad, the child may claim nationality within 1 year of reaching adulthood, with Ministry of Interior approval.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law_26_1975"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Egyptian nationality", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "law_26_1975",
+      "tier": 1,
+      "url": "https://clr.africanchildforum.org/Legislation%20Per%20Country/Egypt/egypt_nationality_1975_en.pdf",
+      "title": "Egypt -- Law No. 26 of 1975 Concerning Egyptian Nationality (official English translation, original text, pre-2004 amendment), Articles 2-3: paternal-line automatic citizenship; maternal-line citizenship limited to cases of unknown/stateless father",
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "id": "globalcit_2004_reform",
+      "tier": 3,
+      "url": "https://globalcit.eu/new-policy-on-egyptian-citizenship-for-children-of-palestinian-fathers/",
+      "title": "GLOBALCIT (Global Citizenship Observatory, European University Institute) -- New policy on Egyptian citizenship for children of Palestinian fathers: explains Law 154/2004 equalized maternal and paternal jus sanguinis for children born after the amendment",
+      "accessed_at": "2026-08-27"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Egypt). STATUS: DRAFT -- the only source found and fetched HOSTING the verbatim amended text of Law 154/2004 (refworld.org) returned metadata only, not substantive article text, in this pass. The claim that maternal and paternal lines are now equal rests on a tier-3 academic secondary source (GLOBALCIT), not a directly verified amended primary text -- this is exactly the kind of stale-primary-text risk flagged in this dataset's UAE descent file, and is handled the same way here: the OLD tier-1 text is presented alongside the NEWER but only-secondary-sourced current rule, rather than either being silently dropped or presented as equally solid. IMPORTANT DOCUMENTED PRACTICE GAP, disclosed rather than modeled as a route: the same GLOBALCIT source documents that Egypt, for years after the 2004 reform technically extended citizenship to children of Egyptian mothers regardless of the father's nationality, SYSTEMATICALLY DENIED citizenship specifically to children of Egyptian mothers and Palestinian fathers, citing the 1965 Casablanca Protocol's 'rafd al-tawtin' (refusal of settlement) policy meant to preserve Palestinian refugee status/identity. This began changing after Egypt's 2011 revolution, with such cases processed as discretionary ministerial grants rather than acknowledged automatic birthright citizenship -- a real gap between the law's text and its administrative application for one specific nationality group, not modeled as a separate route but disclosed here and in chat."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "ee_residence_permit_employment",
+  "country": "EE",
+  "name": "Residence Permit for Employment",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-26",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard employment route",
+      "requirements": [
+        {
+          "id": "eee_salary",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "note": "At least the average gross salary in Estonia for most categories, with published exceptions ranging from EUR 1,585/month (start-up employees, effective 6 March 2025) to EUR 2,972/month (top specialists); exact figures vary by employment category and change over time." },
+          "hard": true,
+          "blocker_text": "Requires a salary at least equal to the average gross salary in Estonia, with lower or higher thresholds published for specific categories (e.g. start-up employees, top specialists).",
+          "fix_path": "Secure an employment offer meeting the applicable salary threshold for your category.",
+          "fix_time_months": null,
+          "source_id": "politsei_ee_employment"
+        },
+        {
+          "id": "eee_labour_market_test",
+          "attribute": "job_offer_status",
+          "operator": "==",
+          "value": "employer_has_recruitment_permit",
+          "hard": true,
+          "blocker_text": "Requires the Estonia-registered employer to hold an approval (recruitment permit) from the Estonian Unemployment Insurance Fund before hiring a foreign national.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "politsei_ee_employment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract and employer's Unemployment Insurance Fund approval", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years initially, extendable up to 10 years at a time",
+    "renewable": true,
+    "work_rights": "restricted",
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "Extending a permit issued since July 2018 beyond 5 years requires demonstrating Estonian language proficiency at level A2.",
+    "switchable_to": ["ee_long_term_resident", "ee_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "politsei_ee_employment",
+      "tier": 1,
+      "url": "https://www.politsei.ee/en/instructions/residence-permit-for-employment",
+      "title": "Police and Border Guard Board of Estonia (politsei.ee) -- Residence permit for employment",
+      "accessed_at": "2026-08-26"
+    }
+  ],
+  "notes": "NEW ROUTE, part of Estonia's initial build. leads_to_pr and leads_to_citizenship are set false for this route ITSELF: the source page doesn't state that holding an employment permit automatically leads anywhere, but 5 years of legal residence under it is exactly what feeds ee_long_term_resident's own residence requirement -- modelled via switchable_to rather than asserting an automatic outcome on this file. The A2 language requirement at the 5-year extension mark is a genuinely distinctive detail (worth contrasting with ee_long_term_resident's separate B1 requirement) and is captured as a physical_presence_requirement-adjacent condition rather than invented as its own schema field, since the schema has no dedicated 'language requirement' slot. Salary thresholds are given as a note rather than a single resolved_amount formula value, since the source cites a range across categories rather than one figure -- flagged as thinner sourcing than a single clean number, worth a second pass with country-specific salary-category detail if this route gets revisited."
+}

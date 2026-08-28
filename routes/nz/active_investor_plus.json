@@ -1,0 +1,94 @@
+{
+  "id": "nz_active_investor_plus",
+  "country": "NZ",
+  "name": "Active Investor Plus Visa",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-28",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A residence-by-investment route requiring NZD 15 million in acceptable New Zealand investments over a 4-year period (or NZD 5 million if invested entirely in the Direct Investment category), split across direct investments, managed funds, and/or listed equities/philanthropy sub-categories, each with its own minimum.",
+    "evidence_hint": "Proof of investment funds/source; investment placement evidence across qualifying categories; minimum days present in NZ during the 4-year investment period."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (mixed investment)",
+      "requirements": [
+        {
+          "id": "nzaip_amount",
+          "attribute": "investment_amount_nzd",
+          "operator": ">=",
+          "value": 15000000,
+          "hard": true,
+          "blocker_text": "NZD 15 million (or the weighted equivalent) in acceptable New Zealand investments, drawn across Direct Investment (min. NZD 100,000), Managed Funds (min. NZD 500,000), and Listed Equities/Philanthropy (min. NZD 1 million) sub-categories.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_active_investor_plus"
+        },
+        {
+          "id": "nzaip_days",
+          "attribute": "days_in_nz_over_4yr",
+          "operator": ">=",
+          "value": 117,
+          "hard": true,
+          "blocker_text": "At least 117 days physically present in New Zealand as a resident-visa holder during the 4-year investment period.",
+          "fix_path": null,
+          "fix_time_months": 48,
+          "source_id": "inz_active_investor_plus"
+        }
+      ]
+    },
+    {
+      "id": "direct_only",
+      "name": "Direct Investment only",
+      "requirements": [
+        {
+          "id": "nzaip_direct_amount",
+          "attribute": "investment_amount_nzd",
+          "operator": ">=",
+          "value": 5000000,
+          "hard": true,
+          "blocker_text": "NZD 5 million qualifies if invested exclusively in the Direct Investment category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "inz_active_investor_plus"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of investment funds and legitimate source", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Investment placement evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Travel records proving days present in NZ", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "resident visa held through the 4-year investment period, then eligible for Permanent Resident Visa",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "at least 117 days over the 4-year investment period",
+    "switchable_to": ["nz_permanent_resident_visa", "nz_citizenship_by_grant"]
+  },
+  "sources": [
+    {
+      "id": "inz_active_investor_plus",
+      "tier": 1,
+      "url": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/active-investor-plus-visa",
+      "title": "Immigration New Zealand -- Active Investor Plus Visa: NZD 15 million standard (NZD 5 million Direct-Investment-only) threshold, sub-category minimums, 117-day presence requirement over 4 years, no English language requirement, path to Permanent Resident Visa",
+      "accessed_at": "2026-08-28"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (New Zealand). Notably no English-language requirement is imposed at this stage, per the tier-1 source -- unlike this dataset's usual naturalisation English requirements which apply later at nz_citizenship_by_grant.json. citizenship_after_months modeled as the standard nz_citizenship_by_grant.json 5-year/1,350-day clock starting from resident-visa grant, running concurrently with (not stacked after) the 4-year investment period."
+}
