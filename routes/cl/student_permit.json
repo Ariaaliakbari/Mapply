@@ -1,0 +1,78 @@
+{
+  "id": "cl_student_permit",
+  "country": "CL",
+  "name": "Residencia Temporal -- Students Subcategory",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national admitted to a state-recognized Chilean educational institution applies for the Students subcategory of Residencia Temporal through SERMIG.",
+    "evidence_hint": "Enrollment certificate from a state-recognized institution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clsp_enrollment",
+          "attribute": "enrolled_at_state_recognized_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrollment at a state-recognized Chilean educational institution.",
+          "fix_path": "Secure admission to a state-recognized Chilean institution.",
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_residencia_temporal"
+        },
+        {
+          "id": "clsp_criminal_record",
+          "attribute": "has_clean_criminal_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Criminal/judicial record certificate (applicants 18+), from country of origin or last 5 years' residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_residencia_temporal"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport (1+ year validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Color photograph (white background)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years, extendable for two consecutive years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_work_permit", "cl_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "serviciomigraciones_residencia_temporal",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/residencia-temporal-permit/",
+      "title": "serviciomigraciones.cl (Chile's Servicio Nacional de Migraciones, SERMIG) -- Residencia Temporal overview: lists 'Students -- from state-recognized educational institutions' as one of 15 subcategories, sharing the general 2-year duration and core document requirements (passport, criminal record certificate, photo)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). STATUS: DRAFT -- the Students subcategory is confirmed to exist on SERMIG's own overview page (tier-1), but this file relies on the GENERAL Residencia Temporal requirements rather than a dedicated Students subcategory sub-page (which exists on serviciomigraciones.cl per the URL pattern seen for other subcategories, but was not independently fetched in this pass) -- work-rights-while-studying specifics and any distinct student-specific document beyond the enrollment certificate were not confirmed. pr_after_months/citizenship_after_months mirror the general Residencia Definitiva (24 months) and naturalisation (5 years total residence) thresholds from cl_permanent_residence.json and cl_citizenship_naturalisation.json, not a student-specific figure."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "ua_international_protection",
+  "country": "UA",
+  "name": "Refugee Status / Complementary or Temporary Protection",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person outside their country of origin with a well-founded fear of persecution, or otherwise in need of complementary or temporary protection, may apply for status under Ukraine's Law on Refugees and Persons in Need of Complementary or Temporary Protection (Law No. 3671-17).",
+    "evidence_hint": "Application to the State Migration Service; the State Border Guard Service handles initial screening for claims made at the border."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uaip_persecution_or_protection_need",
+          "attribute": "meets_refugee_or_complementary_protection_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must show a well-founded fear of persecution (refugee status) or otherwise qualify for complementary or temporary protection, assessed by the State Migration Service.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "aida_ukraine"
+        },
+        {
+          "id": "uaip_application_registered",
+          "attribute": "has_registered_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application registered with the State Migration Service, following initial screening by the State Border Guard Service if the claim is made at the border.",
+          "fix_path": "Register an application with the State Migration Service.",
+          "fix_time_months": null,
+          "source_id": "aida_ukraine"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents (where available)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the claim of persecution or protection need", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ua_permanent_residence", "ua_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "aida_ukraine",
+      "tier": 2,
+      "url": "https://asylumineurope.org/reports/country/ukraine/overview-of-the-legal-framework/",
+      "title": "Asylum Information Database (AIDA), a research initiative of the European Council on Refugees and Exiles (ECRE) -- Ukraine's asylum framework: governed by the Law on Refugees and Persons in Need of Complementary or Temporary Protection (No. 3671-17) and the Law on Foreigners and Stateless Persons (No. 3773-17); State Migration Service runs status determination with State Border Guard Service handling border screening; adaptations under martial law per Resolution No. 1202 (October 2022); administrative court appeal available",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). STATUS: DRAFT -- sourced to AIDA/ECRE (tier-2, an established but non-governmental research consortium), not an independently fetched dmsu.gov.ua or zakon.rada.gov.ua page for this specific law, and processing timelines were not detailed in the fetched overview. This route's real-world relevance is unusual given the context of this whole build: Ukraine is currently the world's largest SOURCE of refugees and displaced persons (its own citizens fleeing the war), not primarily a destination for asylum seekers -- but the legal framework for INBOUND asylum claims (from third-country nationals seeking protection inside Ukraine) formally continues to exist and operate, per Resolution No. 1202 (October 2022), which specifically addresses migration-law implementation under martial law. citizenship_after_months (36) and pr_after_months (36) reflect the reduced 3-year residence figure ua_citizenship_naturalisation.json's tier-1 source states applies to refugees specifically, rather than the standard 5-year track."
+}

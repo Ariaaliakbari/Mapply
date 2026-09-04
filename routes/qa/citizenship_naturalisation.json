@@ -1,0 +1,108 @@
+{
+  "id": "qa_citizenship_naturalisation",
+  "country": "QA",
+  "name": "Qatari Nationality by Naturalisation (Law No. 38 of 2005, Article 2)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": null,
+    "cap_type": "fixed_number",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "qacn_25yr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 300,
+          "hard": true,
+          "blocker_text": "25 consecutive years of continuous legal residence (absences of up to 2 months/year permitted without breaking the clock; an absence of more than 6 months after filing risks forfeiting accrued residence).",
+          "fix_path": "Accumulate 25 years of continuous legal residence.",
+          "fix_time_months": 300,
+          "source_id": "auc_cmrs_law38_2005"
+        },
+        {
+          "id": "qacn_lawful_income",
+          "attribute": "has_lawful_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lawful, legitimate source of income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auc_cmrs_law38_2005"
+        },
+        {
+          "id": "qacn_good_reputation",
+          "attribute": "no_honor_related_convictions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good reputation; no honor-related criminal convictions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auc_cmrs_law38_2005"
+        },
+        {
+          "id": "qacn_arabic",
+          "attribute": "arabic_proficiency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Arabic language proficiency.",
+          "fix_path": "Achieve required Arabic proficiency.",
+          "fix_time_months": null,
+          "source_id": "auc_cmrs_law38_2005"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 25 years' continuous legal residence", "difficulty": "often_impossible", "typical_time_days": null },
+    { "document": "Proof of lawful income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Arabic proficiency evidence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "auc_cmrs_law38_2005",
+      "tier": 2,
+      "url": "https://www4.aucegypt.edu/CMRS/Files/2.2%20Qatari%20Citizenship%2038%202005_EN.pdf",
+      "title": "American University in Cairo, Center for Migration and Refugee Studies -- verbatim English translation of Law No. 38 of 2005 on the Acquisition of Qatari Nationality: Article 2 (25yr residence, lawful income, good reputation, Arabic proficiency), Article 17 (annual cap of 50 naturalisations/year), Article 6 (discretionary grounds, dual-citizenship exception), Article 11-12 (loss of nationality)",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "glmm_law38_2005",
+      "tier": 2,
+      "url": "https://gulfmigration.grc.net/qatar-law-no-38-of-2005-on-the-acquisition-of-qatari-nationality/",
+      "title": "Gulf Labour Markets, Migration and Population (GLMM) Programme -- Qatar Law No. 38 of 2005 on the Acquisition of Qatari Nationality (corroborating summary)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- sourced to an academic center's verbatim translation of the primary law text (AUC CMRS) cross-checked against a second academic/research consortium (GLMM), both treated as tier-2 (reproduction of primary legal text by a research institution, not the institution's own legal authority -- consistent with this dataset's established convention for academic/NGO hosts of verbatim government legal text). Al Meezan, Qatar's own official legal portal (tier-1, almeezan.qa) hosts this law but was unreachable in this build (robots.txt/SSL error) -- re-attempting that fetch is the top priority for upgrading this file to published. DISTINCTIVE, PROMINENTLY FLAGGED FINDING: Article 17 caps ordinary naturalisation at A MAXIMUM OF 50 PEOPLE PER CALENDAR YEAR -- likely the single most restrictive naturalisation cap found anywhere in this dataset to date, well below Qatar's own 100/year permanent-residence cap (see qa_permanent_residence.json). No formally published application PROCESS exists for this route per multiple secondary sources -- itself a notable transparency gap in how the law operates in practice, not just a sourcing limitation on this dataset's part. dual_citizenship_allowed is FALSE for this standard route (Qatar's general rule); the discretionary Article 6 grounds are a stated EXCEPTION -- see qa_citizenship_special_grounds.json."
+}

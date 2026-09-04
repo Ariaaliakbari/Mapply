@@ -1,0 +1,107 @@
+{
+  "id": "jo_citizenship_naturalisation",
+  "country": "JO",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jocn_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Four years of regular residence in Jordan (Nationality Law No. 6 of 1954, as amended, Article 12); the Council of Ministers may waive this requirement for Arabs or where naturalisation serves the public interest.",
+          "fix_path": "Accumulate 4 years of regular residence in Jordan.",
+          "fix_time_months": 48,
+          "source_id": "refworld_nationality_law"
+        },
+        {
+          "id": "jocn_good_conduct",
+          "attribute": "has_good_conduct_no_convictions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good conduct and no prior criminal convictions (Article 4).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        },
+        {
+          "id": "jocn_livelihood",
+          "attribute": "has_lawful_means_of_livelihood",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lawful means of livelihood (Article 4).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        },
+        {
+          "id": "jocn_intent_to_reside",
+          "attribute": "intends_to_reside_in_jordan",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Demonstrated intent to reside in Jordan (Article 12).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        },
+        {
+          "id": "jocn_council_approval",
+          "attribute": "has_council_of_ministers_approval",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Council of Ministers approval is required to grant naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 4 years' regular residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of lawful income/livelihood", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_nationality_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1954/en/13885",
+      "title": "Refworld (UNHCR) -- Jordan Nationality Law No. 6 of 1954, as amended to 1987: Article 12 (4 years' residence for naturalisation, waivable by Council of Ministers for Arabs or public interest), Article 4 (good conduct, lawful livelihood), Article 15/16/17 (renunciation and dual citizenship)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- sourced to Refworld's hosted English translation of Law No. 6 of 1954 (tier-2: UNHCR/intergovernmental publisher of the text, not Jordan's own gazette or Legislation and Opinion Bureau database, which could not be reached directly in this pass) rather than a tier-1 government publication of the amended law text. No explicit language requirement was found in the fetched text, unusual relative to most naturalisation regimes in this dataset -- disclosed as an absence rather than assumed. dual_citizenship_allowed is left NULL rather than inferred: Article 17 addresses the reverse direction only (an existing Jordanian who acquires a foreign nationality retains Jordanian nationality unless formally renounced) -- it says nothing about whether a foreigner naturalising AS Jordanian must first renounce their original nationality, and no procedural source describing that specific requirement was found in this pass. Flagged rather than guessed."
+}

@@ -1,0 +1,104 @@
+{
+  "id": "td_citizenship_naturalisation",
+  "country": "TD",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdcn_residence",
+          "attribute": "months_continuous_residence",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "15 years of continuous residence in Chad.",
+          "fix_path": "Accumulate 15 years of continuous residence in Chad.",
+          "fix_time_months": 180,
+          "source_id": "wikipedia_chad_nationality"
+        },
+        {
+          "id": "tdcn_language",
+          "attribute": "speaks_french_or_local_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Fluency in French or another language used in Chad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_chad_nationality"
+        },
+        {
+          "id": "tdcn_health_conduct",
+          "attribute": "meets_health_and_conduct_standards",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good mental/physical health and no criminal convictions; the 1963 implementing decree additionally requires freedom from tuberculosis, alcoholism, and venereal disease, and an inquiry into morality and loyalty ('moralité et le loyalisme').",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_decree_1963"
+        },
+        {
+          "id": "tdcn_assimilation",
+          "attribute": "demonstrates_assimilation_to_chadian_customs",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Documented adaptation to Chadian customs and practices ('moeurs, usages et coutumes du Tchad'), per the 1963 implementing decree.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_decree_1963"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 15 years' continuous residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employment records / tax records", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health/medical certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Identity documents", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_chad_nationality",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Chadian_nationality_law",
+      "title": "Wikipedia -- Chadian nationality law: naturalisation requires 15 years' continuous residence, French/local-language fluency, good health, no criminal convictions; grant is by presidential decree",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "refworld_decree_1963",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1963/fr/20304",
+      "title": "Refworld (UNHCR) -- Décret n°211/PG.-INT. du 6 novembre 1963 (implementing decree of Chad's 1962 Nationality Code): naturalisation granted by presidential decree, subject to a morality/loyalty inquiry, health screening, and demonstrated assimilation to Chadian customs; a 1-year period is referenced at Article 21 without full context in the fetched excerpt",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- the core residence-years figure (15 years) is TIER-4 (Wikipedia) since Chad's actual 1962 Nationality Code text (Ordonnance/Loi) was not directly reachable in this pass -- only its 1963 implementing decree was found, hosted by Refworld (tier-2, UNHCR). The decree itself references a much shorter 'one-year period' at Article 21 in the fetched excerpt, which may govern a different procedural step (e.g. minimum residence before an application can be FILED, versus the total residence threshold to QUALIFY) rather than contradicting the 15-year figure -- this ambiguity is disclosed rather than resolved by picking one number arbitrarily. If Chad's naturalisation threshold is genuinely lower than the 15 years modeled here, this file overstates the requirement; flagged as a priority re-verification target. Grant is by presidential decree, not an administrative/automatic process -- selection_method 'assessed' understates the discretionary, individually-decreed nature of the final step, disclosed here since the schema has no more precise category for a head-of-state discretionary grant."
+}

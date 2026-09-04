@@ -1,0 +1,92 @@
+{
+  "id": "td_work_permit",
+  "country": "TD",
+  "name": "Work Permit (Autorisation de Travail) + Residence Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A Chadian employer sponsors a foreign worker with specialized skills not readily available locally, submitting an application to the Ministry of Public Service, Labour and Employment; once approved, the Directorate General of National Security (DGSN) issues the accompanying residence permit.",
+    "evidence_hint": "Employer sponsorship; proof of specialized skills/qualifications; a valid long-stay visa held before applying."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": ["td_visitor_visa"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdwp_employer_sponsorship",
+          "attribute": "has_employer_sponsorship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer sponsorship, with the employer demonstrating a legitimate need to hire a foreign worker and evidence of efforts to recruit locally.",
+          "fix_path": "Secure employer sponsorship in Chad.",
+          "fix_time_months": null,
+          "source_id": "rivermate_chad_work"
+        },
+        {
+          "id": "tdwp_specialized_skills",
+          "attribute": "has_specialized_skills_not_locally_available",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Specialized skills or qualifications not readily available within the Chadian labour market.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rivermate_chad_work"
+        },
+        {
+          "id": "tdwp_long_stay_visa",
+          "attribute": "holds_valid_long_stay_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold a valid long-stay visa (visa de séjour) before applying for the work permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rivermate_chad_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract / sponsorship letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of qualifications/specialized skills", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid long-stay visa", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed; processing 'several weeks to a few months' per secondary sourcing",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 180,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["td_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "rivermate_chad_work",
+      "tier": 3,
+      "url": "https://www.rivermate.com/guides/chad/work-permits-and-visas",
+      "title": "Rivermate (Employer-of-Record relocation guide) -- Chad work permits: Ministry of Public Service, Labour and Employment handles applications; DGSN (Directorate General of National Security) issues the residence permit after work permit approval; employer must show local-recruitment effort and the role requires skills unavailable locally; processing 'several weeks to a few months'",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- entirely tier-3 sourced (a commercial Employer-of-Record relocation guide) after Chad's actual 1996 Labour Code (Code du travail, Loi n°038/PR/96) returned a 403 error on the only accessible hosting found (droit-afrique.com, itself a private legal database and would have been tier-3 even if reachable) -- flagged as a genuine sourcing gap rather than corroborated against any government or intergovernmental text. No fee, quota, or precise duration figures were found and none are stated here. pr_after_months/citizenship_after_months (180 = 15 years) mirror the naturalisation residence threshold from td_citizenship_naturalisation.json since no distinct intermediate permanent-residence status was found for Chad (see td_permanent_residence.json)."
+}

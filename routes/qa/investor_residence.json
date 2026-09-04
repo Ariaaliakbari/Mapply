@@ -1,0 +1,97 @@
+{
+  "id": "qa_investor_residence",
+  "country": "QA",
+  "name": "Real Estate Investment Residence Permit (Law No. 16 of 2018 / CoM Decision No. 28 of 2020)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_threshold",
+      "name": "Standard threshold -- renewable residence",
+      "requirements": [
+        {
+          "id": "qair_property_730k",
+          "attribute": "qatar_property_investment_amount",
+          "operator": ">=",
+          "value": 730000,
+          "hard": true,
+          "blocker_text": "Minimum QAR 730,000 (~USD 200,000) property investment in a designated freehold or usufruct area, tied to continued ownership.",
+          "fix_path": "Purchase qualifying real estate at or above the threshold.",
+          "fix_time_months": null,
+          "source_id": "aqarat_investors_journey"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "renewable residence permit, tied to continued ownership",
+        "work_rights": "restricted"
+      }
+    },
+    {
+      "id": "enhanced_threshold",
+      "name": "Enhanced threshold -- 'First Class' benefits",
+      "requirements": [
+        {
+          "id": "qair_property_3650k",
+          "attribute": "qatar_property_investment_amount",
+          "operator": ">=",
+          "value": 3650000,
+          "hard": true,
+          "blocker_text": "Minimum QAR 3,650,000 (~USD 1,000,000) property investment, unlocking enhanced ('First Class') benefits including rights to invest in select economic activities.",
+          "fix_path": "Purchase qualifying real estate at or above the enhanced threshold.",
+          "fix_time_months": null,
+          "source_id": "aqarat_investors_journey"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Title deed / property purchase contract in a qualifying area", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of funds", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, renewable, tied to continued property ownership",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "aqarat_investors_journey",
+      "tier": 1,
+      "url": "https://www.aqarat.gov.qa/en/investors-journey/own-real-estate/",
+      "title": "Aqarat -- Real Estate Regulatory Authority, Ministry of Justice, State of Qatar: foreign property ownership regime, 9 designated freehold areas (unrestricted, no time limit) and 16 usufruct areas (99-year renewable rights), residence-permit eligibility tied to investment value",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "qatartourism_instruction_manual",
+      "tier": 1,
+      "url": "https://www.qatartourism.com/content/dam/qatar-tourism/non-qatari-realestate/instruction-manual.pdf",
+      "title": "Qatar Tourism -- official instruction manual citing Council of Ministers Decision No. 28 of 2020: QAR 730,000 threshold for standard residence permit, QAR 3,650,000 threshold for enhanced ('First Class') benefits",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "sharek_moj_realestate_residence",
+      "tier": 1,
+      "url": "https://www.sharek.gov.qa/en/articles/ministry-of-justice/obtaining-real-estate-residence-approval/679b83fe6798e422f45acc7e",
+      "title": "Sharek.gov.qa (Ministry of Justice e-service) -- real estate residence approval: process and required documents",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: PUBLISHED -- fully tier-1 sourced across three government bodies (Real Estate Regulatory Authority/Ministry of Justice, Qatar Tourism, and the Ministry of Justice's own e-service portal). This is Qatar's functional equivalent to a Gulf-neighbor 'golden visa,' but Qatar does NOT officially brand it that way -- 'Golden Visa' terminology found only on tier-3/4 immigration-marketing sites and is NOT used here as an official route name. DISCLOSED, NOT MODELED AS A SEPARATE FILE: a distinct company-ownership residency route also exists (100% foreign ownership via Ministry of Commerce & Industry, Qatar Financial Centre, or Qatar Free Zones Authority, with the company sponsoring the owner's residence permit) -- specific eligibility thresholds for that route were not confirmed at tier-1/2 in this pass, so it is disclosed here rather than built as its own file. The 'enhanced_threshold' group's exact list of which 'select economic activities' become investable was not itemized by the sources -- outcome fields for this file reflect the baseline (standard_threshold) tier; the enhanced tier's incremental benefits are qualitative only in the current sourcing."
+}

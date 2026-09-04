@@ -1,0 +1,99 @@
+{
+  "id": "rw_work_permit",
+  "country": "RW",
+  "name": "Skilled Worker Permit (H1/H2)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "h1_demand_list",
+      "name": "H1 -- occupation on Rwanda's skills-demand list",
+      "requirements": [
+        {
+          "id": "rwwp_h1_demand_occupation",
+          "attribute": "occupation_on_rwanda_demand_list",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Occupation appears on Rwanda's skills-demand list.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_employment"
+        },
+        {
+          "id": "rwwp_h1_contract",
+          "attribute": "has_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employment contract, academic credentials, employer recommendation letter, and police clearance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_employment"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "up to 3 years"
+      }
+    },
+    {
+      "id": "h2_employer_sponsored",
+      "name": "H2 -- employer-sponsored skilled worker (any occupation)",
+      "requirements": [
+        {
+          "id": "rwwp_h2_contract",
+          "attribute": "has_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employment contract, academic credentials, employer recommendation letter, and police clearance -- no demand-list restriction.",
+          "fix_path": "Secure a job offer from a Rwandan employer.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_employment"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "up to 2 years"
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certified academic credentials", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer recommendation letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance (6-month prior residence)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Detailed CV", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "H1: up to 3 years; H2: up to 2 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_permanent_residence", "rw_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_employment",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/permit/employment",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- employment permits: H1 (demand-list occupations, 3yr, 150,000 RWF), H2 (general employer-sponsored, 2yr, 150,000 RWF); related categories E1 (government/parastatal, 2yr), E2 (bilateral technical assistance, 2yr), H3 (journalists, 2yr), H4 (regional semi-skilled, 2yr, 50,000 RWF), H5 (international organizations, 2yr), H6 (reciprocal agreements), N2 (NGO employees, 2yr), J (refugees with a Rwandan job offer, 2yr), Q1 (intra-company transfer, 1yr), Q2 (short-term assignment, 1yr, 250,000 RWF), R (special pass, employment under 90 days, 3mo, 50,000 RWF)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: PUBLISHED -- fully tier-1 DGIE sourced, and unusually granular: Rwanda operates AT LEAST 11 distinct employment-permit letter categories (H1-H6, E1-E2, N2, J, Q1-Q2, R), far more finely segmented than most countries in this dataset's work-permit systems -- only H1/H2 (the two general skilled-worker tracks) are modeled here as the primary route; the remaining categories are listed in the source citation for reference but not built as separate files, a scope decision given how narrow several of them are (e.g. R is capped at 90 days, J is specifically for refugees who separately hold status in another country). pr_after_months (120) and citizenship_after_months (180) are inferred from the L1 permanent-residence 10-year threshold (see rw_permanent_residence.json) plus the naturalisation law's 15-year 'residence' ground (see rw_citizenship_naturalisation.json) -- Rwanda's overall timeline to citizenship via ordinary work-based residence is notably LONG compared to most other countries in this dataset."
+}

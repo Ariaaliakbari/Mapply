@@ -1,0 +1,79 @@
+{
+  "id": "az_work_permit",
+  "country": "AZ",
+  "name": "Temporary Residence Permit -- Employment",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard employment",
+      "requirements": [
+        {
+          "id": "azwp_work_permit",
+          "attribute": "has_work_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A copy of the work permit form authorizing paid labour activity in Azerbaijan is required to obtain temporary residence on the employment ground.",
+          "fix_path": "Obtain a work permit for paid employment in Azerbaijan.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    },
+    {
+      "id": "highly_qualified_specialist",
+      "name": "Highly qualified specialist",
+      "requirements": [
+        {
+          "id": "azwp_specialist",
+          "attribute": "is_highly_qualified_specialist",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Highly qualified specialists qualify for temporary residence on a distinct ground from standard employment; specific qualifying criteria were not detailed on the source reviewed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Work permit form", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["az_permanent_residence", "az_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_az_residence",
+      "tier": 1,
+      "url": "https://migration.gov.az/en/page/73",
+      "title": "Azerbaijan State Migration Service -- grounds for temporary residence permit including employment (work permit holders) and highly qualified specialists as a distinct category",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). No separate self-employed/freelance (work_independent) residence route distinct from az_investor_residence.json's entrepreneurship/business-owner ground was found for Azerbaijan -- an independent professional would need to either secure sponsored employment (this file), register as a qualifying entrepreneur/business owner, or meet one of az_investor_residence.json's investment thresholds; disclosed as a genuine structural gap rather than an unresearched one. work_rights modeled 'restricted' since status is tied to the specific work permit/employer. citizenship_after_months (60) and pr_after_months (24) reuse the general figures from az_naturalisation.json and az_permanent_residence.json."
+}

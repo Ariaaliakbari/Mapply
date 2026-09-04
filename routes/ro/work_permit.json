@@ -1,0 +1,76 @@
+{
+  "id": "ro_work_permit",
+  "country": "RO",
+  "name": "Single Permit (Work + Residence)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard employee route",
+      "requirements": [
+        {
+          "id": "rowp_employment_contract",
+          "attribute": "has_romanian_employment_contract_or_deployment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Romanian employment contract, deployment decision, or ICT-transfer assignment underpins the single-permit application.",
+          "fix_path": "Secure an employment contract or intra-company deployment with a Romania-based entity.",
+          "fix_time_months": null,
+          "source_id": "igi_single_permit"
+        },
+        {
+          "id": "rowp_financial_means",
+          "attribute": "has_minimum_gross_salary_level_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of financial means of support at least equal to the gross minimum salary in the economy.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_single_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employment contract / deployment decision", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Social health insurance documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically 1-2 years matching contract length; senior workers up to 3 years; ICT managers/specialists up to 3 years, ICT trainees up to 1 year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ro_permanent_residence", "ro_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "igi_single_permit",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/single-permit/",
+      "title": "General Inspectorate for Immigration (IGI), Romanian Ministry of Internal Affairs -- Single Permit (work + residence combined): covers standard employees, deployed workers, ICT transferees, and business heads/representative-office managers; minimum-wage-level financial proof; initial 1-2 year duration tied to contract, extendable to 3 years for senior workers, ICT-specific caps; 30-day processing (extendable 15 days)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: PUBLISHED -- tier-1 IGI sourced. work_rights is 'restricted' rather than 'full' because the permit is tied to the sponsoring employer/contract (a job-offer-status limitation, consistent with this dataset's convention for employer-sponsored work routes elsewhere) rather than an unrestricted labour-market permit; the source did not specify a labour-market test or quota system, which is disclosed as a gap rather than assumed absent. pr_after_months/citizenship_after_months are set using Romania's general long-term-residence (5yr/60mo, see ro_permanent_residence.json) and naturalisation (8yr/96mo, see ro_citizenship_naturalisation.json) thresholds as the applicable path forward for a single-permit holder who accumulates continuous legal residence on this route -- this is an inference from the two other tier-1/tier-2-sourced files, not a separately confirmed IGI figure for work-permit holders specifically, and is flagged as such. Fee amounts were referenced by the source as existing but not stated in figures, and are left undisclosed rather than guessed."
+}

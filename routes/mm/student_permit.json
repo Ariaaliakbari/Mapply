@@ -1,0 +1,75 @@
+{
+  "id": "mm_student_permit",
+  "country": "MM",
+  "name": "Education Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mmsp_sponsor_invitation",
+          "attribute": "has_institution_invitation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Direct invitation from the Ministry, or from a Myanmar university/school, stating the duration of stay, plus a recommendation letter from the sponsoring institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "myanmarcgla_edu"
+        },
+        {
+          "id": "mmsp_passport_validity",
+          "attribute": "passport_months_valid",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport valid for at least 6 months, with available visa pages.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "myanmarcgla_edu"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Recommendation letter from sponsoring university/school", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Direct institution/Ministry invitation letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "2 recent photos", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fee paid by cashier's check or money order only (no cash/card/personal check)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Single Education Visa: initial 90 days, extendable with evidence of continued enrollment, USD 50; Multiple Education Visa: up to 1 year validity, further extendable, USD 160 -- but NOT available to first-time applicants, who must start on the single-entry visa",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mm_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "myanmarcgla_edu",
+      "tier": 1,
+      "url": "https://myanmarcgla.org/index.php/education-visa",
+      "title": "Consulate General of the Republic of the Union of Myanmar, Los Angeles (official diplomatic mission) -- Education Visa: single-entry (90 days, extendable, USD 50) and multiple-entry (up to 1 year, USD 160, not available to first-time applicants), requires sponsoring-institution recommendation letter and a direct invitation from the Ministry or the Myanmar university/school",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: PUBLISHED -- tier-1 sourced from an official Myanmar diplomatic mission site. STRUCTURAL FINDING WORTH FLAGGING: first-time applicants are explicitly barred from the multiple-entry Education Visa and must start on the single-entry version -- an unusual two-tier gating structure not seen in most other countries' student routes in this dataset. Fees must be paid via cashier's check or money order specifically; no cash, credit card, or personal check accepted, per the source's own explicit wording. See ng_visitor_visa.json-equivalent political-context note in mm_visitor_visa.json -- the same SAC/civil-war caveats apply here: Myanmar's higher-education sector has also been significantly disrupted by the conflict, campus closures, and a large-scale 'Spring Revolution' student/civil-disobedience movement since 2021, which is likely to affect the practical reliability of any given institution's invitation-letter process, though this was not independently assessed in this build."
+}

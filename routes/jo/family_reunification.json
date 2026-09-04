@@ -1,0 +1,77 @@
+{
+  "id": "jo_family_reunification",
+  "country": "JO",
+  "name": "Family-Based Residence (Spouse of a Jordanian)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national married to a Jordanian citizen may apply for family-based residence with the Public Security Directorate.",
+    "evidence_hint": "Marriage certificate; spouse's Jordanian national ID."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jofr_marriage",
+          "attribute": "is_spouse_of_jordanian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Marriage to a Jordanian citizen, evidenced by a marriage document.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        },
+        {
+          "id": "jofr_medical",
+          "attribute": "has_medical_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Medical clearance is required (specifically noted for foreign wives in the source service listing).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's Jordanian national ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jo_permanent_residence", "jo_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "psd_services",
+      "tier": 1,
+      "url": "https://psd.gov.jo/media/lncmdl3i/servcies.pdf",
+      "title": "Jordan Public Security Directorate (PSD), Borders and Residence Department -- Information Services: Family-Based Residence for a foreign spouse of a Jordanian, 30 JOD annual fee, requiring marriage document, spouse's national ID, and medical clearance (specified for wives)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- sourced to PSD's own service listing (tier-1) but thin: the listing is worded around a foreign wife of a Jordanian husband specifically (medical clearance is noted 'for wives'), consistent with Jordan's broader asymmetric nationality-law framework (see jo_citizenship_by_marriage.json) -- whether and how a foreign husband of a Jordanian wife accesses an equivalent residence category was not confirmed in this pass and is not assumed to be identical. This file models only the spousal category; PSD's listing does not detail residence categories for other family members (parents, children) of a foreign resident, which were not found and are not modeled here. work_rights is set 'restricted' as a conservative default -- the source did not state whether this residence category carries open work rights, and 'restricted' was chosen over 'full' to avoid overclaiming. leads_to_citizenship path applies only to wives per jo_citizenship_by_marriage.json's asymmetric rule."
+}

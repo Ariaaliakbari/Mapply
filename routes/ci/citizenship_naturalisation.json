@@ -1,0 +1,107 @@
+{
+  "id": "ci_citizenship_naturalisation",
+  "country": "CI",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ci_permanent_residence"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cicn_residence",
+          "attribute": "months_habitual_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' habitual residence in Cote d'Ivoire immediately preceding the application (Code de la Nationalite, Article 26).",
+          "fix_path": "Accumulate 5 years of continuous habitual residence.",
+          "fix_time_months": 60,
+          "source_id": "ecoi_code_nationalite"
+        },
+        {
+          "id": "cicn_age_capacity",
+          "attribute": "is_adult_of_sound_mind",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least 18 years old, of sound mind, and in a physical condition that does not create a burden on Ivorian society (Articles 29-32).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_code_nationalite"
+        },
+        {
+          "id": "cicn_good_character",
+          "attribute": "has_good_moral_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good moral character (bonne moralite), assessed by the administration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_code_nationalite"
+        }
+      ]
+    },
+    {
+      "id": "reduced_period",
+      "name": "Reduced period -- born in Cote d'Ivoire, or married to an Ivoirian (2 years)",
+      "requirements": [
+        {
+          "id": "cicn_reduced_residence",
+          "attribute": "months_habitual_residence",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "2 years' habitual residence if born in Cote d'Ivoire, or married to an Ivoirian national (Article 27) -- note this general reduced-period clause predates the 2024 marriage-specific reform, see ci_citizenship_by_marriage.json for the current, superseding marriage-specific mechanism.",
+          "fix_path": "Accumulate 2 years of continuous habitual residence under the qualifying birth or marriage condition.",
+          "fix_time_months": 24,
+          "source_id": "ecoi_code_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 (or 2, if qualifying) years' habitual residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Civil status documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character/background documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_code_nationalite",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/1178187/1504_1217418989_loi-n-61-416-du-14-decembre-1961-portant-code-de-la-nationalite-ivoirienne.pdf",
+      "title": "ecoi.net (Austrian Red Cross/ACCORD country-of-origin information network) -- Code de la Nationalite Ivoirienne, Loi 61-415/61-416 of 14 December 1961: Articles 26-32, naturalisation conditions (5-year standard residence, 2-year reduced period for those born in-country or married to an Ivoirian, age 18+, good character, sound mind, no undue burden on society); Article 14, 6-month government opposition window",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: DRAFT -- tier-2 only (Cote d'Ivoire's own official gazette/legislative portal was not independently reached to tier-1 depth in this pass; a 1972 amendment law, Loi 72-852, was located in search results but not independently fetched, so this file may not reflect all subsequent amendments to the 1961 code beyond the 2024 marriage-specific reform tracked separately). dual_citizenship_allowed is TRUE, inferred from Article 49 (see ci_citizenship_by_descent.json/notes) which frames dual nationality as something a citizen may seek RELIEF from (i.e. dual status can exist and be voluntarily relinquished) rather than being automatically void -- this is an inference from the relief-mechanism's existence, not an explicit blanket-permission clause, and is flagged for re-verification. IMPORTANT CROSS-REFERENCE: the Article 27 reduced-period-for-marriage clause modeled in the 'reduced_period' group here is the OLD (1961-era) general reduction; Cote d'Ivoire's Loi 2024-236 (May 2024) substantially rewrote the marriage-specific mechanism into its own declaration-based process with different timelines (5yr standard/6yr/3yr) -- see ci_citizenship_by_marriage.json, which should be treated as authoritative for marriage cases over this file's Article 27 clause, which may now be superseded in practice for marriage specifically (though it may still stand for the 'born in Cote d'Ivoire' reduced-period ground). This dual-track ambiguity is disclosed rather than resolved, since neither the 1961 text nor the 2024 amendment's summary confirmed explicitly which clause takes precedence for marriage cases."
+}

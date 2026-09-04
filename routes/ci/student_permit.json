@@ -1,0 +1,77 @@
+{
+  "id": "ci_student_permit",
+  "country": "CI",
+  "name": "Resident Card, Student/Pupil Category (Carte de Resident)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cisp_enrollment",
+          "attribute": "has_school_or_university_enrollment_proof",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrollment receipt or student card from a recognized institution.",
+          "fix_path": "Obtain admission to a recognized Ivorian institution.",
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        },
+        {
+          "id": "cisp_pre_enrollment",
+          "attribute": "completed_oneci_online_preenrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mandatory online pre-enrollment through ONECI's system, plus an online sponsorship (parrainage) form.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or consular card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Online sponsorship (parrainage) form", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Online pre-enrollment form", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence certificate (under 6 months old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Enrollment receipt or student card", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank payment receipt", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "requires periodic renewal; exact validity period not confirmed in sources fetched",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ci_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "oneci_carte_resident",
+      "tier": 1,
+      "url": "https://www.oneci.ci/nos-produits/carte-resident/documents-a-fournir",
+      "title": "ONECI (Office National de l'Etat Civil et de l'Identification, Cote d'Ivoire) -- carte de resident, student/pupil category among listed categories: mandatory online pre-enrollment and sponsorship form, residence certificate under 6 months old, category-specific proof (enrollment receipt/student card); fee 300,000 FCFA (non-ECOWAS) / 150,000 FCFA (French nationals) / 35,000 FCFA (religious personnel, French cooperants -- students not explicitly listed in the reduced-fee tier)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: PUBLISHED -- tier-1 ONECI sourced, but thin: ONECI's page lists 'students and pupils' as one of several carte-de-resident categories without a category-specific fee or duration distinct from the general 300,000/150,000/35,000 FCFA tiers (which appear to key off nationality/professional category rather than purpose of stay) -- whether students pay the full 300,000 FCFA non-ECOWAS rate or a reduced student rate was not confirmed and is disclosed as a gap. Cote d'Ivoire does not appear to operate a separate 'student visa' distinct from the general resident-card system used for all long-stay foreigners -- unlike many countries in this dataset with a dedicated student-visa instrument, structurally this is one unified card with category-specific supporting documents. work_rights set to 'none' as a conservative default since no student work-rights provision was found in the fetched source."
+}

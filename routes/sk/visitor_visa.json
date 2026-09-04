@@ -1,0 +1,74 @@
+{
+  "id": "sk_visitor_visa",
+  "country": "SK",
+  "name": "Short-Stay Visa (Type C) / Schengen Short Stay",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "rolling_window",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skvv_passport_validity",
+          "attribute": "passport_valid_months_beyond_departure",
+          "operator": ">=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "Passport valid at least 3 months beyond the intended departure date, issued within the last 10 years, per standard Schengen requirements.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": 1,
+          "source_id": "iom_general_info"
+        },
+        {
+          "id": "skvv_purpose_and_funds",
+          "attribute": "has_purpose_and_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Documented purpose of visit and proof of sufficient funds for the stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_general_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/health insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of accommodation and funds", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period (Schengen short-stay)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "iom_general_info",
+      "tier": 2,
+      "url": "https://mic.iom.sk/en/residence/general-information.html",
+      "title": "IOM Migration Information Centre Slovakia (International Organization for Migration, operating Slovakia's official migrant-information portal under agreement with Slovak authorities) -- general entry conditions, Schengen short-stay framework",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- Slovakia's own Ministry of Interior (minv.sk) foreigners' pages could not be fetched to sufficient depth in this pass (the homepage returned only a navigation stub); the Ministry of Foreign Affairs (mzv.sk) visa-specific page was not independently fetched either. This route is modeled as a standard Schengen short-stay visa (Slovakia has been a full Schengen member since 2007) rather than a Slovakia-specific instrument. No fee figure or nationality-specific visa/visa-exemption list was confirmed to tier-1 depth in this pass and is left undisclosed rather than guessed. Flagged for priority re-verification against minv.sk or mzv.sk directly."
+}

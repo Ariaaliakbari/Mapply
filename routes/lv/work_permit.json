@@ -1,0 +1,80 @@
+{
+  "id": "lv_work_permit",
+  "country": "LV",
+  "name": "Temporary Residence Permit -- Employment",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lvwp_salary",
+          "attribute": "monthly_salary_eur",
+          "operator": ">=",
+          "value": 1143,
+          "hard": true,
+          "blocker_text": "Minimum monthly salary of EUR 1,143 (2021 baseline; reviewed and generally increased each year -- a 2025 all-worker average of EUR 1,757 is reported by a separate tier-3 source, suggesting the operative current figure is materially higher than this stale baseline).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_employed_worker"
+        },
+        {
+          "id": "lvwp_labour_market_test",
+          "attribute": "vacancy_unfilled_after_30_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must register the vacancy with the State Employment Agency (NVA); if unfilled by a domestic or EU/EEA candidate within at least 30 days, the employer's invitation for the foreign candidate may proceed to migration-authority approval.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_employed_worker"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract with a specific employer and position", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence the vacancy was registered with the NVA and unfilled after 30 days", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "for the period of employment, up to 1 year under the New Immigration Law (effective 11 June 2026; previously up to 5 years)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lv_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "ec_employed_worker",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-latvia_en",
+      "title": "European Commission EU Immigration Portal -- Latvia employed-worker permit: EUR 1,143/month salary floor (2021 figure, reviewed annually), labour market test via the State Employment Agency (NVA), work rights tied to a specific employer and position with no changes allowed",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "lvportals_new_immigration_law",
+      "tier": 2,
+      "url": "https://lvportals.lv/viedokli/391264-jaunais-imigracijas-likums-ko-sagaidit-darba-devejiem-investoriem-terminuzturesanas-atlauju-turetajiem-2026",
+      "title": "LV Portals (Latvijas Vestnesis, the official state gazette's legal-affairs portal) -- Latvia's New Immigration Law (effective 11 June 2026): employment permit duration reduced from 5 years to 1 year; stricter employer eligibility (denies permits where the employer is an inactive taxpayer, established within the last 6 months, or has tax-compliance violations)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). STATUS: DRAFT -- the salary figure is stale (a 2021 baseline the source itself says is 'reviewed each year'; a 2025 figure of EUR 1,757 average salary appears in a separate tier-3 blog but was not independently re-verified against a tier-1/2 page in this pass) and the labour-market-test figures come only from the EC's EU Immigration Portal (tier-2), not an independently fetched PMLP or NVA page. The 1-year duration figure reflects Latvia's brand-new Immigration Law, effective 11 June 2026 (under 3 months before this build) -- this is a LIVE DISCREPANCY worth flagging prominently: PMLP's own English-language duration page (https://www.pmlp.gov.lv/en/how-long-may-residence-permit-be-issued), fetched directly in this same pass, still describes the OLD 5-year employment-permit duration and has evidently not been updated to reflect the new law -- disclosed as an unresolved gap between Latvia's own official page and its own recently passed legislation, not silently resolved by picking one."
+}

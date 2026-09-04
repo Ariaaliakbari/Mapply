@@ -1,0 +1,75 @@
+{
+  "id": "ng_highly_skilled_immigrant",
+  "country": "NG",
+  "name": "Highly Skilled Immigrant Visa (N4A)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nghs_specialized_expertise",
+          "attribute": "has_specialized_expertise_relevant_to_nigeria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Specialized knowledge or technical expertise in an area relevant to Nigeria's economic needs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n4a"
+        },
+        {
+          "id": "nghs_itf_recommendation",
+          "attribute": "has_itf_skills_gap_recommendation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Letter of recommendation from Nigeria's Industrial Training Fund (ITF) Skills Gap Assessment confirming the expertise addresses a genuine domestic skills gap.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n4a"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport, recent photo", "difficulty": "routine", "typical_time_days": null },
+    { "document": "ITF Skills Gap Assessment recommendation letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Vetted credentials and CV/skill profile", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance from current residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "initial 90 days, then a 5-year renewable multiple-entry residence permit",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ng_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "nis_n4a",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/highly-skilled-immigrant-visa-n4a/",
+      "title": "Nigeria Immigration Service (NIS) -- Highly Skilled Immigrant Visa N4A: for foreign nationals with specialized knowledge/technical expertise relevant to Nigeria's economic needs, requires ITF (Industrial Training Fund) Skills Gap Assessment recommendation letter; holders permitted to work and reside in Nigeria; initial 90 days then 5-year renewable multiple-entry residence permit; extendable",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- tier-1 NIS sourced. Modeled as 'work_independent' rather than 'work_sponsored' since NIS's own page describes holders as 'permitted to work and reside in Nigeria' without tying the grant to a single sponsoring employer the way ng_work_permit.json's Expatriate Quota mechanism does -- this reads as a skills-based national-interest route rather than an employer-petition route, though the distinction is not stated in NIS's own terms as explicitly as this dataset's schema requires, so treat the category assignment as an interpretation rather than a directly-sourced fact. It sits under NIS's Permanent Residence Visa (PRV) grouping (code N4A) alongside investor and spousal PR categories -- see ng_investor_residence.json and ng_family_reunification.json for the others. citizenship_after_months cross-referenced from ng_citizenship_naturalisation.json, not independently sourced here."
+}

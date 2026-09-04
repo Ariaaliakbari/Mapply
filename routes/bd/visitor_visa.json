@@ -1,0 +1,98 @@
+{
+  "id": "bd_visitor_visa",
+  "country": "BD",
+  "name": "Tourist Visa / Visa on Arrival / Business Visa (short-stay)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tourist",
+      "name": "Tourist Visa",
+      "requirements": [
+        {
+          "id": "bdvv_travel_purpose",
+          "attribute": "travel_purpose",
+          "operator": "in",
+          "value": ["tourism", "visiting_friends_relatives", "seminar_conference", "study_tour", "religious"],
+          "hard": true,
+          "blocker_text": "Travel for tourism, visiting friends/relatives, seminars/conferences/workshops, study tours, or religious purposes.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_tourist_visa"
+        },
+        {
+          "id": "bdvv_invitation_or_booking",
+          "attribute": "has_invitation_or_accommodation_booking",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Invitation letter from a Bangladeshi citizen (with their ID) OR an organizational invitation OR a hotel booking confirmation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_tourist_visa"
+        }
+      ]
+    },
+    {
+      "id": "business_short",
+      "name": "Business Visa (short-stay)",
+      "requirements": [
+        {
+          "id": "bdvv_business_invitation",
+          "attribute": "has_business_invitation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Invitation letter from a recognized Bangladeshi business organization plus a letter from the sponsoring foreign company.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bdhc_business_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity, 2 blank pages)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "2 recent passport-size color photos", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank statements/payslips (last 3 months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Tourist Visa: up to 3 months single-entry, extendable by up to 1 additional month; Business Visa: up to 1 year validity (single/double/multiple entry), 30 days max per visit, extendable up to 3 years total (6 months max per visit on extension); Visa on Arrival: available to 24+ nationalities, up to 30 days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bd_work_permit", "bd_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "mofa_tourist_visa",
+      "tier": 1,
+      "url": "https://doha.mofa.gov.bd/en/site/page/tourist-visa",
+      "title": "Ministry of Foreign Affairs, Bangladesh (Embassy of Bangladesh, Doha) -- Tourist Visa: up to 3 months single-entry, extendable by 1 month via the Department of Immigration and Passport (DIP), requires invitation/booking evidence and financial documentation",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "bdhc_business_visa",
+      "tier": 1,
+      "url": "https://bdhcdelhi.org/business-visa.html",
+      "title": "High Commission for the People's Republic of Bangladesh, New Delhi -- Business Visa: up to 1 year validity, 30 days max per visit, extendable up to 3 years via DIP with local sponsor and police clearance",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: PUBLISHED -- both sources tier-1 official diplomatic missions. Visa on Arrival (24+ eligible nationalities, up to 30 days) is folded into this file's duration_length rather than modeled as a separate requirement group, consistent with this dataset's established approach for short-stay VOA variants. E-visa application runs through visa.gov.bd; specific per-nationality fee schedules were not independently retrieved in this build (fees vary by reciprocity arrangement with the applicant's home country, per the Student Visa sourcing pattern seen in bd_student_permit.json)."
+}

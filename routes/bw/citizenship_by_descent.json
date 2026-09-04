@@ -1,0 +1,82 @@
+{
+  "id": "bw_citizenship_by_descent",
+  "country": "BW",
+  "name": "Citizenship by Birth or Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person qualifies for Botswana citizenship, whether born inside or outside Botswana, if at the time of their birth either their father or their mother was a citizen of Botswana (Citizenship Act No. 8 of 1998).",
+    "evidence_hint": "Birth certificate; proof of the qualifying parent's Botswana citizenship (Omang or citizenship certificate)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwcd_parent_citizen",
+          "attribute": "has_botswana_citizen_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The father or the mother was a citizen of Botswana at the time of the applicant's birth, regardless of whether the birth took place in or outside Botswana.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act_1998"
+        }
+      ]
+    },
+    {
+      "id": "minor_registration",
+      "name": "Registration of a minor following a parent's naturalisation",
+      "requirements": [
+        {
+          "id": "bwcd_parent_naturalised",
+          "attribute": "parent_became_citizen_while_applicant_under_21",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Minister may register a person under 21 as a citizen where their father or mother has become a citizen of Botswana, on parental application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenship_act_1998"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of qualifying parent's Botswana citizenship (Omang or citizenship certificate)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_act_1998",
+      "tier": 3,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2021/10/Botswana-Citizenship-Act-no-8-of-1998.pdf",
+      "title": "Citizenship Rights in Africa Initiative (private NGO advocacy archive) hosting Botswana's Citizenship Act No. 8 of 1998: citizenship by birth/descent from either parent (gender-neutral), dual-citizenship-must-choose-at-21 rule, renunciation and minor-registration provisions",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- the Citizenship Act text itself was only reachable via a private NGO advocacy site hosting a scanned PDF of the Act, not a gov.bw-hosted or Government Printer-published version (Botswana's own legislation portal was not reachable directly in this pass) -- treated as tier-3 per this dataset's convention that a non-government mirror of a real law's text, however accurate, is not tier-1 (see the Vietnam/luatvietnam precedent). Descent is explicitly gender-neutral -- either parent's citizenship suffices -- a genuine and notable contrast to Jordan's strictly patrilineal default (see jo_citizenship_by_descent.json). Both birth-in-Botswana and birth-abroad-to-a-citizen-parent are governed by the same clause per the source, so a single requirement group covers both rather than splitting them artificially. dual_citizenship_allowed is FALSE reflecting the Act's rule that a dual citizen must choose by age 21 or automatically lose Botswana citizenship, unless they take specific steps to retain it -- modeled as the general default outcome for someone taking no action, not as an absolute bar in every case (see notes on the Act's age-21 mechanism)."
+}

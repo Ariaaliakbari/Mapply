@@ -1,0 +1,79 @@
+{
+  "id": "bw_citizenship_resumption",
+  "country": "BW",
+  "name": "Resumption of Botswana Citizenship",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who previously held Botswana citizenship by birth or descent, but subsequently lost or renounced it, may apply to resume it.",
+    "evidence_hint": "Previous Botswana passport or Omang; copy of Botswana's Renunciation Certificate (if applicable)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwcr_previously_citizen",
+          "attribute": "previously_held_botswana_citizenship_by_birth_or_descent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Previously held Botswana citizenship through birth or descent before it was lost or ceased.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_resumption"
+        },
+        {
+          "id": "bwcr_documentation",
+          "attribute": "has_prior_botswana_identity_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Previous Botswana passport or Omang, and if applicable the Renunciation Certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_resumption"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form S", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certified unabridged birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of parents' citizenship (certified passport, Omang, or citizenship certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Previous Botswana passport or Omang", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Copy of Botswana's Renunciation Certificate (if applicable)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bw_resumption",
+      "tier": 1,
+      "url": "https://www.gov.bw/citizenship/citizenship-requirements-resumption-botswana-citizenship",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Citizenship Requirements: Resumption of Botswana Citizenship: for those who lost citizenship held by birth/descent, Form S, ~1 month processing, Certificate of Resumption issued on approval",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). Directly sourced to gov.bw's own resumption service page -- modeled PUBLISHED. This is a distinct route from bw_citizenship_by_descent.json (an original claim to citizenship never yet exercised) and from bw_citizenship_naturalisation.json (a person with no prior Botswana citizenship claim): resumption is specifically for former citizens (by birth or descent) who lost that status -- most commonly by not making the required declaration to retain dual citizenship at age 21 (see bw_citizenship_by_descent.json's dual-citizenship-at-21 rule) -- and are reclaiming it, notably the fastest-processing citizenship route found in this build (~1 month vs ~1 year for naturalisation and spouse routes)."
+}

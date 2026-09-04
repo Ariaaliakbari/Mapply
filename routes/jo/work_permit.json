@@ -1,0 +1,84 @@
+{
+  "id": "jo_work_permit",
+  "country": "JO",
+  "name": "Labor Residency (Employer-Sponsored Work Permit)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A Jordanian employer secures a work permit from the Ministry of Labour for a non-Jordanian hire in a profession open to foreign workers, which then supports a Labor Residency permit from the Public Security Directorate.",
+    "evidence_hint": "Work permit issued by the Ministry of Labour; employer sponsorship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jowp_mol_permit",
+          "attribute": "has_ministry_of_labour_work_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Work permit issued by the Ministry of Labour, tied to a specific employer and profession.",
+          "fix_path": "Secure employer sponsorship and a Ministry of Labour work permit.",
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        },
+        {
+          "id": "jowp_open_profession",
+          "attribute": "profession_open_to_non_jordanians",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The role must not fall on Jordan's list of professions reserved for Jordanian nationals -- the Ministry of Labour has periodically expanded this closed-professions list, restricting sectors such as some retail, clerical, and trades roles to citizens.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "expatfocus_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Ministry of Labour work permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employer sponsorship / employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jo_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "psd_services",
+      "tier": 1,
+      "url": "https://psd.gov.jo/media/lncmdl3i/servcies.pdf",
+      "title": "Jordan Public Security Directorate (PSD), Borders and Residence Department -- Information Services: Labor Residency requires a Ministry of Labour work permit, 1-year duration, 30 JOD fee plus 1 JOD stamps",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "expatfocus_work",
+      "tier": 3,
+      "url": "https://www.expatfocus.com/jordan/guide/jordan-work-permits-and-working-legally",
+      "title": "Expat Focus (relocation guide) -- Jordan work permits and working legally: closed-professions list restricting certain sectors to Jordanian nationals, employer-sponsorship structure",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- the residency-permit fee/duration mechanics are tier-1 (PSD), but the closed-professions list (which sectors are currently reserved for Jordanian nationals) is sourced only to tier-3 relocation guides after the Ministry of Labour's own comprehensive guide PDF returned a 404 in this pass -- the exact current list was not independently confirmed and is not enumerated here. work_rights is marked 'restricted' since employment is tied to the sponsoring employer and permitted profession, not open-market. pr_after_months (120) reflects PSD's stated 10-year cumulative legal residence threshold for the Five-Year Residency route (see jo_permanent_residence.json), not a confirmed work-specific pathway."
+}

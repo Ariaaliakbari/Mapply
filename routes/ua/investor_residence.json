@@ -1,0 +1,73 @@
+{
+  "id": "ua_investor_residence",
+  "country": "UA",
+  "name": "Temporary Residence Permit -- Investment",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uair_investment",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Minimum EUR 100,000 share as a founder or participant in a Ukrainian legal entity.",
+          "fix_path": "Contribute at least EUR 100,000 in capital to a Ukrainian legal entity.",
+          "fix_time_months": null,
+          "source_id": "dmsu_temp_residence"
+        },
+        {
+          "id": "uair_documents",
+          "attribute": "has_required_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of capital contribution, D visa, translated passport, and medical insurance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of EUR 100,000+ capital contribution to a Ukrainian legal entity", "difficulty": "hard", "typical_time_days": null },
+    { "document": "D visa, translated passport, medical insurance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ua_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "dmsu_temp_residence",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/en-home/services/documenting-foreigners/issuance-of-temporary-residence-permit.html",
+      "title": "State Migration Service of Ukraine, official English page -- Temporary Residence Permit, investment category: minimum EUR 100,000 share in a Ukrainian legal entity, 2-year validity",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). NOTE A DISTINCT FIGURE ELSEWHERE: this is the TEMPORARY residence investment threshold (EUR 100,000, tier-1 via this file's source). Ukraine's separate PERMANENT-residence immigration-permit quota system (see ua_permanent_residence.json) has its OWN investor category with a threshold quoted as USD 100,000 -- a different currency and, at typical EUR/USD rates, a somewhat different real value, sourced from a different tier-1 page. Both figures are reported as-found rather than reconciled or assumed to be the same requirement restated in two currencies, since no single source described both figures together to confirm whether they are meant to be identical."
+}

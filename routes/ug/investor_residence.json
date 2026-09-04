@@ -1,0 +1,124 @@
+{
+  "id": "ug_investor_residence",
+  "country": "UG",
+  "name": "Shareholder Entry Permits (Trade, Professional Services, Agriculture/Mining/Manufacturing)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general_trade",
+      "name": "General Trade (Class D)",
+      "requirements": [
+        {
+          "id": "ugir_trade_license",
+          "attribute": "has_valid_trading_license",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Shareholder in a company engaged in general trade, holding a valid trading license.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_class_d"
+        }
+      ]
+    },
+    {
+      "id": "professional_services",
+      "name": "Professional Services (Class F)",
+      "requirements": [
+        {
+          "id": "ugir_professional_registration",
+          "attribute": "has_ugandan_professional_body_registration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Shareholder in a company engaged in a specific licensed profession (medicine, dentistry, law, pharmacy, engineering, accountancy, architecture, surveying, veterinary science, estate agency, valuation, nursing/midwifery), holding registration with the relevant Ugandan professional body.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_class_f"
+        }
+      ]
+    },
+    {
+      "id": "capital_intensive_sectors",
+      "name": "Agriculture, Mining, or Manufacturing (Classes B1/B2, C1/C2, E)",
+      "requirements": [
+        {
+          "id": "ugir_uia_license",
+          "attribute": "has_uia_investment_license",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Shareholder in a company engaged in agriculture, agro-processing, mining, or manufacturing, holding a Uganda Investment Authority (UIA) investment license.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uia_getting_started"
+        },
+        {
+          "id": "ugir_min_capital_250k",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "Minimum US$250,000 capital investment (foreign-investor threshold; US$50,000 for domestic investors).",
+          "fix_path": "Invest at least US$250,000 in the qualifying enterprise.",
+          "fix_time_months": null,
+          "source_id": "uia_getting_started"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Land title or agreement (agriculture)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Work plan or feasibility study", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Certified bank statements (3 months)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance, tax clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Ministry of Agriculture approval (agriculture sector only)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months (USD 1,250-1,500), 12 months (USD 2,500-3,000), 24 months (USD 5,000-6,000), or 36 months (USD 7,500-9,000) depending on class, all beyond 6 months including a USD 1,500 non-refundable component",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ug_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "immigration_class_d",
+      "tier": 1,
+      "url": "https://immigration.go.ug/entry-permit/class-d",
+      "title": "Directorate of Citizenship and Immigration Control, Uganda -- Class D Entry Permit (General Trade shareholders): USD 1,250 (6mo) to 7,500 (36mo), requires trading license, agency letter, tax clearance, 3 months' bank statements",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "immigration_class_f",
+      "tier": 1,
+      "url": "https://immigration.go.ug/entry-permit/class-f",
+      "title": "Directorate of Citizenship and Immigration Control, Uganda -- Class F Entry Permit (Professional Services shareholders): USD 1,500 (6mo) to 9,000 (36mo), requires proof of registration with the relevant Ugandan professional body",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "uia_getting_started",
+      "tier": 1,
+      "url": "https://ugandainvest.go.ug/getting-started/",
+      "title": "Uganda Investment Authority (UIA) -- Getting Started: investment license issued within 48 hours via the eBiz portal if criteria met, free of charge; minimum capital US$50,000 (domestic investors) / US$250,000 (foreign investors); UIA license is a prerequisite for Class B (agriculture), C (mining), and E (manufacturing) entry permits, though foreign nationals must still separately apply for the entry permit itself through DCIC",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- all three requirement groups tier-1 sourced (two directly fetched by me: Class D and the UIA getting-started page). This dataset consolidates Uganda's numerous sector-specific shareholder permit classes (B1/B2 agriculture/agro-processing, C1/C2 mining, D general trade, E manufacturing, F professional services) into one file with requirement_groups by sector, rather than 6 near-identical files differing mainly in sector documentation -- consistent with this dataset's approach elsewhere (e.g. Nigeria's investor tiers). Class F is a genuinely distinctive structural finding: it is nominally a 'professional' permit but is legally structured as a SHAREHOLDER class like the others, not an individual practicing-professional work permit -- a foreign doctor or lawyer must hold a stake in a Ugandan company in that field, not merely be employed by one (ordinary employed professionals would instead use ug_work_permit.json's Class G2). citizenship_after_months cross-referenced from ug_citizenship_by_residence.json, not independently sourced here."
+}

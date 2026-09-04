@@ -1,0 +1,80 @@
+{
+  "id": "bh_citizenship_naturalisation",
+  "country": "BH",
+  "name": "Bahraini Citizenship by Naturalisation (Bahraini Citizenship Act 1963, as amended)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "arab_national",
+      "name": "Arab nationals",
+      "requirements": [
+        {
+          "id": "bhcn_15yr_arab",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "15 consecutive years of legal residence for Arab nationals, plus good conduct, Arabic language proficiency, and ownership of registered real estate in Bahrain.",
+          "fix_path": "Accumulate 15 years of continuous legal residence.",
+          "fix_time_months": 180,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "non_arab_national",
+      "name": "Non-Arab nationals",
+      "requirements": [
+        {
+          "id": "bhcn_25yr_nonarab",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 300,
+          "hard": true,
+          "blocker_text": "25 consecutive years of legal residence for non-Arab nationals, plus good conduct, Arabic language proficiency, and ownership of registered real estate in Bahrain.",
+          "fix_path": "Accumulate 25 years of continuous legal residence.",
+          "fix_time_months": 300,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 15 (or 25) years' continuous legal residence", "difficulty": "often_impossible", "typical_time_days": null },
+    { "document": "Registered real estate ownership in Bahrain", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic language proficiency evidence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_bahrain_citizenship_act",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Bahraini%20Nationality%20Law_ENGLISH.pdf",
+      "title": "GLOBALCIT (EUI academic citizenship-law observatory) -- English translation of the Bahraini Citizenship Act 1963, as amended: 15-year residence requirement for Arab nationals, 25 years for non-Arab nationals, plus good conduct, Arabic proficiency, and real-estate ownership",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: DRAFT -- sourced to GLOBALCIT, an academic legal-text database hosting a translation of the primary statute (treated as tier 2, consistent with this dataset's convention for academic/research hosts of verbatim government legal text -- see Qatar's and Moldova's citizenship files for the same treatment). Bahrain's own Legislation portal (legalaffairs.gov.bh) was not directly queried in this build -- recommend cross-checking there for the authoritative Arabic/official text before upgrading this file to published. DISTINCTIVE STRUCTURAL FINDING, CONFIRMED: Bahrain draws an explicit ARAB/NON-ARAB distinction in ordinary naturalisation residence requirements -- 15 years vs. 25 years -- a nationality-based (not merely country-of-origin) two-tier system not seen structured quite this way elsewhere in this dataset. A registered real-estate ownership requirement, on top of years of residence and language proficiency, is also a distinctive add-on. dual_citizenship_allowed is FALSE -- see bh_citizenship_special_grounds.json's revocation provisions, under which voluntarily acquiring a second nationality can trigger loss of Bahraini citizenship by Governor's order, unlike several other Gulf states in this dataset that now permit dual nationality outright."
+}

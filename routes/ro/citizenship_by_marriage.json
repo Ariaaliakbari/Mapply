@@ -1,0 +1,87 @@
+{
+  "id": "ro_citizenship_by_marriage",
+  "country": "RO",
+  "name": "Citizenship by Naturalisation, Reduced Residence for Spouses of Romanian Citizens",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rocm_married_cohabiting",
+          "attribute": "married_and_cohabiting_with_romanian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to, and cohabiting with, a Romanian citizen (Law 21/1991, Article 8(1)(a)).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_law"
+        },
+        {
+          "id": "rocm_residence",
+          "attribute": "months_continuous_legal_residence_since_marriage",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "At least 5 years of legal residence in Romania counted from the date of marriage (versus 8 years on the general track).",
+          "fix_path": "Accumulate 5 years of continuous legal residence in Romania from the date of marriage.",
+          "fix_time_months": 60,
+          "source_id": "refworld_citizenship_law"
+        },
+        {
+          "id": "rocm_other_conditions",
+          "attribute": "meets_general_naturalisation_conditions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The remaining Article 8(1) conditions still apply: age 18+, legal means of subsistence, good conduct, loyalty to the Romanian state, and (since Law 14/2025) mandatory Romanian language and constitutional knowledge.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of cohabitation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 5 years' continuous legal residence since marriage", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Romanian language certification (B1)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2025-05/eng_legea-nr-21-1991-a-cetateniei-romane.pdf",
+      "title": "Refworld (UNHCR) -- Romanian Citizenship Law 21/1991 (English translation, consolidated as of May 2025), Article 8(1)(a): '...has been legally residing in Romania for at least 8 years or, if married to a Romanian citizen and cohabiting with him/her, for at least 5 years from the date of marriage'",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: DRAFT -- same tier-2-only sourcing constraint as ro_citizenship_naturalisation.json (Romania's tier-1 legislative portal and citizenship-authority site were unreachable in this pass). MODELING NOTE: this is NOT a separate legal mechanism from general naturalisation -- Article 8(1)(a) states the marriage-reduced 5-year period as part of the SAME clause as the general 8-year period, not a distinct citizenship-by-marriage statute. It is modeled as its own file here, consistent with this dataset's convention of surfacing materially different qualifying paths as separate routes, because the practical eligibility test (5 years vs 8 years; the trigger date is the marriage date, not residence start) is genuinely different for an applicant to reason about. Marriage to a Romanian citizen does NOT itself confer citizenship or any automatic status -- Article 3 explicitly states marriage, its annulment, or dissolution has no automatic effect on either spouse's nationality. Gender-NEUTRAL: the source text uses no gendered language for either spouse, unlike some other countries in this dataset (contrast Jordan's foreign-wife-only marriage route)."
+}

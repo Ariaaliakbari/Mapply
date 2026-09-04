@@ -1,0 +1,100 @@
+{
+  "id": "mn_citizenship_by_descent",
+  "country": "MN",
+  "name": "Citizenship by Birth to a Mongolian Citizen Parent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born when both parents were Mongolian citizens is a Mongolian national regardless of birthplace (Law on Citizenship 1995, Article 7.1). A child born in Mongolia with one Mongolian and one foreign/stateless parent acquires Mongolian citizenship automatically (Article 7.2). A child born abroad to one Mongolian and one foreign parent acquires citizenship based on the parents' written agreement. Foundlings and children of stateless parents in Mongolia acquire citizenship by operation of law (Articles 7.4-7.5).",
+    "evidence_hint": "Birth certificate; proof of parent(s)' Mongolian citizenship; for mixed-parentage births abroad, a written parental agreement on the child's citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents_citizens",
+      "name": "Both parents Mongolian citizens (automatic, any location)",
+      "requirements": [
+        {
+          "id": "mncd_both_parents",
+          "attribute": "both_parents_mongolian_citizens_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Both parents were Mongolian citizens at the time of birth, regardless of where the birth took place.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "mixed_parentage_born_in_mongolia",
+      "name": "One Mongolian parent, born in Mongolia (automatic)",
+      "requirements": [
+        {
+          "id": "mncd_mixed_born_mn",
+          "attribute": "one_parent_mongolian_citizen_and_born_in_mongolia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "One parent was a Mongolian citizen at birth, and the birth took place in Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "mixed_parentage_born_abroad",
+      "name": "One Mongolian parent, born abroad (by parental agreement)",
+      "requirements": [
+        {
+          "id": "mncd_mixed_born_abroad",
+          "attribute": "one_parent_mongolian_citizen_and_parents_agree_in_writing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "One parent was a Mongolian citizen at birth, the birth took place abroad, and the parents provide a written agreement that the child acquires Mongolian citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent(s)' Mongolian citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written parental agreement (mixed-parentage births abroad only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_citizenship_law",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/1320430/1504_1261392390_citizenship.pdf",
+      "title": "ecoi.net (Austrian Red Cross/ACCORD country-of-origin information network) -- Law of Mongolia on Citizenship, 5 June 1995, English translation, Article 7: citizenship by birth for children of Mongolian citizen parent(s), including mixed-parentage and foundling provisions",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: DRAFT -- tier-2 only (Mongolia's own legal-text portal, legalinfo.mn, was found in search results but not independently fetched in this pass; the ecoi.net translation is used instead, consistent with this dataset's use of comparable COI-network translations elsewhere, e.g. Refworld). Three distinct requirement groups (OR logic) modeled reflecting genuinely different rules the source states: automatic citizenship regardless of birthplace when BOTH parents are citizens; automatic citizenship for mixed-parentage children born IN Mongolia; and citizenship contingent on a WRITTEN PARENTAL AGREEMENT for mixed-parentage children born ABROAD -- this last condition (an affirmative parental election, not automatic acquisition) is a genuinely distinctive mechanism worth flagging, since most descent-based routes in this dataset are either fully automatic or fully discretionary rather than requiring parental agreement as the deciding factor. dual_citizenship_allowed is FALSE per Article 4.1's general prohibition (see mn_citizenship_naturalisation.json) -- notably, this creates a real practical tension for a child born abroad who might also acquire the other parent's/birth country's citizenship by that country's own law; the fetched text did not address how Mongolia resolves that conflict for descent-based citizens specifically (as opposed to naturalising adults), and this is flagged as an unresolved gap rather than assumed."
+}

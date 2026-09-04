@@ -1,0 +1,81 @@
+{
+  "id": "fj_investor_residence",
+  "country": "FJ",
+  "name": "Investor Permit for Non-Citizen Investors",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fjir_investment_approval",
+          "attribute": "has_investment_fiji_approval",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Investment Fiji (formerly FTIB) investment-approval letter confirming shareholding structure, plus a Foreign Investment Certificate (FIC).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_investor"
+        },
+        {
+          "id": "fjir_minimum_investment",
+          "attribute": "investment_amount_fjd",
+          "operator": ">=",
+          "value": 300000,
+          "hard": true,
+          "blocker_text": "Minimum FJD 300,000 general investment threshold under the Investment (Reserved and Restricted Activities) Regulations 2022 (made under the Investment Act 2021); higher sector-specific thresholds apply (FJD 500,000 for retail/nightclubs-liquor bars outside hotel precincts/logging; FJD 1-2 million for fishing, tobacco manufacturing, homestay/backpacker accommodation, hotels/resorts, real estate).",
+          "fix_path": "Secure the qualifying investment amount for the relevant sector.",
+          "fix_time_months": null,
+          "source_id": "unctad_fiji_investment_threshold"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment Fiji approval letter", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Foreign Investment Certificate (FIC)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of capital transfer into Fiji", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years (a separate 7-year Investor Permit category also exists per its own page title, but the fetched content did not disclose what distinguishes it -- disclosed as a gap, not modeled separately)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_fj_investor",
+      "tier": 1,
+      "url": "https://www.immigration.gov.fj/investor-permit-for-non-citizen-investors/",
+      "title": "Department of Immigration, Fiji -- Investor Permit for Non-Citizen Investors: requires Investment Fiji approval letter and Foreign Investment Certificate; investment minimum, duration confirmation, and fee not disclosed on this page",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "unctad_fiji_investment_threshold",
+      "tier": 2,
+      "url": "https://investmentpolicy.unctad.org/investment-policy-monitor/measures/4180/fiji-introduced-a-minimum-investment-threshold-",
+      "title": "UNCTAD Investment Policy Monitor -- Fiji introduced a minimum investment threshold: FJD 300,000 general threshold effective 29 April 2022 under the Investment (Reserved and Restricted Activities) Regulations 2022 (Investment Act 2021), with higher sector-specific thresholds (FJD 500,000 / FJD 1-2 million); capital must be transferred within 3 months of incorporation (scheduled activities), balance within 1 year",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: DRAFT -- the investment-amount hard requirement is sourced only to UNCTAD (tier 2, corroborated independently by the US State Department's 2025 Investment Climate Statement for Fiji, also tier 2), not to a tier-1 government page directly -- immigration.gov.fj's own investor-permit pages do not disclose the minimum. GAP: Fiji's Investment Act 2021 delegates the actual schedule of 'reserved' (citizens-only) and 'restricted' (foreign-investment-above-threshold) activities to Cabinet-approved regulations reviewed every 2 years -- the current schedule itself (which specific sectors are reserved outright) could not be located at tier-1/2 in this pass; do not treat any specific sector as citizen-only without further sourcing. A separate '7-year Investor Permit' category exists by page title alone -- its distinguishing eligibility from the 3-year permit was not disclosed. Fiji has NO distinct work-independent/freelance route -- self-employed foreigners are channeled through this investor track, since operating a business requires Investment Fiji approval; that absence is confirmed, not a research gap."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "jo_international_protection",
+  "country": "JO",
+  "name": "Asylum -- Refugee Status Determination (UNHCR-Administered)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution may register with UNHCR Jordan, which conducts refugee status determination (RSD) directly under a Memorandum of Understanding with the Jordanian government -- Jordan is not a party to the 1951 Refugee Convention or its 1967 Protocol and has no domestic asylum law.",
+    "evidence_hint": "Registration with UNHCR; identity documents where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "joip_registration",
+          "attribute": "registered_with_unhcr",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registration with UNHCR Jordan, which issues an asylum-seeker certificate granting access to services and protection against refoulement pending a decision.",
+          "fix_path": "Register with UNHCR Jordan.",
+          "fix_time_months": null,
+          "source_id": "unhcr_jordan_rsd"
+        },
+        {
+          "id": "joip_persecution",
+          "attribute": "meets_1951_convention_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution meeting the international refugee definition, assessed by UNHCR's RSD unit against international refugee law (Jordan has no domestic refugee law of its own to apply).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_jordan_rsd"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "asylum-seeker certificate pending RSD; if recognised, refugee certificate -- fixed post-recognition duration not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_jordan_rsd",
+      "tier": 2,
+      "url": "https://help.unhcr.org/jordan/en/helpful-services-unhcr/refugee-status-determination/",
+      "title": "UNHCR Jordan -- Refugee Status Determination: UNHCR itself runs RSD in Jordan (not a domestic government agency), issues asylum-seeker and refugee certificates, feedback on inquiries within ~3 weeks, appeal window of 1 month via SMS after a decision",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- STRUCTURALLY DISTINCT from most countries in this dataset: Jordan hosts one of the largest refugee populations in the world (chiefly Syrian, alongside long-standing Iraqi and Palestinian populations) but is NOT a party to the 1951 Refugee Convention or 1967 Protocol and has no domestic asylum law -- refugee status determination is conducted directly by UNHCR under a Memorandum of Understanding with the government (first signed 1998, subsequently amended), not by a Jordanian ministry. This is a different shape of 'absence' than Vietnam's or Oman's total absence of any protection mechanism (see those countries' files): Jordan has a large, functioning, internationally-run protection system, just not a domestic legal one -- disclosed explicitly rather than modeled as either a full domestic system or a total absence. Work rights are heavily conditioned in practice (the well-documented Syrian refugee work-permit scheme is a partial, sector-limited exception administered by the Ministry of Labour, not modeled as its own file here since it is an employment accommodation for a specific existing refugee population rather than a general immigration route). Post-recognition status duration and family reunification mechanics were not confirmed in this pass -- family_can_join is set true as a conservative default consistent with UNHCR's general global family-reunification practice for recognised refugees, not a Jordan-specific confirmation; family_can_work is set false since the source only referenced work permits for a specific existing refugee population (Syrians) rather than a general dependent work right."
+}

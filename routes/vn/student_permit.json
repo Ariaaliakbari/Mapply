@@ -1,0 +1,81 @@
+{
+  "id": "vn_student_permit",
+  "country": "VN",
+  "name": "DH (Student) Visa",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vnsp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmed enrollment or training placement (visa symbol DH) at a Vietnamese educational institution.",
+          "fix_path": "Obtain admission to an accredited Vietnamese institution.",
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        },
+        {
+          "id": "vnsp_sponsor_invitation",
+          "attribute": "has_institutional_invitation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The educational institution must issue or arrange an official invitation/guarantee letter for the visa application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eiv_residence_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment/admission confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Institutional invitation/guarantee letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport (13+ months validity)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "visa up to 1 year; temporary residence card up to 5 years, renewable while enrolled",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vn_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "luatvietnam_visa_categories",
+      "tier": 3,
+      "url": "https://luatvietnam.vn/xuat-nhap-canh/van-ban-hop-nhat-30-vbhn-vpqh-2023-luat-nhap-canh-xuat-canh-qua-canh-cu-tru-cua-nguoi-nuoc-ngoai-tai-vn-282494-d5.html",
+      "title": "LuatVietnam (private legal database) -- consolidated Law on Entry, Exit, Transit and Residence of Foreigners: DH student/trainee visa category, up to 1 year, Article 9",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "eiv_residence_card",
+      "tier": 3,
+      "url": "https://eiv.edu.vn/en/vietnam-temporary-residence-card-for-foreigners-complete-guide/",
+      "title": "EIV (education consultancy) -- Vietnam Temporary Residence Card guide: DH-based residence card up to 5 years, institutional documentation requirements",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT, TIER-3 ONLY -- no genuine .gov.vn source with DH-specific procedural detail was found in this pass; both sources are private commercial/consultancy sites. work_rights is 'none' since DH does not itself confer work authorization -- a student wishing to work would need a separate work permit exemption or full labour permit under Decree 152/2020, not modeled as automatic here."
+}

@@ -1,0 +1,78 @@
+{
+  "id": "td_student_permit",
+  "country": "TD",
+  "name": "Visa de Séjour (Student/Intern Category)",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A student or intern applies for the same 'visa de séjour' instrument as other visitors, submitting a student enrollment certificate (or, for minors, parental authorization) as the purpose-specific supporting document.",
+    "evidence_hint": "Student enrollment certificate from a Chadian institution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdsp_enrollment",
+          "attribute": "has_enrollment_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Student enrollment certificate from a Chadian educational institution.",
+          "fix_path": "Secure admission to a Chadian educational institution.",
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        },
+        {
+          "id": "tdsp_parental_authorization_if_minor",
+          "attribute": "has_parental_authorization_if_minor",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Parental authorization is required for minor applicants.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Student enrollment certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Yellow fever vaccination certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Parental authorization (if a minor)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 month (single entry) or 3 months (multiple entries), renewable for the duration of study though not explicitly confirmed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["td_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "embassy_chad_paris_visa",
+      "tier": 1,
+      "url": "https://ambatchadparis.fr/wp-content/uploads/2023/09/visa2019.pdf",
+      "title": "Embassy of Chad in Paris (official Chadian diplomatic mission) -- visa information sheet: student/intern category of the 'visa de séjour', requiring an enrollment certificate; same 1-month/3-month, EUR 70/100 fee structure as other purposes",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- thin, and structurally the same underlying visa as td_visitor_visa.json (see that file's notes on Chad not running distinct visa-category instruments). Whether student status renews beyond the standard 1-3 month terms for the full duration of a multi-year program was not confirmed in this pass -- 'renewable' is set true as the logical/practical necessity for any multi-year student to remain, but the exact renewal mechanism and any distinct 'carte de séjour étudiant' beyond the entry visa were not found and are not assumed to exist as a separate instrument."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "td_permanent_residence",
+  "country": "TD",
+  "name": "Long-Term Residence (via Renewed Visa de Séjour)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["td_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdpr_repeated_renewal",
+          "attribute": "has_continuously_renewed_visa_de_sejour",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Continuous renewal of the visa de séjour (typically the 3-month multiple-entry category) without an established maximum, since no distinct intermediate permanent-residence status was found.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "History of continuous visa de séjour renewals", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite in practice through repeated renewal; no fixed 'permanent residence' certificate confirmed to exist",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["td_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "embassy_chad_paris_visa",
+      "tier": 1,
+      "url": "https://ambatchadparis.fr/wp-content/uploads/2023/09/visa2019.pdf",
+      "title": "Embassy of Chad in Paris (official Chadian diplomatic mission) -- visa information sheet: only 1-month and 3-month visa de séjour terms are described, both explicitly renewable, with no separate long-term or permanent residence instrument mentioned",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- STRUCTURAL FINDING, disclosed rather than invented: no distinct permanent-residence status (comparable to Botswana's Five-Year Residency or Jordan's Five-Year Residency) was found for Chad in this pass. The only documented residence mechanism is the renewable 1-month/3-month visa de séjour, apparently renewed indefinitely by those who remain, with naturalisation (at 15 years' residence, see td_citizenship_naturalisation.json) as the only confirmed FIXED status upgrade. This file models that reality rather than fabricating an intermediate PR tier with invented thresholds -- consistent with this dataset's convention of disclosing genuine absences (see Vietnam's narrow permanent_residence.json and Vietnam's international_protection.json for the same honesty pattern applied to different countries). If Chad does maintain a distinct 'carte de résident' or long-term residence certificate, it was not found via any source reached in this pass, including a blocked Ministry of Interior/DGSN search."
+}

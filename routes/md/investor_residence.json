@@ -1,0 +1,86 @@
+{
+  "id": "md_investor_residence",
+  "country": "MD",
+  "name": "Temporary Residence for Investment/Entrepreneurial Activity (Law 200/2010 Art. 31, 36-1)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "entry_tier",
+      "name": "Entry tier -- 30-200 average salaries, 1 job",
+      "requirements": [
+        {
+          "id": "mdir_entry_tier",
+          "attribute": "investment_amount_avg_salary_multiples",
+          "operator": ">=",
+          "value": 30,
+          "hard": true,
+          "blocker_text": "Investment of 30-200 times the average monthly salary in the economy, creating at least 1 job, confirmed by an auditor, with the company registered at the Public Services Agency (ASP). Grants a 2-year permit.",
+          "fix_path": "Register a company and make the qualifying investment.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_md_temp_residence"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "2 years"
+      }
+    },
+    {
+      "id": "top_tier",
+      "name": "Top tier -- 4,000+ average salaries, 50 jobs",
+      "requirements": [
+        {
+          "id": "mdir_top_tier",
+          "attribute": "investment_amount_avg_salary_multiples",
+          "operator": ">=",
+          "value": 4000,
+          "hard": true,
+          "blocker_text": "Investment of 4,000+ times the average monthly salary in the economy, creating at least 50 jobs. Grants an 8-year permit.",
+          "fix_path": "Register a company and make the qualifying investment.",
+          "fix_time_months": null,
+          "source_id": "invest_gov_md_temp_residence"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "8 years"
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company registration with ASP", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Auditor-confirmed investment amount", "difficulty": "hard", "typical_time_days": null },
+    { "document": "File-examination fee (3,600 MDL)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 to 8 years depending on investment tier (30-200 salaries/1 job = 2yr; 200-600/8 jobs = 3yr; 600-2,000/15 jobs = 4yr; 2,000-4,000/25 jobs = 5yr; 4,000+/50 jobs = 8yr)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["md_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "invest_gov_md_temp_residence",
+      "tier": 1,
+      "url": "https://invest.gov.md/en/qa-2/obtaining-temporary-residence/",
+      "title": "Invest Moldova Agency (state investment-promotion body) -- obtaining temporary residence via investment: 5-tier table of investment amount (in multiples of the average monthly salary in the economy) vs. jobs created vs. permit duration; 3,600 MDL file-examination fee",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: PUBLISHED -- tier-1 sourced via Invest Moldova, the state investment-promotion agency. Only the entry and top investment tiers are modeled as separate requirement_groups (OR alternatives); the three intermediate tiers (200-600/8jobs/3yr, 600-2,000/15jobs/4yr, 2,000-4,000/25jobs/5yr) are disclosed in the outcome.duration_length field rather than built as their own groups, to avoid an overly fragmented file -- all five tiers are real and sourced from the same table. Investment thresholds are expressed as multiples of Moldova's average monthly salary (a periodically-updated national figure) rather than a fixed MDL amount, since Moldova has no national-variables tracking file in this dataset yet -- the multiplier itself is the modeled value, not a formula-resolved currency figure. Thresholds came from a government-agency FAQ page paraphrase, not a direct read of the Law 200/2010 statute article -- recommend cross-verifying the exact salary-multiple table against the primary legal text before treating these numbers as final."
+}

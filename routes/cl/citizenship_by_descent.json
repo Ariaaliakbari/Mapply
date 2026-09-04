@@ -1,0 +1,65 @@
+{
+  "id": "cl_citizenship_by_descent",
+  "country": "CL",
+  "name": "Nacionalidad por Filiación (Descent, Born Abroad to a Chilean Parent)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born outside Chile to a Chilean parent (by birth, naturalisation, or special grace -- 'por gracia') is Chilean by descent. Since the 2005 constitutional reform (Law 20.050), no residence period in Chile is required to establish or confirm this nationality.",
+    "evidence_hint": "Birth registration at a Chilean consulate abroad, or through Chile's Civil Registry Service; proof of the parent's or grandparent's Chilean nationality."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clcd_chilean_parent",
+          "attribute": "has_chilean_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent (or, per the source's phrasing, a parent or grandparent) holds Chilean nationality by birth, naturalisation, or special grace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chile_gob_washington_nacionalidad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's/grandparent's Chilean nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "chile_gob_washington_nacionalidad",
+      "tier": 1,
+      "url": "https://www.chile.gob.cl/washington/tramites/para-chilenos/documentos/nacionalidad",
+      "title": "chile.gob.cl (Chile's Ministry of Foreign Affairs, Chilean Embassy in Washington) -- nationality by descent: the 2005 constitutional reform (Law 20.050) eliminated the prior requirement to reside in Chile ('avecindamiento por más de un año') for children of Chilean parents born abroad to confirm their nationality; registration via consulate abroad or Chile's Civil Registry Service",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). STATUS: DRAFT -- sourced to a Chilean government EMBASSY page (tier-1) rather than the Constitution's own text (Article 10) directly, which was referenced across several search results but not independently fetched in full in this pass -- treated as reliable given the source is an official diplomatic mission restating the constitutional rule, but not upgraded to published pending a direct constitutional-text cross-check. This route is DISTINCT from cl_citizenship_by_option.json: this file covers a child born ABROAD to a Chilean parent (ordinary jus sanguinis, automatic, no residence needed); the option route covers a child born IN Chile to FOREIGN parents who were transient or diplomatic at the time of birth (an exception to Chile's otherwise jus-soli-dominant system) -- the two are easily confused since both trace to the same constitutional article (Article 10) but apply to opposite fact patterns."
+}

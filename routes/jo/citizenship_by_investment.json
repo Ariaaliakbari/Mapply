@@ -1,0 +1,116 @@
+{
+  "id": "jo_citizenship_by_investment",
+  "country": "JO",
+  "name": "Citizenship by Investment",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign investor who meets one of several capital-investment or job-creation thresholds set by Cabinet decision may apply for Jordanian citizenship directly, without first holding another residence status.",
+    "evidence_hint": "Proof of the qualifying investment (share purchase, new-project capital, existing-project assets, or specialized-sector investment) and its hold period."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "new_share_purchase",
+      "name": "New share purchase in a Jordanian company",
+      "requirements": [
+        {
+          "id": "jocbi_new_shares",
+          "attribute": "new_share_investment_jod",
+          "operator": ">=",
+          "value": 1500000,
+          "hard": true,
+          "blocker_text": "Purchase of new shares in Jordanian companies worth at least JOD 1.5 million, acquired within 4 months, limited to 10% ownership per company, held for 5 years.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "zawya_investor"
+        }
+      ]
+    },
+    {
+      "id": "new_project",
+      "name": "New project / venture capital",
+      "requirements": [
+        {
+          "id": "jocbi_new_project",
+          "attribute": "new_project_capital_jod",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "New project capital of at least JOD 700,000 in Amman or JOD 500,000 elsewhere, granting a temporary 3-year status ahead of citizenship.",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "zawya_investor"
+        }
+      ]
+    },
+    {
+      "id": "existing_project_shares",
+      "name": "Existing project share purchase",
+      "requirements": [
+        {
+          "id": "jocbi_existing_shares",
+          "attribute": "existing_project_share_investment_jod",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "Purchase of at least JOD 1 million in an existing project's shares, where the project's new fixed assets reach JOD 500,000, held for 3 years.",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "zawya_investor"
+        }
+      ]
+    },
+    {
+      "id": "specialized_sectors",
+      "name": "Specialized sectors (pharmaceuticals, food logistics) or employment creation",
+      "requirements": [
+        {
+          "id": "jocbi_specialized_sector",
+          "attribute": "specialized_sector_investment_jod",
+          "operator": ">=",
+          "value": 3000000,
+          "hard": true,
+          "blocker_text": "JOD 3 million invested in pharmaceuticals or food logistics, OR employing 150 Jordanians in Amman (100 elsewhere).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "zawya_investor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment (shares, project capital, or assets)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of hold period compliance", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "zawya_investor",
+      "tier": 3,
+      "url": "https://www.zawya.com/en/economy/policy/jordan-cabinet-approves-new-investor-residency-citizenship-rules-393411",
+      "title": "Zawya (business news) -- Jordan Cabinet-approved investor citizenship rules: new share purchase (JOD 1.5m), new project capital (JOD 700k Amman / 500k elsewhere), existing-project shares (JOD 1m + JOD 500k new assets), specialized sectors (JOD 3m pharma/food logistics) or job creation (150/100 Jordanians); reports 681 investors naturalised since the program's 2018 launch",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- entirely tier-3 sourced (business news reporting on a Cabinet decision), not independently confirmed against a government gazette or Ministry of Investment publication in this pass -- flagged prominently since these are high-stakes, high-value figures. This is a genuine, real, and apparently well-established program (681 investors reportedly naturalised since 2018), distinct from jo_investor_residence.json's more modest real-estate/business RESIDENCY route -- this file models the separate, higher-threshold DIRECT-TO-CITIZENSHIP program. Four qualifying tracks are modeled as separate requirement groups since they are alternative (OR) paths to the same outcome, not cumulative requirements. Exact rules (ownership caps, employment counting methodology, whether thresholds have changed since the reported Cabinet decision) were not cross-checked against a second independent source and should be treated as indicative rather than authoritative pending tier-1 confirmation."
+}

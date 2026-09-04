@@ -1,0 +1,84 @@
+{
+  "id": "bw_visitor_visa",
+  "country": "BW",
+  "name": "Visitor's Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-citizen from a visa-required country visiting Botswana (e.g. to see friends or relatives, or as a returning resident who has been abroad over 6 months) applies for a Visitor's Visa through the Department of Immigration and Citizenship.",
+    "evidence_hint": "Sworn statement/affidavit from a host in Botswana; host's ID or permit documentation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwvv_visa_required_nationality",
+          "attribute": "nationality_requires_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applies to non-citizens from countries that require a visa to enter Botswana as visitors; Commonwealth citizens (except Bangladesh, Cameroon, Ghana, India, Nigeria, Pakistan, Sri Lanka) and countries with a Visa Abolition Agreement are generally exempt.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_visitors_visa"
+        },
+        {
+          "id": "bwvv_host_affidavit",
+          "attribute": "has_host_sworn_statement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A sworn statement/affidavit from a host in Botswana, with the host's national ID or residence/work permit documentation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_visitors_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Host's sworn statement/affidavit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Host's ID or residence/work permit copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return ticket/onward visa or home-country residence permit", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not explicitly stated for standard visitors; up to 2 years for dependents of residents visiting under this category",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bw_visitors_visa",
+      "tier": 1,
+      "url": "https://www.gov.bw/visa-applications/visa-application-visitors-visa",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Visitor's Visa: for visiting friends/relatives, no employment permitted, 7-14 working day processing, online via evisa.gov.bw or Form 1 in person",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "botswanatourism_visas",
+      "tier": 2,
+      "url": "https://www.botswanatourism.co.bw/travel-info/countries-requiring-visas",
+      "title": "Botswana Tourism Organisation (state tourism parastatal) -- visa-required and visa-exempt nationality lists",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- gov.bw's own Visitor's Visa page is specifically framed around visiting friends/relatives (a separate 'Tourism Visa' page exists on gov.bw per search results but was not independently fetched in this pass); exact fee and standard-visitor stay-length figures were not disclosed on the fetched page and are not stated here rather than guessed. Botswana Tourism's visa-exempt list is a parastatal tourism-board source, not the Department of Immigration itself, and doesn't give a fee/duration either."
+}

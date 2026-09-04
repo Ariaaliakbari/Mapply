@@ -1,0 +1,76 @@
+{
+  "id": "cl_international_protection",
+  "country": "CL",
+  "name": "Reconocimiento de la Condición de Refugiado (Refugee Status Determination)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution must file an asylum request within 7 business days of entering Chile. CONARE (Comisión de Reconocimiento de la Condición de Refugiado) reviews eligibility and recommends a decision to the Interior Ministry's Undersecretary, who makes the final determination, under Law No. 20.430 and its implementing regulation.",
+    "evidence_hint": "Application filed within 7 business days of entering Chile."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clip_filed_within_7_days",
+          "attribute": "filed_within_7_business_days_of_entry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Asylum request filed within 7 business days of entering Chile.",
+          "fix_path": "File an asylum request within 7 business days of arrival.",
+          "fix_time_months": null,
+          "source_id": "unhcr_chile_procedure"
+        },
+        {
+          "id": "clip_persecution",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution, assessed by CONARE through an admissibility phase (up to 90 business days) and an eligibility phase including an individual interview.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_chile_procedure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim, presented at interview", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "8-month temporary residence permit while pending, renewable; post-recognition status duration not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_permanent_residence", "cl_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_chile_procedure",
+      "tier": 2,
+      "url": "https://help.unhcr.org/chile/solicitando-la-condicion-de-refugiado/procedimiento-de-la-solicitud-de-reconocimiento-de-la-condicion-de-refugiada-o/",
+      "title": "UNHCR Chile -- refugee status determination procedure: CONARE handles eligibility and recommends to the Interior Ministry's Undersecretary for final decision; 7-business-day filing deadline from entry; 15-business-day cure period for admissibility deficiencies; up to 90-business-day admissibility phase; 8-month renewable temporary residence permit granting a Chilean foreigner ID card and work rights while pending",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). STATUS: DRAFT -- per the validator's rule (published requires tier-1 sourcing on every hard requirement), this file is held to draft since both hard requirements cite UNHCR's Chile-specific procedural page (tier-2), not a fetched government text. CONARE and the Interior Ministry's role, the specific timelines, and the pending-period work rights are corroborated in comprehensive, internally consistent detail by that page, describing the operation of Chile's Law No. 20.430 (2010) and its implementing regulation (Decreto No. 837); a direct fetch of the law/decree text itself (hosted at acnur.org and bcn.cl per search results) was not performed in this pass but the source's institutional detail is credited as reliable and this is among the more trustworthy draft files in this build. The 7-business-day filing deadline is notably one of the shortest in this dataset (versus Jordan's or Chad's much longer or unspecified windows) -- flagged as a real hard deadline applicants could easily miss. Post-recognition status duration (how long refugee status itself lasts before any renewal) was not confirmed."
+}

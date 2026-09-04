@@ -1,0 +1,62 @@
+{
+  "id": "lt_eu_eea_free_movement",
+  "country": "LT",
+  "name": "EU/EEA/Swiss Citizen Free Movement",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lteu_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": "eu_eea_switzerland",
+          "hard": true,
+          "blocker_text": "Citizens of EU/EEA member states and Switzerland may live, work, and study in Lithuania without a visa or work permit, under EU free-movement law, registering their residence with the Migration Department after 3 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_home_affairs_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid EU/EEA/Swiss passport or national ID card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Registration of residence with the Migration Department (after 3 months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lt_permanent_residence", "lt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ec_home_affairs_general",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal_en",
+      "title": "European Commission EU Immigration Portal -- general confirmation of EU/EEA/Swiss free-movement rights across member states including Lithuania; this specific route was not independently verified against a dedicated Lithuanian government page in this pass",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- modeled on the general EU free-movement framework rather than a Lithuania-specific tier-1 page fetched and confirmed in this pass; the 3-month registration threshold and general mechanics are standard across the EU/EEA but were not individually re-verified against migracija.lt (Lithuania's Migration Department site, which returned JavaScript-shell-only content on direct fetch in this pass). category modeled as 'work_independent' since this route is not tied to a specific employer, business, or study program -- it is the general right of free movement itself, consistent with how this dataset has modeled equivalent EU/EEA routes for other EU member states built earlier."
+}

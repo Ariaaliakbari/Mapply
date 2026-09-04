@@ -1,0 +1,113 @@
+{
+  "id": "vn_investor_residence",
+  "country": "VN",
+  "name": "ĐT (Investor) Visa",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "dt4_smallest",
+      "name": "ĐT4 -- under VND 3 billion",
+      "requirements": [
+        {
+          "id": "vnir_dt4_capital",
+          "attribute": "investment_amount_vnd",
+          "operator": "<",
+          "value": 3000000000,
+          "hard": true,
+          "blocker_text": "Investment capital under VND 3 billion in a Vietnamese enterprise. Visa valid up to 1 year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        }
+      ]
+    },
+    {
+      "id": "dt3_small",
+      "name": "ĐT3 -- VND 3 billion to under 50 billion",
+      "requirements": [
+        {
+          "id": "vnir_dt3_capital",
+          "attribute": "investment_amount_vnd",
+          "operator": ">=",
+          "value": 3000000000,
+          "hard": true,
+          "blocker_text": "Investment capital from VND 3 billion to under 50 billion. Visa and temporary residence card valid up to 3 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        }
+      ]
+    },
+    {
+      "id": "dt2_medium",
+      "name": "ĐT2 -- VND 50 billion to under 100 billion",
+      "requirements": [
+        {
+          "id": "vnir_dt2_capital",
+          "attribute": "investment_amount_vnd",
+          "operator": ">=",
+          "value": 50000000000,
+          "hard": true,
+          "blocker_text": "Investment capital from VND 50 billion to under 100 billion. Visa and temporary residence card valid up to 5 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        }
+      ]
+    },
+    {
+      "id": "dt1_largest",
+      "name": "ĐT1 -- VND 100 billion or more (or preferred-sector investment)",
+      "requirements": [
+        {
+          "id": "vnir_dt1_capital",
+          "attribute": "investment_amount_vnd",
+          "operator": ">=",
+          "value": 100000000000,
+          "hard": true,
+          "blocker_text": "Investment capital of VND 100 billion or more, OR investment in a sector/location the State prioritizes for development. Visa valid up to 5 years; temporary residence card valid up to 10 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment registration certificate / enterprise registration certificate showing capital contribution", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of lawful origin of investment funds", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 to 5 years by tier (visa); temporary residence card 1 to 10 years by tier",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vn_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "luatvietnam_visa_categories",
+      "tier": 3,
+      "url": "https://luatvietnam.vn/xuat-nhap-canh/van-ban-hop-nhat-30-vbhn-vpqh-2023-luat-nhap-canh-xuat-canh-qua-canh-cu-tru-cua-nguoi-nuoc-ngoai-tai-vn-282494-d5.html",
+      "title": "LuatVietnam (private legal database) -- consolidated Law on Entry, Exit, Transit and Residence of Foreigners: DT1-DT4 investor visa tiers by VND capital threshold, Article 9",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT, TIER-3 ONLY -- the four-tier capital-threshold structure comes from a private legal database's reproduction of the consolidated law text, not an independently fetched .gov.vn source; the specific VND figures were not cross-checked against a second source. leads_to_pr is true for all tiers but pr_after_months is left null since Vietnam's actual thẻ thường trú (permanent residence) eligibility, per vn_permanent_residence.json, is NOT a general years-of-residence pathway open to any investor -- it is limited to a narrow set of categories (meritorious foreigners, scientists/experts, family of Vietnamese permanent residents, certain stateless persons); an ĐT investor is not automatically in a qualifying category, disclosed here rather than assumed. Under Law 118/2025/QH15 (effective 1 July 2026, confirmed via the Ministry of Public Security's own site, tier-1), a new UĐ1 preferential visa exists for 'high-quality digital industry talent' with LS/DT1/DT2/UĐ1/UĐ2 visas capped at 5 years and DT1/UĐ1/UĐ2 residence cards extended to 10 years -- this mainly confirms DT1's existing terms rather than changing them, and UĐ1 is modeled as a separate concept (skilled-talent, not capital-investment) not included in this file."
+}

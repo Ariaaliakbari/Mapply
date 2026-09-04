@@ -1,0 +1,75 @@
+{
+  "id": "ng_visitor_visa",
+  "country": "NG",
+  "name": "Visiting / Tourism Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngvv_travel_purpose",
+          "attribute": "travel_purpose",
+          "operator": "in",
+          "value": ["tourism", "social_visit", "sightseeing"],
+          "hard": true,
+          "blocker_text": "Travel purpose limited to tourism, sightseeing, or visiting family/friends -- no employment permitted.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_visa_categories"
+        },
+        {
+          "id": "ngvv_return_ticket_funds",
+          "attribute": "has_return_ticket_and_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Return/onward ticket and bank statement proving sufficient funds required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank statement / proof of funds", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Invitation letter (for visiting-family category)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days (single entry); up to 180 days per visit / 5 years validity (multiple entry, reciprocity-based); tourism visa capped at 30 days single-entry",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nis_visa_categories",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/nigerian-visa/",
+      "title": "Nigeria Immigration Service (NIS) -- Nigerian Visa categories: Visiting Visa (Single Entry, 30 days) and Visiting Visa (Multiple Entry, up to 5 years validity / 180 days per visit, granted based on reciprocity), plus Tourism Visa (30 days, single-entry); no employment permitted, non-extendable",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- tier-1 NIS sourced. This dataset merges NIS's separate 'Visiting Visa' (social/family visits) and 'Tourism Visa' (sightseeing) categories into one visit-category file since both share the same 30-day single-entry default and no-employment restriction; the multiple-entry variant (up to 5 years validity, 180 days/visit) is captured in duration_length rather than modeled as a separate file. NIS also lists numerous specialized short-stay visas not modeled separately here (sports, creative arts, study tour, journalist, cleric, medical/religious tourism, humanitarian services, INGO/NGO staff, emergency relief) -- all share the same core 'no employment, largely non-extendable, purpose-specific documentation' structure and are disclosed here rather than fragmented into a dozen near-identical route files. E-visas available for most short-stay categories; embassy processing required for stays exceeding 90 days."
+}

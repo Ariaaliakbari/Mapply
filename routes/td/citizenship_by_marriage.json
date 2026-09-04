@@ -1,0 +1,98 @@
+{
+  "id": "td_citizenship_by_marriage",
+  "country": "TD",
+  "name": "Citizenship by Marriage (Naturalisation of a Foreign Spouse)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign spouse of a Chadian national may be naturalised, though marriage itself does not automatically confer nationality -- the spouse proceeds through the general naturalisation framework, additionally providing a certificate from their country of origin confirming that country's law permits nationality acquisition through marriage.",
+    "evidence_hint": "Marriage certificate; certificate from the foreign spouse's home country confirming reciprocal marriage-based nationality rules."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdcm_married_to_citizen",
+          "attribute": "is_spouse_of_chadian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a citizen of Chad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_decree_1963"
+        },
+        {
+          "id": "tdcm_home_country_certificate",
+          "attribute": "has_home_country_reciprocity_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A certificate from the authorities of the applicant's country of origin ('certificat délivré par les autorités du pays dont il se réclame') confirming that country's law permits acquisition of its nationality (or, in this context, is compatible with the applicant taking Chadian nationality) through marriage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_decree_1963"
+        },
+        {
+          "id": "tdcm_general_naturalisation_conditions",
+          "attribute": "meets_general_naturalisation_conditions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Marriage does not itself confer citizenship -- the spouse must also meet the conditions of the general naturalisation framework (see td_citizenship_naturalisation.json), though a reduced residence period specific to spouses was not confirmed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_chad_nationality"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Home-country reciprocity certificate", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_decree_1963",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1963/fr/20304",
+      "title": "Refworld (UNHCR) -- Décret n°211/PG.-INT. du 6 novembre 1963: spousal acquisition of nationality requires a certificate from the foreign spouse's home-country authorities confirming that country's own marriage-based nationality rules; the decree does not describe this as automatic",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "wikipedia_chad_nationality",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Chadian_nationality_law",
+      "title": "Wikipedia -- Chadian nationality law: 'the spouse of a Chadian national may be naturalized under the general naturalization framework, though marriage itself does not automatically confer nationality'",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- thin and unusual. Unlike most marriage-based citizenship routes in this dataset (which typically offer a REDUCED residence period for spouses -- see Jordan, Vietnam, Peru), no reduced timeline specific to spouses of Chadian citizens was found for Chad; the sources available suggest the spouse proceeds through essentially the general 15-year naturalisation framework (see td_citizenship_naturalisation.json) with an ADDITIONAL reciprocity-certificate requirement not seen elsewhere in this dataset. Gender symmetry (whether this applies equally to a foreign husband of a Chadian wife and a foreign wife of a Chadian husband) was not addressed by either source and is not assumed either way -- disclosed as unconfirmed rather than modeled as either symmetric or asymmetric."
+}

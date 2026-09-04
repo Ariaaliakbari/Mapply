@@ -1,0 +1,74 @@
+{
+  "id": "az_family_reunification",
+  "country": "AZ",
+  "name": "Temporary Residence Permit -- Family Relations",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "azfr_close_family_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_az_citizen", "child_of_az_citizen", "parent_of_az_citizen"],
+          "hard": true,
+          "blocker_text": "Close family ties to an Azerbaijani citizen (e.g. spouse, child, parent), evidenced by notarized birth certificates, marriage certificates, and identification documents proving the relationship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        },
+        {
+          "id": "azfr_consent",
+          "attribute": "has_notarized_family_member_consent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A notarized consent application from the sponsoring family member is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized birth certificate or marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notarized consent application from the sponsoring family member", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Identification proving the relationship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["az_permanent_residence", "az_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_az_residence",
+      "tier": 1,
+      "url": "https://migration.gov.az/en/page/73",
+      "title": "Azerbaijan State Migration Service -- grounds for temporary residence permit via family relations to an Azerbaijani citizen: notarized birth/marriage certificates and family member's notarized consent",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). No sponsor income or housing-adequacy threshold was found described on the tier-1 page reviewed -- disclosed as a gap rather than invented. IMPORTANT: unlike most other countries built in this dataset (Armenia, Morocco, Oman, Serbia), marriage to an Azerbaijani citizen does NOT itself confer or fast-track citizenship in Azerbaijan -- Article 7 of the Law on Citizenship explicitly states that marriage or divorce involving an Azerbaijani citizen 'shall not be a reason for change of citizenship', and no marriage-based reduced naturalisation track was found (see az_naturalisation.json's notes). citizenship_after_months (60) therefore reuses the ordinary 5-year naturalisation figure rather than a marriage-specific shortcut, and this route leads only to residence status, not an accelerated citizenship path."
+}

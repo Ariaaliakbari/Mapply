@@ -1,0 +1,85 @@
+{
+  "id": "sk_student_permit",
+  "country": "SK",
+  "name": "Temporary Residence for the Purpose of Study",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sksp_enrollment",
+          "attribute": "is_registered_at_slovak_educational_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registered at an educational institution seated in Slovakia.",
+          "fix_path": "Obtain admission to a Slovak educational institution.",
+          "fix_time_months": null,
+          "source_id": "ec_student_slovakia"
+        },
+        {
+          "id": "sksp_age",
+          "attribute": "age",
+          "operator": "<=",
+          "value": 23,
+          "hard": true,
+          "blocker_text": "Under 20 for secondary-school study, under 23 for post-secondary/university study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_student_slovakia"
+        },
+        {
+          "id": "sksp_financial_means",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Documented proof of sufficient financial means for the stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_student_slovakia"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of enrollment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial means", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "for the foreseen length of studies, up to 6 years, renewable in increments of up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sk_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "ec_student_slovakia",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-slovakia_en",
+      "title": "European Commission, Migration and Home Affairs, EU Immigration Portal -- Slovakia student residence: enrollment at a Slovak institution, age caps (under 20 secondary / under 23 post-secondary), financial means, duration up to 6 years (5-year renewal increments), work rights capped at 10 hours/week (non-university) or 20 hours/week (university) without a separate work permit; 90-day grace period before residence permit required if reporting to Foreign Police within 3 working days",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- sourced to the European Commission's own EU Immigration Portal (tier-2 intergovernmental, treated consistently with this dataset's use of EU-institution sources elsewhere e.g. Romania's Schengen-status corroboration), which describes Slovakia's national rules in detail rather than generic EU policy -- Slovakia's own minv.sk pages could not be fetched to sufficient depth in this pass to independently corroborate at tier-1, so this stays draft despite the detailed, specific content. work_rights is 'restricted' reflecting the sourced 10hr/20hr weekly caps (a genuine, specific limitation, not a conservative default). The age caps (20/23) are an unusual, specific structural feature worth flagging -- most other countries' student routes in this dataset do not cap applicant age."
+}

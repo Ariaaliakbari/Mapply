@@ -1,0 +1,93 @@
+{
+  "id": "am_citizenship_armenian_origin",
+  "country": "AM",
+  "name": "Citizenship for Persons of Armenian Origin (Diaspora)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 13 exempts a person of Armenian origin ('has Armenian predecessors') from the standard 3-year permanent-residence and Armenian-language requirements otherwise required for naturalisation -- an applicant need only be 18+, apply, and not fall foul of the state-security ground. Separately, Articles 10-11 recognize citizens of Armenian origin of the former Armenian SSR residing outside Armenia, who have not acquired another state's citizenship, upon application. This is Armenia's broadest ancestry-based route: unlike am_citizenship_by_descent.json's strict child-of-current-citizen-parents rule, 'Armenian origin' here is not limited to a single generation.",
+    "evidence_hint": "Documentation establishing Armenian heritage/predecessors (specific generational or evidentiary limits not confirmed in this pass); for the former-Armenian-SSR-citizen route, proof of that prior citizenship status and non-acquisition of another state's citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "armenian_origin_exemption",
+      "name": "Person of Armenian origin (Article 13 exemption)",
+      "requirements": [
+        {
+          "id": "amao_origin",
+          "attribute": "is_of_armenian_origin",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Has Armenian predecessors -- exempts the applicant from the standard 3-year permanent-residence and Armenian-language requirements.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amao_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must have attained the age of 18 and have active legal capacity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "former_armenian_ssr_citizen",
+      "name": "Citizen of Armenian origin of the former Armenian SSR",
+      "requirements": [
+        {
+          "id": "amao_former_ssr",
+          "attribute": "is_former_armenian_ssr_citizen_of_armenian_origin",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A citizen of Armenian origin of the former Armenian SSR residing outside the Republic of Armenia, who has not acquired the citizenship of another state, gains recognition as an Armenian citizen upon applying.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation of Armenian heritage/predecessors", "difficulty": "hard", "typical_time_days": null },
+    { "document": "For the former-Armenian-SSR route: proof of that prior citizenship and non-acquisition of another state's citizenship", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "arlis_citizenship_law",
+      "tier": 1,
+      "url": "https://www.arlis.am/en/acts/219000",
+      "title": "ARLIS -- Law on the Citizenship of the Republic of Armenia: Article 13's Armenian-origin exemption from standard naturalisation requirements, and Articles 10-11's recognition of Armenian-origin citizens of the former Armenian SSR residing abroad without another state's citizenship",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). This is functionally Armenia's version of a diaspora/'right of return' citizenship route -- one of the broadest ancestry-based routes built in this dataset, comparable in spirit to Serbia's Article 23 (member of the Serbian people, no residence needed) built earlier, though the exact evidentiary bar for proving 'Armenian origin' (how many generations, what documentation) was not confirmed to the same precision as, e.g., Morocco's baptism-record standard or Serbia's public/church-record standard -- disclosed as an open question rather than invented. The former-Armenian-SSR-citizen route (Articles 10-11) is narrower and historically specific (Soviet-era Armenian SSR citizenship), modeled as a separate requirement group since it is a genuinely distinct legal basis from the general Article 13 'Armenian predecessors' exemption, not a restatement of it. dual_citizenship_allowed TRUE per Article 13.1, consistent with all other Armenian citizenship routes in this dataset."
+}

@@ -1,0 +1,83 @@
+{
+  "id": "pe_international_protection",
+  "country": "PE",
+  "name": "Refugee Status (Condición de Refugiado)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person outside their country of origin with a well-founded fear of persecution may apply for refugee status with Peru's Special Commission for Refugees (CEPR), under the Ministry of Foreign Affairs (RREE). Regular/legal entry into Peru is not required to apply.",
+    "evidence_hint": "Application form; identity documents (or a sworn declaration if undocumented); for applicants 15+, a sworn statement on criminal/police record."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "peip_persecution_claim",
+          "attribute": "meets_refugee_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must show a well-founded fear of persecution, assessed by the Comisión Especial para los Refugiados (CEPR).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_help_peru"
+        },
+        {
+          "id": "peip_application_filed",
+          "attribute": "has_filed_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application filed in person, with handwritten signature, at a CEPR Protection Space in Lima or a deconcentrated regional office.",
+          "fix_path": "File a refugee status application with the CEPR.",
+          "fix_time_months": null,
+          "source_id": "unhcr_help_peru"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport, national ID, or birth certificate (or loss/theft report plus sworn declaration if undocumented)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sworn statement on criminal/police record (applicants 15+)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this pass; provisional 'Carne de solicitante' historically valid 60 days, renewable, while the claim is pending",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.n: refugee/political asylum status recognized under Peru's international treaty commitments, processed by RREE/CEPR, 1-year duration",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "unhcr_help_peru",
+      "tier": 2,
+      "url": "https://help.unhcr.org/peru/solicitando-la-condicion-de-refugiado/como-solicitar-la-condicion-de-refugiado/",
+      "title": "UNHCR Help Peru -- refugee status application process: CEPR (Ministry of Foreign Affairs) runs determination directly, no regular entry required, virtual work authorization after registration, provisional Carne de solicitante, confidentiality guarantee",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- the category's existence and its 1-year duration are tier-1 (direct from the MIGRACIONES regulation, Art. 29.2.n), but the actual application process, document list, and interim rights during the pending period come from UNHCR (tier-2), not an independently fetched RREE/CEPR government page (portal.rree.gob.pe's dedicated refugee pages were not successfully fetched in this pass). No specific processing timeline was found -- disclosed as unconfirmed rather than guessed. Peru hosts one of the world's largest populations of displaced Venezuelans; most of that population holds ordinary temporary-stay or work permits (via the now-lapsed PTP/CPP regularization programs) rather than formal refugee status -- this file models the FORMAL 1951-Convention refugee determination route specifically, not the broader ad hoc regularization schemes, which are not modeled here since they are not an ongoing, generally-available route."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "ng_business_permit",
+  "country": "NG",
+  "name": "Business Permit + Expatriate Quota (foreign-owned company operation)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngbp_foreign_participation",
+          "attribute": "company_has_foreign_participation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Company must have foreign participation (wholly foreign-owned or a joint venture) -- 100% Nigerian-owned (indigenous) companies do not need a Business Permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "candb_faq"
+        },
+        {
+          "id": "ngbp_skills_unavailable_locally",
+          "attribute": "demonstrates_skills_unavailable_in_nigeria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "To obtain an Expatriate Quota for foreign staff positions, the company must demonstrate that the required skills are not available in Nigeria and commit to Nigerian-staff development/localization.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "interior_expatriate_quota_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certificate of Incorporation (CAC)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Company memorandum/articles, board composition", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Justification for each expatriate position sought", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Business Permit: no fixed expiry stated, but must be amended on material company changes (board, address, ownership, business nature, name); Expatriate Quota: 3-year initial Establishment Grant, first renewal extends it, second renewal grants 2 more years, 7 years cumulative maximum before localization is expected (or 'Permanent Until Review' status for qualifying top-management roles)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "candb_faq",
+      "tier": 1,
+      "url": "https://candb.interior.gov.ng/faq/",
+      "title": "Citizenship and Business Department, Federal Ministry of Interior, Nigeria -- FAQ: Business Permit is 'an official approval issued by the Ministry of Interior that authorises a company with foreign participation to legally operate in Nigeria'; indigenous (100% Nigerian-owned) companies exempt; Expatriate Quota grants approval to employ a specified number of foreign professionals in designated positions, Establishment Grant initial 3-year validity, first renewal extends, second renewal 2 years, 7 years cumulative max, 'Permanent Until Review' (PUR) status available for critical roles like CEO/MD",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "interior_expatriate_quota_policy",
+      "tier": 1,
+      "url": "https://interior.gov.ng/ministry-of-interior-clarifies-expatriate-quota-policy/",
+      "title": "Federal Ministry of Interior, Nigeria -- clarification of Expatriate Quota policy: companies must justify that required skills are unavailable in Nigeria; Ministry stresses Nigerian hiring priority, no compliance amnesty",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- both sources tier-1. This route is the COMPANY-side prerequisite that underlies both ng_work_permit.json (individual Employment Expatriate Visa) and expatriate hiring generally -- it does not itself grant an individual visa or residence status, hence work_rights/study_rights/family fields are all 'none'/false here; the actual individual-level rights are captured in ng_work_permit.json. Modeled as its own file because it is the gatekeeping mechanism foreign companies must clear before any expatriate staff visa can be issued, and because the dataset's 'business' category is the right fit for a company-level authorization distinct from any individual route. The 7-year cumulative expatriate-quota cap before localization is expected is a genuinely distinctive structural feature -- worth flagging as a planning constraint for any company modeling long-term expatriate staffing in Nigeria."
+}

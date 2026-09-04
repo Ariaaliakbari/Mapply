@@ -1,0 +1,65 @@
+{
+  "id": "ro_citizenship_by_descent",
+  "country": "RO",
+  "name": "Citizenship by Birth to a Romanian Citizen Parent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born to at least one Romanian citizen parent acquires Romanian citizenship automatically at birth, whether born in Romania or abroad (Law 21/1991, Article 5). A foundling discovered on Romanian territory is presumed a Romanian citizen until proven otherwise.",
+    "evidence_hint": "Birth certificate; proof of parent's Romanian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rocd_parent_romanian",
+          "attribute": "has_romanian_citizen_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent was a Romanian citizen at the time of the child's birth, regardless of birthplace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's Romanian citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2025-05/eng_legea-nr-21-1991-a-cetateniei-romane.pdf",
+      "title": "Refworld (UNHCR) -- Romanian Citizenship Law 21/1991 (English translation, consolidated as of May 2025), Article 5: children born to at least one Romanian citizen parent acquire citizenship regardless of birthplace; foundlings on Romanian territory presumed citizens until proven otherwise",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: DRAFT -- same tier-2-only sourcing constraint as the other citizenship files in this build (Romania's tier-1 legislative portal was unreachable). This is DISTINCT from ro_citizenship_reacquisition.json: this file covers a child born to a parent who is a Romanian citizen AT THE TIME OF THE CHILD'S BIRTH (ordinary jus sanguinis, applies going forward indefinitely); the reacquisition file covers ADULTS who are themselves former citizens, or descendants of former citizens who LOST Romanian citizenship historically (chiefly through 20th-century territorial changes), reclaiming it as adults through an application process. The two mechanisms can compound across generations (a person naturalising or reacquiring citizenship makes their own future children eligible under this Article 5 route) but rest on different legal triggers and are modeled separately per this dataset's convention."
+}

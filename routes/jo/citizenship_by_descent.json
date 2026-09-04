@@ -1,0 +1,82 @@
+{
+  "id": "jo_citizenship_by_descent",
+  "country": "JO",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child of a Jordanian father is Jordanian wherever born (Nationality Law No. 6 of 1954, Article 9). A child born in Jordan to a Jordanian mother acquires Jordanian nationality only where the father's nationality is unknown or he is stateless (Article 4) -- a Jordanian mother married to a known foreign-national father cannot pass citizenship to her child through descent.",
+    "evidence_hint": "Birth certificate; proof of father's Jordanian nationality (or, for the narrow maternal exception, proof the father is unknown or stateless)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal",
+      "name": "Child of a Jordanian father",
+      "requirements": [
+        {
+          "id": "jocd_jordanian_father",
+          "attribute": "has_jordanian_citizen_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The father is a Jordanian citizen; the child is Jordanian wherever born (Article 9).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "maternal_exception",
+      "name": "Child of a Jordanian mother, father unknown or stateless",
+      "requirements": [
+        {
+          "id": "jocd_jordanian_mother_narrow",
+          "attribute": "born_in_jordan_to_jordanian_mother_and_unknown_or_stateless_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Jordan to a Jordanian mother, where the father's nationality is unknown or he is stateless (Article 4).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of father's Jordanian nationality (paternal route) or proof father is unknown/stateless (maternal exception)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_nationality_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1954/en/13885",
+      "title": "Refworld (UNHCR) -- Jordan Nationality Law No. 6 of 1954, as amended to 1987: Article 9 (patrilineal citizenship by descent, unconditional), Article 4 (narrow maternal exception where the father is unknown or stateless)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- tier-2 sourced (see jo_citizenship_naturalisation.json for the same sourcing caveat). Jordan's descent framework is strictly patrilineal by default: a Jordanian mother married to a known foreign father CANNOT pass citizenship to her children under this law -- a genuinely disclosed structural absence, not modeled as a general maternal route. This has been a long-documented point of domestic and international criticism of Jordanian nationality law and directly produces statelessness/residency complications for the children of Jordanian women married to foreign men, distinct from and compounding the jo_citizenship_by_marriage.json asymmetry (a Jordanian woman's foreign husband also has no citizenship-by-marriage route). Children in this situation are typically eligible only for renewable residency and work-permit exemptions administratively, not citizenship -- these administrative accommodations were referenced in secondary sources during research but not confirmed in enough procedural detail to model as their own route in this pass."
+}

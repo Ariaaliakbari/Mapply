@@ -1,0 +1,78 @@
+{
+  "id": "qa_family_reunification",
+  "country": "QA",
+  "name": "Family Residency (dependent sponsorship)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["qa_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "qafr_sponsor_income",
+          "attribute": "sponsor_monthly_income",
+          "operator": ">=",
+          "value": 10000,
+          "hard": true,
+          "blocker_text": "Sponsor's monthly income must reach QAR 10,000/month (government/semi-government sector, or with employer-provided housing); a lower QAR 6,000/month threshold applies to private-sector technical/specialized roles with employer-provided housing.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fragomen_qatar_family"
+        },
+        {
+          "id": "qafr_health_insurance",
+          "attribute": "dependents_have_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mandatory health insurance for all sponsored dependents (previously required only for dependents aged 60+; MOI clarification dated 19 Jan 2024).",
+          "fix_path": "Obtain qualifying health insurance for each dependent.",
+          "fix_time_months": null,
+          "source_id": "fragomen_qatar_family"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate / birth certificates (for spouse/children)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance for each dependent", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to sponsor's residence permit",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "fragomen_qatar_family",
+      "tier": 3,
+      "url": "https://www.fragomen.com/insights/qatar-revised-family-residency-and-visit-visa-requirements-for-sponsoring-principals.html",
+      "title": "Fragomen (immigration law firm) -- Qatar revised family residency and visit visa requirements: QAR 10,000/6,000/month sponsor-income thresholds by sector, mandatory health insurance for all dependents effective 19 Jan 2024 per MOI clarification",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- sourced only to a tier-3 immigration law firm; MOI's own family-sponsorship rules page (tier-1) was unreachable in this build (robots.txt-blocked). This is the sole source for the QAR 10,000/6,000/month income figures -- flagged as a real sourcing gap, not laziness, and the top re-verification item for this file. Also disclosed but NOT independently modeled: a separate, lower QAR 5,000/month threshold applies specifically to short-term family VISIT visas (as opposed to full family residency); and Qatari/expat women's ability to sponsor a husband or children has been reported in older secondary coverage but was not re-verified at tier-1/2 in this pass -- treat that specific point as unconfirmed."
+}

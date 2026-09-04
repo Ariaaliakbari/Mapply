@@ -1,0 +1,82 @@
+{
+  "id": "jo_citizenship_by_marriage",
+  "country": "JO",
+  "name": "Citizenship by Marriage (Foreign Wife of a Jordanian Man)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign woman married to a Jordanian man may acquire Jordanian nationality by written declaration after Council of Ministers approval, once the marriage has lasted the qualifying period (Nationality Law No. 6 of 1954, as amended). There is no equivalent provision in the law for a foreign man married to a Jordanian woman.",
+    "evidence_hint": "Marriage certificate; declaration submitted after the qualifying marriage duration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "arab_wife",
+      "name": "Arab wife of a Jordanian man",
+      "requirements": [
+        {
+          "id": "jocm_arab_marriage_years",
+          "attribute": "months_married_to_jordanian_husband",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years of marriage to a Jordanian man, for a wife of Arab nationality.",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "refworld_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "non_arab_wife",
+      "name": "Non-Arab wife of a Jordanian man",
+      "requirements": [
+        {
+          "id": "jocm_nonarab_marriage_years",
+          "attribute": "months_married_to_jordanian_husband",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of marriage to a Jordanian man, for a wife of non-Arab nationality.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "refworld_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written declaration of intent to acquire nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_nationality_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1954/en/13885",
+      "title": "Refworld (UNHCR) -- Jordan Nationality Law No. 6 of 1954, as amended to 1987: after Council of Ministers approval, a foreign wife of a Jordanian man may acquire nationality by written declaration -- 3 years of marriage for an Arab wife, 5 years for a non-Arab wife; no comparable provision exists for a foreign husband of a Jordanian woman",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- tier-2 sourced (Refworld hosting of the law text, not Jordan's own gazette). IMPORTANT STRUCTURAL FINDING: this route is explicitly and asymmetrically gendered. Jordan's Nationality Law grants a path to citizenship for a foreign WIFE of a Jordanian man (3yr Arab / 5yr non-Arab, subject to Council approval) but contains NO equivalent provision for a foreign HUSBAND of a Jordanian woman -- a Jordanian woman cannot pass citizenship to her foreign spouse through marriage at all under this law. This is a well-documented feature of Jordanian nationality law (and shared by several other countries in the region) and is modeled here as a genuine, disclosed asymmetry rather than smoothed into a gender-neutral 'spouse' framing -- consistent with this dataset's convention of disclosing structural absences rather than inventing symmetry that doesn't exist. A Jordanian woman's foreign husband and their children face separate, well-documented statelessness/residency complications (their children do not receive citizenship automatically either -- see jo_citizenship_by_descent.json) that are not modeled as a route here since no legal citizenship pathway exists for them to model."
+}

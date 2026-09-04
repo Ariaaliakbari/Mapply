@@ -1,0 +1,90 @@
+{
+  "id": "il_citizenship_by_return",
+  "country": "IL",
+  "name": "Citizenship by Return (Aliyah, Law of Return 5710-1950)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person eligible under the Law of Return 5710-1950 -- a Jew, or a child/grandchild of a Jew, or the spouse of any of these -- may immigrate to Israel as an oleh (immigrant) and, per Section 2 of the Nationality Law 5712-1952, automatically becomes an Israeli national from the date of immigration or (if born after) from birth.",
+    "evidence_hint": "Application through the Jewish Agency or Israeli consulate; proof of Jewish status or qualifying descent (e.g. a grandparent's Jewish identity)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilcr_eligibility",
+          "attribute": "meets_law_of_return_eligibility",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Is a Jew, or the child or grandchild of a Jew, or the spouse of a Jew/child of a Jew/grandchild of a Jew, per the Law of Return's amended (1970) eligibility definition.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        },
+        {
+          "id": "ilcr_not_excluded",
+          "attribute": "not_excluded_by_conversion_or_security_grounds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Not excluded on the statutory grounds set out in the Law of Return (e.g. a person who has voluntarily changed religion, or poses a threat to public health/state security).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Jewish status or qualifying descent", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Application via the Jewish Agency or an Israeli consulate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite -- may enter directly as an oleh (immediate citizenship) or first hold an A/1 temporary-resident visa (3 years, extendable to 5) before completing aliyah",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "knesset_nationality_law",
+      "tier": 1,
+      "url": "https://fs.knesset.gov.il/2/law/2_lsr_211774.pdf",
+      "title": "fs.knesset.gov.il (the Knesset, Israel's Parliament -- official primary legislation archive) -- Nationality Law 5712-1952, Section 2 (Hebrew): every immigrant under the Law of Return becomes an Israeli citizen, with acquisition dated from state establishment, immigration date, birth, or receipt of an immigration certificate depending on timing; confirms the automatic-citizenship MECHANISM but not the underlying Law of Return's own eligibility definition (a separate 1950 statute, חוק השבות, not independently fetched in this pass)",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "refworld_nationality_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1953/en/14615",
+      "title": "Refworld (UNHCR) -- Israel Nationality Law 5712-1952, Section 2, corroborating the Knesset text in English translation",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "nbn_a1_visa",
+      "tier": 3,
+      "url": "https://www.nbn.org.il/making-aliyah/the-aliyah-process/temporary-resident-a-1-visa/",
+      "title": "Nefesh B'Nefesh (nonprofit operating in official partnership with the Israeli government and Jewish Agency on aliyah absorption) -- A-1 Temporary Resident visa: granted only to those eligible under the Law of Return; 3 years extendable to 5; holders may work, register for healthcare after 183 days, but cannot vote or hold Israeli travel documents until completing aliyah to citizenship",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: DRAFT -- the core legal MECHANISM (Section 2's automatic-citizenship rule) is now tier-1 (fetched directly from the Knesset's own archive), but the ELIGIBILITY DEFINITION for the underlying Law of Return itself (who counts as 'a Jew' -- the actual 1950 statute, separately amended in 1970) was not independently fetched in this pass -- only referenced via the tier-2 Refworld summary, which is why this file remains draft despite the tier-1 upgrade on the mechanism. The A-1 temporary-resident pathway detail comes from Nefesh B'Nefesh, an aliyah-focused nonprofit that works in official partnership with the Israeli government but is not itself a government body -- tier-3 here. This is the single most distinctive route in this entire dataset: Israel is one of very few countries where a specific ethno-religious ancestry (Jewish, defined here per the Law of Return's own amended criteria: a person with a Jewish parent or grandparent, or the spouse of such a person) confers an automatic, largely unconditional path to citizenship, independent of prior residence, language, or means. dual_citizenship_allowed is TRUE per Section 2's default (Israel does not require oleh to renounce prior citizenship, unlike il_citizenship_naturalisation.json's non-Jewish naturalisation track, which does require renunciation) -- this asymmetry between the two citizenship tracks is a genuine structural feature, not an inconsistency in this file. The exact statutory eligibility definition (who counts as 'a Jew' for this purpose, and the exclusion grounds) is legally precise and consequential -- flagged for priority re-verification against the Law of Return's actual amended text (1970 amendment) rather than the secondary paraphrase used here."
+}

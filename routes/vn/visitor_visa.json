@@ -1,0 +1,97 @@
+{
+  "id": "vn_visitor_visa",
+  "country": "VN",
+  "name": "DL (Tourist) Visa / E-Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_dl_or_evisa",
+      "name": "DL tourist visa or e-visa",
+      "requirements": [
+        {
+          "id": "vnvv_purpose",
+          "attribute": "trip_purpose",
+          "operator": "==",
+          "value": "tourism",
+          "hard": true,
+          "blocker_text": "Entry must be for tourism (visa symbol DL); most nationalities can alternatively apply for an e-visa online.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        },
+        {
+          "id": "vnvv_duration_cap",
+          "attribute": "days_permitted_stay",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "DL visa and e-visa are valid for up to 90 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        }
+      ]
+    },
+    {
+      "id": "unilateral_exemption",
+      "name": "Citizens of countries Vietnam unilaterally exempts from visas",
+      "requirements": [
+        {
+          "id": "vnvv_exempt_nationality",
+          "attribute": "nationality_unilaterally_visa_exempt",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of countries Vietnam has unilaterally exempted from visa requirements may enter and stay for 45 days, with the possibility of an extension.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinhphu_law23_2023"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (13+ months validity recommended for onward status changes)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "E-visa application or consular visa (unless unilaterally visa-exempt)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days (DL/e-visa) or 45 days (unilateral exemption, extendable)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "luatvietnam_visa_categories",
+      "tier": 3,
+      "url": "https://luatvietnam.vn/xuat-nhap-canh/van-ban-hop-nhat-30-vbhn-vpqh-2023-luat-nhap-canh-xuat-canh-qua-canh-cu-tru-cua-nguoi-nuoc-ngoai-tai-vn-282494-d5.html",
+      "title": "LuatVietnam (private legal database) -- consolidated text of Vietnam's Law on Entry, Exit, Transit and Residence of Foreigners (Consolidated Document 30/VBHN-VPQH 2023): DL tourist and EV e-visa categories, up to 90 days, Article 9",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "chinhphu_law23_2023",
+      "tier": 1,
+      "url": "https://xaydungchinhsach.chinhphu.vn/toan-van-luat-so-23-2023-qh15-sua-doi-mot-so-dieu-cua-luat-xuat-canh-nhap-canh-119230726100202115.htm",
+      "title": "Government Portal (chinhphu.vn) -- full text summary of Law 23/2023/QH15 amendments: unilaterally visa-exempt nationals granted 45 days' temporary residence, extendable",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT -- the 45-day unilateral-exemption figure is tier-1 (Government Portal, chinhphu.vn), but the base DL/e-visa 90-day figure and category definition are sourced only to LuatVietnam, a PRIVATE commercial legal-database company -- accurate reproductions of the law's article text in this session's experience, but NOT a government-run publisher, so graded tier-3 rather than tier-1 despite quoting article numbers directly. This distinction matters for Vietnam specifically since much of the detailed visa-category information in this build comes from such private legal databases (luatvietnam.vn, thuvienphapluat.vn, english.luatvietnam.vn) rather than genuine .gov.vn government sources -- flagged here and in every file that relies on them, to avoid the kind of domain-based over-crediting flagged for other countries earlier in this dataset (e.g. Serbia's welcometoserbia.gov.rs vs .org confusion)."
+}

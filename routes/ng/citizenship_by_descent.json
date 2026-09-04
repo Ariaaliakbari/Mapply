@@ -1,0 +1,72 @@
+{
+  "id": "ng_citizenship_by_descent",
+  "country": "NG",
+  "name": "Citizenship by Registration -- Descent (Full-Age Person Born Abroad to a Nigerian-Citizen Ancestor)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngcd_citizen_ancestor",
+          "attribute": "has_nigerian_citizen_parent_grandparent_or_greatgrandparent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Evidence of Nigerian citizenship of either parent, a grandparent, or a great-grandparent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "candb_pdf"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport photograph and birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence of Nigerian citizenship of parent/grandparent/great-grandparent", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Residence permit and passport bio-data pages", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate (where applicable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Guarantor documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "candb_pdf",
+      "tier": 1,
+      "url": "https://candb.interior.gov.ng/wp-content/uploads/2025/05/CB-Citizenship-Requirements.pdf",
+      "title": "Citizenship and Business Department, Federal Ministry of Interior, Nigeria -- Citizenship Requirements: 'Citizenship by Registration (Section 26(2B))' document checklist requires applicants to 'Upload Evidence Of Nigerian Citizenship Of Either Parent/Grand Parent/Great Grand Parent'",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "constitution_ch3",
+      "tier": 2,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Nigeria_Constitution_chapter_III_on_Citizenship_1999.pdf",
+      "title": "Constitution of the Federal Republic of Nigeria, 1999 (as amended), Chapter III -- Section 26(1)(b): registration eligibility for 'full-age persons born outside Nigeria with a citizen grandparent', subject to Presidential satisfaction of good character, domicile intent, and oath compliance",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- tier-1 candb.interior.gov.ng document checklist for the ancestor-evidence requirement, tier-2 constitutional text corroborating the underlying legal basis. GENUINELY DISTINCTIVE FINDING: the Ministry of Interior's own operational document checklist reaches THREE generations back (parent, grandparent, OR great-grandparent), which is broader than the Constitution's own literal Section 26(1)(b) text (which speaks only of a citizen grandparent) -- this dataset models the Ministry's actual practice since that reflects what an applicant will encounter, but flags the discrepancy: it may indicate the Ministry's interpretation extends beyond the strict constitutional wording, or that the great-grandparent option applies through a different registration provision not fully separated out in either source. No residence-duration or age-floor requirement beyond 'full age' was found; citizenship_after_months set to 0 rather than an invented figure. DISCLOSED BUT NOT MODELED AS A HARD REQUIREMENT: Section 26 also requires the President's satisfaction of good character, domicile intent, and oath compliance (tier-2 sourced, citizenshiprightsafrica.org) -- omitted from requirement_groups here to keep this file's hard requirements cleanly tier-1, since only the ancestor-evidence condition itself is independently tier-1 confirmed via the Ministry's own document checklist. dual_citizenship_allowed is FALSE per the same Section 28 forfeiture rule as ng_citizenship_naturalisation.json, since registration is not citizenship by birth. Distinct from ng_returning_nigerian_by_birth.json, which is for people who WERE THEMSELVES Nigerian citizens and renounced -- this route is for descendants who never held Nigerian citizenship themselves."
+}

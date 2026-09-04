@@ -1,0 +1,73 @@
+{
+  "id": "bh_work_independent",
+  "country": "BH",
+  "name": "Registered Worker Permit (self-sponsorship, successor to the Flexi Permit)",
+  "category": "work_independent",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bhwi_already_in_bahrain",
+          "attribute": "is_already_resident_in_bahrain_with_lapsed_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreign national already in Bahrain whose work permit was cancelled or has expired -- this is NOT an open self-sponsorship option for anyone applying from abroad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lmra_registered_worker"
+        },
+        {
+          "id": "bhwi_clean_record",
+          "attribute": "no_criminal_or_absconding_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "No criminal record or record of absconding; not a visit-visa holder; does not hold a Commercial Registration (CR) of their own.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lmra_registered_worker"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of prior cancelled/expired work permit in Bahrain", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months, 1 year, or 2 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bh_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "lmra_registered_worker",
+      "tier": 1,
+      "url": "https://lmra.gov.bh/en/page/show/549",
+      "title": "Labour Market Regulatory Authority (LMRA), Bahrain -- Registered Worker Permit / Labour Registration Program: self-sponsored work for foreign nationals already in Bahrain with a cancelled/expired permit, no criminal/absconding record, no CR ownership, not a visit-visa holder; fees BHD 267.5 (6mo)/365 (1yr)/560 (2yr)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: PUBLISHED -- tier-1 LMRA sourced. IMPORTANT CORRECTION TO A COMMONLY-REPORTED CLAIM: the well-known 'Flexi Permit' (BHD ~450/year, launched circa 2017, open multi-employer self-sponsorship) was DISCONTINUED 31 October 2022 and replaced by this narrower Registered Worker Permit under Decree-Law No. 1 of 2022. An old LMRA-hosted PDF describing the discontinued Flexi Permit terms (fees BHD 427-749, no eligibility restriction to already-lapsed-permit holders) is still live on lmra.gov.bh as of this build and could mislead anyone scraping the site directly -- this file models the CURRENT Registered Worker Permit rules, not the legacy Flexi Permit terms, and that distinction should not be lost if this file is revisited. Eligibility is meaningfully narrower than the old scheme: it is a remedy for foreign workers already in Bahrain with a lapsed sponsorship, not a general open self-sponsorship option for new arrivals."
+}

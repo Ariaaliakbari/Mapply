@@ -1,0 +1,91 @@
+{
+  "id": "bd_ancestry_no_visa_required",
+  "country": "BD",
+  "name": "No Visa Required (NVR) for Persons of Bangladeshi Origin",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "document_holder",
+      "name": "Bangladeshi document holder",
+      "requirements": [
+        {
+          "id": "bdnvr_bd_document",
+          "attribute": "holds_bd_passport_nid_or_birth_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Holds (or previously held) a Bangladeshi passport, National ID card, or a 17-digit online-verifiable Bangladeshi birth certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nvr_mission_page"
+        },
+        {
+          "id": "bdnvr_not_saarc",
+          "attribute": "not_saarc_national",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Not a national of a SAARC country (NVR does not apply to SAARC nationals).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nvr_mission_page"
+        }
+      ]
+    },
+    {
+      "id": "spouse_or_child",
+      "name": "Spouse or child of a qualifying document holder",
+      "requirements": [
+        {
+          "id": "bdnvr_family_of_holder",
+          "attribute": "is_spouse_or_child_of_bd_origin_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouse (subject to specific conditions and physical presence at the consulate) or child (with parent's name shown on the birth certificate) of a person who qualifies as a Bangladeshi-origin document holder.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nvr_mission_page"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bangladeshi passport, NID, or 17-digit birth certificate (self or qualifying parent)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport-size photograph", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of current country of residence", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "multiple entries into Bangladesh with unlimited duration of stay, for the full validity of the holder's passport",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nvr_mission_page",
+      "tier": 1,
+      "url": "https://bcgdubai.gov.bd/no-visa-required-nvr/",
+      "title": "Consulate General of the People's Republic of Bangladesh, Dubai -- No Visa Required (NVR): for foreign nationals of Bangladeshi origin (except SAARC nations), their spouses, and their children; grants multiple entries with unlimited duration of stay within the validity of the passport; applied via visa.gov.bd, processed through the local mission",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: PUBLISHED -- tier-1 official consulate sourced. MARQUEE ANCESTRY ROUTE, GENUINELY DISTINCTIVE: this is not citizenship and not formal permanent residence -- it is an unlimited-duration, multiple-entry visa exemption endorsement, functionally equivalent to permanent free movement in and out of Bangladesh for the diaspora and their immediate family, without ever converting to a residence status or citizenship. work_rights and study_rights are marked 'full' since NVR holders face no employment/study restriction once in Bangladesh (distinct from ordinary visit visas), though this is inferred from the unrestricted nature of the endorsement rather than an explicit tier-1 statement to that effect -- flagged as an interpretation. A separate INVESTMENT-based NVR pathway also exists (US$10 million+ commitment to heavy industry, requiring BSCIC certification, per tier-3 legalseba sourcing) but was not independently tier-1 confirmed and is not modeled as a requirement group here -- disclosed only. Excludes SAARC nationals (India, Pakistan, Nepal, Sri Lanka, etc.) entirely, per the source's own explicit carve-out -- worth flagging since it means Bangladeshi-origin persons who are ALSO nationals of a SAARC country cannot use this route regardless of ancestry."
+}

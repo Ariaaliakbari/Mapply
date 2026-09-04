@@ -1,0 +1,76 @@
+{
+  "id": "bw_international_protection",
+  "country": "BW",
+  "name": "Asylum -- Refugee Status Determination",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution may apply for refugee status through Botswana's domestic refugee status determination process, run by the newly established Commissioner for Refugees and the Botswana Refugees Committee under a 2024 Refugees Act, replacing the earlier Refugees (Recognition and Control) Act of 1968. Botswana is party to the 1951 Refugee Convention, its 1967 Protocol, and the 1969 OAU Convention.",
+    "evidence_hint": "Application to the Commissioner for Refugees; identity documents where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwip_persecution",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution meeting the 1951 Convention / 1967 Protocol / 1969 OAU Convention refugee definitions, assessed through a four-tier determination process.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_rimap_botswana"
+        },
+        {
+          "id": "bwip_application_filed",
+          "attribute": "has_filed_application_with_commissioner",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application filed with the Commissioner for Refugees.",
+          "fix_path": "File a refugee status application with the Commissioner for Refugees.",
+          "fix_time_months": null,
+          "source_id": "unhcr_rimap_botswana"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_rimap_botswana",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/countries/botswana",
+      "title": "UNHCR Regional Information and Analysis Mapping Platform (RIMAP) -- Botswana: party to the 1951 Convention/1967 Protocol/1969 OAU Convention; a 2024 Refugees Act introduced a four-tier government-led RSD process with a Commissioner for Refugees and Botswana Refugees Committee, replacing the 1968 Act; primary population hosted at Dukwi Refugee Camp (~580km from Gaborone), with smaller urban populations in Gaborone and Francistown",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- LIVE LEGAL TRANSITION FLAG: Botswana passed a new Refugees Act in 2024 replacing the 1968 Refugees (Recognition and Control) Act with a genuine domestic four-tier RSD process and new institutions (Commissioner for Refugees, Botswana Refugees Committee) -- this is a significant structural upgrade from the older, more UNHCR-dependent model many secondary sources (written before 2024) still describe. Modeled here per the NEW framework, sourced to UNHCR's own regional mapping platform (tier-2, intergovernmental) rather than a Botswana government gazette publication of the new Act itself, which was not reached in this pass -- exact timelines, work-rights-while-pending policy, and camp-vs-urban-settlement rules under the new Act were not confirmed and are disclosed as gaps. This is a materially different shape from Jordan's UNHCR-administered-under-MOU system (see jo_international_protection.json): Botswana now has its own domestic refugee law and government institutions running RSD directly, not an externally-run process substituting for domestic law."
+}

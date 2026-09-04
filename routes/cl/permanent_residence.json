@@ -1,0 +1,96 @@
+{
+  "id": "cl_permanent_residence",
+  "country": "CL",
+  "name": "Residencia Definitiva",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 24,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clpr_residence_standard",
+          "attribute": "months_as_residencia_temporal_holder",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "At least 24 months holding a valid Residencia Temporal permit (for applications submitted after 14 May 2022).",
+          "fix_path": "Hold Residencia Temporal continuously for 24 months.",
+          "fix_time_months": 24,
+          "source_id": "serviciomigraciones_residencia_definitiva"
+        },
+        {
+          "id": "clpr_apply_before_expiry",
+          "attribute": "applied_within_90_days_before_expiry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application must be submitted within the 90-day window before the Residencia Temporal permit expires.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_residencia_definitiva"
+        }
+      ]
+    },
+    {
+      "id": "reduced",
+      "name": "Reduced 12-month route",
+      "requirements": [
+        {
+          "id": "clpr_reduced_qualifying_ground",
+          "attribute": "qualifying_ground",
+          "operator": "in",
+          "value": ["family_connection_to_national_or_pr", "completed_diplomatic_mission", "proven_income_or_pension", "active_business_investment", "notable_social_cultural_artistic_scientific_or_sports_contribution", "international_agreement"],
+          "hard": true,
+          "blocker_text": "One of: family connections to a Chilean national or Residencia Definitiva holder; completed official diplomatic mission; proven income or pension; active business investment in Chile; notable social/cultural/artistic/scientific/sports contribution; or eligibility under an international agreement -- reduces the wait to 12 months.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "serviciomigraciones_residencia_definitiva"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Criminal record certificate (max 60 days old, 18+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport/national ID scans", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Chilean foreigner ID card (18+)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of income/livelihood (varies by employment status)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "serviciomigraciones_residencia_definitiva",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/residencia-definitiva-permit/",
+      "title": "serviciomigraciones.cl (SERMIG) -- Residencia Definitiva: standard 24 months as a Residencia Temporal holder (applications after 14 May 2022), reduced to 12 months for family ties/diplomatic service/proven income/business investment/notable contributions/international agreements, and extended beyond 24 months for insufficient means, unstable employment, extended absences, or legal violations",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED -- directly and comprehensively tier-1 sourced, one of the strongest files in this build. The reduced (12-month) and extended (beyond 24-month) tracks are both disclosed by SERMIG's own page; the EXTENDED track (for insufficient means, unstable employment, extended absences, or legal/tax/labour violations) is not modeled as a separate requirement group since it describes circumstances that lengthen the wait rather than a distinct qualifying path -- disclosed here in notes rather than omitted. Fee amount was referenced by the source as applying but not quantified, and is not stated here."
+}

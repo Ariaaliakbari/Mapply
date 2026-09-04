@@ -1,0 +1,80 @@
+{
+  "id": "so_citizenship_by_descent",
+  "country": "SO",
+  "name": "Citizenship by Descent and Ethnic-Somali Declaration",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_descent",
+      "name": "Descent from a Somali father",
+      "requirements": [
+        {
+          "id": "socd_somali_father",
+          "attribute": "father_is_somali_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant's father is a Somali citizen -- citizenship acquired automatically by operation of law. The located text does not state an equivalent automatic provision for a Somali mother and a non-Somali father.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_1962_law"
+        }
+      ]
+    },
+    {
+      "id": "ethnic_somali_declaration",
+      "name": "Ethnic-Somali declaration route",
+      "requirements": [
+        {
+          "id": "socd_ethnic_somali_declaration",
+          "attribute": "is_somali_declaring_renunciation_of_foreign_status",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Somali (by ethnicity/community, not already a citizen by the paternal-descent rule) residing in Somali territory or abroad who declares willingness to renounce any foreign nationality becomes a Somali citizen automatically. This provision reads as intended for ethnic Somalis whose ancestral homeland spans neighbouring states (e.g. Ethiopia's Somali Region/Ogaden, northern Kenya) rather than for unrelated foreign nationals.",
+          "fix_path": "Submit a declaration of willingness to renounce any foreign nationality.",
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_1962_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Father's proof of Somali citizenship (paternal-descent track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Declaration of willingness to renounce foreign nationality (ethnic-Somali track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_1962_law",
+      "tier": 2,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Somalia_Citizenship_Law_28_22-Dec-62.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- Somali Citizenship Law No. 28 of 22 December 1962, Article 2(a): citizenship by operation of law for a person whose father is a Somali citizen; Article 2(b): a Somali residing in Somali territory or abroad who declares willingness to renounce foreign nationality status becomes a citizen automatically",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Somalia). STATUS: DRAFT -- same tier-2-only sourcing limitation as this dataset's other Somalia citizenship files. GENDERED GAP, DISCLOSED PRECISELY: the located text of Article 2(a) ties automatic descent citizenship to a SOMALI FATHER; no equivalent automatic provision transmitting citizenship through a Somali mother (where the father is not Somali) was located -- this build could not confirm whether such a child is entirely excluded or falls back to the reduced-residence naturalization track in so_citizenship_naturalisation.json's Article 5 provision (2 years' residence for the child of a Somali mother), which would imply the child of a Somali mother is NOT automatically a citizen and must actively reside and apply. This is flagged as the single most consequential open question in this build -- Somalia's descent-citizenship gender asymmetry appears structurally similar to Sudan's pre-2006 rule, but unlike Sudan, no source located here confirms Somalia has ever amended it. DISTINCTIVE STRUCTURAL FEATURE NOT SEEN ELSEWHERE IN THIS DATASET: Article 2(b)'s ethnic-Somali declaration route reads as a mechanism for the many ethnic Somalis living across Ethiopia's Somali Region, northern Kenya, and Djibouti (a legacy of colonial-era border-drawing splitting the Somali-inhabited Horn of Africa) to formalize Somali citizenship by declaration alone, without the residence/conduct requirements of ordinary naturalization -- modeled here as its own requirement_group since it operates on an entirely different logic (ancestral/ethnic identity) than the paternal-descent track."
+}

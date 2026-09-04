@@ -1,0 +1,74 @@
+{
+  "id": "sd_returning_sudanese_foreign_passport",
+  "country": "SD",
+  "name": "Sudanese Nationals Travelling on a Foreign Passport",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sdrs_sudanese_id",
+          "attribute": "holds_sudanese_id_document",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Holds a Sudanese identity document, evidencing Sudanese nationality, despite travelling on a foreign passport.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sudan_embassy_visa"
+        },
+        {
+          "id": "sdrs_sudanese_sponsor",
+          "attribute": "has_sudanese_sponsor_id",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Sudanese sponsor's identity document must be submitted with the application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "sudan_embassy_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Sudanese ID document", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sudanese sponsor's ID", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application form", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "USD 154 fee; up to 10 working days processing; specific stay duration not stated by the source",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sudan_embassy_visa",
+      "tier": 1,
+      "url": "https://sudanembassy.org/entry-visa/",
+      "title": "Embassy of the Republic of Sudan -- Entry Visa, 'Sudanese Nationals with Foreign Passports' category: USD 154, up to 10 working days, requires a Sudanese ID document and a Sudanese sponsor's ID",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sudan). STATUS: PUBLISHED -- tier-1 official diplomatic mission sourced. This is a facilitation category for people who ARE Sudanese nationals under Sudan's own Nationality Act but hold and travel on a foreign passport -- distinct from a true diaspora/ancestry-exemption route like Bangladesh's NVR or Fiji's Exemption by Descent, since it presupposes the applicant already IS a current Sudanese national (evidenced by a Sudanese ID), not merely of Sudanese origin or descent. Its practical relevance is shaped by Sudan's Nationality Act not generally recognizing dual citizenship (see sd_citizenship_naturalisation.json's notes on the Act's silence on dual citizenship generally, and its explicit automatic-revocation rule specifically for South Sudanese citizenship) -- meaning a person using this category is, on paper, solely a Sudanese national who happens to hold a second country's travel document, a status whose legal footing may be more precarious than the visa process itself suggests. work_rights/study_rights modeled as 'full' on the reasoning that a person entering on their own nationality's documentation is not visa-restricted the way a foreign national would be, though this is an inference from the category's structure rather than an explicit tier-1 statement to that effect."
+}

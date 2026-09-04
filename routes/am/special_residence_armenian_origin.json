@@ -1,0 +1,89 @@
+{
+  "id": "am_special_residence_armenian_origin",
+  "country": "AM",
+  "name": "Special Residence Status (Armenian Origin / Special Passport)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Special residence status, evidenced by a special passport, is granted primarily to foreign nationals of Armenian origin (diaspora) who do not wish to take up Armenian citizenship, and to those who have rendered notable services to Armenia in economic or cultural fields. It is granted by decision of the Prime Minister.",
+    "evidence_hint": "Documented Armenian origin/heritage, or evidence of notable economic/cultural service to Armenia."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "armenian_origin",
+      "name": "Person of Armenian origin",
+      "requirements": [
+        {
+          "id": "amso_origin",
+          "attribute": "is_of_armenian_origin",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreign national of Armenian origin (diaspora), granted by decision of the Prime Minister.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "diaspora_gov_am_faq"
+        }
+      ]
+    },
+    {
+      "id": "notable_service",
+      "name": "Notable economic or cultural service",
+      "requirements": [
+        {
+          "id": "amso_service",
+          "attribute": "has_rendered_notable_service_to_armenia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Engaged in notable economic or cultural activities benefiting Armenia, granted by decision of the Prime Minister.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "diaspora_gov_am_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Armenian origin/heritage (for the origin route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of notable economic/cultural service to Armenia (for the service route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "10 years, renewable, can be issued more than once",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "diaspora_gov_am_faq",
+      "tier": 1,
+      "url": "http://diaspora.gov.am/en/faqs/12",
+      "title": "Office of the High Commissioner for Diaspora Affairs (Armenian government) -- special residency status: 10 years, granted primarily to foreign nationals of Armenian origin who do not wish to acquire citizenship, or to those with notable economic/cultural service to Armenia, decided by the Prime Minister",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "id": "workpermit_am",
+      "tier": 1,
+      "url": "https://workpermit.am/en/home",
+      "title": "Armenia's official work-permit platform -- confirms special residence status document is a 'special passport', 10-year duration",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). STATUS: DRAFT -- 'Armenian origin' is not further defined by documentary criteria (e.g. how many generations back, what proof suffices) on the tier-1 pages reviewed, and the grant is explicitly discretionary (by Prime Ministerial decision) rather than an automatic entitlement on paper qualification -- disclosed as a gap rather than assumed to mirror am_citizenship_armenian_origin.json's citizenship-track evidentiary standard. This status exists specifically as an ALTERNATIVE to citizenship for diaspora Armenians who want deep legal ties to Armenia (long validity, presumably close to full rights) without formally becoming Armenian citizens -- distinct in purpose from am_permanent_residence.json's general 5-year status and from outright citizenship. citizenship_after_months modeled 0 since a special-residence holder of Armenian origin can generally also qualify directly for citizenship under Article 13's own Armenian-origin exemption (see am_citizenship_armenian_origin.json) without an additional required wait tied to holding this status first."
+}

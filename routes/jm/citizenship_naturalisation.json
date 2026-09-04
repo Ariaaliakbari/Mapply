@@ -1,0 +1,98 @@
+{
+  "id": "jm_citizenship_naturalisation",
+  "country": "JM",
+  "name": "Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmcn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be 18 or older.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "pica_naturalisation"
+        },
+        {
+          "id": "jmcn_residence_aggregate",
+          "attribute": "months_resident_aggregate",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' aggregate legal residence in Jamaica.",
+          "fix_path": "Accumulate 5 years of aggregate legal residence.",
+          "fix_time_months": 60,
+          "source_id": "pica_naturalisation"
+        },
+        {
+          "id": "jmcn_residence_immediately_preceding",
+          "attribute": "months_resident_immediately_preceding",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "12 months' continuous residence immediately preceding the application.",
+          "fix_path": "Remain resident in Jamaica for the 12 months immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "pica_naturalisation"
+        },
+        {
+          "id": "jmcn_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character, evidenced by a clean police record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "pica_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form N1 (naturalisation application)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "4 references, all Jamaican-born", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Newspaper publication of the application, twice, one week apart", "difficulty": "routine", "typical_time_days": 7 },
+    { "document": "Police record / certificate of character", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "JMD 50,000 processing fee + JMD 1,000 Stamp Office endorsement", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "12 months continuous residence immediately preceding application, within a 5-year aggregate residence requirement",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "pica_naturalisation",
+      "tier": 1,
+      "url": "https://www.pica.gov.jm/citizenship/naturalisation",
+      "title": "Passport, Immigration and Citizenship Agency (PICA), Jamaica -- Naturalisation: age 18+, 5 years' aggregate residence with 12 months immediately preceding, good character, Form N1, 4 Jamaican-born references, publication in a newspaper twice one week apart, fees JMD 50,000 (processing) + JMD 1,000 (Stamp Office endorsement), ~24 months processing",
+      "accessed_at": "2026-09-03"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: PUBLISHED -- directly fetched by me from pica.gov.jm, tier-1. FEE CONFLICT DISCLOSED: JIS (Jamaica Information Service) public-facing material elsewhere cites a JMD 20,000 naturalisation fee; PICA's own current page states JMD 50,000 + 1,000. This dataset uses PICA's figure as the authoritative one since PICA is the operational agency processing the applications, but the discrepancy suggests JIS content may be outdated -- flagged for anyone cross-checking against JIS sources. Processing time ~24 months is notably long relative to other naturalisation routes in this dataset. dual_citizenship_allowed is TRUE -- Jamaica permits dual/multiple citizenship without restriction, unlike several other countries built in this dataset (Bahrain, Ethiopia)."
+}

@@ -1,0 +1,89 @@
+{
+  "id": "bw_work_permit",
+  "country": "BW",
+  "name": "Work Permit + Residence Permit (Employment Category)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-citizen with a Botswana employer secures a Work Permit from the Department of Immigration and Citizenship, then applies for a companion Residence Permit under the employment category; visa-required nationalities additionally need an Employment Visa to enter.",
+    "evidence_hint": "Employment contract; job advertisement (no older than 6 months); employer sponsorship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwwp_employment_contract",
+          "attribute": "has_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employment contract with a Botswana employer.",
+          "fix_path": "Secure employer sponsorship in Botswana.",
+          "fix_time_months": null,
+          "source_id": "gov_bw_work_permit"
+        },
+        {
+          "id": "bwwp_job_advert",
+          "attribute": "job_advertised_within_6_months",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A job advertisement no older than 6 months, evidencing the role could not be filled locally.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_work_permit"
+        },
+        {
+          "id": "bwwp_professional_clearance",
+          "attribute": "has_professional_body_clearance_if_regulated",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Clearance from the relevant professional regulatory body for regulated professions (e.g. medical, teaching, accounting, aviation, engineering).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Job advertisement (within 6 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Educational certificates (translated to English)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Professional body clearance (where applicable)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified; work permit processed within 14 working days, residence permit within 30 working days; renewal must be filed 6 months before expiry",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bw_permanent_residence", "bw_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_bw_work_permit",
+      "tier": 1,
+      "url": "https://www.gov.bw/residency-and-work/work-permit-application",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Work Permit Application: 14 working-day processing, renewal filed 6 months before expiry with a renewal-of-contract letter, professional clearances for regulated professions (medical, teaching, accounting, football, aviation, engineering), investor sub-track requiring bank statements and business registration",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- tier-1 sourced but fee and exact permit-duration figures were not disclosed on the fetched pages. Work Permit and (employment-category) Residence Permit are modeled together as one file since gov.bw's own process treats them as a linked pair -- a Residence Permit's employment category requires an existing Work Permit. A separate 'Employment Visa' (evisa.gov.bw) exists on top of this for visa-required nationalities who need to physically enter the country; not modeled as its own file since it presupposes already holding a valid work and residence permit rather than being an independent route. work_rights is 'restricted' since work is tied to the sponsoring employer, not open-market. No closed-professions list (roles barred outright to non-citizens) was found in this pass -- only professions requiring additional regulatory clearance, disclosed as a distinct thing rather than conflated with an outright ban."
+}

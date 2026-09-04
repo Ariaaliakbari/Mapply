@@ -1,0 +1,81 @@
+{
+  "id": "sk_family_reunification",
+  "country": "SK",
+  "name": "Permanent Residence for Five Years, Family Reunion (Spouse/Dependent Relative of a Slovak Citizen)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse of a Slovak citizen holding permanent residence",
+      "requirements": [
+        {
+          "id": "skfr_spouse",
+          "attribute": "is_spouse_of_slovak_citizen_with_permanent_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Valid marriage to a Slovak citizen who holds permanent residence in Slovakia; marriages celebrated abroad require a Slovak marriage certificate from the Special Registry Office in Bratislava.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_family_reunion"
+        }
+      ]
+    },
+    {
+      "id": "dependent_relative",
+      "name": "Dependent direct-line relative or child of a Slovak citizen",
+      "requirements": [
+        {
+          "id": "skfr_dependent_relative",
+          "attribute": "is_dependent_direct_line_relative_or_minor_child",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A dependent direct-line relative (e.g. parent) of a Slovak citizen, a child under 18, or a dependent adult child unable to care for themselves due to health conditions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_family_reunion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Authenticated marriage certificate (Slovak Special Registry Office certificate if married abroad)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Authenticated birth certificates (for relative/child categories)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of the Slovak citizen sponsor's permanent residence", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Custody orders where applicable", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years; status may be cancelled if spouses do not maintain a joint family life or the marriage ends before 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "must maintain a genuine joint family life with the sponsoring spouse for the marriage to remain a valid basis for status",
+    "switchable_to": ["sk_permanent_residence", "sk_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "iom_family_reunion",
+      "tier": 2,
+      "url": "https://mic.iom.sk/en/family/permanent-residence-for-the-purpose-of-a-family-reunion.html",
+      "title": "IOM Migration Information Centre Slovakia -- permanent residence for 5 years, family-reunion grounds: spouse of a Slovak citizen with permanent residence, dependent direct-line relatives, children under 18, dependent adult children; marriages of convenience grounds for rejection; status cancellable if joint family life ends or marriage terminates before 5 years",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- both hard requirements cite the tier-2 IOM page only; Slovakia's own Ministry of Interior/Foreign Police pages were not reachable to sufficient tier-1 depth in this pass. NOTABLE STRUCTURAL FEATURE: unlike most other countries in this dataset, family of a SLOVAK CITIZEN goes straight into the 5-year PERMANENT residence track (not a lower temporary-residence tier first) -- an unusually generous starting point. This file does NOT cover family reunification for relatives of a THIRD-COUNTRY-NATIONAL resident (as opposed to a Slovak citizen) -- Slovakia appears to run a separate, lower 'temporary residence for family reunification' track for that population (referenced in search results via akmv.sk and euraxess.sk but not independently fetched in this pass) -- disclosed as a scope limitation rather than modeled. pr_after_months (48) reflects the 'held the 5-year permit for at least 4 years' threshold to reach unlimited permanent residence (see sk_permanent_residence.json)."
+}

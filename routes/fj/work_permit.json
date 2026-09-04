@@ -1,0 +1,81 @@
+{
+  "id": "fj_work_permit",
+  "country": "FJ",
+  "name": "Long Term Work Permit (Work Permit for Non-Citizen Skilled Contracted Workers, \"Time Post\")",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fjwp_job_offer",
+          "attribute": "has_qualifying_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Valid employment contract with a locally registered Fiji company (or conversion from a Short Term Work Permit, or a spousal-basis application).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_ltwp"
+        },
+        {
+          "id": "fjwp_labour_market_test",
+          "attribute": "employer_completed_labour_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must advertise the position and submit a complete, tabulated list of local applicants shortlisted, with qualifications/experience and reasons for rejection -- unless the role is a certified family business, government contract, or intra-company secondment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_timepost"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's job advertisement + tabulated local-applicant rejection list", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "FIRCA (tax authority) compliance certificate (for extensions)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 to 3 years, renewable via extension category",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fj_family_reunification", "fj_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_fj_ltwp",
+      "tier": 1,
+      "url": "https://www.immigration.gov.fj/long-term-work-permit/",
+      "title": "Department of Immigration, Fiji -- Long Term Work Permit: requires valid employment contract with a locally registered company, 1-3 years validity, fee FJD 650.05 primary / FJD 185 per dependent, excludes holders of study/residence/investor/visitor permits from direct eligibility",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "immigration_gov_fj_timepost",
+      "tier": 1,
+      "url": "https://www.immigration.gov.fj/work-permit-for-non-citizen-skilled-contracted-workers-commonly-known-as-time-post/",
+      "title": "Department of Immigration, Fiji -- Work Permit for Non-Citizen Skilled Contracted Workers ('Time Post'), Immigration Act 2003 s.9(2)(c): mandatory advertising and itemized local-applicant rejection list, exemptions for certified family business/government contract/intra-company secondment, FIRCA compliance certificate required for extension",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: PUBLISHED -- both hard requirements are tier-1 Department of Immigration sourced. GAP DISCLOSED, NOT FABRICATED: the brief asked about a 'Ministry of Employment unemployment certificate' clearance step -- this could not be verified in any tier-1/2 source under that terminology. What IS confirmed at tier-1 is a functionally equivalent labour-market test administered directly by the Department of Immigration itself (mandatory advertising plus a documented rejection list), not a separate Ministry of Employment certificate -- treat the 'unemployment certificate' phrasing as unconfirmed/possibly outdated. A separate Short Term Work Permit exists (up to 1 year, non-renewable as short-term, no dependents, urgently-needed overseas workers) and converts into this route -- disclosed rather than modeled as its own file. citizenship_after_months (96) reflects the transitional 8-of-10-year naturalisation rule from fj_citizenship_naturalisation.json, not independently sourced here."
+}

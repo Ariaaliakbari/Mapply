@@ -1,0 +1,74 @@
+{
+  "id": "ug_visitor_visa",
+  "country": "UG",
+  "name": "Tourist / Business / Family Visit Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ugvv_purpose_documents",
+          "attribute": "has_purpose_specific_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Purpose-specific supporting documents: travel itinerary and hotel booking (tourism), invitation letter (business), or host's immigration status confirmation (family visit).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_tourist_visa"
+        },
+        {
+          "id": "ugvv_passport_validity",
+          "attribute": "passport_months_valid",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport valid for at least 6 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_tourist_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Recent passport-size photograph", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel itinerary and hotel booking (tourism), or invitation letter (business)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 3 months, single entry; approval authorization itself expires 90 days after issuance if travel has not begun",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ug_work_permit", "ug_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "immigration_tourist_visa",
+      "tier": 1,
+      "url": "https://immigration.go.ug/services/tourist-visa",
+      "title": "Directorate of Citizenship and Immigration Control, Uganda -- Tourist Visa: USD 50, up to 3 months single-entry, approval authorization valid 90 days from issuance for travel to commence; requires 6-month-valid passport and purpose-specific supporting documents, all in English",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- tier-1 Directorate of Citizenship and Immigration Control (DCIC) sourced, directly fetched by me. This dataset merges the Tourist, Business (short-stay), and Family Visit visa purposes into one file since they share the same USD 50 fee, 3-month duration, and application mechanism (visas.immigration.go.ug), differing only in supporting documentation -- consistent with this dataset's established approach for short-stay visa variants elsewhere. Applications processed entirely online through the Immigration Portal with in-person biometric capture required at an immigration office or border point upon approval."
+}

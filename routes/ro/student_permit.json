@@ -1,0 +1,88 @@
+{
+  "id": "ro_student_permit",
+  "country": "RO",
+  "name": "Residence Permit for Study Purposes",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rosp_enrollment",
+          "attribute": "has_full_time_enrollment_at_accredited_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrollment certificate (or, for first-time applicants, an acceptance letter) from an accredited Romanian institution in a full-time program.",
+          "fix_path": "Obtain admission to an accredited Romanian institution.",
+          "fix_time_months": null,
+          "source_id": "igi_studies"
+        },
+        {
+          "id": "rosp_financial_means",
+          "attribute": "has_guaranteed_minimum_wage_funds_for_6_months",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of funds at least equal to the guaranteed national minimum gross wage, held for a period of at least 6 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_studies"
+        },
+        {
+          "id": "rosp_long_stay_visa",
+          "attribute": "entered_on_long_stay_study_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must first enter Romania on a long-stay study visa (obtained via a Romanian consulate, fee EUR 300) before applying for the residence permit in-country.",
+          "fix_path": "Apply for a long-stay study visa at a Romanian consulate.",
+          "fix_time_months": null,
+          "source_id": "igi_studies"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Enrollment certificate / acceptance letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial means (6 months at minimum wage level)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legal housing", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches the length of the study program; extendable up to 9 months post-graduation for job-seeking or business setup",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ro_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "igi_studies",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/studies/",
+      "title": "General Inspectorate for Immigration (IGI), Romanian Ministry of Internal Affairs -- residence permit for study purposes: enrollment, EUR 300 long-stay study visa fee, 6-month minimum-wage-level financial proof, part-time work capped at 6 hours/day, 9-month post-graduation extension for job search/business setup, scholarship holders and ethnic Romanians exempt from certain fees",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: PUBLISHED -- fully tier-1 sourced to IGI (the Ministry of Internal Affairs' immigration authority), with concrete, specific figures (EUR 300 visa fee, 6-hour/day part-time work cap, 9-month post-study extension window). work_rights is set to 'restricted' (not 'full') because the source explicitly caps part-time work at 6 hours/day for permit holders -- this is a genuine, sourced limitation, not a conservative default. family_can_join/family_can_work are set false as the source's page did not describe a dependent-of-student track; this is disclosed as a gap rather than asserted from unaided knowledge. The EUR 300 long-stay study visa fee is paid at the issuing consulate BEFORE the in-country residence permit application described here -- modeled as a hard prerequisite requirement of this route rather than a separate file, since it is a single continuous process per the source."
+}

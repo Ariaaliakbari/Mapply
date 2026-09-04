@@ -1,0 +1,77 @@
+{
+  "id": "bw_family_reunification",
+  "country": "BW",
+  "name": "Residence Permit -- Dependent Category",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-citizen dependent of a Botswana resident or citizen (a 'supporter') applies for a Residence Permit under the dependent category.",
+    "evidence_hint": "Supporter's particulars (ID or permit), proof of the supporter's work authorization, and a support letter."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwfr_supporter",
+          "attribute": "has_supporter_in_botswana",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A supporter in Botswana (a resident or citizen) provides particulars (ID/permit), proof of work authorization, and a support letter.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_residence_permit"
+        },
+        {
+          "id": "bwfr_apply_individually_if_adult",
+          "attribute": "applies_individually_if_over_18",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Dependents over 18 must apply individually rather than as part of another family member's application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_residence_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Supporter's ID/permit copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Support letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage or birth certificate proving the family tie", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified; up to 2 years noted for visiting dependents under the visitor-visa category; residence permit processed within 30 working days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bw_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gov_bw_residence_permit",
+      "tier": 1,
+      "url": "https://cms2.gov.bw/residency-and-work/residence-permit-application",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Residence Permit Application: dependent category requires a supporter's particulars, work-authorization proof, and support letter; applicants over 18 apply individually",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- thin, tier-1 sourced. This models the general dependent-of-resident category rather than the specific spouse-of-citizen marriage route, which is treated separately as it leads toward bw_citizenship_by_marriage.json. work_rights is set 'none' as the conservative default since the source does not state a dependent-permit holder may work -- distinct from bw_citizenship_by_marriage.json's spouse route, which has its own separate residence basis under the naturalisation requirement (5 years' residence while married)."
+}

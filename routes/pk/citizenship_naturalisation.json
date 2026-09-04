@@ -1,0 +1,107 @@
+{
+  "id": "pk_citizenship_naturalisation",
+  "country": "PK",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pkcn_12mo_immediate_residence",
+          "attribute": "months_resident_immediately_preceding_application",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Resided in Pakistan throughout the 12 months immediately preceding the application.",
+          "fix_path": "Accumulate 12 months' continuous residence immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "dgip_acts_rules"
+        },
+        {
+          "id": "pkcn_4yr_aggregate_residence",
+          "attribute": "months_resident_aggregate_prior_7yr",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Resided in Pakistan for an aggregate of at least 4 years during the 7 years immediately preceding that final 12-month period.",
+          "fix_path": "Accumulate 4 years' aggregate residence within the relevant 7-year window.",
+          "fix_time_months": 48,
+          "source_id": "dgip_acts_rules"
+        },
+        {
+          "id": "pkcn_good_character",
+          "attribute": "has_good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Of good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_acts_rules"
+        },
+        {
+          "id": "pkcn_vernacular_language",
+          "attribute": "has_pakistani_vernacular_language_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Adequate knowledge of a language declared by the Federal Government to be one of the principal vernaculars of Pakistan.",
+          "fix_path": "Demonstrate adequate knowledge of a recognized Pakistani vernacular language.",
+          "fix_time_months": null,
+          "source_id": "dgip_acts_rules"
+        },
+        {
+          "id": "pkcn_intent_to_reside",
+          "attribute": "intends_to_reside_or_serve_state",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must intend to reside in Pakistan, or to enter/continue in the service of the State of Pakistan, after naturalization.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_acts_rules"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence (12 months immediately preceding + 4 years aggregate in the prior 7 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Character references / police clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of allegiance to the Constitution of Pakistan (within 30 days of certificate approval)", "difficulty": "routine", "typical_time_days": 30 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "12 months immediately preceding application + 4 years aggregate within the prior 7 years",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dgip_acts_rules",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/downloads/Acts%20And%20Rules.pdf",
+      "title": "Directorate General of Immigration & Passports, Government of Pakistan -- consolidated Acts and Rules download, hosting the Naturalization Act 1926 (as applied via Pakistan Citizenship Act 1951, Section 9) and Pakistan Citizenship Rules 1952: residence test (12 months immediately preceding + 4 years aggregate in the prior 7 years), good character, adequate knowledge of a principal vernacular language, intent to reside in or serve the state of Pakistan, oath of allegiance within 30 days of certificate approval",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published on tier-1 sourcing -- the Directorate General of Immigration & Passports (a Pakistani government agency) directly hosts the operative Acts and Rules text, a stronger sourcing position than several other countries built in this dataset where only NGO/academic-hosted translations were locatable. dual_citizenship_allowed is FALSE by default for naturalising citizens generally, BUT Pakistan maintains bilateral dual-nationality arrangements with 22 named countries (UK, France, Italy, Belgium, Iceland, Australia, New Zealand, Canada, Finland, Egypt, Jordan, Syria, Switzerland, Netherlands, USA, Sweden, Ireland, Bahrain, Denmark, Germany, Norway, Luxembourg) whose nationals are NOT required to renounce their original nationality when acquiring Pakistani citizenship -- sourced tier-1 (dgip.gov.pk/immigration/dual_nationality.php) but not modeled as a separate route since it is a nationality-conditional exemption to this same naturalization process, not a distinct route with its own eligibility criteria. Section 9 of the 1951 Act also grants the Federal Government broad discretionary power to naturalise a person via certificate without necessarily meeting every statutory criterion -- disclosed here rather than modeled as a separate route, consistent with this dataset's treatment of similar broad discretionary-grant provisions elsewhere."
+}

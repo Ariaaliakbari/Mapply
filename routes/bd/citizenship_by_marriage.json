@@ -1,0 +1,74 @@
+{
+  "id": "bd_citizenship_by_marriage",
+  "country": "BD",
+  "name": "Citizenship by Registration -- Marriage to a Bangladeshi Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bdcm_woman_married_to_citizen",
+          "attribute": "is_woman_married_to_bangladeshi_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be a woman married to a Bangladeshi citizen -- the Citizenship Act, 1951's registration-by-marriage provision as sourced in this build applies to women; no equivalent provision for a man married to a Bangladeshi woman was located.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_citizenship_act_1951"
+        },
+        {
+          "id": "bdcm_domicile_oath",
+          "attribute": "has_certificate_of_domicile_and_oath",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Obtaining a certificate of domicile and taking the oath of allegiance in the form set out in the Act's Schedule.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_citizenship_act_1951"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certificate of domicile", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's citizenship proof", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_citizenship_act_1951",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/BNG_Citizenship%20Act%201951.pdf",
+      "title": "GLOBALCIT (European University Institute) -- Bangladesh Citizenship Act, 1951 (hosted verbatim text): women married to citizens may apply for registration upon obtaining a certificate of domicile and taking the oath of allegiance set out in the Act's Schedule; a separate provision automatically extends citizenship to a woman who was a British subject by marriage before 1 January 1949",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: DRAFT -- tier-2 only (GLOBALCIT/EUI hosting of the verbatim Act text, consistent with this dataset's established convention for academic hosting of primary legal text); no tier-1 Bangladeshi-government copy of this specific provision was located in this build. GENDERED FINDING, CONSISTENT WITH A PATTERN SEEN REPEATEDLY IN THIS DATASET (Qatar, Bahrain, Nigeria): the sourced text frames this registration route around women married to (male) citizens -- no equivalent registration-by-marriage provision for a man married to a Bangladeshi woman was found in the source material retrieved. This may reflect an incomplete extraction of the Act's full text rather than a confirmed absence of a symmetric provision -- flagged as an open verification item rather than asserted as a confirmed gender-restriction, given the source excerpt available in this build was partial. No residence-duration figure was found for this route; citizenship_after_months set to 0 rather than an invented figure. dual_citizenship_allowed FALSE per the Citizenship Act 1951's general prohibition, same as bd_citizenship_naturalisation.json."
+}

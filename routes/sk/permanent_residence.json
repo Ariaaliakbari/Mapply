@@ -1,0 +1,83 @@
+{
+  "id": "sk_permanent_residence",
+  "country": "SK",
+  "name": "Permanent Residence for an Unlimited Period",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 48,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "from_5yr_pr",
+      "name": "Upgrade from 5-year permanent residence",
+      "requirements": [
+        {
+          "id": "skpr_held_5yr_pr_4_years",
+          "attribute": "months_held_5yr_permanent_residence",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Held the 5-year permanent residence permit for at least 4 years.",
+          "fix_path": "Hold 5-year permanent residence status continuously for 4 years.",
+          "fix_time_months": 48,
+          "source_id": "iom_permanent_residence"
+        }
+      ]
+    },
+    {
+      "id": "long_term_residence_track",
+      "name": "Long-term residence, 5 years' continuous legal residence",
+      "requirements": [
+        {
+          "id": "skpr_5yr_legal_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Legally resided in Slovakia for an uninterrupted period of at least 5 years (or equivalent residence in another EU member state under qualifying employment/protection categories).",
+          "fix_path": "Accumulate 5 years of continuous legal residence.",
+          "fix_time_months": 60,
+          "source_id": "iom_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "unlimited",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sk_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "iom_permanent_residence",
+      "tier": 2,
+      "url": "https://mic.iom.sk/en/residence/permanent-residence.html",
+      "title": "IOM Migration Information Centre Slovakia -- permanent residence categories: 5-year permanent residence (family/interest-of-Slovakia grounds), unlimited permanent residence (after holding the 5-year permit for at least 4 years), and long-term residence (5 years' continuous legal residence, EU long-term-resident-status equivalent)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- tier-2 IOM sourced; Slovakia's own Ministry of Interior pages were not reachable to sufficient tier-1 depth in this pass. STRUCTURAL NOTE: Slovakia runs THREE distinct settled-status instruments the source describes -- 5-year permanent residence (family/discretionary grounds, modeled in sk_family_reunification.json), unlimited-duration permanent residence (this file's primary group, reached by holding the 5-year permit for 4 years), and a separate 'long-term residence' track requiring 5 years' continuous legal residence directly (this file's second group, functionally the EU long-term-resident-status route, likely the relevant path for work/business-permit holders who are not family of a Slovak citizen). Both groups are modeled here as alternative (OR) paths to the same indefinite settled outcome since they lead to materially similar rights, though they are legally distinct instruments -- flagged so the distinction isn't lost. citizenship_after_months is 0 from this status specifically since Slovakia's naturalisation residence requirement (8 years, see sk_citizenship_naturalisation.json) is typically satisfied by residence accumulated BEFORE and DURING earlier permit stages, not additionally after reaching this status -- though this is an inference, not a figure the source states directly."
+}

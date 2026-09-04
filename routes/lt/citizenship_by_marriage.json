@@ -1,0 +1,110 @@
+{
+  "id": "lt_citizenship_by_marriage",
+  "country": "LT",
+  "name": "Citizenship by Marriage",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Marriage to, and joint legal residence with, a Lithuanian citizen for the required period qualifies the foreign spouse for citizenship, under Article 7's exceptions to the general dual-citizenship prohibition.",
+    "evidence_hint": "Marriage certificate; proof of joint legal residence with citizen spouse for the required period."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard_marriage",
+      "name": "Standard route -- 7 years joint residence",
+      "requirements": [
+        {
+          "id": "ltcm_joint_residence",
+          "attribute": "months_married_and_resident_with_citizen_spouse",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "7 years of marriage to, and joint legal residence with, a Lithuanian citizen spouse.",
+          "fix_path": "Accumulate 7 years of marriage and joint residence with the citizen spouse.",
+          "fix_time_months": 84,
+          "source_id": "ec_pathways_report"
+        },
+        {
+          "id": "ltcm_language",
+          "attribute": "has_a2_lithuanian_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must pass the same A2-level Lithuanian language examination required for standard naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_pathways_report"
+        },
+        {
+          "id": "ltcm_constitution_exam",
+          "attribute": "passed_constitution_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must pass the same Constitution examination (20 questions, at least 14 correct) required for standard naturalisation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_pathways_report"
+        }
+      ]
+    },
+    {
+      "id": "reduced_deportee_or_widowed",
+      "name": "Reduced 5-year route -- deportee/political-prisoner spouse or widowed after 1 year",
+      "requirements": [
+        {
+          "id": "ltcm_reduced_residence",
+          "attribute": "months_married_and_resident_with_citizen_spouse",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "A reduced 5-year joint-residence requirement applies where the citizen spouse (or their child) was deported or a political prisoner, or where the citizen spouse died after at least 1 year of marriage. Language and Constitution exam conditions still apply.",
+          "fix_path": "Accumulate 5 years of marriage and joint residence, meeting the deportee/political-prisoner or widowed-after-1-year condition.",
+          "fix_time_months": 60,
+          "source_id": "ec_pathways_report"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of joint legal residence with citizen spouse for the required period", "difficulty": "hard", "typical_time_days": null },
+    { "document": "A2-level Lithuanian language exam pass", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Constitution exam pass (14/20)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ec_pathways_report",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/system/files/2022-03/Lithuania_pathways_to_citizenship_en.pdf",
+      "title": "European Commission -- 'Pathways to citizenship for third-country nationals in Lithuania': marriage-based route, 7-year standard joint-residence requirement, reduced 5-year tracks for deportee/political-prisoner spouse or widowhood after 1 year of marriage, same language/Constitution exam conditions as standard naturalisation, dual citizenship permitted under Article 7 of the Law on Citizenship for this category",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- sourced to the EC pathways report (tier-2) rather than an independently fetched e-Seimas Article 7 full text in this pass; Article 7's exact wording for this exception was not directly re-quoted here, unlike lt_naturalisation.json's direct Article 18 quote. The economic/means-of-subsistence requirement that applies to standard naturalisation is reported as waived for this marriage-based category -- not modeled as a requirement here on that basis. dual_citizenship_allowed is set true for THIS route specifically, in direct contrast to lt_naturalisation.json's false -- Article 7 of the Law on Citizenship lists marriage cases among its narrow exceptions to Lithuania's general dual-citizenship prohibition. Referenced by id from lt_family_reunification.json and lt_naturalisation.json, both written before this file; this file closes that forward reference."
+}

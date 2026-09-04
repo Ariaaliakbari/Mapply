@@ -1,0 +1,86 @@
+{
+  "id": "sk_investor_residence",
+  "country": "SK",
+  "name": "Temporary Residence for the Purpose of Business",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skir_business_plan_or_company",
+          "attribute": "has_registered_company_or_business_plan",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A functioning limited company (with incorporation documents) or a business plan.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "akmv_business_residence"
+        },
+        {
+          "id": "skir_personal_funds",
+          "attribute": "personal_account_funds_eur",
+          "operator": ">=",
+          "value": 2270,
+          "hard": true,
+          "blocker_text": "Personal bank account confirmation of at least EUR 2,270 (12x the Slovak living-wage figure).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "akmv_business_residence"
+        },
+        {
+          "id": "skir_company_funds",
+          "attribute": "business_account_funds_eur",
+          "operator": ">=",
+          "value": 18909,
+          "hard": true,
+          "blocker_text": "For a limited company: business account confirmation of at least EUR 18,909 (100x the Slovak living-wage figure).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "akmv_business_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company incorporation certificate and shareholder minutes, or business plan", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Personal and/or business bank account balance confirmations", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled and translated criminal record certificates", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Property deed extract (business address)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "for the estimated duration of the business, up to a maximum of 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sk_permanent_residence", "sk_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "akmv_business_residence",
+      "tier": 3,
+      "url": "https://www.akmv.sk/en/residence-permit-in-slovakia-for-the-purpose-of-business/",
+      "title": "AKMV (Slovak immigration law firm) -- temporary residence for business: EUR 2,270 personal / EUR 18,909 business-account financial-security thresholds (tied to the statutory living-wage figure), 3-year maximum duration, ~EUR 236.50 administrative fee, in-person application at the local police department",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- tier-3 law-firm sourced; Slovakia's Ministry of Interior/Foreign Police pages, which would be the tier-1 source, were not reachable to sufficient depth in this pass. NOTABLE STRUCTURAL FEATURE: the financial thresholds are pegged to Slovakia's statutory living-wage figure (zivotne minimum) at 12x (personal) and 100x (business) multiples, rather than being flat fixed amounts -- meaning these EUR figures will drift as the living-wage reference updates, similar in kind to formula-pegged thresholds this dataset has flagged elsewhere (e.g. Germany's Blue Card salary threshold pegged to the pension contribution ceiling), though this dataset does not have a national-variables file for Slovakia's living wage to formally track the peg. No job-creation requirement was found -- unlike some other countries' investor routes, Slovakia's business-residence route does not appear to require hiring local staff, only demonstrated financial capacity and a genuine business plan or existing company. pr_after_months/citizenship_after_months inferred the same way as sk_work_permit.json."
+}

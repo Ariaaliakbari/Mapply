@@ -1,0 +1,65 @@
+{
+  "id": "et_family_reunification",
+  "country": "ET",
+  "name": "Temporary Residence Permit Through Marriage / Dependent Residence",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["et_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "etfr_relationship",
+          "attribute": "is_spouse_or_minor_child_of_resident",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouse or minor child of an Ethiopian national or a foreign resident permit holder, per Immigration Proclamation No. 354/2002 Art. 15(2).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ics_gov_et_services"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate / birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to sponsor's residence permit",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["et_permanent_residence", "et_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "ics_gov_et_services",
+      "tier": 1,
+      "url": "https://ics.gov.et/about/",
+      "title": "Immigration and Citizenship Service (ICS), Ethiopia -- service catalogue confirms 'Temporary Residence Permit Through Marriage' as an active service category; base residence framework for minor children under Immigration Proclamation No. 354/2002 Art. 15(2)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ethiopia). STATUS: DRAFT -- the tier-1 ICS source confirms the service exists but discloses no eligibility, duration, or fee detail. GAP: no rules were found for parent/adult-child family reunification -- only spouse and minor children are documented. A separate tier-3/4 law-firm source (not cited here since not used for a hard requirement) states that dependent/spousal residence does NOT automatically confer work rights -- adult dependents must separately obtain a work permit, and even spouses of investors/expatriates require a distinct authorization under Investment Proclamation Art. 22(3) rather than an automatic derivative right; this shaped the conservative work_rights='none' default here but is itself unconfirmed at tier-1/2. citizenship_after_months (24, reflecting the 2-years-married-plus-1-year-residence marriage citizenship track) and pr_after_months (12) are cross-referenced from et_citizenship_by_marriage.json and et_permanent_residence.json respectively."
+}

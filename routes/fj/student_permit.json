@@ -1,0 +1,61 @@
+{
+  "id": "fj_student_permit",
+  "country": "FJ",
+  "name": "Student Permit",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fjsp_enrollment",
+          "attribute": "has_enrollment_at_recognized_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrollment at a recognized Fiji secondary, tertiary, vocational institution, or university.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission/enrollment letter", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this build -- open gap on the specific permit validity period",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["fj_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_fj_study",
+      "tier": 1,
+      "url": "https://www.immigration.gov.fj/study-in-fiji-2/",
+      "title": "Department of Immigration, Fiji -- Study in Fiji: Student Permit authorizes study at local secondary, tertiary, vocational institutions or universities; separate 'Authority to Work or Study while on a Visitor's Permit' also exists as an add-on",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: DRAFT -- the source is a tier-1 government page, but it is thin: no specific duration, fee, or work-rights figure is disclosed on it, and no other tier-1/2 source with those specifics was found. Kept draft on completeness grounds even though the sole source is tier-1, since publishing a route with this many undisclosed operational fields risked overstating confidence. work_rights defaulted conservatively to 'none' -- tier-3/4 relocation-guide sites claim part-time work rights but this could not be corroborated against immigration.gov.fj text, so no such claim is made here. Top re-verification item for this file."
+}

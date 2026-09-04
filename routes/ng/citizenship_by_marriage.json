@@ -1,0 +1,73 @@
+{
+  "id": "ng_citizenship_by_marriage",
+  "country": "NG",
+  "name": "Citizenship by Registration -- Marriage to a Nigerian Citizen",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngcm_woman_married_to_citizen",
+          "attribute": "is_woman_married_to_nigerian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be a woman who is or has been married to a citizen of Nigeria (Section 26(1)(a)) -- there is no equivalent registration route for a man married to a Nigerian woman.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "candb_pdf"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Court judgment (where applicable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Documentation of husband's citizenship status", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Letter of consent from husband (or from children/relatives if husband is deceased)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport photograph, birth certificate, residence permit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Guarantor documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "candb_pdf",
+      "tier": 1,
+      "url": "https://candb.interior.gov.ng/wp-content/uploads/2025/05/CB-Citizenship-Requirements.pdf",
+      "title": "Citizenship and Business Department, Federal Ministry of Interior, Nigeria -- Citizenship Requirements: 'Citizenship by Registration (Section 26(2A))' document checklist requires a 'Letter Of Consent from Husband/Children/Relatives In Case Of Deceased Husband' and documentation of the husband's citizenship status, confirming this registration route applies to women married to Nigerian men",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "constitution_ch3",
+      "tier": 2,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Nigeria_Constitution_chapter_III_on_Citizenship_1999.pdf",
+      "title": "Constitution of the Federal Republic of Nigeria, 1999 (as amended), Chapter III -- Section 26: registration eligibility includes 'women married to Nigerian citizens (current or former)', subject to Presidential satisfaction of good character, domicile intent, and oath compliance",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- primary structural requirement tier-1 sourced directly from the Ministry of Interior's own citizenship-requirements document, which itself confirms the gendered structure through its required-document list. MARQUEE GENDERED FINDING, MORE SEVERE THAN THE PATRILINEAL-DESCENT PATTERNS SEEN ELSEWHERE IN THIS DATASET (Qatar, Bahrain): Nigeria's Constitution (Section 26(1)(a)) grants a citizenship-by-registration route ONLY to a woman who is or has been married to a Nigerian citizen -- there is NO equivalent constitutional registration route for a man married to a Nigerian woman. This is distinct from ng_family_reunification.json's N1A residence visa, which IS gender-neutral -- meaning a foreign husband of a Nigerian wife can live in Nigeria on a spousal residence visa but has no marriage-based path to Nigerian citizenship itself, only the general naturalisation route (ng_citizenship_naturalisation.json) open to anyone regardless of marital status. No explicit residence-duration requirement was found for this registration route beyond the marriage itself and Presidential satisfaction of the other Section 26 criteria -- citizenship_after_months is therefore set to 0 rather than an invented waiting period. DISCLOSED BUT NOT MODELED AS A HARD REQUIREMENT: Section 26 also requires the President's satisfaction of good character, domicile intent, and oath compliance (tier-2 sourced, citizenshiprightsafrica.org) -- omitted from requirement_groups here to keep this file's hard requirements cleanly tier-1, since only the marriage-to-citizen condition itself is independently tier-1 confirmed via the Ministry's own document checklist. dual_citizenship_allowed is FALSE per the same Section 28 forfeiture rule described in ng_citizenship_naturalisation.json, since registration (like naturalisation) is not citizenship by birth."
+}

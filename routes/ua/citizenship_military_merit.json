@@ -1,0 +1,100 @@
+{
+  "id": "ua_citizenship_military_merit",
+  "country": "UA",
+  "name": "Citizenship for Military Service, Wartime Aid, or Distinguished Merit",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Foreigners with distinguished merit or whose naturalisation serves Ukraine's State interest, contract military personnel serving in Ukraine's armed forces, foreign instructors assisting the armed forces, and foreigners providing aid to Ukraine during wartime, may acquire Ukrainian citizenship through accelerated procedures distinct from standard naturalisation.",
+    "evidence_hint": "Military service record, instructor contract, documentation of wartime aid provided, or evidence of distinguished merit/State-interest contribution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "contract_military",
+      "name": "Contract military personnel serving in Ukraine's armed forces",
+      "requirements": [
+        {
+          "id": "uamm_military_contract",
+          "attribute": "is_contract_military_personnel_in_ukrainian_armed_forces",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Serving under contract in Ukraine's armed forces.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kmu_citizenship_algorithm"
+        }
+      ]
+    },
+    {
+      "id": "merit_or_state_interest",
+      "name": "Distinguished merit or State interest",
+      "requirements": [
+        {
+          "id": "uamm_merit",
+          "attribute": "has_distinguished_merit_or_serves_state_interest",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Distinguished service/merit to Ukraine, or naturalisation assessed as serving Ukraine's State interest.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kmu_citizenship_algorithm"
+        }
+      ]
+    },
+    {
+      "id": "wartime_aid_or_instructor",
+      "name": "Foreign instructor assisting the armed forces, or wartime aid provider",
+      "requirements": [
+        {
+          "id": "uamm_wartime_role",
+          "attribute": "is_foreign_instructor_or_wartime_aid_provider",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreign instructor providing assistance to Ukraine's armed forces, or a foreigner otherwise providing aid to Ukraine during wartime.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kmu_citizenship_algorithm"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Military service contract and record (contract-military track)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Documentation of distinguished merit or State-interest contribution (merit track)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Instructor contract or documentation of wartime aid provided (instructor/aid track)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "kmu_citizenship_algorithm",
+      "tier": 1,
+      "url": "https://www.kmu.gov.ua/news/mvs-provazhlyve-alhorytm-pryiniattia-do-hromadianstva-ukrainy-deiakykh-katehorii-inozemtsiv",
+      "title": "Cabinet of Ministers of Ukraine (kmu.gov.ua) -- Ministry of Internal Affairs implementation algorithm for citizenship admission of specific foreigner categories: distinguished merit/State interest, contract military personnel, foreign instructors assisting the armed forces, and foreigners providing wartime aid; also notes a document-submission exception (expired national passports accepted) for citizens of Russia, Belarus, Armenia, Bolivia, Cuba, North Korea, Nicaragua, Sudan, Syria, Zimbabwe, and Venezuela",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). STATUS: DRAFT -- the categories themselves are tier-1 and directly confirmed, but no specific residence-duration, exam, or means-of-subsistence figures for THESE particular accelerated tracks were found (as distinct from ua_citizenship_naturalisation.json's standard-route figures, which explicitly note 'preferential consideration' for military service and merit without stating exact reduced numbers) -- disclosed as a documentation gap rather than assumed identical to the standard route. This file is the most directly WAR-SHAPED citizenship route in the dataset: it exists specifically because Ukraine is fighting an active war and has built a legal pathway to citizenship for foreigners who fight for it, train its forces, or materially aid it. dual_citizenship_allowed is conservatively set false here since no source confirmed this track falls under the new Article 5-1 multiple-citizenship framework (see ua_citizenship_dual_declaration.json) -- though it plausibly could for the military-service sub-case, this was not independently confirmed and is not assumed."
+}

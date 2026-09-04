@@ -1,0 +1,98 @@
+{
+  "id": "fj_permanent_residence",
+  "country": "FJ",
+  "name": "Residence Permit on Assured Income",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fjpr_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 45,
+          "hard": true,
+          "blocker_text": "Minimum age 45.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_fj_residency"
+        },
+        {
+          "id": "fjpr_initial_deposit",
+          "attribute": "initial_bank_deposit_fjd",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Initial deposit of FJD 100,000 in a local bank account (waivable if the applicant instead purchases Fiji property of demonstrated equivalent value).",
+          "fix_path": "Deposit or invest the required amount.",
+          "fix_time_months": null,
+          "source_id": "mfa_fj_residency"
+        },
+        {
+          "id": "fjpr_annual_deposit",
+          "attribute": "annual_bank_deposit_fjd",
+          "operator": ">=",
+          "value": 30000,
+          "hard": true,
+          "blocker_text": "Ongoing annual deposit of FJD 30,000 for a family of 2, or FJD 40,000 for a family of up to 5.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_fj_residency"
+        },
+        {
+          "id": "fjpr_no_employment",
+          "attribute": "will_not_seek_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Cannot seek employment in Fiji; English-language competency, police clearance, medical report, and health insurance also required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_fj_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank deposit / property purchase evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical report", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "FJD 477.00 application fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this build -- open gap on the specific permit validity period",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_fj_residency",
+      "tier": 1,
+      "url": "https://www.foreignaffairs.gov.fj/fiji-embassy-washington-dc-usa/residency/",
+      "title": "Ministry of Foreign Affairs, Fiji (Embassy Washington DC mission page) -- Residency (Residence Permit on Assured Income): minimum age 45, health insurance, no local employment, English competency, police clearance, medical report, FJD 100,000 initial deposit (waivable via equivalent property purchase), FJD 30,000/40,000 ongoing annual deposit, FJD 477.00 fee",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: PUBLISHED -- sourced to a Fiji Ministry of Foreign Affairs diplomatic-mission page, treated as tier-1 (a mission-level restatement of the residency rules, not the Immigration Act itself, but still an official government source). This is Fiji's primary non-investor PR route -- effectively a retiree/passive-income category; there is NO points-based or skills-scoring PR route in Fiji, confirmed absent rather than a research gap. GAP: exact permit duration not disclosed by the source. The investor-linked PR pathway (see fj_investor_residence.json) is implied by the naturalisation structure's PR-permit precondition but immigration.gov.fj's own investor pages do not explicitly state an investor-to-PR conversion timeline -- disclosed as a separate, unresolved gap, not conflated with this file. citizenship_after_months (96) reflects the transitional 8-of-10-year naturalisation rule from fj_citizenship_naturalisation.json."
+}

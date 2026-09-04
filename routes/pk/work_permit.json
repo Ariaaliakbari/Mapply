@@ -1,0 +1,81 @@
+{
+  "id": "pk_work_permit",
+  "country": "PK",
+  "name": "Work Visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Employer-sponsored",
+      "requirements": [
+        {
+          "id": "pkwp_secp_employer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employment letter from an SECP (Securities and Exchange Commission of Pakistan)-registered company, stating salary and assignment duration.",
+          "fix_path": "Obtain a job offer from an SECP-registered Pakistani company.",
+          "fix_time_months": null,
+          "source_id": "invest_work_visa"
+        },
+        {
+          "id": "pkwp_boi_recommendation",
+          "attribute": "has_boi_recommendation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Extension beyond the initial entry period requires a Board of Investment (BOI) recommendation and security agency approval.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment letter from SECP-registered company (salary + duration)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "BOI recommendation letter (for extension)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Security clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Entry visa: up to 3 months single entry (48-hour processing, no security clearance). Extension: up to 2 years multiple entry, requiring BOI recommendation and security clearance.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "invest_work_visa",
+      "tier": 1,
+      "url": "https://invest.gov.pk/work-visa",
+      "title": "Board of Investment, Government of Pakistan -- Work Visa: employed applicants require an employment letter from an SECP-registered company showing salary and duration; self-employed applicants require an employment agreement plus tax certification; visa validity 2 years multiple entry, standard processing 4 weeks",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "dgip_categories",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/visa/categories.php",
+      "title": "Directorate General of Immigration & Passports (Ministry of Interior) -- Visa Categories: Work Visa entry (up to 3 months single entry, 48-hour processing, no security clearance); extension up to 2 years multiple entries requires BOI recommendation and security approval",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published on tier-1 sourcing (Board of Investment + DGI&P). work_rights set to 'restricted' rather than 'full' because the route is tied to a specific SECP-registered employer/assignment rather than an open Pakistani labour-market right. family_can_join/family_can_work: no source addressed dependents for this specific route (contrast with the separate Family Visit Visa, pk_family_reunification.json, which does cover family joining) -- family_can_join set false as the conservative non-nullable default, family_can_work left null."
+}

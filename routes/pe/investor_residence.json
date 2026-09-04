@@ -1,0 +1,93 @@
+{
+  "id": "pe_investor_residence",
+  "country": "PE",
+  "name": "Inversionista (Investor) Resident Status",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "peir_investment",
+          "attribute": "investment_amount_pen",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Minimum investment of PEN 500,000 in a new or existing Peruvian company, fully subscribed and paid in cash in a single bank transfer through a Peruvian-regulated financial entity.",
+          "fix_path": "Transfer at least PEN 500,000 into a new or existing Peruvian company via a single verified bank transfer.",
+          "fix_time_months": null,
+          "source_id": "armenian_lawyer_investor"
+        },
+        {
+          "id": "peir_company_deed",
+          "attribute": "has_company_incorporation_or_capital_increase_deed",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A public deed (escritura pública) of company incorporation or capital increase, issued within the last 3 months, registered with SUNAT.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "armenian_lawyer_investor"
+        },
+        {
+          "id": "peir_conduct",
+          "attribute": "has_clean_criminal_and_interpol_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Apostilled and Spanish-translated criminal background certificates from country of origin, plus Interpol clearance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "armenian_lawyer_investor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank transfer SWIFT confirmation and bank letter confirming deposit of PEN 500,000+", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Company incorporation or capital-increase deed (escritura pública)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Company RUC/SUNAT registration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled criminal background certificates", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "365 days, renewable annually while the investment is maintained",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.f: Inversionista resident status exists in law, with the investment amount and conditions explicitly deferred to administrative regulation ('El monto de la inversion... sera fijado en el Reglamento')",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "armenian_lawyer_investor",
+      "tier": 3,
+      "url": "https://armenian-lawyer.com/business-immigration/investor-options-for-peru-residency-business-real-estate-and-capital-investment/",
+      "title": "Immigration consultancy -- Peru Investor visa: PEN 500,000 minimum investment, single-transaction bank transfer, company deed and RUC/SUNAT registration, business plan targeting ~5 jobs created, 365-day validity",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- the law itself (tier-1) confirms the Inversionista category exists but explicitly defers the exact investment figure to administrative procedure (the TUPA), which was not independently fetched from MIGRACIONES directly (gob.pe pages returned HTTP 418/bot-blocked on every attempt in this pass). The PEN 500,000 figure is corroborated by two independent consultancy sources (armenian-lawyer.com and a second, mackrell.net, giving the same figure), which is stronger than typical single-source tier-3 corroboration but still short of a directly-fetched government TUPA page -- held draft accordingly. A 'create ~5 jobs' business-plan expectation was mentioned by one source only and is NOT modeled as a testable requirement here since it wasn't corroborated as a hard legal condition rather than a practical expectation."
+}

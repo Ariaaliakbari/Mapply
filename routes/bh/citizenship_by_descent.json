@@ -1,0 +1,90 @@
+{
+  "id": "bh_citizenship_by_descent",
+  "country": "BH",
+  "name": "Bahraini Citizenship by Descent -- patrilineal, with a narrow maternal exception",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child is automatically Bahraini if the father was a Bahraini citizen at the time of birth (with residency conditions if born abroad). A Bahraini mother can pass citizenship to her child ONLY in the narrow case where the father is unknown, without nationality, or fatherhood was not legally substantiated -- meaning Bahraini women generally cannot pass citizenship to their children where the father is known and has a nationality. This has been a live, unresolved civil-society reform topic (see ADHRB).",
+    "evidence_hint": "Birth certificate; father's proof of Bahraini nationality, or, for the maternal exception, evidence the father is unknown/stateless/unproven."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal",
+      "name": "Paternal descent",
+      "requirements": [
+        {
+          "id": "bhcd_bahraini_father",
+          "attribute": "has_bahraini_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Father was a Bahraini citizen at the time of birth (residency conditions apply if born abroad).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "maternal_exception",
+      "name": "Maternal exception -- father unknown, stateless, or unproven",
+      "requirements": [
+        {
+          "id": "bhcd_bahraini_mother_exception",
+          "attribute": "has_bahraini_mother_and_no_legally_recognized_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mother was a Bahraini citizen AND the father is unknown, without nationality, or fatherhood was not legally substantiated.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Father's proof of Bahraini nationality (paternal route)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence the father is unknown, stateless, or legally unproven (maternal-exception route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_bahrain_citizenship_act",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Bahraini%20Nationality%20Law_ENGLISH.pdf",
+      "title": "GLOBALCIT (EUI academic citizenship-law observatory) -- English translation of the Bahraini Citizenship Act 1963, as amended: automatic paternal descent; maternal descent restricted to cases where the father is unknown, stateless, or fatherhood is not legally substantiated",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "adhrb_bahrain_women_citizenship",
+      "tier": 4,
+      "url": "https://www.adhrb.org/2023/06/dispatch-on-the-citizenship-law-for-women-in-bahrain/",
+      "title": "Americans for Democracy & Human Rights in Bahrain (ADHRB, advocacy organization) -- dispatch confirming the maternal-descent restriction remains a live, unresolved reform topic as of 2023, with sustained civil-society pressure and no statutory change found",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: DRAFT -- same tier-2 GLOBALCIT sourcing caveat as bh_citizenship_naturalisation.json; the tier-4 ADHRB source is cited only to confirm the restriction remains an active, unresolved reform debate, not for any hard requirement. GENDERED STRUCTURAL ASYMMETRY, THE MARQUEE FINDING FOR THIS FILE: Bahraini women generally CANNOT pass citizenship to their children where the father is known and holds a nationality -- this is not a slower or harder path, it is a categorical exclusion, mirroring the same pattern found in Qatar's descent law elsewhere in this dataset (bh and qa are structurally very similar on this point). Unlike Qatar's parallel 2018 Permanent Residency law, which gives children of Qatari women a settled-status fallback, no equivalent Bahraini fallback status for children of Bahraini mothers was found in this research -- if one exists, it was not located; flagged as an open question rather than assumed absent."
+}

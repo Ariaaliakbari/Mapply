@@ -1,0 +1,92 @@
+{
+  "id": "ua_work_permit",
+  "country": "UA",
+  "name": "Work Permit + Temporary Residence Permit -- Employment",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uawp_employer_permit",
+          "attribute": "employer_has_work_permit_for_applicant",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Ukrainian employer (not the foreign worker) must obtain a permit to employ the foreign national from a regional employment centre, including a draft employment contract compliant with Ukrainian labour law and proof the position does not require Ukrainian citizenship or state security clearance.",
+          "fix_path": "Secure a job offer from an employer willing to obtain the work permit.",
+          "fix_time_months": null,
+          "source_id": "diia_work_permit"
+        },
+        {
+          "id": "uawp_salary_floor",
+          "attribute": "salary_multiple_of_minimum_wage",
+          "operator": ">=",
+          "value": 10,
+          "hard": true,
+          "blocker_text": "Employers must generally pay the foreign employee at least 10 times Ukraine's statutory minimum wage; public organisations and educational institutions may instead pay at least 5 times the minimum wage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "diia_work_permit"
+        },
+        {
+          "id": "uawp_residence_documents",
+          "attribute": "has_required_residence_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "D visa, Ukrainian translation of passport, and medical insurance for the temporary residence permit application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer-obtained work permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Draft employment contract compliant with Ukrainian labour law", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "D visa, translated passport, medical insurance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "work permit up to 3 years by contract-length tier; temporary residence permit for the duration of the employment contract",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ua_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "diia_work_permit",
+      "tier": 1,
+      "url": "https://guide.diia.gov.ua/view/vydacha-dozvolu-na-zastosuvannia-pratsi-inozemtsiv-ta-osib-bez-hromadianstva-fc480e87-c85b-4637-8d81-7e84187800f9",
+      "title": "Diia (Ukraine's official government e-services portal) -- work permit for foreign employees: employer-only application, minimum-wage-multiple salary floor (10x standard / 5x public-sector), 7-working-day processing, validity tiers up to 3 years",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "dmsu_temp_residence",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/en-home/services/documenting-foreigners/issuance-of-temporary-residence-permit.html",
+      "title": "State Migration Service of Ukraine -- Temporary Residence Permit: employment category, validity for the duration of the employment contract",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). The 10x-minimum-wage salary floor is a genuinely distinctive, easy-to-overlook constraint: it is far higher than most countries' work-visa salary thresholds in this dataset and independently blocks lower-paid roles regardless of other qualifications. work_rights is 'restricted' since the permit and residence status are tied to the specific employer and approved role. No distinct self-employed/freelance ('work_independent') residence category was found among Ukraine's 12 temporary-residence categories -- the closest is the investment category (ua_investor_residence.json, requiring a minimum EUR 100,000 stake in a Ukrainian legal entity), which is a genuine structural gap for an ordinary independent contractor or freelancer, disclosed here rather than force-fit."
+}

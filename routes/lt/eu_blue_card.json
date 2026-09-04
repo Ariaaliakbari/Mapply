@@ -1,0 +1,79 @@
+{
+  "id": "lt_eu_blue_card",
+  "country": "LT",
+  "name": "EU Blue Card",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "shortage_occupation",
+      "name": "High-value-added / worker-shortage occupation",
+      "requirements": [
+        {
+          "id": "lteubc_salary_shortage",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "lithuania_average_gross_wage", "ratio": 1.2, "resolved_amount": 2532, "currency": "EUR" },
+          "hard": true,
+          "blocker_text": "Gross monthly salary of at least 1.2x Lithuania's average gross wage (approximately EUR 2,532/month, based on the 2023 average of EUR 2,110, updated quarterly) for occupations on the official high-value-added/shortage list.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_home_affairs_blue_card"
+        }
+      ]
+    },
+    {
+      "id": "other_occupation",
+      "name": "Other occupations",
+      "requirements": [
+        {
+          "id": "lteubc_salary_other",
+          "attribute": "current_salary",
+          "operator": ">=",
+          "value": { "value_type": "formula", "formula_ref": "lithuania_average_gross_wage", "ratio": 1.5, "resolved_amount": 3165, "currency": "EUR" },
+          "hard": true,
+          "blocker_text": "Gross monthly salary of at least 1.5x Lithuania's average gross wage (approximately EUR 3,165/month) for occupations not on the shortage list.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_home_affairs_blue_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Higher education diploma, OR 3 years' ICT-specific professional experience within the last 7 years, OR 5 years' equivalent professional experience", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Formal employment contract of at least 6 months", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 4 years (or the contract length + 3 months if shorter), renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lt_permanent_residence", "lt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ec_home_affairs_blue_card",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/eu-blue-card/eu-blue-card-lithuania_en",
+      "title": "European Commission EU Immigration Portal (Lithuania EU Blue Card page) -- salary thresholds (1.2x/1.5x average gross wage), qualification routes (degree, 3yr ICT experience, or 5yr equivalent experience), minimum 6-month contract",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- the resolved EUR figures (2,532 / 3,165) are explicitly pegged to Lithuania's average gross wage, itself based on a cited 2023 figure (EUR 2,110) that is 'updated quarterly' per the source -- meaning the resolved amounts here are almost certainly stale by the time this file is read, consistent with this dataset's practice of modeling formula-pegged thresholds explicitly (formula/ratio/resolved_amount) rather than presenting a one-time snapshot as a stable hard number, as done for Germany's Blue Card earlier in this dataset. No national-variables/LT.json reference file exists yet in this pass to formally back the formula_ref -- a future session should create one and re-run the validator's formula cross-check."
+}

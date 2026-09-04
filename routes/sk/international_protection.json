@@ -1,0 +1,88 @@
+{
+  "id": "sk_international_protection",
+  "country": "SK",
+  "name": "Asylum -- International Protection (Migration Office)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person may declare intent to seek international protection immediately at the border, upon entry, in an airport transit zone, or -- if already in Slovakia -- at the nearest police station authorized to receive asylum claims, or in a detention facility. Slovakia's Migration Office (Ministry of Interior) decides applications.",
+    "evidence_hint": "Declaration of intent to seek protection; evidence supporting a well-founded fear of persecution or serious harm."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status (asylum)",
+      "requirements": [
+        {
+          "id": "skip_persecution",
+          "attribute": "meets_refugee_convention_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Specific reasons to fear persecution based on race, religion, nationality, political opinion, or membership of a particular social group.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_slovakia_asylum"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "permanent residence permit granted directly on recognition"
+      }
+    },
+    {
+      "id": "subsidiary_protection",
+      "name": "Subsidiary protection",
+      "requirements": [
+        {
+          "id": "skip_serious_harm",
+          "attribute": "has_humanitarian_or_compelling_reason_not_to_return",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Humanitarian or compelling reasons not to return, without meeting the full refugee-status criteria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_slovakia_asylum"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "1-year temporary residence permit, renewable for further 2-year periods"
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution/harm claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "refugee status: permanent residence permit granted directly; subsidiary protection: 1-year permit, renewable for 2-year periods",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sk_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_slovakia_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/slovakia/asylum/",
+      "title": "UNHCR Slovakia -- asylum procedure: declaration of intent at border/airport/police station, refugee status (grants permanent residence) vs. subsidiary protection (1-year permit, renewable 2-year periods), Migration Office 6-month decision deadline (extendable), administrative appeal against negative decisions, reception-center support (accommodation, meals, hygiene, urgent medical care, pocket money, legal aid)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- Slovakia's own Migration Office (Ministry of Interior) pages were not independently reached to tier-1 depth in this pass; UNHCR's Slovakia-specific help page (tier-2) is used instead. NOTABLE STRUCTURAL FEATURE: refugee status recognition grants a PERMANENT residence permit DIRECTLY (not a temporary status that later converts) -- a notably strong outcome compared to many other countries in this dataset, where refugee status typically starts as a renewable temporary status. Subsidiary protection is markedly weaker (1-year, renewable 2-year increments). citizenship_after_months (48) reflects the refugee-specific reduced naturalisation window (see sk_citizenship_naturalisation.json's 4-year refugee reduction) applied to refugee-status holders specifically -- subsidiary-protection holders likely follow a different, longer timeline not confirmed in this pass. work_rights/study_rights/family_can_join/family_can_work during the PENDING procedure (as opposed to after a grant) are conservative defaults -- the source did not specify work-authorization timelines for pending applicants."
+}

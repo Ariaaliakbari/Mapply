@@ -1,0 +1,77 @@
+{
+  "id": "bw_student_permit",
+  "country": "BW",
+  "name": "Residence Permit -- Student Category",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-citizen admitted to a Botswana educational institution and wishing to stay beyond the visitation period applies for a Residence Permit under the student category.",
+    "evidence_hint": "Admission letter from a Botswana educational institution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwsp_admission",
+          "attribute": "has_admission_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of admission letter from a Botswana educational institution.",
+          "fix_path": "Secure admission to a Botswana educational institution.",
+          "fix_time_months": null,
+          "source_id": "gov_bw_residence_permit"
+        },
+        {
+          "id": "bwsp_over18_individual",
+          "attribute": "applies_individually_if_over_18",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants over 18 must apply individually and secure a supporter's commitment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_residence_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate (certified)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical examination report", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in source; processing takes 30 working days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bw_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "gov_bw_residence_permit",
+      "tier": 1,
+      "url": "https://cms2.gov.bw/residency-and-work/residence-permit-application",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Residence Permit Application: student category requires an admission letter; 30 working-day processing; core documents (photos, birth certificate, medical report, marriage certificate if applicable)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- thin. gov.bw's Residence Permit page confirms the student category exists and its core document, but permit validity duration and fee were not disclosed on the fetched page. Whether time on a student residence permit counts toward the 5-year (PR) or 10-year (naturalisation) residence thresholds elsewhere in this dataset was not confirmed and is not assumed."
+}

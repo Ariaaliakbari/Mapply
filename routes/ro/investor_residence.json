@@ -1,0 +1,113 @@
+{
+  "id": "ro_investor_residence",
+  "country": "RO",
+  "name": "Residence Permit for Commercial/Business Activities",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard business-activity route (financial proof required)",
+      "requirements": [
+        {
+          "id": "rovnir_company_registration",
+          "attribute": "has_romanian_company_registration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Company registration certificate and articles of incorporation for a Romanian business.",
+          "fix_path": "Register a company in Romania.",
+          "fix_time_months": null,
+          "source_id": "igi_business_activities"
+        },
+        {
+          "id": "rovnir_financial_proof",
+          "attribute": "monthly_funds_eur",
+          "operator": ">=",
+          "value": 500,
+          "hard": true,
+          "blocker_text": "Proof of financial means: EUR 500/month for associates, EUR 700/month for shareholders (waived above the investment/job-creation thresholds below).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_business_activities"
+        }
+      ]
+    },
+    {
+      "id": "investment_150k",
+      "name": "EUR 150,000+ investment or 25+ jobs created (financial proof waived)",
+      "requirements": [
+        {
+          "id": "rovnir_dt1_capital",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "Investment of at least EUR 150,000, OR creation of at least 25 jobs, waives the standard monthly financial-proof requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_business_activities"
+        }
+      ]
+    },
+    {
+      "id": "investment_500k",
+      "name": "EUR 500,000+ investment or 50+ jobs created (3-year permit)",
+      "requirements": [
+        {
+          "id": "rovnir_dt2_capital",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Investment of at least EUR 500,000, OR creation of at least 50 jobs, qualifies for a 3-year permit instead of the standard 1-year renewable permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_business_activities"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "3 years"
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company registration certificate and articles of incorporation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notice from the Romanian Centre for the Promotion of Foreign Investments", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial means (where applicable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate and proof of social insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legal possession of business and residential addresses", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable (3 years at the EUR 500,000+/50-job threshold)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ro_permanent_residence", "ro_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "igi_business_activities",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/business-activities/",
+      "title": "General Inspectorate for Immigration (IGI), Romanian Ministry of Internal Affairs -- residence permit for commercial activities: EUR 500/month (associates) or EUR 700/month (shareholders) standard financial proof; waived at EUR 150,000 investment or 25 jobs; waived at EUR 200,000 investment or 50 jobs; 3-year permit at EUR 500,000 investment or 50 jobs; renewal requires Ministry of Business technical approval and Labor Territorial Inspectorate employment certificate",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: PUBLISHED -- fully tier-1 IGI sourced, with concrete tiered investment/job-creation thresholds (unusual level of specificity for this dataset's business/investor routes). This is a residence route only -- it does NOT lead to a distinct fast-track citizenship-by-investment status; Romania has no citizenship-by-investment program (confirmed absent -- multiple tier-3 sources explicitly state 'Romania citizenship by investment is not available', and proposed 2025-era golden-visa/residency-by-investment legislation was still only a legislative proposal, not a live scheme, as of this pass -- disclosed rather than modeled as a route). The source describes a EUR 200,000/50-job tier between the 150k and 500k tiers with 'no financial proof requirement' but does not distinguish its permit duration from the standard 1-year renewable permit, so only the 150k (proof-waiver) and 500k (3-year duration) tiers are modeled as distinct requirement groups here; the 200k tier's practical effect on top of the 150k waiver is unclear from the source and flagged as a gap. pr_after_months/citizenship_after_months are inferred from Romania's general long-term-residence and naturalisation thresholds (see ro_permanent_residence.json, ro_citizenship_naturalisation.json), not separately confirmed for investor-route holders specifically."
+}

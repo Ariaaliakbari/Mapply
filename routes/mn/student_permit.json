@@ -1,0 +1,74 @@
+{
+  "id": "mn_student_permit",
+  "country": "MN",
+  "name": "Residence Permit for Study (E Category)",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mnsp_invitation",
+          "attribute": "has_official_invitation_stating_study_purpose",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Official request/invitation from the inviting educational organization stating the area of study and duration of stay in Mongolia.",
+          "fix_path": "Obtain admission and an invitation letter from a Mongolian educational institution.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_e1"
+        },
+        {
+          "id": "mnsp_apply_within_21_days",
+          "attribute": "applied_for_residence_permit_within_21_days_of_entry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must apply for the residence permit at the Immigration Agency within 21 days of entering Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_e1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (valid 180+ days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Invitation/admission letter stating area and duration of study", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Biometric registration (fingerprints, photos)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in sources fetched; extension processed 5 (standard) or 3 (expedited) working days, fee 82,000 MNT for extension",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mn_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_mn_e1",
+      "tier": 1,
+      "url": "https://immigration.gov.mn/en/residence-permit/permit-e/e1/",
+      "title": "Immigration Agency of Mongolia -- E1 residence permit extension page: invitation letter must state area of study and duration of stay; extension must be filed 5 days before expiry; 82,000 MNT extension fee, 5-day standard/3-day expedited processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: DRAFT -- this is the THINNEST file in this build. The only tier-1 page reachable for the E1 (student) category was its EXTENSION page, not an initial-application/eligibility page -- it confirms the category is study-related (invitation letter must state 'area of study') but does not state initial permit duration, financial-means requirements, or work-rights limits while studying. work_rights is set to 'restricted' as a conservative default consistent with this dataset's convention for student routes generally, not a confirmed Mongolia-specific figure. Flagged for priority re-verification once a direct E1 initial-application page is located."
+}

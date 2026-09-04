@@ -1,0 +1,73 @@
+{
+  "id": "rw_international_protection",
+  "country": "RW",
+  "name": "Asylum -- Refugee Status Determination (DGIE, Law No. 13ter/2014)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "An asylum seeker submits a written application to the nearest immigration office, or to DGIE headquarters in Kacyiru (Kigali). Rwanda's own government -- not UNHCR -- determines refugee status under Law No. 13ter/2014 relating to refugees.",
+    "evidence_hint": "Written application; identity documents where available; evidence supporting the persecution claim."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rwip_persecution",
+          "attribute": "meets_refugee_convention_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution, assessed by DGIE under Law No. 13ter/2014.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_rwanda_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Written application", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "temporary residence permit (TRP) valid 3 months while pending; refugee ID issued on recognition",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_rwanda_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/rwanda/asylum-procedure-in-rwanda/",
+      "title": "UNHCR Rwanda -- asylum procedure: DGIE (Rwandan government, not UNHCR) processes claims via written application to the nearest immigration office or DGIE Kacyiru; 3-month temporary residence permit while pending; 30-day appeal window to a refugee appeals tribunal, then the High Court; refugee ID grants work authorization; camp-based refugees receive health/education services, urban refugees may request camp transfer via MINEMA; Protection Desks at camps and Gikondo Community Centre (Kigali) for urban refugees",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "rwandalii_refugee_law",
+      "tier": 2,
+      "url": "https://rwandalii.org/akn/rw/act/2014/13ter/eng@2014-06-30/source.pdf",
+      "title": "RwandaLII (Rwanda Legal Information Institute, an established African legal-text repository) -- Law No. 13ter/2014 of 21/05/2014 relating to refugees",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: DRAFT -- tier-2 sourced (UNHCR's Rwanda-specific procedural page, corroborated by RwandaLII's hosting of the actual 2014 refugee law, though the law's own text was not independently fetched to extract exact article-level requirements in this pass). STRUCTURAL FINDING WORTH FLAGGING: unlike this dataset's Jordan, Mongolia, and Cote d'Ivoire builds -- where a non-signatory or under-legislated state leaves UNHCR running refugee determination directly under its own mandate -- Rwanda operates a GENUINE DOMESTIC asylum system: DGIE (a normal government immigration authority) makes first-instance decisions itself, with a real appeals structure culminating in the High Court, under codified 2014 legislation. work_rights is 'full' on recognition (refugee ID grants work authorization per the source) -- notably strong compared to several other countries in this dataset where recognized-refugee work rights are undisclosed or restricted. Rwanda has also historically hosted large refugee populations (from DRC, Burundi, and historically its own returnee population) and runs both camp-based and urban-refugee tracks with distinct support structures -- disclosed as a structural feature rather than modeled as separate routes, since both lead to the same underlying legal status."
+}

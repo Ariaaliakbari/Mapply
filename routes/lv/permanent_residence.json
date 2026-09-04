@@ -1,0 +1,90 @@
+{
+  "id": "lv_permanent_residence",
+  "country": "LV",
+  "name": "Permanent Residence Permit (EU Long-Term Resident)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lvpr_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of continuous legal residence in Latvia.",
+          "fix_path": "Accumulate 5 years of continuous legal residence in Latvia.",
+          "fix_time_months": 60,
+          "source_id": "ec_employed_worker"
+        },
+        {
+          "id": "lvpr_means",
+          "attribute": "has_sufficient_regular_financial_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient regular financial means to support yourself and any dependent family members.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_employed_worker"
+        },
+        {
+          "id": "lvpr_language",
+          "attribute": "has_a2_latvian_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient command of Latvian (A2 level is the figure independently confirmed for Russian/Belarusian permit-holders specifically -- see notes for whether this applies identically to all applicants).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_employed_worker"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of sufficient financial means", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Latvian language proficiency evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of a place of residence in Latvia", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lv_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ec_employed_worker",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-latvia_en",
+      "title": "European Commission EU Immigration Portal -- Latvia long-term resident status (after 5 years): sufficient regular financial means, sufficient command of Latvian, a place of residence in Latvia; grants unrestricted work rights",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). STATUS: DRAFT -- sourced to the EC's EU Immigration Portal (tier-2), not an independently fetched PMLP page giving the general population's exact language-level requirement. A SEPARATE, independently confirmed tier-3 source describes a specific, currently very live policy: Latvia imposed a mandatory A2-level Latvian language exam on EXISTING permanent-residence holders who are citizens of Russia or Belarus (and other nationalities that previously had simplified residency conditions), with a 1 September 2025 deadline after which permits are revoked for non-compliance (exemptions for illness, disability, or age 75+) -- that deadline has already passed as of this build (September 2026). This is modeled here as the GENERAL language condition applying to new applicants (consistent with the EC portal's general 'sufficient command of Latvian' language), but the Russia/Belarus-specific REVOCATION mechanism for existing holders is a distinct, geopolitically-charged current event not itself modeled as a route requirement -- flagged here rather than silently omitted, given how directly it reflects Latvia's post-2022 security posture toward Russian and Belarusian nationals."
+}

@@ -1,0 +1,103 @@
+{
+  "id": "pe_permanent_residence",
+  "country": "PE",
+  "name": "Permanente (Permanent Resident / Inmigrante)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 36,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "3 years' prior legal residence",
+      "requirements": [
+        {
+          "id": "pepr_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years of legal residence in Peru under a qualifying prior status (Religioso, Inversionista, Trabajador, Investigación, Familiar de Residente, or an official/consular/diplomatic category), without absences exceeding 3 continuous months or 6 alternating months within any one year.",
+          "fix_path": "Accumulate 3 years of continuous legal residence under a qualifying prior status.",
+          "fix_time_months": 36,
+          "source_id": "veninformado_permanente"
+        },
+        {
+          "id": "pepr_income",
+          "attribute": "annual_income_pen",
+          "operator": ">=",
+          "value": {
+            "value_type": "formula",
+            "formula_ref": "peru_uit",
+            "ratio": 10,
+            "resolved_amount": 55000,
+            "currency": "PEN"
+          },
+          "hard": true,
+          "blocker_text": "Minimum economic solvency of 10 UIT (S/55,000 in 2026) in annual gross income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_permanente"
+        },
+        {
+          "id": "pepr_conduct",
+          "attribute": "has_clean_criminal_and_interpol_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Interpol international background check (except for minors).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_permanente"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 3 years' continuous legal residence under a qualifying status", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of annual income of 10 UIT or more", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Interpol international background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.m: Permanente resident status, indefinite duration, granted after 3 years as a legal resident under a qualifying category",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "veninformado_permanente",
+      "tier": 3,
+      "url": "https://www.veninformado.pe/vivir-en-peru/tramites-legales/calidades-migratorias/permanente/",
+      "title": "Veninformado -- Permanente status: 3-year residence requirement with absence limits, list of qualifying prior categories, 10 UIT annual income threshold, Interpol clearance",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- the 3-year residence rule and category-existence are tier-1 (direct from MIGRACIONES' regulation), but the 10 UIT income threshold and absence-limit specifics come only from a tier-3 consultancy source; the UIT figure itself is backed by national-variables/PE.json, which is also only tier-3-sourced (S/5,500 for 2026, per Decreto Supremo N.301-2025-EF, not independently re-verified against the MEF's own decree text) -- gob.pe pages describing this procedure directly returned HTTP 418 (bot-blocked) on every fetch attempt in this pass. citizenship_after_months (24) assumes an applicant who already met the 3-year Permanente residence clock separately satisfies pe_citizenship_naturalisation.json's newer 5-year total residence requirement 2 years later -- a modeling simplification disclosed here, not an independently confirmed fast-track figure."
+}

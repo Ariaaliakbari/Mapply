@@ -1,0 +1,75 @@
+{
+  "id": "bd_student_permit",
+  "country": "BD",
+  "name": "Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bdsp_admission",
+          "attribute": "admitted_to_approved_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Regular student or researcher admitted to (or seeking admission at) a government-approved educational institution in Bangladesh.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_student_visa"
+        },
+        {
+          "id": "bdsp_financial_guarantee",
+          "attribute": "has_bank_guarantee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Bank guarantee documents demonstrating financial capacity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Invitation/offer letter from a Bangladeshi educational institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Declaration or recommendation letter from the school", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank guarantee documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, multiple entries, extendable up to the full course tenure via the Department of Immigration and Passport (DIP)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bd_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "mofa_student_visa",
+      "tier": 1,
+      "url": "https://ottawa.mofa.gov.bd/en/site/page/student-visa",
+      "title": "Ministry of Foreign Affairs, Bangladesh (High Commission of Bangladesh, Ottawa) -- Student Visa: up to 1 year, multiple entries, extendable to course tenure via DIP; requires institution invitation/offer letter, school declaration/recommendation, bank guarantee documents; fees vary by reciprocity (e.g. Canadian passport holders CAD 200 multiple-entry / CAD 100 single-entry), non-refundable",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: PUBLISHED -- tier-1 sourced from an official diplomatic mission. Fees are reciprocity-based and vary by applicant nationality, per the source's own explicit statement -- no single flat fee figure exists, so none is asserted here. No dedicated post-study work-visa conversion pathway was found; switchable_to bd_work_permit reflects the general possibility of a subsequent employer-sponsored application, not a dedicated graduate-route mechanism."
+}

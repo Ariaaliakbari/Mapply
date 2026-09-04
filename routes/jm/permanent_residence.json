@@ -1,0 +1,107 @@
+{
+  "id": "jm_permanent_residence",
+  "country": "JM",
+  "name": "Unconditional Landing (permanent residence)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "employment",
+      "name": "Employment track",
+      "requirements": [
+        {
+          "id": "jmpr_3yr_work_permit",
+          "attribute": "months_on_work_permit",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Minimum 3 years on a work permit.",
+          "fix_path": "Accumulate 3 years on a valid work permit.",
+          "fix_time_months": 36,
+          "source_id": "jamaicaglobal_pr_guide"
+        }
+      ]
+    },
+    {
+      "id": "married_to_citizen",
+      "name": "Spousal sponsorship",
+      "requirements": [
+        {
+          "id": "jmpr_married_to_citizen",
+          "attribute": "married_to_jamaican_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a Jamaican citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "jamaicaglobal_pr_guide"
+        }
+      ]
+    },
+    {
+      "id": "caricom_skills_holder",
+      "name": "CARICOM Skills Certificate holder",
+      "requirements": [
+        {
+          "id": "jmpr_caricom_certificate",
+          "attribute": "holds_caricom_skills_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Holds a CARICOM Skills Certificate, used as supporting documentation for the Unconditional Landing application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "jamaicaglobal_pr_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Financial proof (pension/bank statements/property/business investment)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth/marriage/divorce certificates", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical certificate (from Jamaica)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police certificates from prior countries of residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "2 Jamaican references", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Statement of motivation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "jhc_ottawa_unconditional_landing",
+      "tier": 1,
+      "url": "https://missions.mfaft.gov.jm/jhcottawa/unconditional-landing/",
+      "title": "Jamaican High Commission, Ottawa (official mission page under mfaft.gov.jm) -- Unconditional Landing: confirms the official term and a fee structure (JMD 100,000 new application / JMD 5,000 endorsement for existing holders), but does not itemize full eligibility categories",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "jamaicaglobal_pr_guide",
+      "tier": 3,
+      "url": "https://www.jamaicaglobalonline.com/how-to-apply-for-permanent-residence-in-jamaica/",
+      "title": "Jamaica Global Online (aggregator) -- how to apply for permanent residence: 7 eligibility categories (employment 3+ years on a work permit, retirement, spousal sponsorship, dependent status, descent claimants, CARICOM Skills Certificate holders, naturalized/registered citizens regularizing status), ~14 required documents, 3-6 month typical processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: DRAFT -- the official TERM and fee structure are tier-1 sourced (a Jamaican diplomatic mission page), but the actual ELIGIBILITY CATEGORIES modeled as hard requirements here rest on a tier-3 aggregator site, since no PICA.gov.jm page laying out Unconditional Landing eligibility criteria directly could be located in this build despite PICA's own 'About Us' page confirming this is one of its functions. This is the weakest-sourced route in this Jamaica build and the top re-verification priority -- recommend a follow-up direct search of pica.gov.jm's site structure. Only 3 of the 7 disclosed eligibility categories (employment, spousal sponsorship, CARICOM Skills Certificate) are modeled as requirement groups here; retirement, dependent status, descent-claimant endorsement, and naturalized-citizen regularization are disclosed in this note rather than separately modeled, given even thinner detail on those sub-tracks. TERMINOLOGY NOTE: 'Unconditional Landing' is Jamaica's precise official term, used interchangeably with 'permanent residence' in some PICA materials -- both are used in this file's name for findability."
+}

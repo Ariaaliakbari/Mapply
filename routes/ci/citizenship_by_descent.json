@@ -1,0 +1,83 @@
+{
+  "id": "ci_citizenship_by_descent",
+  "country": "CI",
+  "name": "Citizenship by Birth (Filiation and Birth-in-Territory Provisions)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A legitimate (or legitimated) child born in Cote d'Ivoire is Ivoirian unless both parents are foreign nationals (Code de la Nationalite, Article 6). A child born abroad to at least one Ivoirian parent acquires citizenship by descent (Article 7), including children born outside marriage where paternity or maternity is legally established.",
+    "evidence_hint": "Birth certificate; proof of at least one parent's Ivoirian nationality, or (for births in Cote d'Ivoire) proof that at least one parent is not foreign."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_ci",
+      "name": "Born in Cote d'Ivoire, not both parents foreign",
+      "requirements": [
+        {
+          "id": "cicd_born_in_ci",
+          "attribute": "born_in_ci_with_at_least_one_nonforeign_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Cote d'Ivoire, where at least one parent is not a foreign national at the time of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_code_nationalite"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_descent",
+      "name": "Born abroad to an Ivoirian parent",
+      "requirements": [
+        {
+          "id": "cicd_parent_ivoirian",
+          "attribute": "has_ivoirian_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent was an Ivoirian national at the time of birth, whether the child is born in or out of marriage (with paternity/maternity legally established for out-of-marriage births).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_code_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent(s)' nationality/non-foreign status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legal paternity/maternity (out-of-marriage births)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_code_nationalite",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/1178187/1504_1217418989_loi-n-61-416-du-14-decembre-1961-portant-code-de-la-nationalite-ivoirienne.pdf",
+      "title": "ecoi.net (Austrian Red Cross/ACCORD country-of-origin information network) -- Code de la Nationalite Ivoirienne, Articles 6-7: birth-in-territory citizenship unless both parents foreign, and descent-based citizenship for children born abroad to an Ivoirian parent; Article 49, relief mechanism for automatic dual nationals",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: DRAFT -- tier-2 only, same constraint as this build's other citizenship files (Cote d'Ivoire's own official gazette portal was not reached to tier-1 depth). Article 6's 'unless both parents are foreign' formulation is a MODIFIED jus soli -- distinct from pure jus soli (automatic regardless of parentage, e.g. the US) and from pure jus sanguinis (parent's citizenship required, no birthplace effect) -- it grants citizenship by birthplace UNLESS BOTH parents are foreign, meaning a child of one Ivoirian and one entirely foreign parent, born in-country, qualifies automatically without needing Article 7's separate descent test. This structural nuance is disclosed explicitly since it's easy to conflate with either pure model. dual_citizenship_allowed TRUE is the same Article-49-based inference used in ci_citizenship_naturalisation.json, flagged there for re-verification."
+}

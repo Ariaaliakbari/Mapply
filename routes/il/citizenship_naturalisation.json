@@ -1,0 +1,115 @@
+{
+  "id": "il_citizenship_naturalisation",
+  "country": "IL",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilcn_residence",
+          "attribute": "months_physical_presence_in_last_5_years",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Physical presence in Israel for 3 out of the 5 years immediately preceding the application (Nationality Law 5712-1952, Section 5).",
+          "fix_path": "Accumulate 3 years of physical presence within a 5-year window.",
+          "fix_time_months": 36,
+          "source_id": "knesset_nationality_law"
+        },
+        {
+          "id": "ilcn_pr_entitlement",
+          "attribute": "entitled_to_permanent_residency_and_intends_to_settle",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Entitled to permanent residency in Israel and intends to settle there.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "knesset_nationality_law"
+        },
+        {
+          "id": "ilcn_hebrew",
+          "attribute": "has_some_hebrew_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Some knowledge of the Hebrew language.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "knesset_nationality_law"
+        },
+        {
+          "id": "ilcn_renunciation",
+          "attribute": "renounces_or_will_automatically_lose_prior_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Renunciation of prior nationality, or proof that it will be automatically lost upon acquiring Israeli citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "knesset_nationality_law"
+        },
+        {
+          "id": "ilcn_declaration",
+          "attribute": "has_signed_loyalty_declaration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Signed declaration of loyalty to the State of Israel.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "knesset_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 3 years' physical presence within the last 5 years", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Hebrew language demonstration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of renunciation of prior nationality (or its automatic loss)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Signed loyalty declaration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "knesset_nationality_law",
+      "tier": 1,
+      "url": "https://fs.knesset.gov.il/2/law/2_lsr_211774.pdf",
+      "title": "fs.knesset.gov.il (the Knesset, Israel's Parliament -- official primary legislation archive) -- Nationality Law 5712-1952, Section 5 (Hebrew): naturalisation requires presence in Israel, 3 years' residence out of the preceding 5, entitlement to permanent residence with settlement intent, adequate Hebrew knowledge, and renunciation of prior citizenship; the Interior Minister grants citizenship by certificate after a signed loyalty declaration",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "refworld_nationality_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1953/en/14615",
+      "title": "Refworld (UNHCR) -- Israel Nationality Law 5712-1952, Section 5, corroborating the Knesset text in English translation",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: PUBLISHED -- directly sourced to the Knesset's own primary-legislation archive (tier-1), fetched and machine-translated from the original Hebrew in this pass and corroborated by Refworld's English translation; if any nuance was lost in translation, the Hebrew original at the Knesset URL is authoritative. This is the GENERAL naturalisation track available regardless of Jewish ancestry -- distinct from il_citizenship_by_return.json's Law of Return route -- and it is the SUBSTANTIALLY HARDER path: 3/5 years' presence, Hebrew knowledge, and mandatory renunciation of prior nationality (dual_citizenship_allowed: FALSE here), versus the Law of Return route's largely unconditional, dual-citizenship-permitting grant for those with qualifying Jewish ancestry. This asymmetry between Israel's two citizenship tracks is one of the most structurally significant findings in this whole dataset and is recorded factually in both files rather than flattened into a single generic 'naturalisation' entry. Entitlement to 'permanent residency' as a precondition here interacts with il_permanent_residence.json's own thin, fragmented-route finding -- flagged as a dependency worth re-checking together."
+}

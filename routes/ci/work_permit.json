@@ -1,0 +1,83 @@
+{
+  "id": "ci_work_permit",
+  "country": "CI",
+  "name": "Resident Card, Worker Category (Carte de Resident + Attestation de Travail)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ciwp_employment_attestation",
+          "attribute": "has_employer_work_attestation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Original employer-issued work attestation, per the Ministry of Employment's rules on hiring foreign workers.",
+          "fix_path": "Secure a job offer from an Ivorian employer able to provide the attestation.",
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        },
+        {
+          "id": "ciwp_pre_enrollment",
+          "attribute": "completed_oneci_online_preenrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mandatory online pre-enrollment through ONECI, plus a residence certificate under 6 months old.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or consular card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Original employer work attestation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Online pre-enrollment and sponsorship form", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence certificate (under 6 months old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank payment receipt (300,000 FCFA non-ECOWAS / 150,000 FCFA French nationals)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "requires periodic renewal; exact validity period not confirmed in sources fetched",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ci_permanent_residence", "ci_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oneci_carte_resident",
+      "tier": 1,
+      "url": "https://www.oneci.ci/nos-produits/carte-resident/documents-a-fournir",
+      "title": "ONECI (Office National de l'Etat Civil et de l'Identification, Cote d'Ivoire) -- carte de resident, worker category: employer work attestation required, mandatory online pre-enrollment, residence certificate, fee 300,000 FCFA (non-ECOWAS nationals) / 150,000 FCFA (French nationals)",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "fratmat_ministry_rules",
+      "tier": 4,
+      "url": "https://www.fratmat.info/article/2643871/societe/emploi-en-cote-divoire-le-ministere-clarifie-les-regles-sur-le-recrutement-des-travailleurs-etrangers",
+      "title": "Fraternite Matin (Ivorian state-affiliated newspaper) -- August 2026 article reporting the Ministry of Employment's clarified rules on hiring foreign workers in Cote d'Ivoire",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: PUBLISHED -- core requirements tier-1 ONECI sourced. A tier-4 news article (Fraternite Matin, an Ivorian state-affiliated but not itself governmental outlet) from August 2026 -- within days of this build -- reports the Ministry of Employment issuing clarified rules on foreign worker recruitment, suggesting active regulatory change in this exact area; the article's substance was not independently fetched in this pass and is flagged as a live-development signal worth re-checking rather than incorporated as a hard requirement. ECOWAS/CEDEAO nationals are NOT charged the standard 300,000 FCFA fee per ONECI's fee schedule (implying free movement treaty benefits for the regional bloc), but the exact ECOWAS-national work-authorization process was not separately confirmed and is not modeled as a distinct route here. pr_after_months/citizenship_after_months are inferred from the general naturalisation residence threshold (see ci_citizenship_naturalisation.json), not independently confirmed for work-permit holders specifically."
+}

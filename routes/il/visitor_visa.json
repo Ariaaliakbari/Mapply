@@ -1,0 +1,82 @@
+{
+  "id": "il_visitor_visa",
+  "country": "IL",
+  "name": "ETA-IL / B/2 Tourist Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A traveler from a visa-exempt country registers for ETA-IL (Electronic Travel Authorization) online at least 72 hours before travel; nationals of countries that are not visa-exempt apply for a traditional B/2 visa at an Israeli embassy or consulate instead.",
+    "evidence_hint": "Online ETA-IL registration with passport details, email, and payment; or a B/2 visa application for non-exempt nationalities."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "eta_il",
+      "name": "ETA-IL (visa-exempt nationalities)",
+      "requirements": [
+        {
+          "id": "ileta_registration",
+          "attribute": "has_approved_eta_il",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Approved ETA-IL registration, submitted at least 72 hours before travel, for tourism or business purposes.",
+          "fix_path": "Register for ETA-IL online before travel.",
+          "fix_time_months": null,
+          "source_id": "natlawreview_eta_il"
+        }
+      ]
+    },
+    {
+      "id": "traditional_visa",
+      "name": "Traditional B/2 visa (non-exempt nationalities)",
+      "requirements": [
+        {
+          "id": "ilvv_consular_visa",
+          "attribute": "holds_b2_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "B/2 tourist visa obtained from an Israeli embassy or consulate before travel.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlawreview_eta_il"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "ETA-IL registration or B/2 visa", "difficulty": "moderate", "typical_time_days": 3 }
+  ],
+  "outcome": {
+    "duration_length": "ETA-IL authorization valid up to 2 years (or until passport expiry); each visit capped at 90 days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "natlawreview_eta_il",
+      "tier": 3,
+      "url": "https://natlawreview.com/article/israel-launches-electronic-travel-authorisation-eta-il-visa-exempt-travelers",
+      "title": "National Law Review (legal news) -- Israel's ETA-IL program: registration required at least 72 hours before travel, ILS 25 (~USD 7) fee, authorization valid up to 2 years, 90-day maximum stay per visit; denied applicants directed to apply for a traditional visa",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: DRAFT -- multiple attempts to fetch Israel's own embassy pages (embassies.gov.il subdomains for Singapore, USA, Houston) and the PIBA entry portal itself were blocked by robots.txt or returned no substantive content, so this file relies on a tier-3 legal-news summary rather than a directly fetched government page, despite gov.il clearly being the authoritative source (confirmed reachable for other Israel files in this build, e.g. il_citizenship_by_return.json's Section 4A service page). The full visa-exempt nationality list was not extracted in this pass."
+}

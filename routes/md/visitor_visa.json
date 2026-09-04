@@ -1,0 +1,74 @@
+{
+  "id": "md_visitor_visa",
+  "country": "MD",
+  "name": "Short-Stay Visa (Type C)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdvv_purpose",
+          "attribute": "travel_purpose",
+          "operator": "in",
+          "value": ["tourism", "private_visit", "business", "transport_crew", "sport", "cultural_scientific_humanitarian_medical"],
+          "hard": true,
+          "blocker_text": "Travel must fall under one of Moldova's short-stay visa subcategories (C/T tourism, C/V private visit, C/A business, C/TS transport, C/S sport, C/AD cultural/scientific/humanitarian/medical).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_visa_types"
+        },
+        {
+          "id": "mdvv_means",
+          "attribute": "has_sufficient_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Subsistence proof of roughly EUR 30/day (minimum EUR 300 for stays under 10 days) and travel medical insurance of at least EUR 30,000 coverage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_visa_types"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel medical insurance (EUR 30,000+ coverage)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of subsistence funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within a 180-day period; many nationalities are visa-exempt for the same duration",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_visa_types",
+      "tier": 1,
+      "url": "https://mfa.gov.md/en/content/types-visas-requirements",
+      "title": "Ministry of Foreign Affairs, Republic of Moldova -- types of visas and requirements: short-stay Type C subcategories, EUR 30/day subsistence proof (min EUR 300 for stays under 10 days), EUR 30,000 travel medical insurance, EUR 40 consular fee",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: PUBLISHED -- tier-1 MFA sourced. Consular fee (EUR 40) and per-nationality visa-exemption list not itemized here; general/default terms modeled."
+}

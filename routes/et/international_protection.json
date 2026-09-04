@@ -1,0 +1,89 @@
+{
+  "id": "et_international_protection",
+  "country": "ET",
+  "name": "Refugee Status / Asylum (Refugees Proclamation No. 1110/2019)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Ethiopia is a 1951 Refugee Convention/1967 Protocol and 1969 OAU Convention signatory, and operates a genuine domestic asylum system administered by the Refugees and Returnees Service (RRS) under Refugees Proclamation No. 1110/2019 (repealing Proclamation No. 409/2004). Nationals of South Sudan, Somalia, Sudan, and Yemen receive faster prima facie recognition based on country of origin; other applicants undergo individual screening. Ethiopia currently protects refugees from over 21 nationalities and is one of Africa's largest refugee-hosting states (Somali, South Sudanese, Eritrean populations especially).",
+    "evidence_hint": "For prima facie nationalities: proof of nationality and flight from the qualifying country. For individual screening: evidence of a well-founded fear of persecution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "prima_facie",
+      "name": "Prima facie recognition (South Sudan, Somalia, Sudan, Yemen)",
+      "requirements": [
+        {
+          "id": "etip_prima_facie_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["SS", "SO", "SD", "YE"],
+          "hard": true,
+          "blocker_text": "Nationals of South Sudan, Somalia, Sudan, or Yemen receive faster prima facie registration/recognition based on country of origin alone, without full individual status determination.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rrs_et_registration_protection"
+        }
+      ]
+    },
+    {
+      "id": "individual_screening",
+      "name": "Individual status determination",
+      "requirements": [
+        {
+          "id": "etip_persecution",
+          "attribute": "meets_refugee_convention_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution, assessed individually by RRS at branch offices in Gambela, Asosa, Melkedida, Jigjiga, Metema, or Addis Ababa, on a first-come-first-served basis (vulnerable cases may be prioritized). Rejected applicants may appeal to the Refugee Appeal Board and, beyond that, the Federal Supreme Court.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rrs_et_registration_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim (individual-screening track)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this build -- open gap on the specific permit validity period",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["et_work_permit", "et_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "rrs_et_registration_protection",
+      "tier": 1,
+      "url": "https://rrs.et/registration-and-protection/",
+      "title": "Refugees and Returnees Service (RRS), Ethiopia's own government agency -- registration and protection: legal basis (1951 Convention/1967 Protocol, 1969 OAU Convention, Refugees Proclamation No. 1110/2019), prima facie recognition for South Sudan/Somalia/Sudan/Yemen nationals, individual screening for others at branch offices in Gambela/Asosa/Melkedida/Jigjiga/Metema/Addis Ababa, appeal to Refugee Appeal Board then Federal Supreme Court, over 21 nationalities protected",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "worldbank_right_to_work_directive",
+      "tier": 2,
+      "url": "https://www.worldbank.org/en/news/feature/2025/10/15/in-ethiopia-a-groundbreaking-right-to-work-directive-transforms-lives-for-the-better",
+      "title": "World Bank -- 'In Ethiopia, a groundbreaking Right to Work Directive transforms lives': RRS's 2020 Right to Work Directive (implementing Proclamation 1110/2019) removed the standard USD 200,000 business-capital requirement for refugees, extending them the SAME ordinary-foreign-national investment thresholds as other foreigners rather than a harsher bar; over 24,000 refugees and asylum seekers have obtained work permits, residence permits, or business licenses under this framework as of October 2025",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ethiopia). STATUS: PUBLISHED -- directly fetched and confirmed from RRS's own government domain (rrs.et), tier-1, for both hard requirements (prima facie nationality and individual persecution screening). The World Bank source is corroborating context only, not cited by any hard requirement. This is the best-documented humanitarian route built in this dataset alongside Rwanda's, and the only one so far reaching published status. STRUCTURAL FINDING: Ethiopia runs a REAL domestic refugee-status-determination system with a formal appeal structure reaching the Federal Supreme Court -- not a UNHCR-mandate-only arrangement as seen in Jordan/Mongolia/Cote d'Ivoire elsewhere in this dataset. Ethiopia's 2019 Refugees Proclamation and its 2020 Right to Work Directive are considered among the most progressive refugee-rights frameworks in Africa: the out-of-camp policy, freedom of movement, and property/IP rights on par with foreign nationals are genuine, substantive reforms, not paper rights -- over 24,000 refugees had obtained work permits, residence permits, or business licenses under this framework as of October 2025 per the World Bank. Note this directive's real effect was extending refugees the SAME treatment as ordinary foreign investors (removing a harsher prior baseline), not exempting them from investment thresholds altogether the way et_ancestry_origin_id.json's domestic-investor classification does. Rights detail (work/study/family) reflects the general refugee-rights framework in Proclamation 1110/2019 rather than the RRS page itself, which did not itemize these -- flagged accordingly."
+}

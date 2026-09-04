@@ -1,0 +1,90 @@
+{
+  "id": "il_student_permit",
+  "country": "IL",
+  "name": "A/2 Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national admitted to an Israeli institution of higher education or yeshiva applies for an A/2 visa at an Israeli embassy or consulate.",
+    "evidence_hint": "Letter of admission and certificate of acceptance from the institution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilsp_admission",
+          "attribute": "has_admission_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Letter of admission and certificate of acceptance (full name, program/school name, program length) from an Israeli university or yeshiva.",
+          "fix_path": "Secure admission to an Israeli institution of higher education or yeshiva.",
+          "fix_time_months": null,
+          "source_id": "embassies_gov_il_students"
+        },
+        {
+          "id": "ilsp_funds",
+          "attribute": "has_bank_statements_showing_capability",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Three recent bank statements demonstrating financial capability.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassies_gov_il_students"
+        },
+        {
+          "id": "ilsp_health_insurance",
+          "attribute": "has_international_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "International health insurance covering the study period.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassies_gov_il_students"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter of admission / certificate of acceptance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Three recent bank statements", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "International health insurance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of Israeli residence (apartment, dormitory, etc.)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Original birth certificate and copies of both parents' passports", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, multiple entries/exits, renewable for the duration of study",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["il_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "embassies_gov_il_students",
+      "tier": 1,
+      "url": "https://new.embassies.gov.il/atlanta/en/services/foreign-citizens/entry-visas-university-or-yeshiva-students",
+      "title": "embassies.gov.il (Israeli Ministry of Foreign Affairs, Atlanta consulate) -- Entry visas for university or yeshiva students (A/2): valid up to 1 year with multiple entries/exits, work explicitly prohibited, detailed document list including 3 months' bank statements, international health insurance, and proof of Israeli residence",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). Modeled PUBLISHED -- directly and comprehensively tier-1 sourced (an Israeli government consular page). Work is explicitly and unambiguously prohibited on this visa, a stricter rule than several other countries' student routes in this dataset that allow limited part-time work."
+}

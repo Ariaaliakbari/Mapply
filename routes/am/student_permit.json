@@ -1,0 +1,82 @@
+{
+  "id": "am_student_permit",
+  "country": "AM",
+  "name": "Temporary Residence Status -- Study",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amsp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A document confirming enrollment in an educational program at an Armenian institution.",
+          "fix_path": "Obtain admission and an enrollment confirmation from an Armenian educational institution.",
+          "fix_time_months": null,
+          "source_id": "migration_egov_am"
+        },
+        {
+          "id": "amsp_health",
+          "attribute": "has_health_reference",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A health reference document is required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_egov_am"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment confirmation from an Armenian educational institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport with Armenian translation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health reference", "difficulty": "routine", "typical_time_days": null },
+    { "document": "3 color photos (35x45mm), proof of legal entry, state duty receipt", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable annually while enrolled",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_permanent_residence", "am_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "migration_egov_am",
+      "tier": 1,
+      "url": "https://migration.e-gov.am/en/service/residency_application/info",
+      "title": "Migration and Citizenship Service (official e-government portal) -- temporary residence status document requirements for study: enrollment confirmation, plus general application documents (photos, translated passport, health reference, proof of legal entry, state duty)",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "id": "migration_mia_residency",
+      "tier": 1,
+      "url": "https://migration.mia.gov.am/en/residency-status-and-visa",
+      "title": "Migration and Citizenship Service -- confirms temporary residence status is issued up to 1 year, renewable, via in-person application",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). No work-rights allowance (e.g. part-time work permission) was found described for student temporary residence status on the tier-1 pages reviewed -- modeled 'none' rather than assumed. pr_after_months and citizenship_after_months (36) reuse the general 3-year continuous-residence figures from am_permanent_residence.json and am_naturalisation.json since no study-specific fast-track was found."
+}

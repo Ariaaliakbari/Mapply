@@ -1,0 +1,84 @@
+{
+  "id": "fj_ancestry_exemption",
+  "country": "FJ",
+  "name": "Exemption by Descent (entry, work, and study without a permit)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-Fiji-citizen who is a child, grandchild, or great-grandchild of a person who was a citizen of Fiji on 10 October 1970 (Fiji's Independence Day, a 'principal citizen') may be granted this exemption -- reinstating a category repealed in 2007. NOT a grant of citizenship: it is an exemption from needing any separate permit to enter, reside, study, and work in Fiji.",
+      "evidence_hint": "Documentation establishing the ancestral link to a person who held Fiji citizenship on 10 October 1970."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fjae_descent",
+          "attribute": "has_ancestor_fiji_citizen_on_1970_independence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Child, grandchild, or great-grandchild of a person who was a Fiji citizen on 10 October 1970.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_descent"
+        },
+        {
+          "id": "fjae_holds_foreign_citizenship",
+          "attribute": "holds_foreign_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold citizenship of another country and must NOT be eligible for registration in the Vola ni Kawa Bula (the iTaukei/Native Lands register).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Civil records establishing descent from the principal citizen", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of the ancestor's Fiji citizenship on 10 October 1970", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Foreign passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years, multiple entry/exit, issued as a letter rather than a passport stamp",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_fj_descent",
+      "tier": 1,
+      "url": "https://www.immigration.gov.fj/exemption-by-descent/",
+      "title": "Department of Immigration, Fiji -- Exemption by Descent: child/grandchild/great-grandchild of a person who was a Fiji citizen on 10 October 1970, must hold foreign citizenship and not be eligible for Vola ni Kawa Bula registration, 3-year multiple-entry exemption letter covering entry/residence/study/work without a separate permit",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "sas_fiji_law_descent_amendment",
+      "tier": 4,
+      "url": "https://www.sas.com.fj/commercial-law-updates/amendments-to-the-immigration-act-2003-extends-exemptions-for-persons-entitled-to-enter-and-work-fiji-without-a-permit-to-descendents-of-fiji-citizens",
+      "title": "SAS Fiji (law firm) -- corroborates the amending instrument: Immigration (Amendment) Act 2023 and Immigration (Exemption by Descent) Order 2023, effective 10 October 2023, reinstating a category repealed in 2007",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: PUBLISHED -- the hard requirements (eligibility criteria) are tier-1 Department of Immigration sourced; the tier-4 law-firm source is cited only to corroborate the amending Act/Order's exact citation and effective date, which the primary immigration.gov.fj page doesn't itself state -- not used for any hard requirement. STRUCTURAL FINDING, IMPORTANT NOT TO CONFLATE: this is an IMMIGRATION EXEMPTION (no permit needed to enter/live/work/study), NOT a citizenship grant -- it is capped at three generations (great-grandchildren) from a person who held citizenship at Independence in 1970. This is legally distinct from fj_citizenship_reacquisition.json (which lets FORMER Fiji citizens themselves reclaim citizenship as dual nationals, no generational cap found) and from fj_citizenship_by_descent.json (registration for children born abroad after 2009 to a currently-Fijian parent). An open question flagged by secondary sourcing -- whether time spent under this exemption counts toward the residency clock for naturalisation -- was NOT resolved in this research pass. No accompanying family members are covered by the exemption itself; each descendant must qualify individually. Reinstates a category that existed before 2007 and was repealed for 16 years, primarily relevant to the Indo-Fijian and other diaspora populations who left Fiji's indigenous-citizenship (Vola ni Kawa Bula) system after the 1987/2000/2006 political upheavals."
+}

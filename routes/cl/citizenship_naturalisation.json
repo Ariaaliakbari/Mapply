@@ -1,0 +1,114 @@
+{
+  "id": "cl_citizenship_naturalisation",
+  "country": "CL",
+  "name": "Carta de Nacionalización",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["cl_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clcn_pr_held",
+          "attribute": "holds_residencia_definitiva",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold Residencia Definitiva (permanent residence) at the time of application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "carey_nacionalizacion"
+        },
+        {
+          "id": "clcn_residence",
+          "attribute": "months_total_residence",
+          "operator": ">",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "More than 5 years of residence in Chile (continuity requirement removed by Law 20.888, effective 8 January 2016).",
+          "fix_path": "Accumulate more than 5 years of residence in Chile.",
+          "fix_time_months": 60,
+          "source_id": "carey_nacionalizacion"
+        },
+        {
+          "id": "clcn_min_age",
+          "attribute": "age_years",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Minimum age 18 (reduced from 21 by Law 20.888); children of foreigners may apply from age 14 with parental authorization.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "carey_nacionalizacion"
+        }
+      ]
+    },
+    {
+      "id": "refugee_minor",
+      "name": "Minor child of a recognised refugee",
+      "requirements": [
+        {
+          "id": "clcn_refugee_parent_minor",
+          "attribute": "is_minor_child_of_recognised_refugee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child under 18 with at least one parent holding recognised refugee status may naturalise without meeting the standard residence/age requirements.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "carey_nacionalizacion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport or national ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate (apostilled/legalized, 18+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Tax documentation confirming no outstanding debt", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "PDI travel certificate (if applicable)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "carey_nacionalizacion",
+      "tier": 3,
+      "url": "https://www.carey.cl/modificacion-de-requisitos-para-obtener-la-nacionalizacion",
+      "title": "Carey y Cía. (Chilean law firm) -- summary of Law 20.888 (effective 8 January 2016) amending naturalisation requirements: more than 5 years' residence (continuity requirement removed), minimum age reduced from 21 to 18 (14 for children of foreigners with parental authorization), and a fast-track for minor children of recognised refugees",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "serviciomigraciones_citizenship",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/citizenship/",
+      "title": "serviciomigraciones.cl (SERMIG) -- Carta de Nacionalización: available to Residencia Definitiva holders, Residencia Definitiva holders with family ties to a Chilean citizen, and children of naturalised refugees",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). STATUS: DRAFT -- the eligibility STRUCTURE (who may apply) is tier-1 (SERMIG's own citizenship page), but the specific residence-year figure (5 years), the minimum-age figures, and the 2016 legislative history all come from a tier-3 law firm summary rather than a fetched government or gazette text of Law 20.888 itself -- every hard requirement in this file traces to that tier-3 source, so the file is held to draft per this dataset's validator rule (published requires tier-1 sourcing on every hard requirement) despite the tier-1 structural corroboration. Flagged for future re-verification against a primary legal text (Law 20.888 itself, or BCN's ley chile database). dual_citizenship_allowed is left NULL rather than asserted -- no source fetched in this pass directly confirmed Chile's current dual-citizenship policy for naturalising foreigners, and it is flagged as unconfirmed rather than stated from unaided recall. STRUCTURAL FINDING: Chile's family-tie discount applies at the RESIDENCIA DEFINITIVA stage (12-month reduced wait, see cl_permanent_residence.json), not as a separate marriage-citizenship application at THIS stage -- no distinct 'citizenship by marriage' route exists once a person already holds Residencia Definitiva; the 5-year/18-year-old naturalisation conditions apply uniformly regardless of how PR was obtained. This is disclosed explicitly rather than building a duplicate marriage-citizenship file that doesn't reflect Chile's actual process."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "sd_citizenship_by_marriage",
+  "country": "SD",
+  "name": "Naturalisation via Marriage to a Sudanese Man",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sdcm_foreign_woman_married_to_sudanese_man",
+          "attribute": "is_foreign_woman_married_to_sudanese_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be a foreign woman married to a Sudanese national man -- no equivalent route for a foreign man married to a Sudanese woman was located in this build.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_nationality_act"
+        },
+        {
+          "id": "sdcm_2yr_residence",
+          "attribute": "months_resident_with_spouse",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "2 years' residence with the Sudanese spouse (waivable at Presidential discretion for a person with prior qualifying residency).",
+          "fix_path": "Reside with the Sudanese spouse for 2 years before applying.",
+          "fix_time_months": 24,
+          "source_id": "citizenshiprightsafrica_nationality_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 2 years' cohabitation/residence with the spouse", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "2 years' residence with the Sudanese spouse",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_nationality_act",
+      "tier": 2,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2019/02/Sudan-Nationality-Law-1994-with-2011-and-2018-amendments_ENG.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- Sudanese Nationality Act 1994, as amended: 'Foreign women married to Sudanese nationals may obtain naturalization upon demonstrating two years' residence with their spouse' -- a preferential fast-track compared to the ordinary 10-year naturalisation residence requirement; Presidential discretion may waive the 2-year requirement for a person with prior qualifying residency",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sudan). STATUS: DRAFT -- same tier-2-only sourcing limitation as sd_citizenship_naturalisation.json (NGO-hosted consolidated translation; no tier-1 Sudanese-government copy located). MARQUEE GENDERED FINDING, CONSISTENT WITH A PATTERN SEEN REPEATEDLY IN THIS DATASET (Qatar, Bahrain, Nigeria): the sourced text frames this fast-track marriage-naturalisation route around a FOREIGN WOMAN married to a Sudanese MAN -- no search conducted in this build located any equivalent provision for a foreign man married to a Sudanese woman, who would instead be limited to the ordinary 10-year naturalisation track (sd_citizenship_naturalisation.json) or the Presidential-discretion clause, neither of which offers the same fast-track. This is disclosed as a confirmed structural asymmetry based on the sourced text's own framing, not an inference. dual_citizenship_allowed FALSE, consistent with sd_citizenship_naturalisation.json's notes on the Act's general non-recognition of dual citizenship (with the specific South Sudan automatic-revocation rule as an added, distinct mechanism)."
+}

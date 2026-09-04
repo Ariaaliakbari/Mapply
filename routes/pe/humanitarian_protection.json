@@ -1,0 +1,64 @@
+{
+  "id": "pe_humanitarian_protection",
+  "country": "PE",
+  "name": "Humanitaria (Humanitarian Protection for Vulnerable Persons)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person in a recognized situation of vulnerability -- an asylum/refugee applicant, a trafficking victim, an unaccompanied minor, a stateless person, or a person displaced by a natural disaster -- may be granted Humanitaria status, issued by Peru's Ministry of Foreign Affairs (RREE).",
+    "evidence_hint": "Documentation of the qualifying vulnerability condition (varies by category, e.g. trafficking-victim identification, statelessness determination, disaster-displacement record)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pehp_vulnerability",
+          "attribute": "vulnerability_category",
+          "operator": "in",
+          "value": ["asylum_or_refugee_applicant", "trafficking_victim", "unaccompanied_minor", "stateless_person", "disaster_displaced"],
+          "hard": true,
+          "blocker_text": "Applicant must fall within a recognized vulnerable category: asylum/refugee applicant, victim of trafficking, unaccompanied minor, stateless person, or person displaced by a natural disaster.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_reglamento"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation of the qualifying vulnerability condition", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 183 days, extendable for as long as the vulnerability condition persists",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_permanent_residence", "pe_international_protection"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.k: Humanitaria resident status, issued by RREE, up to 183 days extendable while vulnerability conditions persist, various forms of employment permitted",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- the category and its duration terms are tier-1, direct from the regulation, but no process/documentation detail beyond the bare qualifying-category list was independently confirmed (portal.rree.gob.pe was not successfully fetched in this pass). This is a genuinely DISTINCT route from pe_international_protection.json: it is broader (covers trafficking victims, unaccompanied minors, stateless persons, and disaster-displaced persons -- not only asylum seekers) and shorter in initial duration (183 days vs. refugee status's 1 year), though it can persist indefinitely while the vulnerability condition remains, unlike the fixed-term refugee category. leads_to_citizenship is set false since this status is explicitly tied to a temporary vulnerability condition rather than a settlement track -- a Humanitaria holder who transitions to Permanente or formal refugee status would do so via those routes' own citizenship pathways, not this one directly."
+}

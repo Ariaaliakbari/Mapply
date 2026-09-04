@@ -1,0 +1,95 @@
+{
+  "id": "mm_citizenship_naturalisation",
+  "country": "MM",
+  "name": "Naturalised Citizenship",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "pre_1948_resident",
+      "name": "Resident anterior to 4 January 1948",
+      "requirements": [
+        {
+          "id": "mmcn_pre1948_residence",
+          "attribute": "entered_and_resided_before_4jan1948",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Entered and resided in the State anterior to 4 January 1948 (Section 42) -- in practice this track is now almost entirely historical/closed to new applicants given the 78+ years elapsed.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_1982_law"
+        },
+        {
+          "id": "mmcn_age18",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Completed the age of eighteen years (Section 44).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_1982_law"
+        },
+        {
+          "id": "mmcn_language",
+          "attribute": "speaks_a_national_language_well",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Able to speak well one of the national languages (Section 44).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_1982_law"
+        },
+        {
+          "id": "mmcn_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Of good character (Section 44).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_1982_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of pre-1948 entry/residence in Myanmar", "difficulty": "often_impossible", "typical_time_days": null },
+    { "document": "Language proficiency evidence in a national language", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_1982_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1982/en/49622",
+      "title": "UNHCR Refworld -- Burma Citizenship Law, 1982 (English translation), Sections 42-44: naturalised citizenship for persons who entered and resided in the State anterior to 4 January 1948, age 18+, able to speak a national language well, of good character; Section 43 provides for applicants not meeting the pre-1948 threshold under alternative (undetailed in this build) criteria",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: DRAFT -- the only source located for the 1982 Citizenship Law's exact text is UNHCR Refworld's hosted translation, tier-2 under this dataset's convention (intergovernmental/UN hosting of primary legal text). No tier-1 Myanmar-government-hosted copy of the Citizenship Law's operative sections was located in this build -- the law itself long predates the current government's web presence, and Myanmar's Ministry of Immigration and Population does not appear to publish the statutory text online in a form this build could locate. STRUCTURAL FINDING: Section 42's 'resident anterior to 4 January 1948' criterion is now almost entirely closed to new applicants by the passage of time (78+ years since that date) -- Section 43 reportedly provides an alternative track for people not meeting this threshold, but its specific criteria were not retrieved in this build and are NOT modeled here; this is a genuine, disclosed sourcing gap, not a claim that no alternative exists. ETHICAL/POLITICAL CONTEXT, DISCLOSED PROMINENTLY: this 1982 law is the same statute that has been used to deny citizenship to the Rohingya population, who are not recognized among Myanmar's list of 'national races' (the law's Section 3 ties full citizenship to ethnic groups settled in Myanmar prior to 1823) -- this has left over a million Rohingya stateless and is central to the ethnic-cleansing/genocide findings made against Myanmar by the International Court of Justice. This dataset models the law's operative mechanics honestly, including this exclusionary structure, rather than sanitizing it -- see the closing build summary for a fuller discussion. dual_citizenship_allowed is FALSE per Section 16 (automatic loss of citizenship upon acquiring foreign citizenship)."
+}

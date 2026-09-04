@@ -1,0 +1,82 @@
+{
+  "id": "jo_student_permit",
+  "country": "JO",
+  "name": "Student Residency",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Enrollment in a Jordanian university (or school, for minors) supports an application for student residency through the Public Security Directorate.",
+    "evidence_hint": "Study/enrollment confirmation letter from the institution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "university",
+      "name": "University students",
+      "requirements": [
+        {
+          "id": "josp_enrolled_university",
+          "attribute": "enrolled_at_jordanian_university",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmation of enrollment at a Jordanian university.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        }
+      ]
+    },
+    {
+      "id": "school",
+      "name": "School students",
+      "requirements": [
+        {
+          "id": "josp_enrolled_school",
+          "attribute": "enrolled_at_jordanian_school",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmation of enrollment at a Jordanian school.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment/study confirmation letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable for duration of study",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jo_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "psd_services",
+      "tier": 1,
+      "url": "https://psd.gov.jo/media/lncmdl3i/servcies.pdf",
+      "title": "Jordan Public Security Directorate (PSD), Borders and Residence Department -- Information Services: student residency is free of charge for both university and school students on submission of a study/enrollment confirmation",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- thin. PSD's own service listing confirms the student residency category exists and is fee-free, but no further procedural detail (processing time beyond the generic 15-minute service-counter figure, work-rights-while-studying policy, post-graduation transition specifics) was found in this pass. Whether student residency counts toward the 10-year cumulative residence threshold for jo_permanent_residence was not confirmed and is not assumed."
+}

@@ -1,0 +1,73 @@
+{
+  "id": "lv_visitor_visa",
+  "country": "LV",
+  "name": "Schengen Short-Stay Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lvvv_duration_cap",
+          "attribute": "days_in_schengen_per_180",
+          "operator": "<=",
+          "value": 90,
+          "hard": true,
+          "blocker_text": "As an EU/Schengen member, Latvia follows the standard Schengen short-stay rule: up to 90 days within any 180-day period, either visa-free (for exempt nationalities) or on a Schengen (C) visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_schengen_general"
+        },
+        {
+          "id": "lvvv_purpose",
+          "attribute": "trip_purpose",
+          "operator": "in",
+          "value": ["tourism", "business_visit", "family_visit"],
+          "hard": true,
+          "blocker_text": "No lucrative work is permitted under this status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_schengen_general"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Schengen (C) visa for non-exempt nationalities", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within any 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ec_schengen_general",
+      "tier": 2,
+      "url": "https://www.pmlp.gov.lv/en/residence-permits",
+      "title": "Office of Citizenship and Migration Affairs (PMLP) -- confirms a residence permit is required only for stays exceeding 90 days within a 6-month period, consistent with the general EU/Schengen short-stay rule",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia, EU/Schengen member). This route follows the standard Schengen short-stay framework applied consistently across EU/Schengen countries in this dataset (see Lithuania's equivalent route). No Latvia-specific visa-exemption list or e-visa system was independently re-verified in this pass -- held draft accordingly, consistent with the thin sourcing given to this route type for other EU countries built earlier in the session."
+}

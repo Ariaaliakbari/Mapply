@@ -1,0 +1,102 @@
+{
+  "id": "mn_permanent_residence",
+  "country": "MN",
+  "name": "Immigrant Residence Permit (G Category)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 36,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mnpr_prior_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 consecutive years of legal residence in Mongolia immediately prior to applying.",
+          "fix_path": "Accumulate 3 years of continuous legal residence under a qualifying temporary permit.",
+          "fix_time_months": 36,
+          "source_id": "immigration_gov_mn_g"
+        },
+        {
+          "id": "mnpr_income",
+          "attribute": "monthly_income_ratio_to_minimum_wage",
+          "operator": ">=",
+          "value": 5,
+          "hard": true,
+          "blocker_text": "Monthly income at least 5 times the Mongolian minimum wage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_g"
+        },
+        {
+          "id": "mnpr_qualification",
+          "attribute": "has_degree_or_needed_specialization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Undergraduate or graduate degree, or a specialization identified as needed by Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_g"
+        },
+        {
+          "id": "mnpr_clean_record",
+          "attribute": "no_criminal_record_or_deportation_history",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "No criminal background; never subject to deportation or an entry ban to Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_g"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 3 years' continuous legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of income (5x minimum wage)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Degree certificate or proof of needed specialization", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Biometric registration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not explicitly stated as a fixed term in the source; status is cancellable on absence exceeding 180 days in a year, otherwise functions as Mongolia's ongoing immigrant/settlement status",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "absence exceeding 180 days in a year may result in cancellation of status",
+    "switchable_to": ["mn_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_mn_g",
+      "tier": 1,
+      "url": "https://immigration.gov.mn/en/residence-permit-copy-2/permit-g/g/",
+      "title": "Immigration Agency of Mongolia -- G ('immigrant') residence permit: 3 years' prior continuous legal residence, income 5x minimum wage, degree or needed specialization, no criminal record or deportation history, children under 18 get matching permit duration, 135,000 MNT fee, 60-day processing, cancellable after 180+ days' annual absence",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: PUBLISHED -- fully tier-1 sourced. NAMING NOTE: this route is officially the 'G' or 'immigrant' residence permit category, not literally titled 'permanent residence' by the Immigration Agency -- it is modeled under this dataset's standard 'permanent_residence' filename because it functions as Mongolia's closest equivalent: an ongoing, renewable settlement status reached after prior temporary residence, requiring no further upgrade before naturalisation eligibility. The source did not state a fixed card-validity term (unlike most other countries' PR permits in this dataset, which typically specify e.g. '10 years') -- disclosed as a gap rather than assumed. citizenship_after_months (60) reflects the Law on Citizenship's Article 9 requirement of 5 years' 'permanent residence' specifically (as opposed to any legal residence) before naturalisation eligibility -- see mn_citizenship_naturalisation.json. Total realistic timeline from first entry to citizenship eligibility is therefore approximately 3 years (to reach G status) + 5 years (on G status) = 8 years, a structure worth flagging since it is not a single continuous 8-year count against one requirement, unlike Romania's Article 8(1)(a)."
+}

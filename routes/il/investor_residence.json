@@ -1,0 +1,87 @@
+{
+  "id": "il_investor_residence",
+  "country": "IL",
+  "name": "B/5 Treaty Investor Visa",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A US citizen purchases or invests in at least 50% ownership of an active Israeli business that employs Israeli citizens (not solely foreign workers) and demonstrates sufficient economic contribution, applying for a B/5 visa via the Ministry of Interior. This route is available regardless of Jewish ancestry or Law of Return eligibility.",
+    "evidence_hint": "Proof of at least 50% business ownership; evidence the business employs Israelis and is profitable."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilir_us_citizenship",
+          "attribute": "is_us_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Available to US citizens only, under the US-Israel treaty basis for this visa category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawoffice_b5"
+        },
+        {
+          "id": "ilir_ownership_stake",
+          "attribute": "business_ownership_percent",
+          "operator": ">=",
+          "value": 50,
+          "hard": true,
+          "blocker_text": "At least 50% ownership of an active Israeli business.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawoffice_b5"
+        },
+        {
+          "id": "ilir_employs_israelis",
+          "attribute": "business_employs_israeli_citizens",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The business must employ Israeli citizens; it cannot employ only foreign workers.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawoffice_b5"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of business ownership (50%+)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Business profitability and Israeli-employment evidence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "initial 2 years, renewable annually thereafter, extendable beyond 63 months (5 years) while the business remains active",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lawoffice_b5",
+      "tier": 3,
+      "url": "https://lawoffice.org.il/en/b-5-visa/",
+      "title": "Decker, Pex, Levi Law Firm (Israeli immigration law firm) -- B/5 investor visa: US citizens only, 50%+ ownership of an active Israeli business employing Israeli citizens; initial 2-year validity, annual renewal, extendable beyond 63 months; spouses receive B/5-2 and children under 21 receive B/5-3 dependent visas with work/study rights but no access to public social services",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: DRAFT -- entirely tier-3 sourced (a specialized immigration law firm) after Israel's own gov.il/embassy pages on this specific visa were not reached in this pass. STRUCTURAL FINDING worth flagging prominently: this route is restricted to US CITIZENS ONLY, arising from a bilateral US-Israel treaty basis rather than a general investor-residence category open to any nationality -- unlike Jordan's, Vietnam's, or Latvia's investor routes, which are nationality-neutral. No general, nationality-neutral investor residence route was found for Israel in this pass; a non-US investor appears to need Law of Return eligibility (see il_citizenship_by_return.json) or another route entirely. leads_to_pr/leads_to_citizenship are both false since the source describes this as a renewable business-linked status, not a settlement pathway, and family members are explicitly barred from public social-service access even while resident -- disclosed as a real, sourced restriction rather than smoothed over."
+}

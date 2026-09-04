@@ -1,0 +1,65 @@
+{
+  "id": "td_family_reunification",
+  "country": "TD",
+  "name": "Family Members' Visa de Séjour",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A family member of a resident or citizen of Chad applies for the same visa de séjour instrument as other applicants; no publicly disclosed family-specific visa category, sponsorship threshold, or dependent-residence process distinct from the general visa was found in this pass.",
+    "evidence_hint": "Marriage or birth certificate proving the family tie; parental authorization for minors."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdfr_family_tie",
+          "attribute": "has_documented_family_tie_to_resident_or_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Documented family relationship (spouse, minor child) to a resident or citizen of Chad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Parental authorization (minors)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 month (single entry) or 3 months (multiple entries), per the underlying visa de séjour",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "embassy_chad_paris_visa",
+      "tier": 1,
+      "url": "https://ambatchadparis.fr/wp-content/uploads/2023/09/visa2019.pdf",
+      "title": "Embassy of Chad in Paris (official Chadian diplomatic mission) -- visa information sheet: marriage/birth certificates and parental authorization listed among possible supporting documents, with no distinct family-reunification visa category described",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- WEAKEST FILE alongside td_investor_residence.json. No dedicated family-reunification or dependent-residence visa category, income threshold, or sponsorship process distinct from the general visa de séjour was found for Chad in this pass -- the embassy's document checklist mentions marriage/birth certificates and parental authorization as SUPPORTING documents for other visa purposes, not as the basis of a standalone family route. This file is built to record that family ties are at minimum evidentially relevant to Chad's entry process, disclosed honestly as thin rather than padded with an invented sponsorship-income figure or distinct permit category. td_citizenship_by_marriage.json (separately sourced to the Nationality Code decree) is the more substantively documented family-linked route in this build."
+}

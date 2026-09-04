@@ -1,0 +1,107 @@
+{
+  "id": "rw_citizenship_by_descent",
+  "country": "RW",
+  "name": "Rwandan Nationality by Origin (Descent), and Foundling/Statelessness Grounds",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born to at least one parent who is Rwandan 'by origin' (i.e. Rwandan by ancestry, not by acquisition) has Rwandan nationality by origin, per the Organic Law N 002/2021.OL governing Rwandan Nationality. Establishing this where formal documentation is unavailable requires testimony from Rwandan blood relatives.",
+    "evidence_hint": "Birth record from the country of birth; documentation confirming the parent's Rwandan-by-origin status; where direct documentary proof is unavailable, testimony from three Rwandan blood relatives as witnesses."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route -- documented parentage",
+      "requirements": [
+        {
+          "id": "rwcd_parent_by_origin",
+          "attribute": "has_parent_rwandan_by_origin",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent is Rwandan by origin (by ancestry, not by acquired/naturalised citizenship).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "witness_based",
+      "name": "Witness-based route -- undocumented parentage",
+      "requirements": [
+        {
+          "id": "rwcd_three_witnesses",
+          "attribute": "has_three_rwandan_blood_relative_witnesses",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Where formal documentation of Rwandan-by-origin parentage is unavailable, testimony corroborated by three Rwandan blood relatives, or another relative with Rwandan nationality by origin, may substitute.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "foundling_stateless",
+      "name": "Foundling / statelessness grounds",
+      "requirements": [
+        {
+          "id": "rwcd_foundling_or_stateless",
+          "attribute": "is_foundling_in_rwanda_or_would_otherwise_be_stateless",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Found as a child in Rwanda with parents unknown, or would otherwise be stateless -- both independently named grounds under the 2021 Organic Law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "crai_organic_law_2021"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth record from country of birth", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Documentation of parent's Rwandan-by-origin status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Testimony of 3 Rwandan blood relatives (where documentation is unavailable)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_citizenship",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/citizenshipss",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- citizenship by origin: at least one Rwandan-by-origin parent, birth record from country of birth, documentation of parental ancestry, or three Rwandan blood-relative witnesses where documentation is unavailable",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "crai_organic_law_2021",
+      "tier": 3,
+      "url": "https://citizenshiprightsafrica.org/organic-law-n-002-2021-ol-of-16-07-2021-governing-rwandan-nationality/",
+      "title": "Citizenship Rights in Africa Initiative (NGO tracking African nationality law) -- Organic Law N 002/2021.OL of 16/07/2021: foundling status and statelessness listed as independently named acquisition grounds alongside 'by origin' descent",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: DRAFT -- the descent-specific requirements (standard and witness-based groups) are tier-1 DGIE sourced, but the foundling/statelessness group cites the tier-3 NGO-hosted law summary only (their existence as separate grounds is confirmed there but not independently corroborated on a tier-1 page in this pass); since this dataset requires ALL hard requirements to be tier-1 for published status, the whole file stays draft rather than being split awkwardly across statuses. THE THREE-BLOOD-RELATIVE-WITNESS REQUIREMENT is a genuinely distinctive evidentiary mechanism not seen elsewhere in this dataset -- it reflects the practical reality that formal civil documentation is not universally available for establishing ancestry, and Rwanda's law builds an alternative evidentiary path around community/family testimony rather than requiring paper records that may not exist. This is disclosed as a notable structural feature, not just a procedural footnote."
+}

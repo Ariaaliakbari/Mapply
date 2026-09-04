@@ -1,0 +1,79 @@
+{
+  "id": "ug_citizenship_by_descent",
+  "country": "UG",
+  "name": "Citizenship by Birth/Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "indigenous_community",
+      "name": "Indigenous community ancestry",
+      "requirements": [
+        {
+          "id": "ugcd_indigenous_ancestor",
+          "attribute": "parent_or_grandparent_member_of_indigenous_community_pre1926",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Uganda, with a parent or grandparent who is or was a member of one of the indigenous communities existing in Uganda before 1 February 1926.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_washington_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "citizen_parent",
+      "name": "Parent or grandparent a citizen by birth",
+      "requirements": [
+        {
+          "id": "ugcd_citizen_by_birth_ancestor",
+          "attribute": "parent_or_grandparent_ugandan_citizen_by_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born anywhere (in or outside Uganda) to a parent or grandparent who held Ugandan citizenship by birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_washington_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent/grandparent's proof of indigenous-community membership or citizenship by birth", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mofa_washington_citizenship",
+      "tier": 1,
+      "url": "https://washington.mofa.go.ug/consular/citizenship-dual-citizenship",
+      "title": "Ministry of Foreign Affairs, Uganda (Embassy of Uganda, Washington DC) -- Citizenship & Dual Citizenship: citizenship by birth/descent applies to persons born in Uganda with 'one of whose parents or grandparents is or was a member of any of the indigenous communities' existing before 1 February 1926, or born anywhere to a parent/grandparent who held Ugandan citizenship by birth; also covers foundlings under age 5 with unknown parents (presumed citizens by birth) and children under 18 adopted by Ugandan citizens (registrable as citizens)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- tier-1 official diplomatic mission sourced. Two structurally distinct descent routes modeled as separate requirement_groups: an ethnicity/indigenous-community-based track (requiring the child to be born IN Uganda, tied to a pre-1926 colonial-era cutoff -- worth noting this shares the same 'listed indigenous community' structural mechanism seen in other East/Central African citizenship laws in this dataset, though without the severe exclusionary consequences documented for Myanmar's equivalent 1823 cutoff) and an ordinary citizen-parent/grandparent descent track (available regardless of birthplace, the more commonly-used mechanism for diaspora children). Foundling and adoption provisions are disclosed in the source citation but not modeled as separate requirement_groups given their narrower scope (foundlings under 5 with unknown parents; adopted minors under 18). dual_citizenship_allowed TRUE, consistent with Uganda's general dual-citizenship permission (see ug_dual_citizenship.json)."
+}

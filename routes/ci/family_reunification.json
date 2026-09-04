@@ -1,0 +1,75 @@
+{
+  "id": "ci_family_reunification",
+  "country": "CI",
+  "name": "Resident Card, Dependent Spouse Category (Carte de Resident)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cifr_dependent_spouse",
+          "attribute": "is_dependent_spouse_of_resident_or_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Dependent spouse status, evidenced by supporting/means-of-support documentation from the sponsoring spouse.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        },
+        {
+          "id": "cifr_minor_authorization",
+          "attribute": "has_parental_authorization_if_minor",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Minor children (both under 16 and 16+) require parental authorization to obtain their own resident card.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or consular card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Means-of-support documentation from sponsoring spouse", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Parental authorization (minors)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "requires periodic renewal; exact validity period not confirmed in sources fetched",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ci_permanent_residence", "ci_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "oneci_carte_resident",
+      "tier": 1,
+      "url": "https://www.oneci.ci/nos-produits/carte-resident/documents-a-fournir",
+      "title": "ONECI (Office National de l'Etat Civil et de l'Identification, Cote d'Ivoire) -- carte de resident, dependent-spouse category and minor-dependent provisions (parental authorization required for both under-16 and 16+ minors)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: PUBLISHED -- tier-1 ONECI sourced, though thin: the source lists 'dependent spouses' as a resident-card category requiring support documentation but does not specify whether the sponsor must be an Ivorian citizen or any resident-card holder (foreign or citizen) -- modeled broadly here (is_dependent_spouse_of_resident_or_citizen) pending clarification, disclosed as a gap. work_rights/family_can_work set to restricted/false as conservative defaults, not sourced figures. citizenship_after_months (60) reflects the reduced 2-year-if-married naturalisation window ADDED to time already spent building the marriage's residence record -- see ci_citizenship_by_marriage.json for the actual 2024-reformed marriage-citizenship mechanism, which now runs on its own declaration track separate from ordinary naturalisation; this file's switchable_to point there rather than to the general naturalisation route."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "sk_work_permit",
+  "country": "SK",
+  "name": "Single Permit (Temporary Residence + Work Permit Combined)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skwp_employment_contract",
+          "attribute": "has_slovak_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A confirmed employment offer/contract with a Slovak employer.",
+          "fix_path": "Secure a job offer from a Slovak-registered employer.",
+          "fix_time_months": null,
+          "source_id": "employment_gov_sk_tcn"
+        },
+        {
+          "id": "skwp_labour_office_confirmation",
+          "attribute": "has_labour_office_vacancy_report",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer reports the vacancy to the Labour Office as part of the single-permit process.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "employment_gov_sk_tcn"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract/offer", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Labour Office vacancy confirmation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically tied to the employment contract's duration",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sk_permanent_residence", "sk_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "employment_gov_sk_tcn",
+      "tier": 1,
+      "url": "https://www.employment.gov.sk/en/information-foreigners/employment/employment-third-country-national.html",
+      "title": "Ministry of Labour, Social Affairs and Family of the Slovak Republic -- employment of third-country nationals: single permit combining work authorization and temporary residence, Labour Office vacancy reporting requirement",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- the Ministry of Labour's own page (tier-1) was found via search but returned a robots-disallowed error on direct fetch in this pass, so its content here is inferred from the page title/summary rather than independently confirmed at depth; treated conservatively as draft pending a successful direct fetch. This is Slovakia's GENERAL single-permit route for third-country national workers, distinct from sk_eu_blue_card.json (the specific highly-qualified-worker instrument, which is more thoroughly sourced in this build). pr_after_months/citizenship_after_months are inferred from Slovakia's general long-term-residence (5yr/60mo) and naturalisation (8yr/96mo) thresholds (see sk_permanent_residence.json, sk_citizenship_naturalisation.json), not confirmed specifically for single-permit holders."
+}

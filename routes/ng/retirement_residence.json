@@ -1,0 +1,110 @@
+{
+  "id": "ng_retirement_residence",
+  "country": "NG",
+  "name": "Retirement Visa (Retired in Nigeria / Retiree from Abroad)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "retired_in_nigeria",
+      "name": "Retired in Nigeria (N5A)",
+      "requirements": [
+        {
+          "id": "ngrr_age_65",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 65,
+          "hard": true,
+          "blocker_text": "65 years or older.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n5a"
+        },
+        {
+          "id": "ngrr_20yr_service",
+          "attribute": "years_of_service_before_retirement",
+          "operator": ">=",
+          "value": 20,
+          "hard": true,
+          "blocker_text": "Retired in Nigeria after at least 20 years of service, having previously held temporary residency there.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n5a"
+        },
+        {
+          "id": "ngrr_retirement_income",
+          "attribute": "has_retirement_income_proof",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of retirement income (pension/annuity/savings).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n5a"
+        }
+      ]
+    },
+    {
+      "id": "retiree_from_abroad",
+      "name": "Retiree from Abroad (N5B)",
+      "requirements": [
+        {
+          "id": "ngrr_foreign_retirement_income",
+          "attribute": "has_sufficient_retirement_income_from_abroad",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient financial resources (pension, annuity, savings) to relocate to Nigeria as a retiree without engaging in paid work.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of retirement income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical insurance documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Local accommodation proof", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "N5A (retired in Nigeria): indefinite, no expiry, functions as full permanent residence; N5B (retiree from abroad): 2-year renewable permit",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nis_n5a",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/retirement-visa-retired-in-nigeria-n5a/",
+      "title": "Nigeria Immigration Service (NIS) -- Retirement Visa N5A (Retired in Nigeria): foreign retirees 65+, retired in Nigeria after 20+ years of service, requires prior temporary residency, retirement income proof, medical insurance; indefinite residence, functions as permanent residence permit",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "nis_visa_categories",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/nigerian-visa/",
+      "title": "Nigeria Immigration Service (NIS) -- Nigerian Visa categories, Retirement Visa (Retiree from Abroad): allows retirees to live in Nigeria without engaging in paid work, requires sufficient financial resources and local accommodation, renewal requires updated income stability proof",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- both sources tier-1. STRUCTURAL NOTE: N5A (retired-in-Nigeria) has a genuinely unusual precondition -- it requires the applicant to have ALREADY held temporary residency and worked/served in Nigeria for 20+ years before retiring there, making it functionally a capstone status for long-term prior residents rather than an entry route for someone retiring to Nigeria fresh. N5B (retiree-from-abroad) is the actual entry route for a new retiree relocating to Nigeria, but is only 2-year renewable, not indefinite, unlike N5A. Both are modeled as requirement groups within one file since they share the 'settled/retirement' purpose despite this asymmetry. No specific minimum income/pension threshold figure was found for either group at tier-1."
+}

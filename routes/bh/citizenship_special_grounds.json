@@ -1,0 +1,78 @@
+{
+  "id": "bh_citizenship_special_grounds",
+  "country": "BH",
+  "name": "Bahraini Citizenship by Royal Order (discretionary grant)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "royal_order",
+      "name": "Royal Order grant",
+      "requirements": [
+        {
+          "id": "bhcsg_royal_order",
+          "attribute": "granted_by_royal_order",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Bahraini citizenship may be granted to anyone by order of His Majesty the King -- an entirely discretionary act, not a rights-based administrative process, with no published objective criteria and no apparent appeal mechanism in the statute.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "arab_great_service",
+      "name": "Arab persons who rendered great service to Bahrain",
+      "requirements": [
+        {
+          "id": "bhcsg_arab_service",
+          "attribute": "is_arab_who_rendered_great_service",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A separate discretionary grant available to any Arab person who has rendered Bahrain great services.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Royal Order / official determination", "difficulty": "often_impossible", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_bahrain_citizenship_act",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Bahraini%20Nationality%20Law_ENGLISH.pdf",
+      "title": "GLOBALCIT (EUI academic citizenship-law observatory) -- English translation of the Bahraini Citizenship Act 1963, as amended: citizenship may be granted by Royal Order to anyone, and separately to any Arab person who has rendered Bahrain great services; also sets out revocation grounds (deception, honour/honesty-related conviction within 10 years, voluntary second-nationality acquisition, unauthorized foreign military service, aiding an enemy state) and a restoration provision for anyone who lost citizenship",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: DRAFT -- same tier-2 GLOBALCIT sourcing caveat as the other Bahraini citizenship files. This is a fully discretionary Royal grant with no published objective criteria and, per the statute text reviewed, no apparent appeal mechanism -- selection_method 'assessed' reflects genuine, unreviewable discretion, not a hidden threshold this research failed to find. Bahrain's citizenship system as a whole is notably MORE discretionary and less rights-based than most other countries built in this dataset: even the marriage route (bh_citizenship_by_marriage.json) requires an affirmative declaration subject to Ministerial refusal, and ordinary naturalisation (bh_citizenship_naturalisation.json) sits alongside this Royal-Order power rather than functioning as the primary path most applicants would realistically use. The statute's REVOCATION grounds (cited here for context, not modeled as their own route) include voluntary acquisition of a second nationality -- the legal basis for dual_citizenship_allowed being FALSE across every Bahraini citizenship file in this build. A RESTORATION provision also exists in the statute for anyone who lost citizenship through these revocation mechanisms -- see bh_citizenship_restoration.json for that separate route, including the well-documented but only tier-3/4-sourced 2019 event where King Hamad restored citizenship to 551 individuals stripped of nationality in the post-2011 unrest era."
+}

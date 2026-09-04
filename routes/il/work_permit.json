@@ -1,0 +1,77 @@
+{
+  "id": "il_work_permit",
+  "country": "IL",
+  "name": "B/1 Work Visa",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "An Israeli employer sponsors a foreign worker (commonly a 'foreign expert' filling a role requiring skills unavailable locally) and obtains a work permit, on the basis of which the worker applies for a B/1 visa.",
+    "evidence_hint": "Employer sponsorship; work permit obtained by the employer from Israeli authorities."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilwp_employer_sponsorship",
+          "attribute": "has_employer_sponsorship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer sponsorship, with the employer obtaining a work permit on the worker's behalf.",
+          "fix_path": "Secure employer sponsorship in Israel.",
+          "fix_time_months": null,
+          "source_id": "rivermate_israel_work"
+        },
+        {
+          "id": "ilwp_specialized_role",
+          "attribute": "fills_specialized_or_expert_role",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Role typically requires specialized expertise not readily available in the local labour market ('foreign expert' basis).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rivermate_israel_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer-obtained work permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of qualifications", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed precisely in this pass; commonly renewed annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["il_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "rivermate_israel_work",
+      "tier": 3,
+      "url": "https://rivermate.com/guides/israel/work-permits-and-visas",
+      "title": "Rivermate (Employer-of-Record relocation guide) -- Israel B/1 work visa: employer-obtained work permit precedes the visa application; commonly used for 'foreign expert' roles requiring specialized skills",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: DRAFT -- entirely tier-3 sourced. Israel's own PIBA/embassy pages describing the B/1 process in detail (fees, exact duration, employer quota rules, electronic issuance since 2023 per search results) were not successfully fetched in this pass -- several embassies.gov.il URLs returned robots.txt blocks. citizenship_after_months (36) reflects the naturalisation statute's 3-out-of-5-years physical presence threshold (see il_citizenship_naturalisation.json) applied generically, not a work-visa-specific figure confirmed by a source."
+}

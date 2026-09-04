@@ -1,0 +1,83 @@
+{
+  "id": "vn_citizenship_by_descent",
+  "country": "VN",
+  "name": "Citizenship by Descent (Birth to a Vietnamese Parent)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child acquires Vietnamese citizenship automatically at birth if both parents are Vietnamese citizens, or if one parent is Vietnamese and the other is stateless or of unknown identity, or (with the parents' written agreement) if one parent is Vietnamese and the other is a foreign citizen, per Articles 15-17 of the Law on Vietnamese Nationality.",
+    "evidence_hint": "Birth certificate; proof of parent(s)' Vietnamese citizenship; written parental agreement (for the mixed-nationality case)."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents_vietnamese",
+      "name": "Both parents are Vietnamese citizens",
+      "requirements": [
+        {
+          "id": "vncd_both_parents",
+          "attribute": "both_parents_vietnamese_citizens_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Both parents are Vietnamese citizens at the time of the child's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinhphu_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_vietnamese",
+      "name": "One parent Vietnamese, other parent stateless/unknown/foreign (with agreement)",
+      "requirements": [
+        {
+          "id": "vncd_one_parent",
+          "attribute": "one_parent_vietnamese_other_stateless_unknown_or_foreign_with_agreement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "One parent is a Vietnamese citizen and the other is stateless, of unknown identity, or (with both parents' written agreement) a foreign citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinhphu_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent(s)' Vietnamese citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written parental agreement (mixed-nationality case only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "chinhphu_nationality_law",
+      "tier": 1,
+      "url": "https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=81141",
+      "title": "Government Portal (chinhphu.vn) -- Law No. 24/2008/QH12 on Vietnamese Nationality, Articles 15-17: citizenship by birth to Vietnamese parent(s)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). Unlike Peru's descent route (recognized to the third generation) or Lithuania's simplified-descent route, Vietnam's descent framework is narrower and applies only at BIRTH to a Vietnamese parent -- there is no broader 'Vietnamese-origin diaspora' citizenship-by-option route for adult descendants of Vietnamese citizens found in this pass (contrast with vn_citizenship_relaxed_naturalisation.json, which covers 'Vietnamese descent' but still requires an affirmative naturalisation APPLICATION with State discretion, not automatic recognition). dual_citizenship_allowed is true here since a child born via the mixed-nationality case may hold both nationalities from birth, distinct from vn_citizenship_naturalisation.json's renunciation requirement for adult naturalisation."
+}

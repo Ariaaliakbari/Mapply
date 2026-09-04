@@ -1,0 +1,72 @@
+{
+  "id": "il_citizenship_by_descent",
+  "country": "IL",
+  "name": "Citizenship by Descent (Birth to an Israeli National)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born to an Israeli national -- whether in or outside Israel -- acquires Israeli nationality automatically, per Section 4 of the Nationality Law 5712-1952, provided the parent acquired their own Israeli nationality by return, residence, naturalisation, or the same birth provision.",
+    "evidence_hint": "Birth certificate; proof of the parent's Israeli nationality and how it was acquired."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilcd_parent_israeli",
+          "attribute": "has_israeli_national_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent was an Israeli national at the time of birth, regardless of birthplace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "knesset_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's Israeli nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "knesset_nationality_law",
+      "tier": 1,
+      "url": "https://fs.knesset.gov.il/2/law/2_lsr_211774.pdf",
+      "title": "fs.knesset.gov.il (the Knesset, Israel's Parliament -- official primary legislation archive) -- Nationality Law 5712-1952, Section 4 (Hebrew): 'whoever was born when his father or mother were Israeli citizens shall be an Israeli citizen from birth'; if born after the father's death, it suffices that the father was an Israeli citizen at death",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "refworld_nationality_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1953/en/14615",
+      "title": "Refworld (UNHCR) -- Israel Nationality Law 5712-1952, Section 4, corroborating the Knesset text in English translation",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: PUBLISHED -- directly sourced to the Knesset's own primary-legislation archive (tier-1), fetched and machine-translated from the original Hebrew in this pass and corroborated by Refworld's English translation; if any nuance was lost in translation, the Hebrew original at the Knesset URL is authoritative. This is DISTINCT from il_citizenship_by_return.json: the Return route grants citizenship based on JEWISH ancestry/heritage to a person who has never held Israeli nationality; this file (Section 4 descent) grants citizenship to the CHILD of a parent who is already an Israeli NATIONAL (regardless of how that parent became a national -- by return, residence, or naturalisation), independent of the child's own Jewish status. The two routes can overlap in practice but rest on different legal bases and are modeled separately per this dataset's convention of not conflating adjacent-but-distinct legal mechanisms."
+}

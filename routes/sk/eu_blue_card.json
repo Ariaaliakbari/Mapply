@@ -1,0 +1,97 @@
+{
+  "id": "sk_eu_blue_card",
+  "country": "SK",
+  "name": "EU Blue Card",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skbc_qualification",
+          "attribute": "has_university_degree_or_advanced_ict_skills",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Higher professional qualifications in the form of a university degree, or advanced ICT skills.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_blue_card"
+        },
+        {
+          "id": "skbc_contract",
+          "attribute": "has_employment_contract_6_months_or_longer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employment contract of at least 6 months' duration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_blue_card"
+        },
+        {
+          "id": "skbc_salary",
+          "attribute": "salary_ratio_to_average_wage",
+          "operator": ">=",
+          "value": 1.2,
+          "hard": true,
+          "blocker_text": "Salary at least 1.2 times the average wage in the Slovak economy (reduced to 1.0x for recent graduates, within 3 years of their degree).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_blue_card"
+        },
+        {
+          "id": "skbc_labour_office_confirmation",
+          "attribute": "has_labour_office_highly_skilled_confirmation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmation from the Labour Office that the position qualifies as highly skilled employment (waived if the applicant already holds employment-based residence status).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "iom_blue_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University degree or ICT qualification proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment contract (6+ months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Labour Office confirmation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, or the confirmation validity period plus 90 days, whichever is shorter",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["sk_permanent_residence", "sk_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "iom_blue_card",
+      "tier": 2,
+      "url": "https://mic.iom.sk/en/residence/temporary-residence/236-modra-karta-eu-2.html",
+      "title": "IOM Migration Information Centre Slovakia -- EU Blue Card: university degree or advanced ICT skills, 6-month minimum contract, salary 1.2x average wage (1.0x for recent graduates), Labour Office highly-skilled confirmation, 5-year card duration, 180-day application window after confirmation, legal work permitted during processing, Foreign Police decision within 30 days",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- IOM (International Organization for Migration) operates Slovakia's official Migration Information Centre under agreement with Slovak authorities and provides detailed, specific figures (1.2x salary multiplier, 5-year duration, 30-day decision window) -- treated as tier-2 consistent with this dataset's convention for UN-agency-operated national information portals, not tier-1 since it is not itself the issuing Slovak authority. work_rights is 'restricted' reflecting the employer/position-tied nature of the confirmation requirement, consistent with this dataset's convention for sponsored work routes generally. pr_after_months/citizenship_after_months inferred the same way as sk_work_permit.json."
+}

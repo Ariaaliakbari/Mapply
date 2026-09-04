@@ -1,0 +1,76 @@
+{
+  "id": "lt_international_protection",
+  "country": "LT",
+  "name": "International Protection (Asylum)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person outside their country of origin with a well-founded fear of persecution, or a real risk of serious harm, may apply for international protection with Lithuania's Migration Department.",
+    "evidence_hint": "Identity documents if available; evidence supporting the claim of persecution or serious harm."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Asylum application to the Migration Department",
+      "requirements": [
+        {
+          "id": "ltip_persecution_or_serious_harm",
+          "attribute": "meets_refugee_or_subsidiary_protection_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must show a well-founded fear of persecution (refugee status) or a real risk of serious harm (subsidiary protection) in their country of origin, assessed by Lithuania's Migration Department.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_help_lithuania"
+        },
+        {
+          "id": "ltip_application_filed",
+          "attribute": "has_filed_asylum_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application must be filed with the Migration Department (or at the border/State Border Guard Service upon arrival).",
+          "fix_path": "File an asylum application with the Migration Department.",
+          "fix_time_months": null,
+          "source_id": "unhcr_help_lithuania"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents (if available)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the claim of persecution or serious harm", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lt_permanent_residence", "lt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_help_lithuania",
+      "tier": 2,
+      "url": "https://help.unhcr.org/lithuania/",
+      "title": "UNHCR Help Lithuania -- confirms Lithuania's Migration Department (not UNHCR) runs refugee status determination directly, under national asylum law transposing the EU Qualification and Asylum Procedures Directives",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT, THIN SOURCING -- the specific processing timelines (standard vs. accelerated), permit duration/validity period, and appeal-instance structure were not confirmed in this pass; migracija.lt's dedicated asylum pages returned only a JavaScript shell on direct fetch. duration_type/duration_length/citizenship_after_months are left explicitly unconfirmed rather than guessed, consistent with this session's disclose-don't-fabricate convention. work_rights modeled 'restricted' per the general EU reception-conditions pattern (a waiting period before work authorization), not independently confirmed for Lithuania specifically."
+}

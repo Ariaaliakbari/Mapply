@@ -1,0 +1,86 @@
+{
+  "id": "et_permanent_residence",
+  "country": "ET",
+  "name": "Permanent Residence ID",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "etpr_3yr_domicile",
+          "attribute": "months_continuous_legal_domicile",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 preceding years of domicile in Ethiopia with lawful income and good character.",
+          "fix_path": "Accumulate 3 years of continuous legal domicile.",
+          "fix_time_months": 36,
+          "source_id": "law_firm_pr_eligibility"
+        }
+      ]
+    },
+    {
+      "id": "married_to_ethiopian",
+      "name": "Foreign spouse of an Ethiopian national",
+      "requirements": [
+        {
+          "id": "etpr_1yr_marriage",
+          "attribute": "months_married_and_resident",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "1 year of marriage to an Ethiopian national.",
+          "fix_path": "Remain married for 1 year.",
+          "fix_time_months": 12,
+          "source_id": "law_firm_pr_eligibility"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal domicile", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of lawful income", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable -- Ethiopia's 'permanent residence' is a renewable fixed-term permit, not an indefinite status",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ics_gov_et_services",
+      "tier": 1,
+      "url": "https://ics.gov.et/about/",
+      "title": "Immigration and Citizenship Service (ICS), Ethiopia -- service catalogue describes 'Permanent Residence ID' as a five-year renewable permit",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "law_firm_pr_eligibility",
+      "tier": 3,
+      "url": "https://dablolawfirm.com",
+      "title": "Dablo Law Firm -- summary of permanent residence eligibility: 3 years' prior domicile with lawful income and good character, OR 1 year of marriage to an Ethiopian national, OR expedited approval for investors/humanitarian-activity cases; permanent residence does not itself confer work or investment authorization -- a separate permit is still required",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ethiopia). STATUS: DRAFT -- the 5-year renewable DURATION is tier-1 ICS sourced, but the actual ELIGIBILITY criteria (the hard requirements modeled here) rest entirely on a tier-3 law-firm summary not corroborated against a primary regulation -- since hard requirements determine publish status, not the duration field, this file stays draft. STRUCTURAL FINDING, TIER-3 SOURCED BUT WORTH FLAGGING: Ethiopia's 'permanent residence' is explicitly a renewable 5-year permit, not an indefinite status -- a meaningfully different structure from 'permanent residence' as modeled in most other countries in this dataset. The same tier-3 source states PR does NOT by itself confer work or investment authorization -- a separate permit is still required even after obtaining PR -- reflected here as work_rights='restricted' rather than 'full', but flagged as unconfirmed at tier-1/2. A third eligibility track (investors/humanitarian-activity cases via expedited approval) is disclosed but not separately modeled given thin detail."
+}

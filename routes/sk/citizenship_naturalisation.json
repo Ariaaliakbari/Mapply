@@ -1,0 +1,135 @@
+{
+  "id": "sk_citizenship_naturalisation",
+  "country": "SK",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["sk_permanent_residence"],
+    "minimum_months_held": 96,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skcn_residence",
+          "attribute": "months_continuous_permanent_residence",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "8 consecutive years of permanent residence in Slovakia immediately preceding the application.",
+          "fix_path": "Accumulate 8 years of continuous permanent residence.",
+          "fix_time_months": 96,
+          "source_id": "mzv_citizenship"
+        },
+        {
+          "id": "skcn_language",
+          "attribute": "has_slovak_language_oral_and_written",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Demonstrated command of the Slovak language, oral and written, plus general knowledge of Slovakia (waived for applicants under 14).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        },
+        {
+          "id": "skcn_clean_record",
+          "attribute": "has_clean_criminal_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Clean criminal record; a conviction expunged less than 5 years before application is disqualifying.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        },
+        {
+          "id": "skcn_obligations",
+          "attribute": "meets_tax_social_security_health_insurance_obligations",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Fulfilled obligations regarding taxes, social security, and public health insurance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "reduced_born_in_sk",
+      "name": "Reduced -- born in Slovakia (3 years)",
+      "requirements": [
+        {
+          "id": "skcn_born_in_sk",
+          "attribute": "months_continuous_permanent_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years' permanent residence if born in Slovakia.",
+          "fix_path": null,
+          "fix_time_months": 36,
+          "source_id": "mzv_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "reduced_refugee",
+      "name": "Reduced -- refugee status (4 years)",
+      "requirements": [
+        {
+          "id": "skcn_refugee",
+          "attribute": "months_continuous_permanent_residence",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years' permanent residence for a recognized refugee.",
+          "fix_path": null,
+          "fix_time_months": 48,
+          "source_id": "mzv_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 (or 3/4, if qualifying) years' permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Slovak language and general-knowledge exam results", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Tax/social-security/health-insurance compliance documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mzv_citizenship",
+      "tier": 1,
+      "url": "https://www.mzv.sk/en/web/washington/sluzby/konzularne-sluzby/statne-obcianstvo/nadobudnutie-statneho-obcianstva",
+      "title": "Ministry of Foreign and European Affairs of the Slovak Republic (Washington consular page) -- citizenship acquisition: naturalisation requires 8 years' permanent residence (reduced to 3 years if born in Slovakia, 4 years for refugees, 5 years if married to a Slovak citizen -- see sk_citizenship_by_marriage.json), Slovak language proficiency (waived under 14), clean criminal record (5-year expungement rule), tax/social-security/health-insurance compliance",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT despite tier-1 sourcing -- this is a Ministry of Foreign Affairs CONSULAR page (hosted under a specific embassy's URL path, mzv.sk/washington), which may summarize rather than exhaustively state every condition and exception in the underlying Act No. 40/1993 on State Citizenship (as amended); kept draft as a precaution pending cross-check against the full slov-lex.sk statutory text, which was reached for the 2022 descent amendment (see sk_citizenship_by_descent_czechoslovak.json) but not for the general naturalisation Article/paragraph numbers specifically. dual_citizenship_allowed is TRUE -- the source states foreign citizenship acquired through marriage does not automatically terminate Slovak citizenship while the marriage is valid, and Slovakia is broadly understood to permit dual citizenship for naturalised citizens in many circumstances (unlike its historic strict approach for citizens who acquire another citizenship voluntarily outside marriage, which can trigger loss under other provisions not detailed here) -- flagged as an area of real complexity requiring the full statutory text for precision, not a simple yes/no."
+}

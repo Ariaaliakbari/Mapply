@@ -1,0 +1,83 @@
+{
+  "id": "il_family_reunification",
+  "country": "IL",
+  "name": "Spouse/Family Reunification Status",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national married to an Israeli citizen applies for a gradual status-upgrade process, beginning with a temporary visa and progressing toward permanent residence or citizenship. A specific statutory exclusion applies to residents of the West Bank and Gaza (see notes).",
+    "evidence_hint": "Marriage certificate; proof of the Israeli spouse's citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ilfr_marriage",
+          "attribute": "is_spouse_of_israeli_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to an Israeli citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawoffice_family_reunification"
+        },
+        {
+          "id": "ilfr_not_excluded_category",
+          "attribute": "not_subject_to_citizenship_and_entry_law_exclusion",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Not a resident of the West Bank, Gaza, or a national of Iran, Iraq, Syria, or Lebanon -- these categories are excluded from ordinary family-reunification status under the Citizenship and Entry into Israel Law (Temporary Order), first enacted in 2003 and renewed annually since.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_citizenship_entry_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of spouse's Israeli citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this pass; described generally as a multi-year gradual process",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["il_permanent_residence", "il_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "lawoffice_family_reunification",
+      "tier": 3,
+      "url": "https://lawoffice.org.il/en/israeli-citizenship-for-non-jews/",
+      "title": "Decker, Pex, Levi Law Firm (Israeli immigration law firm) -- family reunification for spouses of Israeli citizens: a gradual, multi-year status-upgrade process toward permanent residence and eventual citizenship eligibility",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "wikipedia_citizenship_entry_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Citizenship_and_Entry_into_Israel_Law",
+      "title": "Wikipedia -- Citizenship and Entry into Israel Law (Temporary Order): enacted 2003, renewed annually, bars ordinary family-reunification status for spouses who are residents of the West Bank or Gaza, or nationals of Iran, Iraq, Syria, or Lebanon; corroborated by multiple human-rights organizations (Adalah, Human Rights Watch) and contemporary news coverage (Times of Israel) documenting repeated renewals",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: DRAFT -- entirely tier-3/tier-4 sourced; a direct gov.il or Knesset (Israeli parliament) text of the Citizenship and Entry into Israel Law itself was not fetched in this pass. STRUCTURAL FINDING flagged prominently and stated as neutrally as the sourcing allows: since 2003, a 'Temporary Order' -- renewed annually by the Knesset for over two decades -- has barred the ordinary family-reunification process for Israeli citizens whose spouse is a resident of the West Bank or Gaza (functionally affecting Palestinian spouses in particular), and separately for nationals of Iran, Iraq, Syria, and Lebanon on national-security grounds. This is corroborated by multiple independent sources (Adalah, an Israeli human rights legal center; Human Rights Watch; contemporary Israeli press) describing it as one of the most legally and politically contested provisions in Israeli immigration law, though this file does not take a position on the policy merits -- it records the provision's existence and scope as a documented legal fact bearing directly on who can and cannot use this route. Standard-case timelines (duration, exact permanent-residence threshold) were not confirmed by a tier-1 source in this pass and are flagged as gaps."
+}

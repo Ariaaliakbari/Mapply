@@ -1,0 +1,113 @@
+{
+  "id": "ua_citizenship_naturalisation",
+  "country": "UA",
+  "name": "Citizenship by Naturalisation (Standard Route)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ua_permanent_residence"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uacn_residence",
+          "attribute": "months_continuous_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of uninterrupted legal residence in Ukraine (reduced to 3 years for refugees, stateless persons, and certain categories of military service members).",
+          "fix_path": "Accumulate 5 years of continuous legal residence in Ukraine.",
+          "fix_time_months": 60,
+          "source_id": "dmsu_naturalisation"
+        },
+        {
+          "id": "uacn_exam",
+          "attribute": "passed_constitution_history_language_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Demonstrated knowledge of the fundamentals of Ukraine's Constitution and history, and state-language proficiency, per standards set by the National Commission on State Language Standards.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_naturalisation"
+        },
+        {
+          "id": "uacn_means",
+          "attribute": "has_lawful_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lawful means of subsistence (not required for refugees, military personnel, or those with special-merit status).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_naturalisation"
+        },
+        {
+          "id": "uacn_declaration",
+          "attribute": "declares_allegiance_to_constitution_and_laws",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Written declaration recognising and committing to observe Ukraine's Constitution and laws.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_naturalisation"
+        },
+        {
+          "id": "uacn_foreign_citizenship",
+          "attribute": "has_renounced_or_declared_foreign_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A renunciation declaration or a commitment to terminate foreign citizenship is generally required, though simplified declaration-based procedures now exist for specific categories under the new multiple-citizenship framework (see ua_citizenship_dual_declaration.json).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous legal residence (3 years for refugees/stateless/certain military)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Constitution, history, and state-language exam pass", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of lawful means of subsistence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written declaration of allegiance to the Constitution and laws", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Renunciation declaration or foreign-citizenship termination commitment", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dmsu_naturalisation",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/poslugi/nabuttya-gromadyanstva-ukrajni/prijnyattya-do-gromadyanstva-ukrajni.html",
+      "title": "State Migration Service of Ukraine -- Admission to Ukrainian Citizenship: 5-year continuous residence (3 years for refugees, stateless persons, certain military categories), Constitution/history/language exam, lawful means of subsistence, allegiance declaration, foreign-citizenship renunciation, with preferential consideration for spouses married 3+ years to a Ukrainian citizen, refugees, military service, and persons of distinguished merit",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). dual_citizenship_allowed is false for THIS standard route since renunciation/termination of foreign citizenship remains the general default rule -- see ua_citizenship_dual_declaration.json for the new Article 5-1 framework (effective 16 January 2026) that allows specific groups (citizens of Poland, Czech Republic, Germany, Canada, and the USA via simplified declaration; and military-connected families) to retain foreign citizenship. This is a live, very recently reformed area of Ukrainian law -- the core 5-year/exam/means figures quoted here come directly from dmsu.gov.ua and were not contradicted by any other source found, unlike Peru's or Vietnam's citizenship-law transitions elsewhere in this dataset, so this file is published without a live-transition caveat."
+}

@@ -1,0 +1,91 @@
+{
+  "id": "lt_permanent_residence",
+  "country": "LT",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "5 years' temporary residence in Lithuania",
+      "requirements": [
+        {
+          "id": "ltpr_residence",
+          "attribute": "months_temporary_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of temporary residence in Lithuania (or 5 years of residence in the EU with at least 2 uninterrupted years specifically in Lithuania).",
+          "fix_path": "Accumulate 5 years of temporary residence in Lithuania.",
+          "fix_time_months": 60,
+          "source_id": "micenter_permanent_residence"
+        },
+        {
+          "id": "ltpr_exam",
+          "attribute": "passed_language_and_constitution_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Lithuanian language and Constitution examination may be required; the specific pass level was not confirmed in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "micenter_permanent_residence"
+        },
+        {
+          "id": "ltpr_means",
+          "attribute": "monthly_income_eur",
+          "operator": ">=",
+          "value": 1153,
+          "hard": true,
+          "blocker_text": "Ability to support oneself, set at EUR 1,153/month in 2026 (Lithuania's minimum wage); half this amount for minors.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "micenter_permanent_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' temporary residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Language and Constitution exam result", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of income (EUR 1,153+/month)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable (residence itself is indefinite once granted; the card is periodically renewed)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "micenter_permanent_residence",
+      "tier": 3,
+      "url": "https://micenter.lt/en/permanent-residence-permit",
+      "title": "Migration Information Centre (immigration-services aggregator, not confirmed as an official government body) -- permanent residence: 5 years' temporary residence, language/Constitution test referenced without exam level, EUR 1,153/month income requirement (2026 minimum wage), criminal record certificate, health insurance, EUR 160/320 fees, 45-day to 3-month processing",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- migracija.lt (the actual Migration Department site) returned only a JavaScript shell on direct fetch in this pass, so this file relies on a third-party immigration-services site (micenter.lt) whose institutional status (official vs. private aggregator) was not fully confirmed -- graded tier-3 out of caution. The specific language-exam level (e.g. A1/A2/B1) for permanent residence was not confirmed, unlike lt_naturalisation.json's A2 figure for citizenship, which comes from a more clearly corroborated source -- disclosed as an open question rather than assumed identical."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "pk_investor_residence",
+  "country": "PK",
+  "name": "SIFC Investor Visa",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pkir_investment_intent",
+          "attribute": "has_investment_intent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must intend to invest in Pakistan and hold a Recommendation Letter/Email from the Special Investment Facilitation Council (SIFC).",
+          "fix_path": "Obtain a SIFC recommendation for the intended investment.",
+          "fix_time_months": null,
+          "source_id": "nadra_sifc_investor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "SIFC Recommendation Letter/Email", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passport and photograph", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of legal residence (if applying from a third country)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Short-term: 3 years multiple entry. Long-term: 5 years multiple entry. Extension: 2 years multiple entry.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nadra_sifc_investor",
+      "tier": 1,
+      "url": "https://visa.nadra.gov.pk/sifc-investor-visa/",
+      "title": "Pakistan Online Visa System (NADRA) -- SIFC Investor Visa: for citizens of foreign countries intending to invest in Pakistan, open to both Business Visa List and non-BVL countries; requires a SIFC Recommendation Letter/Email; short-term entry 3 years multiple entry, long-term entry 5 years multiple entry, extension 2 years multiple entry",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published: the only hard requirement actually specified in the source (a SIFC recommendation) is tier-1 sourced. GENUINE GAP, NOT FABRICATED: no minimum investment AMOUNT is stated anywhere in the source retrieved -- unusual for an investor-residence route in this dataset, where a numeric capital threshold is normally the marquee figure. A separate general 'Business - Investor Visa' category exists on the same NADRA portal (visa.nadra.gov.pk/business-investor-visa/) that may carry its own numeric threshold, but that page returned a 403 error on every fetch attempt in this build and could not be independently verified -- flagged for follow-up rather than guessed at. work_rights set to 'restricted' since the visa is residence/entry-focused, not an explicit open work-rights grant. Set up in parallel with Pakistan's Special Investment Facilitation Council (SIFC), a civil-military hybrid body created in 2023 to fast-track foreign investment -- distinctive in this dataset for the investment-visa gatekeeper being a body outside the ordinary immigration bureaucracy."
+}

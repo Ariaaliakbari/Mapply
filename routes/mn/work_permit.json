@@ -1,0 +1,87 @@
+{
+  "id": "mn_work_permit",
+  "country": "MN",
+  "name": "Residence Permit for Employment (C Category)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mnwp_invitation",
+          "attribute": "has_inviting_employer_organization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Official request letter from an inviting Mongolian organization/legal entity, stating its type of activity, duration of stay, and employment need.",
+          "fix_path": "Secure a job offer from a Mongolia-registered employer.",
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_c1"
+        },
+        {
+          "id": "mnwp_labour_authorization",
+          "attribute": "has_labour_and_welfare_authority_work_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A work permit/authorization from Mongolia's labour and welfare authorities, obtained separately from (and prior to) the residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_c1"
+        },
+        {
+          "id": "mnwp_apply_within_21_days",
+          "attribute": "applied_for_residence_permit_within_21_days_of_entry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must apply at the Immigration Agency within 21 days of entering Mongolia, appearing in person for biometric registration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_c1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (valid 180+ days)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer invitation/request letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Labour and welfare authority work permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Address verification from local authorities", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Biometric registration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "set by the employer's invitation letter and stated employment duration; not independently capped in sources fetched",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mn_permanent_residence", "mn_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_mn_c1",
+      "tier": 1,
+      "url": "https://immigration.gov.mn/en/residence-permit-copy-2/permit-c/c1/",
+      "title": "Immigration Agency of Mongolia -- C1 employment residence permit: employer invitation letter mandatory, separate labour/welfare-authority work authorization required, passport valid 180+ days, biometric registration, apply within 21 days of entry, 135,000 MNT standard (5 working days) / 255,000 MNT expedited (3 working days) processing, $7 residency card fee",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: PUBLISHED -- fully tier-1 IGI-equivalent (Immigration Agency of Mongolia) sourced. A near-identical C3 employment category exists per the same agency (fetched separately) without a clearly disclosed distinction from C1 in the sources reached in this pass -- only C1 is modeled here as the primary employment route; the C1/C3 distinction is flagged as an open question rather than guessed at. work_rights is 'restricted' (tied to the sponsoring employer, consistent with this dataset's convention for employer-sponsored work routes) rather than 'full'. pr_after_months (36) and citizenship_after_months (96) are inferred from the G/immigrant category's 3-year prior-residence threshold (see mn_permanent_residence.json) and the naturalisation law's 5-year-on-permanent-residence requirement (see mn_citizenship_naturalisation.json) stacked together (36 + 60 = 96) -- not figures IGI states directly for C1 holders specifically, and flagged as an inference."
+}

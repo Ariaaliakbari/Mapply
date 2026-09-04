@@ -1,0 +1,94 @@
+{
+  "id": "ci_investor_residence",
+  "country": "CI",
+  "name": "Business Creation Route (CEPICI) + Resident Card, Merchant/Trader Category",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ciir_company_registration",
+          "attribute": "has_registered_ivorian_company",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A registered Ivorian company (RCCM registration, DFE), which foreign nationals may own 100% of without a local partner requirement.",
+          "fix_path": "Register a company via CEPICI's single-window process.",
+          "fix_time_months": null,
+          "source_id": "acf_ci_cepici_guide"
+        },
+        {
+          "id": "ciir_minimum_capital",
+          "attribute": "share_capital_fcfa",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Minimum share capital of 100,000 FCFA for an SARL (private limited company).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "acf_ci_cepici_guide"
+        },
+        {
+          "id": "ciir_commercial_registration_card",
+          "attribute": "has_commercial_registration_documentation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Commercial registration documentation, per ONECI's merchant/trader carte-de-resident category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or national ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record extract (under 3 months old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Business address/domiciliation contract in Abidjan", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration of subscription and deposit (DNSV)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Commercial registration (RCCM, DFE)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "company registration: up to 12 weeks (3 months) maximum; resident card requires periodic renewal, exact validity not confirmed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ci_permanent_residence", "ci_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "acf_ci_cepici_guide",
+      "tier": 3,
+      "url": "https://acf-ci.com/visa-creation-dentreprise-en-cote-divoire-non-residents/",
+      "title": "ACF (relocation/company-formation consultancy) -- guide to business creation in Cote d'Ivoire via CEPICI (Centre de Promotion des Investissements en Cote d'Ivoire, the government investment-promotion single window): 100% foreign ownership permitted, no local partner required, 100,000 FCFA minimum SARL capital, remote incorporation by power of attorney, resident card obtainable once RCCM/DFE registration exists",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "oneci_carte_resident",
+      "tier": 1,
+      "url": "https://www.oneci.ci/nos-produits/carte-resident/documents-a-fournir",
+      "title": "ONECI (Office National de l'Etat Civil et de l'Identification) -- carte de resident, merchant/trader (commercants) category among listed categories",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: DRAFT -- CEPICI (the government investment-promotion agency) is the correct authority for this route, but its own site (cepici.africa, cepici.2al-ps.com) was not independently fetched to tier-1 depth in this pass; the primary source used here is a company-formation consultancy (tier-3). ONECI's own resident-card page (tier-1) confirms a 'merchant/trader' category exists but gives no investment-specific figures. NO DEDICATED INVESTOR-RESIDENCE-BY-THRESHOLD SCHEME (of the kind seen in Botswana, Chile, or Romania) was found -- Cote d'Ivoire's route to a business-linked residence status runs through ordinary company registration (minimum capital as low as 100,000 FCFA, roughly USD 160, an unusually LOW threshold compared to other countries in this dataset) followed by the standard merchant-category resident card, rather than a purpose-built high-threshold investor visa. This is disclosed as a genuine structural finding, not a research gap: Cote d'Ivoire appears to treat business-based residence as an extension of routine company registration rather than a distinct immigration product. pr_after_months/citizenship_after_months inferred the same way as ci_work_permit.json."
+}

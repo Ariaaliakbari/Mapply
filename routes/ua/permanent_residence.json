@@ -1,0 +1,113 @@
+{
+  "id": "ua_permanent_residence",
+  "country": "UA",
+  "name": "Permanent Residence Permit (via Immigration Permit / Quota)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "quota_investor",
+      "name": "Within-quota: foreign investor",
+      "requirements": [
+        {
+          "id": "uapr_investor_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Investment of at least USD 100,000 in Ukraine's economy (Law on Immigration, Article 4, Part 2).",
+          "fix_path": "Invest at least USD 100,000 in Ukraine's economy.",
+          "fix_time_months": null,
+          "source_id": "dmsu_immigration_permit"
+        }
+      ]
+    },
+    {
+      "id": "quota_family",
+      "name": "Within-quota: close family of a Ukrainian citizen",
+      "requirements": [
+        {
+          "id": "uapr_close_family",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["full_sibling_of_ukrainian_citizen", "grandparent_of_ukrainian_citizen", "grandchild_of_ukrainian_citizen"],
+          "hard": true,
+          "blocker_text": "Full sibling, grandparent, or grandchild of a Ukrainian citizen (Law on Immigration, Article 4, Part 2).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_immigration_permit"
+        }
+      ]
+    },
+    {
+      "id": "quota_military",
+      "name": "Within-quota: military service",
+      "requirements": [
+        {
+          "id": "uapr_military_service",
+          "attribute": "months_military_service",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "At least 1 year of service in the Armed Forces of Ukraine, National Guard, or special transport service during a declared period of martial law (or at least 3 years' service outside martial law).",
+          "fix_path": "Complete the required period of military service.",
+          "fix_time_months": 12,
+          "source_id": "dmsu_immigration_permit"
+        }
+      ]
+    },
+    {
+      "id": "nonquota_spouse",
+      "name": "Outside-quota: spouse, child, or parent of a Ukrainian citizen",
+      "requirements": [
+        {
+          "id": "uapr_spouse_2yr",
+          "attribute": "months_married_to_ukrainian_citizen",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Spouse of a Ukrainian citizen, married at least 2 years (or their children under 18 or dependent parents); or a child or parent of a Ukrainian citizen directly, outside the quota system entirely (Law on Immigration, Article 4, Part 3).",
+          "fix_path": "Accumulate 2 years of marriage to the Ukrainian-citizen spouse.",
+          "fix_time_months": 24,
+          "source_id": "dmsu_immigration_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Immigration permit (дозвіл на імміграцію), issued per the relevant quota or non-quota category", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Category-specific documentation (investment proof, family relationship documents, or military service record)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ua_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "dmsu_immigration_permit",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/poslugi/dokumentuvannya-inozemcziv/dozvil-na-immigracziu.html",
+      "title": "State Migration Service of Ukraine -- Immigration Permit categories under the Law on Immigration, Article 4: within-quota categories (science/culture leaders, highly skilled specialists, investors USD 100,000+, close family of Ukrainian citizens, former Ukrainian citizens, spouses of immigrants, trafficking survivors, military service -- including a reduced 1-year threshold during declared martial law -- and military disability) and outside-quota categories (spouses/children/parents of Ukrainian citizens, widowed spouses of fallen military personnel, foreign nationals supporting Ukrainian forces during martial law, diaspora Ukrainians, and stateless persons with 2-year residence permits)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). STATUS: DRAFT -- despite tier-1 sourcing, held draft because permanent residence requires a SEPARATE prior step (the immigration permit itself) whose own application process/timeline was not independently confirmed in this pass; the dmsu.gov.ua page for the residence-CARD step explicitly states it presupposes an already-granted immigration permit and does not itself detail quota eligibility, which had to be sourced from a second dmsu.gov.ua page. This is one of the most WAR-SHAPED files in the whole dataset: the quota system includes a category specifically for foreigners with at least 1 YEAR of Armed Forces/National Guard service completed DURING a declared period of martial law (reduced from the ordinary 3-year threshold) -- a direct, current reflection of Ukraine's active war and its recruitment of foreign fighters, plus separate categories for widowed spouses of fallen military personnel and foreign nationals 'supporting Ukrainian forces during martial law.' Only 4 of the roughly 10 within-quota and multiple outside-quota categories are modeled here as requirement groups (investor, close-family, military-service, and spouse/child/parent) -- the remaining categories (science/culture leaders, highly skilled specialists, former Ukrainian citizens, trafficking survivors, military disability, diaspora Ukrainians, stateless persons) are disclosed in this source citation but not independently built out as separate testable requirement groups in this pass, to keep this file to the best-corroborated core rather than thinly restating every category with equal (false) confidence."
+}

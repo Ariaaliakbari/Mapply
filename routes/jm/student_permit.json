@@ -1,0 +1,63 @@
+{
+  "id": "jm_student_permit",
+  "country": "JM",
+  "name": "Student Visa / Resident Permit",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmsp_acceptance",
+          "attribute": "has_acceptance_at_jamaican_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Acceptance letter from a Jamaican educational institution, valid passport (6+ months), proof of sufficient funds, sponsor information, return ticket -- applied for via a Jamaican Embassy/Consulate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "jtec_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Acceptance letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Return ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year initial landing if institutional arrangements are pre-established; 2 months (extendable to 1 year) if not yet arranged",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jm_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "jtec_student_visa",
+      "tier": 1,
+      "url": "https://jtec.gov.jm/student-visa-resident-permit/",
+      "title": "Jamaica Tertiary Education Commission (J-TEC), a statutory government education agency -- Student Visa/Resident Permit: acceptance letter, valid passport, proof of funds, sponsor info, return ticket; 1-year initial landing if institutional arrangements pre-established, 2 months (extendable to 1 year) otherwise; students over 16 must register as aliens with PICA or rural parish police stations",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: DRAFT -- the source is tier-1 (J-TEC, a statutory government agency) but does not specify whether or how much students may work during study -- work_rights set to 'none' as a conservative default, not a confirmed prohibition. Kept draft on completeness grounds despite the tier-1 source. Students over 16 must separately register as aliens with PICA -- disclosed as a procedural step, not modeled as its own requirement."
+}

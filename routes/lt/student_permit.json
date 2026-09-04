@@ -1,0 +1,85 @@
+{
+  "id": "lt_student_permit",
+  "country": "LT",
+  "name": "Temporary Residence Permit -- Study",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ltsp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmed enrollment at a Lithuanian higher education institution.",
+          "fix_path": "Obtain admission to an accredited Lithuanian institution.",
+          "fix_time_months": null,
+          "source_id": "agsweltgermany_pr_after_study"
+        },
+        {
+          "id": "ltsp_means",
+          "attribute": "has_sufficient_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of sufficient means of subsistence for the duration of study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "agsweltgermany_pr_after_study"
+        },
+        {
+          "id": "ltsp_insurance",
+          "attribute": "has_health_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health insurance valid in Lithuania.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "agsweltgermany_pr_after_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of subsistence funds", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year per course year, renewable while enrolled",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lt_permanent_residence", "lt_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "agsweltgermany_pr_after_study",
+      "tier": 4,
+      "url": "https://agsweltgermany.de/permanent-residency-in-lithuania-after-study/",
+      "title": "AGS Welt Germany -- general overview confirming Lithuania's student residence permit exists with standard enrollment/means/insurance requirements, and can lead toward permanent residence after study",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT, WEAK SOURCING -- no tier-1 or tier-2 page with equivalent process detail was independently fetched for this specific route in this pass (migracija.lt returned only a JavaScript shell on direct fetch); this file is modeled on the general EU-standard student-permit structure and a tier-4 relocation-blog source, and should be treated as the LEAST rigorously sourced file in this Lithuania build pending a proper migracija.lt/Migris re-fetch. work_rights modeled 'restricted' per the standard EU student-permit pattern (limited part-time work hours), not independently confirmed for Lithuania specifically. pr_after_months and citizenship_after_months reuse the general figures from lt_permanent_residence.json and lt_naturalisation.json."
+}

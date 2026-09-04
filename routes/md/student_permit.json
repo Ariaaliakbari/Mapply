@@ -1,0 +1,82 @@
+{
+  "id": "md_student_permit",
+  "country": "MD",
+  "name": "Temporary Residence for Study Purposes (long-stay visa D/AS)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdsp_admission",
+          "attribute": "has_admission_to_accredited_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Admission to an accredited Moldovan educational institution, routed via Ministry of Education/Research approval.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igm_studies"
+        },
+        {
+          "id": "mdsp_means",
+          "attribute": "has_sufficient_means_or_scholarship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of means (waived for holders of a Moldovan-government scholarship); housing proof; medical insurance; legalized criminal record if the applicant resided abroad 2+ years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igm_studies"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Housing proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Legalized criminal record (if abroad 2+ years)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "full duration of studies; must report any changes within 15 days",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["md_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "igm_studies",
+      "tier": 1,
+      "url": "https://igm.gov.md/en/studies-in-the-republic-of-moldova-useful-information-for-international-students/",
+      "title": "Bureau for Migration and Asylum (legacy igm.gov.md domain) -- studies in the Republic of Moldova: admission, housing/insurance/means requirements, legalized criminal record for 2+ years abroad",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "mfa_visa_types",
+      "tier": 1,
+      "url": "https://mfa.gov.md/en/content/types-visas-requirements",
+      "title": "Ministry of Foreign Affairs, Republic of Moldova -- types of visas: D/AS long-stay study visa",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: PUBLISHED -- tier-1 sourced across the Bureau for Migration and Asylum (still partly on its legacy igm.gov.md domain, which now co-resolves with bma.gov.md) and MFA. GAP, DISCLOSED NOT FABRICATED: whether students may work part-time was not stated on the source page -- work_rights is set to 'none' as a conservative default, not a confirmed prohibition. Treat as the top re-verification item for this file."
+}

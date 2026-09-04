@@ -1,0 +1,106 @@
+{
+  "id": "az_permanent_residence",
+  "country": "AZ",
+  "name": "Permanent Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 24,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "azpr_prior_residence",
+          "attribute": "months_temporary_residence",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "2 years of temporary residence in Azerbaijan is required before applying for permanent residence.",
+          "fix_path": "Hold temporary residence status for 2 continuous years.",
+          "fix_time_months": 24,
+          "source_id": "migration_gov_az_residence"
+        },
+        {
+          "id": "azpr_financial_threshold",
+          "attribute": "property_deposit_or_securities_value_azn",
+          "operator": ">=",
+          "value": 200000,
+          "hard": true,
+          "blocker_text": "A higher financial threshold applies for permanent residence via property, bank deposit, or securities: AZN 200,000 (versus AZN 100,000 for the temporary-residence equivalent grounds).",
+          "fix_path": "Hold qualifying property, deposits, or securities worth at least AZN 200,000.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        },
+        {
+          "id": "azpr_language_law_test",
+          "attribute": "passed_azerbaijani_law_and_language_commission_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants must demonstrate knowledge of Azerbaijani law and the Azerbaijani language through a commission test, unless exempt as a highly skilled migrant, a minor, or a senior over 65.",
+          "fix_path": "Pass the Azerbaijani law and language commission test.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    },
+    {
+      "id": "exempt_from_test",
+      "name": "Exempt from the language/law test",
+      "requirements": [
+        {
+          "id": "azpr_test_exempt",
+          "attribute": "is_highly_skilled_minor_or_senior_65plus",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Highly skilled migrants, minors, and applicants over 65 are exempt from the Azerbaijani law and language commission test.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 2 years' continuous temporary residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Property/deposit/securities documentation (AZN 200,000+)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Azerbaijani law and language commission test result (unless exempt)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["az_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_az_residence",
+      "tier": 1,
+      "url": "https://migration.gov.az/en/page/73",
+      "title": "Azerbaijan State Migration Service -- permanent residence: 2 years' prior temporary residence, AZN 200,000 threshold for property/deposits/securities, Azerbaijani law and language commission test (exemptions for highly skilled migrants, minors, seniors over 65)",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). It was not confirmed whether the 2-year prior-temporary-residence requirement applies uniformly across ALL grounds (employment, family, business) or only to some -- the source presented it as a general permanent-residence prerequisite, modeled that way here, but this should be treated as the general rule rather than independently verified per ground. citizenship_after_months modeled 0 since permanent residence holders are not described as needing an additional fixed wait beyond meeting az_naturalisation.json's own 5-year residence and language conditions -- the two clocks are not modeled as stacking, consistent with this dataset's treatment of similar cases elsewhere."
+}

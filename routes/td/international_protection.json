@@ -1,0 +1,83 @@
+{
+  "id": "td_international_protection",
+  "country": "TD",
+  "name": "Asylum -- Refugee Status Determination (CNARR)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution must submit an asylum request to CNARR (Commission Nationale d'Accueil, de Réinsertion des Réfugiés et des Rapatriés) within 90 days of entering Chad, under Law No. 027/PR/2020 on Asylum and its implementing decree.",
+    "evidence_hint": "Application to CNARR within 90 days of arrival; identity documents where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdip_application_within_90_days",
+          "attribute": "filed_within_90_days_of_entry",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Asylum request must be submitted to CNARR within 90 days of entering Chad.",
+          "fix_path": "File an asylum request with CNARR within 90 days of arrival.",
+          "fix_time_months": null,
+          "source_id": "rimap_law_027_2020"
+        },
+        {
+          "id": "tdip_persecution",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution, assessed by CNARR's Sous-commission d'Éligibilité (Eligibility Sub-commission), which meets at least four times monthly.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rimap_law_027_2020"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6-month renewable asylum-seeker attestation pending a decision; post-recognition refugee status duration not confirmed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "rimap_law_027_2020",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/39192",
+      "title": "UNHCR RIMAP -- Law No. 027/PR/2020 on Asylum in the Republic of Chad: CNARR (via its Sous-commission d'Éligibilité) determines refugee status; 90-day filing window from entry; 6-month renewable asylum-seeker attestation serving as proof of residence; 30-day appeal window before the Sous-commission de Recours (Appeals Sub-commission), with interpretation and legal representation guaranteed",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "unhcr_fr_chad_asylum_law",
+      "tier": 2,
+      "url": "https://www.unhcr.org/africa/fr/actualites/le-tchad-dispose-dune-loi-dasile-et-de-son-decret-dapplication",
+      "title": "UNHCR (French-language news) -- Chad's asylum law (Loi 027/PR/2020, passed 31 December 2020) and its implementing decree: CNARR works alongside UNHCR on implementation; the law guarantees the right to work, freedom of movement, access to justice, healthcare, education, and land access for the ~600,000 refugees and asylum seekers in Chad (over 3% of the population)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT (tier-2 sourced, not tier-1) but by far the STRONGEST and most thoroughly documented file in this build -- a real irony given Chad's overall sourcing scarcity: because Chad hosts one of the largest refugee populations in Africa (~600,000+, over 3% of the population, chiefly from Sudan, CAR, Nigeria), international humanitarian reporting on this specific route is extensive and detailed, unlike Chad's ordinary immigration system, which is barely documented in public. Chad is party to the 1951 Convention, 1967 Protocol, 1954 and 1961 statelessness conventions, the 1969 OAU Convention, and the 2009 Kampala Convention on IDPs. Law 027/PR/2020 replaced Chad's older refugee framework with a genuine domestic RSD process and, notably, an explicit statutory right to work -- a stronger work-rights guarantee than most other countries' asylum routes in this dataset, several of which restrict work pending a decision. Camp policy (Chad hosts significant camp populations, distinct from Botswana's single Dukwi camp) and post-recognition status duration were not confirmed in this pass."
+}

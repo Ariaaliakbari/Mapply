@@ -1,0 +1,98 @@
+{
+  "id": "ro_citizenship_naturalisation",
+  "country": "RO",
+  "name": "Citizenship by Naturalisation (Granting on Request, Standard Track)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["ro_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rocn_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Holder of long-term or permanent residence status, and legally resident in Romania for at least 8 years (Law 21/1991, Article 8(1)(a)).",
+          "fix_path": "Accumulate 8 years of continuous legal residence under long-term/permanent residence status.",
+          "fix_time_months": 96,
+          "source_id": "refworld_citizenship_law"
+        },
+        {
+          "id": "rocn_language",
+          "attribute": "has_romanian_b1_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Knowledge of the Romanian language, and of the Constitution and national anthem, is required for all applicants -- made explicitly mandatory (rather than merely assessed case-by-case) by Law 14/2025's amendments.",
+          "fix_path": "Pass the Romanian language requirement.",
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_law"
+        },
+        {
+          "id": "rocn_means_conduct",
+          "attribute": "has_legal_means_and_good_conduct",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Legal means of subsistence, good conduct with no disqualifying criminal record, age 18+, and demonstrated loyalty to the Romanian state (no actions against rule of law/national security).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 8 years' continuous legal residence under long-term/permanent status", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Romanian language certification (B1)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Civil status documents (originals or certified multilingual extracts issued within the prior 2 years, per Law 14/2025)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Biometric photograph and fingerprints (mandatory since 25 July 2024)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2025-05/eng_legea-nr-21-1991-a-cetateniei-romane.pdf",
+      "title": "Refworld (UNHCR) -- Romanian Citizenship Law 21/1991 (English translation, consolidated as of May 2025), Article 8: naturalisation on request requires long-term/permanent residence status and 8 years' legal residence (5 years if married to and cohabiting with a Romanian citizen -- see ro_citizenship_by_marriage.json), age 18+, loyalty, legal means, good conduct, Romanian language and constitutional knowledge; Article 8(2)-(3) reduction of up to 3 years for EU/EEA/Swiss citizens with economic/cultural contribution, Romania-born applicants with legally resident parents, and integrated refugees",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "legal500_naturalization_stats",
+      "tier": 3,
+      "url": "https://www.legal500.com/developments/thought-leadership/legal-analysis-the-conditions-for-obtaining-romanian-citizenship-have-been-tightened-statistics/",
+      "title": "Legal 500 -- analysis of Romanian citizenship law tightening: mandatory Romanian language requirement for all applicants, and a cited approval-rate collapse from 88% (2018) to 0.37% (2023) with no approvals recorded through March 2025",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: DRAFT -- Romania's own legislative portal (legislatie.just.ro) and the National Authority for Citizenship's own site (cetatenie.just.ro), which would be tier-1 sources for the current consolidated law text, were unreachable across multiple fetch attempts in this pass (repeated robots.txt/timeout failures). The law text used here is Refworld's (UNHCR) English translation (tier-2), dated May 2025 in its own filename/path, which appears to postdate Law 14/2025's amendments. MAJOR FLAGGED FINDING: a tier-3 secondary source (Legal 500) cites a collapse in naturalisation approval rates from 88% in 2018 to 0.37% in 2023, with reportedly zero approvals recorded through March 2025, attributed to the same 2024-2025 tightening wave (mandatory biometrics from July 2024, mandatory language testing, stricter document-authenticity rules, processing time extended from 5 months to up to 2.5 years under Law 14/2025). This statistic is NOT independently verified against Romania's own published data in this pass and is disclosed as an unconfirmed but consequential claim, not asserted as fact -- if accurate, it means this route, while nominally open, may be close to non-functional in practice as of this build. dual_citizenship_allowed is TRUE per the law's general permissiveness (no blanket prohibition found in the fetched text), consistent with EU-member-state norms, but this is inferred from absence of a prohibition rather than an explicit affirmative clause, and flagged for re-verification."
+}

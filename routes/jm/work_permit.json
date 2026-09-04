@@ -1,0 +1,63 @@
+{
+  "id": "jm_work_permit",
+  "country": "JM",
+  "name": "Work Permit (Foreign Nationals and Commonwealth Citizens (Employment) Act)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmwp_job_offer",
+          "attribute": "has_qualifying_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer-sponsored; applicant cannot self-apply. Employer must submit a cover letter to the Permanent Secretary addressing recruitment efforts to hire a Jamaican first -- a labour market test built directly into the application questions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mlss_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's cover letter addressing local recruitment efforts", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Work visa (non-Commonwealth citizens must obtain before entering Jamaica)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "typically up to 12 months at a time; not transferable between employers (a new application plus termination evidence is required to switch); renewal due 1+ month before expiry",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jm_family_reunification", "jm_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mlss_work_permit",
+      "tier": 1,
+      "url": "https://www.mlss.gov.jm/departments/work-permit/",
+      "title": "Ministry of Labour and Social Security (MLSS), Jamaica -- Work Permit Department: employer-sponsored only, cover letter addressing local-recruitment efforts (labour market test), processing fee JMD 14,400 + duration-scaled permit fee (up to 3mo JMD 27,000; 3-6mo 54,000; 6-9mo 81,000; 9-12mo 108,000), typically issued up to 12 months, not transferable between employers, ~4-6 week processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: PUBLISHED -- tier-1 MLSS sourced. This is the route for NON-CARICOM foreign nationals; CARICOM nationals in one of the recognized skilled categories instead use jm_caricom_skills.json, which requires no employer sponsorship or labour market test at all -- the two should not be conflated. pr_after_months (36) and citizenship_after_months (60) are cross-referenced from jm_permanent_residence.json and jm_citizenship_naturalisation.json, not independently sourced here."
+}

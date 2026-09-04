@@ -1,0 +1,93 @@
+{
+  "id": "pe_family_reunification",
+  "country": "PE",
+  "name": "Familiar de Residente (Family Member of Resident)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pefr_sponsor_status",
+          "attribute": "sponsor_has_qualifying_status",
+          "operator": "in",
+          "value": ["peruvian_citizen", "trabajador_resident", "formacion_resident"],
+          "hard": true,
+          "blocker_text": "Sponsor must be a Peruvian citizen or hold Trabajador (worker) or Formación (student/training) resident status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_familiar"
+        },
+        {
+          "id": "pefr_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_or_common_law_partner", "minor_child", "unmarried_child_under_28_studying", "adult_disabled_child", "parent"],
+          "hard": true,
+          "blocker_text": "Spouse or common-law partner, minor children, unmarried children under 28 who are studying, adult children unable to support themselves due to disability, or parents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_familiar"
+        },
+        {
+          "id": "pefr_conduct",
+          "attribute": "has_clean_criminal_and_interpol_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Interpol international police clearance certificate (valid up to 6 months) and criminal background documentation from country of origin.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_familiar"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of family tie (marriage/birth certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sponsor's qualifying status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Interpol international police clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years for family members of Peruvian citizens; up to 1 year for family members of foreign residents, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_permanent_residence", "pe_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.i: Familiar de Residente status, up to 2 years, work permitted (subordinate or independent)",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "veninformado_familiar",
+      "tier": 3,
+      "url": "https://www.veninformado.pe/vivir-en-peru/tramites-legales/calidades-migratorias/familiar-de-residente/",
+      "title": "Veninformado -- Familiar de Residente: qualifying relationships (spouse/partner, children to age 28 if studying, disabled adult children, parents), sponsor status requirement, 2-year duration for Peruvian sponsors vs. 1 year for foreign-resident sponsors",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- the law (tier-1) confirms the category and its up-to-2-year duration, but the specific qualifying-relationship list, the sponsor-status precondition, and the asymmetric 2yr/1yr duration split (Peruvian sponsor vs. foreign-resident sponsor) come only from a tier-3 consultancy source; no income or financial-support threshold for the sponsor was found in either source, disclosed as a gap rather than invented. citizenship_after_months (48) reflects pe_citizenship_by_marriage.json's post-Ley-32421 4-year continuous-marriage figure for the spouse case specifically -- see that file's notes for the same live-legal-transition caveat affecting pe_citizenship_naturalisation.json."
+}

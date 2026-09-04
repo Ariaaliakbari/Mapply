@@ -1,0 +1,77 @@
+{
+  "id": "md_temporary_protection",
+  "country": "MD",
+  "name": "Temporary Protection for Persons Displaced from Ukraine (Government Decision No. 21 of 18.01.2023)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": {
+    "opens": "2026-02-01",
+    "closes": "2026-04-30",
+    "cap_type": "none",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": {
+    "description": "Group-based protection (not individual refugee status determination) for persons displaced from Ukraine due to the war, implementing an EU-aligned temporary protection framework via Government Decision No. 21 of 18.01.2023, extended by subsequent decisions to 1 March 2027. Beneficiaries must re-apply online between 1 February and 30 April 2026 for automatic extension.",
+    "evidence_hint": "Proof of displacement from Ukraine and of habitual residence there before the qualifying date."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdtp_displaced_from_ukraine",
+          "attribute": "displaced_from_ukraine",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Displaced from Ukraine due to the war and covered by Government Decision No. 21 of 18.01.2023 as extended.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_md_tp_extension"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Ukrainian identity/travel documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of displacement/habitual residence in Ukraine", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "extended to 1 March 2027 as of this build; status lapses on voluntary repatriation or an absence of more than 45 cumulative days from Moldova",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "status lapses after more than 45 cumulative days' absence from Moldova",
+    "switchable_to": ["md_work_permit", "md_international_protection"]
+  },
+  "sources": [
+    {
+      "id": "gov_md_tp_extension",
+      "tier": 1,
+      "url": "https://gov.md/en/press-releases/moldova-extends-temporary-protection-displaced-persons-ukraine-until-1-march-2027",
+      "title": "Government of Moldova -- press release: temporary protection for persons displaced from Ukraine extended to 1 March 2027; beneficiaries must re-apply online 1 Feb-30 Apr 2026 for automatic extension",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "refworld_gd21_2023",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2026-01/moldva_tp_for_ukrainians_2025_amendments_english.pdf",
+      "title": "Refworld (UNHCR-hosted) -- Government Decision No. 21 of 18.01.2023 with 2025 amendments, English translation: legal residence, work authorization, education access, healthcare, social services; status lapses on voluntary repatriation or 45+ cumulative days' absence",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: PUBLISHED -- tier-1 Government of Moldova press release sourced for the core hard requirement and the current extension date, corroborated by a tier-2 UNHCR-hosted text of the underlying decision. DISTINCT FROM md_international_protection.json: this is GROUP-BASED temporary protection under an EU-aligned framework, not individual Refugee Convention status determination -- no persecution test, no BMA eligibility interview, just proof of displacement from Ukraine. As a EU-candidate country bordering Ukraine, Moldova has hosted large numbers of Ukrainian displaced persons since 2022; this route reflects that specific, currently-active, time-bounded response rather than a permanent feature of Moldovan immigration law -- application_window fields reflect the stated 2026 re-registration window, and the whole route is understood to be time-limited/renewable-by-government-decision rather than a standing legal category. work_rights and study_rights set to 'full' per the source, notably generous compared to many asylum-seeker (as opposed to recognized-refugee) regimes elsewhere in this dataset."
+}

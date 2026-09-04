@@ -1,0 +1,90 @@
+{
+  "id": "ro_international_protection",
+  "country": "RO",
+  "name": "Asylum -- International Protection (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution or a serious risk of harm may apply for international protection at the border or within Romania, at IGI's Asylum and Integration Directorate (DAI), Border Police offices, police units, or penitentiary structures.",
+    "evidence_hint": "Application registered within 3 working days at IGI-DAI directly, 6 working days elsewhere, or 10 days during a mass-influx situation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "regular_procedure",
+      "name": "Regular procedure",
+      "requirements": [
+        {
+          "id": "roip_persecution",
+          "attribute": "meets_refugee_or_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Meets the well-founded-fear-of-persecution standard for refugee status, or the serious-harm standard for subsidiary protection.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_asylum_general"
+        },
+        {
+          "id": "roip_decision_timeframe",
+          "attribute": "case_decided_within_30_days_of_assignment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A first-instance decision must be issued within 30 days of the case file's assignment to a case officer.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asylumineurope_procedure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution/serious-harm claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "protection status duration not specified in sources fetched; appeal against a negative first-instance decision must be filed within 10 days, which automatically suspends removal pending the Regional Court's review",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ro_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "igi_asylum_general",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/general-description/",
+      "title": "General Inspectorate for Immigration (IGI), Romanian Ministry of Internal Affairs, Asylum and Integration Directorate (DAI) -- general description of the asylum system: registration, Dublin-procedure determinations, identity documents for protected persons, material/financial assistance, integration support",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "igi_asylum_procedure",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/description-of-the-procedure/",
+      "title": "General Inspectorate for Immigration (IGI) -- description of the asylum procedure: interview, country-of-origin-information cross-reference, written decision, notice delivery; ordinary and accelerated procedure tracks; right to remain and protection against removal during the procedure",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "asylumineurope_procedure",
+      "tier": 2,
+      "url": "https://asylumineurope.org/reports/country/romania/asylum-procedure/general/short-overview-asylum-procedure/",
+      "title": "Asylum Information Database (AIDA, EU-funded, European Council on Refugees and Exiles) -- Romania short overview: registration deadlines (3/6/10 working days), 30-day first-instance decision timeframe, 10-day appeal window to Regional Court with automatic suspensive effect",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: DRAFT -- IGI's own pages (tier-1) describe the procedure's structure but omit concrete timeframes and appeal deadlines, which were sourced instead to AIDA (Asylum Information Database, an EU-funded NGO consortium tracked as tier-2 in this dataset's convention, consistent with prior country builds' use of UNHCR/EU-adjacent intergovernmental sources). work_rights/study_rights set to restricted and family_can_join/family_can_work set to false as conservative defaults -- none of the fetched sources specified when or whether asylum seekers may work while pending, or family-reunification rights specifically for protection holders (as opposed to Romanian citizens or long-stay residents generally, covered in ro_family_reunification.json); disclosed as a gap rather than assumed. Romania's asylum system distinguishes refugee status from subsidiary protection but the fetched sources did not detail differing entitlements between the two -- modeled as a single combined route pending further research. duration_length intentionally does not state a status validity period since none was confirmed in this pass, rather than guessing a figure."
+}

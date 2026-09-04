@@ -1,0 +1,76 @@
+{
+  "id": "jo_permanent_residence",
+  "country": "JO",
+  "name": "Five-Year Residency",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jopr_residence",
+          "attribute": "months_legal_residence_cumulative",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "At least 10 years of legal residence inside the Kingdom, without a continuous renewal gap exceeding 6 months.",
+          "fix_path": "Accumulate 10 years of legal residence in Jordan without a renewal lapse over 6 months.",
+          "fix_time_months": 120,
+          "source_id": "psd_services"
+        },
+        {
+          "id": "jopr_status_category",
+          "attribute": "holds_investor_associate_or_unclassified_status",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must hold investor, associate, or unclassified-profession residency status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "10-year residence history / permit renewal record", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jo_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "psd_services",
+      "tier": 1,
+      "url": "https://psd.gov.jo/media/lncmdl3i/servcies.pdf",
+      "title": "Jordan Public Security Directorate (PSD), Borders and Residence Department -- Information Services: Five-Year Residency, free of charge, requires at least 10 years' cumulative legal residence in the Kingdom without a renewal gap exceeding 6 months, and investor/associate/unclassified-profession status",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- name is a source artifact: PSD's own service listing calls this the 'Five-Year Residency' because of the permit's duration, not a 5-year qualifying period -- the actual qualifying threshold is 10 years of cumulative prior legal residence, modeled correctly here (months_legal_residence_cumulative >= 120) despite the route's official name. This is Jordan's closest equivalent to a long-term/permanent residence status in the dataset's schema sense; no separate unlimited/indefinite-duration residence category was found in this pass -- the 5-year permit itself is understood to be renewable indefinitely once granted, per PSD's renewal-service listing, though this was not explicitly stated as a distinct 'permanent' status."
+}

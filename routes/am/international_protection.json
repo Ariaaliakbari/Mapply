@@ -1,0 +1,62 @@
+{
+  "id": "am_international_protection",
+  "country": "AM",
+  "name": "Asylum / Refugee Status",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amip_claim",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Migration and Citizenship Service (MCS) -- Armenia's own national asylum authority, not UNHCR directly -- assesses the risks faced in the applicant's country of origin and the reasons they cannot return, following a mandatory registration and interview. Standard review takes 3 months from submission, extendable to 6 months; an accelerated procedure for manifestly unfounded claims takes 10 working days, extendable to 1 month. Negative decisions are appealable in all three court instances.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_armenia_procedure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Asylum application registered with the MCS", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Mandatory interview testimony on risks/reasons for not returning", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not fully confirmed in this pass -- an asylum-seeker's ID card during the procedure and a Convention Travel Document upon recognition were referenced but their specific validity periods were not confirmed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_permanent_residence", "am_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_armenia_procedure",
+      "tier": 1,
+      "url": "https://help.unhcr.org/armenia/seeking-asylum-in-armenia/asylum-procedure/",
+      "title": "UNHCR Armenia -- confirms Armenia's Migration and Citizenship Service (MCS) is the national authority determining refugee status directly (UNHCR supports but does not run the procedure): registration, mandatory interview, 3-month standard/6-month extended decision timeline, 10-working-day/1-month accelerated procedure for manifestly unfounded claims, 3-court-instance appeal",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). Unlike Morocco's and Oman's structures built earlier in this dataset, Armenia's own government agency runs refugee status determination directly under national law -- not UNHCR, and not a discretionary sovereign act. work_rights modeled 'restricted' and outcome duration left partially unconfirmed since the specific validity periods of the asylum-seeker ID card and post-recognition Convention Travel Document referenced by the source were not detailed on the page fetched -- disclosed as a gap rather than guessed. pr_after_months and citizenship_after_months reuse the general 3-year figures from am_permanent_residence.json and am_naturalisation.json since no refugee-specific reduced track was found."
+}

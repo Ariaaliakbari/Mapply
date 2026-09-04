@@ -1,0 +1,138 @@
+{
+  "id": "bh_permanent_residence",
+  "country": "BH",
+  "name": "Golden Residency Permit",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "property_owner",
+      "name": "Property owner",
+      "requirements": [
+        {
+          "id": "bhpr_property_130k",
+          "attribute": "bahrain_property_investment_amount_bhd",
+          "operator": ">=",
+          "value": 130000,
+          "hard": true,
+          "blocker_text": "Real estate in Bahrain valued at BHD 130,000 or more (~USD 345,000) -- reduced from the earlier BHD 200,000 threshold on 26 November 2025.",
+          "fix_path": "Purchase qualifying real estate at or above the threshold.",
+          "fix_time_months": null,
+          "source_id": "prnewswire_npra_golden_residency_2025"
+        }
+      ]
+    },
+    {
+      "id": "resident_employee",
+      "name": "Resident employee (high earner)",
+      "requirements": [
+        {
+          "id": "bhpr_employee_5yr_income",
+          "attribute": "months_employed_in_bahrain",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "At least 5 years' employment in Bahrain with average monthly salary above BHD 2,000.",
+          "fix_path": "Accumulate 5 years of qualifying high-earning employment in Bahrain.",
+          "fix_time_months": 60,
+          "source_id": "prnewswire_npra_golden_residency_2025"
+        }
+      ]
+    },
+    {
+      "id": "resident_retiree",
+      "name": "Resident retiree",
+      "requirements": [
+        {
+          "id": "bhpr_retiree_15yr_pension",
+          "attribute": "months_employed_in_bahrain",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "At least 15 years' employment history in Bahrain (government or private sector) with average monthly pension above BHD 2,000.",
+          "fix_path": "Accumulate 15 years of qualifying employment history in Bahrain.",
+          "fix_time_months": 180,
+          "source_id": "prnewswire_npra_golden_residency_2025"
+        }
+      ]
+    },
+    {
+      "id": "nonresident_retiree",
+      "name": "Non-resident retiree",
+      "requirements": [
+        {
+          "id": "bhpr_nonresident_pension",
+          "attribute": "monthly_pension_bhd",
+          "operator": ">=",
+          "value": 4000,
+          "hard": true,
+          "blocker_text": "Average monthly pension above BHD 4,000, without a Bahrain employment history requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "prnewswire_npra_golden_residency_2025"
+        }
+      ]
+    },
+    {
+      "id": "talented_individuals",
+      "name": "Talented individuals",
+      "requirements": [
+        {
+          "id": "bhpr_talent",
+          "attribute": "is_nominated_talented_individual",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Entrepreneurs, exceptional academics, athletes, artists, authors, or inventors, nominated by a government agency -- no fixed quantitative threshold published.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "npra_golden_residency_talented"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property title deed (property-owner category)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Employment/salary or pension history documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Government agency nomination (talented-individuals category)", "difficulty": "often_impossible", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "permanent, renewed every 10 years (not a flat 10-year visa as commonly reported)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "npra_golden_residency_talented",
+      "tier": 1,
+      "url": "https://www.npra.gov.bh/en/services/visas-residence-permit/residence-permits-services/golden-residency/golden-residence-permit-talented-individuals/",
+      "title": "Nationality, Passports and Residence Affairs (NPRA), Bahrain -- Golden Residence Permit, Talented Individuals category: entrepreneurs, exceptional academics/athletes/artists/authors/inventors, nominated by government agencies",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "prnewswire_npra_golden_residency_2025",
+      "tier": 3,
+      "url": "https://www.prnewswire.com/news-releases/bahrain-lowers-minimum-real-estate-investment-for-golden-residency-to-usd-345-000--302626755.html",
+      "title": "PR Newswire, 26 Nov 2025 -- 'Bahrain Lowers Minimum Real Estate Investment for Golden Residency to USD 345,000': directly quotes NPRA Undersecretary Shaikh Hisham bin Abdulrahman Al Khalifa on the BHD 200,000 -> BHD 130,000 property threshold cut and restates the employee/retiree/non-resident-retiree category thresholds; a press-distributed release, not NPRA's own page, so treated as tier 3 despite quoting an official directly",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: DRAFT -- only the 'talented individuals' group's hard requirement is tier-1 sourced (NPRA's own page); the other four groups (property, employee, retiree, non-resident retiree) rest on a press-wire release that directly quotes an NPRA official but is not NPRA's own published page -- treated as tier 3, not elevated to tier 1, since it's press distribution rather than a primary government document. Since this dataset requires ALL hard requirements to be tier-1 for published status, the whole file stays draft. The official goldenresidency.gov.bh FAQ portal was robots-blocked in every fetch attempt in this build -- re-attempting that fetch, or NPRA's own general Golden Residency landing page (as opposed to just the talented-individuals sub-page), is the top priority for upgrading this file. IMPORTANT CORRECTION: the property threshold was CUT from BHD 200,000 to BHD 130,000 on 26 November 2025, a 35% reduction -- do not use the older, more commonly-cited BHD 200,000 figure. STRUCTURAL CLARIFICATION: NPRA frames this as genuine PERMANENT residency, renewed every 10 years for a BHD 300 fee, not a flat 10-year temporary visa as it is frequently described in secondary coverage. This route does NOT lead to citizenship -- Golden Residency and Bahraini naturalisation are entirely separate systems (naturalisation remains governed by years-of-ordinary-residence and Royal discretion, see bh_citizenship_naturalisation.json), and holding Golden Residency does not appear to shorten the naturalisation clock based on sources found."
+}

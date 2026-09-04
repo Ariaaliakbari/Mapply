@@ -1,0 +1,96 @@
+{
+  "id": "az_naturalisation",
+  "country": "AZ",
+  "name": "Citizenship by Naturalisation (Admission)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "azn_residence",
+          "attribute": "months_permanent_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Has lived permanently in Azerbaijan for the last 5 years on a legal basis (Article 14).",
+          "fix_path": "Accumulate 5 years of continuous legal permanent residence in Azerbaijan.",
+          "fix_time_months": 60,
+          "source_id": "natlex_az_citizenship_law"
+        },
+        {
+          "id": "azn_language",
+          "attribute": "has_state_language_knowledge_document",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must submit a document certifying knowledge of the Azerbaijani state language.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_az_citizenship_law"
+        },
+        {
+          "id": "azn_conduct",
+          "attribute": "no_disqualifying_conduct",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must not have called for forcible change of the state structure, caused damage to state security or public order, propagandized racial/religious/national discrimination, or have ties to terrorist activity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_az_citizenship_law"
+        },
+        {
+          "id": "azn_fee",
+          "attribute": "has_paid_official_fee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An official fee, in an amount set by legislation, must be paid.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_az_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' legal permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Azerbaijani state-language knowledge document", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Official fee payment receipt", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "natlex_az_citizenship_law",
+      "tier": 1,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/64865/AZE-64865.pdf",
+      "title": "NATLEX (ILO) -- Law of the Republic of Azerbaijan on Citizenship, consolidated as of Law No. 70-VIQD, 1 May 2020: Article 14 (naturalisation: 5 years' legal permanent residence, state-language knowledge, conduct bars, official fee) and Article 10 (dual citizenship of a foreign state not recognized, except as decided under constitutional provisions)",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). Source consolidation date is 1 May 2020 -- no explicit renunciation-of-prior-citizenship requirement is stated in Article 14 itself, but Article 10 separately means a dual citizenship is simply 'not recognized' by Azerbaijan for its own legal purposes (the person is treated solely as an Azerbaijani citizen) rather than the applicant being forced to formally renounce the other nationality -- modeled dual_citizenship_allowed as FALSE to reflect that Azerbaijan does not recognize/permit it in the ordinary case, distinct from Armenia's explicit Article 13.1 dual-citizenship recognition built earlier in this dataset. A tier-3 source (norma.az) mentioned unspecified 'recent amendments' making citizenship easier for people with Azerbaijani heritage or family ties, and a reduced timeline for spouses -- neither could be corroborated against this consolidated primary text (dated 2020) or any other tier-1 source in this pass, so NEITHER is modeled here; this is flagged as a live gap for a future pass to verify against a more current primary source, rather than guessed at. No marriage-based citizenship route exists under Article 7 (see az_family_reunification.json's notes) and no Armenian-style diaspora/ethnic-origin citizenship law was found for Azerbaijan despite searching."
+}

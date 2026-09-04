@@ -1,0 +1,87 @@
+{
+  "id": "fj_citizenship_naturalisation",
+  "country": "FJ",
+  "name": "Fiji Citizenship by Naturalisation (Citizenship of Fiji Act 2009, as amended by the Citizenship of Fiji (Amendment) Act 2026)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": "2035-01-01",
+    "cap_type": "none",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "transitional_to_2035",
+      "name": "Transitional rule (until 1 January 2035)",
+      "requirements": [
+        {
+          "id": "fjcn_8of10_residence",
+          "attribute": "months_lawfully_present_8_of_preceding_10_years",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lawfully present in Fiji for 8 of the preceding 10 years; good character; intent to continue residing in Fiji; adequate English and civic knowledge. The Minister must grant if conditions are met and must refuse if not -- a mandatory, non-discretionary decision once eligibility is established.",
+          "fix_path": "Accumulate 8 years of lawful presence within a 10-year window.",
+          "fix_time_months": 96,
+          "source_id": "citizenship_amendment_act_2026"
+        }
+      ]
+    },
+    {
+      "id": "standard_from_2035",
+      "name": "Standard rule (from 1 January 2035)",
+      "requirements": [
+        {
+          "id": "fjcn_8of10_residence_2035",
+          "attribute": "months_lawfully_present_8_of_preceding_10_years",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Same 8-of-10-year lawful presence, good character, English/civic knowledge test, PLUS -- from 1 January 2035 onward -- must hold a valid Permanent Residence Permit at time of application, formally tying naturalisation to the PR system.",
+          "fix_path": "Accumulate 8 years of lawful presence within a 10-year window and hold a valid PR permit.",
+          "fix_time_months": 96,
+          "source_id": "citizenship_amendment_act_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of lawful presence 8 of the preceding 10 years", "difficulty": "hard", "typical_time_days": null },
+    { "document": "English language and civic knowledge test", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Good character evidence / police clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid Permanent Residence Permit (required only from 1 January 2035)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenship_amendment_act_2026",
+      "tier": 1,
+      "url": "https://www.parliament.gov.fj/wp-content/uploads/2026/06/Act-10-Citizenship-of-Fiji-Amendment-Act-2026.pdf",
+      "title": "Parliament of Fiji -- Citizenship of Fiji (Amendment) Act 2026 (Act No. 10 of 2026): introduces a transitional naturalisation regime running to 1 January 2035 (8 of preceding 10 years lawful presence, good character, English/civic knowledge, mandatory grant/refusal), after which a valid Permanent Residence Permit becomes an additional precondition; also waives the naturalisation application fee for 5 years for members of the Banaban community",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "sponsorship_duration_months": null,
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: PUBLISHED -- tier-1 sourced directly to the Act's own text on parliament.gov.fj, passed just months before this build (June 2026). MARQUEE FINDING: Fiji's naturalisation regime is mid-transition -- the 8-of-10-year rule modeled here governs until 1 January 2035, at which point holding a valid PR permit becomes an ADDITIONAL mandatory precondition (this file's two requirement_groups capture both the transitional and post-2035 states, which happen to share the same residence test but differ on the PR-permit requirement). This supersedes the PRIOR 2020 Amendment Act rule (10 of the preceding 15 years, PR permit required throughout, application lodged 3+ months before PR permit expiry) -- do not use the 2020 figures, they are no longer current. DISTINCTIVE FINDING: the 2026 Act also waives the naturalisation application fee for 5 years specifically for the Banaban community -- Pacific Islanders resettled on Rabi Island, Fiji, after WWII-era phosphate-mining displacement from Ocean Island/Banaba (Kiribati) -- a historical environmental-displacement population given a targeted, time-bounded fee concession; disclosed here as context, not modeled as a separate route since it's a fee waiver, not a distinct eligibility path."
+}

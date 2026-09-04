@@ -1,0 +1,82 @@
+{
+  "id": "lv_citizenship_by_descent",
+  "country": "LV",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child acquires Latvian citizenship automatically if both parents, or one parent, are Latvian citizens at the time of birth (Citizenship Law, Article 2, Section 1(2), subject to Article 9's conditions). A child born after 21 August 1991 to stateless or non-citizen parents may also acquire citizenship if a parent holds permanent residence in Latvia (Article 3.1).",
+    "evidence_hint": "Birth certificate; proof of parent(s)' Latvian citizenship or permanent residence status."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "parent_citizen",
+      "name": "One or both parents are Latvian citizens",
+      "requirements": [
+        {
+          "id": "lvcd_parent_citizen",
+          "attribute": "has_latvian_citizen_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent is a Latvian citizen at the time of the child's birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "likumi_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "post1991_stateless_or_noncitizen_parent",
+      "name": "Born after 21 August 1991 to a stateless/non-citizen parent with permanent residence",
+      "requirements": [
+        {
+          "id": "lvcd_post1991",
+          "attribute": "born_after_1991_08_21_to_permanent_resident_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born after 21 August 1991 to a stateless or non-citizen parent who holds permanent residence in Latvia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "likumi_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent(s)' Latvian citizenship or permanent-resident/non-citizen status", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "likumi_citizenship_law",
+      "tier": 1,
+      "url": "https://likumi.lv/doc.php?id=57512",
+      "title": "likumi.lv (Latvia's official legal database) -- Citizenship Law, Article 2 Section 1(2): citizenship by birth to a Latvian-citizen parent; Article 3.1: citizenship for children born after 21 August 1991 to a stateless/non-citizen parent with permanent residence in Latvia",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). Article 3.1's post-1991 provision is a direct legacy of Latvia's specific post-Soviet citizenship history: it addresses children of the country's large 'non-citizen' (nepilsoni) population -- Soviet-era settlers and their descendants who were not automatically granted citizenship upon independence -- giving THEIR children a route to citizenship where the parent holds permanent residence, distinct from ordinary descent-from-a-citizen. This is a narrower, more historically specific descent framework than Peru's third-generation window or Lithuania's simplified-descent route; no broader 'Latvian-origin diaspora' citizenship-by-option route for adult descendants was found in this pass."
+}

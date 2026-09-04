@@ -1,0 +1,75 @@
+{
+  "id": "pk_citizenship_by_marriage",
+  "country": "PK",
+  "name": "Citizenship by Registration for Foreign Wives of Pakistani Men",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pkcm_foreign_woman_married_to_pakistani_man",
+          "attribute": "is_foreign_woman_married_to_pakistani_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be a foreign woman married to a Pakistani national man. Section 10(2) as drafted does not extend the same automatic route to a foreign man married to a Pakistani woman.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_citizenship"
+        },
+        {
+          "id": "pkcm_5yr_aggregate_residence",
+          "attribute": "months_resident_aggregate",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Aggregate residence in Pakistan of 5 years.",
+          "fix_path": "Accumulate 5 years' aggregate residence in Pakistan.",
+          "fix_time_months": 60,
+          "source_id": "dgip_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Affidavits from applicant and husband", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport photocopies and residential permit documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Form 'F' (quadruplicate)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 years' aggregate residence in Pakistan",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dgip_citizenship",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/immigration/citizenship.php",
+      "title": "Directorate General of Immigration & Passports, Government of Pakistan -- Grant of Pakistan Citizenship: Section 10(2) of the Pakistan Citizenship Act 1951, foreign women married to Pakistani nationals may register as citizens on demonstrating aggregate residence in Pakistan of 5 years; requires marriage certificate, affidavits from applicant and husband, passport photocopies, residential permit documentation; Form 'F' in quadruplicate",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published on tier-1 sourcing (the government's own citizenship page states the requirement in gendered terms: 'foreign ladies married to Pakistani nationals'). MARQUEE GENDERED FINDING, CONSISTENT WITH A PATTERN SEEN REPEATEDLY IN THIS DATASET (Qatar, Bahrain, Nigeria, Sudan): Section 10(2) as drafted and as described on the government's own site applies only to foreign WOMEN married to Pakistani MEN. On 5 March 2024 the Sindh High Court ruled that restricting Section 10(2)'s benefit to Pakistani men's foreign wives is 'clear discrimination' against Pakistani women, and held that foreign husbands of Pakistani women have the right to PURSUE citizenship -- but per legal commentary (lawyer Salauddin Ahmed, quoted in reporting on the ruling), the ruling did not amend the statute itself; it opened a path for individual court challenges rather than granting automatic eligibility. As of this build, a foreign woman married to a Pakistani man can register under Section 10(2) directly through DGI&P with no court involvement, while a foreign man married to a Pakistani woman must separately petition a court for the same result -- a live, currently-litigated asymmetry rather than a settled one. dual_citizenship_allowed FALSE except for the 22 dual-nationality-treaty countries disclosed in pk_citizenship_naturalisation.json's notes, which apply equally to this route since it is also a Section 9/Rules-governed registration process."
+}

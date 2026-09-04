@@ -1,0 +1,65 @@
+{
+  "id": "ng_family_reunification",
+  "country": "NG",
+  "name": "Spouse of Nigerian Citizen Visa (N1A)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngfr_married_to_citizen",
+          "attribute": "married_to_nigerian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a Nigerian citizen -- gender-neutral on NIS's own page, applies uniformly regardless of the foreign spouse's sex.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n1a"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Attested marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Nigerian citizen sponsor's valid ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence of stable residence in Nigeria (utility bill/lease)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "90-day initial visa, then 4-year multiple-entry residence permit",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "evidence of stable residence in Nigeria",
+    "switchable_to": ["ng_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "nis_n1a",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/spouse-of-nigerian-citizen-visa-n1a/",
+      "title": "Nigeria Immigration Service (NIS) -- Spouse of Nigerian Citizen Visa N1A: gender-neutral language throughout, requires attested marriage certificate, sponsor ID, stable-residence evidence, police clearance; 90-day initial visa then 4-year multiple-entry residence permit; no employment; residence-only",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- tier-1 NIS sourced. POSITIVE FINDING, FLAGGED EXPLICITLY: this residence-visa route is gender-neutral -- NIS's own page uses uniform terminology with no distinction between a foreign husband or foreign wife of a Nigerian citizen. This stands in sharp contrast to ng_citizenship_by_marriage.json (the CITIZENSHIP-via-marriage route under Section 26 of the Constitution), which is restricted to women only -- a foreign husband of a Nigerian wife can get this residence visa but has NO equivalent constitutional path to citizenship through marriage. Work_rights is 'none' per NIS's own explicit 'No employment... to reside in Nigeria only' language, notably more restrictive than several other countries' spousal routes in this dataset. 'No employment' as stated conflicts somewhat with citizenship-by-marriage requiring only marriage + presidential satisfaction (no explicit residence-duration figure found), hence citizenship_after_months set to 0 here (reflecting no separate waiting period beyond the marriage-based registration process itself) rather than a specific sourced figure."
+}

@@ -1,0 +1,103 @@
+{
+  "id": "lt_citizenship_restoration",
+  "country": "LT",
+  "name": "Citizenship Restoration (After Loss)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who previously acquired Lithuanian citizenship by naturalisation and subsequently lost it may have it restored once, under Article 21 of the Law on Citizenship.",
+    "evidence_hint": "Proof of former Lithuanian citizenship and its loss."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": ["lt_naturalisation"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Former naturalised citizen who lost Lithuanian citizenship",
+      "requirements": [
+        {
+          "id": "ltcrest_former_naturalised",
+          "attribute": "is_former_naturalised_lithuanian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be a person who previously acquired Lithuanian citizenship by naturalisation and subsequently lost it, under Article 21 of the Law on Citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        },
+        {
+          "id": "ltcrest_residence",
+          "attribute": "months_legal_permanent_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of legal permanent residence in Lithuania.",
+          "fix_path": "Accumulate 5 years of legal permanent residence in Lithuania.",
+          "fix_time_months": 60,
+          "source_id": "eseimas_citizenship_law_toc"
+        },
+        {
+          "id": "ltcrest_means",
+          "attribute": "has_legal_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must possess legal means of subsistence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        },
+        {
+          "id": "ltcrest_one_time_only",
+          "attribute": "has_previously_restored_via_this_route",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Citizenship can be restored under this route only once.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of former Lithuanian citizenship and its loss", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 5 years' legal permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of legal means of subsistence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "eseimas_citizenship_law_toc",
+      "tier": 1,
+      "url": "https://e-seimas.lrs.lt/rs/legalact/TAD/TAIS.395555/",
+      "title": "e-Seimas (Lithuania's official legislative database) -- Law on Citizenship, Article 21 (restoration of citizenship)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- Article 21's title/existence confirmed against the e-Seimas table of contents; full text not independently re-quoted, the 5-year residence and means-of-subsistence figures modeled by analogy to lt_naturalisation.json's standard conditions rather than confirmed for this specific article -- flagged as an assumption, not a verified figure. dual_citizenship_allowed set false as this route is distinct from lt_citizenship_reinstatement_pre1940.json (which is available only to descendants of pre-1940 citizens, not to any former naturalised citizen) -- no basis was found to assume Article 7's exceptions extend to this general restoration case."
+}

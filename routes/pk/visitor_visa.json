@@ -1,0 +1,87 @@
+{
+  "id": "pk_visitor_visa",
+  "country": "PK",
+  "name": "Tourist/Visit Visa and Business Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tourist",
+      "name": "Tourist/Visit visa",
+      "requirements": [
+        {
+          "id": "pkvv_eligible_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["List-A e-Visa/Visa-in-Your-Inbox eligible countries"],
+          "hard": true,
+          "blocker_text": "Nationality must be on Pakistan's e-Visa/Visa-in-Your-Inbox eligible list (175 countries) or Visa-on-Arrival list (50 countries) to use the streamlined process; other nationalities apply through a Pakistani mission.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_categories"
+        }
+      ]
+    },
+    {
+      "id": "business_visit",
+      "name": "Business visa (short-term, no work rights)",
+      "requirements": [
+        {
+          "id": "pkvv_business_friendly_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["96 Business-Friendly List countries"],
+          "hard": true,
+          "blocker_text": "Nationality must be on Pakistan's 96-country Business-Friendly List to receive a 5-year multiple-entry business visa within 24 hours; Visa-on-Arrival (30 days) is available for a wider group of business travelers.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "interior_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation / invitation letter (where applicable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Business invitation letter via NADRA e-Business Invitation Letter (EBIL) system (business track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Tourist: 3 months, extendable to 6 months total, double entry. Business: up to 5 years multiple entry (stay per entry not specified in sources located).",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dgip_categories",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/visa/categories.php",
+      "title": "Directorate General of Immigration & Passports (Ministry of Interior) -- Visa Categories: Tourist/Visit Visa (List-A countries, 3 months double entry, RPO-extendable to 6 months total); Visa in Your Inbox (e-Visa, 175 countries, online pre-arrival authorization); Visa on Arrival (50 countries, 30 days)",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "interior_categories",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/visa/",
+      "title": "DGI&P -- Visa extension guidelines: Business Visa extension up to 6 months with double re-entries inclusive of initial period, for business owners and their family members; multiple business visa for 5 years granted within 24 hours to 96 Business-Friendly List nationals",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Both tracks published on tier-1 government sourcing (DGI&P, part of the Ministry of Interior). The exact per-entry stay length for the 5-year business visa was not specified in the sources retrieved -- flagged as an open gap, not fabricated. A separate e-Business Invitation Letter (EBIL) system (ebil.nadra.gov.pk) exists for inviting foreign business visitors but its detailed criteria were not independently retrieved in this build. Pakistan's NADRA e-Visa portal (visa.nadra.gov.pk), which appears to be the primary applicant-facing system for most categories, returned 403 errors on every fetch attempt in this build -- this file relies on the Ministry of Interior/DGI&P policy pages instead, which describe the same categories at the policy level."
+}

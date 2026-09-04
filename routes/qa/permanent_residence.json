@@ -1,0 +1,110 @@
+{
+  "id": "qa_permanent_residence",
+  "country": "QA",
+  "name": "Permanent Residence Permit (Law No. 10 of 2018)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": null,
+    "cap_type": "fixed_number",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_born_abroad",
+      "name": "Standard route -- born outside Qatar",
+      "requirements": [
+        {
+          "id": "qapr_20yr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 240,
+          "hard": true,
+          "blocker_text": "20 years' continuous legal residence in Qatar, plus financial self-sufficiency, a clean criminal record (in and outside Qatar), and adequate Arabic proficiency.",
+          "fix_path": "Accumulate 20 years of continuous legal residence.",
+          "fix_time_months": 240,
+          "source_id": "glmm_law10_2018"
+        }
+      ]
+    },
+    {
+      "id": "standard_born_in_qatar",
+      "name": "Standard route -- born in Qatar",
+      "requirements": [
+        {
+          "id": "qapr_10yr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 years' continuous legal residence for a person born in Qatar, plus financial self-sufficiency, a clean criminal record, and adequate Arabic proficiency.",
+          "fix_path": "Accumulate 10 years of continuous legal residence.",
+          "fix_time_months": 120,
+          "source_id": "glmm_law10_2018"
+        }
+      ]
+    },
+    {
+      "id": "exempt_category",
+      "name": "Exempt categories (Article 2) -- bypass standard residence requirement",
+      "requirements": [
+        {
+          "id": "qapr_exempt_category",
+          "attribute": "belongs_to_pr_exempt_category",
+          "operator": "in",
+          "value": [
+            "child_of_qatari_woman",
+            "non_qatari_husband_of_qatari_woman",
+            "non_qatari_wife_of_qatari_man",
+            "child_of_naturalized_qatari",
+            "special_national_service",
+            "exceptional_competencies"
+          ],
+          "hard": true,
+          "blocker_text": "Falls into one of six exempt categories: child of a Qatari woman married to a non-Qatari; non-Qatari husband of a Qatari woman; non-Qatari wife of a Qatari man; child of a naturalized Qatari citizen; person rendering special national service; or holder of specialized skills/'exceptional competencies' Qatar needs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "glmm_law10_2018"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 20 (or 10) years' continuous legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of financial self-sufficiency", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record (Qatar and abroad)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Arabic proficiency evidence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "glmm_law10_2018",
+      "tier": 2,
+      "url": "https://gulfmigration.grc.net/qatar-law-no-10-of-2018-regarding-permanent-residence/",
+      "title": "Gulf Labour Markets, Migration and Population (GLMM) Programme -- Qatar Law No. 10 of 2018 regarding Permanent Residence: Article 1 (20yr/10yr residence + self-sufficiency + clean record + Arabic proficiency), Article 2 (six exempt categories), annual quota of 100 permits/year, benefits (healthcare, education access, spouse/children under 18 covered, extendable to age 25 for university-enrolled sons)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- sourced to GLMM (an ILO-affiliated academic Gulf-migration research consortium that reproduces the primary law text with article citations), tier-2, not a direct government page. MOI's own Permanent Residency portal (tier-1, portal.moi.gov.qa/.../permanentresidency) was unreachable in this build (404/proxy error) -- re-attempting that fetch is the top priority before this file can be published. DISTINCTIVE STRUCTURAL FEATURE, PROMINENTLY FLAGGED: an ANNUAL QUOTA OF ONLY 100 PERMANENT RESIDENCE PERMITS may be granted per year across ALL categories combined -- confirmed in the law's own text, not just secondary reporting. This makes PR, not just citizenship, a scarce, capped status in Qatar. application_window.cap_type is set to 'fixed_number' to reflect this quota; no numeric selection_odds could be computed since the applicant pool size isn't published. pr_after_months is 0 for this file's own outcome (it IS the PR grant) but is referenced as 240 by qa_work_permit.json's outcome as a rough alignment point, not as a formal prerequisite route -- Qatar's system does not require holding a specific prior route id for the standard track, only years of residence however accrued."
+}

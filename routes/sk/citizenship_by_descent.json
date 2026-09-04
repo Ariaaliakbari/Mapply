@@ -1,0 +1,82 @@
+{
+  "id": "sk_citizenship_by_descent",
+  "country": "SK",
+  "name": "Citizenship by Birth to a Slovak Citizen Parent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child acquires Slovak citizenship at birth if at least one parent is a Slovak citizen. A child born in Slovakia to stateless or foreign parents who have not acquired another nationality also acquires Slovak citizenship, as does a child found in Slovakia whose parents remain unknown.",
+    "evidence_hint": "Birth certificate; proof of at least one parent's Slovak citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skcd_parent_slovak",
+          "attribute": "has_slovak_citizen_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent was a Slovak citizen at the time of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "stateless_prevention",
+      "name": "Born in Slovakia, statelessness prevention",
+      "requirements": [
+        {
+          "id": "skcd_stateless_prevention",
+          "attribute": "born_in_sk_to_stateless_or_foreign_parents_without_other_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Slovakia to stateless or foreign parents who have not acquired another nationality for the child, or born in Slovakia with parents unknown.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's Slovak citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mzv_citizenship",
+      "tier": 1,
+      "url": "https://www.mzv.sk/en/web/washington/sluzby/konzularne-sluzby/statne-obcianstvo/nadobudnutie-statneho-obcianstva",
+      "title": "Ministry of Foreign and European Affairs of the Slovak Republic (Washington consular page) -- citizenship by birth: at least one Slovak citizen parent, or born in Slovakia to stateless/foreign parents without another acquired nationality, or found in Slovakia with parents unknown",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- same tier-1-consular-summary caveat as this build's other citizenship files. This covers ORDINARY descent (a parent who is CURRENTLY a Slovak citizen) and is DISTINCT from sk_citizenship_by_descent_czechoslovak.json, which covers the much broader and more consequential route for descendants of FORMER Czechoslovak citizens going back up to three generations -- the two mechanisms should not be conflated."
+}

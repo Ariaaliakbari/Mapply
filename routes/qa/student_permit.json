@@ -1,0 +1,75 @@
+{
+  "id": "qa_student_permit",
+  "country": "QA",
+  "name": "Student Residence Permit (university-sponsored)",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "qasp_university_sponsorship",
+          "attribute": "has_university_sponsorship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Admission to and sponsorship by a Qatar-based university -- students cannot self-sponsor a residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "qu_student_visa"
+        },
+        {
+          "id": "qasp_financial_guarantee",
+          "attribute": "has_financial_guarantee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "QAR 20,000 bank guarantee (if a sponsor resides in Qatar) or 6 months of bank statements (if the sponsor is abroad), plus health check and police clearance.",
+          "fix_path": "Provide the required bank guarantee or bank statements.",
+          "fix_time_months": null,
+          "source_id": "qu_student_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "QAR 20,000 bank guarantee or 6 months bank statements", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health check", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to program length: 5 years (undergraduate/PhD), 3 years (Master's), 1 year (Arabic-for-non-native-speakers track)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["qa_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "qu_student_visa",
+      "tier": 2,
+      "url": "https://www.qu.edu.qa/en-us/students/international-students/students-visa/Pages/prospective-students.aspx",
+      "title": "Qatar University -- prospective-student visa process: university sponsorship, QAR 20,000 bank guarantee or 6-months bank statements, health check, police clearance, permit validity tied to program length",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- sourced only to Qatar University (a public university, tier-2/quasi-government), not MOI directly; no tier-1 confirmation obtained in this pass for the general (non-university-specific) student-permit rules. work_rights set to 'none' and family_can_join/family_can_work set to false as a CONSERVATIVE DEFAULT -- the source does not actually confirm or deny student work rights or dependent-sponsorship policy; this is an explicit gap, not a sourced fact, and should be the first thing re-verified before this file is published."
+}

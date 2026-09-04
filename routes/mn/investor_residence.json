@@ -1,0 +1,98 @@
+{
+  "id": "mn_investor_residence",
+  "country": "MN",
+  "name": "Investor Residence Permit (B Category)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "b1_investor_shareholder",
+      "name": "B1 -- investor/shareholder of a foreign-invested company",
+      "requirements": [
+        {
+          "id": "mnir_b1_investor",
+          "attribute": "is_investor_or_shareholder_of_foreign_invested_company",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Is an investor or shareholder of a foreign-invested company registered in Mongolia.",
+          "fix_path": "Register or invest in a foreign-invested Mongolian company.",
+          "fix_time_months": null,
+          "source_id": "investmongolia_visa_info"
+        }
+      ]
+    },
+    {
+      "id": "b2_representative_executive",
+      "name": "B2 -- representative/executive managing a foreign-invested entity",
+      "requirements": [
+        {
+          "id": "mnir_b2_executive",
+          "attribute": "is_representative_or_executive_of_foreign_invested_entity",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Is a representative or executive managing a foreign-invested entity in Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "investmongolia_visa_info"
+        }
+      ]
+    },
+    {
+      "id": "b3_representative_office",
+      "name": "B3 -- head of a representative office of a foreign organization",
+      "requirements": [
+        {
+          "id": "mnir_b3_repoffice",
+          "attribute": "oversees_representative_office_of_foreign_organization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Oversees a representative office of a foreign organization in Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "investmongolia_visa_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company registration certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Investment confirmation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Tax office reference", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of office lease", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year initially, extendable up to 3 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "must obtain a residence permit within 21 days of arrival if staying beyond 90 days",
+    "switchable_to": ["mn_permanent_residence", "mn_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "investmongolia_visa_info",
+      "tier": 1,
+      "url": "https://investmongolia.gov.mn/visa-information/",
+      "title": "Invest Mongolia Agency (Government of Mongolia) -- investor visa categories B1 (investor/shareholder), B2 (representative/executive), B3 (representative-office head); residence permit required within 21 days for stays over 90 days; permit up to 1 year, extendable to 3 years",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: PUBLISHED -- fully tier-1 sourced to Invest Mongolia Agency, a Government of Mongolia body. NO MINIMUM INVESTMENT THRESHOLD FIGURE was disclosed by the source for any of the three sub-categories -- this is disclosed as a genuine gap rather than estimated or invented, consistent with this dataset's practice elsewhere (compare Botswana's and Chad's investor routes, which had the same gap). This route does NOT lead to a distinct fast-track citizenship-by-investment status -- no citizenship-by-investment program was found for Mongolia in this pass, and none is modeled. pr_after_months/citizenship_after_months are inferred the same way as mn_work_permit.json, from the G/immigrant category's 3-year threshold plus naturalisation's 5-year-on-permanent-residence requirement, not independently confirmed for investor-permit holders."
+}

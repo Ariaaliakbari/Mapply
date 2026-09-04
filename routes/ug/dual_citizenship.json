@@ -1,0 +1,77 @@
+{
+  "id": "ug_dual_citizenship",
+  "country": "UG",
+  "name": "Dual Citizenship Registration",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ugdc_age18",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "18 years or older.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_washington_citizenship"
+        },
+        {
+          "id": "ugdc_reciprocal_country",
+          "attribute": "second_country_permits_dual_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Either already a Ugandan citizen acquiring another country's citizenship, or already a citizen of a dual-citizenship-permitting country acquiring Ugandan citizenship -- the second country must itself permit dual citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_washington_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized application form", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Letter of good conduct", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of dual-citizenship permission from the second country", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical/sanity report", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "English or Swahili language proficiency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residency documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mofa_washington_citizenship",
+      "tier": 1,
+      "url": "https://washington.mofa.go.ug/consular/citizenship-dual-citizenship",
+      "title": "Ministry of Foreign Affairs, Uganda (Embassy of Uganda, Washington DC) -- Citizenship & Dual Citizenship: Uganda permits dual citizenship (holding Ugandan citizenship simultaneously with one other country's), established by the Uganda Citizenship and Immigration Control (Amendment) Act 2009; applicants must be 18+, submit notarized forms, a good-conduct letter, proof of the second country's dual-citizenship permission, a medical/sanity report, English/Swahili proficiency evidence, and residency documentation; a THIRD citizenship disqualifies unless renounced; dual citizens are barred from specified high offices (President, Vice President, Prime Minister, Cabinet Ministers, military/police/security-organization technical heads)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- tier-1 official diplomatic mission sourced. This is the distinct administrative registration process underlying the dual_citizenship_allowed=TRUE finding applied across ug_citizenship_by_marriage.json, ug_citizenship_by_residence.json, and ug_citizenship_by_descent.json -- Uganda's dual-citizenship framework is RECIPROCAL, not unilateral: it only works if the second country ALSO permits dual citizenship, meaning a Ugandan-origin person from a country with a strict single-citizenship rule cannot use this mechanism regardless of their own wishes. The mandatory 'medical/sanity report' requirement is an unusual, specific documentary requirement not seen in other countries' equivalent processes in this dataset -- flagged rather than omitted. The high-office disqualification list is a genuine structural constraint worth noting for anyone modeling this route for someone with political ambitions in Uganda."
+}

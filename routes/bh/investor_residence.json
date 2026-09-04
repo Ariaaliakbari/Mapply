@@ -1,0 +1,74 @@
+{
+  "id": "bh_investor_residence",
+  "country": "BH",
+  "name": "Self-Sponsorship Residence Permit and Return Visa (Foreign Investor)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bhir_shareholding",
+          "attribute": "bahrain_business_shareholding_amount",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Minimum BHD 100,000 shareholding in a Bahrain-registered enterprise, linked to a valid Commercial Registration (CR).",
+          "fix_path": "Register or acquire a qualifying shareholding.",
+          "fix_time_months": null,
+          "source_id": "npra_investor_self_sponsorship"
+        },
+        {
+          "id": "bhir_income",
+          "attribute": "monthly_income_bhd",
+          "operator": ">=",
+          "value": 500,
+          "hard": true,
+          "blocker_text": "Stable income of at least BHD 500/month; valid CR, medical insurance, and a good-conduct certificate also required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "npra_investor_self_sponsorship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Commercial Registration (CR) and shareholding documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical insurance", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Good-conduct certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2, 5, or 10 years (applicant-selected term)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bh_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "npra_investor_self_sponsorship",
+      "tier": 1,
+      "url": "https://www.npra.gov.bh/en/services/visas-residence-permit/residence-permits-services/rps/self-sponsorship-residence-permit-and-return-visa-foreign-investor-/",
+      "title": "Nationality, Passports and Residence Affairs (NPRA), Bahrain -- Self-Sponsorship Residence Permit and Return Visa (Foreign Investor): minimum BHD 100,000 shareholding, stable income >= BHD 500/month, valid CR, medical insurance, good-conduct certificate; fees BHD 200 (2yr)/400 (5yr)/600 (10yr) + BHD 5 application + BHD 250 visa-transfer fee; 40 working-day processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: PUBLISHED -- tier-1 NPRA sourced. This is distinct from bh_permanent_residence.json (Golden Residency), which has its own, separate and lower property-investment threshold (BHD 130,000 in real estate, not business shareholding) -- the two should not be conflated even though both ultimately grant long-duration residence. pr_after_months (60) and citizenship_after_months (180) are cross-referenced from adjacent files, not independently sourced here."
+}

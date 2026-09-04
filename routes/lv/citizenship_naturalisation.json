@@ -1,0 +1,101 @@
+{
+  "id": "lv_citizenship_naturalisation",
+  "country": "LV",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["lv_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lvcn_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "No fewer than 5 years of legal residence in Latvia (Citizenship Law, Article 12, Section 1), with at most one break not exceeding one year and none in the final year before applying.",
+          "fix_path": "Accumulate 5 years of legal residence in Latvia.",
+          "fix_time_months": 60,
+          "source_id": "likumi_citizenship_law"
+        },
+        {
+          "id": "lvcn_language",
+          "attribute": "has_latvian_language_proficiency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Demonstrated Latvian language proficiency per Article 20 of the Citizenship Law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "likumi_citizenship_law"
+        },
+        {
+          "id": "lvcn_constitution_history",
+          "attribute": "knows_constitution_basics_anthem_and_history",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Knowledge of the basic provisions of the Satversme (Constitution), the state anthem, and the basics of Latvian history and culture.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "likumi_citizenship_law"
+        },
+        {
+          "id": "lvcn_means",
+          "attribute": "has_legal_source_of_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A legal source of income (legāls iztikas avots).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "likumi_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' legal residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Latvian language exam pass", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Constitution/history/anthem exam pass", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legal income source", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "likumi_citizenship_law",
+      "tier": 1,
+      "url": "https://likumi.lv/doc.php?id=57512",
+      "title": "likumi.lv (Latvia's official legal database, published by Latvijas Vestnesis, the state gazette) -- Citizenship Law (Pilsonibas likums), Article 12 Section 1: 5-year residence, Latvian language proficiency (Article 20), Constitution/anthem/history knowledge, legal income source; Article 9 Section 1: dual citizenship permitted only for citizens acquiring EU/EEA, NATO, Australian, Brazilian, or New Zealand citizenship, or citizenship of a state with a bilateral dual-citizenship treaty",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). dual_citizenship_allowed is set FALSE here as the general default for naturalised citizens under Article 12, since Article 9's exceptions are narrow and country-specific (EU/EEA, NATO, Australia, Brazil, New Zealand, or bilateral-treaty states only) rather than a blanket allowance -- an applicant from one of those specific countries or groupings WOULD retain dual citizenship, but this is not modeled as a universal true/false flag without conflating 'sometimes, for specific nationalities' with 'generally allowed.' Latvia does NOT grant citizenship automatically through marriage: Article 5 explicitly states marriage 'neither grants nor removes' Latvian citizenship for either party -- a genuine structural absence, disclosed here rather than a fabricated marriage-based route, consistent with this dataset's convention (see Azerbaijan and Vietnam). Latvia also has a unique, closed historical category of 'non-citizens' (nepilsoni) -- mostly Soviet-era settlers and their descendants who hold neither Latvian citizenship nor foreign citizenship -- but this status has not been open to new registrants for decades and is not a route a current migrant can access, so it is not modeled as a file here."
+}

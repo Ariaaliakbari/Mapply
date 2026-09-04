@@ -1,0 +1,83 @@
+{
+  "id": "td_investor_residence",
+  "country": "TD",
+  "name": "Business/Investor Entry (via ANIE Guichet Unique)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign investor establishing a business in Chad registers through ANIE (Agence Nationale des Investissements et des Exportations)'s 'Guichet Unique' (single window) business-creation service, and enters/resides using the business category of the visa de séjour.",
+    "evidence_hint": "Business registration through ANIE's Guichet Unique; company letter/registration documents."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdir_business_registration",
+          "attribute": "has_registered_business_via_anie",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Business registered through ANIE's Guichet Unique (single-window business creation service).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "anie_td"
+        },
+        {
+          "id": "tdir_company_letter",
+          "attribute": "has_company_supporting_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Company letter supporting the business-category visa de séjour application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "ANIE business registration documents", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Company letter", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 month (single entry) or 3 months (multiple entries) at entry, per the underlying visa de séjour; longer-term residence terms for investors not confirmed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["td_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "anie_td",
+      "tier": 1,
+      "url": "https://anie.td/investir-au-tchad/espace-business/mesures-incitatives/",
+      "title": "ANIE (Agence Nationale des Investissements et des Exportations, Chad's government investment promotion agency) -- Guichet Unique single-window business-creation service confirmed to exist; the fetched page did not return substantive content on investment thresholds or incentive terms in this pass",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "embassy_chad_paris_visa",
+      "tier": 1,
+      "url": "https://ambatchadparis.fr/wp-content/uploads/2023/09/visa2019.pdf",
+      "title": "Embassy of Chad in Paris (official Chadian diplomatic mission) -- visa information sheet: business category of the 'visa de séjour' requires a company letter",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- WEAK FILE, flagged prominently. ANIE (anie.td) is confirmed as Chad's real government investment-promotion agency with a genuine business-registration single-window service, but the fetched incentives page returned only site metadata, not substantive content (likely a JavaScript-rendered page not captured by the fetch), and no investment threshold, incentive terms, or investor-specific residence duration was found anywhere in this pass. Unlike Jordan's or Latvia's investor-residence files, NO investment amount is stated here at all -- this file exists to record that a real business/investor entry pathway exists (ANIE + business-category visa de séjour) without inventing figures for it. A dedicated investor RESIDENCE status distinct from the general renewable visa de séjour was not confirmed to exist."
+}

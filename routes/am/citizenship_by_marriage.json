@@ -1,0 +1,84 @@
+{
+  "id": "am_citizenship_by_marriage",
+  "country": "AM",
+  "name": "Citizenship by Marriage (Exempt from Standard Naturalisation Requirements)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amcm_marriage",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "spouse_of_am_citizen",
+          "hard": true,
+          "blocker_text": "Married to a citizen of the Republic of Armenia -- exempts the applicant from am_naturalisation.json's standard 3-year permanent-residence and Armenian-language requirements, but an application is still required (marriage alone does not automatically confer citizenship).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amcm_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must have attained the age of 18 and have active legal capacity.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amcm_security",
+          "attribute": "does_not_harm_state_security",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "May be rejected if the applicant's activities harm state security and public safety.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Armenian citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "arlis_citizenship_law",
+      "tier": 1,
+      "url": "https://www.arlis.am/en/acts/219000",
+      "title": "ARLIS -- Law on the Citizenship of the Republic of Armenia, Article 13: marriage to an Armenian citizen exempts the applicant from the standard residence and language requirements, though an application remains necessary",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). Gender-neutral on its face -- Article 13 refers to marrying 'a citizen of the Republic of Armenia' without specifying the sex of either spouse, unlike some other countries' marriage-based citizenship provisions built earlier in this dataset (e.g. Morocco, Oman). No minimum marriage-duration figure (e.g. '3 years married') was found in the text reviewed -- the exemption appears to apply from the marriage itself, though this was not stress-tested against edge cases (e.g. marriages of convenience safeguards) in this pass, disclosed as an open question rather than assumed absent."
+}

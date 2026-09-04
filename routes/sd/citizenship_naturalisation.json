@@ -1,0 +1,74 @@
+{
+  "id": "sd_citizenship_naturalisation",
+  "country": "SD",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sdcn_10yr_residence",
+          "attribute": "months_resident_lawfully_continuous",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 years or more of lawful and continuous residence in Sudan (increased from 5 years by the 2011 amendment).",
+          "fix_path": "Accumulate 10 years of lawful, continuous residence in Sudan.",
+          "fix_time_months": 120,
+          "source_id": "citizenshiprightsafrica_nationality_act"
+        },
+        {
+          "id": "sdcn_majority_capacity",
+          "attribute": "is_of_majority_age_and_full_capacity",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Of majority age and full legal capacity, sound mind, good moral character, no prior convictions for crimes involving honor or honesty, and lawful income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_nationality_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous lawful residence (10 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of lawful income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of allegiance to Sudan's Constitution and laws", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "10 years' lawful, continuous residence in Sudan",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_nationality_act",
+      "tier": 2,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2019/02/Sudan-Nationality-Law-1994-with-2011-and-2018-amendments_ENG.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- Sudanese Nationality Act 1994, as amended 2006/2011/2018 (hosted consolidated English text): Article 9 naturalisation criteria -- 10+ years' lawful continuous residence (raised from 5 years by the 2011 amendment), majority age, full capacity, sound mind, good moral character, no honor/honesty-related convictions, lawful income; oath of allegiance required; Article 9 also grants the President broad discretionary authority to naturalise aliens regardless of these statutory criteria",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sudan). STATUS: DRAFT -- the only source located for the Nationality Act's exact text is an NGO-hosted (Citizenship Rights in Africa Initiative) consolidated translation, tier-2 under this dataset's convention; no tier-1 Sudanese-government-hosted copy of the Act was located in this build. dual_citizenship_allowed is FALSE: the Act does not affirmatively recognize dual citizenship for ordinary naturalised citizens, and the 2011 amendment introduces an explicit AUTOMATIC REVOCATION rule specifically for anyone who acquires South Sudanese nationality (de jure or de facto) -- a direct legal echo of the 2011 partition of Sudan and South Sudan, and a genuinely distinctive structural finding not seen in any other country's citizenship law built in this dataset. Article 9's presidential-discretion clause (naturalisation 'regardless of statutory criteria') is disclosed here rather than modeled as a separate route, consistent with this dataset's treatment of similarly broad discretionary-grant provisions elsewhere (e.g. Qatar's Article 6, Bahrain's Royal Order grant) -- it is a real, sourced mechanism, just not one with predictable eligibility criteria to model as requirements. GIVEN THE CIVIL-WAR CONTEXT DISCLOSED IN sd_entry_visa.json, whether '10 years' lawful continuous residence' can even be meaningfully established or verified for the war period (April 2023 onward) is a real practical question this dataset does not attempt to resolve."
+}

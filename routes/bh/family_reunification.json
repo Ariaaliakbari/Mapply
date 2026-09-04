@@ -1,0 +1,77 @@
+{
+  "id": "bh_family_reunification",
+  "country": "BH",
+  "name": "Dependent (Family) Visa",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["bh_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bhfr_relationship",
+          "attribute": "is_eligible_family_member",
+          "operator": "in",
+          "value": ["spouse", "unmarried_child_under_21", "dependent_parent"],
+          "hard": true,
+          "blocker_text": "Spouse, unmarried child under 21 (with exceptions for unmarried adult daughters, e.g. while studying), or dependent parent under stricter conditions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fakhoury_bahrain_dependent_salary"
+        },
+        {
+          "id": "bhfr_sponsor_income",
+          "attribute": "sponsor_monthly_income_bhd",
+          "operator": ">=",
+          "value": 400,
+          "hard": true,
+          "blocker_text": "Sponsor's monthly salary must reach BHD 400 to sponsor a spouse and children (higher, commonly reported around BHD 800+, for sponsoring parents).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fakhoury_bahrain_dependent_salary"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/birth certificates", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sponsor income", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, annually renewable, contingent on the sponsor's continued status",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "fakhoury_bahrain_dependent_salary",
+      "tier": 3,
+      "url": "https://fakhouryglobal.com/global-alerts/bahrain-minimum-salary-increase-for-dependent-sponsorship/",
+      "title": "Fakhoury Global Immigration (law firm) -- Bahrain minimum salary increase for dependent sponsorship: BHD 400/month for spouse and children (raised from BHD 250 per a 2018 alert), higher threshold reported for sponsoring parents",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: DRAFT -- NO tier-1 or tier-2 source could be located for this route in this build; every source found was tier-3/4 (immigration-consultancy content, the oldest a 2018 law-firm alert). Neither NPRA's nor LMRA's own pages describing dependent-visa income thresholds could be successfully fetched. This is a real sourcing gap, not laziness, and is the top re-verification priority for this file -- do not treat the BHD 400 figure as confirmed against a primary source."
+}

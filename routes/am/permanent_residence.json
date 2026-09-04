@@ -1,0 +1,108 @@
+{
+  "id": "am_permanent_residence",
+  "country": "AM",
+  "name": "Permanent Residence Status",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 36,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard_residence",
+      "name": "3 years' residence plus means and housing",
+      "requirements": [
+        {
+          "id": "ampr_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years of (temporary) residence in Armenia, plus a means of living and a place to live in the Republic of Armenia.",
+          "fix_path": "Accumulate 3 years of legal temporary residence in Armenia.",
+          "fix_time_months": 36,
+          "source_id": "armenian_lawyer_residence"
+        }
+      ]
+    },
+    {
+      "id": "citizen_relative",
+      "name": "RA-citizen relative",
+      "requirements": [
+        {
+          "id": "ampr_relative",
+          "attribute": "has_ra_citizen_relative",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Having a relative who is a citizen of the Republic of Armenia can qualify for permanent residence without the standalone 3-year wait.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "armenian_lawyer_residence"
+        }
+      ]
+    },
+    {
+      "id": "descent_or_business",
+      "name": "Armenian descent or long-term entrepreneurship",
+      "requirements": [
+        {
+          "id": "ampr_descent_business",
+          "attribute": "is_of_armenian_descent_or_longterm_entrepreneur",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Persons of Armenian descent, or those running a long-term business in Armenia, may qualify for permanent residence status directly.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "armenian_lawyer_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 3 years' legal residence (standard route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of means of living and housing in Armenia", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of RA-citizen relative, Armenian descent, or business activity (alternative routes)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years, renewable for the same period each time",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "armenian_lawyer_residence",
+      "tier": 3,
+      "url": "https://armenian-lawyer.com/immigration/armenia-residence-permits-made-simple-temporary-permanent-and-special-status-who-qualifies-and-how-to-apply/",
+      "title": "Armenian Lawyer -- permanent residence status (5 years, renewable): grounds include RA-citizen relatives, means/housing after 3 years, Armenian descent, or long-term entrepreneurship",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "id": "migration_mia_residency",
+      "tier": 1,
+      "url": "https://migration.mia.gov.am/en/residency-status-and-visa",
+      "title": "Migration and Citizenship Service -- confirms permanent residence status document, 5-year duration, renewable, in-person application, but does not itself detail qualifying grounds",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). STATUS: DRAFT -- the 5-year duration and card/application mechanics are tier-1 confirmed, but the specific qualifying grounds (which this file's hard requirements describe) come only from a tier-3 legal guide, since the tier-1 migration.mia.gov.am summary page did not itself break down eligibility criteria. citizenship_after_months modeled 0 since permanent residence status holders are not described as needing an additional fixed wait beyond meeting am_naturalisation.json's own 3-year residence and language conditions -- the two clocks are not modeled as stacking. This status is distinct from am_special_residence_armenian_origin.json's 10-year special-passport status, which serves a narrower diaspora-specific population and carries different rights (see that file's notes)."
+}

@@ -1,0 +1,82 @@
+{
+  "id": "vn_citizenship_relaxed_naturalisation",
+  "country": "VN",
+  "name": "Citizenship by Naturalisation -- Relaxed Route (Family/Descent/Special Contribution)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Since a July 2025 amendment to the Law on Vietnamese Nationality, spouses, children, or other relatives of Vietnamese citizens, persons of Vietnamese descent, or those making special contributions to Vietnam's national construction and defense (or whose naturalisation serves State interests) may naturalise without meeting the standard route's residence, language, or financial-means conditions, and may be permitted to retain their foreign nationality.",
+    "evidence_hint": "Proof of the qualifying family tie, Vietnamese descent, or documented special contribution."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "family_or_descent",
+      "name": "Spouse, child, or descendant of a Vietnamese citizen",
+      "requirements": [
+        {
+          "id": "vncr_family_or_descent_tie",
+          "attribute": "qualifying_tie",
+          "operator": "in",
+          "value": ["spouse_of_vietnamese_citizen", "child_of_vietnamese_citizen", "vietnamese_ancestry"],
+          "hard": true,
+          "blocker_text": "Applicant is a spouse, child, or other relative of a Vietnamese citizen, or a person of Vietnamese descent (ancestor was a Vietnamese citizen).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nhandan_amendment"
+        }
+      ]
+    },
+    {
+      "id": "special_contribution",
+      "name": "Special contribution to Vietnam or State interest",
+      "requirements": [
+        {
+          "id": "vncr_contribution",
+          "attribute": "has_special_contribution_or_serves_state_interest",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant has made a special contribution to Vietnam's national construction and defense, or their naturalisation is assessed as serving the interests of the Vietnamese State.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nhandan_amendment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/birth certificate or documented proof of Vietnamese ancestry (for the family/descent track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Documentation of special contribution or State-interest assessment (for the contribution track)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nhandan_amendment",
+      "tier": 2,
+      "url": "https://nhandan.vn/tu-17-quy-dinh-ve-nhap-quoc-tich-thay-doi-ra-sao-post891105.html",
+      "title": "Nhan Dan (official newspaper of the Communist Party of Vietnam) -- 'Tu 1/7, quy dinh ve nhap quoc tich thay doi ra sao?': July 2025 amendment to the Law on Vietnamese Nationality waives residence/language/financial-means conditions for spouses, children, and descendants of Vietnamese citizens and for special contributors, and permits these groups to retain foreign nationality",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT -- sourced to Vietnam's official Communist Party newspaper (Nhan Dan), which functions as state media reporting directly on the law, but is NOT the legally-designated Cong Bao (Official Gazette); graded tier-2 rather than tier-1 accordingly, and no independently-fetched Cong Bao or National Assembly text of the amending law was located in this pass. This is a genuinely significant, very recently enacted relaxation (effective 1 July 2025, roughly 14 months before this build) -- worth flagging prominently since it upends the general pattern (seen in most other countries' citizenship-by-marriage files in this dataset) where a spousal route still requires SOME reduced residence period; here the residence requirement is waived entirely for the family/descent track. Categorized here as 'family' since spouse-of-citizen is the most common triggering case, but the route also covers Vietnamese-descent applicants (arguably 'ancestry') and special contributors (arguably neither) -- these are modeled as separate OR-branch requirement_groups within this one file rather than three separate files, since they share the same waived-conditions/dual-citizenship outcome and the same single amending source. Vietnamese law explicitly does NOT grant automatic citizenship purely by virtue of marriage (Dieu 9: marriage to a Vietnamese citizen 'does not change' the parties' nationality) -- this file models the APPLICATION route with waived conditions, not an automatic marital grant; disclosed to avoid overstating what marriage alone confers."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "am_entrepreneurship_residence",
+  "country": "AM",
+  "name": "Temporary/Permanent Residence Status -- Entrepreneurship",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "temporary",
+      "name": "Temporary residence (1 year)",
+      "requirements": [
+        {
+          "id": "amer_business_docs",
+          "attribute": "has_registered_business_activity_in_armenia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Documents confirming business activities in Armenia (e.g. company registration) are required to justify temporary residence status on the entrepreneurship ground.",
+          "fix_path": "Register a business in Armenia and gather supporting documentation.",
+          "fix_time_months": null,
+          "source_id": "migration_egov_am"
+        }
+      ]
+    },
+    {
+      "id": "permanent",
+      "name": "Permanent residence (5 years) -- long-term entrepreneurship",
+      "requirements": [
+        {
+          "id": "amer_longterm_business",
+          "attribute": "has_established_longterm_business_in_armenia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A long-term entrepreneurship track record in Armenia can qualify directly for permanent (5-year) residence status rather than only the 1-year temporary status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "armenian_lawyer_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business/company registration documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport with Armenian translation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health reference", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year (temporary) or 5 years (permanent), both renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_permanent_residence", "am_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_egov_am",
+      "tier": 1,
+      "url": "https://migration.e-gov.am/en/service/residency_application/info",
+      "title": "Migration and Citizenship Service (official e-government portal) -- temporary residence status document requirements for entrepreneurship/business: 'documents confirming the business activities'",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "id": "armenian_lawyer_residence",
+      "tier": 3,
+      "url": "https://armenian-lawyer.com/immigration/armenia-residence-permits-made-simple-temporary-permanent-and-special-status-who-qualifies-and-how-to-apply/",
+      "title": "Armenian Lawyer -- clarifies that long-term entrepreneurship can qualify directly for permanent (5-year) residence status, not just the 1-year temporary track",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). STATUS: DRAFT -- no minimum investment/capital figure was found for this ground on any source reviewed (unlike golden-visa-style thresholds in other countries built in this dataset); the tier-1 page confirms only that 'documents confirming business activities' are required, without a numeric floor, disclosed here as a genuine absence rather than an unresearched gap. The permanent-residence entrepreneurship track is sourced only to a tier-3 legal guide since the tier-1 pages reviewed did not distinguish grounds by residence-status tier as clearly as this file implies. Armenia does not appear to have a separate 'freelancer'/self-employed (work_independent) visa distinct from this entrepreneurship ground -- a self-employed individual would register a business and apply on this same basis, so no separate work_independent file was created for Armenia."
+}

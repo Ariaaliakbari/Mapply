@@ -1,0 +1,85 @@
+{
+  "id": "cl_visitor_visa",
+  "country": "CL",
+  "name": "Permanencia Transitoria (Tourist Entry)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clvv_no_settlement_intent",
+          "attribute": "enters_without_intent_to_settle",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enters Chile without intent to establish residence, for tourism or recreation purposes.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consulado_gob_cl_visas"
+        },
+        {
+          "id": "clvv_means_of_support",
+          "attribute": "has_lawful_means_of_support",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lawful means of support ('medios lícitos de subsistencia') for the duration of the stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consulado_gob_cl_visas"
+        },
+        {
+          "id": "clvv_visa_if_required",
+          "attribute": "holds_visa_if_nationality_requires_one",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A visa is required for some nationalities before travel; fees vary by nationality (single-entry vs. multiple-entry) and are set by a nationality-specific fee table not fully extracted in this pass.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "consulado_gob_cl_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of lawful means of support", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Visa (for nationalities that require one)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "consulado_gob_cl_visas",
+      "tier": 1,
+      "url": "https://www.consulado.gob.cl/informacion-sobre-visas-para-ingresar-a-chile",
+      "title": "consulado.gob.cl (Chilean Ministry of Foreign Affairs consular portal) -- visa information for entering Chile: Permanencia Transitoria permits up to 90 days for tourism without settlement intent; requires lawful means of support; visa-required vs. visa-exempt status and fees vary by nationality, selected via a dropdown not fully captured in this pass",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED since the core 90-day framework and no-settlement-intent basis are tier-1 (Chile's own consular portal). Exact visa fees and the full visa-exempt nationality list were not extracted (the source page requires a per-nationality dropdown selection rather than listing a static table) -- not stated here rather than guessed. General note that applies across this whole Chile build: Chile's 2021 Migration Law (Ley 21.325) restructured the system around a single 'Residencia Temporal' permit with 15 named subcategories rather than separately branded visa types -- 'Permanencia Transitoria' (this file) sits outside that residence-permit structure as the short-stay, non-residence entry category."
+}

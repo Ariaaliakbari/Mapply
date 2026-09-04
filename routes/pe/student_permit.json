@@ -1,0 +1,73 @@
+{
+  "id": "pe_student_permit",
+  "country": "PE",
+  "name": "Formación (Study/Training) Resident Status",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pesp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmed enrollment in higher, basic, or artistic education, a student exchange program, or an internship, at an accredited Peruvian institution.",
+          "fix_path": "Obtain admission to an accredited Peruvian institution or program.",
+          "fix_time_months": null,
+          "source_id": "migraciones_reglamento"
+        },
+        {
+          "id": "pesp_no_lucrative_work",
+          "attribute": "activity_restricted_to_study",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lucrative work is prohibited under this status unless MIGRACIONES grants an extraordinary work permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_reglamento"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment or admission confirmation from the institution or program", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 365 days, renewable while enrolled",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_work_permit", "pe_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.c: Formación resident immigration status, up to 365 days, work prohibited without an extraordinary permit",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). Formación is a RESIDENT category (unlike Turista), covering higher/basic/artistic education, exchanges, and internships in one status. citizenship_after_months (60) reflects pe_citizenship_naturalisation.json's post-Ley-32421 5-year residence figure -- see that file's notes for why it's held draft pending confirmation the new law is fully in force."
+}

@@ -1,0 +1,101 @@
+{
+  "id": "vn_citizenship_naturalisation",
+  "country": "VN",
+  "name": "Citizenship by Naturalisation (Standard Route)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vncn_residence",
+          "attribute": "months_permanent_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "At least 5 years of permanent residence (thường trú) in Vietnam up to the time of application, per Article 19 of the Law on Vietnamese Nationality.",
+          "fix_path": "Accumulate 5 years of permanent residence in Vietnam.",
+          "fix_time_months": 60,
+          "source_id": "chinhphu_nationality_law"
+        },
+        {
+          "id": "vncn_language",
+          "attribute": "has_sufficient_vietnamese_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient knowledge of Vietnamese to integrate into the Vietnamese community.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinhphu_nationality_law"
+        },
+        {
+          "id": "vncn_means",
+          "attribute": "has_capacity_to_sustain_living_in_vietnam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Demonstrated capacity to ensure one's living in Vietnam.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinhphu_nationality_law"
+        },
+        {
+          "id": "vncn_renunciation",
+          "attribute": "will_renounce_foreign_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must renounce foreign nationality upon naturalising, except in special cases approved by the President of Vietnam (see vn_citizenship_relaxed_naturalisation.json for the categories now exempted by the 2025 amendment).",
+          "fix_path": null,
+          "fix_time_months": 0,
+          "source_id": "chinhphu_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' permanent residence in Vietnam", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Vietnamese language proficiency evidence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of financial capacity to sustain living in Vietnam", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written renunciation of foreign nationality (unless exempted)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "chinhphu_nationality_law",
+      "tier": 1,
+      "url": "https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=81141",
+      "title": "Government Portal (chinhphu.vn) -- Law No. 24/2008/QH12 on Vietnamese Nationality, Article 19: naturalisation conditions (5 years' permanent residence, Vietnamese language sufficiency, capacity to sustain living in Vietnam, renunciation of foreign nationality except special Presidentially-approved cases)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). dual_citizenship_allowed is false for THIS standard route since renunciation is the general rule under Article 19 -- but see vn_citizenship_relaxed_naturalisation.json for the 2025-amended track (spouses/children/descendants of Vietnamese citizens, or those with special contributions) which both waives the residence/language/means tests AND permits retaining foreign nationality; that amendment (Law effective 1 July 2025, reported via Nhan Dan, Vietnam's official Communist Party newspaper, treated as tier-2 rather than tier-1 since it is not the legally-designated Gazette) does not appear to have changed THIS standard route's core figures -- a tier-2 source explicitly states the 5-year residence requirement 'remains' unchanged for standard cases, consistent with the tier-1 Article 19 text quoted here, so this file is published without a live-transition caveat (contrast with Peru's Ley 32421 naturalisation file, which IS held draft over a genuine unresolved dispute about which rule currently applies)."
+}

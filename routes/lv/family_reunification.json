@@ -1,0 +1,80 @@
+{
+  "id": "lv_family_reunification",
+  "country": "LV",
+  "name": "Temporary Residence Permit -- Family Reunification",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lvfr_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse", "minor_child", "dependent_parent"],
+          "hard": true,
+          "blocker_text": "Spouse, minor child, or dependent parent of a Latvian citizen or of a foreign resident of Latvia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrantinvest_lv"
+        },
+        {
+          "id": "lvfr_means",
+          "attribute": "monthly_income_per_adult_eur",
+          "operator": ">=",
+          "value": 740,
+          "hard": true,
+          "blocker_text": "Proof of stable income of approximately EUR 740/month per adult and EUR 222/month per child.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigrantinvest_lv"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage or birth certificate proving family tie", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of income (~EUR 740/month per adult, EUR 222/month per child)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "first application: 1 year; renewal: 4 years; third application leads to permanent status",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lv_permanent_residence", "lv_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "pmlp_duration",
+      "tier": 1,
+      "url": "https://www.pmlp.gov.lv/en/how-long-may-residence-permit-be-issued",
+      "title": "Office of Citizenship and Migration Affairs (PMLP), official English page -- family reunification permit duration structure: 1 year on first application, 4 years on the second, permanent status upon the third",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "immigrantinvest_lv",
+      "tier": 3,
+      "url": "https://immigrantinvest.com/blog/latvia-residence-permit-types/",
+      "title": "Immigrant Invest (relocation consultancy) -- family reunification: qualifying relationships and income thresholds (EUR 740/month per adult, EUR 222/month per child)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). STATUS: DRAFT -- the distinctive 1yr-then-4yr-then-permanent progression is tier-1 (PMLP), but the specific qualifying relationships and income figures come only from a tier-3 consultancy source. pr_after_months is left null since permanent status here is reached via the THIRD family-permit application/renewal cycle (1+4+... years) rather than a flat months-of-residence count -- a structurally different path from lv_permanent_residence.json's general 5-year EU long-term-resident route, disclosed rather than conflated."
+}

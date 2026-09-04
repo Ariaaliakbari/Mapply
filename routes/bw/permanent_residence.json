@@ -1,0 +1,119 @@
+{
+  "id": "bw_permanent_residence",
+  "country": "BW",
+  "name": "Permanent Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (immigrants, dependents, missionaries, employees)",
+      "requirements": [
+        {
+          "id": "bwpr_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Resided lawfully in Botswana continuously for at least 5 years.",
+          "fix_path": "Accumulate 5 years of continuous lawful residence in Botswana.",
+          "fix_time_months": 60,
+          "source_id": "gov_bw_pr"
+        },
+        {
+          "id": "bwpr_character",
+          "attribute": "has_good_character_and_standing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character and standing in society.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_pr"
+        },
+        {
+          "id": "bwpr_contribution",
+          "attribute": "shows_significant_contribution_to_botswana",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Significant contributions to Botswana.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_pr"
+        },
+        {
+          "id": "bwpr_means",
+          "attribute": "has_sufficient_financial_means",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient financial means to support dependents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_pr"
+        }
+      ]
+    },
+    {
+      "id": "investor",
+      "name": "Investor route (reduced residence period)",
+      "requirements": [
+        {
+          "id": "bwpr_investor_status",
+          "attribute": "is_investor_with_documented_contribution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Investors with documented financial contributions and employee records may apply with less than 5 years of residence; the exact reduced threshold was not disclosed by the source.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_pr"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form 21", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of 5 years' continuous lawful residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of financial means", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "For employees: employer confirmation and housing proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "For investors: financial contribution and employee records", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bw_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_bw_pr",
+      "tier": 1,
+      "url": "https://www.gov.bw/residency-and-work/permanent-residence-application",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Permanent Residence Application: 5 years' continuous lawful residence, good character, significant contribution, sufficient means; investors may apply sooner; P3000 fee; 6-month processing; Form 21",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). Directly and fully sourced to gov.bw's own Permanent Residence Application page -- the strongest file in this build. Modeled as PUBLISHED since all hard requirements trace to this single tier-1 government source. Three applicant categories (immigrants/dependents/missionaries, employees, investors) are disclosed on the source page; only the standard residence-based route and the investor exception are modeled as separate requirement groups since the employee category's requirements (employer confirmation, housing proof) are a documentation variant of the same standard path rather than a distinct threshold. The investor exception's exact reduced residence period was not disclosed by the source and is left unquantified rather than guessed."
+}

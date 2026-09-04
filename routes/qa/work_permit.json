@@ -1,0 +1,73 @@
+{
+  "id": "qa_work_permit",
+  "country": "QA",
+  "name": "Work Residence Permit (employer-sponsored, post-kafala-reform)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "qawp_job_offer",
+          "attribute": "has_qualifying_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A job offer from a Qatar-based employer willing to sponsor the residence permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gco_labour_reform"
+        },
+        {
+          "id": "qawp_minimum_wage",
+          "attribute": "job_meets_minimum_wage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Job offer must meet Qatar's national minimum wage: QAR 1,000/month base, plus QAR 500 housing and QAR 300 food allowances if not provided in-kind (Law No. 17 of 2020, covers all sectors including domestic workers).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gco_labour_reform"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical fitness certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to employment contract length; the standard permit duration/renewability cycle was not confirmed on a tier-1 or tier-2 source in this build -- treat as an open gap",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 240,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 300,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["qa_family_reunification", "qa_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "gco_labour_reform",
+      "tier": 1,
+      "url": "https://www.gco.gov.qa/en/media-centre/in-focus/labour-reform/",
+      "title": "Government Communications Office (GCO), State of Qatar -- labour reform: exit permits abolished (Jan 2020) for most workers, No Objection Certificate (NOC) to change employer abolished (Aug 2020), non-discriminatory minimum wage of QAR 1,000/month plus QAR 500 housing / QAR 300 food allowances (Law No. 17 of 2020, effective March 2021), Fast-Track Service and Labour Re-employment Platform (2022)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: PUBLISHED -- tier-1 GCO sourced for the reform-era structure and minimum wage. STRUCTURAL FINDING: Qatar formally dismantled the two defining kafala mechanisms -- the exit permit (2020) and the NOC required to change employer (2020/2021) -- meaning workers can now leave the country and switch jobs without employer consent, a major shift from the pre-reform system modeled implicitly by this dataset's other Gulf-adjacent countries. GAP: standard work-permit duration/renewability terms (commonly cited elsewhere as up to 5 years, tied to contract length) were NOT confirmed on any tier-1/2 source in this build -- only tier-4 visa-agency sites state a specific figure, so no number is asserted here. pr_after_months (240 = 20yr, the 'born outside Qatar' PR threshold) and citizenship_after_months (300 = 25yr) are cross-referenced from qa_permanent_residence.json and qa_citizenship_naturalisation.json respectively, not independently sourced here."
+}

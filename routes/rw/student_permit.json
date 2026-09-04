@@ -1,0 +1,75 @@
+{
+  "id": "rw_student_permit",
+  "country": "RW",
+  "name": "Student Permit (U1)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rwsp_enrollment",
+          "attribute": "is_studying_at_recognized_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Studying at a recognized institution in Rwanda, evidenced by a school recommendation letter.",
+          "fix_path": "Obtain admission to a recognized Rwandan institution.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_study"
+        },
+        {
+          "id": "rwsp_sponsorship",
+          "attribute": "has_sponsorship_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsorship letter covering the applicant's stay.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_study"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (valid 6+ months)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "School recommendation letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsorship letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance (if 18+)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_study",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/permit/study-research",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- U1 student permit: 20,000 RWF fee, 1-year validity, school recommendation and sponsorship letter required; related categories U2 (occupational trainee, 50,000 RWF/1yr), H7 (professional researcher, 150,000 RWF/2yr), P2 (student holiday work permit, 20,000 RWF/1yr)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: PUBLISHED -- fully tier-1 DGIE sourced. work_rights is 'none' for the base U1 student permit -- notably, Rwanda handles student work authorization through an entirely SEPARATE permit category (P2, student holiday work permit) rather than folding limited work rights into the student permit itself, unlike most other countries in this dataset (e.g. Romania's 6-hour/day cap built into the same permit). This structural difference -- work rights requiring a distinct permit application rather than an automatic entitlement -- is disclosed as a genuine finding. P2, U2, and H7 are related but distinct categories not separately modeled as their own files here, in the interest of scope."
+}

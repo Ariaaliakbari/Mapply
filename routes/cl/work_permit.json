@@ -1,0 +1,113 @@
+{
+  "id": "cl_work_permit",
+  "country": "CL",
+  "name": "Residencia Temporal -- Remunerated Activities Subcategory",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national with a signed employment contract (notarized in Chile), a service contract exceeding 90 days, or a formal job offer from a Chilean employer applies for the Remunerated Activities subcategory of Residencia Temporal.",
+    "evidence_hint": "Employment contract signed at a Chilean notary, or a formal job offer from a Chilean employer."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "contract",
+      "name": "Signed employment contract",
+      "requirements": [
+        {
+          "id": "clwp_notarized_contract",
+          "attribute": "has_notarized_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employment contract signed at a Chilean notary with an employer maintaining a Chilean office or branch.",
+          "fix_path": "Secure employer sponsorship and notarize an employment contract in Chile.",
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_remunerated_activities"
+        },
+        {
+          "id": "clwp_employer_solvency",
+          "attribute": "employer_has_demonstrated_solvency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must demonstrate financial capacity via tax documentation or proof of economic solvency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_remunerated_activities"
+        },
+        {
+          "id": "clwp_foreign_worker_quota",
+          "attribute": "employer_within_foreign_worker_quota",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "For employers with 25+ employees, foreign workers may not exceed 15% of the workforce (at least 85% must be Chilean nationals); no quota applies for employers with 25 or fewer employees.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mintrab_extranjeros"
+        }
+      ]
+    },
+    {
+      "id": "job_offer",
+      "name": "Formal job offer (initial 90-day permit)",
+      "requirements": [
+        {
+          "id": "clwp_job_offer",
+          "attribute": "has_formal_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Formal job offer from a Chilean employer; must present an executed employment contract within 45 days of arrival to convert to a 1-year permit.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_remunerated_activities"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized employment contract or formal job offer", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer tax/solvency documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport (1+ year validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "contract route: up to 2 years, extendable for successive 2-year periods; job-offer route: initial 90 days, converts to 1 year on presenting an executed contract within 45 days of arrival",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_permanent_residence", "cl_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "serviciomigraciones_remunerated_activities",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/residencia-temporal-permit/subcategories/remunerated-activities/",
+      "title": "serviciomigraciones.cl (SERMIG) -- Remunerated Activities subcategory: dependent employment, service contracts over 90 days, or formal job offers; contract route up to 2 years extendable; job-offer route 90 days converting to 1 year within a 45-day window; job loss doesn't automatically revoke the permit",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "mintrab_extranjeros",
+      "tier": 1,
+      "url": "https://www.mintrab.gob.cl/contratacion-de-extranjeros-para-trabajar-en-chile/",
+      "title": "mintrab.gob.cl (Chile's Ministry of Labour) -- hiring foreign workers: 15% foreign-worker cap for employers with 25+ employees (no cap below that), equal labour rights (minimum wage, hours, benefits, union participation) for foreign workers, 15-day employer notification requirement on contract termination",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED -- both requirement groups trace to tier-1 government sources (SERMIG and the Ministry of Labour). work_rights is 'restricted' since the contract route ties work to the sponsoring employer, though job loss does not automatically revoke the permit (per SERMIG), a more worker-favorable feature than most sponsored-work routes in this dataset. The 15% foreign-worker quota is a real, binding cap distinct from most countries modeled so far, disclosed explicitly as a hard requirement on the EMPLOYER side rather than the applicant."
+}

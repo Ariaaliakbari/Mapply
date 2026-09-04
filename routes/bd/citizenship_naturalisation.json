@@ -1,0 +1,107 @@
+{
+  "id": "bd_citizenship_naturalisation",
+  "country": "BD",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bdcn_age21",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 21,
+          "hard": true,
+          "blocker_text": "Not a minor -- must have completed the age of twenty-one years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_naturalization_act_1926"
+        },
+        {
+          "id": "bdcn_immediate_12mo",
+          "attribute": "months_resident_immediately_preceding",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "12 months' continuous residence in Bangladesh immediately preceding the application.",
+          "fix_path": "Remain continuously resident in Bangladesh for the 12 months immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "refworld_naturalization_act_1926"
+        },
+        {
+          "id": "bdcn_aggregate_4of7yr",
+          "attribute": "months_resident_aggregate_within_7yr",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "At least 4 years' aggregate residence within the 7 years immediately preceding that final 12-month period.",
+          "fix_path": "Accumulate 4 years of residence within the 7 years preceding the final qualifying year.",
+          "fix_time_months": null,
+          "source_id": "refworld_naturalization_act_1926"
+        },
+        {
+          "id": "bdcn_bengali_language",
+          "attribute": "has_adequate_bengali_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Adequate knowledge of Bengali.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_naturalization_act_1926"
+        },
+        {
+          "id": "bdcn_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character, and intends to reside in Bangladesh or serve the Republic.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_naturalization_act_1926"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence history", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bengali language proficiency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Renunciation of foreign citizenship (or evidence it will follow)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "12 months immediately preceding, plus at least 4 years' aggregate residence within the preceding 7 years",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_naturalization_act_1926",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1926/17214",
+      "title": "UNHCR Refworld -- Naturalization Act, 1926 (as applied in Bangladesh via the Citizenship Act, 1951's certificate-of-naturalisation mechanism), Section 3(1): residence requirements (12 months immediately preceding + at least 4 of the preceding 7 years), age 21+ (not a minor), good character, adequate Bengali knowledge, intent to reside/serve; a special exemption from residence requirements applies to women who were citizens before marrying a non-citizen, if subsequently widowed or divorced",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: DRAFT -- the only source located for the exact numeric naturalisation criteria is UNHCR Refworld's hosted text of the colonial-era Naturalization Act, 1926, tier-2 under this dataset's convention. STRUCTURAL FINDING: the Citizenship Act, 1951 (Bangladesh's own post-independence citizenship statute) does NOT itself specify residence duration, age, or language requirements for naturalisation -- it instead operates by reference to a person having 'been granted a certificate of naturalisation under the Naturalisation Act, 1926', meaning the actual numeric criteria applicants must meet still derive from this 95-year-old British Indian colonial statute, not from any post-1971 Bangladeshi legislation. No tier-1 Bangladeshi-government-hosted copy of either Act's operative text was located in this build (bdlaws.minlaw.gov.bd, the official Bangladesh laws portal, was unreachable at fetch time in this build -- worth a follow-up direct attempt). dual_citizenship_allowed is FALSE per the Citizenship Act 1951's general prohibition (a citizen who is simultaneously a citizen of another country ceases to be a Bangladeshi citizen unless renouncing the foreign status, with an exception for persons under 21) -- this is the general rule that bd_citizenship_dual_nationality.json's Dual Nationality Certificate mechanism specifically carves an exception into for Bangladeshi-origin diaspora."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "ug_citizenship_by_residence",
+  "country": "UG",
+  "name": "Citizenship by Registration -- Residence",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "10-year residence track",
+      "requirements": [
+        {
+          "id": "ugcr_resident_10yr",
+          "attribute": "months_resident_continuous",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Living in Uganda for 10 years.",
+          "fix_path": "Accumulate 10 years of residence in Uganda.",
+          "fix_time_months": 120,
+          "source_id": "mofa_washington_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "independence_era",
+      "name": "Continuous residence since 9 October 1962 (historical, largely closed to new applicants)",
+      "requirements": [
+        {
+          "id": "ugcr_since_independence",
+          "attribute": "resident_continuously_since_9oct1962",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Continuous residence in Uganda since 9 October 1962 (Uganda's independence date) -- given the 63+ years elapsed, this track is now almost entirely closed to new applicants and relevant only to a small, aging population.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_washington_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence history", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Good conduct/character evidence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "10 years' continuous residence in Uganda",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mofa_washington_citizenship",
+      "tier": 1,
+      "url": "https://washington.mofa.go.ug/consular/citizenship-dual-citizenship",
+      "title": "Ministry of Foreign Affairs, Uganda (Embassy of Uganda, Washington DC) -- Citizenship & Dual Citizenship: citizenship by registration is available to persons 'continuously residing there since October 9, 1962', 'those living in Uganda for ten years', and 'persons residing there for twenty years before the Constitution's enactment' (i.e., before 8 October 1995)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- tier-1 official diplomatic mission sourced. This is Uganda's functional equivalent of ordinary naturalisation -- the source does not separately detail a distinct discretionary 'naturalisation via Parliament' process with its own numeric criteria (Uganda's Constitution mentions Parliament governing naturalisation acquisition/loss procedurally, but no specific residence/age/language figures for that specific mechanism were located in this build), so this registration-by-residence route is modeled as the primary long-term-residence-to-citizenship pathway. A THIRD historical track -- 20 years' residence before the 1995 Constitution's enactment (i.e., before 8 October 1995) -- is also mentioned by the source but is now fully closed by the passage of time (would require residence starting before 1975) and is disclosed here rather than modeled as a third requirement_group. The independence-era track (since 9 October 1962) is included as its own requirement_group since it is structurally distinct from the ordinary 10-year track, but is flagged as functionally closed to all but a small, aging population given 63+ years have elapsed. dual_citizenship_allowed TRUE, consistent with Uganda's general dual-citizenship permission (see ug_dual_citizenship.json)."
+}

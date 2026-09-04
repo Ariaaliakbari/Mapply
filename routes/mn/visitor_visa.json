@@ -1,0 +1,80 @@
+{
+  "id": "mn_visitor_visa",
+  "country": "MN",
+  "name": "Tourist Visa (K2)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mnvv_passport_validity",
+          "attribute": "passport_valid_months_beyond_departure",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Valid passport, generally required to remain valid at least 6 months beyond the intended stay.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": 1,
+          "source_id": "playroll_mongolia_visas"
+        },
+        {
+          "id": "mnvv_purpose",
+          "attribute": "purpose_is_tourism",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Travel purpose is tourism; the K2 visa is electronically issuable per the Immigration Agency.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation/itinerary", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "short-term (exact cap not confirmed in sources fetched)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_mn_visa_categories",
+      "tier": 1,
+      "url": "https://immigration.gov.mn/en/articles/404/",
+      "title": "Immigration Agency of Mongolia -- visa categories: K2 (tourism, e-visa available), K4 (cultural/sports competitions, e-visa available), K6 (transit, e-visa available), K7 (Australia work-and-holiday), 54-category visa issued on inviter request",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "playroll_mongolia_visas",
+      "tier": 3,
+      "url": "https://www.playroll.com/work-permit-visas/mongolia",
+      "title": "Playroll (EOR/payroll platform) -- general guide to Mongolia visa categories and passport-validity expectations",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: DRAFT -- the Immigration Agency's own page (tier-1) confirmed the K2 tourist visa category exists and is e-visa-eligible but did not state a fee, maximum stay length, or nationality-specific visa-exemption list; those specifics could not be confirmed to tier-1 or tier-3 precision in this pass and are left undisclosed rather than guessed. Mongolia's visa system uses letter-prefixed categories (K = various short-stay purposes including tourism; this differs structurally from most other countries in this dataset, which typically have one dedicated 'visitor'/tourism visa instrument) -- flagged as a naming/structural note. Nationality-based visa-exemption lists (several countries, including Mongolia's regional neighbors and some Western states, reportedly have visa-free/visa-on-arrival arrangements) were not independently confirmed in this pass and are not modeled here."
+}

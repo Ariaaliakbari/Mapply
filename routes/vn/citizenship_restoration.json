@@ -1,0 +1,76 @@
+{
+  "id": "vn_citizenship_restoration",
+  "country": "VN",
+  "name": "Citizenship Restoration (Trở Lại Quốc Tịch)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who previously lost Vietnamese citizenship may apply to have it restored, per Article 23 of the Law on Vietnamese Nationality, if they fall within one of several eligible categories.",
+    "evidence_hint": "Proof of former Vietnamese citizenship and its loss; documentation supporting the specific eligible category claimed."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Eligible former citizens",
+      "requirements": [
+        {
+          "id": "vncrest_eligible_category",
+          "attribute": "restoration_category",
+          "operator": "in",
+          "value": ["seeking_repatriation_to_vietnam", "has_vietnamese_family_members", "has_special_contribution", "makes_qualifying_investment"],
+          "hard": true,
+          "blocker_text": "Applicant is seeking repatriation to Vietnam, has Vietnamese family members, has made a special contribution to Vietnam, or is making a qualifying investment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "chinhphu_nationality_law"
+        },
+        {
+          "id": "vncrest_wait_if_stripped",
+          "attribute": "months_since_citizenship_stripped",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "A person who was stripped of Vietnamese citizenship (as opposed to having voluntarily renounced it) must wait at least 5 years before reapplying.",
+          "fix_path": "Wait 5 years from the date of being stripped of citizenship before reapplying.",
+          "fix_time_months": 60,
+          "source_id": "chinhphu_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of former Vietnamese citizenship and the circumstances of its loss", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Documentation supporting the specific eligible category (family ties, contribution, investment, or repatriation intent)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "chinhphu_nationality_law",
+      "tier": 1,
+      "url": "https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=81141",
+      "title": "Government Portal (chinhphu.vn) -- Law No. 24/2008/QH12 on Vietnamese Nationality, Article 23: restoration of citizenship for eligible former citizens; 5-year wait for those stripped of citizenship",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT -- the article's existence and the 5-year post-stripping wait are tier-1 and directly quoted, but the four eligible categories were returned only as a paraphrased list rather than the article's exact wording, and no income/residence/exam conditions specific to this route (as opposed to standard naturalisation) were confirmed -- disclosed as a documentation gap rather than assumed identical to vn_citizenship_naturalisation.json's standard conditions. dual_citizenship_allowed is set true as a modeling assumption for this route specifically (most restoration cases plausibly overlap with the family/descent categories covered by vn_citizenship_relaxed_naturalisation.json's 2025 dual-citizenship allowance) rather than an independently confirmed figure -- flagged as an assumption."
+}

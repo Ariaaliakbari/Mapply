@@ -1,0 +1,92 @@
+{
+  "id": "pk_student_permit",
+  "country": "PK",
+  "name": "Study Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pksp_university_admission",
+          "attribute": "has_admission_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Admission confirmed by a recognized Pakistani university or educational institution.",
+          "fix_path": "Secure admission at a recognized Pakistani institution.",
+          "fix_time_months": null,
+          "source_id": "hec_noc"
+        },
+        {
+          "id": "pksp_hec_noc",
+          "attribute": "has_hec_noc",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The admitting university's International Student Office must obtain a No Objection Certificate (NOC) from the Higher Education Commission (HEC) on the student's behalf before a study visa can be processed.",
+          "fix_path": "Have the university's International Student Office submit the NOC request to HEC (nocforeign@hec.gov.pk); HEC states a 5-working-day processing time for a complete application.",
+          "fix_time_months": null,
+          "source_id": "hec_noc"
+        },
+        {
+          "id": "pksp_security_clearance",
+          "attribute": "passes_security_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Security agency clearance is required before a study visa/extension is issued.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "HEC No Objection Certificate (submitted by university, not the student directly)", "difficulty": "moderate", "typical_time_days": 5 },
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Up to 2 years after security clearance (per Ministry of Interior policy); consolidated visa reform lists study visa validity as issued for 2 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pk_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "hec_noc",
+      "tier": 1,
+      "url": "https://www.hec.gov.pk/english/services/universities/Fsnoc/Pages/default.aspx",
+      "title": "Higher Education Commission of Pakistan -- Grant of No Objection Certificate (NOC) to Foreign Students: the request must be initiated by the admitting university's International Student Office (not the student), submitted with duly verified documents; HEC processing time is 5 working days from receipt of a complete application",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "dgip_categories",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/visa/categories.php",
+      "title": "Directorate General of Immigration & Passports (Ministry of Interior) -- Visa Categories: Study Visa now issued for 2 years after due clearance by security agencies within a stipulated 30-day window; requires Ministry NOC and security clearance",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published on tier-1 sourcing (HEC + DGI&P, both government bodies). Distinctive procedural feature: the NOC request must be filed BY THE UNIVERSITY on the student's behalf -- HEC explicitly discourages direct student inquiries and will not action a request the student submits themselves. family_can_work left null (schema-nullable) since no source addressed dependents at all for this route."
+}

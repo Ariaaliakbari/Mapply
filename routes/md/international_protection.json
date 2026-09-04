@@ -1,0 +1,72 @@
+{
+  "id": "md_international_protection",
+  "country": "MD",
+  "name": "Asylum -- Refugee and Humanitarian/Subsidiary Protection Status (Law No. 270-XVI of 2008)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Moldova is a signatory to the 1951 Refugee Convention and its 1967 Protocol and operates a genuine domestic asylum system under Law No. 270-XVI of 18.12.2008, administered by the Bureau for Migration and Asylum (BMA). An eligibility-counsellor interview determines status; rejections are appealable, though the exact appeal mechanism/timeframe was not confirmed in this build.",
+    "evidence_hint": "Evidence supporting a well-founded fear of persecution per Convention grounds."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdip_persecution",
+          "attribute": "meets_refugee_convention_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution on Convention grounds (race, religion, nationality, political opinion, or membership of a particular social group), assessed by the Bureau for Migration and Asylum.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_law270_2008"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this build -- open gap on the specific permit validity period",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["md_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "refworld_law270_2008",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/attachments/55082a6c4.pdf",
+      "title": "Refworld (UNHCR-hosted) -- unofficial translation of Law No. 270-XVI of 18.12.2008 on Asylum in the Republic of Moldova",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "igm_asylum_rights_duties",
+      "tier": 1,
+      "url": "https://igm.gov.md/en/rights-and-duties-asylum/",
+      "title": "Bureau for Migration and Asylum (legacy igm.gov.md domain) -- rights and duties of asylum seekers/refugees: work (employment, self-employment, professions), freedom of movement/residence, compulsory education access on par with citizens, social assistance for families with children, medical insurance parity, court access",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: DRAFT -- the hard requirement (meeting the Refugee Convention definition) is sourced to a tier-2 UNHCR-hosted translation of the primary law, since BMA's own procedural page (bma.gov.md 'Solicitarea azilului') returned a fetch error in this build; only the companion tier-1 rights-and-duties page loaded successfully, which is why work/study/family rights are tier-1 confirmed even though the file overall stays draft. STRUCTURAL FINDING: unlike Qatar (narrow political-asylum-only law, no Convention signature) or the UNHCR-mandate pattern seen in Jordan/Mongolia/Cote d'Ivoire built elsewhere in this dataset, Moldova runs a GENUINE Convention-based domestic asylum system with its own administering authority (BMA). GAP: the specific appeal mechanism/timeframe and the exact permit-validity period were not confirmed. pr_after_months (60) and citizenship_after_months (96, the reduced 8-year track) are cross-referenced from md_permanent_residence.json and md_citizenship_naturalisation.json's reduced-period group respectively, not independently sourced here. This file is distinct from md_temporary_protection.json, which covers Moldova's separate, currently active EU-aligned temporary protection scheme for people displaced from Ukraine."
+}

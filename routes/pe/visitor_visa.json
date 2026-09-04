@@ -1,0 +1,73 @@
+{
+  "id": "pe_visitor_visa",
+  "country": "PE",
+  "name": "Turista (Tourist) Temporary Status",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Tourism, leisure, or health-related stay",
+      "requirements": [
+        {
+          "id": "pevv_purpose",
+          "attribute": "trip_purpose",
+          "operator": "in",
+          "value": ["tourism", "leisure", "health"],
+          "hard": true,
+          "blocker_text": "Entry must be for tourism, leisure, or health-related activities only; no lucrative work is permitted under this status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_reglamento"
+        },
+        {
+          "id": "pevv_duration_cap",
+          "attribute": "days_in_peru_per_365",
+          "operator": "<=",
+          "value": 183,
+          "hard": true,
+          "blocker_text": "Permitted stay is up to 183 days, cumulative within a rolling 365-day period; not extendable beyond that cap.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migraciones_reglamento"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or travel document", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa (issued by RREE) unless the applicant's nationality is visa-exempt, in which case MIGRACIONES admits directly at the border", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 183 days, cumulative within a 365-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Ley de Migraciones, Article 29.1.h: Turista temporary immigration status, up to 183 days cumulative within 365 days, not extendable, issued by RREE or directly by MIGRACIONES for visa-exempt nationalities",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). Peru organizes all immigration statuses under a single legal instrument, the 'calidad migratoria' system created by Decreto Legislativo N.1350 (2017) and its regulation (Decreto Supremo N.007-2017-IN) -- this is the primary law backing most routes in this build, fetched directly from MIGRACIONES' own site. Turista is a TEMPORAL (non-resident) status, distinct from the RESIDENCIA categories used for settlement-track routes elsewhere in this build. No work of any kind is permitted under this status; a person wishing to work must switch to Trabajador or another qualifying category, not extend Turista."
+}

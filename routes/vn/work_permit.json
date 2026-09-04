@@ -1,0 +1,88 @@
+{
+  "id": "vn_work_permit",
+  "country": "VN",
+  "name": "LD2 (Labour) Visa with Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "expert_track",
+      "name": "Expert (chuyên gia) qualification",
+      "requirements": [
+        {
+          "id": "vnwp_expert_degree",
+          "attribute": "has_degree_and_3yr_experience_OR_5yr_experience_with_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Either a university degree or higher plus at least 3 years' relevant working experience, or at least 5 years' experience plus a relevant practising certificate (Decree 152/2020, Article 3.3).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_decree152"
+        }
+      ]
+    },
+    {
+      "id": "technical_worker_track",
+      "name": "Technical worker (lao động kỹ thuật) qualification",
+      "requirements": [
+        {
+          "id": "vnwp_technical_training",
+          "attribute": "has_1yr_technical_training_and_3yr_experience_OR_5yr_experience",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Either at least 1 year of technical/vocational training plus 3 years' relevant experience, or at least 5 years' relevant working experience (Decree 152/2020, Article 3.6).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_decree152"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Degree/training certificates and/or practising certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment verification letters covering the required experience period", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's registered business license and labour-demand approval", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Health check certificate; criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "visa up to 2 years; temporary residence card up to 2 years, renewable while employed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vn_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "luatvietnam_visa_categories",
+      "tier": 3,
+      "url": "https://luatvietnam.vn/xuat-nhap-canh/van-ban-hop-nhat-30-vbhn-vpqh-2023-luat-nhap-canh-xuat-canh-qua-canh-cu-tru-cua-nguoi-nuoc-ngoai-tai-vn-282494-d5.html",
+      "title": "LuatVietnam (private legal database) -- LD1 (work-permit-exempt) and LD2 (work-permit-required) labour visa categories, up to 2 years, Article 9",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "luatvietnam_decree152",
+      "tier": 3,
+      "url": "https://english.luatvietnam.vn/decree-no152-2020-nd-cp-dated-december-30-2020-of-the-government-providing-regulations-on-foreign-employees-working-in-vietnam-and-recruitment-mana-196375-doc1.html",
+      "title": "LuatVietnam English (private legal database) -- Decree 152/2020/ND-CP, Article 3: qualification standards for 'expert' and 'technical worker' foreign-employee categories; Article 7: 14 work-permit exemption categories",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT, TIER-3 ONLY -- Decree 152/2020/ND-CP is a genuine Vietnamese government decree, but no .gov.vn-hosted copy was independently fetched in this pass; the text here comes from a private legal-database translation. work_rights is 'restricted' since the permit ties employment to the specific approved employer/role, not an open work authorization. LD1 (work-permit-exempt, e.g. intra-corporate transferees, treaty cases, or capital contributors with VND 3bn+ per Decree 152 Article 7.1) exists as a parallel route but is not modeled as a separate file here since it is fundamentally an EXEMPTION from this route's requirements rather than a distinct qualifying pathway -- disclosed rather than duplicated. No distinct self-employed/freelance ('work_independent') visa category was found in Vietnamese law: the system is built around either sponsored employment (LD) or capital investment in a registered entity (DT/DN), not general independent contracting for an individual -- this is a genuine structural absence, disclosed here rather than a route being force-fit into the work_independent category."
+}

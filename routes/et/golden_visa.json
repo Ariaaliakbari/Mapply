@@ -1,0 +1,83 @@
+{
+  "id": "et_golden_visa",
+  "country": "ET",
+  "name": "High-Value Investor Residence Permit (\"Golden Visa\")",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": {
+    "opens": "2026-03-29",
+    "closes": null,
+    "cap_type": "none",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "etgv_high_value_investment",
+          "attribute": "is_high_value_qualifying_investment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A high-value qualifying investment, administered by ICS -- the specific minimum investment figure is NOT confirmed in this build; do not treat any numeric threshold for this route as reliable (see notes).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ena_golden_visa_announcement"
+        }
+      ]
+    },
+    {
+      "id": "property_owner",
+      "name": "Companion property-owner track",
+      "requirements": [
+        {
+          "id": "etgv_property_owner",
+          "attribute": "is_qualifying_property_owner",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ownership of qualifying property, granting a companion 5-year visa -- specific property-value threshold not confirmed in this build.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ena_golden_visa_announcement"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment or property ownership", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "10-year investor residence permit; a companion 5-year permit is available to qualifying property owners",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ena_golden_visa_announcement",
+      "tier": 2,
+      "url": "https://www.ena.et/web/eng/w/eng_8566987",
+      "title": "Ethiopian News Agency (ENA, state news agency) -- ICS Deputy Director-General Gosa Demissie announces a 10-year investor residence permit plus a companion 5-year property-owner visa, reportedly launching 29 March 2026; no investment figure given in this announcement",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ethiopia). STATUS: DRAFT -- this is a genuinely new, still-emerging program (announced for a 29 March 2026 launch, roughly six months before this build) and the ONLY confirmable facts are the 10-year/5-year duration structure, sourced to a tier-2 state news agency report of an official's public announcement -- no ICS or EIC page describing the program was found. NO INVESTMENT THRESHOLD IS ASSERTED HERE: tier-4 sources conflict sharply -- one industry-marketing site explicitly says no figure was given in the official announcement and flags a circulating '$10,000' figure as likely referring to a processing fee, not the investment threshold; a separate African business-press report claims a $10 million primary / $5 million alternate threshold with a job-creation requirement, citing an unverified 'Regulation No. 581/2025.' These cannot both be right, and neither is confirmed at tier-1 or tier-2 -- this dataset does not guess between them. Both requirement groups deliberately omit a numeric threshold rather than pick one of the conflicting figures. Top re-verification priority: find the underlying regulation text on ics.gov.et or the Federal Negarit Gazette before publishing any number for this route."
+}

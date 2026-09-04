@@ -1,0 +1,74 @@
+{
+  "id": "mm_investor_residence",
+  "country": "MM",
+  "name": "Myanmar Investment Commission (MIC) Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mmir_permit_qualifying_criteria",
+          "attribute": "meets_mic_permit_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Project must meet at least one MIC-permit-triggering criterion: strategic importance to the Union, large capital investment, significant potential environmental/community impact, use of state-owned land, or specific government designation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dica_apply_mic"
+        },
+        {
+          "id": "mmir_proposal_scrutiny",
+          "attribute": "proposal_scrutiny_committee_approved",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Investment Proposal must clear DICA's Proposal Scrutiny Committee review (with amendments if required) before MIC's final decision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dica_apply_mic"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment Proposal form", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Environmental and social impact assessments", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Detailed project presentation to the Proposal Scrutiny Committee", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "MIC Permit itself does not carry a fixed expiry in the sourced material; the associated Multiple Journey Special Re-entry Visa runs 6 months (first grant) then 12 months per subsequent renewal",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mm_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "dica_apply_mic",
+      "tier": 1,
+      "url": "https://www.dica.gov.mm/en/apply-mic-permit",
+      "title": "Directorate of Investment and Company Administration (DICA), Myanmar -- Apply for a MIC Permit: MIC Permit required for projects that are strategic, large-capital, high environmental/community impact, on state-owned land, or government-designated; process runs through DICA consultation, Investment Proposal submission, Proposal Scrutiny Committee review, environmental/social assessment, and final MIC Commission decision",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: PUBLISHED -- tier-1 DICA sourced for the core process and qualifying criteria. NO FIXED MINIMUM CAPITAL THRESHOLD FOUND, DISCLOSED RATHER THAN INVENTED: unlike several other countries' investor routes in this dataset (Qatar's real-estate PR, Nigeria's tiered N3A-C investor visas), Myanmar's MIC Permit is triggered by qualitative criteria (strategic importance, scale, land use, environmental impact, government designation) rather than a single numeric capital floor -- a corroborating tier-3 law-firm source (Charltons Myanmar) confirms no general minimum share-capital requirement exists under the Myanmar Companies Law itself, with sector-specific minimums (banking, insurance, securities) set separately by the Central Bank and Ministry of Planning, Finance and Industry, not independently tier-1 confirmed here. MAJOR POLITICAL/PRACTICAL CAVEAT: Myanmar's investment climate has been severely disrupted since the February 2021 coup -- major foreign investors (including in the oil/gas and garment sectors) have withdrawn, and companies from the US, EU, UK, Canada, and others face targeted sanctions regimes covering military-linked conglomerates (MEHL, MEC) and specific sectors; this dataset does not model sanctions exposure, which is a distinct and materially important legal question separate from the MIC permit mechanics documented here. Duration/visa rights are drawn from mm_work_permit.json's MJSRV mechanism (Thilawa SEZ tier-1 source), not independently sourced for MIC permits generally."
+}

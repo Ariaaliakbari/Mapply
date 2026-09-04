@@ -1,0 +1,75 @@
+{
+  "id": "ua_student_permit",
+  "country": "UA",
+  "name": "Temporary Residence Permit -- Study",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uasp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmed enrollment for the purpose of study at a Ukrainian educational institution.",
+          "fix_path": "Obtain admission to an accredited Ukrainian institution.",
+          "fix_time_months": null,
+          "source_id": "dmsu_temp_residence"
+        },
+        {
+          "id": "uasp_documents",
+          "attribute": "has_required_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Valid passport (or stateless person ID) with a D visa, a Ukrainian translation of the passport's personal-data pages, and a medical insurance policy.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_temp_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "D visa", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notarized Ukrainian translation of passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical insurance policy", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "duration of enrollment",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ua_work_permit", "ua_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "dmsu_temp_residence",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/en-home/services/documenting-foreigners/issuance-of-temporary-residence-permit.html",
+      "title": "State Migration Service of Ukraine (dmsu.gov.ua), official English page -- Issuance of Temporary Residence Permit: study category, universal documentation requirements (D visa, translated passport, medical insurance, fee schedule), 15-working-day processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). Ukraine's temporary residence permit system has 12 qualifying categories under one legal framework -- this file, ua_work_permit.json, ua_investor_residence.json, and ua_family_reunification.json all draw on the same tier-1 dmsu.gov.ua page for their category-specific detail, differing mainly in the category-specific documentation and validity period. pr_after_months is left null since Ukraine's permanent residence (see ua_permanent_residence.json) is gated behind a separate quota-based 'immigration permit,' not a fixed years-of-temporary-residence clock -- a student does not automatically become PR-eligible after any set number of years, disclosed here rather than assumed. leads_to_citizenship (60 months) reflects ua_citizenship_naturalisation.json's standard 5-year residence figure."
+}

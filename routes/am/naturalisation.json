@@ -1,0 +1,107 @@
+{
+  "id": "am_naturalisation",
+  "country": "AM",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amn_age",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Must have attained the age of 18 and have active legal capacity (Article 13).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amn_residence",
+          "attribute": "months_permanent_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Has been permanently residing in the Republic of Armenia for the last 3 years as prescribed by law.",
+          "fix_path": "Accumulate 3 years of permanent residence in Armenia.",
+          "fix_time_months": 36,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amn_language",
+          "attribute": "can_express_in_armenian",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Can express himself or herself in Armenian.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amn_constitution",
+          "attribute": "familiar_with_constitution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Is familiar with the Constitution of the Republic of Armenia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        },
+        {
+          "id": "amn_security",
+          "attribute": "does_not_harm_state_security",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "May be rejected if the applicant's activities harm state security and public safety -- otherwise no separate conduct/income test is stated.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 3 years' permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Armenian language proficiency", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Knowledge of the Constitution", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "arlis_citizenship_law",
+      "tier": 1,
+      "url": "https://www.arlis.am/en/acts/219000",
+      "title": "ARLIS (Armenia's official legal information system) -- Law of the Republic of Armenia on the Citizenship of the Republic of Armenia, Article 13 (naturalisation: age 18+, 3 years' permanent residence, Armenian language, Constitution familiarity, state-security rejection ground) and Article 13.1 (dual citizenship recognized)",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). No explicit income or good-conduct (beyond the state-security clause) requirement is stated in Article 13, unlike most other countries' naturalisation routes built in this dataset -- confirmed directly from the primary legislative text via ARLIS, not assumed. dual_citizenship_allowed modeled TRUE per Article 13.1, which recognizes dual citizenship (Armenia treats a dual citizen solely as an Armenian citizen for its own purposes, rather than requiring renunciation of the other nationality). This is the RESIDUAL naturalisation track for applicants who do NOT qualify for any of Article 13's numerous exemptions (marriage, Armenian-origin descent, prior citizenship, outstanding services, etc. -- see am_citizenship_by_marriage.json, am_citizenship_by_descent.json, and am_citizenship_armenian_origin.json for those bypasses)."
+}

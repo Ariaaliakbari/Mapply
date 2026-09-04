@@ -1,0 +1,85 @@
+{
+  "id": "rw_investor_residence",
+  "country": "RW",
+  "name": "Business/Entrepreneur Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rwir_registration",
+          "attribute": "has_business_registration_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Full business registration certificate and investment certificate of the company.",
+          "fix_path": "Register a company in Rwanda.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_business"
+        }
+      ]
+    },
+    {
+      "id": "recurring_applicant",
+      "name": "Recurring applicant -- held the permit at least twice (5-year permit)",
+      "requirements": [
+        {
+          "id": "rwir_recurring",
+          "attribute": "held_temporary_resident_permit_at_least_twice",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Has already held a temporary resident permit under this category at least twice, plus a Rwanda Revenue Authority tax clearance certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_business"
+        }
+      ],
+      "outcome_override": {
+        "duration_length": "up to 5 years"
+      }
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Full business registration certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Detailed CV", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police clearance (6-month prior residence)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Tax clearance certificate (recurring applicants)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years (new applicants); up to 5 years (recurring applicants, held the permit twice before)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_permanent_residence", "rw_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_business",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/business-investor",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- business/investor permits: sectors include mining, agriculture, manufacturing, hospitality, IT, transport/logistics; 150,000 RWF/2yr new, 250,000 RWF/5yr for applicants who have already held the permit twice with RRA tax clearance; applications via irembo.gov.rw",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: PUBLISHED -- fully tier-1 DGIE sourced. NO MINIMUM INVESTMENT THRESHOLD FIGURE was disclosed by DGIE's own pages -- this is a genuine gap disclosed rather than estimated, consistent with this dataset's practice elsewhere (Botswana, Chad, Mongolia, Cote d'Ivoire investor routes had the same gap). This is DISTINCT from a citizenship-by-investment scheme: Rwanda's nationality law separately lists 'substantial sustainable investments' as one of eleven independent grounds for citizenship (see rw_citizenship_special_grounds.json) -- a genuine, faster route exists alongside this ordinary residence-permit track, and the two should not be conflated. pr_after_months/citizenship_after_months inferred the same way as rw_work_permit.json."
+}

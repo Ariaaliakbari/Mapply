@@ -1,0 +1,74 @@
+{
+  "id": "am_family_reunification",
+  "country": "AM",
+  "name": "Temporary Residence Status -- Family Ties",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amfr_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_am_citizen_or_special_resident", "parent_of_am_citizen_or_special_resident", "child_of_am_citizen_or_special_resident"],
+          "hard": true,
+          "blocker_text": "Spouse, parent, or child of a citizen of the Republic of Armenia, or of a foreign national holding Armenian special residence status (or, per the general residence-permit summary, also permanent/temporary resident sponsors).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_egov_am"
+        },
+        {
+          "id": "amfr_documentation",
+          "attribute": "has_family_tie_document",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A document certifying the family connection, plus the sponsor's passport, special passport, permanent residence card, or temporary residence card.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_egov_am"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or birth certificate proving family tie", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's Armenian passport, special passport, or residence card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport with Armenian translation, health reference, photos", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_permanent_residence", "am_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "migration_egov_am",
+      "tier": 1,
+      "url": "https://migration.e-gov.am/en/service/residency_application/info",
+      "title": "Migration and Citizenship Service (official e-government portal) -- temporary residence status document requirements for family ties: family-connection certificate plus sponsor's passport/special passport/residence card",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). No sponsor income or housing-adequacy threshold was found described on the tier-1 pages reviewed -- disclosed as a gap rather than invented. citizenship_after_months modeled 0 for this route specifically because a foreign spouse of an Armenian citizen can bypass the standard 3-year residence and language requirements entirely under Article 13's marriage exemption (see am_citizenship_by_marriage.json) rather than needing to wait out this residence permit's own general 3-year citizenship timeline -- this reflects the marriage case specifically; the parent/child grounds do not carry the same exemption and would follow am_naturalisation.json's general track instead."
+}

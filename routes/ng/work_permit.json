@@ -1,0 +1,91 @@
+{
+  "id": "ng_work_permit",
+  "country": "NG",
+  "name": "Employment (Expatriate) Visa, under an approved Expatriate Quota",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngwp_employer_quota",
+          "attribute": "employer_holds_expatriate_quota",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsoring employer must hold an approved Expatriate Quota position for the role, granted by the Ministry of Interior after showing the required skills are not available in Nigeria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_employment_visa"
+        },
+        {
+          "id": "ngwp_employment_contract",
+          "attribute": "has_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Signed employment contract and employer acceptance letter.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_employment_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer acceptance letter / formal application", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Educational credentials and CV", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Board resolution (senior management positions only)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "CERPAC fee: USD 2,000 for employed foreigners", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "initial 90-day STR entry visa, then a 2-year renewable residence/work permit (CERPAC) upon regularization",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ng_family_reunification", "ng_highly_skilled_immigrant"]
+  },
+  "sources": [
+    {
+      "id": "nis_employment_visa",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/employment-visa-expatriate-r2a/",
+      "title": "Nigeria Immigration Service (NIS) -- Employment (Expatriate) Visa R2A: for foreign nationals offered employment under an approved Expatriate Quota; process is company obtains quota -> applicant applies for STR visa at a Nigerian embassy -> enters Nigeria -> regularizes status -> CERPAC issued; initial visa 90 days, then 2-year renewable permit; worker tied to sponsoring employer only",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "interior_expatriate_quota_policy",
+      "tier": 1,
+      "url": "https://interior.gov.ng/ministry-of-interior-clarifies-expatriate-quota-policy/",
+      "title": "Federal Ministry of Interior, Nigeria -- clarification of Expatriate Quota policy: companies must justify that required skills are unavailable in Nigeria; the Ministry stresses Nigerians must be given hiring priority and will not grant compliance amnesty",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "cerpac_fee_page",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/combined-expatriate-residence-permit-and-aliens-card-cerpac/",
+      "title": "Nigeria Immigration Service (NIS) -- CERPAC: residence permit for foreigners in Nigeria 1+ year; fees USD 2,000 (employed foreigners), USD 600 (students), no charge (spouses of Nigerian citizens); typically 1-year validity, renewable",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- all three sources tier-1. STRUCTURAL FINDING: employer-side gatekeeping happens through the Expatriate Quota system (Ministry of Interior), not through a per-application labour-market test the way some other countries in this dataset structure it -- the employer must first secure quota approval (Establishment Grant, initial 3-year validity, renewable to 7 years cumulative before localization is expected, or 'Permanent Until Review' status for top management roles like CEO/MD) before any individual can apply for this visa. citizenship_after_months (180 = 15yr) is cross-referenced from ng_citizenship_naturalisation.json, not independently sourced here. This route is distinct from ng_business_permit.json (which covers the employer-side Business Permit + Expatriate Quota mechanics in more detail) and ng_highly_skilled_immigrant.json (N4A, a related but not employer-tied specialized-skills route)."
+}

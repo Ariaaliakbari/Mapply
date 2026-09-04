@@ -1,0 +1,108 @@
+{
+  "id": "jo_investor_residence",
+  "country": "JO",
+  "name": "Investor / Real Estate Residency",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national who purchases qualifying Jordanian real estate, or holds investor/associate status in a registered company, may apply for Investment/Business Residency; real estate purchase applications must go to the Ministry of Investment within 3 months of the purchase date.",
+    "evidence_hint": "Property title deed or company registration/investor documentation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "real_estate",
+      "name": "Real estate route (five-year residency)",
+      "requirements": [
+        {
+          "id": "joir_property_value",
+          "attribute": "property_value_jod",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "Minimum property value of JOD 150,000 (outside Amman) up to JOD 300,000 (from a non-developer), held for residential purposes only, for at least 5 years without sale or mortgage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lawjo_investor"
+        },
+        {
+          "id": "joir_hold_period",
+          "attribute": "property_hold_years_min",
+          "operator": ">=",
+          "value": 5,
+          "hard": true,
+          "blocker_text": "Property must be retained, unmortgaged and unsold, for at least 5 years.",
+          "fix_path": null,
+          "fix_time_months": 60,
+          "source_id": "lawjo_investor"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business/investor route (annual residency)",
+      "requirements": [
+        {
+          "id": "joir_business_status",
+          "attribute": "is_investor_associate_or_company_owner",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Investor, company owner, or associate status with a valid work license and company registration certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property title deed (real estate route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Company registration certificate and work license (business route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Security clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "real estate route: 5 years; business route: 1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jo_permanent_residence", "jo_citizenship_by_investment"]
+  },
+  "sources": [
+    {
+      "id": "psd_services",
+      "tier": 1,
+      "url": "https://psd.gov.jo/media/lncmdl3i/servcies.pdf",
+      "title": "Jordan Public Security Directorate (PSD), Borders and Residence Department -- Information Services: Investment/Business Residency, 1-year duration, 30 JOD fee, requires investor/company-owner/associate status with valid work license and company registration",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "lawjo_investor",
+      "tier": 3,
+      "url": "https://lawjo.net/en/legal-articles-and-news/residency-in-jordan-for-investors-conditions-and-procedures/",
+      "title": "lawjo.net (Jordanian law firm) -- Residency in Jordan for Investors: real estate residency thresholds (JOD 200,000 from a developer / JOD 300,000 from a non-developer / JOD 150,000 outside Amman), 5-year hold, application to Ministry of Investment within 3 months of purchase",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "zawya_investor",
+      "tier": 3,
+      "url": "https://www.zawya.com/en/economy/policy/jordan-cabinet-approves-new-investor-residency-citizenship-rules-393411",
+      "title": "Zawya (business news) -- Jordan investor residency/citizenship rules: real estate residency figures (JOD 200,000 from developer / JOD 300,000 non-developer / JOD 150,000 outside Amman, 5-year hold) independently corroborating lawjo.net",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- the residency-category structure and business-route requirements are tier-1 (PSD), but the real estate investment thresholds (JOD 150,000-300,000 depending on developer status and location) are corroborated across two independent tier-3 sources (a law firm and a business-news outlet reporting Cabinet-approved rules) rather than a fetched tier-1 Ministry of Investment page -- treated as reliable but not upgraded past draft absent direct government confirmation. The JOD 150,000-value requirement modeled here (joir_property_value) uses the lowest confirmed threshold; the actual figure varies by developer status and Amman vs. other-region location per both corroborating sources. pr_after_months mirrors the 10-year cumulative residence figure from jo_permanent_residence.json since no separate investor-specific PR timeline was found."
+}

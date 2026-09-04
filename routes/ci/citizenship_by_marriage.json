@@ -1,0 +1,109 @@
+{
+  "id": "ci_citizenship_by_marriage",
+  "country": "CI",
+  "name": "Citizenship by Declaration, Marriage to an Ivoirian National (Loi 2024-236)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_5yr",
+      "name": "Standard -- 5 years from marriage",
+      "requirements": [
+        {
+          "id": "cicm_5yr_marriage",
+          "attribute": "months_since_marriage_to_ivoirian",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years from the celebration of marriage to an Ivoirian national (Loi 2024-236, amending Article 12), with an uninterrupted community of life (communaute de vie) maintained since marriage.",
+          "fix_path": "Remain married and maintain community of life for 5 years from the marriage date.",
+          "fix_time_months": 60,
+          "source_id": "crai_loi_2024_236"
+        },
+        {
+          "id": "cicm_community_of_life",
+          "attribute": "community_of_life_uninterrupted_since_marriage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The community of life between spouses must not have ceased since the marriage, and the Ivoirian spouse must have retained Ivoirian nationality throughout.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "crai_loi_2024_236"
+        }
+      ]
+    },
+    {
+      "id": "extended_6yr",
+      "name": "Extended -- 6 years, where 4 years' regular residence in Cote d'Ivoire cannot be shown",
+      "requirements": [
+        {
+          "id": "cicm_6yr_no_residence_proof",
+          "attribute": "months_since_marriage_without_4yr_residence_proof",
+          "operator": ">=",
+          "value": 72,
+          "hard": true,
+          "blocker_text": "6 years from marriage, where the foreign spouse cannot demonstrate at least 4 years of uninterrupted, regular residence in Cote d'Ivoire since the marriage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "crai_loi_2024_236"
+        }
+      ]
+    },
+    {
+      "id": "reduced_3yr_children",
+      "name": "Reduced -- 3 years, where at least 2 children were born of the marriage",
+      "requirements": [
+        {
+          "id": "cicm_3yr_two_children",
+          "attribute": "months_since_marriage_with_2plus_children",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years from marriage, where at least 2 children have been born of the marital community of life.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "crai_loi_2024_236"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of uninterrupted community of life since marriage", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of regular residence in Cote d'Ivoire since marriage (where relevant to the 5yr/6yr distinction)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Children's birth certificates (for the 3-year reduced route)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "crai_loi_2024_236",
+      "tier": 3,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/Cote-dIvoire-Loi-2024-236-nationalite-mariage-JO.pdf",
+      "title": "Citizenship Rights in Africa Initiative (NGO tracking African nationality law) -- hosting a copy of Cote d'Ivoire's Journal Officiel publication of Loi 2024-236 (published 8 May 2024), amending Articles 12-16, 29-30, 45 and 99 of the 1961 Code de la Nationalite: gender-neutral declaration-based marriage citizenship, 5-year standard/6-year (if under 4yr residence)/3-year (2+ children) timelines, 1-year government opposition window",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: DRAFT -- the source is an NGO-hosted copy of what appears to be the Journal Officiel (official government gazette) text, not fetched directly from a Cote d'Ivoire government domain in this pass, so tier-3 per this dataset's convention for NGO-hosted primary-legal-text PDFs (consistent with Botswana's citizenshiprightsafrica.org descent-law sourcing and Chad's droit-afrique.com precedent). THIS IS THE SINGLE MOST SIGNIFICANT AND RECENT FINDING IN THIS BUILD: Loi 2024-236, published 8 May 2024 -- roughly 16 months before this build -- COMPLETELY REFORMED marriage-based citizenship. The OLD 1961 Article 12 (see ci_citizenship_naturalisation.json's notes) granted AUTOMATIC citizenship to a foreign woman marrying an Ivoirian man upon the marriage itself (with an opt-out declaration), while giving foreign men marrying Ivoirian women NO equivalent automatic route -- a stark gender asymmetry matching this dataset's Jordan precedent. The 2024 law abolishes automatic attribution ENTIRELY for both sexes, replacing it with a gender-neutral DECLARATION process requiring years of continued marriage (5/6/3 depending on residence and children) -- explicitly quoted in the source as applying to 'the woman of foreign nationality who marries an Ivoirian, or the man of foreign nationality who marries an Ivoirian woman' on identical terms. This is a genuine, dramatic tightening-plus-degendering reform, structurally similar in spirit to Romania's Law 14/2025 tightening but moving in the opposite direction on gender neutrality (Romania's marriage clause was already gender-neutral; Cote d'Ivoire's was not, until this law). The 3-requirement-group modeling (5yr/6yr/3yr) reflects three genuinely different qualifying timelines the law itself sets out, not three separate legal mechanisms."
+}

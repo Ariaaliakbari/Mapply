@@ -1,0 +1,93 @@
+{
+  "id": "pe_work_permit",
+  "country": "PE",
+  "name": "Trabajador Residente -- Dependiente (Employer-Sponsored Worker)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pewp_contract",
+          "attribute": "has_mtpe_approved_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A written employment contract, registered and approved by the Ministry of Labour (MTPE), is required before applying to MIGRACIONES.",
+          "fix_path": "Secure a job offer and have the employer register the contract with the MTPE.",
+          "fix_time_months": null,
+          "source_id": "veninformado_trabajador"
+        },
+        {
+          "id": "pewp_workforce_cap",
+          "attribute": "employer_within_foreign_workforce_cap",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreign employees generally cannot exceed 20% of the employer's total workforce, and their combined salaries cannot exceed 30% of total payroll. Citizens of Andean Community countries (Bolivia, Colombia, Ecuador) are exempt from this cap.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_trabajador"
+        },
+        {
+          "id": "pewp_conduct",
+          "attribute": "has_clean_criminal_and_interpol_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Interpol international police clearance certificate (valid up to 6 months) and criminal/judicial background clearance from the country of origin covering the preceding 5 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "veninformado_trabajador"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "MTPE-approved employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Interpol international police clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal/judicial background clearance from country of origin (5-year coverage)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "365 days, renewable while employed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pe_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "migraciones_reglamento",
+      "tier": 1,
+      "url": "https://www.migraciones.gob.pe/wp-content/uploads/2018/03/ley1350_migraciones_reglamento.pdf",
+      "title": "Superintendencia Nacional de Migraciones (MIGRACIONES) -- Reglamento del Decreto Legislativo N.1350, Article 29.2.h: Trabajador resident immigration status (subordinate or independent lucrative work), 365 days",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "veninformado_trabajador",
+      "tier": 3,
+      "url": "https://www.veninformado.pe/vivir-en-peru/tramites-legales/superintendencia-nacional-de-migraciones/trabajador/",
+      "title": "Veninformado -- Trabajador resident status: MTPE-approved contract requirement, 20% foreign-workforce / 30% payroll cap with Andean Community exemption, Interpol clearance, annual renewal",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- the category itself and its 365-day duration are tier-1 (direct from the MIGRACIONES regulation, Art. 29.2.h), but the MTPE-contract mechanics, the 20%/30% workforce cap, and the specific Interpol/background-check documentation come only from a tier-3 consultancy source, not an independently fetched MTPE or MIGRACIONES procedural page (gob.pe pages were bot-blocked on every fetch attempt in this pass). work_rights is 'restricted' because employment is tied to the specific MTPE-approved contract underlying the permit, not an open work authorization. The 20%/30% foreign-workforce cap (D. Leg. 689) is a genuinely distinctive Peru-specific constraint not seen in most other countries built in this dataset -- flagged prominently since it can independently block an otherwise-qualified applicant if the employer's existing foreign headcount is already at the cap. This is the DEPENDIENTE (employer-sponsored) modality of the single 'Trabajador' calidad migratoria; see pe_work_independent.json for the same legal category's self-employed modality, which is far more thinly documented."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "jm_visitor_visa",
+  "country": "JM",
+  "name": "Visitor Visa / Visa-Exempt Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmvv_purpose",
+          "attribute": "travel_purpose",
+          "operator": "in",
+          "value": ["tourism", "business_visit", "transit"],
+          "hard": true,
+          "blocker_text": "Travel for tourism, business, or transit; roughly 80+ nationalities (mostly Commonwealth, North America, Europe) are visa-exempt, others require a visa obtained prior to arrival or at the port of entry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfaft_visa_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30-90 days for most visa-exempt nationalities; up to 6 months commonly cited for US passport holders; cruise passengers are visa-exempt",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jm_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "mfaft_visa_info",
+      "tier": 1,
+      "url": "https://mfaft.gov.jm/site/visa-information/",
+      "title": "Ministry of Foreign Affairs and Foreign Trade (MFAFT), Jamaica -- visa information: country-listing PDF of ~80+ visa-exempt nationalities, stays of 30-90 days for most, up to 6 months for US passport holders; visa-required nationalities obtain a visa prior to arrival or at the port of entry",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: PUBLISHED -- tier-1 MFAFT sourced, though the underlying country-listing PDF is filename-dated '2023' while referenced as current on the live site as of this build -- worth a periodic currency check. Legal basis for entry control itself rests on the Immigration Restriction (Commonwealth Citizens) Act (1945) and the Aliens Act (1946), both explicitly described by the Jamaican government as outdated and long overdue for consolidation (proposed since 2008, still not completed as of this build)."
+}

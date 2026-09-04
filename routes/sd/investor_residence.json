@@ -1,0 +1,62 @@
+{
+  "id": "sd_investor_residence",
+  "country": "SD",
+  "name": "Investor Residence (Investment Encouragement Act)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sdir_earnest_deposit_250k",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "Earnest money deposit of at least US$250,000 (or foreign-currency equivalent acceptable to the Central Bank), transferred externally, required before an investment license is issued.",
+          "fix_path": "Transfer at least US$250,000 in earnest money via an external bank transfer acceptable to Sudan's Central Bank.",
+          "fix_time_months": null,
+          "source_id": "unctad_investment_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of external bank transfer of earnest money", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Investment license application", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "residence granted for the duration of the investment project, subject to applicable immigration laws and regulations not yet issued at the time of this build",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unctad_investment_act",
+      "tier": 2,
+      "url": "https://investmentpolicy.unctad.org/investment-laws/laws/334/sudan-the-investment-act",
+      "title": "UNCTAD Investment Policy Hub -- Sudan's Investment (Encouragement) Act, 2021: Section 22 requires foreign investors to deposit at least US$250,000 earnest money via external transfer before a license is issued; Section 21 grants non-Sudanese investors residence for the duration of their project, 'without violation to the provisions of the laws organizing the same and as the regulations may specify' -- i.e. subject to separate immigration regulations",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sudan). STATUS: DRAFT -- the only source located for this Act's operative text is UNCTAD's Investment Policy Hub, tier-2 (intergovernmental) under this dataset's convention; Sudan's own Ministry of Investment portal (sudaninvest.org) was confirmed to exist and be reachable in this build, but its specific investment-threshold and residence-rights pages were not independently retrieved -- worth a direct follow-up attempt there before treating this as the final word. STRUCTURAL FINDING: the Act's own text explicitly defers the actual residence mechanics to separate regulations described as not yet fully specified at the time of the Act's text -- meaning even a tier-1 confirmation of the Act itself would likely still leave the practical work/residence rights underspecified. family_can_join is set to false as a conservative schema-compliant default (the field does not accept null) rather than an invented affirmative right -- nothing in the source addresses dependents at all, so this should not be read as a confirmed exclusion, only as the absence of a confirmed inclusion. GIVEN THE POLITICAL AND SECURITY CONTEXT DISCLOSED IN sd_entry_visa.json -- an active civil war, a capital only recently reoccupied by the government, and large-scale destruction of infrastructure -- the practical viability of a genuine USD 250,000 foreign direct investment in Sudan as of this build's date is a materially separate question from whether the legal mechanism exists on paper; this dataset models the latter only."
+}

@@ -1,0 +1,90 @@
+{
+  "id": "td_visitor_visa",
+  "country": "TD",
+  "name": "Visa de Séjour (Tourism/Business)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national applies for a 'visa de séjour' at a Chadian embassy or consulate for tourism, business, or short-term purposes; Chad does not appear to operate a visa-free or visa-on-arrival regime for most nationalities.",
+    "evidence_hint": "Application to the Chadian embassy/consulate serving the applicant's country of residence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tdvv_passport_validity",
+          "attribute": "passport_valid_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport valid for at least 6 months.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        },
+        {
+          "id": "tdvv_yellow_fever",
+          "attribute": "has_yellow_fever_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Yellow fever vaccination certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        },
+        {
+          "id": "tdvv_accommodation_proof",
+          "attribute": "has_accommodation_proof",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of accommodation with an address in Chad.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "embassy_chad_paris_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Yellow fever vaccination certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of accommodation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Flight ticket copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Company letter (business travelers) or mission order (officials)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 month (single entry) or 3 months (multiple entries)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["td_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "embassy_chad_paris_visa",
+      "tier": 1,
+      "url": "https://ambatchadparis.fr/wp-content/uploads/2023/09/visa2019.pdf",
+      "title": "Embassy of Chad in Paris (official Chadian diplomatic mission) -- visa information sheet: 'visa de séjour' covers tourism, business, students, and interns under one visa category with purpose-specific supporting documents; 1-month single-entry (EUR 70) or 3-month multiple-entry (EUR 100); 72-hour standard processing; free for diplomatic/service passports",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- STRUCTURAL FINDING: Chad does not appear to run separate visa categories for tourism, business, study, and internships the way most countries in this dataset do -- the embassy's own information sheet describes a single 'visa de séjour' with the same fee/duration structure, differentiated only by which supporting document a given purpose requires (company letter for business, enrollment certificate for students, etc.). This file models the base/tourism use of that single visa category; td_student_permit.json models the same visa mechanism with its purpose-specific document requirement, disclosed as the same underlying instrument rather than a separate visa type. SOURCING CAVEAT flagged in advance: Chad's own government web presence (gouv.td subdomains) does not appear to publish a consumer-facing immigration service portal comparable to gov.bw or psd.gov.jo -- the strongest available tier-1 source found in this pass is the Chadian embassy's own published visa information sheet, not a Ministry of Interior or Immigration Directorate page. Several other attempted sources (Ministry of Labour Code PDF, UNHCR direct fetch, ANIE investment agency page) returned 403 errors or empty content in this pass."
+}

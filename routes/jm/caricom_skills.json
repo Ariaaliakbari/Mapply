@@ -1,0 +1,80 @@
+{
+  "id": "jm_caricom_skills",
+  "country": "JM",
+  "name": "CARICOM Skills Certificate (Certificate of Recognition of CARICOM Skills Qualification)",
+  "category": "work_independent",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmcs_caricom_national",
+          "attribute": "is_caricom_national",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "National of a CARICOM member state.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mlss_caricom_skills"
+        },
+        {
+          "id": "jmcs_skilled_category",
+          "attribute": "is_recognized_skilled_category",
+          "operator": "in",
+          "value": ["university_graduate", "associate_degree_holder", "teacher", "registered_nurse", "artisan_cvq2", "household_domestic_cvq2", "artiste_musician_sportsperson", "media_worker", "agricultural_worker", "private_security_officer"],
+          "hard": true,
+          "blocker_text": "Falls into one of CARICOM's recognized skilled categories: university graduates, associate degree holders, teachers, registered nurses, artisans/household domestics (CVQ Level 2+), artistes/musicians/sportspersons actively earning a living in their field, media workers, agricultural workers, or private security officers. Aviation personnel definitions were still 'pending finalization' as of the CARICOM Secretariat's December 2025 definitions document.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "caricom_definitions_2025"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of CARICOM nationality", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Qualification documentation for the relevant skilled category", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "certificate does not expire but is updated every 10 years alongside passport renewal",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jm_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mlss_caricom_skills",
+      "tier": 1,
+      "url": "https://www.mlss.gov.jm/news/caricom-skills-certificate-widening-access-to-employment-opportunities/",
+      "title": "Ministry of Labour and Social Security (MLSS), Jamaica -- CARICOM Skills Certificate: implements the Caribbean Community (Free Movement of Skilled Persons) Act, 1997, applications made to MLSS (not PICA); grants free movement to work in Jamaica without a work permit, no employer sponsorship or labour market test required; fees JMD 2,000 (application) + 8,000 (certificate) + 3,000 (replacement)",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "caricom_definitions_2025",
+      "tier": 2,
+      "url": "https://caricom.org/wp-content/uploads/DEFINITIONS-of-Categories-of-Skilled-Nationals-as-at-December-2025.pdf",
+      "title": "CARICOM Secretariat -- Definitions of Categories of Skilled Nationals, as at December 2025: lists all recognized skilled categories region-wide, including two recently added (agricultural workers, private security officers) and one still pending finalization (aviation personnel)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: DRAFT -- downgraded from an initial published draft after validation: the nationality requirement (jmcs_caricom_national) is tier-1 MLSS sourced, but the recognized-skilled-category list (jmcs_skilled_category) rests on the CARICOM Secretariat's own definitions document, which is tier-2 (intergovernmental), not tier-1. Per this dataset's rule that every hard requirement in a published route must cite tier-1, this file stays draft until a tier-1 MLSS or PICA source enumerating the recognized categories directly is found. GENUINELY DISTINCTIVE ROUTE, THE MARQUEE FINDING FOR THIS FILE: this is regional free-movement, not ordinary immigration -- no employer sponsorship, no labour market test, no per-duration fee scaling, and the certificate effectively never expires (just gets refreshed alongside passport renewal). Modeled as category 'work_independent' since it grants the right to work without being tied to a specific employer or investment structure, though it functions more like a regional citizenship-adjacent mobility right than a conventional freelance permit. Holders can use this certificate as supporting documentation toward 'Unconditional Landing' (Jamaica's term for permanent residence, see jm_permanent_residence.json) -- reflected here as pr_after_months=0, meaning the certificate itself can support an immediate PR application rather than requiring additional waiting time, though PR itself still requires a separate application. This is Jamaica's implementation of the CSME (Caribbean Community Single Market and Economy) skilled-persons free-movement regime that other CARICOM Jamaica-adjacent countries in this dataset (e.g. Grenada, St Kitts and Nevis, St Lucia, St Vincent and the Grenadines, if built) would be expected to mirror in their own immigration systems."
+}

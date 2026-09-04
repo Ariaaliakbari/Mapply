@@ -1,0 +1,86 @@
+{
+  "id": "sk_citizenship_by_marriage",
+  "country": "SK",
+  "name": "Citizenship by Naturalisation, Reduced Residence for Spouses of Slovak Citizens",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "skcm_married_to_citizen",
+          "attribute": "married_to_slovak_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a Slovak citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        },
+        {
+          "id": "skcm_residence",
+          "attribute": "months_continuous_permanent_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' permanent residence in Slovakia (versus 8 years on the general track).",
+          "fix_path": "Accumulate 5 years of continuous permanent residence while married to a Slovak citizen.",
+          "fix_time_months": 60,
+          "source_id": "mzv_citizenship"
+        },
+        {
+          "id": "skcm_other_conditions",
+          "attribute": "meets_general_naturalisation_conditions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The remaining general naturalisation conditions still apply: Slovak language proficiency, clean criminal record, and tax/social-security/health-insurance compliance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mzv_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5 years' permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Slovak language exam results", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mzv_citizenship",
+      "tier": 1,
+      "url": "https://www.mzv.sk/en/web/washington/sluzby/konzularne-sluzby/statne-obcianstvo/nadobudnutie-statneho-obcianstva",
+      "title": "Ministry of Foreign and European Affairs of the Slovak Republic (Washington consular page) -- citizenship acquisition: marriage to a Slovak citizen reduces the naturalisation residence requirement to 5 years (versus 8 years standard); foreign citizenship acquired through marriage does not automatically terminate Slovak citizenship while the marriage remains valid",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovakia). STATUS: DRAFT -- same tier-1-consular-summary caveat as sk_citizenship_naturalisation.json (kept draft pending cross-check against the full slov-lex.sk statutory text). MODELING NOTE, consistent with this dataset's Romania precedent: this is not a separate legal grant mechanism, but a reduced-residence variant of the same general naturalisation track (Article 8(1)(a)-style structure) -- modeled as its own file because the eligibility test (5yr vs 8yr) differs materially. Gender-neutral: the source uses no gendered language for either spouse."
+}

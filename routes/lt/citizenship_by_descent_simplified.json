@@ -1,0 +1,76 @@
+{
+  "id": "lt_citizenship_by_descent_simplified",
+  "country": "LT",
+  "name": "Simplified Citizenship -- Lithuanian Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person of Lithuanian descent (parents, grandparents, or great-grandparents were Lithuanian) who has never held Lithuanian citizenship may acquire it via a simplified procedure under Article 10, without residence, language, or exam requirements.",
+    "evidence_hint": "Documented Lithuanian descent (ancestor's birth/citizenship records); declaration of never having held Lithuanian citizenship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Person of Lithuanian descent who has never held Lithuanian citizenship",
+      "requirements": [
+        {
+          "id": "ltcds_descent",
+          "attribute": "has_lithuanian_descent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be of Lithuanian descent (parents, grandparents, or great-grandparents were Lithuanian) under Article 10 of the Law on Citizenship, and must not have previously held Lithuanian citizenship (that case falls under the restoration route instead).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        },
+        {
+          "id": "ltcds_no_residence_exam_required",
+          "attribute": "residence_language_and_exam_requirements",
+          "operator": "==",
+          "value": "waived",
+          "hard": false,
+          "blocker_text": "No residence period, language exam, or Constitution exam is required under this route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Lithuanian descent (ancestor's birth/citizenship records)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Declaration of never having held Lithuanian citizenship", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "eseimas_citizenship_law_toc",
+      "tier": 1,
+      "url": "https://e-seimas.lrs.lt/rs/legalact/TAD/TAIS.395555/",
+      "title": "e-Seimas (Lithuania's official legislative database) -- Law on Citizenship, Article 10 (persons of Lithuanian descent)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- only Article 10's title/existence was confirmed against the e-Seimas table of contents in this pass, consistent with lt_citizenship_by_descent.json; full text (exact degree-of-descent cutoff, documentary standard for proving 'Lithuanian descent') not independently re-quoted -- disclosed as a gap. dual_citizenship_allowed set true, distinguishing this route from lt_citizenship_by_descent.json (birth to a citizen parent, false) and lt_naturalisation.json (false) -- Article 7's exceptions cover persons of Lithuanian descent who acquire citizenship without ever having renounced it, consistent with this route requiring no prior citizenship to give up. This is the route lt_naturalisation.json's notes referenced as permitting dual citizenship, alongside lt_citizenship_reinstatement_pre1940.json."
+}

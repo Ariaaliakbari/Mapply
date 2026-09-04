@@ -1,0 +1,90 @@
+{
+  "id": "rw_citizenship_naturalisation",
+  "country": "RW",
+  "name": "Citizenship by Naturalisation -- Residence and Immigrant Grounds",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["rw_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "residence_ground",
+      "name": "'Residence' ground -- 15 years, documented residence permits",
+      "requirements": [
+        {
+          "id": "rwcn_15yr_residence",
+          "attribute": "months_continuous_documented_residence",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "At least 15 years' consecutive residence in Rwanda, with physical presence supported by continuous, documented residence permits.",
+          "fix_path": "Accumulate 15 years of continuous, permit-documented residence.",
+          "fix_time_months": 180,
+          "source_id": "migration_gov_rw_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "immigrant_ground",
+      "name": "'Immigrant' ground -- 25 years, Cell-authority-verified residence",
+      "requirements": [
+        {
+          "id": "rwcn_25yr_immigrant",
+          "attribute": "months_continuous_residence_cell_verified",
+          "operator": ">=",
+          "value": 300,
+          "hard": true,
+          "blocker_text": "At least 25 years' residence, verified by local Cell (the smallest Rwandan administrative unit) authorities rather than a continuous formal permit record -- a separate legal ground from the documented-residence track, for long-term de facto residents without a complete permit paper trail.",
+          "fix_path": "Accumulate 25 years of residence with local Cell-authority verification.",
+          "fix_time_months": 300,
+          "source_id": "migration_gov_rw_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Continuous residence permit history (residence ground) OR Cell-authority verification (immigrant ground)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Application form and fee (5,000-10,000 RWF)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_citizenship",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/citizenshipss",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- citizenship: 'residence' ground (15 years, documented permit history) and 'immigrant' category (25 years, verified by local Cell authorities); processing time 6 months across all citizenship categories; fees 5,000-10,000 RWF",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "crai_organic_law_2021",
+      "tier": 3,
+      "url": "https://citizenshiprightsafrica.org/organic-law-n-002-2021-ol-of-16-07-2021-governing-rwandan-nationality/",
+      "title": "Citizenship Rights in Africa Initiative (NGO tracking African nationality law) -- Organic Law N 002/2021.OL of 16/07/2021 governing Rwandan Nationality: lists 'residence in Rwanda' and 'immigrant status' as two of eleven SEPARATE, independently-named legal grounds for naturalisation (alongside birth on Rwandan territory, foundling status, marriage, adoption, national interest, special skills/talent, substantial investment, honour, and statelessness)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: PUBLISHED -- fully tier-1 DGIE sourced for the two residence-based grounds. STRUCTURAL FINDING: Rwanda's naturalisation law does not have a single 'residence' track with exceptions -- per the 2021 Organic Law, 'residence' and 'immigrant status' are TWO INDEPENDENTLY NAMED legal grounds, confirmed by the DGIE page describing genuinely different evidentiary standards (formal continuous permit documentation for the 15-year ground, versus local Cell-authority verification for the 25-year ground) rather than one ground with a documentation shortcut. This is the LONGEST standard naturalisation residence requirement (15 years) found anywhere in this dataset to date. dual_citizenship_allowed is TRUE -- DGIE's own page states applicants need not renounce existing citizenship, one of the more permissive dual-citizenship stances in this dataset. This file does NOT cover the marriage, descent, or special (talent/investment/national-interest/honour/statelessness/foundling) grounds -- see rw_citizenship_by_marriage.json, rw_citizenship_by_descent.json, and rw_citizenship_special_grounds.json."
+}

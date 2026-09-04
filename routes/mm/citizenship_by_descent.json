@@ -1,0 +1,73 @@
+{
+  "id": "mm_citizenship_by_descent",
+  "country": "MM",
+  "name": "Citizenship by Descent (Birth Outside Myanmar to a Citizen Parent)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mmcd_citizen_parent",
+          "attribute": "has_myanmar_citizen_or_associate_or_naturalised_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born to a parent (or combination of parents) who is a citizen, associate citizen, or naturalised citizen of Myanmar, per Section 7's tiered parent-status combinations.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_1982_law"
+        },
+        {
+          "id": "mmcd_registered_within_1yr",
+          "attribute": "birth_registered_within_1yr_at_embassy",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Birth registered within 1 year of the date of birth at a Myanmar Embassy or Consulate (Section 10) -- late registration possible with sufficient justification.",
+          "fix_path": "Register the birth at a Myanmar diplomatic mission; late registration may still be possible with adequate justification.",
+          "fix_time_months": 12,
+          "source_id": "refworld_1982_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Myanmar citizen/associate/naturalised status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's foreign birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_1982_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1982/en/49622",
+      "title": "UNHCR Refworld -- Burma Citizenship Law, 1982 (English translation), Sections 7 and 10: citizenship extends to persons born outside Myanmar under several parent-status combinations (both parents citizens; one citizen + one associate/naturalised; and further mixed combinations); births outside Myanmar must be registered within 1 year at a Myanmar Embassy or Consulate, with late-registration provision for sufficient justification",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: DRAFT -- same tier-2-only sourcing limitation as the other Myanmar citizenship files (UNHCR Refworld's hosted translation is the only text of the 1982 law located; no tier-1 Myanmar-government copy found). Section 7's exact combinatorial rules (which pairing of citizen/associate/naturalised parents yields which tier of citizenship for the child) were only partially retrieved in this build -- modeled here at the general level of 'has a qualifying parent', not the precise resulting citizenship tier the child would receive, which the source material describes as varying by the specific parent-status combination. This is DISTINCT from a genuine 1823-ancestry ethnic-descent claim (Section 3's 'national races' framework, which underlies mm_citizenship_naturalisation.json's ethical-context note on Rohingya exclusion) -- this file models ordinary descent from a CURRENT citizen parent, the same mechanism most countries in this dataset use, not the ethnicity-gated foundational category. dual_citizenship_allowed FALSE per Section 16, consistent with the other Myanmar citizenship files."
+}

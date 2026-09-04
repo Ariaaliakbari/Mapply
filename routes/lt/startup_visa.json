@@ -1,0 +1,85 @@
+{
+  "id": "lt_startup_visa",
+  "country": "LT",
+  "name": "Startup Visa",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ltsu_innovation_approval",
+          "attribute": "startup_lithuania_expert_panel_approved",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Startup Lithuania's expert panel must assess the business idea as genuinely innovative -- a scalable, technology-driven concept, not a relocation disguised as a startup.",
+          "fix_path": "Submit a business plan for Startup Lithuania's innovation assessment.",
+          "fix_time_months": null,
+          "source_id": "corpenza_startup_visa"
+        },
+        {
+          "id": "ltsu_means",
+          "attribute": "monthly_subsistence_funds_eur",
+          "operator": ">=",
+          "value": 1038,
+          "hard": true,
+          "blocker_text": "Means of subsistence of at least EUR 1,038/month (EUR 12,456/year), evidenced by bank statements or proof of income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "corpenza_startup_visa"
+        },
+        {
+          "id": "ltsu_insurance",
+          "attribute": "health_insurance_coverage_eur",
+          "operator": ">=",
+          "value": 30000,
+          "hard": true,
+          "blocker_text": "Health insurance coverage of at least EUR 30,000, valid across the EU for 12 months and including repatriation costs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "corpenza_startup_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business plan submitted to Startup Lithuania", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Bank statements proving means of subsistence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance policy (EUR 30,000+ coverage)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years initially, extendable by a further 3 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lt_permanent_residence", "lt_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "corpenza_startup_visa",
+      "tier": 3,
+      "url": "https://corpenza.com/en/lithuania-startup-visa-a-founder-s-guide",
+      "title": "Corpenza -- Lithuania Startup Visa: Startup Lithuania expert-panel innovation assessment, EUR 1,038/month subsistence requirement, EUR 30,000 health insurance, 2-year initial + 3-year extension, 120-day company-formation deadline post-approval",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- sourced to a specialist relocation-consultancy guide rather than an independently fetched tier-1 startuplithuania.com or migracija.lt page in this pass (the latter returned only a JavaScript shell on direct fetch). The EUR 1,038/month figure is described as tied to Lithuania's official minimum-subsistence-level calculation, which is periodically updated -- treated here as a snapshot figure, not independently re-verified against a tier-1 source. Approved founders must register the company within 120 days and notify Startup Lithuania within 3 working days of registration, per the source -- disclosed as a process detail rather than modeled as a testable requirement."
+}

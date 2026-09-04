@@ -1,0 +1,86 @@
+{
+  "id": "jm_citizenship_commonwealth_registration",
+  "country": "JM",
+  "name": "Registration of Commonwealth Citizens",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmcc_commonwealth_citizen",
+          "attribute": "is_commonwealth_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizen of a Commonwealth country.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "jis_commonwealth_registration"
+        },
+        {
+          "id": "jmcc_residence",
+          "attribute": "months_resident_consecutive",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 or more consecutive years' residence in Jamaica.",
+          "fix_path": "Accumulate 5 consecutive years of residence in Jamaica.",
+          "fix_time_months": 60,
+          "source_id": "jis_commonwealth_registration"
+        },
+        {
+          "id": "jmcc_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character, evidenced by a clean police record.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "jis_commonwealth_registration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form R3 (registration application)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of Commonwealth citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police record / certificate of character", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "JMD 15,000 / USD 260 fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 consecutive years' residence in Jamaica",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "jis_commonwealth_registration",
+      "tier": 1,
+      "url": "https://jis.gov.jm/information/citizenship/",
+      "title": "Jamaica Information Service (JIS) -- Registration of Commonwealth Citizens: a distinct fast-track for citizens of Commonwealth countries with 5+ consecutive years' residence and good character, Form R3, fee JMD 15,000 / USD 260",
+      "accessed_at": "2026-09-03"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: PUBLISHED -- tier-1 JIS sourced. This is the concrete structural answer to whether Jamaica's Commonwealth-realm membership shortens the path to citizenship for Commonwealth nationals: it does, via a dedicated registration route (Form R3) that is procedurally distinct from ordinary naturalisation (Form N1, jm_citizenship_naturalisation.json) and does not carry naturalisation's newspaper-publication or 4-Jamaican-born-reference requirements. Both routes share the same 5-year residence figure, but registration is a lighter-weight statutory mechanism reserved for Commonwealth citizens specifically, reflecting Jamaica's Commonwealth-realm status rather than treating all foreign nationals identically."
+}

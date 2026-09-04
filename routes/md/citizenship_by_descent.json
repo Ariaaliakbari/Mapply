@@ -1,0 +1,79 @@
+{
+  "id": "md_citizenship_by_descent",
+  "country": "MD",
+  "name": "Recognition of Moldovan Citizenship for Persons of Bessarabian/Moldovan Origin (Law No. 253/2025, Art. 10(1)(b))",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Persons born abroad with at least one parent, grandparent, or great-grandparent born on the territory of the Republic of Moldova, or whose ancestors resided in Bessarabia, Northern Bukovina, the Hertza region, or the Moldavian ASSR before 28 June 1940, or who were deported from or fled that territory after that date, may apply for 'recognition' (recunoastere) of Moldovan citizenship directly -- no interim residence status is required first, and residence in Moldova is not required to apply. Applications are filed through Moldovan diplomatic missions/consulates.",
+    "evidence_hint": "Civil status records establishing the qualifying ancestral link; historical documentation of pre-1940 territorial residence, deportation, or flight, where applicable."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdcd_qualifying_ancestor",
+          "attribute": "has_ancestor_born_in_moldova_or_bessarabia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent, grandparent, or great-grandparent born on the territory of the Republic of Moldova (or the historical Bessarabia/Northern Bukovina/Hertza/Moldavian ASSR territories pre-28 June 1940), or documented deportation/flight from that territory after that date.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "law253_2025_pdf_mirror"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Civil status records establishing the ancestral link", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Historical documentation of pre-1940 territorial residence, deportation, or flight (where applicable)", "difficulty": "often_impossible", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "law253_2025_pdf_mirror",
+      "tier": 4,
+      "url": "https://bibliotecapublicadrept.wordpress.com/wp-content/uploads/2026/01/legea-cetateniei-republicii-moldova-nr.-253-2025.pdf",
+      "title": "Unofficial WordPress mirror hosting -- Law No. 253/2025, Art. 10(1)(b): recognition of citizenship for descendants (to the great-grandparent/third-generation level) of persons born in, or displaced from, Bessarabia/Moldovan territory before 28 June 1940",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "asp_gov_md_citizenship_services",
+      "tier": 1,
+      "url": "https://www.asp.gov.md/en/servicii/persoane-fizice/17/174",
+      "title": "Public Services Agency (ASP), Republic of Moldova -- citizenship services page (lists 'Recognition' as a service but the fetched excerpt provided no detailed eligibility criteria beyond confirming the service exists)",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "realitatea_md_recognition_generations",
+      "tier": 4,
+      "url": "https://realitatea.md",
+      "title": "Realitatea.md (Moldovan press) -- corroborating report on the third-generation (great-grandchildren) limit for citizenship recognition",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: DRAFT -- THE MARQUEE ROUTE OF THIS ENTIRE BUILD, but among the most weakly sourced at the document level: only a tier-4 unofficial PDF mirror provides article-level detail, corroborated by a single tier-4 press source for the generation limit. A tier-1 ASP.gov.md page confirms the service exists but was not detailed enough to independently verify eligibility criteria in this pass. STRUCTURAL FINDINGS, DISCLOSED NOT INVENTED: (1) Moldova's descent/ancestry route is NOT a residence permit -- it is a direct CITIZENSHIP recognition mechanism with no interim status and, distinctively, NO REQUIREMENT TO EVER RESIDE IN MOLDOVA; applicants apply entirely through consulates abroad. This is why md_ancestry has no separate settled-status file the way other countries in this dataset might. (2) The generation limit reaches to great-grandparents (third generation) per the sourced text. (3) DO NOT CONFLATE WITH ROMANIA'S PARALLEL LAW: this dataset already models Romania's own reacquisition regime for the same historical Bessarabian/Bukovinan population (ro_citizenship_reacquisition.json) -- that is a SEPARATE, independent Romanian legal instrument, not part of Moldovan law. The well-known phenomenon of dual Moldovan-Romanian citizenship among this population arises from TWO countries each running their own compatible-but-distinct descent regime, not from one shared law. Re-verifying this file against legis.md or monitorul.gov.md directly is the single highest-priority follow-up in this entire build, given how central this route is to Moldova's international reputation."
+}

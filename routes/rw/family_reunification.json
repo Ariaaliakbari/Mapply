@@ -1,0 +1,63 @@
+{
+  "id": "rw_family_reunification",
+  "country": "RW",
+  "name": "Dependant Permit, Spouse/Child of a Rwandan Citizen (M1)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rwfr_relationship",
+          "attribute": "is_spouse_or_child_of_rwandan_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouse or child (by birth or adoption) of a Rwandan citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_dependant"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (spouse) or birth/adoption certificate (child)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance (18+)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application letter", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_permanent_residence", "rw_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_dependant",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/permit/dependant",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- M1 dependant of a Rwandan citizen: spouse or child (birth/adoption), 3-year validity, fee 50% of principal applicant's fee; related categories M2 (dependant of a temporary resident, matches principal's validity) and M3 (close relative of a permanent resident, 3yr)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: PUBLISHED -- fully tier-1 DGIE sourced. Rwanda distinguishes THREE dependant categories by the sponsor's own status (M1: dependant of a citizen; M2: dependant of a temporary resident, whose validity simply tracks the principal's; M3: close relative of a PERMANENT resident) -- a more finely stratified family-sponsorship structure than most countries in this dataset. This file models M1 specifically (spouse/child of a citizen) as the clearest, most universal case; M2 and M3 are disclosed in the source citation but not separately built as files, a scope decision. work_rights is 'none' -- no work authorization was described for this permit category, consistent with the base student permit's structure (a separate permit is typically needed for work rights in Rwanda's system, see rw_student_permit.json's notes on the same pattern). citizenship_after_months (60) reflects the marriage-based reduced naturalisation timeline for the spouse group specifically (see rw_citizenship_by_marriage.json); the child group's path runs through descent instead."
+}

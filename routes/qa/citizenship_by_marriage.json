@@ -1,0 +1,73 @@
+{
+  "id": "qa_citizenship_by_marriage",
+  "country": "QA",
+  "name": "Qatari Nationality by Naturalisation, Marriage Ground (Law No. 38 of 2005, Article 8)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route -- foreign wife of a Qatari man",
+      "requirements": [
+        {
+          "id": "qacmar_married_to_qatari_man",
+          "attribute": "married_to_qatari_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a Qatari man. NOTE: Qatari law provides no equivalent citizenship-by-marriage route for a foreign man married to a Qatari woman -- see the structural note below.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auc_cmrs_law38_2005"
+        },
+        {
+          "id": "qacmar_5yr_marriage",
+          "attribute": "months_married_to_qatari_citizen",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Marriage maintained 5+ years from the marriage announcement date. Eligibility is retained even if widowed or divorced before the 5 years complete, provided she continued residing in Qatar.",
+          "fix_path": "Remain married (or continue residing in Qatar if widowed/divorced) for 5 years from the marriage announcement.",
+          "fix_time_months": 60,
+          "source_id": "auc_cmrs_law38_2005"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of continued residence in Qatar", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "auc_cmrs_law38_2005",
+      "tier": 2,
+      "url": "https://www4.aucegypt.edu/CMRS/Files/2.2%20Qatari%20Citizenship%2038%202005_EN.pdf",
+      "title": "American University in Cairo, Center for Migration and Refugee Studies -- verbatim English translation of Law No. 38 of 2005, Article 8: foreign wife of a Qatari man may acquire nationality after 5 years of marriage from the announcement date; retains eligibility if widowed/divorced before completion provided continued Qatar residence; Article 10: Qatari women do not lose nationality upon marrying a non-Qatari",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- same tier-2 sourcing caveat as qa_citizenship_naturalisation.json (academic translation of primary text, Al Meezan's own tier-1 page unreachable in this build). GENDERED STRUCTURAL ASYMMETRY, CONFIRMED NOT ASSUMED: this citizenship-by-marriage route exists ONLY for a foreign woman married to a Qatari man. There is NO equivalent provision letting a foreign man married to a Qatari woman acquire citizenship by marriage -- he is instead limited to the 2018 Permanent Residency law's exemption category for 'non-Qatari husbands of Qatari women' (see qa_permanent_residence.json's exempt_category group), which grants settled status, not citizenship. This is a real and durable asymmetry in the primary legal text, not folk knowledge or an assumption. dual_citizenship_allowed is FALSE, consistent with Qatar's general no-dual-citizenship rule for naturalised citizens outside the Article 6 discretionary exception."
+}

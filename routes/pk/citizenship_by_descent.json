@@ -1,0 +1,91 @@
+{
+  "id": "pk_citizenship_by_descent",
+  "country": "PK",
+  "name": "Citizenship by Birth and Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "by_birth",
+      "name": "Citizenship by birth (in Pakistan)",
+      "requirements": [
+        {
+          "id": "pkcd_born_in_pakistan",
+          "attribute": "born_in_pakistan",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Pakistan after the Act's commencement -- automatic citizenship by birth, except where the father held diplomatic immunity and was not a Pakistani citizen, or the birth occurred in enemy-occupied territory during wartime.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "by_descent",
+      "name": "Citizenship by descent (born outside Pakistan)",
+      "requirements": [
+        {
+          "id": "pkcd_citizen_parent",
+          "attribute": "has_pakistani_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Parent held Pakistani citizenship (otherwise than by descent) at the time of the applicant's birth outside Pakistan; since an amendment effective 18 April 2000, citizenship transmits equally through a Pakistani mother or father.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_citizenship_act"
+        },
+        {
+          "id": "pkcd_consular_registration",
+          "attribute": "birth_registered_at_pakistani_mission",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Where the transmitting parent is themself a citizen by descent only, the applicant's birth must be registered at a Pakistani Consulate or Mission.",
+          "fix_path": "Register the birth at a Pakistani Consulate or Mission.",
+          "fix_time_months": null,
+          "source_id": "globalcit_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Pakistani citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Consular birth registration (descent-of-a-descendant cases)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_citizenship_act",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/PAK_Pakistan%20Citizenship%20Act%201951%20[EN].pdf",
+      "title": "GLOBALCIT (academic global citizenship law database, EUI) -- Pakistan Citizenship Act 1951: Section 4 (birth in Pakistan, with diplomatic-immunity and enemy-occupation exceptions) and Section 5 (descent, extended to children of Pakistani mothers effective 18 April 2000, with consular registration required where the transmitting parent is themself a citizen by descent)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). STATUS: DRAFT -- unlike pk_citizenship_naturalisation.json and pk_citizenship_by_marriage.json, the government's own DGI&P citizenship page did not detail Sections 4 (birth) and 5 (descent) beyond naming them and noting the 2000 amendment on maternal transmission; the operative text used here is the GLOBALCIT (European University Institute) academic-hosted consolidated translation, tier-2 under this dataset's convention. GOOD NEWS FLAGGED EXPLICITLY: unlike several other countries built in this dataset (Nigeria's citizenship-by-marriage, Sudan's citizenship-by-marriage and by-descent, both restricted to one parental line historically), Pakistan's descent citizenship has been GENDER-NEUTRAL since the 18 April 2000 amendment -- both a Pakistani mother and a Pakistani father transmit citizenship on the same terms. This is a genuine positive finding, not an assumption."
+}

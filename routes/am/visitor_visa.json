@@ -1,0 +1,97 @@
+{
+  "id": "am_visitor_visa",
+  "country": "AM",
+  "name": "Visa-Free Entry / eVisa / Consular Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_exempt",
+      "name": "Visa-exempt nationalities",
+      "requirements": [
+        {
+          "id": "amvv_exempt",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": "armenia_visa_exempt_list",
+          "hard": true,
+          "blocker_text": "Nationals unilaterally exempted by Armenia, or exempted under a bilateral/multilateral agreement, may enter without a visa and stay up to 180 days within a one-year period (unless a specific agreement states otherwise).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_am_visa"
+        }
+      ]
+    },
+    {
+      "id": "temporary_residence_permit_holder",
+      "name": "Holder of a US/EU/Schengen/GCC residence permit (temporary exemption, 1 Jul 2026 - 1 Jul 2027)",
+      "requirements": [
+        {
+          "id": "amvv_third_permit",
+          "attribute": "holds_us_eu_schengen_gcc_residence_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Nationals of 111 countries holding a valid residence permit from the US, EU, Schengen area, UAE, Bahrain, Qatar, Saudi Arabia, Kuwait, or Oman -- valid for at least 6 months from the date of entry -- may enter visa-free for up to 180 days within a one-year period, under a temporary exemption running 1 July 2026 to 1 July 2027.",
+          "fix_path": "Obtain a valid residence permit from one of the listed jurisdictions, valid 6+ months from entry.",
+          "fix_time_months": null,
+          "source_id": "mfa_am_visa"
+        }
+      ]
+    },
+    {
+      "id": "evisa_or_consular",
+      "name": "eVisa or consular visa",
+      "requirements": [
+        {
+          "id": "amvv_evisa",
+          "attribute": "has_evisa_or_consular_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "All other nationalities must obtain an eVisa via evisa.mfa.am or a consular visa; some nationalities can only obtain a visa upon invitation at a diplomatic mission. Standard visas are issued for a maximum of 120 days, extendable by another 60 days.",
+          "fix_path": "Apply for an eVisa or consular visa.",
+          "fix_time_months": null,
+          "source_id": "mfa_am_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residence permit from a qualifying jurisdiction (temporary-exemption route)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "eVisa application or invitation letter (other nationalities)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "180 days within a 1-year period (visa-exempt/temporary-exemption); up to 120 days + 60-day extension (visa/eVisa)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_am_visa",
+      "tier": 1,
+      "url": "https://www.mfa.am/en/visa/",
+      "title": "Armenian Ministry of Foreign Affairs -- visa policy: unilateral and bilateral/multilateral visa exemptions (180 days/year), a temporary 1 Jul 2026-1 Jul 2027 exemption for holders of US/EU/Schengen/GCC residence permits (111 countries), eVisa via evisa.mfa.am, standard visa 120+60 days, invitation-only nationalities",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). The exact list of unilaterally-exempt and bilaterally-exempt nationalities is published as separate lists on the MFA site rather than reproduced on the summary page fetched -- not reproduced here in full. The 111-country temporary exemption (distinct from the general unilateral/bilateral exemption) is time-bound (1 July 2026 - 1 July 2027) and modeled as its own requirement group since it is a genuinely separate, temporary legal basis, not a restatement of the general visa-free regime."
+}

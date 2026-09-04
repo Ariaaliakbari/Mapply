@@ -1,0 +1,127 @@
+{
+  "id": "vn_permanent_residence",
+  "country": "VN",
+  "name": "Thẻ Thường Trú (Permanent Residence Card)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "meritorious_or_expert",
+      "name": "Meritorious foreigners, or scientists/experts",
+      "requirements": [
+        {
+          "id": "vnpr_merit_or_expert",
+          "attribute": "qualifying_category",
+          "operator": "in",
+          "value": ["awarded_vietnamese_state_honor_for_contributions", "scientist_or_expert_nominated_by_ministry"],
+          "hard": true,
+          "blocker_text": "Either awarded a Vietnamese state honor/recognition for contributions to Vietnam's construction and defense, or a scientist/specialist currently residing in Vietnam and nominated by the relevant ministry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bocongan_thuongtru"
+        },
+        {
+          "id": "vnpr_income_housing",
+          "attribute": "has_legal_housing_and_stable_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Legal place of residence and stable income sufficient to sustain living in Vietnam.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bocongan_thuongtru"
+        }
+      ]
+    },
+    {
+      "id": "family_of_vietnamese",
+      "name": "Family member of a Vietnamese citizen or of a foreign permanent resident",
+      "requirements": [
+        {
+          "id": "vnpr_family_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["parent_of_vietnamese_citizen_pr_holder", "spouse_of_vietnamese_citizen_pr_holder", "child_of_vietnamese_citizen_pr_holder"],
+          "hard": true,
+          "blocker_text": "Parent, spouse, or child of a Vietnamese citizen or of a foreigner who already holds Vietnamese permanent residence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietan_thuongtru"
+        },
+        {
+          "id": "vnpr_family_residence",
+          "attribute": "months_continuous_temporary_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "At least 3 years of continuous temporary residence in Vietnam.",
+          "fix_path": "Accumulate 3 years of continuous legal temporary residence in Vietnam.",
+          "fix_time_months": 36,
+          "source_id": "luatvietan_thuongtru"
+        }
+      ]
+    },
+    {
+      "id": "stateless_long_resident",
+      "name": "Stateless persons resident since 2000 or earlier",
+      "requirements": [
+        {
+          "id": "vnpr_stateless_since_2000",
+          "attribute": "stateless_and_resident_since_2000_or_earlier",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A stateless person who has continuously resided in Vietnam since 2000 or earlier.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietan_thuongtru"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence of qualifying category (state honor decision, ministry nomination, family relationship documents, or statelessness/residence history)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of legal housing and stable income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Diplomatic note (for certain categories)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vn_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "bocongan_thuongtru",
+      "tier": 1,
+      "url": "https://dichvucong.bocongan.gov.vn/bocongan/bothutuc/tthc?matt=26281",
+      "title": "Ministry of Public Security (Bo Cong An) official public-service portal -- Permanent Residence Card procedure: qualifying categories (state-honored contributors, ministry-nominated scientists/experts), legal-housing and stable-income conditions, Ministry of Public Security approval, 4-month (+2-month) processing",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "luatvietan_thuongtru",
+      "tier": 3,
+      "url": "https://luatvietan.vn/quy-dinh-moi-ve-the-thuong-tru-cho-nguoi-nuoc-ngoai.html",
+      "title": "Luat Viet An (law firm) -- Permanent Residence Card: family-sponsored category (3 years' continuous temporary residence, Vietnamese-citizen relative already a permanent resident) and stateless-persons-resident-since-2000 category",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT -- the meritorious/expert categories and the general legal-housing/income conditions are tier-1 (Ministry of Public Security's own portal, confirmed by direct fetch), but the family-sponsored category's specific 3-year residence figure and the stateless-since-2000 category come only from a tier-3 law-firm source, not independently re-confirmed against the Ministry's own text -- held draft accordingly, with the mix disclosed rather than presented as uniformly tier-1. This is a genuinely NARROW permanent-residence system compared to most countries in this dataset: there is no general 'X years of any qualifying temporary residence' pathway open to ordinary workers or investors -- eligibility is limited to four specific categories (merit/honors, nominated scientists/experts, family of a Vietnamese citizen or of an existing PR holder, and long-resident stateless persons). vn_investor_residence.json and vn_work_permit.json both note this: an investor or worker does not automatically become PR-eligible after any number of years under Vietnamese law as currently documented, unlike most other countries in this dataset -- flagged prominently since it's easy to wrongly assume a generic 'work N years -> get PR' pipeline exists here."
+}

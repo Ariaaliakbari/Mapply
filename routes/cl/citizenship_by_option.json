@@ -1,0 +1,77 @@
+{
+  "id": "cl_citizenship_by_option",
+  "country": "CL",
+  "name": "Opción a la Nacionalidad (Children of Transient/Diplomatic Foreign Parents Born in Chile)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Chile's Constitution (Article 10) excludes from automatic birthright citizenship children born in Chile whose parents were either serving a foreign government in a diplomatic capacity, or were 'extranjeros transeúntes' (transient foreigners) at the time of birth. Such a person may nonetheless OPT into Chilean nationality within one year of turning 18.",
+    "evidence_hint": "Birth certificate/official birth record explicitly stating 'Hijo de Extranjero Transeúnte' or 'Hijo de extranjero que se encuentran en Chile al servicio de su gobierno'."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clco_excluded_birth_record",
+          "attribute": "birth_record_states_transeunte_or_diplomatic_exclusion",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Birth certificate or official birth record explicitly notes 'Hijo de Extranjero Transeúnte' or diplomatic-service parentage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "tramites_extranjeria_opcion"
+        },
+        {
+          "id": "clco_apply_within_1yr_of_18",
+          "attribute": "applied_within_1_year_of_turning_18",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application must be submitted within 1 year of turning 18.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "tramites_extranjeria_opcion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Letter to the National Director of SERMIG requesting the nationality option", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate/official birth record with the transeúnte or diplomatic-service notation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "National ID card copy (if applicable)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tramites_extranjeria_opcion",
+      "tier": 1,
+      "url": "https://tramites.extranjeria.gob.cl/tramites/ver_ficha/341",
+      "title": "tramites.extranjeria.gob.cl (Chile's official immigration procedures portal) -- Opción a la Nacionalidad: for children born in Chile to parents who were foreign diplomatic staff or 'extranjeros transeúntes' at the time of birth; application within 1 year of turning 18; cost CLP 37,979 (effective 1 May 2025); processed through tramites.serviciomigraciones.cl with ClaveÚnica",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED -- directly and fully tier-1 sourced. STRUCTURAL FINDING: Chile's constitutional citizenship regime is jus soli by default (birth in Chile generally confers citizenship), but Article 10 carves out an EXCEPTION for children of transient foreigners or foreign diplomatic staff -- OPPOSITE of most 'option' or exception routes elsewhere in this dataset, which typically grant a path INTO citizenship for children who would otherwise lack it (see Jordan's or Chad's narrower descent frameworks). Here, a child born in Chile under the exclusion is NOT automatically Chilean and must actively opt in as an adult -- effectively the mirror image of Botswana's or Jordan's descent files. Category is modeled as 'settled' rather than 'ancestry' since the route is not really about ancestry/heritage at all -- it hinges on birthplace and a parental-status technicality, closest in spirit to a status-regularisation route."
+}

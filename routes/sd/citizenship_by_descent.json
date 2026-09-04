@@ -1,0 +1,79 @@
+{
+  "id": "sd_citizenship_by_descent",
+  "country": "SD",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sdcd_citizen_parent",
+          "attribute": "has_sudanese_citizen_parent_by_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Father is Sudanese by birth at the time of the applicant's birth, OR (since the 2006 amendment) mother is Sudanese by birth -- the applicant may apply for recognition on this basis.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_nationality_act"
+        }
+      ]
+    },
+    {
+      "id": "pre_1956_ancestral_residence",
+      "name": "Pre-1956 ancestral residence (historical, largely closed to new applicants)",
+      "requirements": [
+        {
+          "id": "sdcd_ancestor_resident_since_1956",
+          "attribute": "applicant_and_paternal_ancestors_resident_since_1jan1956",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant and their paternal ancestors were residing in Sudan continuously since 1 January 1956 (Sudan's independence date) -- given the 70+ years elapsed, this specific retroactive provision is now relevant mainly to establishing an existing claim rather than a genuinely new application route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_nationality_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Sudanese citizenship by birth", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_nationality_act",
+      "tier": 2,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2019/02/Sudan-Nationality-Law-1994-with-2011-and-2018-amendments_ENG.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- Sudanese Nationality Act 1994, as amended: original text ties birthright citizenship to a Sudanese-by-birth FATHER; the 2006 amendment adds that a person 'born to a mother who is Sudanese by birth shall be entitled to Sudanese Nationality by birth whenever he applies for it'; a separate retroactive provision covers persons (and their paternal ancestors) 'residing in Sudan since 1/1/1956'; children of unknown parents found in Sudan are presumed Sudanese nationals",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sudan). STATUS: DRAFT -- same tier-2-only sourcing limitation as the other Sudan citizenship files. GENDERED HISTORY, DISCLOSED PRECISELY: descent citizenship was PATERNAL-ONLY from the Act's 1994 enactment until a 2006 amendment introduced maternal transmission -- and even the 2006 text frames maternal transmission as something the applicant 'shall be entitled to... whenever he applies for it' (an application-triggered entitlement) rather than automatic-by-birth the way paternal transmission is framed, a phrasing difference worth flagging as a possible remaining procedural asymmetry even after the reform, though not confirmed as a hard practical difference in this build. The 2018 amendment's separate 'domicile since 1 January 1924' provision (mentioned in the source only in connection with exemptions from the automatic-revocation-on-acquiring-South-Sudanese-citizenship rule -- see sd_citizenship_naturalisation.json) is NOT modeled here since it functions as a revocation exemption, not an acquisition route. dual_citizenship_allowed FALSE, consistent with the other Sudan citizenship files."
+}

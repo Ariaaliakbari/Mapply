@@ -1,0 +1,91 @@
+{
+  "id": "mm_visitor_visa",
+  "country": "MM",
+  "name": "Visa on Arrival / Business Visa (short-stay)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "per_entry",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tourist",
+      "name": "Tourist Visa on Arrival",
+      "requirements": [
+        {
+          "id": "mmvv_eligible_nationality",
+          "attribute": "nationality_eligible_for_voa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "National of one of 50+ countries eligible for tourist Visa on Arrival; entry only via Yangon, Mandalay, or Nay Pyi Taw international airports.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "myanmarcgla_voa"
+        },
+        {
+          "id": "mmvv_passport_validity",
+          "attribute": "passport_months_valid",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport valid for at least 6 months from date of entry.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "myanmarcgla_voa"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business Visa",
+      "requirements": [
+        {
+          "id": "mmvv_business_purpose",
+          "attribute": "travel_purpose",
+          "operator": "in",
+          "value": ["business_meeting", "trade", "contract_negotiation"],
+          "hard": true,
+          "blocker_text": "Business Visa for meetings, trade, and contract negotiation purposes -- no direct employment permitted.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "myanmarcgla_voa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "2 recent color photographs (4cm x 6cm)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Government-licensed accommodation booking", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Tourist VOA: 28 days, USD 30 fee; Business Visa: 70 days stay (90-day visa validity), USD 50 fee; Workshop/Seminar/Meeting/Research: 28 days, USD 40; Crew Visa: 28 days, USD 40; Transit: 24 hours, USD 20",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mm_work_permit", "mm_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "myanmarcgla_voa",
+      "tier": 1,
+      "url": "https://myanmarcgla.org/index.php/visa/visa-on-arrival",
+      "title": "Consulate General of the Republic of the Union of Myanmar, Los Angeles (official diplomatic mission) -- Visa on Arrival: Tourist VOA (28 days, USD 30, 50+ eligible nationalities, 3 designated airports), Business Visa (70 days stay, USD 50), Workshop/Seminar/Meeting/Research Visa (28 days, USD 40), Transit Visa (24 hours, USD 20), Crew Visa (28 days, USD 40)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: PUBLISHED -- tier-1 sourced from an official Myanmar diplomatic mission (consulate) site, cross-referenced against the Ministry of Immigration and Population's own domain (mip.gov.mm) which independently confirms the VOA framework but was not directly fetchable in this build (server/DNS issues at fetch time). IMPORTANT POLITICAL CONTEXT, DISCLOSED HERE AND REPEATED ACROSS EVERY MYANMAR FILE IN THIS BUILD: Myanmar has been under military rule since the February 2021 coup (State Administration Council, SAC), with an ongoing civil war involving the shadow National Unity Government (NUG) and numerous armed ethnic and resistance groups controlling significant territory. All government sources in this build reflect the SAC-controlled administration currently operating these ministries and consular missions -- their legitimacy is contested internationally (many governments do not recognize the SAC as Myanmar's legitimate government), and large parts of the country are effectively outside central government control or are active conflict zones. This is not a routine relocation destination; anyone actually planning travel should check current travel advisories, not just this dataset's route mechanics. E-visa online application was also historically available but its current operational status was not independently verified in this build."
+}

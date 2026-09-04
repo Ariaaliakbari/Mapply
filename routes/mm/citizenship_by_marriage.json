@@ -1,0 +1,74 @@
+{
+  "id": "mm_citizenship_by_marriage",
+  "country": "MM",
+  "name": "Naturalisation via Marriage to a Registration-Certificate Holder",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mmcm_married_to_registered_citizen",
+          "attribute": "married_to_registration_certificate_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a person holding a Myanmar citizenship registration certificate (Section 45).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_1982_law"
+        },
+        {
+          "id": "mmcm_3yr_residence",
+          "attribute": "months_resident_continuous",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years' continuous residence in the State (Section 45).",
+          "fix_path": "Accumulate 3 years of continuous residence in Myanmar as the spouse of a citizen.",
+          "fix_time_months": 36,
+          "source_id": "refworld_1982_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's citizenship registration certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of 3 years' continuous residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "3 years' continuous residence in Myanmar",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_1982_law",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1982/en/49622",
+      "title": "UNHCR Refworld -- Burma Citizenship Law, 1982 (English translation), Section 45: a foreigner married to a citizen holding a registration certificate may apply for naturalisation after residing continuously in the State for at least 3 years",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: DRAFT -- same tier-2-only sourcing limitation as mm_citizenship_naturalisation.json (UNHCR Refworld's hosted translation is the only text of the 1982 law located; no tier-1 Myanmar-government copy found). GENDER-NEUTRAL ON ITS FACE: Section 45's text as translated refers to 'a foreigner married to a citizen' without specifying the sex of either party, unlike some other countries built in this dataset (Nigeria, Qatar, Bahrain) where marriage-based citizenship is explicitly restricted to one direction only -- this is a notable structural difference worth flagging, though it rests on a single tier-2 translation rather than independently corroborated primary text. STRUCTURAL NOTE: this route requires the Myanmar-citizen spouse to specifically hold a 'registration certificate' (i.e., be a registered/associate or naturalised citizen under the law's own categories) rather than simply being 'a citizen' in the general sense -- the precise scope of which citizen sub-categories qualify was not further clarified in the source located. NO DEDICATED INTERIM RESIDENCE/DEPENDENT VISA WAS FOUND for a foreign spouse during the 3-year qualifying period leading up to this application -- presumably such a spouse relies on ordinary Stay Permit/FRC mechanisms (see mm_work_permit.json) rather than a distinct family-category visa; this is a genuine gap, not modeled as a separate family_reunification.json file in this build since no distinct spousal-residence route was located. dual_citizenship_allowed FALSE per Section 16, same as mm_citizenship_naturalisation.json."
+}

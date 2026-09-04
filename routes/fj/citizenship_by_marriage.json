@@ -1,0 +1,78 @@
+{
+  "id": "fj_citizenship_by_marriage",
+  "country": "FJ",
+  "name": "Fiji Citizenship by Registration, Marriage Ground",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": {
+    "opens": null,
+    "closes": "2030-01-01",
+    "cap_type": "none",
+    "typical_fill_time_days": null
+  },
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (transitional schedule, through 2030)",
+      "requirements": [
+        {
+          "id": "fjcm_married_to_citizen",
+          "attribute": "married_to_fiji_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreign spouse of a Fiji citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fj_high_commission_nz_citizenship"
+        },
+        {
+          "id": "fjcm_3of5_residence",
+          "attribute": "months_lawfully_present_3_of_preceding_5_years",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "3 of the preceding 5 years lawful presence, under the 2026 Act's transitional schedule (running through 2030). English-language requirement is waived for spousal registration, unlike the ordinary naturalisation track.",
+          "fix_path": "Accumulate 3 years of lawful presence within a 5-year window.",
+          "fix_time_months": 36,
+          "source_id": "fj_high_commission_nz_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of lawful presence 3 of the preceding 5 years", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "fj_high_commission_nz_citizenship",
+      "tier": 1,
+      "url": "https://www.foreignaffairs.gov.fj/fiji-high-commission-new-zealand/fiji-citizenship/",
+      "title": "Fiji High Commission, New Zealand -- Fiji Citizenship: registration for a foreign spouse of a Fiji citizen requires 3 of the preceding 5 years lawful presence under the 2026 Act's transitional schedule (through 2030), thereafter also requiring a PR permit; English-language requirement waived for spousal registration",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: PUBLISHED -- tier-1 sourced via a Fiji diplomatic mission page. Gender-neutral: no gendered language found distinguishing a foreign wife from a foreign husband of a Fiji citizen. Notably more generous than fj_citizenship_naturalisation.json on the language requirement (English waived here) but similar on the underlying years-of-presence test. Like the naturalisation route, this is on a transitional schedule -- through 2030, per the source -- after which a PR permit becomes an additional precondition; the post-2030 rule's exact terms were not independently confirmed in this pass, only that a PR-permit requirement is expected to apply, mirroring the naturalisation route's 2035 transition."
+}

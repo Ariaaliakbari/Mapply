@@ -1,0 +1,100 @@
+{
+  "id": "pe_citizenship_by_descent",
+  "country": "PE",
+  "name": "Citizenship by Descent (Born Abroad to a Peruvian Parent)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person born outside Peru to at least one Peruvian-citizen parent acquires Peruvian nationality by descent, recognized up to the third generation of descendants, under Ley N.32421.",
+    "evidence_hint": "Birth certificate; proof of parent's (or grandparent's/great-grandparent's) Peruvian nationality; consular or civil registry registration."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "registered_before_majority",
+      "name": "Registered before age 18",
+      "requirements": [
+        {
+          "id": "pecd_parent_citizen",
+          "attribute": "has_peruvian_ancestor_within_three_generations",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent, grandparent, or great-grandparent held Peruvian nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "elperuano_birth"
+        },
+        {
+          "id": "pecd_registration",
+          "attribute": "registered_at_consulate_or_civil_registry_before_18",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registered at the nearest Peruvian consular office to the place of birth, or in Peru's civil registry, before turning 18.",
+          "fix_path": "Register the birth with a Peruvian consulate or Peru's civil registry.",
+          "fix_time_months": null,
+          "source_id": "elperuano_birth"
+        }
+      ]
+    },
+    {
+      "id": "option_after_majority",
+      "name": "Not registered before 18 -- citizenship by option upon reaching majority",
+      "requirements": [
+        {
+          "id": "pecd_option_claim",
+          "attribute": "claims_nationality_by_option_after_18",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A person of Peruvian descent not registered before age 18 may claim Peruvian nationality by option upon reaching majority.",
+          "fix_path": "File a citizenship-by-option claim after turning 18.",
+          "fix_time_months": null,
+          "source_id": "tramitesperu_nacionalidad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent's/grandparent's/great-grandparent's Peruvian nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "elperuano_birth",
+      "tier": 1,
+      "url": "https://www.elperuano.pe/noticia/276843-conoce-quienes-son-peruanos-por-nacimiento-segun-la-nueva-ley-de-nacionalidad-n-32421",
+      "title": "El Peruano (Peru's official state gazette) -- 'Conoce quienes son peruanos por nacimiento segun la nueva Ley de Nacionalidad N.32421': recognizes descent up to the third generation, requires consular or civil registry registration before age 18",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "tramitesperu_nacionalidad",
+      "tier": 3,
+      "url": "https://tramitesperu.com/migraciones/nacionalidad-peruana/",
+      "title": "TramitesPeru -- summary of citizenship-by-option route for descendants of Peruvians not registered before turning 18",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT -- this is Peru's ancestry route and is genuinely broad: descent is recognized up to the THIRD generation (great-grandchildren of a Peruvian citizen), one of the wider diaspora-descent windows seen in this dataset. The registered-before-18 group is tier-1 (El Peruano); held draft overall because the second group (citizenship by option after age 18 for those not registered as minors) is sourced only to a tier-3 consultancy summary, not independently confirmed against the law's own text. Plain jus soli (birth on Peruvian territory, regardless of parents' nationality or status) is also automatic under Peru's Constitution and Ley 32421, but is not modeled as a separate route here since it is not something an adult migrant applies for -- it attaches automatically to children born in Peru and is disclosed here rather than fabricated into a testable 'route.'"
+}

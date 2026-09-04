@@ -1,0 +1,91 @@
+{
+  "id": "am_work_permit",
+  "country": "AM",
+  "name": "Employment-Based Residence Status",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amwp_vacancy",
+          "attribute": "employer_registered_vacancy",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must register on the official work-permit platform (workpermit.am) and submit a description of the vacancy.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workpermit_am"
+        },
+        {
+          "id": "amwp_mlsa_confirmation",
+          "attribute": "ministry_of_labour_confirmed_position",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Ministry of Labour and Social Affairs must confirm the position before the employer can sign a contract with the foreign candidate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workpermit_am"
+        }
+      ]
+    },
+    {
+      "id": "eaeu_exempt",
+      "name": "EAEU citizens -- exempt from work permit",
+      "requirements": [
+        {
+          "id": "amwp_eaeu",
+          "attribute": "citizenship_in",
+          "operator": "in",
+          "value": "RU_BY_KZ_KG",
+          "hard": true,
+          "blocker_text": "Citizens of Eurasian Economic Union member states (Russia, Belarus, Kazakhstan, Kyrgyzstan) are exempt from any work-permit-type document for the whole period of their employment contract, though they may register for a residence verification certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "workpermit_am"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's online vacancy registration on workpermit.am", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Ministry of Labour and Social Affairs confirmation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["am_permanent_residence", "am_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "workpermit_am",
+      "tier": 1,
+      "url": "https://workpermit.am/en/home",
+      "title": "Armenia's official online work-permit platform -- employer registration, vacancy description, Ministry of Labour and Social Affairs confirmation, employment contract, EAEU-citizen exemption, application fees (AMD 105,000 initial/extension)",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). No labour-market test (e.g. a requirement to first advertise to Armenian nationals) or sectoral quota system was found described on the official platform reviewed -- disclosed as a possible gap in what was surfaced, not asserted as confirmed absent. work_rights modeled 'restricted' since status is tied to the specific employer/contract; a change of employer likely requires a new application, though this was not independently confirmed. citizenship_after_months and pr_after_months (36) reuse the general figures from am_permanent_residence.json and am_naturalisation.json."
+}

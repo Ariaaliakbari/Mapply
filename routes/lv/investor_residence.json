@@ -1,0 +1,87 @@
+{
+  "id": "lv_investor_residence",
+  "country": "LV",
+  "name": "Temporary Residence Permit -- Investment",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "corporate_investment",
+      "name": "Corporate share-capital investment",
+      "requirements": [
+        {
+          "id": "lvir_corporate_amount",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 50000,
+          "hard": true,
+          "blocker_text": "EUR 50,000+ share-capital investment in a Latvian company with fewer than 50 employees, or EUR 100,000+ in a larger company, plus a EUR 10,000 state budget fee.",
+          "fix_path": "Contribute the required minimum share capital to a qualifying Latvian company and pay the state budget fee.",
+          "fix_time_months": null,
+          "source_id": "cobalt_new_immigration_law"
+        }
+      ]
+    },
+    {
+      "id": "alternative_fund",
+      "name": "State-managed alternative investment fund (new route, June 2026)",
+      "requirements": [
+        {
+          "id": "lvir_fund_amount",
+          "attribute": "investment_amount_eur",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "EUR 150,000+ investment in a state-created alternative investment fund, held for at least 5 years and confirmed as actively invested by the fund manager, plus a EUR 10,000 state budget payment.",
+          "fix_path": "Invest at least EUR 150,000 in the designated state-managed alternative investment fund and pay the state budget fee.",
+          "fix_time_months": null,
+          "source_id": "cobalt_new_immigration_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of share-capital contribution or fund investment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of the EUR 10,000 state budget payment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Tax-compliance evidence for the underlying company (corporate track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "corporate investment: 2 years (reduced from 5 years); alternative fund: 5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lv_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "cobalt_new_immigration_law",
+      "tier": 3,
+      "url": "https://www.cobalt.legal/lv/news-cases/jaunais-imigracijas-likums-darba-devejiem-investoriem-terminuzturesanas-atlauju-turetajiem/",
+      "title": "Cobalt (regional law firm) -- Latvia's New Immigration Law (effective 11 June 2026): real estate and subordinated-bond routes eliminated; new EUR 150,000 state-fund route created; corporate investment (EUR 50,000/100,000) retained but duration cut from 5 to 2 years; both tracks carry a EUR 10,000 state budget fee",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "lvportals_new_immigration_law",
+      "tier": 2,
+      "url": "https://lvportals.lv/viedokli/391264-jaunais-imigracijas-likums-ko-sagaidit-darba-devejiem-investoriem-terminuzturesanas-atlauju-turetajiem-2026",
+      "title": "LV Portals (Latvijas Vestnesis) -- corroborates the same June 2026 changes: real estate/bond elimination, new EUR 150,000 fund route, corporate investment duration cut to 2 years",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). STATUS: DRAFT -- corroborated by two independent sources describing the same 11 June 2026 law, but neither is a directly-fetched PMLP or likumi.lv page for the amended Immigration Law text itself. FLAGGED PROMINENTLY: Latvia's REAL ESTATE (EUR 250,000+) and BANK SUBORDINATED-BOND (EUR 280,000+) investment residence routes -- long the country's best-known 'golden visa' pathways, and still described as currently active by at least one tier-3 blog fetched in this same research pass (immigrantinvest.com) and even by PMLP's OWN English-language duration page (https://www.pmlp.gov.lv/en/how-long-may-residence-permit-be-issued, fetched directly in this pass) -- were ELIMINATED by this new law as of 11 June 2026, less than 3 months before this build. This is a textbook stale-source trap: multiple sources that read as current (including Latvia's own official PMLP page) describe a program that no longer exists for new applicants. Existing real-estate/bond permit holders may renew once under transition rules but the routes are closed to new entrants -- not modeled as an ongoing 'route' here since it is not available to a new applicant, consistent with this dataset's convention of documenting what is actually obtainable now rather than what a stale source still describes."
+}

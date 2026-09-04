@@ -1,0 +1,75 @@
+{
+  "id": "pk_citizenship_by_investment",
+  "country": "PK",
+  "name": "Citizenship by Investment for Commonwealth Citizens",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pkci_commonwealth_national",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["Commonwealth of Nations member-state citizens"],
+          "hard": true,
+          "blocker_text": "Restricted to citizens of Commonwealth of Nations member states.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dgip_citizenship"
+        },
+        {
+          "id": "pkci_forex_transfer_5m_rupees",
+          "attribute": "investment_capital_pkr",
+          "operator": ">=",
+          "value": 5000000,
+          "hard": true,
+          "blocker_text": "Transfer foreign exchange worth PKR 5,000,000 through official banking channels.",
+          "fix_path": "Transfer PKR 5,000,000 (or equivalent) in foreign exchange through the banking system.",
+          "fix_time_months": null,
+          "source_id": "dgip_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of foreign exchange transfer via banking channels", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "State Bank of Pakistan confirmation of transfer", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Form 'R' (quadruplicate)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Security clearance (post-arrival, before citizenship certificate is granted)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dgip_citizenship",
+      "tier": 1,
+      "url": "https://dgip.gov.pk/immigration/citizenship.php",
+      "title": "Directorate General of Immigration & Passports, Government of Pakistan -- Grant of Pakistan Citizenship: Section 20 of the Pakistan Citizenship Act 1951, Commonwealth citizens transferring PKR 5,000,000 in foreign exchange through banking channels may be issued an immigrant visa; after State Bank of Pakistan confirmation of the transfer, a citizenship certificate is granted following arrival and security clearance; Form 'R' in quadruplicate",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published on tier-1 sourcing directly from the government's own citizenship page. GENUINELY DISTINCTIVE MARQUEE ROUTE, RARE OUTSIDE CARIBBEAN CBI STATES (this dataset has previously found a comparable genuine citizenship-by-investment program only in Bangladesh): a straightforward capital-transfer-for-citizenship mechanism, restricted to citizens of OTHER COMMONWEALTH countries only -- a non-Commonwealth investor cannot use this route regardless of capital. At current exchange rates PKR 5,000,000 is a comparatively modest sum (tens of thousands of USD, not hundreds of thousands or millions as in most CBI programs) -- the government source states the threshold only in Pakistani rupees, not USD, so no USD conversion is asserted here as a hard figure since exchange rates move; this is flagged as a genuine open question for a user pricing this route rather than an invented conversion. Distinct from pk_investor_residence.json (the SIFC Investor Visa), which grants residence/entry rights tied to an investment project but does not itself lead to citizenship."
+}

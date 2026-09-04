@@ -1,0 +1,97 @@
+{
+  "id": "az_investor_residence",
+  "country": "AZ",
+  "name": "Temporary Residence Permit -- Business, Investment, or Property Ownership",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "business_investment",
+      "name": "Business investment",
+      "requirements": [
+        {
+          "id": "azir_business_amount",
+          "attribute": "investment_amount_azn",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Investment of at least AZN 500,000 in the Azerbaijani economy (entrepreneurs and adequately capitalized business owners), evidenced by tax registry extracts and turnover statements. Heads of branches/representations of foreign companies also qualify.",
+          "fix_path": "Invest at least AZN 500,000 in a qualifying Azerbaijani business.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "Real estate ownership",
+      "requirements": [
+        {
+          "id": "azir_property_amount",
+          "attribute": "real_estate_value_azn",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Ownership of real estate in Azerbaijan worth at least AZN 100,000, evidenced by a property registry extract and a professional valuation.",
+          "fix_path": "Purchase qualifying real estate worth at least AZN 100,000.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    },
+    {
+      "id": "deposit_or_securities",
+      "name": "Bank deposit or securities",
+      "requirements": [
+        {
+          "id": "azir_deposit_amount",
+          "attribute": "deposit_or_securities_value_azn",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "A bank deposit or securities holding worth at least AZN 100,000.",
+          "fix_path": "Place at least AZN 100,000 in a qualifying bank deposit or securities.",
+          "fix_time_months": null,
+          "source_id": "migration_gov_az_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Tax registry extracts and turnover statements (business route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Property registry extract and professional valuation (real estate route)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank/securities statement (deposit route)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["az_permanent_residence", "az_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_az_residence",
+      "tier": 1,
+      "url": "https://migration.gov.az/en/page/73",
+      "title": "Azerbaijan State Migration Service -- grounds for temporary residence permit via business investment (AZN 500,000), real estate ownership (AZN 100,000), and bank deposits/securities (AZN 100,000)",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). These three thresholds are all directly tier-1 quoted from the State Migration Service. Note the higher thresholds required for PERMANENT (not temporary) residence via the same grounds -- AZN 200,000 for property/deposits/securities after 2 years -- modeled in az_permanent_residence.json rather than here, since that is a genuinely separate stage with its own figures, not a restatement of this file's temporary-permit thresholds."
+}

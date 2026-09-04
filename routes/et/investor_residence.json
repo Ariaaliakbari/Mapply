@@ -1,0 +1,114 @@
+{
+  "id": "et_investor_residence",
+  "country": "ET",
+  "name": "Shareholder Residence Permit (Investment Proclamation No. 1180/2020)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "wholly_foreign_owned_standard",
+      "name": "Wholly foreign-owned, standard sectors",
+      "requirements": [
+        {
+          "id": "etir_wfo_standard",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 200000,
+          "hard": true,
+          "blocker_text": "Minimum USD 200,000 capital for a wholly foreign-owned company in a standard sector.",
+          "fix_path": "Secure the qualifying investment capital.",
+          "fix_time_months": null,
+          "source_id": "investinethiopia_requirement"
+        }
+      ]
+    },
+    {
+      "id": "wholly_foreign_owned_specialized",
+      "name": "Wholly foreign-owned, specialized sectors",
+      "requirements": [
+        {
+          "id": "etir_wfo_specialized",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 100000,
+          "hard": true,
+          "blocker_text": "Minimum USD 100,000 capital for a wholly foreign-owned company in a specialized sector (architecture, engineering, technical consulting, testing/analysis, publishing).",
+          "fix_path": "Secure the qualifying investment capital.",
+          "fix_time_months": null,
+          "source_id": "investinethiopia_requirement"
+        }
+      ]
+    },
+    {
+      "id": "joint_venture_standard",
+      "name": "Joint venture with domestic partner, standard sectors",
+      "requirements": [
+        {
+          "id": "etir_jv_standard",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 150000,
+          "hard": true,
+          "blocker_text": "Minimum USD 150,000 capital for a joint venture with a domestic partner in a standard sector.",
+          "fix_path": "Secure the qualifying investment capital.",
+          "fix_time_months": null,
+          "source_id": "investinethiopia_requirement"
+        }
+      ]
+    },
+    {
+      "id": "joint_venture_specialized",
+      "name": "Joint venture with domestic partner, specialized sectors",
+      "requirements": [
+        {
+          "id": "etir_jv_specialized",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 50000,
+          "hard": true,
+          "blocker_text": "Minimum USD 50,000 capital for a joint venture with a domestic partner in a specialized sector.",
+          "fix_path": "Secure the qualifying investment capital.",
+          "fix_time_months": null,
+          "source_id": "investinethiopia_requirement"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Memorandum of association and amendments/minutes", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid passport with investment visa", "difficulty": "routine", "typical_time_days": null },
+    { "document": "USD 15 shareholder residence permit support-letter fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to investment status; specific permit validity period not disclosed by the source",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["et_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "investinethiopia_requirement",
+      "tier": 1,
+      "url": "https://investinethiopia.gov.et/requirement",
+      "title": "Ethiopian Investment Commission (EIC) -- capital requirements: wholly foreign-owned USD 200,000 (standard sectors) / USD 100,000 (specialized sectors: architecture, engineering, technical consulting, testing/analysis, publishing); joint venture with domestic partner USD 150,000 (standard) / USD 50,000 (specialized); trade sector per Investment Board Directive No. 1001/2024; Special Economic Zones per Proclamation No. 1322/2024; Shareholder Residence Permit support-letter and Investment Visa support-service fees both USD 15",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ethiopia). STATUS: PUBLISHED -- directly fetched and confirmed from the Ethiopian Investment Commission's own site, tier-1. The cleanest-sourced route in this entire build. Note the Foreign National of Ethiopian Origin ID (et_ancestry_origin_id.json) exempts its holders from these capital thresholds entirely by classifying them as domestic investors -- disclosed there, not modeled as an alternative group here, to keep this file's scope to ordinary foreign investors. Refugees with valid ID also receive equal (not harsher) treatment under these same ordinary-foreign-national thresholds per the 2020 Right to Work Directive -- see et_international_protection.json. pr_after_months (36) and citizenship_after_months (48) are cross-referenced from adjacent files."
+}

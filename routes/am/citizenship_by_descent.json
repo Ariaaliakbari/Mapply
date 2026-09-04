@@ -1,0 +1,65 @@
+{
+  "id": "am_citizenship_by_descent",
+  "country": "AM",
+  "name": "Citizenship by Descent (Child of Armenian Citizens)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child whose parents are citizens of the Republic of Armenia at the moment of the child's birth acquires Armenian citizenship automatically, regardless of the child's place of birth.",
+    "evidence_hint": "Birth certificate; parents' proof of Armenian citizenship at the time of birth."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "amcd_parents",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_two_am_citizen_parents_at_birth",
+          "hard": true,
+          "blocker_text": "Both parents are citizens of the Republic of Armenia at the moment of the child's birth -- citizenship is acquired automatically regardless of where the child is born.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "arlis_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parents' proof of Armenian citizenship at time of birth", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "arlis_citizenship_law",
+      "tier": 1,
+      "url": "https://www.arlis.am/en/acts/219000",
+      "title": "ARLIS -- Law on the Citizenship of the Republic of Armenia: automatic citizenship for a child whose parents are Armenian citizens at birth, regardless of birthplace",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Armenia). Only the two-citizen-parents case was confirmed with precise wording in this pass -- the one-parent-citizen case (a common provision in most countries' descent laws) was not independently confirmed against the primary text with the same precision and is not modeled as a separate requirement group here to avoid guessing at unconfirmed conditions; a future pass should verify Article 11's exact single-parent wording directly. This file is narrower and more strictly descent-based than am_citizenship_armenian_origin.json, which extends far beyond children of current citizens to anyone of documented Armenian heritage generally."
+}

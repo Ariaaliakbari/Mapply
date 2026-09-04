@@ -1,0 +1,69 @@
+{
+  "id": "jm_investor_residence",
+  "country": "JM",
+  "name": "Investor / Self-Employed Work Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmir_self_employed_or_investor",
+          "attribute": "is_self_employed_or_investor_in_jamaica",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Self-employed applicant (submitting a cover letter, credentials, resume, and police record instead of an employer letter) or investor applying through JAMPRO (Jamaica Promotions Corporation), which provides priority-processing support and liaison with the Ministry of Labour and PICA.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mlss_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business credentials / resume", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police record", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "same duration structure as jm_work_permit.json (typically up to 12 months at a time, renewable)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["jm_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mlss_work_permit",
+      "tier": 1,
+      "url": "https://www.mlss.gov.jm/departments/work-permit/",
+      "title": "Ministry of Labour and Social Security (MLSS), Jamaica -- Work Permit Department: describes the self-employed/investor application track (cover letter, credentials, resume, police record in place of an employer letter), routed with JAMPRO facilitation",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "jampro_investor_services",
+      "tier": 1,
+      "url": "https://dobusinessjamaica.com/invest/investor-services/",
+      "title": "JAMPRO (Jamaica Promotions Corporation) -- investor services: priority processing support for key personnel, liaison with the Ministry of Labour and Immigration, compliance advisory",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: PUBLISHED -- both sources tier-1. IMPORTANT STRUCTURAL FINDING: this is NOT a defined-threshold investor category -- no minimum capital, investment amount, or job-creation number could be found on any government source. It is functionally a facilitation service layered on top of the ordinary self-employed work-permit process, with JAMPRO smoothing the process rather than granting status under separate legal criteria. CONFIRMED ABSENT, NOT A GAP: Jamaica has NO citizenship-by-investment program, unlike several other Caribbean nations (St Kitts and Nevis, Dominica, Antigua and Barbuda, Grenada, St Lucia) -- Jamaican citizenship is obtainable only via birth, descent, marriage/registration, or naturalisation; this was confirmed by the total absence of any CBI reference across PICA, JAMPRO, and dobusinessjamaica.com. ALSO DISCLOSED, NOT MODELED AS AN ACTIVE ROUTE: a genuinely new 'Investor/Economic Residency' program (a formal permanent-residence-for-investment category, NOT citizenship) is in DRAFT LEGISLATION as of mid-2026, first proposed by JAMPRO back in 2013/14 and still moving toward parliamentary submission after a decade of delay -- no investment threshold, job-creation requirement, or fee has been made public, and it is not yet law. This dataset does not build a route file for legislation that doesn't exist yet; revisit if it's enacted."
+}

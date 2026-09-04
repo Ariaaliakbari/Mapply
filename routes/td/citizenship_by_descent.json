@@ -1,0 +1,99 @@
+{
+  "id": "td_citizenship_by_descent",
+  "country": "TD",
+  "name": "Citizenship by Birth or Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child born to two Chadian parents is automatically Chadian regardless of birthplace. A child with only one Chadian parent acquires Chadian nationality if the alternative would leave them stateless. A child born abroad to Chadian parent(s) can acquire nationality through descent. Foundlings/orphans found in Chad with unknown parents also acquire nationality.",
+    "evidence_hint": "Birth certificate; proof of parent(s)' Chadian nationality."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents",
+      "name": "Both parents Chadian",
+      "requirements": [
+        {
+          "id": "tdcd_both_parents_citizens",
+          "attribute": "has_two_chadian_citizen_parents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Both parents are Chadian nationals -- citizenship is automatic regardless of the child's birthplace.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_chad_nationality"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_statelessness_prevention",
+      "name": "One Chadian parent, where the alternative is statelessness",
+      "requirements": [
+        {
+          "id": "tdcd_one_parent_stateless_prevention",
+          "attribute": "would_be_stateless_without_chadian_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "One parent is Chadian, and the child would otherwise be rendered stateless.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_chad_nationality"
+        }
+      ]
+    },
+    {
+      "id": "foundling",
+      "name": "Foundlings/orphans of unknown parentage found in Chad",
+      "requirements": [
+        {
+          "id": "tdcd_foundling",
+          "attribute": "is_foundling_of_unknown_parents_found_in_chad",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Found in Chad as a foundling or orphan with unknown parents.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_chad_nationality"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parent(s)' Chadian nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_chad_nationality",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Chadian_nationality_law",
+      "title": "Wikipedia -- Chadian nationality law: automatic citizenship for children of two Chadian parents regardless of birthplace; a statelessness-prevention exception for a child with only one Chadian parent; descent applies to children born abroad to Chadian parent(s); foundlings/orphans of unknown parentage found in Chad acquire nationality",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chad). STATUS: DRAFT -- entirely tier-4 sourced (Wikipedia). This is a genuine gap: Chad's actual 1962 Nationality Code (the primary legal text governing descent) was referenced but not directly reachable in this pass -- only its 1963 implementing decree (tier-2, Refworld) was found, and that decree text explicitly deferred to the 1962 Code for descent rules without reproducing them. This file should be treated as the LEAST reliable descent file in this dataset pending direct access to the Code's text. The default rule (both-parents-citizen = automatic; one-parent-citizen = conditional on statelessness prevention) is a materially different and narrower framework than Botswana's unconditional either-parent rule (see bw_citizenship_by_descent.json) -- if accurate, this is a meaningful structural finding, but given the sourcing tier it is flagged rather than treated as settled fact."
+}

@@ -1,0 +1,95 @@
+{
+  "id": "cl_investor_residence",
+  "country": "CL",
+  "name": "Residencia Temporal -- Investors and Related Personnel Subcategory",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign investor (or a senior/technical staff member hired by a Chilean company in which a foreign investor holds at least 10% of voting shares) invests at least USD 500,000 in the production of goods or services, with an INVESTCHILE sponsorship letter.",
+    "evidence_hint": "INVESTCHILE sponsorship letter; investment details document specifying purpose and amount."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "direct_investor",
+      "name": "Direct investor",
+      "requirements": [
+        {
+          "id": "clir_investment_amount",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Minimum investment of USD 500,000 (or equivalent), destined to the production of goods or services.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_investors"
+        },
+        {
+          "id": "clir_investchile_sponsorship",
+          "attribute": "has_investchile_sponsorship_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsorship letter from INVESTCHILE (Chile's foreign investment promotion agency).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_investors"
+        }
+      ]
+    },
+    {
+      "id": "related_personnel",
+      "name": "Related personnel (executives, senior managers, specialized technical staff)",
+      "requirements": [
+        {
+          "id": "clir_investor_owned_company",
+          "attribute": "employed_by_company_with_10pct_foreign_investor_stake",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Hired by a Chilean company in which a foreign investor holds at least 10% of voting shares or equivalent capital participation, in an executive, senior management, or specialized technical role.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_investors"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "INVESTCHILE sponsorship letter", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Investment details document (purpose and amount)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passport (1+ year validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not disclosed on the fetched page; extensions require proof of investment progress and current company registration",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_permanent_residence", "cl_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "serviciomigraciones_investors",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/residencia-temporal-permit/subcategories/investors/",
+      "title": "serviciomigraciones.cl (SERMIG) -- Investors and Related Personnel subcategory: USD 500,000 minimum investment (direct investors) or employment by a company with 10%+ foreign investor stake (related personnel); requires an INVESTCHILE sponsorship letter; applications must be submitted from outside Chile",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED -- the USD 500,000 threshold and INVESTCHILE sponsorship requirement are directly tier-1 sourced (SERMIG's own subcategory page). Initial permit duration was not disclosed on the fetched page and is not guessed. pr_after_months is set to 12 reflecting Residencia Definitiva's reduced timeline for 'active business investments in Chile' (see cl_permanent_residence.json) rather than a figure confirmed specifically on this page. A separate, distinct 'Business Management' subcategory (multi-entry, for recurring executive/managerial visits without a capital-investment threshold) exists alongside this one -- modeled separately as cl_business_multientry.json rather than folded in here, since it targets a structurally different applicant (frequent short visits vs. a resident investor)."
+}

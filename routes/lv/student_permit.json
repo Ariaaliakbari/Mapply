@@ -1,0 +1,63 @@
+{
+  "id": "lv_student_permit",
+  "country": "LV",
+  "name": "Temporary Residence Permit -- Study",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Full-time student",
+      "requirements": [
+        {
+          "id": "lvsp_enrollment",
+          "attribute": "has_confirmed_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Confirmed full-time enrollment at an accredited Latvian educational institution.",
+          "fix_path": "Obtain admission to an accredited Latvian institution.",
+          "fix_time_months": null,
+          "source_id": "pmlp_duration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Enrollment confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of financial means (~EUR 740/month, per immigrantinvest.com)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "for the period of studies; recent graduates get up to 6 months; study-practice/exchange up to 1 year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lv_work_permit", "lv_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "pmlp_duration",
+      "tier": 1,
+      "url": "https://www.pmlp.gov.lv/en/how-long-may-residence-permit-be-issued",
+      "title": "Office of Citizenship and Migration Affairs (PMLP), official English page -- residence permit durations by category: full-time students for the period of studies, recent graduates up to 6 months, study-practice/exchange up to 1 year",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). work_rights is 'restricted' since students may generally only work part-time alongside full-time study (a EUR 740/month financial-means figure and part-time work-hours allowance are reported by a tier-3 consultancy source, not independently re-confirmed against a tier-1 page in this pass, so not modeled as hard requirements here). pr_after_months/citizenship_after_months (60) reflect lv_permanent_residence.json and lv_citizenship_naturalisation.json's standard 5-year figures."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "ng_student_permit",
+  "country": "NG",
+  "name": "Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ngsp_admission_letter",
+          "attribute": "has_admission_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Official admission letter from an approved Nigerian educational institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_visa_categories"
+        },
+        {
+          "id": "ngsp_financial_support",
+          "attribute": "has_financial_support_proof",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of financial support for the duration of study.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Financial support proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical insurance (where applicable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Accommodation evidence", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "duration of academic program, typically 1 year, renewable subject to continued enrollment",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ng_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "nis_visa_categories",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/nigerian-visa/",
+      "title": "Nigeria Immigration Service (NIS) -- Student Visa: full-time studies at approved Nigerian institutions, requires official admission letter, financial support proof, medical insurance (where applicable), accommodation evidence; renewal depends on academic progress; students prohibited from paid employment unless specifically authorized",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- tier-1 NIS sourced, though the source page is thin beyond the core requirements listed (no fee figures, no explicit CERPAC cross-reference). Students staying 1+ year are also expected to obtain CERPAC (see ng_work_permit.json notes for CERPAC fee structure -- students pay a reduced USD 600 CERPAC fee per e-CERPAC portal figures). No explicit post-study work-visa conversion pathway found; switchable_to ng_work_permit reflects the general possibility of a subsequent employer-sponsored application, not a dedicated graduate-route mechanism."
+}

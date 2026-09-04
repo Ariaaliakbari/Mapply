@@ -1,0 +1,137 @@
+{
+  "id": "mn_citizenship_naturalisation",
+  "country": "MN",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["mn_permanent_residence"],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mncn_residence",
+          "attribute": "months_permanent_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' permanent residence in Mongolia (Law on Citizenship 1995, Article 9.1).",
+          "fix_path": "Accumulate 5 years on the G (immigrant) permanent-residence status.",
+          "fix_time_months": 60,
+          "source_id": "immigration_gov_mn_naturalization"
+        },
+        {
+          "id": "mncn_language_customs",
+          "attribute": "has_mongolian_language_and_customs_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proper knowledge of the Mongolian language and of Mongolian people's traditions and customs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_naturalization"
+        },
+        {
+          "id": "mncn_means",
+          "attribute": "monthly_income_ratio_to_minimum_wage",
+          "operator": ">=",
+          "value": 10,
+          "hard": true,
+          "blocker_text": "Suitable living capability and resources: monthly income at least 10 times the minimum wage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_naturalization"
+        },
+        {
+          "id": "mncn_no_crimes",
+          "attribute": "no_crimes_during_residency_period",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must not have committed crimes during the residency period, and foreign relations must not prejudice Mongolia's interests.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_naturalization"
+        },
+        {
+          "id": "mncn_renunciation",
+          "attribute": "renounces_prior_citizenship_unless_home_country_prohibits_it",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must renounce prior citizenship, unless the applicant's country of origin prohibits renunciation (Law on Citizenship, Article 4.2).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_style_citizenship_law_ecoi"
+        }
+      ]
+    },
+    {
+      "id": "presidential_waiver",
+      "name": "Presidential waiver for exceptional talent/achievement (Article 9.3)",
+      "requirements": [
+        {
+          "id": "mncn_exceptional",
+          "attribute": "has_exceptional_talent_or_achievement_benefiting_mongolia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The President may waive the standard Article 9.1 conditions for individuals with exceptional talents or achievements that benefit Mongolia.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_style_citizenship_law_ecoi"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' permanent (G-status) residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Mongolian language and customs assessment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of income (10x minimum wage)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Character/background certificate from country of residence or its diplomatic mission", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of renunciation of prior citizenship, or its impossibility", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_mn_naturalization",
+      "tier": 1,
+      "url": "https://immigration.gov.mn/en/citizenship1/",
+      "title": "Immigration Agency of Mongolia -- citizenship by naturalisation: 5 years' permanent residence, income at least 10x minimum wage, Mongolian language/customs/constitutional knowledge, clean background certificate from country of residence or its diplomatic mission; 6 months to 1 year processing, 60,000 MNT fee",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "refworld_style_citizenship_law_ecoi",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/1320430/1504_1261392390_citizenship.pdf",
+      "title": "ecoi.net (Austrian Red Cross/ACCORD country-of-origin information network) -- Law of Mongolia on Citizenship, 5 June 1995, English translation: Article 9 naturalisation conditions, Article 4 dual-citizenship prohibition and renunciation exception, Article 9.3 Presidential waiver for exceptional talent",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: DRAFT -- the core Article 9 conditions (residence, language/customs, income, no-crimes) are corroborated by a tier-1 Immigration Agency page, but the renunciation and Presidential-waiver clauses (Articles 4.2, 9.3) are sourced only to a tier-2 full-text translation of the 1995 Law on Citizenship (ecoi.net, an established European country-of-origin-information network, treated as tier-2 in this dataset's convention consistent with Refworld) -- since this dataset requires ALL hard requirements to be tier-1 for published status, and two of this route's hard requirements are tier-2-only, the file stays draft rather than published despite the strong overall sourcing. dual_citizenship_allowed is FALSE -- Article 4.1 explicitly prohibits Mongolian citizens from holding another nationality simultaneously, one of the stricter dual-citizenship bans in this dataset (contrast Israel's and Romania's permissive stance). NO MARRIAGE-BASED FAST TRACK exists -- Article 3.3 explicitly states marriage does not itself change citizenship, and no reduced-residence marriage provision was found anywhere in the fetched text, a genuine structural absence (see mn_family_reunification.json)."
+}

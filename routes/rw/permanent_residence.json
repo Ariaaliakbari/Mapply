@@ -1,0 +1,65 @@
+{
+  "id": "rw_permanent_residence",
+  "country": "RW",
+  "name": "Permanent Resident Permit (L1, Resident Exceeding 10 Years)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 120,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rwpr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Continuous legal residence in Rwanda exceeding 10 years, per DGIE's L1 permanent-resident-permit category.",
+          "fix_path": "Accumulate more than 10 years of continuous legal residence under a qualifying temporary permit.",
+          "fix_time_months": 120,
+          "source_id": "migration_gov_rw_l1_title"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10+ years' continuous legal residence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite/long-term (exact card validity not confirmed in sources fetched)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_l1_title",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/our-services/permits/permanent-resident-permits/l-1-resident-exceeding-10-years/",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- L1 permanent resident permit category, titled 'Resident Exceeding 10 years'",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: DRAFT -- IMPORTANT SOURCING CAVEAT: this DGIE page returned a 404 error on every direct-content fetch attempt in this pass, despite being indexed and titled by search results as 'L-1 Resident Exceeding 10 years' on the correct migration.gov.rw domain. The 10-year threshold modeled here is inferred SOLELY from that page title, not from independently confirmed body content -- no fee, exact renewal cycle, or additional conditions beyond the residence duration could be verified. This is disclosed honestly rather than either fabricating supporting detail or omitting the route entirely (Rwanda's citizenship naturalisation law explicitly references a 'residence' ground that logically depends on prior permanent-residence status, so omitting this file would leave a structural gap). Flagged as the highest-priority re-fetch item in this Rwanda build alongside a working URL retry or a cached/alternate source."
+}

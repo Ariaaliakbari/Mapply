@@ -1,0 +1,137 @@
+{
+  "id": "lt_naturalisation",
+  "country": "LT",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["lt_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ltn_residence",
+          "attribute": "months_legal_permanent_residence",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Legally, permanently resident in Lithuania for the last 10 years (Article 18).",
+          "fix_path": "Accumulate 10 years of continuous legal permanent residence in Lithuania.",
+          "fix_time_months": 120,
+          "source_id": "eseimas_citizenship_law"
+        },
+        {
+          "id": "ltn_language",
+          "attribute": "has_a2_lithuanian_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must pass a Lithuanian state-language examination at A2 level.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_pathways_report"
+        },
+        {
+          "id": "ltn_constitution_exam",
+          "attribute": "passed_constitution_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must pass an examination on the fundamentals of the Lithuanian Constitution (20 questions, at least 14 correct).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ec_pathways_report"
+        },
+        {
+          "id": "ltn_means",
+          "attribute": "has_legal_means_of_subsistence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must possess legal means of subsistence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law"
+        },
+        {
+          "id": "ltn_renunciation",
+          "attribute": "stateless_or_will_renounce_other_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be stateless, or renounce their prior citizenship in writing within 2 years of receiving Lithuanian citizenship -- Lithuania does not generally permit dual citizenship for standard naturalisation.",
+          "fix_path": null,
+          "fix_time_months": 24,
+          "source_id": "ec_pathways_report"
+        }
+      ]
+    },
+    {
+      "id": "born_in_lithuania_stateless",
+      "name": "Stateless person born in Lithuania",
+      "requirements": [
+        {
+          "id": "ltn_stateless_residence",
+          "attribute": "months_legal_permanent_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "A reduced 5-year residence requirement applies to stateless persons born in Lithuania; the language, Constitution, and means-of-subsistence conditions still apply.",
+          "fix_path": "Accumulate 5 years of continuous legal permanent residence in Lithuania.",
+          "fix_time_months": 60,
+          "source_id": "ec_pathways_report"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' (or 5 years', if stateless and born in Lithuania) legal permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "A2-level Lithuanian language exam pass", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Constitution exam pass (14/20)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legal means of subsistence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "eseimas_citizenship_law",
+      "tier": 1,
+      "url": "https://e-seimas.lrs.lt/rs/legalact/TAD/TAIS.395555/",
+      "title": "e-Seimas (Lithuania's official legislative database) -- Law on Citizenship, Article 18: 10 years' legal permanent residence, legal means of subsistence; Article 18.3 exemptions from language/Constitution exams for applicants 65+, those with 0-55% work capacity, pensioners with special needs, and those with serious chronic mental disorders",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "id": "ec_pathways_report",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/system/files/2022-03/Lithuania_pathways_to_citizenship_en.pdf",
+      "title": "European Commission -- 'Pathways to citizenship for third-country nationals in Lithuania': A2 language level, 20-question/14-correct Constitution exam, 2-year renunciation window, stateless-born-in-Lithuania reduced 5-year track, ~160-180 ordinary naturalisation grants/year",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- residence and means-of-subsistence conditions are tier-1 sourced direct from e-Seimas Article 18, but the language exam level, Constitution exam pass mark, renunciation window, and stateless-born-in-Lithuania reduced track are sourced only to the EC pathways report (tier-2); held to draft pending a direct e-Seimas re-quote of the full article text for those specific figures. Lithuania's Constitution generally prohibits dual citizenship; Article 7 of the Law on Citizenship lists narrow exceptions (children with dual citizenship until 21, persons who fled before 11 March 1990 and their descendants, certain marriage cases, adoptees under 21, exceptional grants, refugees) -- NOT modeled as a blanket dual_citizenship_allowed:true for THIS standard route since the renunciation requirement is the general rule here; the exceptions are modeled in their own files where they form distinct, real routes (see lt_citizenship_reinstatement_pre1940.json and lt_citizenship_by_descent_simplified.json, both of which DO permit dual citizenship). An 'exceptional grant' track exists for outstanding merit to Lithuanian statehood (2 people granted 2013-2018, no standard conditions) -- not modeled as a testable requirement group since 'outstanding merit' isn't expressible as a predicate; disclosed here rather than fabricated into a fake structured requirement."
+}

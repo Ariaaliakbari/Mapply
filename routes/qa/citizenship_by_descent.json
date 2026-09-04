@@ -1,0 +1,65 @@
+{
+  "id": "qa_citizenship_by_descent",
+  "country": "QA",
+  "name": "Qatari Nationality by Descent (Law No. 38 of 2005, Article 1.4) -- patrilineal",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A child is automatically Qatari, whether born in Qatar or abroad, if the father is a Qatari citizen. Citizenship by descent is patrilineal only under Law No. 38 of 2005 -- children of a Qatari mother and non-Qatari father do NOT acquire Qatari nationality automatically.",
+    "evidence_hint": "Birth certificate; father's Qatari nationality documentation."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "qacd_qatari_father",
+          "attribute": "has_qatari_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Father is a Qatari citizen at the time of the child's birth (in Qatar or abroad). Having a Qatari MOTHER instead does not confer automatic citizenship under this law.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auc_cmrs_law38_2005"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Father's proof of Qatari nationality", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "auc_cmrs_law38_2005",
+      "tier": 2,
+      "url": "https://www4.aucegypt.edu/CMRS/Files/2.2%20Qatari%20Citizenship%2038%202005_EN.pdf",
+      "title": "American University in Cairo, Center for Migration and Refugee Studies -- verbatim English translation of Law No. 38 of 2005, Article 1.4: automatic citizenship for any child (born in Qatar or abroad) to a Qatari father; Article 2 'priority' language for naturalisation applicants with a Qatari mother affects queue position only, not automatic grant",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- same tier-2 sourcing caveat as the other Qatari citizenship files. GENDERED STRUCTURAL ASYMMETRY, THE MARQUEE FINDING FOR THIS FILE: descent-based citizenship is strictly PATRILINEAL. Children of Qatari WOMEN married to non-Qatari men do NOT acquire citizenship automatically -- this is not an oversight or a slower/harder path, it is a categorical exclusion under the primary law text. That population is instead the lead category in the 2018 Permanent Residency law's exemption list (see qa_permanent_residence.json's exempt_category group) -- they get settled status, never citizenship, through that route. This dataset does not treat the PR-law exemption as equivalent to citizenship by descent; they are modeled as two separate, unequal outcomes."
+}

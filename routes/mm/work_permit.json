@@ -1,0 +1,74 @@
+{
+  "id": "mm_work_permit",
+  "country": "MM",
+  "name": "Stay Permit + Foreign Registration Certificate (employer-sponsored)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mmwp_employer_sponsorship",
+          "attribute": "employer_confirms_sponsorship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsoring employer (an MIC-permitted investor, its affiliated group companies, or a registered Myanmar company) must confirm the employment and provide an invitation letter with a copy of the company's registration certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "thilawa_sez_visa"
+        },
+        {
+          "id": "mmwp_stay_beyond_90days",
+          "attribute": "intends_stay_beyond_90_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applies to foreign employees remaining in Myanmar beyond the initial 90-day business-visa stay, who must convert to a Stay Permit and obtain a Foreign Registration Certificate (FRC).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "thilawa_sez_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer invitation letter + company registration certificate copy", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Stay Permit application (via employer's One Stop Service Center where applicable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Foreign Registration Certificate (FRC) application", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Business Visa base: 3 months validity / 70 days stay; Multiple Journey Special Re-entry Visa (MJSRV): first grant 6 months, subsequent grants 12 months; Stay Permit/FRC renewable alongside employment",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "thilawa_sez_visa",
+      "tier": 1,
+      "url": "https://www.myanmarthilawa.gov.mm/visa-and-immigration",
+      "title": "Thilawa Special Economic Zone Management Committee, Myanmar (government body operating under the Ministry of Investment / MIC framework) -- Visa and Immigration: describes Stay Permit, Foreign Registration Certificate (FRC), and Multiple Journey Special Re-entry Visa (MJSRV, first grant 6 months, subsequent grants 12 months) for employees of MIC-permitted investors and their affiliated group companies, processed through the SEZ's One Stop Service Center",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Myanmar). STATUS: PUBLISHED -- tier-1 sourced, though specifically from a Special Economic Zone (Thilawa) management committee page rather than a general national Ministry of Labour/Immigration page -- the SEZ's One Stop Service Center process is the clearest documented version of this mechanism found in this build, and it is understood to mirror the general national Stay Permit/FRC system used for foreign employees outside SEZs, but this generalization is not independently tier-1 confirmed outside the SEZ context, so treat SEZ-specific procedural details (e.g. 'One Stop Service Center') as illustrative of the broader mechanism rather than guaranteed identical nationwide. No distinct labour-market test or minimum-salary threshold was found at tier-1; work_rights is 'restricted' since the permit ties the holder to the sponsoring employer/investor. Political-context caveat in mm_visitor_visa.json applies equally here -- foreign employment in Myanmar since 2021 also carries meaningful sanctions-compliance risk for companies from jurisdictions (US/EU/UK and others) that have imposed targeted sanctions on Myanmar military-linked entities; this dataset does not model sanctions exposure, which is a separate legal question from the immigration mechanics captured here."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "ug_family_reunification",
+  "country": "UG",
+  "name": "Dependant Pass",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse",
+      "requirements": [
+        {
+          "id": "ugfr_marriage_certificate",
+          "attribute": "married_to_principal_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Marriage certificate showing marriage to a foreign resident (or Ugandan citizen) with valid legal stay/status in Uganda.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_dependant_pass"
+        }
+      ]
+    },
+    {
+      "id": "child",
+      "name": "Minor child",
+      "requirements": [
+        {
+          "id": "ugfr_child_under18",
+          "attribute": "is_child_under_18_of_principal_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Child under 18 of a foreign resident (or Ugandan citizen) with valid legal stay/status in Uganda, evidenced by a birth certificate confirming parentage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_dependant_pass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Principal holder's passport copy and immigration status documentation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage certificate (spouse) or birth certificate (child)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Cover letter from the principal applicant", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the principal holder's permit duration; ~5 working days processing",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ug_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "immigration_dependant_pass",
+      "tier": 1,
+      "url": "https://www.immigration.go.ug/services/dependant-pass",
+      "title": "Directorate of Citizenship and Immigration Control, Uganda -- Dependant Pass: for children under 18, spouses, and other relatives of a foreign resident (or of a Ugandan citizen) with proof of legal stay; fees USD 350 (spouse) / USD 200 (child); processed online via visas.immigration.go.ug",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- tier-1 DCIC sourced, directly fetched by me. IMPORTANT RESTRICTION, STATED EXPLICITLY BY THE SOURCE: the Dependant Pass does NOT grant work authorisation -- a dependant who wants to work must separately apply for their own work permit (ug_work_permit.json), consistent with work_rights='none' here. The source also mentions 'other relatives' as potentially eligible beyond spouse/child, but does not detail criteria for that broader category -- not modeled as a third requirement_group given the lack of specificity, disclosed here as an open item. Notably, this pass is available both to dependants of foreign residents AND dependants of Ugandan citizens, making it also the practical mechanism a foreign spouse of a Ugandan citizen would use before (or instead of) pursuing ug_citizenship_by_marriage.json."
+}

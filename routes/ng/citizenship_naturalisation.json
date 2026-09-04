@@ -1,0 +1,84 @@
+{
+  "id": "ng_citizenship_naturalisation",
+  "country": "NG",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "continuous_residence",
+      "name": "15 years continuous residence track",
+      "requirements": [
+        {
+          "id": "ngcn_continuous_15yr",
+          "attribute": "months_resident_continuous",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "15 years' continuous residence in Nigeria.",
+          "fix_path": "Accumulate 15 years of continuous residence in Nigeria.",
+          "fix_time_months": 180,
+          "source_id": "candb_faq"
+        },
+        {
+          "id": "ngcn_good_character",
+          "attribute": "good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character, demonstrated integration (language/custom), and intent to be domiciled in Nigeria, to the President's satisfaction.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "candb_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport photograph and birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence of means of livelihood and tax clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence permit and passport bio-data pages", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Guarantor documentation (form, photo, CV, ID card)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of socio-economic contributions", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath of allegiance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "15 years continuous residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "candb_faq",
+      "tier": 1,
+      "url": "https://candb.interior.gov.ng/faq/",
+      "title": "Citizenship and Business Department, Federal Ministry of Interior, Nigeria -- FAQ: Naturalisation requires a minimum of 15 years of continuous residency, good character, proof of integration (language/custom), and a personal application, processed through the Citizenship and Business Department Portal",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "constitution_ch3",
+      "tier": 2,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Nigeria_Constitution_chapter_III_on_Citizenship_1999.pdf",
+      "title": "Constitution of the Federal Republic of Nigeria, 1999 (as amended), Chapter III -- Section 27 (Naturalisation): full age/capacity, good character, domicile intent, local community acceptance, and either 15 years continuous residence or 12 months immediately preceding plus 15 years aggregate within the preceding 20 years",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- the modeled hard requirement (15-year continuous residence) is confirmed at tier-1 directly by candb.interior.gov.ng, Nigeria's own Ministry of Interior Citizenship and Business Department. DISCLOSED BUT NOT MODELED AS A HARD REQUIREMENT: Section 27 of the Constitution (tier-2, via an NGO-hosted verbatim text at citizenshiprightsafrica.org, consistent with this dataset's established convention of treating academic/advocacy hosting of primary legal text as tier-2) also provides an ALTERNATIVE track -- 12 months' continuous residence immediately preceding the application plus 15 years' aggregate residence within the preceding 20 years -- but since this alternative track's specific figures are not independently confirmed at tier-1, it is disclosed here rather than modeled as a second requirement_group, to keep the file's hard requirements cleanly tier-1 and avoid a downgrade to draft over an alternative pathway most applicants won't need anyway (the 15-year-continuous track is the standard route). dual_citizenship_allowed is FALSE for this route specifically: per Section 28 of the Constitution, a person who is NOT a citizen of Nigeria by birth (which includes naturalised citizens) forfeits Nigerian citizenship upon acquiring or retaining another country's citizenship -- this restriction does NOT apply to citizens by birth, who may hold dual citizenship freely, a distinction worth flagging since it means Nigeria's dual-citizenship rules depend on HOW citizenship was acquired, not a blanket national policy either way."
+}

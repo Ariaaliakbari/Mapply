@@ -1,0 +1,103 @@
+{
+  "id": "so_citizenship_naturalisation",
+  "country": "SO",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "socn_7yr_residence",
+          "attribute": "months_resident_continuous",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Established residence in Somalia for at least 7 years.",
+          "fix_path": "Accumulate 7 years' established residence in Somalia.",
+          "fix_time_months": 84,
+          "source_id": "citizenshiprightsafrica_1962_law"
+        },
+        {
+          "id": "socn_good_conduct",
+          "attribute": "has_good_civil_and_moral_conduct",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good civil and moral conduct.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_1962_law"
+        },
+        {
+          "id": "socn_renounce_foreign",
+          "attribute": "willing_to_renounce_foreign_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must declare willingness to renounce foreign citizenship status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_1962_law"
+        }
+      ]
+    },
+    {
+      "id": "child_of_somali_mother",
+      "name": "Reduced residence period for the child of a Somali mother",
+      "requirements": [
+        {
+          "id": "socn_2yr_residence_somali_mother",
+          "attribute": "months_resident_continuous",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "The 7-year residence requirement is reduced to 2 years where the applicant is the child of a Somali mother, even if she herself is not (or is no longer) a Somali citizen.",
+          "fix_path": "Accumulate 2 years' residence in Somalia.",
+          "fix_time_months": 24,
+          "source_id": "citizenshiprightsafrica_1962_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Character references / conduct evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration of renunciation of foreign citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of Somali maternal parentage (reduced-period track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "7 years' established residence (2 years if the child of a Somali mother)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_1962_law",
+      "tier": 2,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Somalia_Citizenship_Law_28_22-Dec-62.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- Somali Citizenship Law No. 28 of 22 December 1962: Article 4 naturalization criteria (7 years' established residence, good civil and moral conduct, declared willingness to renounce foreign citizenship); Article 5 reduces the residence period to 2 years for the child of a Somali mother; Article 10 provides for loss of Somali citizenship on voluntary acquisition of foreign citizenship, formal renunciation, or continued foreign government service after notice; Article 11 allows deprivation of grant-based citizenship obtained by fraud",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Somalia). STATUS: DRAFT -- only an NGO-hosted (Citizenship Rights in Africa Initiative) consolidated text of the 1962 Law was located; no tier-1 Somali-government-hosted copy was found. LIVE STATUTORY-VS-CONSTITUTIONAL CONFLICT, DISCLOSED RATHER THAN RESOLVED: the 1962 Law's Article 10 says a Somali who voluntarily acquires foreign citizenship LOSES Somali citizenship. But Article 8 of Somalia's 2012 Provisional Constitution (the current supreme law) explicitly states a person 'cannot be deprived of Somali citizenship, even if they become a citizen of another country' -- i.e. the constitution appears to override the 1962 statute's renunciation-on-foreign-naturalization rule and affirmatively guarantee dual citizenship, though Article 8 itself defers detailed acquisition/loss rules to a citizenship act Parliament was supposed to pass. A draft Citizenship Bill was written in 2015-2017 (with technical support from the NGO Legal Action Worldwide) specifically to implement Article 8, but no source located in this build confirms it was ever enacted -- meaning the 1962 Law likely remains the operative statute on paper, sitting in direct tension with the newer constitution's dual-citizenship guarantee, a genuinely unresolved legal question this dataset does not adjudicate. dual_citizenship_allowed is set to TRUE here, following the 2012 Constitution (the supreme law) over the 1962 statute's contrary text -- flagged explicitly as a judgment call, not a certainty. POLITICAL CONTEXT: 'established residence' for 7 years is itself a live question given Somalia's decades of state fragility, Al-Shabaab territorial control, and Somaliland's separate de facto jurisdiction -- this dataset does not attempt to resolve how residence would be documented or verified in practice."
+}

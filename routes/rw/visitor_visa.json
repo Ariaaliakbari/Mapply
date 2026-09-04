@@ -1,0 +1,72 @@
+{
+  "id": "rw_visitor_visa",
+  "country": "RW",
+  "name": "Visitor's Visa (V1)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rwvv_purpose",
+          "attribute": "purpose_is_holiday_sightseeing_or_social",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Visit is for holiday, sightseeing, social/recreational, or other short-term purpose other than work.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "migration_gov_rw_visitor"
+        },
+        {
+          "id": "rwvv_passport_validity",
+          "attribute": "passport_valid_months_beyond_departure",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Genuine, acceptable travel document valid not less than 6 months.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": 1,
+          "source_id": "migration_gov_rw_visitor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (valid 6+ months)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "single entry: 30 days; multiple entry: 90 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["rw_work_permit", "rw_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "migration_gov_rw_visitor",
+      "tier": 1,
+      "url": "https://www.migration.gov.rw/visa/visitors-visa",
+      "title": "Directorate General of Immigration and Emigration (DGIE), Rwanda -- V1 visitor's visa: USD 50 single entry (30 days) / USD 70 multiple entry (90 days); free for African Union, Commonwealth, and La Francophonie member-state nationals under visa-waiver arrangements; work prohibited; applicable at border, online, immigration office, or diplomatic mission; status change permitted",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Rwanda). STATUS: PUBLISHED -- fully tier-1 DGIE sourced with concrete fees and durations. Rwanda's visa-waiver arrangement (free entry for AU/Commonwealth/La Francophonie nationals) is a notably broad and distinctive open-entry policy -- effectively covering most of Africa plus a wide swath of Anglophone and Francophone countries worldwide -- worth flagging as a genuine structural feature rather than a narrow bilateral exemption list."
+}

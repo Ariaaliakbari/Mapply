@@ -1,0 +1,70 @@
+{
+  "id": "jm_citizenship_by_descent",
+  "country": "JM",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jmcd_parent_jamaican_citizen",
+          "attribute": "parent_is_jamaican_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "At least one parent is a Jamaican citizen (by birth, descent, naturalisation, or registration) at the time relevant to the claim.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "pica_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Jamaican citizenship (birth certificate, citizenship/naturalisation certificate, or passport)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "JMD 5,000 / USD 100 / CAD 110 / GBP 60 / EUR 74 fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "pica_descent",
+      "tier": 1,
+      "url": "https://www.pica.gov.jm/citizenship/descent",
+      "title": "Passport, Immigration and Citizenship Agency (PICA), Jamaica -- Citizenship by Descent: application for a person with a Jamaican-citizen parent, fees JMD 5,000 / USD 100 / CAD 110 / GBP 60 / EUR 74 depending on where filed, 6-12 months processing",
+      "accessed_at": "2026-09-03"
+    },
+    {
+      "id": "jis_nationality_act",
+      "tier": 1,
+      "url": "https://jis.gov.jm/government/laws/",
+      "title": "Jamaica Information Service (JIS) -- Jamaican Nationality Act: Section 4 frames descent-based citizenship primarily around the registration of minor children born abroad to a Jamaican-citizen parent",
+      "accessed_at": "2026-09-03"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jamaica). STATUS: PUBLISHED -- both sources tier-1. UNRESOLVED TENSION BETWEEN TWO TIER-1 SOURCES, DISCLOSED RATHER THAN RESOLVED: the Jamaican Nationality Act's own text (Section 4) reads as primarily concerned with registering MINOR children born abroad to a Jamaican-citizen parent, while PICA's own operational descent-application page and process treat 'Citizenship by Descent' as a general-purpose route open to applicants of any age with a Jamaican-citizen parent. This dataset models PICA's practical/operational framing since that is what applicants actually encounter, but flags that the statutory text may be narrower than PICA's guidance suggests -- worth a legal read of the full Act text if precision matters. 'REGISTRATION OF MINORS' (PICA form R4, JMD 5,000, ~24 months processing) is a related but administratively distinct PICA service for registering a child born abroad to a Jamaican parent as a citizen -- folded into this file's notes rather than built as a separate route, since it is a sub-procedure of the same underlying descent right rather than a distinct eligibility pathway."
+}

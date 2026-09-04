@@ -1,0 +1,91 @@
+{
+  "id": "bw_citizenship_by_marriage",
+  "country": "BW",
+  "name": "Citizenship by Naturalisation (Foreign Spouse of a Citizen)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national married to a citizen of Botswana who has resided in Botswana for at least 5 years may apply for citizenship by naturalisation through the spouse track.",
+    "evidence_hint": "Marriage certificate; spouse's Omang (national ID); proof of 5 years' residence."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwcm_married_to_citizen",
+          "attribute": "is_spouse_of_botswana_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a citizen of Botswana.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_spouse_naturalisation"
+        },
+        {
+          "id": "bwcm_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Resided in Botswana for a period of at least 5 years.",
+          "fix_path": "Accumulate 5 years of residence in Botswana while married to a Botswana citizen.",
+          "fix_time_months": 60,
+          "source_id": "gov_bw_spouse_naturalisation"
+        },
+        {
+          "id": "bwcm_declaration_of_intent",
+          "attribute": "has_filed_declaration_of_intent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Declaration of Intention (Form K) must be filed before the main application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_spouse_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form K (Declaration of Intent)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Form N (main application) with Form M supplement", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate (certified)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's Omang (national ID, certified)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police report", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Valid residence permit (certified copy)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bw_spouse_naturalisation",
+      "tier": 1,
+      "url": "https://www.gov.bw/citizenship/citizenship-application-naturalization-foreign-spouse",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Citizenship Application (Naturalization, Foreign Spouse): married to a Botswana citizen and resident 5+ years; 6-step process (Form K declaration, Form N application, Gazette public notice, interview, decision, renunciation); mandatory renunciation of foreign citizenship; ~1 year processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). Directly sourced to gov.bw's own spouse-naturalisation page -- modeled PUBLISHED. Unlike Jordan's marriage-citizenship route (see jo_citizenship_by_marriage.json), gov.bw's page frames this route in gender-neutral terms ('married to citizens of Botswana') with no differential treatment disclosed by wife/husband or by nationality -- no asymmetry was found in this pass, a genuine contrast worth noting given how many countries in this dataset DO gate marriage-based citizenship by the applicant's gender. dual_citizenship_allowed is FALSE per the same mandatory-renunciation step as bw_citizenship_naturalisation.json. Application is publicised via Government Gazette notice before a decision -- a public-notice step not seen in most other countries in this dataset, disclosed as a distinctive procedural feature."
+}

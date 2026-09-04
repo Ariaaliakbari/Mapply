@@ -1,0 +1,76 @@
+{
+  "id": "ug_student_permit",
+  "country": "UG",
+  "name": "Student Pass",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ugsp_age4plus",
+          "attribute": "age",
+          "operator": ">=",
+          "value": 4,
+          "hard": true,
+          "blocker_text": "Above the age of 4 years.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_student_pass"
+        },
+        {
+          "id": "ugsp_admission",
+          "attribute": "enrolled_in_ugandan_institution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Enrolled in a learning institution in Uganda, evidenced by an admission letter and a support letter from the institution.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_student_pass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "School admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Support letter from the educational institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid Student ID card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence of fee payment to the institution", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent/guardian immigration status documentation (applicants under 18)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3, 6, or 12 months (applicant's choice)",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ug_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "immigration_student_pass",
+      "tier": 1,
+      "url": "https://www.immigration.go.ug/services/student-pass",
+      "title": "Directorate of Citizenship and Immigration Control, Uganda -- Student Pass: USD 100 flat fee regardless of duration chosen (3/6/12 months), East African nationals exempted from the fee; processed online via visas.immigration.go.ug with in-person biometric capture",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uganda). STATUS: PUBLISHED -- tier-1 DCIC sourced. STRUCTURAL FINDING: the USD 100 fee is FLAT regardless of the 3/6/12-month duration selected, unlike most other countries' student routes in this dataset where fees scale with duration -- meaning there's no cost advantage to choosing a shorter pass, only an administrative one (fewer renewals needed for longer stays). East African Community (EAC) nationals are explicitly fee-exempt, reflecting Uganda's EAC regional-integration commitments. No explicit post-study work-visa conversion pathway was found; switchable_to ug_work_permit reflects the general possibility of a subsequent employer-sponsored application, not a dedicated graduate-route mechanism."
+}

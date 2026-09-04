@@ -1,0 +1,80 @@
+{
+  "id": "bh_citizenship_by_marriage",
+  "country": "BH",
+  "name": "Bahraini Citizenship by Marriage (foreign wife of a Bahraini man)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route -- foreign wife of a Bahraini man",
+      "requirements": [
+        {
+          "id": "bhcm_married_to_bahraini_man",
+          "attribute": "married_to_bahraini_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a Bahraini man. NOTE: Bahraini law provides NO route to citizenship for a foreign man married to a Bahraini woman at all -- see the structural note below.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        },
+        {
+          "id": "bhcm_declared_wish_5yr",
+          "attribute": "months_since_declared_wish_and_maintained_marriage",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Must actively declare her wish to acquire citizenship to the Minister of Interior and maintain the marriage for 5 years from that declaration. The Minister may shorten the period or refuse on national-security grounds -- this is not automatic even once the 5 years pass.",
+          "fix_path": "Declare the wish and maintain the marriage for 5 years from that declaration.",
+          "fix_time_months": 60,
+          "source_id": "globalcit_bahrain_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Declaration of wish filed with the Minister of Interior", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_bahrain_citizenship_act",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Bahraini%20Nationality%20Law_ENGLISH.pdf",
+      "title": "GLOBALCIT (EUI academic citizenship-law observatory) -- English translation of the Bahraini Citizenship Act 1963, as amended (1981): foreign wife of a Bahraini man may acquire citizenship by declaring her wish to the Minister of Interior and maintaining the marriage 5 years from that declaration, subject to Ministerial discretion to shorten or refuse; no equivalent provision exists for a foreign husband of a Bahraini woman",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "npra_wife_citizenship_service",
+      "tier": 1,
+      "url": "https://www.npra.gov.bh/en/services/nationality/citizenship-for-a-bahrainis-wife/",
+      "title": "Nationality, Passports and Residence Affairs (NPRA), Bahrain -- 'Citizenship for a Bahraini's Wife' service page: confirms the service exists and requires in-person/online application, but does not itemize the substantive eligibility criteria beyond that",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: DRAFT -- the substantive eligibility detail (5-year declared-wish requirement, Ministerial discretion) is tier-2 GLOBALCIT sourced; a tier-1 NPRA page confirms the service exists ('Citizenship for a Bahraini's Wife' -- note the name itself already signals the gendered scope) but doesn't itemize the criteria, so the hard requirements cite the tier-2 source and the file stays draft. GENDERED STRUCTURAL ASYMMETRY, MORE EXTREME THAN OTHER GULF STATES IN THIS DATASET: Bahrain has NO marriage-based citizenship provision AT ALL for a foreign man married to a Bahraini woman -- not a harder path, not a fallback via a permanent-residency exemption (contrast with Qatar's 2018 PR-law exemption category for non-Qatari husbands of Qatari women) -- simply no route. This is a more severe asymmetry than Qatar's equivalent gap found elsewhere in this dataset. Even for the wife's route, acquisition is NOT automatic at 5 years -- it requires an affirmative declaration and remains subject to Ministerial discretion to refuse on national-security grounds, closer in character to Bahrain's broader Royal-discretion citizenship culture (see bh_citizenship_special_grounds.json) than to a rights-based administrative process."
+}

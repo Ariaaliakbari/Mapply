@@ -1,0 +1,98 @@
+{
+  "id": "ro_family_reunification",
+  "country": "RO",
+  "name": "Residence Permit for Family Reunification",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_of_romanian",
+      "name": "Spouse (or cohabiting partner with a shared child) of a Romanian citizen",
+      "requirements": [
+        {
+          "id": "rofr_spouse_romanian",
+          "attribute": "is_spouse_or_cohabiting_partner_of_romanian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to (or a cohabiting partner with a shared child with) a Romanian citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_residence_permit"
+        }
+      ]
+    },
+    {
+      "id": "child_of_romanian",
+      "name": "Child of a Romanian citizen",
+      "requirements": [
+        {
+          "id": "rofr_child_romanian",
+          "attribute": "is_child_of_romanian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Child of a Romanian citizen.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_residence_permit"
+        }
+      ]
+    },
+    {
+      "id": "family_of_sponsor",
+      "name": "Family member of a non-EU/EEA long-stay sponsor",
+      "requirements": [
+        {
+          "id": "rofr_sponsor_relationship",
+          "attribute": "is_family_member_of_non_eu_sponsor",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouse or family member of a non-EU/EEA citizen holding long-stay status in Romania.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_residence_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Border-crossing document (passport)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of living space", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years for spouses/family members of Romanian citizens or long-stay sponsors",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ro_permanent_residence", "ro_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "igi_residence_permit",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/residence-permit/",
+      "title": "General Inspectorate for Immigration (IGI), Romanian Ministry of Internal Affairs -- residence permit for family members: spouse/cohabiting partner with shared child, children, and first-degree relatives (parents/grandparents) of Romanian citizens; family members of non-EU/EEA sponsors; up to 5-year duration for family of Romanian citizens/long-stay sponsors; independent 6-month permits available for former family-reunification holders; 30-day processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: PUBLISHED -- fully tier-1 IGI sourced. Three distinct requirement groups modeled (OR logic) reflecting genuinely different qualifying relationships the source lists: spouse/partner of a Romanian citizen, child of a Romanian citizen, and family member of a non-EU/EEA long-stay sponsor (this last group covers reunification for third-country-national families generally, not just Romanian-citizen sponsors -- a broader category than most family-reunification files in this dataset). The source also describes first-degree relatives (parents/grandparents) of Romanian citizens as eligible but did not specify separate conditions from the spouse/child groups, so that category is not modeled as its own group here -- disclosed as a simplification. work_rights/family_can_work set to restricted/false as conservative defaults; the source did not state work rights for holders of this specific permit category. citizenship_after_months for the spouse-of-Romanian group is set to 60 (5yr) reflecting Article 8(1)(a)'s reduced residence period for spouses married to and cohabiting with a Romanian citizen (see ro_citizenship_by_marriage.json) -- this is a cross-file inference, not separately stated on this IGI page."
+}

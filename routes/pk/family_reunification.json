@@ -1,0 +1,74 @@
+{
+  "id": "pk_family_reunification",
+  "country": "PK",
+  "name": "Family Visit Visa",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "rolling_window",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pkfr_pakistani_origin_or_spouse",
+          "attribute": "is_family_of_pakistani_origin_person",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be a foreign citizen of Pakistani origin, or the foreign spouse of such a person, seeking to visit/stay with family in Pakistan.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mofa_family_visit"
+        },
+        {
+          "id": "pkfr_relationship_documents",
+          "attribute": "has_relationship_documents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must provide marriage certificate, birth certificate, and POC/CNIC/NICOP documentation proving the family relationship.",
+          "fix_path": "Obtain marriage/birth certificates and the sponsoring relative's POC, CNIC, or NICOP.",
+          "fix_time_months": null,
+          "source_id": "mofa_family_visit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (for spouses)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsoring relative's POC, CNIC, or NICOP", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years validity, up to 1 year stay per entry, multiple entries; annually renewable in-country",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["pk_citizenship_by_marriage"]
+  },
+  "sources": [
+    {
+      "id": "mofa_family_visit",
+      "tier": 1,
+      "url": "https://mofa.gov.pk/moscow-family-visit-visa",
+      "title": "Ministry of Foreign Affairs, Pakistan (mission page) -- Family Visit Visa: for foreign citizens of Pakistani origin and their spouses to visit and stay with family members; requires photo, passport, POC or equivalent, marriage certificate, birth certificate, CNIC/NICOP; up to 5 years validity with up to 1 year stay per entry, multiple entries; maximum fee USD 70 for the full 5-year period; annually renewable in Pakistan",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Pakistan). Published on a tier-1 government mission page (Ministry of Foreign Affairs). This is a VISIT/residence visa, not a citizenship grant -- it is what a foreign spouse of a Pakistani-origin person actually lives on day-to-day, distinct from pk_citizenship_by_marriage.json (Section 10(2) naturalisation, which the female spouse of this route can separately apply for after 5 years' aggregate residence). Gender-neutral on its face (covers 'spouses' generally, not restricted to one sex), unlike the citizenship-by-marriage route which is restricted to foreign women -- flagged as a notable internal inconsistency: a foreign husband of a Pakistani woman can hold this family visit visa indefinitely but historically could not convert it to citizenship the way a foreign wife of a Pakistani man could (see pk_citizenship_by_marriage.json notes on the 2024 Sindh High Court ruling)."
+}

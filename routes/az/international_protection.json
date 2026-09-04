@@ -1,0 +1,61 @@
+{
+  "id": "az_international_protection",
+  "country": "AZ",
+  "name": "Asylum / Refugee Status",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "azip_claim",
+          "attribute": "meets_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The State Migration Service (SMS) of the Republic of Azerbaijan -- not UNHCR -- examines asylum applications individually against criteria set by international conventions and domestic law. The applicant must be within Azerbaijani territory or at a port of entry to apply.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_azerbaijan_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Asylum application filed with the State Migration Service", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["az_permanent_residence", "az_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_azerbaijan_asylum",
+      "tier": 1,
+      "url": "https://help.unhcr.org/azerbaijan/asylum-in-azerbaijan/",
+      "title": "UNHCR Azerbaijan -- confirms Azerbaijan's own State Migration Service (not UNHCR) examines asylum applications against international-convention and domestic-law criteria; application requires presence in Azerbaijani territory or at a port of entry; the page references status-determination and appeal phases without further procedural detail",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). STATUS: DRAFT -- despite a tier-1 source confirming Azerbaijan runs its own asylum determination (unlike Morocco's or Oman's UNHCR-run/absent structures built earlier in this dataset), the specific process detail (registration procedure, interview and decision timelines, appeal mechanics, and what documents a recognized refugee receives) was not available on the page fetched and the source itself noted this detail sits behind expandable sections not captured -- disclosed as a genuine information gap rather than invented. pr_after_months and citizenship_after_months reuse the general figures from az_permanent_residence.json and az_naturalisation.json since no refugee-specific reduced track was found."
+}

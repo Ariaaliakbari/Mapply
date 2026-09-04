@@ -1,0 +1,65 @@
+{
+  "id": "fj_family_reunification",
+  "country": "FJ",
+  "name": "Co-Extensive Residence Permit",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["fj_work_permit"],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "fjfr_relationship",
+          "attribute": "is_spouse_or_dependent_child_of_permit_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouse or dependent unmarried child (under 18 for a new grant; under 21 on extension) of a Fiji permit holder.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_fj_coextensive"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate / birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "co-extensive with (matches) the principal permit holder's permit duration",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_fj_coextensive",
+      "tier": 1,
+      "url": "https://www.immigration.gov.fj/co-extensive-residence-permit-application/",
+      "title": "Department of Immigration, Fiji -- Co-Extensive Residence Permit: covers spouse and dependent unmarried children of a permit holder, fee FJD 650.05 (international) / FJD 185 (regional), processing approximately 21 working days",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Fiji). STATUS: PUBLISHED -- tier-1 Department of Immigration sourced. A separate 'Residence Permit on Special Purpose to Reside with Family Member' also exists as a distinct family-reunification instrument, but its page content was too thin to model independently -- disclosed rather than built as its own file. Fiji also grants statutory PERMIT-EXEMPT status (not modeled here, since it's an exemption rather than a permit) to spouses and children of Fiji citizens and to family members of exempted persons -- see the Fiji Permits index. work_rights set to 'none' since this is a dependent-status permit distinct from the principal's own work authorization."
+}

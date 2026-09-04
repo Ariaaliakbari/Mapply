@@ -1,0 +1,80 @@
+{
+  "id": "md_citizenship_reacquisition",
+  "country": "MD",
+  "name": "Reacquisition of Moldovan Citizenship (redobandire) (Law No. 253/2025, Art. 13)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "For persons who previously HELD Moldovan citizenship and lost it (typically through renunciation), as distinct from md_citizenship_by_descent.json which covers descendants who never held Moldovan citizenship themselves.",
+    "evidence_hint": "Documentation of prior Moldovan citizenship and the circumstances of its loss."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdcr_previously_held",
+          "attribute": "previously_held_and_lost_moldovan_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Previously held Moldovan citizenship and lost it, most commonly through renunciation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "asp_gov_md_citizenship_services"
+        },
+        {
+          "id": "mdcr_language_civics",
+          "attribute": "passes_romanian_and_civics_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Demonstrated knowledge of the Romanian language and constitutional provisions (or documented disability exemption), and must not fall under Art. 19 refusal grounds.",
+          "fix_path": "Pass the required language/civics exam (ANCE certificate) or obtain a disability exemption.",
+          "fix_time_months": null,
+          "source_id": "asp_gov_md_citizenship_services"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid travel/identity documents", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Civil status records", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Detailed autobiography (personal, residency, employment history)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Romanian language exam certificate (ANCE) or disability documentation", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Police clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "6,650 MDL fee", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "applications may be filed in-country at ASP Chisinau or abroad via diplomatic missions/consulates -- no minimum physical presence period is stated",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "asp_gov_md_citizenship_services",
+      "tier": 1,
+      "url": "https://www.asp.gov.md/en/servicii/persoane-fizice/17/174",
+      "title": "Public Services Agency (ASP), Republic of Moldova -- reacquisition of citizenship (redobandire) service page: prior citizenship + loss via renunciation, Romanian language/civics requirement (ANCE certificate) or disability exemption, no bar under Art. 19 refusal grounds, processing up to 1 year (extendable 6 months for document verification), fee 6,650 MDL per Law No. 213/2023",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: PUBLISHED -- directly fetched and confirmed from ASP.gov.md, Moldova's own Public Services Agency, tier-1. This is the ONE Moldovan citizenship file in this build sourced independently to a government page rather than the tier-4 PDF mirror used elsewhere -- the other citizenship files (naturalisation, marriage, descent/recognition, special grounds) rest on weaker sourcing and should not be assumed equally solid. Distinct from md_citizenship_by_descent.json: reacquisition (redobandire) is for people who THEMSELVES previously held and lost Moldovan citizenship; recognition (recunoastere) is for descendants who never held it. Processing time (up to 1 year, extendable 6 months) is unusually slow compared to most naturalisation-adjacent routes in this dataset."
+}

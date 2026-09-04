@@ -1,0 +1,87 @@
+{
+  "id": "mn_family_reunification",
+  "country": "MN",
+  "name": "Residence Permit for Family Purposes, Spouse of a Mongolian Citizen (F1)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mnfr_spouse_mongolian",
+          "attribute": "is_spouse_of_mongolian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Married to a Mongolian citizen, evidenced by a translated marriage certificate and a copy of the spouse's Mongolian ID.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_f1"
+        },
+        {
+          "id": "mnfr_health_clearance",
+          "attribute": "has_health_clearance_including_hiv_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Health clearance including an HIV test is a required document for this permit category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_f1"
+        },
+        {
+          "id": "mnfr_clean_record",
+          "attribute": "has_clean_criminal_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Police criminal record clearance required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_gov_mn_f1"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (translated)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Copy of Mongolian spouse's ID", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health clearance (including HIV test)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of financial means", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "issued for up to 1 year at a time for the first two years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 96,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mn_permanent_residence", "mn_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "immigration_gov_mn_f1",
+      "tier": 1,
+      "url": "https://immigration.gov.mn/en/residence-permit-copy-2/permit-f/f1/",
+      "title": "Immigration Agency of Mongolia -- F1 family residence permit for spouses of Mongolian citizens: marriage certificate (translated), spouse's ID, police record, HIV/health clearance, proof of financial means, biometric registration; issued up to 1 year at a time for the first two years; 135,000 MNT standard processing, $7 residency card fee",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mongolia). STATUS: PUBLISHED -- fully tier-1 sourced. This models F1 (spouse of a Mongolian citizen) specifically; the Immigration Agency also lists F2/F3 sub-categories and an H2 'private purpose' category tied to relationship with an H1 (talent/needed-profession) permit holder, neither of which was independently fetched in this pass -- disclosed as a scope limitation, since F1 (marriage to a citizen) is the clearest, most universally-applicable family route and matches this dataset's convention elsewhere. NOTABLE: this dataset's convention elsewhere flags gendered asymmetry where found; the F1 source language ('Mongolian spouse') is gender-neutral with no wife/husband distinction found in this pass. citizenship route: Mongolia's naturalisation law (Article 3.3, see mn_citizenship_naturalisation.json) explicitly states marriage does NOT itself change or accelerate citizenship acquisition -- unlike Romania's or Chad's marriage-linked reduced-residence provisions, Mongolia's Law on Citizenship contains no marriage-based fast track found in this pass, a genuine structural absence disclosed rather than invented. pr_after_months/citizenship_after_months here follow the same general residence-accumulation path as other temporary permits (no accelerated marriage track confirmed)."
+}

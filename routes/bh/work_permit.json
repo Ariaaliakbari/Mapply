@@ -1,0 +1,62 @@
+{
+  "id": "bh_work_permit",
+  "country": "BH",
+  "name": "Standard Work Permit (Act No. 19 of 2006, LMRA-administered)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bhwp_job_offer",
+          "attribute": "has_qualifying_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer-sponsored job offer, applied for via LMRA's Expat Management System (EMS), tied to the employer's Commercial Registration (CR).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "lmra_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Job advertisement (overseas hires only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "6 months, 1 year, or 2 years (applicant-selected term)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bh_family_reunification", "bh_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "lmra_work_permit",
+      "tier": 1,
+      "url": "https://lmra.gov.bh/en/page/show/106",
+      "title": "Labour Market Regulatory Authority (LMRA), Bahrain -- work permit: employer-sponsored via Expat Management System, tied to employer CR; fees BHD 97.5 (6mo)/195 (1yr)/390 (2yr) service fee + BHD 5 admin + BHD 30 job-ad fee (overseas hires) + BHD 90 per dependent; processing 3 working days (in-country) / 21 working days (overseas)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bahrain). STATUS: PUBLISHED -- tier-1 LMRA sourced for the core mechanics. GAP, DISCLOSED NOT FABRICATED: Bahrain's 'Bahrainization' system pairs sector-based minimum Bahraini-employment percentages with a monthly per-expat-permit fee (commonly reported around BHD 300+/month) rather than a hard quota-block like Saudi Arabia's Nitaqat -- this flexible, pay-to-exceed-your-ratio structure was only tier-3/4 sourced (HR-vendor content) in this build and could not be confirmed against lmra.gov.bh directly; no specific percentage or fee figure is asserted here. pr_after_months (60) and citizenship_after_months (180, the 15-year Arab-national naturalisation track) are cross-referenced from bh_permanent_residence.json and bh_citizenship_naturalisation.json, not independently sourced here -- the actual applicable naturalisation period depends on whether the applicant is an Arab national (15yr) or not (25yr)."
+}

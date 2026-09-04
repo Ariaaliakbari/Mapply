@@ -1,0 +1,123 @@
+{
+  "id": "ng_investor_residence",
+  "country": "NG",
+  "name": "Investor Visa (Small / Medium / Large / Ultra Large / Oil-Gas-Power)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "small_scale",
+      "name": "Small Scale Enterprise (N3A)",
+      "requirements": [
+        {
+          "id": "ngir_small_capital",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "US$250,000-500,000 imported and retained in Nigeria as investor's capital.",
+          "fix_path": "Import and retain the required capital in a small-scale enterprise.",
+          "fix_time_months": null,
+          "source_id": "nis_n3a"
+        },
+        {
+          "id": "ngir_prior_business_visa",
+          "attribute": "held_business_visa_f4b_or_f4c",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have held, or currently hold, a Business (Multiple Entry, F4B) or Business (Frequently Travelled Executives, F4C) visa.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nis_n3a"
+        }
+      ]
+    },
+    {
+      "id": "medium_scale",
+      "name": "Medium Scale Enterprise (N3B)",
+      "requirements": [
+        {
+          "id": "ngir_medium_capital",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "US$500,000-1,000,000 imported and retained in Nigeria as investor's capital.",
+          "fix_path": "Import and retain the required capital in a medium-scale enterprise.",
+          "fix_time_months": null,
+          "source_id": "nis_n3b"
+        }
+      ]
+    },
+    {
+      "id": "large_scale",
+      "name": "Large Scale Corporations (N3C)",
+      "requirements": [
+        {
+          "id": "ngir_large_capital",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "US$1,000,000-10,000,000 imported and retained in Nigeria as investor's capital.",
+          "fix_path": "Import and retain the required capital in a large-scale corporation.",
+          "fix_time_months": null,
+          "source_id": "nis_n3c"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of investment (import/retention of capital)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Business Plan specific to the enterprise scale", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certificate of Incorporation / Business Registration Documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Security clearance from place of residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "N3A (small): 3 years; N3B (medium): 4 years; N3C (large): 6 years -- all multiple-entry residence permits, 90-day initial visa validity, not extendable in that initial form",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ng_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "nis_n3a",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/investor-visa-small-scale-enterprise-n3a/",
+      "title": "Nigeria Immigration Service (NIS) -- Investor Visa N3A (Small Scale Enterprise): US$250,000-500,000 capital, requires prior F4B/F4C business visa, 3-year multiple-entry residence permit",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "nis_n3b",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/investor-visa-medium-scale-enterprise-n3b/",
+      "title": "Nigeria Immigration Service (NIS) -- Investor Visa N3B (Medium Scale Enterprise): US$500,000-1,000,000 capital, 4-year multiple-entry residence permit",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "nis_n3c",
+      "tier": 1,
+      "url": "https://immigration.gov.ng/info-center/investor-visa-large-scale-corporations-n3c/",
+      "title": "Nigeria Immigration Service (NIS) -- Investor Visa N3C (Large Scale Corporations): US$1,000,000-10,000,000 capital, 6-year multiple-entry residence permit",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nigeria). STATUS: PUBLISHED -- all three requirement groups tier-1 NIS sourced directly. NIS ALSO OFFERS two further investor tiers not modeled as separate requirement groups here (both confirmed to exist via NIS's own category list, but their exact thresholds were sourced only via a non-government aggregator and are therefore disclosed rather than asserted as hard requirements): N3D (Ultra Large Scale Corporations, above the N3C ceiling) and N3E (Oil, Gas & Power Sector, a much higher sector-specific threshold reported elsewhere as ~US$100,000,000 but NOT independently tier-1 confirmed in this build -- do not treat that figure as sourced). Duration scales directly with investment tier (3/4/6 years), a genuinely distinctive structural feature not seen in other countries built in this dataset so far. citizenship_after_months cross-referenced from ng_citizenship_naturalisation.json, not independently sourced here."
+}

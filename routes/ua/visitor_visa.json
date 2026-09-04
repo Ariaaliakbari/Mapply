@@ -1,0 +1,79 @@
+{
+  "id": "ua_visitor_visa",
+  "country": "UA",
+  "name": "Visa-Free Entry / Short-Term Visa (Tourism, Private, Business)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_free",
+      "name": "Visa-exempt nationalities",
+      "requirements": [
+        {
+          "id": "uavv_exempt_nationality",
+          "attribute": "nationality_visa_exempt",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of most Western countries (EU member states, Canada, Japan, and others) may enter and stay visa-free for up to 90 days within any 180-day period; some nationalities have a shorter 30- or 14-day allowance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_visa_policy"
+        }
+      ]
+    },
+    {
+      "id": "evisa_or_consular",
+      "name": "Non-exempt nationalities",
+      "requirements": [
+        {
+          "id": "uavv_evisa_or_consular",
+          "attribute": "has_evisa_or_consular_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An e-Visa (for tourism, private visits, medical purposes, or business/work trips in culture, science, education, or sports) or a standard consular visa from a Ukrainian diplomatic mission is required for non-exempt nationalities.",
+          "fix_path": "Apply for a Ukrainian e-Visa or a consular visa.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_visa_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "E-Visa application or consular visa (non-exempt nationalities only)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within any 180-day period (shorter for some nationalities)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_visa_policy",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Ukraine",
+      "title": "Wikipedia -- Visa policy of Ukraine: 90/180-day visa-free regime for most Western nationalities (30- or 14-day for others), e-Visa system for tourism/private/business/medical purposes",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). STATUS: DRAFT, WEAKEST-SOURCED FILE IN THIS BUILD -- every direct attempt to fetch Ukraine's Ministry of Foreign Affairs (mfa.gov.ua and multiple embassy subdomains) for its own entry-regime page returned HTTP 403 in this pass, leaving only a Wikipedia summary (tier-4) to source this route. Every other file in this Ukraine build is sourced tier-1 (dmsu.gov.ua, the State Migration Service's own site, or Diia, the government e-services portal) or tier-2 -- this file is the clear outlier and should be the first re-verified against mfa.gov.ua directly in a future pass. Active martial law since February 2022 has changed some entry/exit rules for men of certain ages and has ended visa-free travel with Russia (Resolution 692, June 2022) -- neither of those martial-law-specific wrinkles is modeled here since they affect Ukrainian citizens' own exit rules, not foreign visitors' entry, which is this route's scope."
+}

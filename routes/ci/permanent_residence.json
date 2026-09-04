@@ -1,0 +1,79 @@
+{
+  "id": "ci_permanent_residence",
+  "country": "CI",
+  "name": "Resident Card (Carte de Resident), Renewed Indefinitely",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": null,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cipr_valid_category",
+          "attribute": "holds_valid_carte_de_resident_category",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Holds a valid resident card under any of ONECI's recognized categories (worker, merchant, religious personnel, retiree, dependent spouse, etc.) and renews it before expiry -- penalties apply after 1+ years of non-renewal.",
+          "fix_path": "Maintain continuous renewal of the resident card under a qualifying category.",
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        },
+        {
+          "id": "cipr_fee",
+          "attribute": "paid_renewal_fee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "300,000 FCFA (non-ECOWAS nationals) or 150,000 FCFA (French nationals) renewal fee, plus optional VIP/Premium expedited processing.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "oneci_carte_resident"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport or consular card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Previous resident card (for renewal)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Category-specific supporting documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank payment receipt", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "renewable indefinitely; exact per-issuance validity period not confirmed in sources fetched",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "penalties apply for non-renewal exceeding 1 year",
+    "switchable_to": ["ci_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "oneci_carte_resident",
+      "tier": 1,
+      "url": "https://www.oneci.ci/nos-produits/carte-resident/documents-a-fournir",
+      "title": "ONECI (Office National de l'Etat Civil et de l'Identification, Cote d'Ivoire) -- carte de resident: renewable status across all categories, penalties for non-renewal beyond 1 year, 300,000/150,000/35,000 FCFA fee tiers by nationality/category",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: PUBLISHED, but STRUCTURALLY DISCLOSED FINDING: Cote d'Ivoire does NOT appear to operate a distinct 'permanent residence' status separate from the ordinary carte de resident -- unlike most other countries in this dataset (which typically distinguish a capped-duration temporary permit from an indefinite/long-duration PR card reached after some years), ONECI's system appears to be ONE renewable card type across all purpose-of-stay categories, with no source found in this pass describing a longer-validity or fewer-conditions upgrade tier after N years of holding it. This mirrors the structural absence found in this dataset's Chad build (renewable visa de sejour repeated indefinitely, no distinct PR tier) rather than Romania's or Mongolia's two-stage models -- disclosed as a genuine finding, not invented. citizenship_after_months (60) reflects the Code de la Nationalite's standard 5-year naturalisation residence threshold (see ci_citizenship_naturalisation.json)."
+}

@@ -1,0 +1,78 @@
+{
+  "id": "bw_investor_residence",
+  "country": "BW",
+  "name": "Residence Permit -- Investor Category",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A non-citizen investing or operating a business for profit in Botswana applies for a Residence Permit under the investor category, or a Work Permit under the investor sub-track.",
+    "evidence_hint": "Business registration documents; company bank statements; tax returns."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwir_business_registration",
+          "attribute": "has_registered_botswana_business",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registered business in Botswana with supporting business details.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_residence_permit"
+        },
+        {
+          "id": "bwir_financials",
+          "attribute": "has_recent_bank_statements_and_tax_returns",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Company bank statement for the most recent 3 months and tax returns.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_residence_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business registration documents", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Company bank statements (3 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Tax returns", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Asset lists (for the investor work-permit sub-track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified; residence permit processed within 30 working days",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bw_permanent_residence", "bw_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "gov_bw_residence_permit",
+      "tier": 1,
+      "url": "https://cms2.gov.bw/residency-and-work/residence-permit-application",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Residence Permit Application: investor category requires business details, tax returns, and 3 months of company bank statements",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). STATUS: DRAFT -- tier-1 sourced but no minimum investment amount (JOD-style capital threshold) was disclosed on the fetched gov.bw page -- unlike Jordan or Latvia, Botswana's public-facing service listing does not appear to gate this category on a specific investment figure, only on having a registered, financially-documented business; this absence is disclosed rather than a figure invented. pr_after_months is left null since gov.bw's Permanent Residence page states investors may apply with LESS than the standard 5-year residence requirement but does not give a specific reduced figure (see bw_permanent_residence.json)."
+}

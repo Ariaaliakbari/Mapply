@@ -1,0 +1,94 @@
+{
+  "id": "ua_citizenship_dual_declaration",
+  "country": "UA",
+  "name": "Citizenship via Simplified Declaration (Multiple Citizenship, Article 5-1)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Since a new Article 5-1 of the Law on Citizenship took effect on 16 January 2026, Ukraine officially recognises multiple citizenship in specific cases: citizens of Poland, the Czech Republic, Germany, Canada, and the USA may acquire Ukrainian citizenship through a simplified declaration procedure rather than full naturalisation, and family members of foreign military personnel serving Ukraine or of deceased Ukrainian soldiers may submit a declaration renouncing foreign citizenship instead of proving its termination.",
+    "evidence_hint": "Proof of qualifying nationality (Poland/Czech Republic/Germany/Canada/USA) or documentation of the military-connected family relationship."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "designated_nationality",
+      "name": "Citizen of a designated country (Poland, Czech Republic, Germany, Canada, USA)",
+      "requirements": [
+        {
+          "id": "uacd_designated_nationality",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["PL", "CZ", "DE", "CA", "US"],
+          "hard": true,
+          "blocker_text": "Applicant holds citizenship of Poland, the Czech Republic, Germany, Canada, or the USA.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_multiple_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "military_family",
+      "name": "Family of foreign military personnel serving Ukraine or of deceased Ukrainian soldiers",
+      "requirements": [
+        {
+          "id": "uacd_military_family_tie",
+          "attribute": "is_family_of_foreign_military_serving_ukraine_or_fallen_soldier",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Family member of foreign military personnel serving Ukraine, or of a Ukrainian soldier who died in service.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_multiple_citizenship"
+        },
+        {
+          "id": "uacd_declaration",
+          "attribute": "has_filed_renunciation_declaration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Files a declaration renouncing foreign citizenship, rather than having to prove its actual termination -- current holders who acquired Ukrainian citizenship since 1 January 2018 have until 16 July 2026 to file this declaration.",
+          "fix_path": "File the renunciation declaration.",
+          "fix_time_months": null,
+          "source_id": "dmsu_multiple_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of designated nationality (for the country-based track)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Documentation of the military-connected family relationship (for the family track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Renunciation declaration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dmsu_multiple_citizenship",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/news/dms/20205.html",
+      "title": "State Migration Service of Ukraine -- new multiple-citizenship rules effective 16 January 2026 (Article 5-1): simplified declaration procedure for citizens of Poland, Czech Republic, Germany, Canada, and USA; renunciation-declaration relief for military-connected family members; 16 July 2026 deadline for existing citizens (naturalised since 1 January 2018) to file declarations; expanded loss-of-citizenship grounds for national-security threats and armed aggression against Ukraine",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). STATUS: DRAFT -- this is an extremely recent legal change (effective just under 8 months before this build) sourced to a single tier-1 page; no second source was found to corroborate the exact designated-country list or the procedural mechanics of the declaration itself, and a separate tier-1 fetch (kmu.gov.ua's implementation-algorithm article) covered different accelerated-citizenship categories (merit, contract military service, foreign instructors, wartime aid) without mentioning this country-list provision at all -- not a contradiction, but thin enough independent corroboration that draft status is warranted for a change this significant. Categorized as 'family' since the military-family track is the more war-relevant, human-stakes case, though the designated-nationality track has nothing to do with family ties -- these are modeled as two OR-branch requirement groups in one file since they share the same amending source and the same dual-citizenship outcome. The 16 July 2026 declaration deadline for existing naturalised citizens is itself worth flagging: someone who naturalised between 1 Jan 2018 and 16 Jan 2026 and wants to keep dual status needs to act before that date, a time-sensitive detail not modeled as a blocking requirement here (it applies to already-naturalised citizens revisiting their status, not to new applicants) but worth surfacing."
+}

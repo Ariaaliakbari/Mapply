@@ -1,0 +1,83 @@
+{
+  "id": "bd_citizenship_dual_nationality",
+  "country": "BD",
+  "name": "Dual Nationality Certificate (Bangladeshi-Origin Diaspora)",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bddn_bd_origin",
+          "attribute": "has_bangladeshi_origin_documentation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of Bangladeshi origin: a previous Bangladeshi passport or NID, or (for foreign-born applicants) a foreign birth certificate plus parents' Bangladeshi documentation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ssd_portal"
+        },
+        {
+          "id": "bddn_foreign_citizenship_acquired",
+          "attribute": "has_acquired_foreign_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Has acquired citizenship in a foreign country via naturalisation, evidenced by a foreign naturalisation/citizenship certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ssd_portal"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Foreign citizenship/naturalisation certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid foreign passport (bio-page)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Prior Bangladeshi passport/NID, or foreign birth certificate + parents' BD documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notarized affidavit", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Police verification", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ssd_portal",
+      "tier": 1,
+      "url": "https://scs.ssd.gov.bd",
+      "title": "Online Security Clearance System, Ministry of Home Affairs, Bangladesh -- Dual Citizenship Certificate service: formal government application channel for Bangladeshi-origin persons who have acquired foreign citizenship, with a downloadable guideline document, online application, and status tracking",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "legalseba_dual_citizenship",
+      "tier": 3,
+      "url": "https://legalseba.com/bd-services/dual-citizenship-guide-in-bangladesh/",
+      "title": "LegalSeba (Bangladeshi legal services firm) -- Dual Citizenship Guide: eligible for holders of citizenship from ~101 countries (broadly North America, all of Europe including the UK, Brazil, Argentina, Japan, South Korea, among others); explicitly excludes India and Pakistan (no reciprocal treaty); fee ~BDT 5,000, processing 3-6 months including police verification",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: PUBLISHED -- the core mechanism (a formal Ministry of Home Affairs application channel, tier-1, directly confirmed via the government's own SSD portal) supports the two modeled hard requirements (Bangladeshi origin + acquired foreign citizenship). DISCLOSED BUT NOT MODELED AS A HARD REQUIREMENT: the specific list of ~101 eligible foreign-citizenship countries (and the explicit exclusion of India and Pakistan for lack of reciprocity) comes only from a tier-3 legal-services firm, not independently tier-1 confirmed -- omitted from requirement_groups to keep this file's hard requirements cleanly tier-1, but this is a materially important restriction an applicant needs to know, hence flagged here rather than silently dropped. dual_citizenship_allowed is TRUE for this specific route (unlike Bangladesh's general citizenship rule, which otherwise requires foreign-citizenship renunciation per the Citizenship Act 1951 -- see bd_citizenship_naturalisation.json) -- this Dual Nationality Certificate mechanism is precisely the exception that lets Bangladeshi-origin diaspora keep both nationalities simultaneously. Distinct from bd_citizenship_by_investment.json, which is for people with NO prior Bangladeshi origin acquiring citizenship for the first time via investment."
+}

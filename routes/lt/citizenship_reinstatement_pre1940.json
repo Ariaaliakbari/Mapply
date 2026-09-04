@@ -1,0 +1,87 @@
+{
+  "id": "lt_citizenship_reinstatement_pre1940",
+  "country": "LT",
+  "name": "Citizenship Reinstatement -- Pre-1940 Citizens and Descendants",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Applicant, or their parent/grandparent/great-grandparent, held citizenship of independent Lithuania before the 15 June 1940 Soviet occupation, under Article 9 of the Law on Citizenship.",
+    "evidence_hint": "Proof of ancestor's pre-15-June-1940 Lithuanian citizenship; documented lineage from that ancestor to the applicant."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Descendant of a citizen of independent Lithuania before 15 June 1940",
+      "requirements": [
+        {
+          "id": "ltcr_pre1940_descent",
+          "attribute": "descends_from_pre_15_june_1940_lithuanian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant, or their parent/grandparent/great-grandparent, held citizenship of independent Lithuania before the 15 June 1940 Soviet occupation, under Article 9 of the Law on Citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        },
+        {
+          "id": "ltcr_no_residence_exam_required",
+          "attribute": "residence_language_and_exam_requirements",
+          "operator": "==",
+          "value": "waived",
+          "hard": false,
+          "blocker_text": "No residence period, language exam, or Constitution exam is required under this route.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        },
+        {
+          "id": "ltcr_one_time_only",
+          "attribute": "has_previously_reinstated_via_this_route",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Citizenship cannot be reinstated under this route more than once.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eseimas_citizenship_law_toc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of ancestor's pre-15-June-1940 Lithuanian citizenship", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Documented lineage from that ancestor to the applicant", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "eseimas_citizenship_law_toc",
+      "tier": 1,
+      "url": "https://e-seimas.lrs.lt/rs/legalact/TAD/TAIS.395555/",
+      "title": "e-Seimas (Lithuania's official legislative database) -- Law on Citizenship, Article 9 (persons who were citizens of the Republic of Lithuania before 15 June 1940, and their descendants)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lithuania). STATUS: DRAFT -- Article 9's title/existence confirmed against the e-Seimas table of contents; full text (exact generational cutoff -- referenced elsewhere as extending to great-grandchildren -- and the precise documentary standard) not independently re-quoted in this pass, disclosed as a gap consistent with the other citizenship files in this build. This is the flagship diaspora-descent route referenced in lt_naturalisation.json's notes as explicitly permitting dual citizenship (dual_citizenship_allowed: true), in contrast to the standard naturalisation route's renunciation requirement. Reported elsewhere (not independently verified here) as processing roughly 2,000 grants/year -- that figure is NOT modeled as a field since selection_odds requires a rate, not a raw annual count, and no applicant-pool denominator was found."
+}

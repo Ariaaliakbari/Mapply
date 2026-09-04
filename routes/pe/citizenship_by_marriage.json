@@ -1,0 +1,92 @@
+{
+  "id": "pe_citizenship_by_marriage",
+  "country": "PE",
+  "name": "Citizenship by Marriage (Nacionalidad por Opción)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign spouse of a Peruvian citizen who has been continuously married for the required period and holds valid resident migratory status may apply for Peruvian citizenship by option, under Ley N.32421.",
+    "evidence_hint": "Marriage certificate; proof of continuous marriage duration; valid resident status."
+  },
+  "prerequisites": {
+    "required_prior_route_ids": ["pe_family_reunification"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (Ley N.32421)",
+      "requirements": [
+        {
+          "id": "pecm_marriage_duration",
+          "attribute": "months_continuous_marriage_to_citizen",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "4 years of continuous marriage to a Peruvian citizen before applying (raised from 2 years under the prior rule).",
+          "fix_path": "Accumulate 4 years of continuous marriage to the Peruvian-citizen spouse.",
+          "fix_time_months": 48,
+          "source_id": "elperuano_ley32421"
+        },
+        {
+          "id": "pecm_migratory_status",
+          "attribute": "has_valid_resident_migratory_status",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must hold valid resident migratory status in Peru at the time of applying.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "elperuano_ley32421"
+        },
+        {
+          "id": "pecm_exam",
+          "attribute": "passed_naturalisation_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Same general examination applied to all naturalisation pathways: language, history, geography, Constitution, culture, and current affairs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "elperuano_ley32421"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate showing 4 years' continuous marriage", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of valid resident migratory status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Naturalisation exam pass", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "elperuano_ley32421",
+      "tier": 1,
+      "url": "https://elperuano.pe/noticia/277314-ley-de-nacionalidad-nuevos-requisitos-para-obtener-recuperar-o-renunciar-a-la-ciudadania-peruana",
+      "title": "El Peruano (Peru's official state gazette) -- Ley N.32421 extends the marriage-based citizenship pathway's continuous-marriage requirement from 2 to 4 years, requires valid migratory residency, and applies the same general exam requirement as other naturalisation pathways",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT, LIVE LEGAL TRANSITION -- same caveat as pe_citizenship_naturalisation.json: El Peruano (tier-1) reports the marriage route now requires 4 years' continuous marriage under Ley N.32421, but a separate tier-3 source (tramitesperu.com) describes a still-active '2 years married + 2 years as Familiar de Residente' rule and frames Ley 32421 as pending its implementing regulation -- a direct, unresolved conflict between an official-gazette report and a practitioner report, disclosed rather than silently resolved. The economic/income requirement applied to standard naturalisation is NOT modeled here as a requirement, consistent with the tier-3 source's note that this pathway 'does not automatically grant citizenship' the way standard naturalisation's income test does -- though this distinction was not independently corroborated by the tier-1 source and should be treated cautiously."
+}

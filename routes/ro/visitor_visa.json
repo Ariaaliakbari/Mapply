@@ -1,0 +1,95 @@
+{
+  "id": "ro_visitor_visa",
+  "country": "RO",
+  "name": "Short-Stay Visa (Type C) / Schengen Short Stay",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "rolling_window",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "rovv_passport_validity",
+          "attribute": "passport_valid_months_beyond_departure",
+          "operator": ">=",
+          "value": 3,
+          "hard": true,
+          "blocker_text": "Passport must be issued within the last 10 years and remain valid at least 3 months beyond the intended departure date.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": 1,
+          "source_id": "axa_schengen_visa"
+        },
+        {
+          "id": "rovv_travel_insurance",
+          "attribute": "has_schengen_travel_insurance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mandatory Schengen-area travel medical insurance.",
+          "fix_path": "Purchase a qualifying Schengen travel insurance policy.",
+          "fix_time_months": null,
+          "source_id": "axa_schengen_visa"
+        },
+        {
+          "id": "rovv_proof_of_funds",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of sufficient funds for the stay, plus proof of accommodation and a travel itinerary.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "axa_schengen_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Two recent passport photos", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel itinerary", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Schengen travel insurance proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of accommodation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient funds", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days in any 180-day period (Schengen short-stay, applies to Romania and the wider Schengen Area since Romania's full accession)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "axa_schengen_visa",
+      "tier": 3,
+      "url": "https://www.axa-schengen.com/en/visa/schengen/romania",
+      "title": "AXA Schengen (travel-insurance provider) -- Romania short-stay Schengen visa (Type C): 90/180 day rule, application via evisa.mae.ro, embassy/consulate appointment, biometrics, apply 2 weeks to 3 months before departure",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "ec_schengen_full_membership",
+      "tier": 2,
+      "url": "https://home-affairs.ec.europa.eu/news/bulgaria-and-romania-join-schengen-area-2025-01-03_en",
+      "title": "European Commission (Migration and Home Affairs) -- Bulgaria and Romania join the Schengen Area: land border controls lifted 1 January 2025, completing full Schengen membership after air/sea accession in March 2024",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: DRAFT -- Romania's own Ministry of Foreign Affairs (mae.ro) pages, which would be the tier-1 source for exact visa mechanics and fees, were unreachable across multiple fetch attempts in this pass (repeated robots.txt/timeout failures on mae.ro and www.mae.ro); the official application portal evisa.mae.ro is referenced but not independently fetched. Visa mechanics here are sourced to a travel-insurance provider's guide (tier-3), corroborated only for the Schengen full-membership fact by the European Commission (tier-2). Romania completed full Schengen accession on 1 January 2025 (land borders; air/sea borders opened March 2024) -- this route now functions as a standard Schengen short-stay visa rather than a Romania-specific instrument, a genuine structural change from Romania's pre-2024/2025 EU-but-not-Schengen status. No visa fee figure could be confirmed to tier-1 or tier-3 specificity in this pass and is left undisclosed rather than guessed. Flagged for priority re-verification against mae.ro directly once reachable."
+}

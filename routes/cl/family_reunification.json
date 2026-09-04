@@ -1,0 +1,67 @@
+{
+  "id": "cl_family_reunification",
+  "country": "CL",
+  "name": "Residencia Temporal -- Family Reunification Subcategory",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national with a family bond to a Chilean citizen or a Residencia Definitiva (permanent resident) holder applies for the Family Reunification subcategory of Residencia Temporal.",
+    "evidence_hint": "Marriage/civil union certificate, birth certificate, or guardianship document proving the family tie."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clfr_family_tie",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_or_civil_union_partner", "parent", "minor_child", "adult_child_18_24_studying_single", "ward_under_guardianship"],
+          "hard": true,
+          "blocker_text": "Spouse or civil union partner, parent, child under 18 (no age limit if disabled), single child 18-24 currently studying, or a minor under the applicant's guardianship, of a Chilean citizen or Residencia Definitiva holder.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/civil union, birth, or guardianship certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Enrollment certificate (for the 18-24 studying-child category)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Disability registry certification (for disabled adult children)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport (1+ year validity for applications abroad)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified on the fetched page; extensions available by certifying the continued family relationship",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 12,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_permanent_residence", "cl_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "serviciomigraciones_family_reunification",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/residencia-temporal-permit/subcategories/family-reunification/",
+      "title": "serviciomigraciones.cl (SERMIG) -- Family Reunification subcategory: eligible ties are spouse/civil union partner, parents, children under 18 (unrestricted if disabled), single studying children 18-24, and wards under guardianship; no income/sponsorship requirement disclosed; holders 'may engage in lawful remunerated activities'",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED -- directly tier-1 sourced, and notably GENEROUS relative to most family-reunification routes in this dataset: no income or financial-sponsorship threshold was disclosed on SERMIG's own page, and holders may work under ordinary labour terms rather than being restricted like most dependent-family permits elsewhere in this build (Botswana, Jordan). pr_after_months (12) reflects the reduced Residencia Definitiva timeline SERMIG grants for 'family connections to nationals or permanent residents' (see cl_permanent_residence.json)."
+}

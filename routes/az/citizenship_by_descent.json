@@ -1,0 +1,82 @@
+{
+  "id": "az_citizenship_by_descent",
+  "country": "AZ",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Article 11(1) of the Law on Citizenship grants automatic Azerbaijani citizenship to a person born from a citizen of the Republic of Azerbaijan. Separately, Article 19 provides that when both parents' citizenship changes and they both acquire Azerbaijani citizenship, their children under the age of 14 also acquire it.",
+    "evidence_hint": "Birth certificate; parent's proof of Azerbaijani citizenship at the relevant time."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_to_citizen",
+      "name": "Born to an Azerbaijani citizen",
+      "requirements": [
+        {
+          "id": "azcd_parent",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "child_of_az_citizen",
+          "hard": true,
+          "blocker_text": "Automatic Azerbaijani citizenship for a person born from a citizen of the Republic of Azerbaijan.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_az_citizenship_law"
+        }
+      ]
+    },
+    {
+      "id": "parents_naturalised_under_14",
+      "name": "Child under 14 when both parents naturalise",
+      "requirements": [
+        {
+          "id": "azcd_parents_naturalised",
+          "attribute": "family_tie",
+          "operator": "==",
+          "value": "under_14_child_of_both_parents_naturalising",
+          "hard": true,
+          "blocker_text": "When both parents change citizenship and acquire Azerbaijani citizenship, their child under the age of 14 also acquires it automatically (Article 19).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "natlex_az_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Azerbaijani citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "natlex_az_citizenship_law",
+      "tier": 1,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/64865/AZE-64865.pdf",
+      "title": "NATLEX (ILO) -- Law of the Republic of Azerbaijan on Citizenship, consolidated 1 May 2020: Article 11(1) (automatic citizenship for a person born to an Azerbaijani-citizen parent) and Article 19 (under-14 children of both parents naturalising)",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). Article 11(1)'s wording ('born from a citizen') was not further disambiguated in this pass as to whether it requires ONE or BOTH parents to be citizens, or whether it is gender-symmetric -- treated here as one-parent-suffices per the plain reading captured, but this should be verified against the full article text (not fully reproduced by the fetch in this pass) before being treated as fully settled. No Armenian-style broad diaspora/ethnic-origin citizenship route (i.e. citizenship for anyone of Azerbaijani heritage generally, not limited to children of current citizens) was found for Azerbaijan despite searching -- disclosed as an absence rather than assumed to exist by analogy to Armenia's am_citizenship_armenian_origin.json built earlier in this dataset."
+}

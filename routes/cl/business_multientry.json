@@ -1,0 +1,89 @@
+{
+  "id": "cl_business_multientry",
+  "country": "CL",
+  "name": "Residencia Temporal -- Multi-Entry Business Subcategory",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "rolling_window",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A foreign national who must enter Chile regularly to carry out executive or managerial activities related to a business or investment held by a Chilean company applies for the Multi-Entry Business subcategory of Residencia Temporal.",
+    "evidence_hint": "Letter from the foreign institution specifying the applicant's function and business-related income."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "clbm_recurring_executive_role",
+          "attribute": "has_recurring_executive_or_managerial_role",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Regular entry required for executive or managerial activities tied to a business or investment held by a Chilean company.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_businesses"
+        },
+        {
+          "id": "clbm_sponsor_letter",
+          "attribute": "has_apostilled_sponsor_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Apostilled/legalized letter from the foreign institution specifying the applicant's function, interests, and business-related income.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_businesses"
+        },
+        {
+          "id": "clbm_annual_stay_cap",
+          "attribute": "total_stay_days_per_calendar_year",
+          "operator": "<=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "Total stay may not exceed 6 months (approx. 180 days) in each calendar year.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "serviciomigraciones_businesses"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Apostilled sponsor letter (function, interests, income)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Document explaining visit reasons and economic/commercial interests", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport (1+ year validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "multiple entries per year, up to 6 months total stay per calendar year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cl_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "serviciomigraciones_businesses",
+      "tier": 1,
+      "url": "https://serviciomigraciones.cl/en/residencia-temporal-permit/subcategories/businesses/",
+      "title": "serviciomigraciones.cl (SERMIG) -- Multi-Entry Business subcategory: for recurring executive/managerial entries tied to a Chilean company's business or investments; capped at 6 months total stay per calendar year; family members may qualify as dependents under Article 74 of Law 21.325; application from outside Chile only",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Chile). Modeled PUBLISHED -- directly tier-1 sourced. This is structurally a frequent-flyer executive permit, not a settlement route: it does not lead to permanent residence or citizenship under the terms found (leads_to_pr/leads_to_citizenship both false), distinguishing it clearly from cl_investor_residence.json's capital-investment route, which does lead onward. duration_type is 'rolling_window' to reflect the per-calendar-year cap on cumulative days rather than a single continuous permit period."
+}

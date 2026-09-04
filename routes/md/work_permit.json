@@ -1,0 +1,69 @@
+{
+  "id": "md_work_permit",
+  "country": "MD",
+  "name": "Temporary Residence for Employment Purposes (long-stay visa D/AM)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdwp_job_offer",
+          "attribute": "has_qualifying_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer-sponsored job offer, applied for via the D/AM long-stay employment visa under Law No. 200/2010.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_visa_types"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical insurance", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to employment contract; standard permit duration/renewability cycle and any labour-market-test or quota mechanism were not confirmed on a tier-1/2 source in this build -- open gap",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["md_family_reunification", "md_permanent_residence"]
+  },
+  "sources": [
+    {
+      "id": "mfa_visa_types",
+      "tier": 1,
+      "url": "https://mfa.gov.md/en/content/types-visas-requirements",
+      "title": "Ministry of Foreign Affairs, Republic of Moldova -- types of visas: D/AM long-stay employment visa; separate categories exist for IT-park employees (D/IT, Law 77/2016), intra-company transfers (D/TP), internships (D/FT), not separately modeled here",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "natlex_law200_2010",
+      "tier": 2,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/86900/MDA-86900.pdf",
+      "title": "ILO NATLEX -- Law No. 200/2010 on the Regime of Foreigners in the Republic of Moldova (full text mirror, employment chapter not independently reached in this pass)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: PUBLISHED -- the core hard requirement (employer-sponsored D/AM visa) is tier-1 MFA sourced. GAP, EXPLICITLY DISCLOSED: no tier-1/2 source with current labour-market-test or quota figures was located -- only tier-3/4 relocation-agency guides had specific numbers, and those are NOT used here. Separate sub-visa categories exist for IT-park employees, intra-company transfers, and interns but are not separately modeled -- disclosed as a scope decision. pr_after_months (60) and citizenship_after_months (120) are cross-referenced from md_permanent_residence.json and md_citizenship_naturalisation.json respectively, not independently sourced here."
+}

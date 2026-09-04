@@ -1,0 +1,108 @@
+{
+  "id": "pe_citizenship_naturalisation",
+  "country": "PE",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": ["pe_permanent_residence"],
+    "minimum_months_held": null,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (Ley N.32421)",
+      "requirements": [
+        {
+          "id": "pecn_residence",
+          "attribute": "months_continuous_migratory_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of continuous, immediate migratory residence in Peru (raised from 2 years under the prior Ley N.26574).",
+          "fix_path": "Accumulate 5 years of continuous legal residence in Peru.",
+          "fix_time_months": 60,
+          "source_id": "elperuano_ley32421"
+        },
+        {
+          "id": "pecn_income",
+          "attribute": "annual_income_pen",
+          "operator": ">=",
+          "value": {
+            "value_type": "formula",
+            "formula_ref": "peru_uit",
+            "ratio": 10,
+            "resolved_amount": 55000,
+            "currency": "PEN"
+          },
+          "hard": true,
+          "blocker_text": "Lawful annual income of at least 10 UIT (S/55,000 in 2026), with formal tax-compliance evidence.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "elperuano_ley32421"
+        },
+        {
+          "id": "pecn_exam",
+          "attribute": "passed_naturalisation_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Examination covering Spanish (or, per the new law, optionally an indigenous language) proficiency, Peruvian history, geography, the Constitution, culture, and current affairs.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "elperuano_ley32421"
+        },
+        {
+          "id": "pecn_conduct",
+          "attribute": "has_clean_criminal_and_interpol_record",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Interpol background check and a valid passport from the country of origin.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "elperuano_ley32421"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous migratory residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of annual income of 10 UIT with tax-compliance records", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Naturalisation exam pass (language, history, geography, Constitution, culture, current affairs)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Interpol background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport from country of origin", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "elperuano_ley32421",
+      "tier": 1,
+      "url": "https://elperuano.pe/noticia/277314-ley-de-nacionalidad-nuevos-requisitos-para-obtener-recuperar-o-renunciar-a-la-ciudadania-peruana",
+      "title": "El Peruano (Peru's official state gazette) -- 'Ley de Nacionalidad: nuevos requisitos para obtener, recuperar o renunciar a la ciudadania peruana': Ley N.32421 raises naturalisation residence from 2 to 5 years, requires 10 UIT annual income with tax compliance, adds a language/history/geography/Constitution/culture/current-affairs exam, Interpol check, valid passport, processing up to 18 months (extendable by 6)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Peru). STATUS: DRAFT, LIVE LEGAL TRANSITION -- Ley N.32421 ('Nueva Ley de Nacionalidad') was promulgated in August 2025, reported directly by Peru's own official gazette (El Peruano, tier-1) as raising naturalisation residence from 2 to 5 years and adding the 10 UIT/exam requirements described here. However, a separate tier-3 consultancy source (tramitesperu.com, dated 2026) describes naturalisation as STILL operating under the OLD Ley N.26574 (2-year residence) with Ley 32421 'pendiente de reglamentacion' (pending its implementing regulation) as of that source's writing -- a direct conflict between an official-gazette report that the law's terms apply and a practitioner report that the old rules remain operative pending regulation. Modeled here using the new Ley 32421 terms since El Peruano is the tier-1 source and over a year has passed since promulgation, but held to DRAFT specifically because of this unresolved transition, not because the underlying source is weak. A 'recuperacion' (recovery) track for former citizens who lost Peruvian nationality is mentioned in the same Ley 32421 reporting but no requirement detail was found -- disclosed as a gap, not modeled as a separate route in this pass."
+}

@@ -1,0 +1,78 @@
+{
+  "id": "md_permanent_residence",
+  "country": "MD",
+  "name": "Permanent Residence Permit (Law No. 200/2010)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mdpr_5yr_residence",
+          "attribute": "months_continuous_temporary_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of prior continuous temporary residence in Moldova.",
+          "fix_path": "Accumulate 5 years of continuous temporary residence.",
+          "fix_time_months": 60,
+          "source_id": "igm_immigration_overview"
+        }
+      ]
+    },
+    {
+      "id": "married_to_citizen",
+      "name": "Married to a Moldovan citizen",
+      "requirements": [
+        {
+          "id": "mdpr_3yr_residence_married",
+          "attribute": "months_continuous_temporary_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 years of prior continuous temporary residence, if married to a Moldovan citizen throughout that period.",
+          "fix_path": "Accumulate 3 years of continuous temporary residence while married to a Moldovan citizen.",
+          "fix_time_months": 36,
+          "source_id": "igm_immigration_overview"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 (or 3) years' continuous temporary residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "igm_immigration_overview",
+      "tier": 1,
+      "url": "https://igm.gov.md/en/imigration/",
+      "title": "Bureau for Migration and Asylum (legacy igm.gov.md domain) -- immigration overview: permanent residence after 5 years of continuous temporary residence (3 years if married to a Moldovan citizen)",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Moldova). STATUS: DRAFT, DESPITE A TIER-1 SOURCE -- kept conservatively draft because the source is a general overview page paraphrasing the permanent-residence rules, not a verbatim citation of the specific Law 200/2010 article. Direct access to legis.md (the authoritative legislation portal) failed in this build (returns only a JS loading placeholder), so the exact statute article could not be independently confirmed. Given Moldova's citizenship law was JUST fully replaced in 2025 (Law No. 253/2025 superseding Law No. 1024/2000 -- see md_citizenship_naturalisation.json), there is a live-legal-transition risk that adjacent statutes like Law 200/2010 could also have been touched by recent reform; erring toward draft until the precise article is confirmed rather than treating a paraphrased overview as sufficient for published status on a route this central."
+}

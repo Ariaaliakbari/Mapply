@@ -1,0 +1,85 @@
+{
+  "id": "bd_work_permit",
+  "country": "BD",
+  "name": "Employee Work Permit (E-2/E-3 Visa, BIDA-recommended)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bdwp_employer_bida_registered",
+          "attribute": "employer_registered_with_bida",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsoring employer must be registered with the Bangladesh Investment Development Authority (BIDA) to appoint foreign nationals, and BIDA must issue a recommendation letter supporting the visa application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bida_faq"
+        },
+        {
+          "id": "bdwp_local_ratio_compliance",
+          "attribute": "employer_within_local_foreign_ratio",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must stay within the permitted local-to-foreign worker ratio: 10:1 (industrial, initial), rising to 20:1 at operational stage; 5:1 for commercial offices and educational institutes.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bida_faq"
+        },
+        {
+          "id": "bdwp_apply_within_15days",
+          "attribute": "applied_within_15_days_of_arrival",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Work permit application must be submitted within 15 days of the employee's arrival in Bangladesh.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "bida_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "BIDA recommendation letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Security clearance (digital, via BIDA)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "initial 1-year work permit, extendable to a maximum of 5 years total; industrial-project permits issued within 3 days when documentation is complete, commercial-office permits within ~16 days",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bd_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "bida_faq",
+      "tier": 1,
+      "url": "https://bida.gov.bd/faq",
+      "title": "Bangladesh Investment Development Authority (BIDA) -- FAQ: local:foreign worker ratios (10:1 industrial initial / 20:1 operational; 5:1 commercial/educational), industrial work permits within 3 days, commercial within ~16 days, initial 1-year permits extendable to 5 years max, application within 15 days of arrival, employer must be BIDA-registered, expatriates may remit 75% of monthly salary after deductions; employees changing employers must cancel the existing permit, depart Bangladesh, and re-enter",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: PUBLISHED -- tier-1 BIDA sourced, directly fetched by me. STRUCTURAL FINDING: the local:foreign worker ratio is genuinely two-staged (looser during a project's initial phase, then tighter at operational stage) rather than a single fixed ratio -- worth flagging for anyone modeling staffing plans. Also notable: switching employers is NOT a simple permit-transfer -- the employee must cancel the existing permit, physically leave Bangladesh, and re-enter under new visa documentation, a more disruptive process than most other countries' equivalent routes in this dataset. 5-year maximum total duration implies this route does not by itself lead to permanent residence -- separate qualification via bd_investor_residence.json (which does have a defined investment-based PR track) would be required for that."
+}

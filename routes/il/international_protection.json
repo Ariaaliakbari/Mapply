@@ -1,0 +1,93 @@
+{
+  "id": "il_international_protection",
+  "country": "IL",
+  "name": "Asylum -- Refugee Status Determination (PIBA RSD Unit)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution applies to PIBA's RSD Unit (established 2009); complex cases are reviewed by the National Status Granting Body (NSGB, comprising Interior, Justice, and Foreign Affairs representatives) with final approval by the Minister of Interior.",
+    "evidence_hint": "Application at the Border Control Unit (Bnei Brak); online form and mandatory in-person appointment."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "regular_procedure",
+      "name": "Regular procedure (complex cases)",
+      "requirements": [
+        {
+          "id": "ilip_nsgb_review",
+          "attribute": "case_reaches_nsgb_within_2_months_of_interview",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Complex cases must reach NSGB plenary review within 2 months of the applicant's interview, with the Minister of Interior making the final decision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_israel_rsd"
+        },
+        {
+          "id": "ilip_persecution",
+          "attribute": "meets_refugee_convention_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution meeting 1951 Refugee Convention grounds, not rejected 'out of hand' for late filing, failed identity verification, or lack of Convention grounds.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_israel_rsd"
+        }
+      ]
+    },
+    {
+      "id": "group_protection",
+      "name": "Group protection (specific nationalities, historical)",
+      "requirements": [
+        {
+          "id": "ilip_group_protection_nationality",
+          "attribute": "nationality_under_group_protection_policy",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Nationals of certain countries (historically Eritrea and Sudan, arriving via Egypt) received renewable 'conditional release visas' every 2-3 months under group protection rather than individual RSD -- a distinct, lower-status mechanism.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_israel_rsd"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution claim", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "no overall processing time limit; appeals must be filed within 30 days of a decision",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_israel_rsd",
+      "tier": 2,
+      "url": "https://www.unhcr.org/il/en/protection/refugee-status-determination-rsd/national-rsd-procedures-how-does-israel-determine-who-is-a-refugee",
+      "title": "UNHCR Israel -- national RSD procedures: PIBA's RSD Unit (est. 2009) processes applications via four pathways (out-of-hand rejection, safe-country fast-track for Georgia/Ukraine/Russia, PIBA-director summary procedure, and full NSGB/ministerial regular procedure); no overall processing time limit; 30-day appeal window; group protection ('conditional release visas' renewed every 2-3 months) historically applied to Eritrean and Sudanese arrivals via Egypt rather than individual RSD",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Israel). STATUS: DRAFT -- tier-2 sourced (UNHCR's own Israel-specific procedural page), not a fetched gov.il/PIBA text directly. Israel's asylum system is documented by UNHCR and Israeli human-rights organisations (Hotline for Refugees and Migrants) as slow and low-recognition-rate relative to many countries in this dataset -- 'no overall processing time limits exist' per the source, a notably weaker procedural guarantee than, say, Peru's or Latvia's asylum files, which specify concrete maximum timelines. family_can_join/family_can_work are set false as the conservative default (schema requires a boolean) rather than assumed true, since the source's group-protection ('conditional release visa') mechanism for specific nationalities is structurally different from individual RSD and the source did not clearly state family provisions for either track. work_rights while pending was described only for group-protection holders ('informal access to the labour market') rather than confirmed for individual RSD applicants generally -- disclosed as a gap."
+}

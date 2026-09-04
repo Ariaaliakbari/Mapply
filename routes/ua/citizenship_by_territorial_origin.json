@@ -1,0 +1,93 @@
+{
+  "id": "ua_citizenship_by_territorial_origin",
+  "country": "UA",
+  "name": "Citizenship by Territorial Origin",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person, or their parent, grandparent, great-grandparent, or sibling, was born or permanently resided on the territory of Ukraine before 24 August 1991 (the date of Ukraine's independence); or the applicant was born in Ukraine after 1991 to at least one permanently-resident, refugee, or stateless parent. Article 8 of the Law on Citizenship.",
+    "evidence_hint": "Birth/residence records for the applicant or the qualifying ancestor; documented family relationship where the tie is through an ancestor."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "pre_independence_tie",
+      "name": "Applicant or ancestor born/resident in Ukraine before 24 August 1991",
+      "requirements": [
+        {
+          "id": "uacto_pre1991_tie",
+          "attribute": "self_or_ancestor_born_or_resident_pre_1991",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant, or a parent, grandparent, great-grandparent, or sibling, was born on or permanently resided within the territory of Ukraine before 24 August 1991.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_territorial_origin"
+        },
+        {
+          "id": "uacto_exam",
+          "attribute": "passed_constitution_history_language_exam",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Adult applicants must pass exams on the fundamentals of Ukraine's Constitution, Ukrainian history, and state-language proficiency (exempt: children, court-declared incapacitated persons, and those with certain documented disabilities).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_territorial_origin"
+        }
+      ]
+    },
+    {
+      "id": "born_after_independence",
+      "name": "Born in Ukraine after 1991 to a qualifying parent",
+      "requirements": [
+        {
+          "id": "uacto_post1991_birth",
+          "attribute": "born_in_ukraine_to_resident_refugee_or_stateless_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Ukraine after 1991 to at least one parent who permanently resided there, or who was a refugee or stateless person recognised in Ukraine.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "dmsu_territorial_origin"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth/residence records establishing the qualifying tie (self or ancestor)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Constitution, history, and state-language exam pass (adults, pre-1991-tie group)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "dmsu_territorial_origin",
+      "tier": 1,
+      "url": "https://dmsu.gov.ua/poslugi/nabuttya-gromadyanstva-ukrajni/nabuttya-gromadyanstva-ukrajni-za-teritorialnim-poxodzhennyam.html",
+      "title": "State Migration Service of Ukraine -- Citizenship by Territorial Origin (Article 8 of the Law on Citizenship): applicant or ancestor (parent/grandparent/great-grandparent/sibling) born or resident in Ukraine before 24 August 1991, or born in Ukraine after 1991 to a qualifying parent; no ongoing residence requirement; Constitution/history/language exams for adults; free service, 3-month processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ukraine). This is Ukraine's broadest diaspora-descent route -- reaching back through parent, grandparent, OR great-grandparent (a three-generation-plus window comparable to Peru's ancestry route), AND covering siblings directly, which is unusual: most descent routes in this dataset run strictly down a family line (parent-to-child), not sideways to a sibling. Notably, this route explicitly has NO ongoing residence requirement despite requiring the applicant to be physically present in Ukraine (or apply from abroad) to file -- the tier-1 source is explicit that the exams and application itself are the only substantive conditions once the ancestral tie is established, distinct from ua_citizenship_naturalisation.json's 5-year residence clock."
+}

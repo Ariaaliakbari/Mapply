@@ -1,0 +1,76 @@
+{
+  "id": "lv_international_protection",
+  "country": "LV",
+  "name": "Asylum -- Refugee or Alternative Status",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person with a well-founded fear of persecution (refugee status) or facing the death penalty, torture, or armed conflict in their home country (alternative/subsidiary status) may apply for asylum with the Office of Citizenship and Migration Affairs (OCMA/PMLP), after initial processing by the State Border Guard.",
+    "evidence_hint": "Application to the State Border Guard or PMLP; identity documents where available."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lvip_persecution_or_harm",
+          "attribute": "meets_refugee_or_alternative_status_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Well-founded fear of persecution based on race, religion, ethnicity, nationality, social background, or political affiliation (refugee status); or facing the death penalty, torture, or armed conflict in the home country (alternative status).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "pmlp_asylum"
+        },
+        {
+          "id": "lvip_application_registered",
+          "attribute": "has_registered_application",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Application registered following documents received from the State Border Guard; OCMA must decide on acceptance within 10 working days.",
+          "fix_path": "Register an asylum application with the State Border Guard or OCMA/PMLP.",
+          "fix_time_months": null,
+          "source_id": "pmlp_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documents where available", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence supporting the persecution or harm claim, presented at the personal interview", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "processing up to 6 months (extendable to 15 months); post-grant status duration not confirmed in this pass",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["lv_permanent_residence", "lv_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "pmlp_asylum",
+      "tier": 1,
+      "url": "https://www.pmlp.gov.lv/en/asylum-granting-procedure",
+      "title": "Office of Citizenship and Migration Affairs (PMLP), official English page -- Asylum Granting Procedure: OCMA examines applications after State Border Guard referral; 10-working-day acceptance decision, interview within 1 month, final decision within 3 months of interview (6 months total, extendable to 15); accelerated procedure available (20 business days post-interview); non-detained applicants without legal residence housed at the 'Mucenieki' Asylum Seekers Accommodation Center; refugee and alternative-status recipients gain family reunification rights",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Latvia). Sourced directly and comprehensively from PMLP's own English-language page -- one of the more thoroughly tier-1-documented asylum routes in this dataset. Work authorization during the pending period was not explicitly detailed on the fetched page, and post-grant status duration (how long refugee/alternative status itself lasts before renewal) was not confirmed -- both disclosed as gaps rather than assumed. 'Temporary Protection' is mentioned as a third, separate status (for groups fleeing ethnic conflict or civil war) but not detailed further in the fetched content -- not modeled as its own file here since insufficient distinguishing detail was found, though it is worth noting given Latvia's direct EU-level involvement in temporary protection arrangements for people fleeing the war in neighboring Ukraine."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "qa_citizenship_reacquisition",
+  "country": "QA",
+  "name": "Qatari Nationality, Proven Qatari Origin (Law No. 38 of 2005, Article 7.1)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who can prove Qatari origin -- distinct from having a currently-Qatari father under Article 1.4 -- may be granted nationality after a substantially reduced residence period, per Article 7.1 of Law No. 38 of 2005.",
+    "evidence_hint": "Documentary or genealogical evidence of Qatari origin."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "qacr_proven_origin",
+          "attribute": "has_proven_qatari_origin",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Can prove Qatari origin.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "auc_cmrs_law38_2005"
+        },
+        {
+          "id": "qacr_3yr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "3 consecutive years of legal residence -- reduced from the standard 25-year naturalisation requirement.",
+          "fix_path": "Accumulate 3 years of continuous legal residence.",
+          "fix_time_months": 36,
+          "source_id": "auc_cmrs_law38_2005"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Genealogical or documentary evidence of Qatari origin", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of 3 years' continuous legal residence", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "auc_cmrs_law38_2005",
+      "tier": 2,
+      "url": "https://www4.aucegypt.edu/CMRS/Files/2.2%20Qatari%20Citizenship%2038%202005_EN.pdf",
+      "title": "American University in Cairo, Center for Migration and Refugee Studies -- verbatim English translation of Law No. 38 of 2005, Article 7.1: persons proving Qatari origin require only 3 consecutive years of residence, versus the standard 25 years under Article 2",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Qatar). STATUS: DRAFT -- same tier-2 sourcing caveat as the other Qatari citizenship files. This is Qatar's closest analog to an 'ancestry-adjacent' fast-track: 3 years vs. the standard 25, an 8-to-1 reduction, among the steepest such discounts found in this dataset. Modeled deliberately narrowly -- as proving PERSONAL Qatari origin, not a multi-generation descendant-of-emigrants scheme like Romania's Article 10/11 reacquisition route -- since the source text does not describe a broader diaspora-facing mechanism. This does NOT overlap with qa_citizenship_by_descent.json (Article 1.4, current Qatari father) -- Article 7.1 covers people who are not automatically citizens under Article 1.4 but can still evidence Qatari-origin ancestry."
+}

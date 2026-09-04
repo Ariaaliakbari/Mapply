@@ -1,0 +1,81 @@
+{
+  "id": "vn_family_reunification",
+  "country": "VN",
+  "name": "TT (Family) Visa",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vnfr_relationship",
+          "attribute": "family_tie",
+          "operator": "in",
+          "value": ["spouse_of_vietnamese_citizen", "parent_of_vietnamese_citizen", "child_of_vietnamese_citizen", "spouse_or_minor_child_of_certain_visa_holder"],
+          "hard": true,
+          "blocker_text": "Parent, spouse, or child of a Vietnamese citizen; or spouse or minor child (under 18) of a foreigner holding specified visa categories (e.g. LV, DT, LS, NN1, DH, TT, LD).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "luatvietnam_visa_categories"
+        },
+        {
+          "id": "vnfr_sponsorship",
+          "attribute": "has_sponsorship_commitment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A notarized sponsorship commitment from the Vietnamese-citizen or resident-foreigner sponsor, plus notarized marriage/birth certificates proving the family tie.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "eiv_residence_card"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized marriage or birth certificate proving the family tie", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsorship commitment letter from the Vietnamese-citizen or resident-foreigner sponsor", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid passport (13+ months validity)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "visa up to 1 year; temporary residence card up to 3 years, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["vn_permanent_residence", "vn_citizenship_relaxed_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "luatvietnam_visa_categories",
+      "tier": 3,
+      "url": "https://luatvietnam.vn/xuat-nhap-canh/van-ban-hop-nhat-30-vbhn-vpqh-2023-luat-nhap-canh-xuat-canh-qua-canh-cu-tru-cua-nguoi-nuoc-ngoai-tai-vn-282494-d5.html",
+      "title": "LuatVietnam (private legal database) -- consolidated Law on Entry, Exit, Transit and Residence of Foreigners: TT family visa category, up to 1 year, Article 9",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "eiv_residence_card",
+      "tier": 3,
+      "url": "https://eiv.edu.vn/en/vietnam-temporary-residence-card-for-foreigners-complete-guide/",
+      "title": "EIV (education consultancy) -- Vietnam Temporary Residence Card guide: TT-based residence card up to 3 years, sponsorship and notarized-document requirements for family members of Vietnamese citizens",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Vietnam). STATUS: DRAFT, TIER-3 ONLY -- no genuine .gov.vn source with TT-specific procedural detail was found in this pass. work_rights is 'none': a TT holder is not automatically authorized to work and would need a separate work permit or exemption, not modeled as automatic here. citizenship_after_months (0) and dual_citizenship_allowed (true) point to vn_citizenship_relaxed_naturalisation.json's July-2025-amended track for spouses/children of Vietnamese citizens, which waives the standard 5-year residence, language, and financial-means tests entirely -- see that file's notes for the live-legal-change caveat. leads_to_pr (true, 36 months) reflects the 'family member of a Vietnamese citizen already holding permanent residence' category in vn_permanent_residence.json -- but note that file requires the SPONSOR to hold permanent residence specifically, which a Vietnamese citizen by definition does not need (citizens aren't 'permanent residents' of their own country) -- this creates a genuine ambiguity in how a plain Vietnamese-citizen spouse's dependent would qualify for thường trú under the family category, which the tier-1 source did not resolve; disclosed as an open question rather than resolved by assumption."
+}

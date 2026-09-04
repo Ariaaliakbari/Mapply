@@ -1,0 +1,92 @@
+{
+  "id": "ro_permanent_residence",
+  "country": "RO",
+  "name": "Long-Term Residence (Non-EU/EEA Third-Country Nationals)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 60,
+    "continuity_required": true
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ropr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years of continuous legal residence in Romania. Absences under 6 consecutive months (up to 10 months total) don't break continuity; study periods count at half value; temporary residence permits for studies, asylum-seeker status, short-stay visas, and seasonal/au-pair work do NOT qualify.",
+          "fix_path": "Accumulate 5 years of continuous legal residence under a qualifying permit category.",
+          "fix_time_months": 60,
+          "source_id": "igi_long_term_residence"
+        },
+        {
+          "id": "ropr_financial_means",
+          "attribute": "has_sufficient_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Proof of financial means (waived for family members of Romanian citizens).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_long_term_residence"
+        },
+        {
+          "id": "ropr_clean_record",
+          "attribute": "no_removal_order_issued",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "No removal order issued against the applicant; clean criminal record certificate required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "igi_long_term_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Application form and passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of living space", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance proof", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Financial means documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Civil status documents", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "10 years if family member of a Romanian citizen; 5 years for other purposes",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "status ceases upon absence exceeding 12 consecutive months",
+    "switchable_to": ["ro_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "igi_long_term_residence",
+      "tier": 1,
+      "url": "https://igi.mai.gov.ro/en/long-term-residence-in-romania/",
+      "title": "General Inspectorate for Immigration (IGI), Romanian Ministry of Internal Affairs -- long-term residence for non-EU/EEA citizens: 5 years' continuous legal residence (study periods count at half value; certain permit categories excluded), equal treatment with Romanian citizens on employment/education/social security/healthcare/tax/housing, 10-year permit for family of Romanian citizens or 5 years otherwise, status ends after 12 consecutive months' absence or on acquiring citizenship",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Romania). STATUS: PUBLISHED -- fully tier-1 IGI sourced. NAMING/STRUCTURAL NOTE: Romania runs two parallel tracks that both function as 'permanent residence' in ordinary usage but are legally and administratively distinct -- this file models 'long-term residence' (the track for non-EU/EEA third-country nationals, 5-year qualifying period, 5-10 year renewable card). A SEPARATE track, called 'permanent residence' in IGI's own terminology, exists only for EU/EEA/Swiss citizens and their family members exercising free-movement rights (also a 5-year qualifying period, but a 10-year card, per IGI's granting-permanent-residence page) -- that EU-citizen-specific track is not modeled as its own file here, consistent with this dataset's focus on third-country-national routes, but the naming overlap is flagged so it isn't mistaken for a duplicate or an error. citizenship_after_months is set to 36, representing the ADDITIONAL months of continuous residence needed after reaching this long-term-residence status (60 months) to reach naturalisation's 8-year/96-month total continuous-residence requirement under Article 8(1)(a) -- see ro_citizenship_naturalisation.json for that authoritative total. This is an arithmetic inference (96 minus 60), not a figure IGI states directly for long-term-residence holders."
+}

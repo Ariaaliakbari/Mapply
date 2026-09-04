@@ -1,0 +1,90 @@
+{
+  "id": "bw_citizenship_naturalisation",
+  "country": "BW",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": {
+    "required_prior_route_ids": [],
+    "minimum_months_held": 120,
+    "continuity_required": false
+  },
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bwcn_aggregate_residence",
+          "attribute": "months_legal_residence_aggregate",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "An aggregate period of not less than 10 years' residence in Botswana.",
+          "fix_path": "Accumulate 10 years of aggregate legal residence in Botswana.",
+          "fix_time_months": 120,
+          "source_id": "gov_bw_naturalisation"
+        },
+        {
+          "id": "bwcn_immediate_residence",
+          "attribute": "months_continuous_residence_immediately_before_application",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "A continuous period of 12 months' residence immediately preceding the date of application.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "gov_bw_naturalisation"
+        },
+        {
+          "id": "bwcn_police_clearance",
+          "attribute": "has_clean_police_report",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A completed police report.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_bw_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form L", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two certified copies of valid Botswana residence permit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police report", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Certified birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_bw_naturalisation",
+      "tier": 1,
+      "url": "https://cms1.gov.bw/citizenship/citizenship-application-naturalization",
+      "title": "gov.bw (Botswana government portal), Department of Immigration and Citizenship -- Citizenship Application (Naturalization): 10 years' aggregate residence plus 12 continuous months immediately before application, Form L, police report, mandatory renunciation of foreign citizenship, BWP1000 fee, ~1 year processing",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Botswana). Directly sourced to gov.bw's own naturalisation service page -- modeled PUBLISHED since all hard requirements trace to this tier-1 government source. dual_citizenship_allowed is set FALSE: the process explicitly requires renouncing foreign citizenship by mail correspondence before the Certificate of Naturalization is issued, consistent with the Citizenship Act's broader dual-citizenship-at-21 rule (see bw_citizenship_by_descent.json)."
+}

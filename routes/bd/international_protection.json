@@ -1,0 +1,73 @@
+{
+  "id": "bd_international_protection",
+  "country": "BD",
+  "name": "Refugee / Asylum Status (ad hoc administrative arrangement)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bdip_flight_from_persecution",
+          "attribute": "fled_persecution_or_conflict_in_origin_country",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Fled persecution, conflict, or a comparable protection need in the country of origin -- Bangladesh has no codified refugee-definition statute, so this is modeled at the general internationally-recognized standard rather than a Bangladesh-specific legal test.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_rimap_foreigners_act"
+        },
+        {
+          "id": "bdip_class_exemption",
+          "attribute": "government_has_exempted_the_applicants_class",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The government must have exercised its discretionary power under Section 10 of the Foreigners Act, 1946 to exempt the applicant's 'class or description of foreigner' from the Act's ordinary provisions -- protection here is administered class-by-class at government discretion, not through an individual legal right to apply.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unhcr_rimap_foreigners_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity/registration documentation (where available)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Registration with camp/administrative authorities (for populations covered by an active exemption order)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not defined by statute -- varies by the terms of the specific administrative exemption order in force for a given population",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_rimap_foreigners_act",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/282",
+      "title": "UNHCR Rights Mapping and Analysis Platform (RIMAP) -- Bangladesh: 'In absence of any refugee/asylum legislation at domestic level, the Foreigner's Act [1946] remains the key legislation regulating the Rohingya refugees in Bangladesh'; Section 3 gives the government broad power to regulate foreigners' entry/presence, Section 10 allows exempting any 'class or description of foreigner' from the Act, which is how refugee populations are administratively managed",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: DRAFT -- tier-2 UNHCR-hosted analysis is the clearest source located; the underlying Foreigners Act, 1946 itself is a colonial-era general alien-control statute, not a purpose-built refugee law, and was not independently located at tier-1 in this build. THE SINGLE MOST STRIKING STRUCTURAL FINDING IN THIS BANGLADESH BUILD, WORTH STATING PLAINLY: Bangladesh hosts what is widely reported as the world's largest refugee camp complex (Cox's Bazar, over a million Rohingya refugees from Myanmar) with NO codified domestic refugee or asylum law of any kind -- protection is administered entirely through discretionary government exemption orders under a 1946 colonial statute originally designed for routine foreigner regulation, not refugee protection, plus ad hoc bilateral/UNHCR coordination arrangements. This is structurally different from every other humanitarian route built so far in this dataset: Rwanda, Ethiopia, and Nigeria all have purpose-built domestic refugee statutes with formal eligibility committees and appeal mechanisms (even if imperfectly resourced); Bahrain and Myanmar (as built) have essentially no framework and no meaningful refugee population; Bangladesh sits in a third category entirely -- large-scale, long-term, real protection extended to enormous numbers of people, but through administrative discretion rather than codified legal entitlement. This is disclosed as a structural finding, not asserted as either better or worse than a codified system -- it is simply a materially different legal architecture that anyone relying on this route needs to understand before treating it as a predictable, rules-based process the way bd_citizenship_naturalisation.json or bd_work_permit.json are."
+}

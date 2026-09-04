@@ -1,0 +1,83 @@
+{
+  "id": "ci_citizenship_reintegration",
+  "country": "CI",
+  "name": "Reintegration into Ivoirian Citizenship (Former Citizens)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A person who formerly held Ivoirian nationality and lost it may apply for reintegration by decree after an official inquiry, without the residency staging required of ordinary naturalisation applicants (Code de la Nationalite, Article 35). A person stripped of citizenship following a criminal conviction may reintegrate only after obtaining judicial rehabilitation, unless they have rendered exceptional service to Cote d'Ivoire (Articles 36-38).",
+    "evidence_hint": "Documentation proving the applicant's own prior Ivoirian citizenship and the circumstances of its loss."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (ordinary loss)",
+      "requirements": [
+        {
+          "id": "cicr_former_citizen",
+          "attribute": "is_former_ivoirian_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Was previously an Ivoirian citizen and can prove that prior status.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_code_nationalite"
+        }
+      ]
+    },
+    {
+      "id": "criminal_forfeiture",
+      "name": "Former citizens stripped of citizenship following criminal conviction",
+      "requirements": [
+        {
+          "id": "cicr_rehabilitation_or_exceptional_service",
+          "attribute": "has_judicial_rehabilitation_or_rendered_exceptional_service",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Obtained judicial rehabilitation for the disqualifying conviction, OR has rendered exceptional service to Cote d'Ivoire.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_code_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of prior Ivoirian citizenship", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Documentation of the circumstances of loss", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Judicial rehabilitation certificate (criminal-forfeiture cases)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no residency staging required, unlike ordinary naturalisation",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_code_nationalite",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/1178187/1504_1217418989_loi-n-61-416-du-14-decembre-1961-portant-code-de-la-nationalite-ivoirienne.pdf",
+      "title": "ecoi.net (Austrian Red Cross/ACCORD country-of-origin information network) -- Code de la Nationalite Ivoirienne, Articles 35-38: reintegration by decree for former Ivoirian citizens, without residency staging; judicial rehabilitation or exceptional service required for those stripped of citizenship following criminal conviction",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: DRAFT -- tier-2 only, same constraint as this build's other citizenship files. MODELING CAUTION, consistent with this dataset's Mongolia precedent: this file is scoped strictly to what Articles 35-38 support -- reintegration for a person who WAS THEMSELVES an Ivoirian citizen and lost that status. No descendant/multi-generation extension is stated in the fetched text, and none is assumed here (contrast Romania's Article 11, which explicitly reaches descendants to the third degree). This is DISTINCT from ci_citizenship_by_descent.json (which covers children of Ivoirian parents) and from ci_citizenship_naturalisation.json (first-time acquisition by a person with no prior Ivoirian status) -- reintegration is specifically for people restoring a status they once held themselves."
+}

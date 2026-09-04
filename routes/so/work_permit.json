@@ -1,0 +1,75 @@
+{
+  "id": "so_work_permit",
+  "country": "SO",
+  "name": "Work Permit and Permit of Stay (Foreign Employee)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sowp_employer_application",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must submit a written application including comprehensive details about the foreign employee, along with a Ministry-approved employment contract.",
+          "fix_path": "Secure a job offer from an employer willing to file the application and obtain Ministry approval of the employment contract.",
+          "fix_time_months": null,
+          "source_id": "somalia_permit_stay"
+        },
+        {
+          "id": "sowp_qualifications",
+          "attribute": "has_relevant_qualifications",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must provide academic qualifications or skills documentation and a professional CV.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "somalia_permit_stay"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Ministry-approved employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid 12+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Academic qualifications / skills documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Professional CV", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources located in this build",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "somalia_permit_stay",
+      "tier": 1,
+      "url": "https://www.somalia.gov.so/services/permit-stay",
+      "title": "Federal Republic of Somalia, official government services portal -- Permit of Stay for foreign employees: requires employer's written application with comprehensive employee details, valid passport (12+ months), Ministry-approved employment contract, valid work permit, academic qualifications/skills documentation, professional CV; processed in-person at regional centers via the Immigration and Citizenship Agency; fee US$5 payable by mobile money to the regional center's bank account",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Somalia). Published on tier-1 sourcing (the Federal Government of Somalia's own services portal). NOTABLY LOW FEE compared to every other country built in this dataset: US$5, paid via mobile money -- consistent with Somalia's widespread mobile-money-based financial infrastructure operating in the absence of a fully developed conventional banking sector. Duration/validity period was not specified in the source; disclosed as a gap rather than guessed. work_rights set to 'restricted' since the permit is tied to a specific Ministry-approved employment contract rather than an open labour-market right. POLITICAL CONTEXT: see so_visitor_visa.json notes -- this dataset models the Federal Government's stated framework; administrability varies by region given Al-Shabaab's territorial control and Somaliland's de facto separate governance."
+}

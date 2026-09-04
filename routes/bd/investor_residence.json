@@ -1,0 +1,86 @@
+{
+  "id": "bd_investor_residence",
+  "country": "BD",
+  "name": "Private Investor (PI) Visa and Investment-Based Permanent Residence",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "investor_visa",
+      "name": "Private Investor (PI) Visa",
+      "requirements": [
+        {
+          "id": "bdir_bida_beza_recommendation",
+          "attribute": "has_bida_or_beza_recommendation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a recommendation from BIDA (Bangladesh Investment Development Authority) or BEZA (Bangladesh Economic Zones Authority).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "moscow_investment_info"
+        }
+      ]
+    },
+    {
+      "id": "permanent_residence",
+      "name": "Permanent Resident Permit",
+      "requirements": [
+        {
+          "id": "bdir_pr_investment_75k",
+          "attribute": "investment_capital_usd_nonrepatriable",
+          "operator": ">=",
+          "value": 75000,
+          "hard": true,
+          "blocker_text": "Non-repatriable investment of at least US$75,000 in Bangladesh.",
+          "fix_path": "Invest and retain (non-repatriably) at least US$75,000 in Bangladesh.",
+          "fix_time_months": null,
+          "source_id": "bcgdubai_investment"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Investment proof (bank transfer records, company equity documentation)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "BIDA/BEZA recommendation letter", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "PI Visa: initially 1-2 years; Permanent Resident Permit: indefinite, issued as a visa sticker/stamp, valid for as long as the qualifying investment is maintained",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bd_citizenship_by_investment"]
+  },
+  "sources": [
+    {
+      "id": "moscow_investment_info",
+      "tier": 1,
+      "url": "https://moscow.mofa.gov.bd/pages/static-pages/695266a835ce18e1c05aa9e1",
+      "title": "Ministry of Foreign Affairs, Bangladesh (Embassy of Bangladesh, Moscow) -- Investment Opportunities in Bangladesh: Private Investor (PI) visa requires BIDA or BEZA recommendation",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "bcgdubai_investment",
+      "tier": 1,
+      "url": "https://bcgdubai.gov.bd/investment-prospects-in-bangladesh/",
+      "title": "Consulate General of the People's Republic of Bangladesh, Dubai -- Investment Prospects in Bangladesh: 'Permanent resident permits on investing US$75,000 (non-repatriable)'",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bangladesh). STATUS: PUBLISHED -- both sources tier-1 official diplomatic missions. FIGURE CONFLICT, DISCLOSED RATHER THAN PICKED-A-SIDE: this file uses the US$75,000 PR threshold as it currently appears on an official Bangladesh consulate page (bcgdubai.gov.bd). Multiple tier-3 sources (law-firm summaries, investment-migration press) report a HIGHER, more recently-updated figure of US$200,000 for PR, citing 'Industrial Policy 2022' / 'BIDA Policy 2023' -- and separately, a 2016 press report (The Daily Star, tier-4) describes a cabinet decision that year doubling PR-adjacent thresholds from US$75,000 to US$150,000 for a related temporary-residence category (figures for that specific category do not cleanly map onto this file's PR track). None of the higher figures were independently confirmed at tier-1 in this build -- it is plausible the consulate page is simply stale and has not been updated since a subsequent policy revision, but this dataset does not upgrade a hard requirement's figure based on unconfirmed tier-3 reporting. Treat US$75,000 as the last tier-1-confirmed figure, and treat US$200,000 as a plausible but unconfirmed current figure worth direct BIDA verification before relying on either number. citizenship_after_months (60) reflects the general 5-year PR-to-naturalisation track described in tier-3 sourcing (see bd_citizenship_naturalisation.json), not independently confirmed at tier-1 here."
+}

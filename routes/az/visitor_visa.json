@@ -1,0 +1,103 @@
+{
+  "id": "az_visitor_visa",
+  "country": "AZ",
+  "name": "Visa-Free Entry / ASAN e-Visa / Consular Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-08-30",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "reciprocal_visa_free",
+      "name": "Reciprocal visa-free (Group II)",
+      "requirements": [
+        {
+          "id": "azvv_reciprocal",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["BY", "GE", "KZ", "KG", "MD", "UZ", "RU", "TJ", "UA", "TR", "AE", "RS", "AL", "MA", "QA", "CN"],
+          "hard": true,
+          "blocker_text": "Citizens of Belarus, Georgia, Kazakhstan, Kyrgyzstan, Moldova, Uzbekistan, Russia, Tajikistan, Ukraine, Turkey, UAE, Serbia, Albania, and Morocco may enter without a visa for up to 90 days; Qatar and China (ordinary passports) for up to 30 days (China's allowance is cumulative within a 180-day period).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gov_az_visa_free"
+        }
+      ]
+    },
+    {
+      "id": "temporary_gulf_hk_exemption",
+      "name": "Temporary Gulf-state / Hong Kong-Macao exemption (Group IV, Feb 2026 - Feb 2027)",
+      "requirements": [
+        {
+          "id": "azvv_group4",
+          "attribute": "nationality",
+          "operator": "in",
+          "value": ["SA", "OM", "BH", "KW", "HK", "MO"],
+          "hard": true,
+          "blocker_text": "Citizens of Saudi Arabia, Oman, Bahrain, and Kuwait (from 15 Feb 2026) and Hong Kong/Macao passport holders (from 2 Feb 2026) may enter visa-free up to 3 times, up to 30 days per entry, under a temporary unilateral arrangement running to February 2027.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mfa_gov_az_visa_free"
+        }
+      ]
+    },
+    {
+      "id": "evisa_or_consular",
+      "name": "ASAN e-Visa or consular visa",
+      "requirements": [
+        {
+          "id": "azvv_evisa",
+          "attribute": "has_evisa_or_consular_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of 95 other countries may apply for a single-entry e-Visa (30 days) via the ASAN Visa portal (evisa.gov.az), USD 29 total (state fee USD 20 + service fee USD 9), issued within 3 working days (3 hours if urgent); apply at least 3 working days before travel with a passport valid 3+ months beyond the e-Visa's expiry. All other nationalities need a consular visa.",
+          "fix_path": "Apply for an e-Visa via evisa.gov.az or a consular visa.",
+          "fix_time_months": null,
+          "source_id": "evisa_gov_az"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (3+ months beyond visa/e-Visa expiry)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "e-Visa application (95-country list)", "difficulty": "routine", "typical_time_days": 3 }
+  ],
+  "outcome": {
+    "duration_length": "90 days (Group II, most countries), 30 days (Qatar/China, Group IV, and e-Visa)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_gov_az_visa_free",
+      "tier": 1,
+      "url": "https://www.mfa.gov.az/en/category/visa/visa-free-countries",
+      "title": "Azerbaijan Ministry of Foreign Affairs -- visa-free entry groups: Group II (16-country reciprocal ordinary-passport regime, 90/30 days), Group IV (temporary unilateral Gulf-state/HK-Macao exemption, Feb 2026-2027); Group I (diplomatic/service passports) and Group III (Azerbaijani citizens' own outbound access to other countries) not modeled here as they don't describe inbound entry to Azerbaijan for ordinary foreign travelers",
+      "accessed_at": "2026-08-30"
+    },
+    {
+      "id": "evisa_gov_az",
+      "tier": 1,
+      "url": "https://evisa.gov.az/en/information",
+      "title": "ASAN Visa (official e-Visa portal) -- 95 eligible nationalities, single-entry 30-day e-Visa, USD 29 total fee, 3-working-day standard / 3-hour urgent processing",
+      "accessed_at": "2026-08-30"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Azerbaijan). The MFA's page structures visa-free access into four groups; Group I (diplomatic/service passports) and Group III (Azerbaijani citizens' own visa-free access to OTHER countries when traveling abroad) were excluded from this file since neither describes a foreigner's entry INTO Azerbaijan. Iran's visa arrangement with Azerbaijan was described in Group III context (Azerbaijani citizens into Iran) rather than confirmed for the reverse direction, so Iran is not included in the reciprocal list above -- disclosed as an open question rather than assumed symmetric."
+}

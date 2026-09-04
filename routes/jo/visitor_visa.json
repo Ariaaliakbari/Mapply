@@ -1,0 +1,80 @@
+{
+  "id": "jo_visitor_visa",
+  "country": "JO",
+  "name": "Tourist / Visitor Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "first_come",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "jovv_passport_validity",
+          "attribute": "passport_valid_months",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport valid for at least 6 months from arrival date.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "psd_services"
+        },
+        {
+          "id": "jovv_eligible_nationality_or_prearranged",
+          "attribute": "eligible_for_visa_on_arrival_or_holds_prearranged_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Visa on arrival is granted at Queen Alia International Airport and the Aqaba border crossing for eligible nationalities (including the USA, UK, Canada, and EU states); the King Hussein/Allenby Bridge crossing does not issue visas on arrival, and other nationalities must arrange a visa in advance.",
+          "fix_path": "Confirm nationality-specific visa-on-arrival eligibility or arrange a visa in advance of travel.",
+          "fix_time_months": null,
+          "source_id": "jordanpass_entry"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa fee payment (or Jordan Pass covering the fee for 3+ consecutive nights' stay)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "short stay; extendable by registering at a local police station before the initial visa expires",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "psd_services",
+      "tier": 1,
+      "url": "https://psd.gov.jo/media/lncmdl3i/servcies.pdf",
+      "title": "Jordan Public Security Directorate (PSD), Borders and Residence Department -- Information Services: temporary residency at entry is 2 weeks for unrestricted nationalities (extendable to 3 months after police address registration), 3 months for restricted nationalities",
+      "accessed_at": "2026-09-02"
+    },
+    {
+      "id": "jordanpass_entry",
+      "tier": 4,
+      "url": "https://jordanpass.org/blog/jordan-entry-requirements/",
+      "title": "Jordan Pass (private tourism operator) -- entry requirements blog: visa-on-arrival eligible nationalities and border crossings, Jordan Pass fee waiver for 3+ night stays",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Jordan). STATUS: DRAFT -- WEAKEST FILE. The entry-window structure (2-week/3-month) is tier-1 (PSD), but the visa-on-arrival eligible-nationality list, exact visa fee amount, and Jordan Pass mechanics come only from a tier-4 private tourism blog after several attempts to reach a tier-1 or tier-2 confirmation of the exact fee figure were inconclusive -- the fee amount is deliberately left undisclosed here rather than stated from an unconfirmed secondary source. Visa policy varies significantly by nationality (GCC nationals, some Arab states, and others have different rules not modeled in this pass)."
+}

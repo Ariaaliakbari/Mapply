@@ -1,0 +1,76 @@
+{
+  "id": "et_citizenship_restoration",
+  "country": "ET",
+  "name": "Readmission to Ethiopian Citizenship (former citizens)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-02",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "A former Ethiopian national who acquired a foreign nationality may seek readmission to Ethiopian citizenship by returning to Ethiopia, renouncing the foreign nationality, and applying to the authorities. Consistent with Ethiopia's no-dual-citizenship rule, readmission requires giving up the other nationality -- it is not a route to holding both.",
+    "evidence_hint": "Documentation of prior Ethiopian nationality and its loss; proof of renunciation of the foreign nationality."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "etcr_former_citizen",
+          "attribute": "previously_held_ethiopian_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Previously held Ethiopian citizenship and lost it by acquiring a foreign nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nationality_proc_378_2003"
+        },
+        {
+          "id": "etcr_renounce_foreign",
+          "attribute": "has_renounced_foreign_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must renounce the foreign nationality as a condition of readmission -- Ethiopia does not permit dual citizenship.",
+          "fix_path": "Renounce the foreign nationality.",
+          "fix_time_months": null,
+          "source_id": "nationality_proc_378_2003"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Documentation of prior Ethiopian citizenship and its loss", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of renunciation of the foreign nationality", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "return to Ethiopia required as part of the readmission process",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nationality_proc_378_2003",
+      "tier": 2,
+      "url": "https://clr.africanchildforum.org/Legislation%20Per%20Country/ethiopia/ethiopia_nationality_2003_en.pdf",
+      "title": "African Child Policy Forum (hosting the full text) -- Ethiopian Nationality Proclamation No. 378/2003: readmission provision for former Ethiopian nationals who acquired foreign nationality, conditioned on renouncing the foreign nationality",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ethiopia). STATUS: DRAFT -- same tier-2 sourcing caveat as the other Ethiopian citizenship files. WORTH CONTRASTING WITH et_ancestry_origin_id.json: readmission is the harder, ALL-OR-NOTHING path back to actual citizenship (requires giving up the foreign nationality entirely), while the Yellow Card is the softer, dual-status-compatible alternative most of the diaspora actually uses in practice -- this file exists for completeness of the legal picture, but the Yellow Card route is very likely the more commonly used instrument given it doesn't force a choice between nationalities. No fee, processing time, or residency-duration-before-application detail was found for this specific readmission route beyond 'returning to Ethiopia and applying.'"
+}

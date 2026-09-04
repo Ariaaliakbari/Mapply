@@ -1,0 +1,75 @@
+{
+  "id": "ci_visitor_visa",
+  "country": "CI",
+  "name": "Short-Stay Visa (Visa de Court Séjour / e-Visa)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-02",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "civv_passport_validity",
+          "attribute": "passport_valid_months_beyond_departure",
+          "operator": ">=",
+          "value": 6,
+          "hard": true,
+          "blocker_text": "Passport must be valid for at least 6 months.",
+          "fix_path": "Renew passport.",
+          "fix_time_months": 1,
+          "source_id": "snedai_visa"
+        },
+        {
+          "id": "civv_payment_enrollment",
+          "attribute": "completed_online_payment_and_appointment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Online payment via the FASTRACE system and a booked appointment at an embassy enrollment center (or e-visa portal) are required before in-person submission.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "snedai_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport (valid 6+ months)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Payment receipt", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Appointment confirmation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Identity photo", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 to 3 months, single fee of EUR 50 covering the full range regardless of exact duration",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "snedai_visa",
+      "tier": 1,
+      "url": "https://snedai.com/visaenambassade/",
+      "title": "SNEDAI (Societe Nationale d'Edition de Documents Administratifs et d'Identification -- a state-owned Ivorian company operating the country's official visa/identification issuance system) -- short-stay visa: EUR 50 fee (1 day to 3 months), FASTRACE online payment, embassy enrollment appointment, 48-hour processing after enrollment",
+      "accessed_at": "2026-09-02"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cote d'Ivoire). STATUS: PUBLISHED -- SNEDAI is a 'societe nationale' (state-owned enterprise), confirmed via its own French Wikipedia entry naming it as such, and is the entity Cote d'Ivoire's own embassies (e.g. the UK and Belgium diplomatic missions) direct applicants to for visa processing -- treated as tier-1 here despite the non-.gouv.ci domain, since it performs the official government visa-issuance function directly, not as a private intermediary. Which nationalities require a visa at all versus qualify for visa-free/visa-on-arrival entry was NOT confirmed in this pass and is disclosed as a gap rather than guessed. The 'evisa' terminology is used loosely by SNEDAI's own site alongside embassy-based processing; both appear to route through the same FASTRACE payment/enrollment system."
+}
