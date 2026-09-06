@@ -1,0 +1,63 @@
+{
+  "id": "sn_citizenship_naturalisation",
+  "country": "SN",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sncn_10yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 years' ordinary residence in Senegal, reduced to 5 years for applicants married to a Senegalese woman, employed in Senegalese public institutions, or providing exceptional services to Senegal. Applicant must be 18+, of good character (no non-political custodial convictions), and not deemed a burden on the community by reason of mental or physical unfitness. Naturalization is granted by government decree; no decision within 1 year of filing constitutes rejection (Article 11).",
+          "fix_path": "Accumulate 10 years' residence (or 5 years under a qualifying reduced category), then apply for naturalization by decree.",
+          "fix_time_months": 120,
+          "source_id": "ecoi_irb_nationality"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 (or 5) years' residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record / character certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical fitness documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "10 years' ordinary residence, or 5 years under a qualifying reduced category",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_irb_nationality",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/document/1339441.html",
+      "title": "ecoi.net, hosting an Immigration and Refugee Board of Canada (IRB) research response on Senegal's citizenship law -- naturalization requirements: 10 years' ordinary residence (or 5 years for spouses of Senegalese women, public-institution employees, or those rendering exceptional service), age 18+, good character, mental/physical fitness, decision by government decree with a 1-year default-rejection rule (Article 11), and Article 16b's incompatibility of decree-acquired citizenship with any other nationality",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Senegal). STATUS: DRAFT -- same tier-2 sourcing limitation as this country's other citizenship files; Senegal's own Journal Officiel or government legal portal was not located/fetched in this build. GENUINE, DISTINCTIVE PROCEDURAL FINDING: Article 11's 1-year default-rejection rule (silence from the government for 1 year after filing counts as a denial) is a specific, sourced due-process feature not seen in quite this form in most other naturalization routes built in this dataset. dual_citizenship_allowed set false: naturalization is citizenship 'acquired by a decision of the government,' which Article 16b explicitly makes 'incompatible with any other allegiance' -- unlike descent-based citizenship (sn_citizenship_by_descent.json), which does allow a period of dual nationality before an 18-25 choice is made."
+}

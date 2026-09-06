@@ -1,0 +1,104 @@
+{
+  "id": "gh_ancestry_right_of_abode",
+  "country": "GH",
+  "name": "Right of Abode",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "former_ghanaian",
+      "name": "Ghanaian descendant who lost citizenship by acquiring foreign nationality",
+      "requirements": [
+        {
+          "id": "ghroa_lost_citizenship_via_foreign_nationality",
+          "attribute": "lost_ghanaian_citizenship_via_foreign_naturalization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Lost Ghanaian citizenship by reason of acquiring a foreign nationality.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_right_of_abode"
+        },
+        {
+          "id": "ghroa_attestation_and_clearance",
+          "attribute": "has_ghanaian_attestation_and_police_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires attestation from two Ghanaians (notaries, lawyers, or senior officials) and police clearance from Ghana.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_right_of_abode"
+        }
+      ]
+    },
+    {
+      "id": "african_diaspora",
+      "name": "Person of African descent living outside Ghana",
+      "requirements": [
+        {
+          "id": "ghroa_african_descent",
+          "attribute": "is_person_of_african_descent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be a person of African descent living outside Ghana, sponsored, with written attestation from two reputable Ghanaians.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_right_of_abode"
+        },
+        {
+          "id": "ghroa_economic_contribution",
+          "attribute": "has_evidence_of_economic_contribution",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must show evidence of economic contribution to Ghana (investments, employment creation, bank statements), including 3 years of audited company accounts and 6 years of tax clearance where applicable.",
+          "fix_path": "Establish a documented investment/business presence in Ghana with the required financial history.",
+          "fix_time_months": null,
+          "source_id": "gis_right_of_abode"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate and renunciation certificate (Ghanaian-descendant track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Written attestation from two reputable Ghanaians", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance from Ghana", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "3 years' audited accounts and 6 years' tax clearance (African-diaspora economic-contribution track)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical report from a Ghana Immigration Service clinic", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gis_right_of_abode",
+      "tier": 1,
+      "url": "https://gis.gov.gh/service/right-of-abode/",
+      "title": "Ghana Immigration Service -- Right of Abode: for (1) persons who lost Ghanaian citizenship by acquiring a foreign nationality, and (2) persons of African descent living outside Ghana; grants the right to reside permanently in Ghana, enter without a visa, and work or be employed without a work permit; requires attestation from two reputable Ghanaians, Ghana police clearance, and (African-diaspora track) documented evidence of economic contribution including audited accounts and tax clearance history",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). Published on tier-1 sourcing (Ghana Immigration Service). MARQUEE ROUTE, GENUINELY DISTINCTIVE IN THIS DATASET: Right of Abode is a formal, named legal status specifically extended to 'persons of African descent living outside Ghana' -- not just former Ghanaian citizens or their direct descendants, but the wider African diaspora (including African-Americans, Caribbean nationals, and other diaspora communities with no documentable Ghanaian ancestry at all). This is the legal backbone behind Ghana's well-publicized diaspora-engagement initiatives (the 2019 'Year of Return' marking 400 years since the first enslaved Africans arrived in Virginia, and the ongoing 'Beyond the Return' program) -- Right of Abode is the closest thing in this dataset to a country extending a path to permanent legal status on the basis of shared ancestry to an entire diaspora rather than a specific documented family lineage. work_rights set to 'full' since the government's own page explicitly states holders may 'work or be employed without a work permit' -- a genuine, sourced full-rights grant, not this dataset's usual conservative default for ancestry-based statuses. Duration described as indefinite based on the 'reside permanently' language, though no explicit renewal/validity period was stated in the source. Distinct from gh_citizenship_by_descent.json and gh_citizenship_naturalisation.json -- Right of Abode does not itself confer Ghanaian citizenship."
+}

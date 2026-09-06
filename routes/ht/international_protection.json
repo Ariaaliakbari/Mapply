@@ -1,0 +1,62 @@
+{
+  "id": "ht_international_protection",
+  "country": "HT",
+  "name": "Refugee Status (UNHCR Mandate Determination via GARR)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "unhcr_mandate_rsd",
+      "name": "UNHCR mandate refugee status determination (via GARR)",
+      "requirements": [
+        {
+          "id": "htip_unhcr_garr_rsd",
+          "attribute": "meets_unhcr_mandate_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Per UNHCR's own submission to Haiti's Universal Periodic Review: 'Haiti lacks establishing legislation or regulations for asylum and refugee matters... nor has the Government established a national asylum procedure.' UNHCR and its local partner GARR (Groupe d'Appui aux Rapatries et Refugies) directly handle identification, screening, registration, counseling, humanitarian assistance, and refugee-status-determination for asylum seekers in Haiti -- entirely outside any Haitian government process, since none exists. Recognized refugees receive no Haitian legal status or work authorization, and Haiti issues no refugee travel documents. UNHCR has recommended Haiti draft domestic refugee legislation to meet its 1951 Convention obligations; as of this build, no such legislation was found to exist.",
+          "fix_path": "Contact UNHCR or its local partner GARR to register and undergo mandate-based refugee status determination -- no Haitian government office handles this.",
+          "fix_time_months": null,
+          "source_id": "unhcr_ohchr_upr_haiti"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (UNHCR/GARR recognition), though not tied to any Haitian government legal status",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_ohchr_upr_haiti",
+      "tier": 2,
+      "url": "https://www.ohchr.org/sites/default/files/lib-docs/HRBodies/UPR/Documents/session12/HT/UNHCR-eng.pdf",
+      "title": "UNHCR submission to Haiti's Universal Periodic Review (hosted by OHCHR) -- confirms no domestic asylum legislation exists; UNHCR and GARR conduct mandate-based RSD directly",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: DRAFT -- sourced to UNHCR's own submission to a UN human rights review process, tier 2 (not tier 1, since this is precisely UNHCR describing the ABSENCE of any Haitian government framework, not a Haitian government source). MARQUEE STRUCTURAL FINDING, directly comparable to Algeria (dz_international_protection.json), built earlier in this dataset: Haiti has NO domestic asylum law and NO government body handling refugee status determination at all -- UNHCR, working through its local partner GARR, conducts mandate-based RSD entirely outside Haitian law, exactly as in Algeria's case, though for a different underlying reason (Haiti is overwhelmingly a REFUGEE-SENDING country rather than a receiving one, so the absence reflects low domestic demand for an asylum system rather than a deliberate policy gap). outcome fields modeled conservatively (work_rights 'none', family_can_join false) since UNHCR's own submission explicitly states recognized refugees get no Haitian legal status, no work authorization, and no travel documents -- the most restrictive, but also the most explicitly confirmed, outcome profile of any humanitarian file in this dataset so far."
+}

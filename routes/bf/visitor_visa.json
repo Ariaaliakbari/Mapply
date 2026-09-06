@@ -1,0 +1,63 @@
+{
+  "id": "bf_visitor_visa",
+  "country": "BF",
+  "name": "Tourist Entry / e-Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bfvv_entry_requirements",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Burkina Faso's official e-visa portal (Division de la Migration) requires all foreigners to present a valid passport or laissez-passer/refugee travel document, an entry visa (or visa waiver/permit/residence permit where exempted), health documentation per international health regulations, proof of return transport or a repatriation deposit (unless exempted), and a completed migration control form. E-visas are applied for online at applicant.visaburkina.bf.",
+          "fix_path": "For non-exempt nationalities, apply for an e-visa online through the official Visa Burkina portal before travel.",
+          "fix_time_months": null,
+          "source_id": "visaburkina_bf_entry"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of return transport or repatriation deposit", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health documentation (e.g. yellow fever certificate)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in sources reviewed",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "visaburkina_bf_entry",
+      "tier": 1,
+      "url": "https://www.visaburkina.bf/en/burkina-faso-entry-conditions/",
+      "title": "Visa Burkina (official e-visa portal, Division de la Migration, Government of Burkina Faso) -- entry conditions: passport/visa/health/return-transport/migration-form requirements",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Burkina Faso). STATUS: DRAFT -- despite a tier-1 government source, the page did not itself state e-visa fees, validity period/length of stay, or a named visa-exempt nationality list, so several outcome fields are left as honest gaps rather than assumed. NOTABLE GAP, EXPLICITLY DISCLOSED: Burkina Faso is a core ECOWAS member state, and the ECOWAS Protocol on Free Movement of Persons is well known to grant West African nationals visa-free entry across the bloc -- but this specific mechanism was not confirmed against a source in this build, so it is not asserted here as a modeled exemption. duration_length and other fields left unconfirmed rather than guessed."
+}

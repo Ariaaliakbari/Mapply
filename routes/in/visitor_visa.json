@@ -1,0 +1,108 @@
+{
+  "id": "in_visitor_visa",
+  "country": "IN",
+  "name": "e-Tourist/e-Business/e-Medical Visa and Business Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "e_visa",
+      "name": "e-Visa (tourist, business, or medical)",
+      "requirements": [
+        {
+          "id": "invv_eligible_nationality_e_visa",
+          "attribute": "nationality",
+          "operator": "not_in",
+          "value": ["Pakistan"],
+          "hard": true,
+          "blocker_text": "Pakistan-origin nationals and diplomatic/official passport holders are ineligible for the e-Visa; other nationalities apply online through the e-Visa portal.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_evisa_annex"
+        },
+        {
+          "id": "invv_designated_entry_point",
+          "attribute": "entering_via_designated_port",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Entry must be through one of 25 designated airports or 5 designated seaports (seaports for cruise tourists only).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_evisa_annex"
+        }
+      ]
+    },
+    {
+      "id": "business_visa_paper",
+      "name": "Business Visa (paper, longer validity)",
+      "requirements": [
+        {
+          "id": "invv_business_purpose",
+          "attribute": "has_qualifying_business_purpose",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Purpose must be a qualifying business activity: establishing a venture, buying/selling goods, technical meetings, staff recruitment, acting as a business partner/director, exhibitions, quality monitoring, or short-term specialist expertise -- not employment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_work_visa_faq"
+        },
+        {
+          "id": "invv_business_financial_standing",
+          "attribute": "has_proof_of_financial_standing",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must provide proof of financial standing and business documentation; sponsorship must originate from the applicant's country of origin or domicile (minimum 2 years' residence there).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_work_visa_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Business documentation and proof of financial standing (Business Visa track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "e-Visa: up to 60 days (medical: up to 6 months on extension), max 2 visits/calendar year, generally non-extendable except e-Medical. Business Visa (paper): up to 5 years multiple entry (up to 10 years for US citizens under a bilateral arrangement), max 6 months per visit, non-extendable beyond 5 years.",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mha_evisa_annex",
+      "tier": 1,
+      "url": "https://www.mha.gov.in/PDF_Other/AnnexIII_01022018.pdf",
+      "title": "Ministry of Home Affairs, Government of India -- Details of Visas Granted by India: e-Tourist, e-Business, e-Medical Visa sub-categories, each up to 60 days (medical extendable to 6 months case-by-case); application 120 days before arrival via 25 designated airports/5 seaports; max 2 visits/calendar year; non-extendable except e-Medical; Pakistan-origin nationals and diplomatic passport holders excluded",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "mha_work_visa_faq",
+      "tier": 1,
+      "url": "https://www.mha.gov.in/sites/default/files/2022-08/work_visa_faq%5B1%5D.pdf",
+      "title": "Ministry of Home Affairs, Government of India -- FAQs Relating to Work Related Visas: Business (B) Visa eligibility (venture establishment, trading, technical meetings, recruitment, directorship, exhibitions, quality monitoring, short-term specialist expertise), no minimum salary, up to 5 years multiple entry (10 years for US citizens), max 6 months per visit, non-extendable beyond 5 years, sponsorship must originate from country of domicile with 2+ years' residence there plus proof of financial standing",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). Published on tier-1 sourcing directly from the Ministry of Home Affairs. Two genuinely distinct products bundled here: the modern e-Visa (short-stay, online, capped at 60 days) and the older paper Business Visa (up to 5 years multiple entry, but strictly non-work). The e-Visa system explicitly and by name excludes Pakistan-origin nationals -- a rare explicit nationality carve-out stated directly by the government rather than inferred, reflecting the current state of India-Pakistan relations. No distinct short-stay tourist paper visa route was modeled separately since the e-Visa has functionally displaced it for most nationalities eligible for e-Visa; nationals who are e-Visa-ineligible (including Pakistan-origin nationals) apply through a different paper process not detailed in the sources retrieved in this build."
+}

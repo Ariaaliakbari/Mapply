@@ -1,0 +1,64 @@
+{
+  "id": "ne_family_reunification",
+  "country": "NE",
+  "name": "Residence Card for Family Members of a Resident Foreigner",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nefr_family_member_own_residence_card",
+          "attribute": "has_resident_family_member_in_niger",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "No distinct 'regroupement familial' (family reunification) legal category was found for Niger -- a dedicated search returned only French domestic-law material, mirroring the same structural absence found for Mali. Under Ordinance No. 2025-02, a joining spouse or family member is classified as an ordinary 'immigrant' (Article 11) and must obtain their own residence permit or resident card within 3 months of entry (Article 5), on the same general terms as any other foreigner. A person hosting a foreign family member, paid or not, must also notify local police of the arrangement or face penalties.",
+          "fix_path": "Have the joining family member apply for their own residence card under the general immigrant regime; the host in Niger must also notify local police of the arrangement.",
+          "fix_time_months": 3,
+          "source_id": "unhcr_rimap_ne_ordinance_2025"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of family relationship (marriage/birth certificate)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Valid travel document", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residence-card application", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Host's police notification (hosting arrangement)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "resident card, renewable, exact validity not specified in the sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_rimap_ne_ordinance_2025",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/67460",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Ordinance No. 2025-02, Articles 5 and 11 (general immigrant residence-card regime) and the housing-notification requirement",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Niger). STATUS: DRAFT -- sourced to a UNHCR-hosted platform's excerpt of the ordinance, tier 2; no dedicated Niger family-reunification statute was found. GENUINE, RECURRING REGIONAL FINDING: like Mali (ml_family_reunification.json), Niger has no separate family-reunification track -- family members simply file the same general residence-card application as any other immigrant. Niger's version is additionally shaped by the January 2025 ordinance's hosting-notification requirement, which has no equivalent in this dataset's Mali file and reflects the tighter, security-focused posture of Niger's current military government. work_rights set to 'restricted' as a conservative default since no source confirmed unrestricted labor-market access purely from this status. family_can_work left null: not addressed by the source."
+}

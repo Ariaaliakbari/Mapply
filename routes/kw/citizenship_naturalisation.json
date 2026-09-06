@@ -1,0 +1,81 @@
+{
+  "id": "kw_citizenship_naturalisation",
+  "country": "KW",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "arab_applicants",
+      "name": "Arab applicants",
+      "requirements": [
+        {
+          "id": "kwcn_arab_15yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 180,
+          "hard": true,
+          "blocker_text": "Arab nationals originally from an Arab country: 15 consecutive years' residence in Kuwait. Arabic language, lawful income, and no criminal record are required of all applicants. Approval is by Emiri Decree at the Amir's discretion, with an annual cap reported at roughly 50 naturalizations per year -- meeting the technical criteria does not create an entitlement, and the annual cap makes approval very unlikely even for qualifying applicants.",
+          "fix_path": "Accumulate 15 years' continuous residence, then apply -- approval remains discretionary and capped.",
+          "fix_time_months": 180,
+          "source_id": "commonerlaw_kw_naturalization"
+        }
+      ]
+    },
+    {
+      "id": "non_arab_applicants",
+      "name": "Non-Arab applicants",
+      "requirements": [
+        {
+          "id": "kwcn_nonarab_20yr_residence_muslim",
+          "attribute": "is_muslim_20yr_resident_nonarab",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Non-Arab applicants (and Arabs not originally from an Arab country): 20 consecutive years' residence, AND -- a distinctive requirement not applied to Arab applicants -- must be Muslim. Same Arabic-language, lawful-income, and clean-record conditions apply, and approval remains an Emiri Decree subject to the same discretionary annual cap; the source describes naturalization as 'near-impossible in practice' for non-Arab applicants.",
+          "fix_path": null,
+          "fix_time_months": 240,
+          "source_id": "commonerlaw_kw_naturalization"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 15 or 20 years' continuous residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic-language proficiency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of lawful income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 180,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "15 years (Arab applicants) or 20 years (non-Arab applicants), continuous",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "commonerlaw_kw_naturalization",
+      "tier": 4,
+      "url": "https://commoner-law.com/kuwait/immigration-pathways/citizenship-naturalization",
+      "title": "Commoner Law (private legal-guide site) -- Kuwait naturalization requirements: 15 years' residence for Arab nationals from an Arab country vs. 20 years for non-Arabs (who must additionally be Muslim), Arabic-language/income/character conditions, Emiri Decree approval, and a reported annual cap of roughly 50 naturalizations",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kuwait). STATUS: DRAFT -- Kuwait's own government legal-text sources were not fetchable in this build (403 errors on every official portal attempted); sourced to a private legal-guide site (tier 4), so this should be treated as directionally reliable but not confirmed against primary legislation. MARQUEE FINDINGS WORTH LEADING WITH: (1) a religious eligibility requirement -- non-Arab applicants must be Muslim to naturalize, a bar not applied to Arab applicants, and one of the starkest formal eligibility conditions of this kind found anywhere in this dataset; (2) an annual cap of roughly 50 naturalizations nationwide makes this route 'theoretically possible but extremely unlikely' even for fully qualifying Arab applicants, and 'near-impossible in practice' for non-Arabs -- meeting the stated residence/language/income/character conditions does not functionally open the route. CITIZENSHIP-BY-MARRIAGE ROUTE NOW CLOSED, DISCLOSED HERE RATHER THAN AS ITS OWN FILE: until a 2025 amendment (Decree-Law implementing 2024 cabinet-approved changes, per a Fragomen alert reviewed in this build), a foreign woman married to a Kuwaiti man could acquire citizenship after roughly 5 years; that route has been PERMANENTLY ELIMINATED -- the amended law states the acquisition of Kuwaiti citizenship by a foreigner (including by a naturalized man) does not entitle his wife to citizenship, and a foreign wife of a Kuwaiti-by-origin man likewise gains no marriage-based route. No equivalent provision for a foreign husband of a Kuwaiti woman was found either before or after the amendment. No separate route file was built for this because there is currently no live marriage-based citizenship mechanism to model -- only its closure. LIVE, SEVERE POLICY CONTEXT (2024-2026): the same wave of amendments (per a 2026 Gulf News report on Decree-Law No. 52 of 2026, reviewed in this build) expands revocation grounds, gives the Minister of Interior broadened authority over nationality decisions, and explicitly classifies nationality decisions as sovereign acts 'not subject to judicial review' -- meaning a person stripped of citizenship under these provisions has no court appeal. Independent human-rights reporting (title reviewed, full text not fetchable in this build: 'Kuwait's citizenship law overhaul amid mass revocations and growing human rights concerns,' ADHRB, July 2026) indicates this overhaul has coincided with large-scale citizenship revocations -- this claim is disclosed here on the strength of that source's title and could not be independently verified in full text in this build. SEPARATE, DISTINCT, AND NOT MODELED AS ANY ROUTE HERE: Kuwait has an estimated 93,000+ stateless Bidoon residents (per a stateless persons policy PDF at statelessness.eu, tier 3, reviewed in this build) -- descendants of those who did not register as citizens at independence in 1961, reclassified as 'illegal residents' in 1986, subject to severe restrictions on education, healthcare, and employment, and with NO naturalization or registration pathway identified in any source reviewed for this build. This is a genuine, confirmed absence, not an unsourced gap, and is one of the most significant human-rights findings in this entire dataset -- it is disclosed here rather than modeled as a route precisely because no such route exists."
+}

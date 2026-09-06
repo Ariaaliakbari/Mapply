@@ -1,0 +1,79 @@
+{
+  "id": "si_citizenship_by_descent",
+  "country": "SI",
+  "name": "Citizenship by Descent / Birth",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "parent_citizen",
+      "name": "One or both parents Slovenian citizens",
+      "requirements": [
+        {
+          "id": "sicd_citizen_parent",
+          "attribute": "has_slovenian_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizenship Act of the Republic of Slovenia: a child acquires citizenship at birth if one or both parents are Slovenian citizens. If born abroad to one Slovenian and one foreign parent, the child must be registered as a Slovenian citizen before turning 18, or must settle permanently in Slovenia with the Slovenian parent before then.",
+          "fix_path": "Register the child as a Slovenian citizen with a consulate, or settle permanently in Slovenia with the Slovenian parent, before the child turns 18 (for the mixed-parentage, born-abroad case).",
+          "fix_time_months": null,
+          "source_id": "uradni_list_si_citizenship_act"
+        }
+      ]
+    },
+    {
+      "id": "born_in_slovenia_unknown_stateless",
+      "name": "Born in Slovenia to unknown or stateless parents",
+      "requirements": [
+        {
+          "id": "sicd_born_unknown_stateless",
+          "attribute": "born_in_slovenia_to_unknown_or_stateless_parents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Children born in Slovenia to unknown parents or to stateless parents acquire Slovenian citizenship automatically -- a statelessness safeguard.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "uradni_list_si_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Slovenian citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uradni_list_si_citizenship_act",
+      "tier": 1,
+      "url": "https://www.uradni-list.si/glasilo-uradni-list-rs/vsebina/1991-01-0008?sop=1991-01-0008",
+      "title": "Uradni list Republike Slovenije (Official Gazette of the Republic of Slovenia) -- Zakon o drzavljanstvu Republike Slovenije (Citizenship Act), descent/birth and naturalization provisions",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovenia). STATUS: PUBLISHED -- hard requirements sourced directly to Slovenia's own Official Gazette (Uradni list RS), tier 1. dual_citizenship_allowed set true per the Citizenship Act's general dual-nationality provision -- see si_citizenship_naturalisation.json's notes for the fuller picture, including a real internal tension between that general permission and a separate renunciation-of-prior-citizenship condition listed among the standard naturalization requirements."
+}

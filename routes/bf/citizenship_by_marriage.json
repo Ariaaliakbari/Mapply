@@ -1,0 +1,94 @@
+{
+  "id": "bf_citizenship_by_marriage",
+  "country": "BF",
+  "name": "Nationality by Declaration (Marriage to a Burkinabe Citizen)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "resident_track",
+      "name": "Resident in Burkina Faso",
+      "requirements": [
+        {
+          "id": "bfcm_5yr_wait_3yr_resident",
+          "attribute": "months_married_and_resident",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Under the new Code des personnes et de la famille (Loi n.012-2025/ALT, September 2025), marriage to a Burkinabe citizen no longer confers nationality automatically -- a major reversal of the prior rule. Article 153-1 requires the foreign or stateless spouse to wait at least 5 years from the marriage before declaring acquisition, with at least 3 years of continuous residence in Burkina Faso during that time, and to maintain a genuine 'communaute de vie tant affective que materielle' (shared emotional and material life) with the Burkinabe spouse throughout. The government retains a 12-month window to formally oppose the acquisition by council decree (Article 155-5). The provision is gender-neutral, applying identically to a foreign husband or foreign wife.",
+          "fix_path": "Marry a Burkinabe citizen, maintain the marriage and a genuine shared life for at least 5 years, with at least 3 years of continuous residence in Burkina Faso, then file a declaration of acquisition.",
+          "fix_time_months": 60,
+          "source_id": "presidence_faso_code_innovations"
+        }
+      ]
+    },
+    {
+      "id": "non_resident_track",
+      "name": "Not resident in Burkina Faso",
+      "requirements": [
+        {
+          "id": "bfcm_7yr_marriage_abroad",
+          "attribute": "months_married_abroad",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Article 153-1's alternative track: where the 3-year continuous-residence condition is not met, a total marriage duration of 7 years applies instead before the foreign or stateless spouse can declare acquisition, subject to the same genuine-shared-life requirement and the government's 12-month opposition window.",
+          "fix_path": "Maintain the marriage and a genuine shared life for at least 7 years, then file a declaration of acquisition.",
+          "fix_time_months": 84,
+          "source_id": "afrilex_bf_nationality_analysis"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of continuous residence (resident track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of genuine shared life (correspondence, joint accounts, cohabitation records)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "3 years continuous residence (resident track); none required on the 7-year non-resident track",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "presidence_faso_code_innovations",
+      "tier": 1,
+      "url": "https://www.presidencedufaso.bf/code-des-personnes-et-de-la-famille-le-gouvernement-apporte-des-innovations-majeures/",
+      "title": "Presidence du Faso (Burkina Faso's official presidency website) -- government summary of the new Code des personnes et de la famille's major innovations, confirming the 5-year minimum wait for nationality acquisition by marriage",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "afrilex_bf_nationality_analysis",
+      "tier": 3,
+      "url": "https://afrilex.u-bordeaux.fr/wp-content/uploads/2026/01/afrilex_NombreGrihobouRoland_LaNationaliteBurkinabeDansLeNouveauCodeDesPersonnesEtDeLaFamille-1.pdf",
+      "title": "AFRILEX (University of Bordeaux law journal) -- detailed academic analysis of Article 153-1's 3-year-resident/7-year-non-resident structure and the government's Article 155-5 opposition right",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "citizenshiprightsafrica_bf_marriage_reform",
+      "tier": 3,
+      "url": "https://citizenshiprightsafrica.org/en/le-burkina-faso-durcit-sa-loi-sur-la-nationalite-automatique-par-mariage-pour-les-etrangers/",
+      "title": "Citizenship Rights in Africa Initiative -- reporting on Burkina Faso's tightening of automatic marriage-based nationality, confirming the end of automatic acquisition and the 5-year minimum wait",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Burkina Faso). STATUS: DRAFT -- the resident track's core hard requirement (the 5-year minimum wait, ending automatic acquisition) is confirmed directly by presidencedufaso.bf, Burkina Faso's own presidency website, tier 1; but the non-resident track's 7-year figure is sourced only to a tier-3 academic law journal, and the validator requires EVERY hard requirement in a published route to cite tier 1 -- so the whole file stays draft until a government source for that second track is located. The finer 3-year-resident structure and the government's opposition right are corroborated by two independent tier-3 sources (an academic law journal and a citizenship-rights NGO), giving strong convergent detail even though those specific sub-details are not independently tier-1-confirmed. MAJOR, CURRENT, WELL-DOCUMENTED LEGAL CHANGE -- FLAGGED PROMINENTLY: as of September 2025 (essentially brand new at the time of this build), Burkina Faso abolished automatic citizenship-by-marriage entirely and replaced it with a genuinely demanding declaration process -- a real tightening, not a formality change, and a rare case in this dataset where a country's marriage-citizenship route became MORE restrictive rather than staying static or liberalizing. GENUINE POSITIVE FINDING WITHIN THE TIGHTENING: the new rule is explicitly gender-neutral (applies identically regardless of which spouse is the foreigner), unlike several other countries' marriage-citizenship routes built in this dataset. dual_citizenship_allowed left null: no source reviewed addressed whether the new declared nationality requires renouncing the original one."
+}

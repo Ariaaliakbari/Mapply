@@ -1,0 +1,80 @@
+{
+  "id": "cd_visitor_visa",
+  "country": "CD",
+  "name": "Tourist / e-Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_free",
+      "name": "Visa-free entry (regional)",
+      "requirements": [
+        {
+          "id": "cdvv_regional_nationality",
+          "attribute": "is_regional_visa_free_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of Burundi, Kenya, Congo-Brazzaville, Rwanda, Tanzania, and Zimbabwe enter without prior visa authorization. Mauritian citizens can obtain a visa on arrival.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kwafrikatravel_drc_visa"
+        }
+      ]
+    },
+    {
+      "id": "evisa",
+      "name": "e-Visa via evisa.gouv.cd",
+      "requirements": [
+        {
+          "id": "cdvv_evisa_approved",
+          "attribute": "evisa_application_approved",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Most other nationalities apply through the official EVISA DGM platform (evisa.gouv.cd), described by third-party travel operators as strictly vetted with a high rejection rate; processing can take up to 3 weeks. Total cost around $540 ($450 upfront, $90 on arrival). Current rules reportedly bar independent applications without a confirmed tour booking. A 'flying visa' pre-approval or an airport/port visa (7+ days) are alternative entry routes; a standard tourist visa via a Congolese diplomatic mission abroad runs up to 6 months.",
+          "fix_path": "Apply via evisa.gouv.cd or through a Congolese diplomatic mission, allowing several weeks for processing.",
+          "fix_time_months": 1,
+          "source_id": "kwafrikatravel_drc_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Yellow Fever vaccination certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Confirmed tour booking (per current practice reported)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "7 days to 6 months depending on visa type",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "kwafrikatravel_drc_visa",
+      "tier": 4,
+      "url": "https://www.kwafrikatravel.com/dr-congo-visa-guide/",
+      "title": "Kwafrika Travel (private tour-operator/visa-assistance site) -- current e-visa process via evisa.gouv.cd, fees, visa types, regional visa-free list, and the tour-booking requirement for independent applicants",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Democratic Republic of the Congo). STATUS: DRAFT -- the official evisa.gouv.cd government portal was fetched directly but returned only a JavaScript-disabled error page, no substantive content, so a tier-4 travel-operator source was used instead. GENUINE, SPECIFIC FINDING WORTH FLAGGING: multiple sources describe the e-visa system as having an unusually high rejection rate and a practical requirement to book through a tour operator rather than apply independently -- a real, sourced friction point distinct from most e-visa systems built in this dataset, though not confirmed as an official written rule (versus informal practice). Regional visa-free access mirrors similar patterns in other African countries built in this dataset (regional bloc/neighbor exemptions)."
+}

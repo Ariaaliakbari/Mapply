@@ -1,0 +1,64 @@
+{
+  "id": "hn_work_permit",
+  "country": "HN",
+  "name": "Employer-Sponsored Work Residence",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hnwp_verified_contract",
+          "attribute": "has_verified_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ley de Migracion y Extranjeria (Decreto 208-2003), Article 40: the General Migration Directorate (now INM) verifies the 'conditions of contracting' in consultation with the Ministry of Labor before granting a special residence permit tied to the job. Article 41 covers professionals and educators specifically, requiring compliance with the licensing requirements to practice that profession in Honduras. Permits run up to 5 years per Article 39.",
+          "fix_path": "Secure a Honduran employment contract, have it verified by INM in consultation with the Labor Ministry, and (for regulated professions) hold the required Honduran professional license.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_ley_migracion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Professional license (if regulated profession)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 5 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "inm_gob_hn_ley_migracion",
+      "tier": 1,
+      "url": "https://inm.gob.hn/Ley_de_Migraciones_y_extranjeria_Honduras%5B1%5D.pdf",
+      "title": "Instituto Nacional de Migracion de Honduras -- hosted primary legal text of Decreto 208-2003, Ley de Migracion y Extranjeria, Articles 39-41 (contracted-worker and professional residence permits) and Article 39(12) (family members of contracted workers)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: PUBLISHED -- hard requirement sourced directly to the government-hosted primary statutory text (Honduras's own migration authority hosting its own law), tier 1. family_can_join set true per Article 39(12), which extends permits to family members of contracted workers. leads_to_pr set false: the law caps this permit at 5 years but does not itself state a conversion path to permanent ('Inmigrado') status -- see hn_investor_residence.json and hn_citizenship_naturalisation.json for Honduras's separate permanent-residence and naturalization tracks, which likely apply after continuous residence but were not explicitly cross-confirmed as automatic from this specific permit. work_rights set 'restricted' since the permit is tied to the verified contract/profession, not open work authorization."
+}

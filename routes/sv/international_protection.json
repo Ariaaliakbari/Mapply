@@ -1,0 +1,69 @@
+{
+  "id": "sv_international_protection",
+  "country": "SV",
+  "name": "Refugee Status",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status_determination",
+      "name": "Refugee status determination",
+      "requirements": [
+        {
+          "id": "svip_coder_recognition",
+          "attribute": "meets_1951_convention_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Decreto No. 918 (2002), Ley para la Determinacion de la Condicion de Personas Refugiadas: CODER (Comision para la Determinacion de la Condicion de Personas Refugiadas), housed within the Ministry of Foreign Affairs' Legal Department, is the sole authority that decides refugee recognition in El Salvador. Its officials interview applicants and family members and evaluate each case. While the application is pending, the migration authority issues a temporary identity document. The Migration Law (Article 81) separately lists refugees, asylees, and stateless persons as an authorized temporary-residence category.",
+          "fix_path": "File a claim with CODER (Ministry of Foreign Affairs, Antiguo Cuscatlan) and complete the interview and case-evaluation process.",
+          "fix_time_months": null,
+          "source_id": "unhcr_help_sv_coder"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_help_sv_coder",
+      "tier": 2,
+      "url": "https://help.unhcr.org/elsalvador/solicitando-la-condicion-de-refugiado/que-hace-la-coder/",
+      "title": "UNHCR Help El Salvador -- CODER's role as sole refugee-recognition authority, housed in the Ministry of Foreign Affairs, interview-based determination process",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "sela_sv_ley_migracion",
+      "tier": 2,
+      "url": "https://www.sela.org/wp-content/uploads/2023/07/ley-especial-de-migracion-y-extranjeria-el-salvador.pdf",
+      "title": "SELA -- hosted primary legal text of El Salvador's Migration Law, Article 19.8 (right to seek asylum) and Article 81 (refugees/asylees/stateless as an authorized residence category)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: DRAFT -- both sources are UNHCR's own help page and an intergovernmental-hosted statutory text, tier 2; the primary text of Decreto No. 918 (2002) itself, which would confirm exact timelines and appeal procedures, was found by name and citation (via Refworld) but not independently fetched and reviewed in this build -- worth a dedicated retry. NOTABLE GAP, EXPLICITLY DISCLOSED: neither source reviewed gave a specific decision timeline or appeal window for CODER's process, unlike this dataset's other Central American asylum files (Guatemala's 15/30/10-day sequence, Honduras's structured process) -- this is a real information gap, not evidence that El Salvador's process lacks timelines. leads_to_citizenship set true per Migration Law Article 156's general reference to refugees/stateless persons being eligible for naturalization 'in accordance with this law,' but citizenship_after_months is left null since no distinct timeline for this category specifically was confirmed (see sv_citizenship_naturalisation.json's notes on the same gap)."
+}

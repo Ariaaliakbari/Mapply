@@ -1,0 +1,82 @@
+{
+  "id": "uz_citizenship_naturalisation",
+  "country": "UZ",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General procedure",
+      "requirements": [
+        {
+          "id": "uzcn_5yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' continuous permanent residence, renunciation of prior citizenship, demonstrated legitimate income, commitment to constitutional compliance, and state (Uzbek) language proficiency -- with exemptions for applicants over 60, persons with disabilities, or those educated in Uzbek. Applications are reviewed by a centralized Commission under the President via the digital 'E-Fuqaro' interdepartmental database, with roughly a 1-month timeline per review stage; final decisions are discretionary presidential decrees, not automatic on Commission recommendation alone.",
+          "fix_path": "Accumulate 5 years' continuous residence, secure legitimate income, pass the language requirement (or qualify for an exemption), and renounce prior citizenship.",
+          "fix_time_months": 60,
+          "source_id": "lex_uz_dp6185"
+        }
+      ]
+    },
+    {
+      "id": "simplified_compatriot",
+      "name": "Simplified procedure (compatriots)",
+      "requirements": [
+        {
+          "id": "uzcn_ascending_relative",
+          "attribute": "has_ascending_line_citizen_relative",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants with at least one relative in a direct ascending line (parent, grandparent) who is a citizen of Uzbekistan qualify for a simplified procedure, still requiring language proficiency and legitimate income but without the standard 5-year residency clock.",
+          "fix_path": "Apply under the simplified procedure with proof of the ascending-line relative's citizenship.",
+          "fix_time_months": null,
+          "source_id": "lex_uz_dp6185"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous residence (general procedure)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of ascending-line relative's citizenship (simplified procedure)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Uzbek language proficiency demonstration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legitimate income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Renunciation of prior citizenship", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 years continuous residence (general procedure only)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lex_uz_dp6185",
+      "tier": 1,
+      "url": "https://lex.uz/en/docs/5685156",
+      "title": "lex.uz (National Database of Legislation, Republic of Uzbekistan) -- Presidential Decree DP-6185 of 10.03.2021, 'On the implementation of the updated procedure for consideration of issues of citizenship': general and simplified (compatriot) naturalisation procedures, the E-Fuqaro digital system, and the presidential-decree final-decision structure",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: PUBLISHED -- direct government sourcing via lex.uz, Uzbekistan's own official legislation portal (tier 1), one of the more solidly-sourced citizenship files built in this dataset. The 'compatriot' simplified track (ascending-line relative) is modeled as a requirement_group INSIDE this naturalisation file rather than as a separate ancestry-category file, following the same convention used for Kazakhstan's Kandas ethnic-repatriate fast-track built earlier in this dataset -- both are framed as expedited naturalisation procedures rather than distinct legal categories. DISCRETIONARY STRUCTURE, EXPLICITLY FLAGGED: even after meeting all objective conditions, the final decision is a presidential decree following non-binding Commission recommendations -- there is no automatic-grant mechanism described in the source, consistent with the discretionary-naturalisation pattern seen in several other countries in this dataset (Lebanon, Kuwait, Senegal). dual_citizenship_allowed set false given the general procedure's explicit renunciation-of-prior-citizenship requirement."
+}

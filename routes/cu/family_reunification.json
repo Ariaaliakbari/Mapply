@@ -1,0 +1,65 @@
+{
+  "id": "cu_family_reunification",
+  "country": "CU",
+  "name": "Permanent Residence (Visa E-1, Family of a Cuban Citizen)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cufr_e1_family_visa",
+          "attribute": "is_parent_child_or_spouse_of_cuban_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Visa E-1 grants permanent residence to a foreigner who is the parent, child, or spouse of a Cuban citizen (with proof of the relationship and, for spouses, a legal marriage). Applying inside Cuba requires a personal request letter, form MOD AP1, four photos, passport copy, legalized birth certificate, a criminal record check (under 3 months old), medical exam results (chest X-ray, HIV, serology), notarized consent from the Cuban reference person, and proof of economic solvency; applying abroad requires a birth certificate, proof of habitual residence, a medical exam (under 6 months old), proof of technical/practical qualifications for those aged 16-60, a criminal record check, and proof of economic resources. Fees run 5,000 Cuban pesos plus 250 pesos for the ID card if applying in Cuba, or $55 USD/EUR plus 250 pesos at a Cuban consulate abroad. The immigration authority typically responds in 3-6 months. This is distinct from Visa E-2, a general, discretionary residence-authorization category for foreigners without a qualifying Cuban family relationship.",
+          "fix_path": "Gather the relationship proof and required documents, pay the applicable fee, and submit through the immigration authority in Cuba or a Cuban consulate abroad; expect a 3-6 month response.",
+          "fix_time_months": 6,
+          "source_id": "cubatramite_pr_extranjeros"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of family relationship (marriage/birth certificate)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record check (under 3-6 months old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical exam results", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Notarized consent from the Cuban reference person (if applying in Cuba)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of economic solvency/resources", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (permanent residence)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cubatramite_pr_extranjeros",
+      "tier": 3,
+      "url": "https://cubatramite.com/solicitud-de-residencia-permanente-en-cuba-para-extranjeros/",
+      "title": "CubaTramite (immigration-consultancy guide) -- Visa E-1/E-2 permanent-residence categories, documents, fees, processing time",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cuba). STATUS: DRAFT -- sourced to a consultancy guide, tier 3; no government-hosted confirmation of the Visa E-1/E-2 framework was reached in this build (Cuba's government domains were systematically unreachable -- see cu_visitor_visa.json). This E-1/E-2 framework may itself reflect the OLDER, still-technically-operative immigration rules rather than the new Ley de Extranjeria's 'temporary/permanent/property-owner/humanitarian/provisional' resident categories, which do not take legal effect until roughly November 2026 -- a genuine, disclosed uncertainty about which framework is described here. citizenship_after_months set to 24, reflecting the 2-year reduced naturalization threshold available to a permanent resident who is a spouse, parent, or child of a Cuban citizen by birth (see cu_citizenship_by_marriage.json and cu_citizenship_naturalisation.json) -- not an automatic conversion, but the fastest path available from this status. family_can_work and dual_citizenship_allowed left null: not addressed by the source."
+}

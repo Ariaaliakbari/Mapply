@@ -1,0 +1,104 @@
+{
+  "id": "hn_citizenship_naturalisation",
+  "country": "HN",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "central_american",
+      "name": "Central American nationals",
+      "requirements": [
+        {
+          "id": "hncn_central_american_1yr",
+          "attribute": "months_residence_central_american",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Constitution Article 24: Central American nationals may naturalize after just 1 year of residency, the shortest track available.",
+          "fix_path": "Accumulate 1 year of residence in Honduras as a Central American national, then apply.",
+          "fix_time_months": 12,
+          "source_id": "pdba_georgetown_hn_constitution"
+        }
+      ]
+    },
+    {
+      "id": "spanish_iberoamerican",
+      "name": "Spanish and Ibero-American nationals",
+      "requirements": [
+        {
+          "id": "hncn_iberoamerican_2yr",
+          "attribute": "months_residence_iberoamerican",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Constitution Article 24: Spanish and other Ibero-American nationals may naturalize after 2 consecutive years of residency.",
+          "fix_path": "Accumulate 2 consecutive years of residence in Honduras as a Spanish or Ibero-American national, then apply.",
+          "fix_time_months": 24,
+          "source_id": "pdba_georgetown_hn_constitution"
+        }
+      ]
+    },
+    {
+      "id": "other_foreigners",
+      "name": "Other foreign nationals",
+      "requirements": [
+        {
+          "id": "hncn_other_3yr",
+          "attribute": "months_residence_other",
+          "operator": ">",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Constitution Article 24: nationals of other countries may naturalize after more than 3 consecutive years of residency. All applicants under this and the regional tracks (except spouses -- see hn_citizenship_by_marriage.json) must renounce their previous nationality, unless a bilateral dual-nationality treaty applies.",
+          "fix_path": "Accumulate more than 3 consecutive years of residence in Honduras, then apply and renounce prior nationality unless a treaty exemption applies.",
+          "fix_time_months": 36,
+          "source_id": "pdba_georgetown_hn_constitution"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate / nationality document from home country", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "1 year (Central American), 2 years (Spanish/Ibero-American), or more than 3 years (other nationalities)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "pdba_georgetown_hn_constitution",
+      "tier": 2,
+      "url": "https://pdba.georgetown.edu/Constitutions/Honduras/hond82.html",
+      "title": "Georgetown University Political Database of the Americas -- hosted text of Honduras's 1982 Constitution, Article 24 (naturalization tracks by nationality-of-origin, dual-nationality treaty rule)",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "bj_abogados_doble_nacionalidad",
+      "tier": 4,
+      "url": "https://blog.bjabogadoshonduras.com/registros-publicos/tratados-de-doble-nacionalidad-en-honduras/",
+      "title": "BJ Abogados Honduras (private law-firm blog) -- Honduras's confirmed dual-nationality treaty with Spain (1966, Legislative Decree No. 60) and the de-facto US dual-nationality situation absent a treaty",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: DRAFT -- sourced to an academic-hosted (Georgetown University) copy of the Constitution, tier 2, not a Honduran government domain directly; Honduras's own official gazette hosting was not located in this build. THE FULLER PICTURE on dual nationality (forward-referenced from hn_citizenship_by_descent.json's notes): Article 24 does NOT grant a universal right to dual nationality -- it applies 'when a double nationality treaty exists' between Honduras and the other country. Per a tier-4 law-firm source (not independently verified against a government text in this build), Honduras has a confirmed treaty with Spain (signed 1966, approved via Legislative Decree No. 60), letting Spaniards and Hondurans acquire the other's nationality without losing their own, subject to civil-registry dual-registration and military-service formalities. The same source states Honduras has no formal treaty with the US, but Hondurans naturalizing there can still end up dual because US law itself doesn't require renunciation -- a one-sided, treaty-independent outcome, not a Honduran-law guarantee. No other confirmed treaty partners were identified. GENUINELY DISTINCTIVE, QUANTIFIED FINDING: a three-tier residency ladder keyed to nationality-of-origin (1yr Central American / 2yr Spanish-Ibero-American / 3yr+ everyone else) is more granular than most naturalization tracks built elsewhere in this dataset. dual_citizenship_allowed set true at the country-general level (treaty-dependent, not unconditional) -- this nuance is disclosed here rather than smoothed into a flat yes."
+}

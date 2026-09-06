@@ -1,0 +1,80 @@
+{
+  "id": "in_citizenship_by_registration",
+  "country": "IN",
+  "name": "Citizenship by Registration",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "indian_origin_resident",
+      "name": "Person of Indian origin, ordinarily resident in India",
+      "requirements": [
+        {
+          "id": "incr_indian_origin_7yr",
+          "attribute": "months_resident_ordinarily",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Person of Indian origin ordinarily resident in India for 7 years immediately before applying.",
+          "fix_path": "Accumulate 7 years' ordinary residence in India.",
+          "fix_time_months": 84,
+          "source_id": "karma_law_analysis"
+        }
+      ]
+    },
+    {
+      "id": "married_to_citizen",
+      "name": "Married to an Indian citizen",
+      "requirements": [
+        {
+          "id": "incr_married_7yr_resident",
+          "attribute": "months_resident_ordinarily",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Married to a citizen of India and ordinarily resident in India for 7 years immediately before applying. The provision is gender-neutral on its face -- 'a person married to a citizen of India' -- unlike several comparable marriage-based citizenship routes elsewhere in this dataset.",
+          "fix_path": "Accumulate 7 years' ordinary residence in India while the marriage subsists.",
+          "fix_time_months": 84,
+          "source_id": "karma_law_analysis"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Indian origin or registered marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of ordinary residence in India (7 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Oath of allegiance (Second Schedule form)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "7 years' ordinary residence in India",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "karma_law_analysis",
+      "tier": 3,
+      "url": "https://karma.law/insights/indian-law/the-citizenship-act-1955-a-comprehensive-analysis/",
+      "title": "Karma Law (law firm legal analysis) -- The Citizenship Act, 1955: Section 5 registration categories include persons of Indian origin ordinarily resident in India for 7 years, and persons married to a citizen of India and ordinarily resident in India for 7 years, among other categories (minor children of citizens, Commonwealth-country citizens, former citizens)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). STATUS: DRAFT -- India's own official legislative repository (indiacode.nic.in) could not be fetched directly in this build (returned an error page), so this file relies on secondary legal-analysis sources (tier 3, law-firm-published). FIGURE CONFLICT, DISCLOSED RATHER THAN RESOLVED: two independent tier-3 sources (this one, and a separate CaseMine legal database entry) state the residence period as 7 years for both the Indian-origin and marriage categories; however, Refworld's UNHCR-hosted (tier 2) summary of the same Section 5 stated the period as 5 years for both categories. This dataset models the 7-year figure since it is corroborated by two independent secondary sources against Refworld's one, but this is disclosed as an open conflict rather than a settled fact -- a user relying on this figure should verify directly with an Indian mission or the Ministry of Home Affairs before treating either number as final. GENUINE POSITIVE FINDING: the marriage-based registration provision is gender-neutral on its face ('a person married to a citizen of India'), unlike the many one-directional gendered marriage-citizenship provisions found elsewhere in this dataset (Qatar, Bahrain, Nigeria, Sudan, Pakistan, Somalia) -- consistent with India's gender-neutral descent provision (see in_citizenship_by_descent.json). dual_citizenship_allowed FALSE per India's constitutional prohibition."
+}

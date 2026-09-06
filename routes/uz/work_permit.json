@@ -1,0 +1,74 @@
+{
+  "id": "uz_work_permit",
+  "country": "UZ",
+  "name": "Employer-Sponsored Work Visa",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uzwp_employer_sponsor_corporate_license",
+          "attribute": "employer_holds_corporate_work_license",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must act as legal sponsor and hold a corporate work license before a foreign employee's work visa (the 'Is'/employment e-visa category) can be issued. The visa is tied directly to the sponsoring company -- the employee cannot work elsewhere on it. Applications must be initiated from outside Uzbekistan.",
+          "fix_path": "Have the employer obtain the corporate work license and initiate the visa application from abroad.",
+          "fix_time_months": null,
+          "source_id": "rivermate_uzbekistan_work_permits"
+        },
+        {
+          "id": "uzwp_labor_market_test",
+          "attribute": "no_qualified_local_candidate_available",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A labor market test requires the employer to show no suitable local candidate exists for the role before sponsoring a foreign worker.",
+          "fix_path": "Employer must document the absence of a qualified local candidate.",
+          "fix_time_months": null,
+          "source_id": "rivermate_uzbekistan_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's corporate work license", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Labor-market-test documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "rivermate_uzbekistan_work_permits",
+      "tier": 4,
+      "url": "https://rivermate.com/guides/uzbekistan/work-permits-and-visas",
+      "title": "Rivermate (private EOR/HR-guide site) -- employer-sponsored work visa process, corporate work license requirement, labor market test, and the visa's employer-tied restriction",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: DRAFT -- no Ministry of Employment/Labor or Migration Agency government portal for the work-permit process specifically was locatable/fetchable in this build (a Ministry of Justice press page likely exists but was not found); sourced to a single tier-4 private HR-guide site, so this cannot be published under this dataset's rules. Permit duration was not confirmed in any source reviewed -- disclosed as unconfirmed rather than guessed. work_rights set 'restricted' since the permit is explicitly tied to one sponsoring employer with no open labor-market access. family_can_join set false (not asserted true without a source) and family_can_work left null since no source addressed dependents specifically for this route."
+}

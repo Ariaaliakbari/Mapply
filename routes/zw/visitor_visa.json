@@ -1,0 +1,96 @@
+{
+  "id": "zw_visitor_visa",
+  "country": "ZW",
+  "name": "Tourist eVisa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "category_a_visa_free",
+      "name": "Category A: visa-free",
+      "requirements": [
+        {
+          "id": "zwvv_category_a",
+          "attribute": "is_category_a_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of 35+ countries (including South Africa, Botswana, Kenya, Mauritius) enter without any advance visa documentation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "evisa_gov_zw_faq"
+        }
+      ]
+    },
+    {
+      "id": "category_b_on_arrival",
+      "name": "Category B: visa on arrival",
+      "requirements": [
+        {
+          "id": "zwvv_category_b_payment",
+          "attribute": "paid_on_arrival_visa_fee",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of roughly 120 countries (including the US, Canada, UK, Australia, most EU states) qualify for pay-on-arrival visas covering single entry (1 month), double entry (3 months), multiple entry (6 months), or the KAZA UniVisa for regional travel across multiple southern African countries (1 month).",
+          "fix_path": "Pay the applicable visa fee on arrival, or apply via the eVisa system in advance.",
+          "fix_time_months": null,
+          "source_id": "evisa_gov_zw_faq"
+        }
+      ]
+    },
+    {
+      "id": "category_c_prepay",
+      "name": "Category C: pre-payment required",
+      "requirements": [
+        {
+          "id": "zwvv_category_c_evisa",
+          "attribute": "evisa_approved_before_travel",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of roughly 50 countries (including Afghanistan, Bangladesh, Nigeria, Pakistan) must obtain and pay for a visa online BEFORE travelling -- no on-arrival option. Average e-visa processing time is 7 working days; applying at least 3 weeks ahead is recommended.",
+          "fix_path": "Apply for the e-visa online at least 3 weeks before travel.",
+          "fix_time_months": null,
+          "source_id": "evisa_gov_zw_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Online e-visa application (Category C)", "difficulty": "routine", "typical_time_days": 7 }
+  ],
+  "outcome": {
+    "duration_length": "1-6 months depending on visa type",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "evisa_gov_zw_faq",
+      "tier": 1,
+      "url": "https://www.evisa.gov.zw/faq.html",
+      "title": "Government of Zimbabwe official eVisa portal (evisa.gov.zw) -- Category A/B/C nationality tiers, visa types including KAZA UniVisa, and processing timelines",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Zimbabwe). STATUS: PUBLISHED -- direct government sourcing (evisa.gov.zw, tier 1). The three-tier (A/B/C) nationality classification and the regional KAZA UniVisa (shared with Zambia, covering cross-border travel around Victoria Falls/Kavango-Zambezi transfrontier area) are both real, specific, well-documented mechanisms. Exact fees were not published on the FAQ page itself ('stated in your approval response') -- disclosed as unconfirmed rather than invented."
+}

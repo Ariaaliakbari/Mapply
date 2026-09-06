@@ -1,0 +1,63 @@
+{
+  "id": "ve_work_permit",
+  "country": "VE",
+  "name": "Labor Transient Visa (TR-L)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "vewp_labor_permit_and_ministry_approval",
+          "attribute": "holds_ministry_of_labor_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Labor Transient Visa (TR-L) is authorized by the Ministry of Interior, Justice and Peace, with prior approval from the Ministry of Labor (Ministerio del Poder Popular para el Proceso Social de Trabajo). The applicant or employer must submit the request to the Ministry of Labor first, not directly to a consulate -- the labor permit issued there is a precondition for the visa application itself.",
+          "fix_path": "Employer submits the labor permit request to the Ministry of Labor; once granted, apply for the TR-L visa with that permit.",
+          "fix_time_months": null,
+          "source_id": "ve_embassy_mexico_trl"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Ministry of Labor permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled criminal background check (max 3 months old), Spanish translation", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in source reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ve_embassy_mexico_trl",
+      "tier": 1,
+      "url": "https://mexico.embajada.gob.ve/tramites-a-extranjeros/visas/visa-de-transeunte-laboral-tr-l/",
+      "title": "Embassy of the Bolivarian Republic of Venezuela in Mexico (embajada.gob.ve) -- official TR-L Labor Transient Visa requirements: dual Ministry of Interior/Ministry of Labor approval chain and required documents",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Venezuela). STATUS: PUBLISHED -- direct government sourcing via an official Venezuelan embassy page (tier 1, consistent with this dataset's convention that embassy/consulate mission sites count as government sourcing). Visa duration was not specified in the source reviewed -- disclosed as unconfirmed rather than guessed. family_can_join set true since the same TR-L source page itself lists 'family members of someone holding an active TR-L visa' as an eligible applicant category -- i.e. the TR-L visa extends to dependents of an existing TR-L holder, not only the primary worker (distinct from ve_family_reunification.json's TR-FV visa, which is specifically for family of a VENEZUELAN CITIZEN sponsor, not a foreign worker); family_can_work set false since no source described dependents gaining independent work rights. GOVERNANCE-TRANSITION CAVEAT: this route's continued operation depends on ministries (Interior, Labor) whose leadership and stability are themselves part of Venezuela's active post-Maduro transition -- see ve_visitor_visa.json's notes for the fuller political context."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "ke_work_permit",
+  "country": "KE",
+  "name": "Class D Permit (Employment)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kewp_specific_employer_offer",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be offered specific employment by a specific Kenyan employer, possess skills or qualifications unavailable locally, and the employment must benefit Kenya.",
+          "fix_path": "Secure a specific job offer from a Kenyan employer.",
+          "fix_time_months": null,
+          "source_id": "immigration_class_d"
+        },
+        {
+          "id": "kewp_unsuccessful_local_recruitment",
+          "attribute": "employer_shows_unsuccessful_local_recruitment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must provide evidence of unsuccessful local recruitment efforts and identify a Kenyan understudy (with certified qualifications) for the role.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_class_d"
+        },
+        {
+          "id": "kewp_tax_compliance",
+          "attribute": "employer_has_tax_compliance_certificate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer (and, on renewal, the individual) must hold a valid Tax Compliance Certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_class_d"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Forms 25 and 27", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer cover letter to the Director General", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certified academic and professional credentials", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of unsuccessful local recruitment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Kenyan understudy's certified qualifications", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source located in this build; issued annually based on the fee structure (KSh 500,000/year issuance fee)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ke_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "immigration_class_d",
+      "tier": 1,
+      "url": "https://immigration.go.ke/class-d-employment/",
+      "title": "Directorate of Immigration Services, Republic of Kenya -- Class D (Employment) Permit: requires a specific employer offer, unavailable-locally skills, evidence of unsuccessful local recruitment, a named Kenyan understudy with certified qualifications, employer and (on renewal) individual Tax Compliance Certificates; processing fee KSh 20,000 (non-refundable), issuance fee KSh 500,000/year, gratis for East African Community member-state nationals; applied for via the eFNS portal",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kenya). Published on tier-1 sourcing (Directorate of Immigration Services). DISTINCTIVE STRUCTURAL FEATURE: the mandatory 'Kenyan understudy' requirement -- the employer must name a specific Kenyan employee being groomed to eventually replace the foreign worker, with certified qualifications submitted as part of the application. This is a formalized skills-transfer/localization mechanism not seen elsewhere in this dataset in this explicit a form. Notably steep annual issuance fee (KSh 500,000, roughly several thousand USD) relative to many other countries' work-permit fees built in this dataset, waived entirely for East African Community (EAC) nationals -- a real, tier-1-confirmed regional preference. Duration was not specified in the source beyond the annual fee cadence; disclosed as a gap."
+}

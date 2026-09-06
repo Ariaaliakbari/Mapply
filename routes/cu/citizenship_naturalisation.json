@@ -1,0 +1,64 @@
+{
+  "id": "cu_citizenship_naturalisation",
+  "country": "CU",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cucn_5yr_pr",
+          "attribute": "months_permanent_residence_in_cuba",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Cuba's new Ley de Ciudadania requires 5 years of Permanent Resident classification immediately preceding the application (reduced to 2 years for the spouse, parent, or child of a Cuban citizen by birth -- see cu_citizenship_by_marriage.json), legal age, no convictions for terrorism, human trafficking, drug trafficking, money laundering, illegal weapons, crimes against humanity, or international-treaty violations, demonstrated social integration, authorized economic activity (if of working age), and passing a citizenship exam. The Minister of the Interior and the President of the Republic hold final approval authority. The President may separately naturalize an applicant OUTSIDE these standard criteria for reasons of 'political, social, and economic interest' -- including people the state considers persecuted for ideological reasons, or who have given 'exceptional revolutionary support' -- but this discretionary track requires the applicant to formally surrender their foreign identity document at a ceremony, unlike the standard and spousal tracks.",
+          "fix_path": "Accumulate 5 years (or 2, if a qualifying spouse/parent/child) of Permanent Resident status, pass the citizenship exam, and demonstrate the required conduct and integration.",
+          "fix_time_months": 60,
+          "source_id": "cubatramite_naturalizacion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Permanent Resident classification (5+ years, or 2 for qualifying relatives)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Citizenship exam", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of authorized economic activity (working age)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years Permanent Resident classification (2 years for spouse/parent/child of a Cuban citizen)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cubatramite_naturalizacion",
+      "tier": 3,
+      "url": "https://cubatramite.com/ciudadania-cubana-por-naturalizacion-para-extranjeros/",
+      "title": "CubaTramite (immigration-consultancy guide) -- naturalization thresholds, character conditions, presidential exceptional-interest discretion, dual-citizenship policy",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cuba). STATUS: DRAFT -- consultancy-sourced, tier 3, and the law is not yet in legal force (published 5 May 2026, effective roughly 180 days later, ~November 2026) -- Cuba's own government domains (Gaceta Oficial, MINREX, Presidencia) were all unreachable in this build (SSL/connection failures across the board), a systemic, disclosed access gap. MAJOR, CURRENT EVENT, prominently flagged as this dataset does for other recent legal overhauls: Cuba replaced its entire Citizenship, Migration, and Foreigners legal framework in 2026 -- approved by the National Assembly in July 2024, held unpublished for nearly two years, then published in a single Extraordinary Gazette (No. 60) on 5 May 2026. The reform also eliminated the old 24-month limit on Cubans' time abroad before losing resident status -- a major, disclosed concession to the diaspora (estimated over 2 million people) -- while simultaneously granting the state broad, named discretionary power to deny or cancel entry/residence/exit for both foreigners and CUBAN CITIZENS on national-security, public-order, or 'hostile actions against the political system' grounds, with exit specifically restrictable for those in legal proceedings, owing debts to the state, or lacking clearance for 'qualified labor force preservation.' GENUINE, PRECISE FINDING on dual citizenship: 'ciudadania efectiva' permits dual nationality generally (see cu_citizenship_by_descent.json), but the ONE confirmed exception is the President's discretionary exceptional-interest naturalization track, which requires the applicant to formally surrender their foreign identity document at a ceremony -- dual_citizenship_allowed is modeled as true for the file's PRIMARY (standard/spousal) route, with this exception disclosed rather than silently omitted."
+}

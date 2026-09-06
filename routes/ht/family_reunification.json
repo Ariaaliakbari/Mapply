@@ -1,0 +1,64 @@
+{
+  "id": "ht_family_reunification",
+  "country": "HT",
+  "name": "Permis de Sejour (Family Sponsor)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htfr_family_sponsor_letter_and_sejour",
+          "attribute": "has_family_sponsor_in_haiti",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "No distinct 'regroupement familial' legal category was found for Haiti -- a joining family member uses the SAME general permis de sejour process as any other foreign resident (see ht_work_permit.json), with a family member resident in Haiti providing the support/repatriation guarantee letter that the DIE page allows from either an employer OR a sponsor. The same supporting documents apply: passport photocopy, medical certificate under 30 days old, two photos, a French-translated birth certificate, a criminal record, and a Haitian bank attestation of at least 7,500 gourdes (~$200), plus a 5,000-gourde application fee. Proof of the family relationship itself is a reasonable additional inference, not explicitly listed on the DIE page as a separate document category.",
+          "fix_path": "Have the resident family member issue a sponsor guarantee letter and file the general permis de sejour application with proof of the family relationship.",
+          "fix_time_months": null,
+          "source_id": "die_mict_gouv_ht_permis_sejour"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of family relationship (marriage/birth certificate)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Family sponsor's guarantee letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (under 30 days old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record from country of origin", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified by the source; permis de sejour, presumed renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "die_mict_gouv_ht_permis_sejour",
+      "tier": 1,
+      "url": "https://immigration.mict.gouv.ht/informations-utiles/obtention-dun-permis-de-sejour-en-haiti/",
+      "title": "Direction de l'Immigration et de l'Emigration (official government portal) -- general permis de sejour requirements, the page's own 'employer/sponsor' language",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: DRAFT -- same tier-1 government source as ht_work_permit.json, but marked draft since applying it to the family-sponsor case, and the requirement for proof of the family relationship itself, are this dataset's reasonable inferences rather than something the DIE page states explicitly for this specific purpose. GENUINE FINDING, consistent with the pattern already seen in Mali and Niger: Haiti has no distinct family-reunification legal category -- everything routes through the single general permis de sejour. work_rights set to 'restricted' as a conservative default. family_can_work left null: not addressed by the source."
+}

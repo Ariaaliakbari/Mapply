@@ -1,0 +1,76 @@
+{
+  "id": "sn_work_permit",
+  "country": "SN",
+  "name": "Foreign Employee Work Permit and Carte d'Identité d'Étranger (CIE)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "snwp_labor_directorate_approval",
+          "attribute": "has_labor_directorate_contract_approval",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Senegalese employer must submit the signed employment contract to the Directorate of Labor with a cover letter and sponsorship letter, generally including a 'certificat de non-disponibilité' showing no suitable local candidate was found, and enroll the worker in the CSS and IPRES social-security systems from day one. Formal labor directorate approval is required before work can begin (typically 2-4 weeks).",
+          "fix_path": "Have the employer secure Directorate of Labor contract approval before starting work.",
+          "fix_time_months": null,
+          "source_id": "expat_com_work_permit"
+        },
+        {
+          "id": "snwp_cie_application",
+          "attribute": "has_applied_for_cie_within_90days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must apply for the Carte d'Identité d'Étranger (CIE) at the Division de la Police des Étrangers (DPETV) within 90 days of arrival, including a medical exam and a repatriation deposit at the Caisse des Dépôts et Consignations (amount varies by nationality, e.g. ~USD 215 for US citizens). A renewable 6-month receipt is issued while the physical card (valid 5 years once issued) is processed, which can take 6-12 months.",
+          "fix_path": "Apply for the CIE within 90 days of arrival and pay the repatriation deposit.",
+          "fix_time_months": null,
+          "source_id": "expat_com_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract from a Senegal-registered company", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance certificate (issued within 3 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate from a Senegalese physician", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Certified academic diplomas/professional qualifications", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Repatriation deposit receipt", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "initial contract 2 years (renewable); CIE card valid 5 years once physically issued",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "expat_com_work_permit",
+      "tier": 4,
+      "url": "https://www.expat.com/en/guide/africa/senegal/37357-work-permit-in-senegal.html",
+      "title": "Expat.com (private expatriate-guide site) -- Senegal work-permit process: Directorate of Labor contract approval, CSS/IPRES social security enrollment, CIE application via DPETV within 90 days, repatriation deposit, and 5-year CIE card validity once issued",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Senegal). STATUS: DRAFT -- sourced to a private expatriate guide (tier 4); Senegal's own government portal (senegalservices.sn, which looks to be an official 'Sénégal Services' e-government site) returned a connection/robots error on every fetch attempt in this build -- a genuine, disclosed access limitation worth retrying rather than an assumption the content doesn't exist. GENUINE, DISTINCTIVE FINDING: the CIE process involves a lengthy interim period -- a 6-month renewable receipt is issued while the physical 5-year card is processed over 6-12 months, meaning a work-permit holder can spend up to a year on a series of temporary receipts before receiving the actual residence card. family_can_join/family_can_work set false at this route's level since dependent rights specific to the work-permit holder were not detailed in the source reviewed (see sn_family_reunification.json for the separate family mechanism)."
+}

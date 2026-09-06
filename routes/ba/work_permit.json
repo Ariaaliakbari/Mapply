@@ -1,0 +1,62 @@
+{
+  "id": "ba_work_permit",
+  "country": "BA",
+  "name": "Employer-Sponsored Work and Residence Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bawp_permit_before_entry",
+          "attribute": "has_work_permit_before_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must first obtain a work permit from the Employment Institute (Zavod za zaposljavanje) before the foreign worker enters Bosnia and Herzegovina. The worker then applies for temporary residence approval through the Service for Foreigners' Affairs -- employment cannot legally begin until temporary residence is approved, regardless of the work permit's own status. Temporary residence on this basis is approved for the work permit's duration plus 30 days, capped at 1 year.",
+          "fix_path": "Have the employer secure a work permit from the Employment Institute, then apply for temporary residence through the Service for Foreigners' Affairs before starting work.",
+          "fix_time_months": 12,
+          "source_id": "bosnainfo_ba_work_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract or job invitation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's work-permit approval", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "work permit duration plus 30 days, up to 1 year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "bosnainfo_ba_work_residence",
+      "tier": 4,
+      "url": "https://bosnainfo.ba/ekonomija/koji-su-uslovi-za-boravak-i-zaposljavanje-stranaca-u-bosni-i-hercegovini/",
+      "title": "BosnaInfo (private news/info site) -- work permit and residence sequencing, 1-year cap, 5-year permanent-residence threshold",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bosnia and Herzegovina). STATUS: DRAFT -- sourced to a private info site, tier 4; the underlying Zakon o zaposljavanju stranaca (Law on Employment of Foreigners), located at parlamentfbih.gov.ba (Federation of BiH Parliament, tier 1), was found by URL but not independently fetched and reviewed in this build -- worth a dedicated retry, since it would likely upgrade this file. GENUINE, SPECIFIC FINDING: the strict sequencing rule (work permit first, then residence approval, with employment illegal until residence is granted) is a real, disclosed structural detail. pr_after_months (60) reflects the general 5-year permanent-residence rule confirmed by the same source; citizenship_after_months (36) mirrors the standard naturalization track's 3-year permanent-residence requirement (see ba_citizenship_naturalisation.json) -- not independently confirmed as applying automatically from this specific permit. family_can_work left null since the source did not address dependents' independent work rights (see ba_family_reunification.json for the separate family-based residence route)."
+}

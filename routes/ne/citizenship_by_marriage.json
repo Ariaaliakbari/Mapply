@@ -1,0 +1,70 @@
+{
+  "id": "ne_citizenship_by_marriage",
+  "country": "NE",
+  "name": "Citizenship by Marriage to a Nigerien Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (either direction, since the 2014 reform)",
+      "requirements": [
+        {
+          "id": "necm_option_within_1yr_of_marriage",
+          "attribute": "months_married_to_nigerien_citizen",
+          "operator": ">=",
+          "value": 0,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Nigerienne, Article 13: a foreign spouse of a Nigerien citizen may acquire Nigerien nationality 'en optant pour elle dans un delai d'un an' -- by formally opting for it within one year of the marriage. This is not fully automatic: the government retains an opposition window and can refuse on grounds of indignity, lack of assimilation, or marital breakdown (Article 14). Historically this option ran one-way (foreign wife of a Nigerien husband); Loi No. 2014-60 (15 November 2014) reformed the code to let Nigerien women pass nationality to a foreign spouse on equivalent terms -- making this one of the few countries in this dataset with a CONFIRMED, sourced, symmetric marriage-based citizenship mechanism rather than an asymmetric or unresolved one (contrast ml_citizenship_by_marriage.json for Mali, where the equivalent right remains one-way even after that country's own reforms). The specific reformed article number covering the foreign-husband case was not independently confirmed in this build, though the 2014 reform's substance is corroborated by two sources.",
+          "fix_path": "Marry a Nigerien citizen and formally opt for Nigerien nationality within one year of the marriage; the government may oppose on limited grounds.",
+          "fix_time_months": 12,
+          "source_id": "citizenshiprightsafrica_ne_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Nigerien nationality", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Formal declaration/option within 1 year of marriage", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_ne_nationalite",
+      "tier": 3,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2020/04/Niger-Ordonnance-84-33-Code-de-la-nationalite-1984-modifie-1999.pdf",
+      "title": "Citizenship Rights in Africa Initiative (NGO-hosted primary legal text) -- Code de la Nationalite Nigerienne, Article 13 (foreign spouse's one-year option) and Article 14 (grounds for government opposition)",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "wikipedia_ne_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Nigerien_nationality_law",
+      "title": "Wikipedia -- confirms Loi 2014-60 extended nationality-transmission-by-marriage rights symmetrically to Nigerien women",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Niger). STATUS: DRAFT -- the base mechanism (Article 13/14) is sourced to an NGO-hosted primary legal text, tier 3; the 2014 symmetric reform itself is confirmed by Wikipedia (tier 4) but the fetched primary-code copy in this build predates or does not show the reformed article text for the foreign-husband case specifically -- flagged as a genuine, disclosed sourcing gap rather than assumed identical to Article 13. citizenship_after_months set to 12 (the one-year option window), not treated as instantaneous, since Article 13 requires an affirmative election within that period rather than automatic vesting at the moment of marriage. dual_citizenship_allowed set to TRUE per the same 2014 reform confirmed in ne_citizenship_naturalisation.json and ne_citizenship_by_descent.json."
+}

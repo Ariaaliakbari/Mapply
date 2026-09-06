@@ -1,0 +1,69 @@
+{
+  "id": "ht_visitor_visa",
+  "country": "HT",
+  "name": "Short-Stay Visa / Visa-Exempt Entry Authorization",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htvv_entry_authorization",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Embassy of Haiti (Canada): citizens of countries with a visa exemption (Canada among them) do not need to arrange a visa in advance for stays under 90 days -- entry authorization is granted on arrival by Haitian immigration authorities at the port of entry. Others must apply in advance through a Haitian consular section: a tourist visa runs $100 for 3 months or $200 for a 6-month multiple-entry version (Embassy of Haiti, Washington DC fee schedule), requiring a passport valid 6+ months beyond travel, a completed application with photo, and payment by certified check or money order (cash and personal checks are not accepted). Long-stay visas and permanent residence are handled separately by Haiti's own Direction de l'Immigration et de l'Emigration (DIE), not the visa desk.",
+          "fix_path": "Visa-exempt nationalities get entry authorization on arrival for stays under 90 days; others must apply for a tourist visa at a Haitian consular section before travel.",
+          "fix_time_months": null,
+          "source_id": "ambassade_haiti_ca_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months beyond travel dates", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa application with photo (non-exempt nationalities)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days; a long-stay permit (permis de sejour) becomes mandatory before the 90-day period expires for anyone staying longer, except persons of Haitian descent",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ht_work_permit", "ht_investor_residence", "ht_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "ambassade_haiti_ca_visas",
+      "tier": 1,
+      "url": "https://ambassade-haiti.ca/ambassade/structure-et-services/section-consulaire/visas/",
+      "title": "Embassy of Haiti, Canada (official diplomatic mission) -- visa categories, exemptions, fees, 90-day long-stay-permit deadline",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "haiti_org_embassy_fees",
+      "tier": 1,
+      "url": "https://www.haiti.org/fees1/",
+      "title": "Embassy of Haiti, Washington DC (official diplomatic mission) -- tourist visa fee schedule",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: PUBLISHED -- hard requirement sourced to two of Haiti's own diplomatic missions, tier 1. GENUINE FINDING: the long-stay permit's ANNUAL renewal cycle runs 1 October to 30 September regardless of when it was first issued -- a fixed fiscal-year-style window rather than an anniversary-of-issuance renewal, per the Canada embassy source. Haiti's Ministry of Foreign Affairs' own consular pages, and a general visa-free nationality list comparable to what other countries in this dataset show, were not independently located -- most consular sources describe only fees and the exemption/on-arrival mechanism rather than a full country list; this file models what was confirmed rather than inferring a complete list. switchable_to left populated since the SAME permis de sejour process (see ht_work_permit.json, ht_investor_residence.json, ht_family_reunification.json) is what a visitor converts to before the 90-day window closes."
+}

@@ -1,0 +1,86 @@
+{
+  "id": "gh_citizenship_by_marriage",
+  "country": "GH",
+  "name": "Citizenship by Registration (Marriage)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "foreign_woman_married_to_ghanaian_man",
+      "name": "Foreign woman married to a Ghanaian man",
+      "requirements": [
+        {
+          "id": "ghcm_foreign_woman_immediate",
+          "attribute": "is_foreign_woman_married_to_ghanaian_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign woman who marries a Ghanaian man may acquire Ghanaian nationality on marriage, without an additional residency requirement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_ghanaian_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "foreign_man_married_to_ghanaian_woman",
+      "name": "Foreign man married to a Ghanaian woman",
+      "requirements": [
+        {
+          "id": "ghcm_foreign_man_permanent_residency",
+          "attribute": "is_foreign_man_married_to_ghanaian_woman_with_permanent_residency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign man married to a Ghanaian woman must first establish permanent residency in Ghana before he can acquire citizenship through the marriage -- registration remains discretionary, and marriage alone does not guarantee citizenship.",
+          "fix_path": "Establish permanent residency in Ghana while the marriage subsists.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_ghanaian_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of permanent residency in Ghana (foreign-husband track)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_ghanaian_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Ghanaian_nationality_law",
+      "title": "Wikipedia -- Ghanaian nationality law: 'a foreign women who married a Ghanaian man could immediately acquire nationality', while a foreign man married to a Ghanaian woman must establish permanent residency in Ghana before acquiring citizenship through marriage",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "ghanacitizenship_com_act_591",
+      "tier": 3,
+      "url": "https://ghanacitizenship.com/ghana-citizenship-act-explained/",
+      "title": "Ghana Citizenship (private legal-service site) -- Ghana Citizenship Act 2000 (Act 591), Section 10: marriage route described as discretionary approval for spouses of Ghanaian citizens, with marriage alone not guaranteeing citizenship -- read alongside the Wikipedia source, this appears to describe the foreign-husband track specifically rather than a uniformly gender-neutral rule",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). STATUS: DRAFT -- tier-3/tier-4 sourcing only; Ghana's own Act 591 text was not directly fetchable in this build. MARQUEE GENDERED FINDING, CONSISTENT WITH A PATTERN SEEN REPEATEDLY IN THIS DATASET (Qatar, Bahrain, Nigeria, Sudan, Somalia, Pakistan): a foreign woman marrying a Ghanaian man acquires citizenship immediately on marriage with no residency requirement, while a foreign man marrying a Ghanaian woman must first establish permanent residency in Ghana -- and even then, per the ghanacitizenship.com source, registration remains a discretionary Presidential-approval process rather than an entitlement. This is one of the more starkly asymmetric marriage provisions found in this dataset: one path is close to automatic, the other requires establishing an entirely separate legal status (permanent residency) first, with no guarantee of citizenship even then. Two independent tier-3/4 sources agree on the direction of the asymmetry, though neither could be corroborated against the Act's primary text directly in this build."
+}

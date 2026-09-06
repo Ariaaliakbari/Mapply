@@ -1,0 +1,69 @@
+{
+  "id": "ht_citizenship_by_descent",
+  "country": "HT",
+  "name": "Citizenship by Descent (Nationality of Origin)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htcd_haitian_parent",
+          "attribute": "has_haitian_citizen_parent_born_haitian",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution of Haiti (1987), Article 11: nationality of origin belongs to any individual born of a Haitian father or mother who were THEMSELVES born Haitian and had never renounced that nationality at the time of the child's birth -- a two-generation standard, more demanding than a simple one-parent rule, since it requires the transmitting parent to also have been Haitian by birth rather than by naturalization or marriage. Both mother and father transmit equally under this article. An earlier 1983 constitutional provision had also granted citizenship to a person born in Haiti of non-Haitian parents, conditioned on the person 'descending from the Black race' -- a historical racial-eligibility clause from that specific, since-superseded constitutional text, noted here as a documented legal-historical fact.",
+          "fix_path": "Establish that at least one parent was themselves born Haitian and had not renounced Haitian nationality before the applicant's birth.",
+          "fix_time_months": null,
+          "source_id": "vancecenter_ht_nationality_laws"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Haitian nationality of origin (not by naturalization)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "vancecenter_ht_nationality_laws",
+      "tier": 3,
+      "url": "https://www.vancecenter.org/wp-content/uploads/Haitian_Laws_on_Statelessness.pdf",
+      "title": "Vance Center (NGO legal-analysis document) -- Haiti's nationality laws, Article 11 of the 1987 Constitution, historical 1983 provision",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "wikipedia_ht_constitution_2012",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Constitution_of_Haiti",
+      "title": "Wikipedia -- confirms the 2012 constitutional amendment reversed the 1987 dual-nationality ban, currently in force",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: DRAFT -- sourced to an NGO legal-analysis PDF, tier 3, corroborated by Wikipedia, tier 4; the constitution's own text could not be directly fetched in this build (mjp.univ-perp.fr's TLS certificate failed to verify) -- disclosed gap. IMPORTANT, ACTIVELY CORRECTED FINDING: the source PDF states Article 15 of the 1987 Constitution banned dual nationality 'in no case' -- but a 2012 constitutional amendment (promulgated by President Martelly, in force per Wikipedia and an independent Wikinews report from July 2012) REVERSED this, permitting Haitians to hold a second nationality and (short of the presidency, prime ministership, senate, or lower house) run for office. dual_citizenship_allowed is therefore set to TRUE for HAITIAN-BORN citizens, based on the 2012 reform -- but contrast this with ht_citizenship_naturalisation.json, where a FOREIGNER naturalizing INTO Haitian citizenship must still take an oath renouncing their prior nationality; the two directions are not symmetric. No source found in this build discusses whether the 2012 amendment's validity has been legally contested."
+}

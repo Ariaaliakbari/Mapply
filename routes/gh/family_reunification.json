@@ -1,0 +1,81 @@
+{
+  "id": "gh_family_reunification",
+  "country": "GH",
+  "name": "Residence Permit (Dependant)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse",
+      "name": "Spouse of an expatriate or a Ghanaian who holds a foreign passport",
+      "requirements": [
+        {
+          "id": "ghfr_4yr_marriage",
+          "attribute": "months_married",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Must have been married for more than 4 years to qualify as a dependant spouse.",
+          "fix_path": "Remain married for more than 4 years.",
+          "fix_time_months": 48,
+          "source_id": "gis_dependant_permit"
+        }
+      ]
+    },
+    {
+      "id": "child",
+      "name": "Child dependant",
+      "requirements": [
+        {
+          "id": "ghfr_parental_consent",
+          "attribute": "has_parental_consent_documentation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a parental consent letter and the child's birth certificate; a court-issued statutory declaration from the guardian is required where applicable.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_dependant_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (spouse track)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank statements or indenture copies", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two guarantors with Ghanaian identification", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Signed bond form at the nearest Immigration Office", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source located in this build; tied to the principal's residence status",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gis_dependant_permit",
+      "tier": 1,
+      "url": "https://gis.gov.gh/service/residence-permit-dependant/",
+      "title": "Ghana Immigration Service -- Residence Permit (Dependant): for dependants of expatriates and Ghanaian nationals who hold foreign passports, including spouses, children, and other dependants; spouses must have been married more than 4 years; requires bank statements/indenture, parental consent letter and birth certificate (children), court statutory declaration from guardian where applicable, two Ghanaian guarantors, signed bond form",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). Published on tier-1 sourcing (Ghana Immigration Service). DISTINCTIVE, PRECISE FIGURE: a 4-year-plus marriage duration requirement for the spousal Dependant Permit itself -- an unusually specific and long threshold for what is normally a fast, low-barrier accompanying-spouse permit in most other countries built in this dataset (contrast e.g. India's X-visa, available immediately on marriage with no waiting period). This is distinct from gh_citizenship_by_marriage.json (actual citizenship via marriage, a separate and even more demanding process)."
+}

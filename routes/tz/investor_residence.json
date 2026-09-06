@@ -1,0 +1,81 @@
+{
+  "id": "tz_investor_residence",
+  "country": "TZ",
+  "name": "Class A Residence Permit (Investors)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tzir_min_investment",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 300000,
+          "hard": true,
+          "blocker_text": "Class A residence permit applicants (investors/business owners in industries, mining, forestry, social services, or business ventures) must show proof of investment or business assets of at least USD 300,000, plus business registration documents and tax certificates, a CV, passport copies, and sectoral approvals where required.",
+          "fix_path": "Register the business and document at least USD 300,000 in investment/assets before applying for the Class A permit.",
+          "fix_time_months": null,
+          "source_id": "tzembassy_classabc"
+        },
+        {
+          "id": "tzir_tic_registration_capital",
+          "attribute": "tic_registered_investment_amount_usd",
+          "operator": ">=",
+          "value": 500000,
+          "hard": false,
+          "blocker_text": "Separately, registering the project with the Tanzania Investment Centre (TIC) -- which unlocks TIC's own incentive package -- requires a minimum USD 500,000 capital investment for foreign investors (USD 300,000 for local investors), a business plan/feasibility study, land evidence, proof of financing, a board resolution, and a USD 1,100 registration fee. TIC registration is not itself confirmed in the sources reviewed as a strict precondition for the Class A permit, so this is modeled as a soft (non-blocking) requirement reflecting the higher bar for the TIC-incentivized track specifically.",
+          "fix_path": "Register the project with TIC if pursuing TIC incentives, documenting at least USD 500,000 in capital.",
+          "fix_time_months": null,
+          "source_id": "tic_faq_criteria"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business registration documents and tax certificates", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of investment/assets (USD 300,000+)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Sectoral approvals (where applicable)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tzembassy_classabc",
+      "tier": 1,
+      "url": "https://www.us.tzembassy.go.tz/services/residence-and-work-permits-class-a-b-and-c",
+      "title": "Embassy of Tanzania, Washington D.C. -- Class A residence permit for investors/business owners: USD 300,000 minimum investment/assets, business registration and tax documents, sectoral approvals; valid 2 years at USD 2,000 per issuance/renewal",
+      "accessed_at": "2026-09-05"
+    },
+    {
+      "id": "tic_faq_criteria",
+      "tier": 1,
+      "url": "https://www.tic.go.tz/faqs/what-criteria-do-investors-need-to-have-to-register-the-project-with-the-center",
+      "title": "Tanzania Investment Centre (TIC), the government investment-promotion authority -- FAQ stating a USD 500,000 minimum capital requirement for foreign investors (USD 300,000 for local investors) to register a project and access TIC incentives",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tanzania). STATUS: PUBLISHED -- both sources are Tanzanian government bodies, tier 1. GENUINE STRUCTURAL FINDING WORTH FLAGGING RATHER THAN COLLAPSING INTO ONE NUMBER: two different minimum-capital figures exist depending on which government process is being used -- USD 300,000 is the Immigration Department's own Class A residence-permit threshold, while USD 500,000 is the separate Tanzania Investment Centre's threshold for foreign investors seeking TIC's incentive package specifically (tax/duty benefits, land facilitation, etc.). This build could not confirm whether TIC registration is a mandatory precondition for the Class A permit or a parallel, optional track for investors who want the extra incentives -- modeled the TIC figure as a soft (non-blocking) requirement rather than asserting a link the sources don't establish. family_can_work set false since dependents may be endorsed for residence on the permit but no independent work right for them was described in the sources reviewed."
+}

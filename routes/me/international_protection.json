@@ -1,0 +1,62 @@
+{
+  "id": "me_international_protection",
+  "country": "ME",
+  "name": "Asylum / International Protection",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "meip_timely_formal_application",
+          "attribute": "declared_intention_and_lodged_application_within_15days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants must first declare an intention to seek asylum, orally or in writing, at a border crossing, police station, or the Reception Centre in Bozaj -- this grants legal residence for 15 days and triggers biometric/personal data collection. Within those 15 days, a formal application must be lodged with the Directorate for Asylum (Ministry of the Interior) in Podgorica, or legal residence rights are lost. An interview follows (with interpreter support), and a decision is due within 6 months, extendable up to 21 months maximum. Applicants must remain in Montenegro during proceedings and report any address change within 3 days.",
+          "fix_path": "Declare intent to seek asylum immediately upon arrival/encounter, then lodge the formal application with the Directorate for Asylum within 15 days.",
+          "fix_time_months": null,
+          "source_id": "unhcr_montenegro_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Formal written asylum application", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Biometric registration", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite for recognized status; up to 21 months for a first-instance decision on the underlying claim",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "must remain in Montenegro during proceedings; report address changes within 3 days",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_montenegro_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/montenegro/asylum-in-montenegro-and-how-to-apply/",
+      "title": "UNHCR Montenegro -- describes the domestic asylum process: intention declaration and 15-day filing deadline, the Ministry of the Interior's Directorate for Asylum as deciding authority, interview process, 6-month (up to 21-month) decision timeline, and rights during proceedings (accommodation, healthcare, education, work after 9 months, free legal aid)",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Montenegro). STATUS: DRAFT -- sourced to UNHCR's own Montenegro guidance (tier 2), not the primary Law on Asylum and Temporary Protection itself (Montenegro's government portal likely hosts it, but it was not located/fetched in this build). GENUINELY POSITIVE, FUNCTIONING SYSTEM: Montenegro has a real domestic asylum law with defined timelines, state-provided accommodation and food during proceedings, primary/secondary education access, free legal aid, and -- notably -- a right to work after 9 months of the application being lodged (work_rights set 'restricted' to reflect this delayed-but-real right, not an outright denial). This joins Kazakhstan as one of the more functional asylum systems built in this dataset, in contrast to Lebanon, Tunisia, Kuwait, India, Pakistan, and Sri Lanka's absent or dead-letter frameworks built earlier in this session. As an EU-candidate country, Montenegro's asylum system is shaped by EU accession requirements (UNHCR is quoted elsewhere as having welcomed the original asylum law's passage), so this framework should be understood as actively evolving rather than a static, long-settled system. family_can_work left null since dependents' own work-rights timeline was not detailed separately from the principal applicant's."
+}

@@ -1,0 +1,65 @@
+{
+  "id": "ba_citizenship_naturalisation",
+  "country": "BA",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bacn_3yr_pr_plus_conduct",
+          "attribute": "months_permanent_residence_in_ba",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "The Law on Citizenship of Bosnia and Herzegovina requires at least 3 years of permanent residence in BiH, working knowledge of one of the official languages, a clean criminal record over the preceding 8 years, stable and legal income sufficient for self-support, and renunciation of prior nationality unless a bilateral treaty exempts the applicant. BiH does not currently have such treaties in place with Germany, Austria, or Switzerland, meaning nationals of those countries face full renunciation under the standard track.",
+          "fix_path": "Hold permanent residence in BiH for 3 years, demonstrate language ability and a clean 8-year record, show stable income, and renounce prior nationality unless treaty-exempt.",
+          "fix_time_months": 36,
+          "source_id": "advokat_prnjavorac_ba_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Permanent residence permit (3+ years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Language proficiency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background check covering 8 years", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of stable, legal income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of renunciation of prior nationality (unless treaty-exempt)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "3 years permanent residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "advokat_prnjavorac_ba_citizenship",
+      "tier": 3,
+      "url": "https://advokat-prnjavorac.com/",
+      "title": "Advokat Prnjavorac (Bosnian law firm/legal-text portal) -- Law on Citizenship of BiH, standard naturalization requirements, 8-year clean-record window, renunciation and named treaty gaps (Germany/Austria/Switzerland)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bosnia and Herzegovina). STATUS: DRAFT -- sourced to a law firm/legal-text portal, tier 3; the Zakon o drzavljanstvu BiH's primary text and the Ministry of Civil Affairs' own naturalization guidance (mhrr.gov.ba's PDF returned a 404 in this build) were not independently fetched -- disclosed, systemic gap across this country's settled-category files. dual_citizenship_allowed set to false as the default case; treaty-exempt nationals would differ, but BiH's coverage gap with Germany, Austria, and Switzerland is itself a genuine, specific, named finding rather than a general assumption. MARQUEE STRUCTURAL DISCLOSURE, fullest treatment in this country's build: Bosnia and Herzegovina operates a dual-level citizenship system. State-level BiH citizenship, governed by the Zakon o drzavljanstvu BiH and modeled in this file, is what this dataset's naturalization/marriage/descent routes describe. Separately, every BiH citizen also holds citizenship of one of the country's two constituent entities -- the Federation of Bosnia and Herzegovina or Republika Srpska -- each administered under its own entity-level rules; a newly naturalized state-level citizen must also be registered into an entity citizenship (typically tied to place of residence), and this entity-level procedure was not independently researched in this build. This two-tier structure is unique among the countries built in this dataset so far and materially affects how 'citizenship' functions in BiH in practice, beyond what a single-tier route file can fully capture."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "tn_visitor_visa",
+  "country": "TN",
+  "name": "Tourist/Visit Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tnvv_visa_or_exemption",
+          "attribute": "has_valid_entry_authorization_or_exemption",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Nationals of a large bilaterally-negotiated exemption list (reported at 67+ countries, including the EU, much of the Gulf, and several African/American/Asian states) may enter visa-free for a limited stay; other nationalities must obtain a visa through a Tunisian consulate before travel -- Tunisia does not yet have a functioning e-visa system as of this build.",
+          "fix_path": "Apply for a visa at a Tunisian consulate before travel, if not on the visa-exemption list.",
+          "fix_time_months": null,
+          "source_id": "tunisiepromo_visa_list"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and return ticket", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "commonly reported as up to 90 days for the main visa-exempt list; not confirmed against a government source in this build",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tunisiepromo_visa_list",
+      "tier": 4,
+      "url": "https://www.tunisiepromo.tn/details-blog/32/passeport-tunisien-2026-67-pays-accessibles-sans-visa",
+      "title": "TunisiePromo (private Tunisian travel/news site) -- visa policy overview: reports a bilateral visa-exemption arrangement covering roughly 67+ countries for short stays; separately reports Tunisia is still developing (not yet operating) an electronic visa system as of this build",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tunisia). STATUS: DRAFT -- this build could not locate a working, fetchable Tunisian government page (Ministry of Interior, Ministry of Foreign Affairs, or a dedicated visa portal) covering visa policy at the level of detail this dataset normally requires; every search returned only private travel-industry or news sites (tier 3/4). This is a genuine, disclosed sourcing gap rather than an assumption that no such page exists -- Tunisia's government web presence was notably harder to locate and fetch in this build than in most other countries built in this dataset, worth a dedicated follow-up attempt. GENUINE STRUCTURAL FINDING: unlike most countries built in this dataset, Tunisia does not yet operate an e-visa system -- a 'projet de visa électronique' is reported as still in development, meaning visa nationals must still apply in person or by post through a consulate."
+}

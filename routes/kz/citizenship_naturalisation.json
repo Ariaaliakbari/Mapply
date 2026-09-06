@@ -1,0 +1,115 @@
+{
+  "id": "kz_citizenship_naturalisation",
+  "country": "KZ",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kzcn_5yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' continuous residence in Kazakhstan immediately preceding the application.",
+          "fix_path": "Accumulate 5 years' continuous residence.",
+          "fix_time_months": 60,
+          "source_id": "egov_become_citizen"
+        },
+        {
+          "id": "kzcn_kazakh_elementary",
+          "attribute": "has_elementary_kazakh_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Elementary-level knowledge of the Kazakh language.",
+          "fix_path": "Pass an elementary Kazakh-language assessment.",
+          "fix_time_months": null,
+          "source_id": "egov_become_citizen"
+        },
+        {
+          "id": "kzcn_constitution_history",
+          "attribute": "has_constitution_and_history_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Understanding of the Constitution and history of Kazakhstan, assessed as part of the application.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "egov_become_citizen"
+        },
+        {
+          "id": "kzcn_renounce_prior_citizenship",
+          "attribute": "has_renounced_prior_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Notarized renunciation of prior citizenship is required, since Kazakhstan does not generally permit dual citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "egov_become_citizen"
+        }
+      ]
+    },
+    {
+      "id": "kandas_ethnic_kazakh",
+      "name": "Kandas (ethnic Kazakh repatriates) and related simplified categories",
+      "requirements": [
+        {
+          "id": "kzcn_kandas_status",
+          "attribute": "has_kandas_or_related_simplified_status",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Kandas (ethnic Kazakhs returning to their historic homeland), rehabilitated victims of political repression and their descendants, ethnic Kazakhs enrolled at Kazakhstani universities, and widows of Kazakhstani citizens qualify for an expedited procedure with a maximum 3-month consideration period, bypassing the standard 5-year residence requirement. Citizens of Russia, Belarus, and Kyrgyzstan may also qualify for accelerated registration under bilateral agreements, and -- uniquely among the simplified categories -- need not renounce their existing citizenship if they have close relatives who are Kazakhstani citizens.",
+          "fix_path": "Confirm eligibility for the Kandas or an equivalent simplified/bilateral category before applying.",
+          "fix_time_months": null,
+          "source_id": "egov_become_citizen"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous residence (standard route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Kazakh-language assessment result", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "State duty payment (1 MCI)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarized renunciation of prior citizenship (standard route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Kandas/ethnic-Kazakh or bilateral-agreement status proof (simplified route)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 years' continuous residence (standard route only)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "egov_become_citizen",
+      "tier": 1,
+      "url": "https://egov.kz/cms/en/articles/for_foreigners/how_to_become_kz_citizen",
+      "title": "Electronic Government of the Republic of Kazakhstan (egov.kz) -- naturalization requirements: 5 years' residence, elementary Kazakh, Constitution/history knowledge, state duty (1 MCI), renunciation of prior citizenship, and simplified 3-month-maximum tracks for Kandas ethnic-Kazakh repatriates, rehabilitated-repression descendants, ethnic-Kazakh university students, widows of citizens, and Russia/Belarus/Kyrgyzstan nationals under bilateral agreements",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kazakhstan). STATUS: PUBLISHED -- direct e-government sourcing, tier 1. GENUINELY DISTINCTIVE FINDING, THE MARQUEE ROUTE FOR THIS COUNTRY: the Kandas (ethnic-Kazakh repatriate) programme is Kazakhstan's equivalent of an ancestry-based fast track, but modeled here as a requirement_group within naturalization rather than a separate ancestry-category file, since the source frames it as an expedited NATURALIZATION procedure (3-month cap) rather than an automatic descent-based acquisition -- unlike, for example, Ghana's Right of Abode or Pakistan's POC, which are their own distinct legal categories. The bilateral Russia/Belarus/Kyrgyzstan carve-out is also notable for explicitly NOT requiring renunciation of existing citizenship when the applicant has close Kazakhstani-citizen relatives -- the one meaningful exception to Kazakhstan's otherwise strict, consistently-enforced dual-citizenship ban found anywhere in this country's file set. dual_citizenship_allowed is set false at the route level to reflect the standard route's binding renunciation requirement; the narrow CIS-bilateral exception is disclosed here in prose rather than modeled as a separate boolean since it applies only to a specific nationality subset within the Kandas/simplified group, not the route generally."
+}

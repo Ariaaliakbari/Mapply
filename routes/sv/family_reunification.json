@@ -1,0 +1,69 @@
+{
+  "id": "sv_family_reunification",
+  "country": "SV",
+  "name": "Temporary Residence for Family Reunification",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "direct_family_of_resident",
+      "name": "Direct family member of a resident",
+      "requirements": [
+        {
+          "id": "svfr_direct_family",
+          "attribute": "is_direct_family_of_resident",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ley Especial de Migracion y Extranjeria, Article 81: 'residentes temporales por matrimonio o union' (temporary residence for marriage or civil union) is a named authorized category. Separately, El Salvador's migration authority confirms that having direct family members who already hold resident status in the country is itself a recognized basis for a foreigner to pursue temporary residence.",
+          "fix_path": "Apply for temporary residence as the spouse, civil-union partner, or direct family member of a Salvadoran resident, submitting the application form for that category.",
+          "fix_time_months": null,
+          "source_id": "sela_sv_ley_migracion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of civil union", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of relationship for other direct family members", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sela_sv_ley_migracion",
+      "tier": 2,
+      "url": "https://www.sela.org/wp-content/uploads/2023/07/ley-especial-de-migracion-y-extranjeria-el-salvador.pdf",
+      "title": "SELA (Latin American and Caribbean Economic System) -- hosted primary legal text of El Salvador's Ley Especial de Migracion y Extranjeria, Article 81 (authorized temporary-residence categories including marriage/union)",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "migracion_gob_sv_temp_residence",
+      "tier": 1,
+      "url": "https://www.migracion.gob.sv/noticias/como-puedo-convertirme-en-residente-temporal-en-el-salvador/",
+      "title": "Direccion General de Migracion y Extranjeria de El Salvador -- confirms 'direct family members who are residents' as a recognized temporary-residence category",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: DRAFT -- the specific statutory category name is sourced to SELA's hosted text of the migration law (tier 2, not El Salvador's own Official Gazette directly); the government's own page (tier 1) confirms the general basis but not the specific requirements, fees, or duration. This is a separate route from sv_citizenship_by_marriage.json: this file covers RESIDENCE by family relationship (including for same-sex or opposite-sex civil unions per the law's 'union' language), the other covers the specific path to Salvadoran CITIZENSHIP via marriage (2 years residence, before or after the marriage -- see that file). pr_after_months set 60 per the general 5-year naturalization rule, not independently confirmed as applying automatically from this specific permit."
+}

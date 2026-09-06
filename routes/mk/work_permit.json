@@ -1,0 +1,70 @@
+{
+  "id": "mk_work_permit",
+  "country": "MK",
+  "name": "Employer-Sponsored Work and Residence Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mkwp_employer_registration",
+          "attribute": "has_registered_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Employment Agency of the Republic of North Macedonia (ESARM/AV) issues work permits enabling an employer to conclude an employment contract with a foreigner. Under 2025 amendments (effective 26 Sept 2025), the employer must register the employment with ESARM within 30 days (previously 90), and provide a notarized statement guaranteeing the foreign worker's stay-related costs and potential removal expenses. A single criminal-record certificate (from the country of residence, issued within the prior 12 months) now suffices, down from requiring one from both the citizenship and residence countries. Temporary residence for employment purposes is typically granted for around 1 year, renewable. Seconded employees under contracts between unaffiliated companies face a 180-day cap (extendable to 1 year for designated strategic-partner entities). The Employment Agency's labor-market opinion and quota rules are waived entirely for government-designated 'strategic projects.'",
+          "fix_path": "Secure a Macedonian employment contract, have the employer register it with ESARM within 30 days, and obtain the temporary residence permit for employment.",
+          "fix_time_months": 12,
+          "source_id": "karanovic_mk_2025_amendments"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate (country of residence, within 12 months)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's notarized cost-guarantee statement", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "approximately 1 year, renewable (180 days for unaffiliated-company secondments, extendable to 1 year for strategic partners)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "karanovic_mk_2025_amendments",
+      "tier": 3,
+      "url": "https://www.karanovicpartners.com/news/temporary-residence-and-employment-of-foreigners-in-north-macedonia-key-changes-under-the-2025-amendments/",
+      "title": "Karanovic & Partners (law firm) -- summary of North Macedonia's 2025 amendments to the Law on Foreigners governing temporary residence and employment: documentation simplification, 30-day employer registration deadline, labor-market-test waivers for strategic projects, secondment caps",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "av_gov_mk_employment",
+      "tier": 1,
+      "url": "https://av.gov.mk/employment-of-foreign-citizens.nspx",
+      "title": "Agencija za Vrabotuvanje (Employment Agency of the Republic of North Macedonia) -- confirms ESARM's role issuing work permits and exempt categories (family of citizens, ethnic Macedonian descendants, refugees)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- the substantive standard-route requirement (registration deadline, documentation, secondment caps) is sourced to a law firm (tier 3); the government's own ESARM page (tier 1) was fetched but described only the categories exempted from the standard labor-market-tested process (close family of citizens, ethnic-Macedonian descendants to the third generation, refugees/asylum seekers), not the standard employer-sponsored route's own mechanics -- so the hard requirement itself stays tier-3-sourced and the file stays draft. pr_after_months set 60 based on North Macedonia's general rule (confirmed via a separate source used in mk_family_reunification.json) that permanent residence requires 5 continuous years on temporary residence -- not independently re-confirmed as applying specifically to this employment-based permit in this build. family_can_work left null since neither source addressed dependents' independent work rights."
+}

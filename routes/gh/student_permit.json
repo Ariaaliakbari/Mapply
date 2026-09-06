@@ -1,0 +1,75 @@
+{
+  "id": "gh_student_permit",
+  "country": "GH",
+  "name": "Residence Permit (Student)",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ghsp_admission",
+          "attribute": "has_admission_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Admission to a recognized Ghanaian educational institution.",
+          "fix_path": "Secure admission at a recognized Ghanaian institution.",
+          "fix_time_months": null,
+          "source_id": "gis_student_permit"
+        },
+        {
+          "id": "ghsp_medical_and_police",
+          "attribute": "has_medical_and_police_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Medical report from a Ghana Immigration Service-approved clinic and police clearance are required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_student_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Admission letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical report (Ghana Immigration Service clinic)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport with bio-data page", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source located in this build; typically tied to course duration and renewed",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["gh_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "gis_student_permit",
+      "tier": 1,
+      "url": "https://gis.gov.gh/service/residence-permit-student/",
+      "title": "Ghana Immigration Service -- Residence Permit (Student): requires institutional admission, medical report from a GIS-approved clinic, police clearance, passport bio-data page",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). Published on tier-1 sourcing (Ghana Immigration Service). Duration/validity was not specified in the source located; disclosed as a gap rather than guessed."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "ve_citizenship_naturalisation",
+  "country": "VE",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "general",
+      "name": "General procedure",
+      "requirements": [
+        {
+          "id": "vecn_10yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "10 continuous years of legal residence, plus passing a citizenship test.",
+          "fix_path": "Accumulate 10 continuous years' legal residence and pass the citizenship test.",
+          "fix_time_months": 120,
+          "source_id": "wikipedia_ve_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "expedited_ibero_american",
+      "name": "Expedited procedure (Spain, Portugal, Italy, Latin American/Caribbean nationals)",
+      "requirements": [
+        {
+          "id": "vecn_5yr_residence_ibero_american",
+          "attribute": "months_resident_ibero_american_national",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Nationals of Spain, Portugal, Italy, or any Latin American or Caribbean country qualify after only 5 continuous years of legal residence -- half the standard track. This is a genuine, real reduction tied to national origin, not a general rule.",
+          "fix_path": "Accumulate 5 continuous years' legal residence as a qualifying national, and pass the citizenship test.",
+          "fix_time_months": 60,
+          "source_id": "wikipedia_ve_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence (5 or 10 years depending on nationality)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passing result on the citizenship test", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "continuous legal residence for the qualifying period",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_ve_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Venezuelan_nationality_law",
+      "title": "Wikipedia -- 10-year general naturalization track, the 5-year expedited track for Spanish/Portuguese/Italian/Latin American/Caribbean nationals, the citizenship test, and Article 34's dual-nationality allowance",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Venezuela). STATUS: DRAFT -- tier-4 sourcing only; Venezuela's own Ley de Nacionalidad y Ciudadania text and Constitution Article 34 were not independently fetched from a government source in this build (a mppre.gob.ve page on naturalization returned a 404 error). GENUINELY DISTINCTIVE FINDING: the 5-year Ibero-American/Latin American/Caribbean expedited track is a real, historically-rooted regional preference (reflecting Venezuela's long-standing 'hermano latinoamericano' framing), structurally similar in shape to Kuwait's Arab-nationality naturalization preference and Senegal's ECOWAS-adjacent treatment built elsewhere in this dataset, though here applied as a residency-length reduction rather than a full discretionary bypass. dual_citizenship_allowed set true per Article 34's stated allowance -- if accurate, this is a genuine positive finding distinguishing Venezuela from most naturalization-renunciation regimes built in this dataset (e.g. Kuwait, Uzbekistan, DR Congo), though the constitutional citation itself should be verified directly against Venezuela's government gazette in a follow-up given the tier-4-only sourcing here. GOVERNANCE-TRANSITION CAVEAT: as with every route in this Venezuela build, whether and how naturalization decisions are currently being processed under the Rodriguez-led acting government (see ve_visitor_visa.json's notes) was not confirmed."
+}

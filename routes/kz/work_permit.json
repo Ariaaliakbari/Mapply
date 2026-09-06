@@ -1,0 +1,70 @@
+{
+  "id": "kz_work_permit",
+  "country": "KZ",
+  "name": "Foreign Labor Quota Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kzwp_employer_quota_permit",
+          "attribute": "has_employer_quota_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must obtain a permit from the local executive body, within the annual foreign-labor quota set by profession/category (employers apply by 1 October each year for the following year; quotas are finalized and distributed by 1 January). Since 1 September 2025, employers must also post the vacancy on the Electronic Labor Exchange for 15 calendar days and confirm no suitable local candidate was found (labor market test), applying via the migration.enbek.kz portal. Applications can be rejected if local labor could fill the role or the employer has prior labor-law violations. Businesses with 20+ employees must also meet Kazakh-national staffing ratios: at least 70% of heads/deputy-heads and at least 90% of experts/qualified workers.",
+          "fix_path": "Have the employer secure a quota-based work permit, complete the 15-day labor market test, and meet Kazakh-staffing-ratio requirements if applicable.",
+          "fix_time_months": null,
+          "source_id": "adilet_quota_rules"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's quota-based work permit application", "difficulty": "hard", "typical_time_days": null },
+    { "document": "15-day Electronic Labor Exchange vacancy posting confirmation", "difficulty": "moderate", "typical_time_days": 15 },
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified precisely in the sources reviewed; tied to the annual quota cycle",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "adilet_quota_rules",
+      "tier": 1,
+      "url": "https://adilet.zan.kz/eng/docs/P1600000802",
+      "title": "\"Adilet\" Legal Information System (Kazakhstan's official government legal database) -- Rules for establishing and distributing the foreign-labor quota: employer application timeline (by 1 October), quota finalization (by 1 January), rejection grounds, and the list of foreigners exempted from needing a permit (EAEU citizens, business immigrants, refugees/asylum seekers, humanitarian-grounds cases, part-time student workers, international-organization staff, transport crews, performers/athletes/coaches, senior executives, short business trips under 120 days, and special-visa investors)",
+      "accessed_at": "2026-09-05"
+    },
+    {
+      "id": "fragomen_kz_work_permit_2025",
+      "tier": 3,
+      "url": "https://www.fragomen.com/insights/kazakhstan-new-work-permit-process-rules-including-labor-market-test-and-new-online-portal.html",
+      "title": "Fragomen (global immigration law firm) -- describes the 1 September 2025 labor-market-test rule (15-day Electronic Labor Exchange posting), the new migration.enbek.kz portal, and the expanded Kazakh-staffing quota now applying to employers with 20+ employees (70% heads/deputies, 90% experts/qualified workers)",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kazakhstan). STATUS: PUBLISHED -- the core quota mechanism is sourced to Kazakhstan's own official legal database (Adilet), tier 1, with the 2025 procedural updates (labor market test, new portal, expanded staffing ratios) cross-referenced from a global immigration law firm (tier 3) since Adilet's own text as fetched in this build reflected the base regulation rather than its most recent amendment. GENUINE, DISTINCTIVE FINDING: the exemption list is unusually broad and specific -- it explicitly names refugees, asylum seekers, and people present on humanitarian grounds as NOT needing a work permit at all, a notable cross-reference to kz_international_protection.json's finding that Kazakhstan's asylum law grants recognized refugees 'freedom of employment.' family_can_join set false (not asserted true without a source) and family_can_work left null since dependent rights specific to this permit type were not detailed in the sources reviewed (see kz_family_reunification.json for the separate family-visa mechanism)."
+}

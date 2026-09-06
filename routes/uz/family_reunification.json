@@ -1,0 +1,69 @@
+{
+  "id": "uz_family_reunification",
+  "country": "UZ",
+  "name": "Family Reunification Residence",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uzfr_family_of_citizen_or_resident",
+          "attribute": "is_family_member_of_citizen_or_resident",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Family members of Uzbekistan citizens, and partners/relatives of foreign nationals already holding temporary residence, may apply for a family-based residence permit. Spouses of citizens or residents can move to permanent residence after 5 years of marriage; guardians may register minor children under 18.",
+          "fix_path": "Apply with proof of the family relationship and the sponsor's citizenship or valid residence status.",
+          "fix_time_months": null,
+          "source_id": "directus_uzbekistan_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of family relationship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's proof of citizenship or valid residence status", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "variable; spouses can reach permanent residence after 5 years of marriage",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "directus_uzbekistan_immigration",
+      "tier": 4,
+      "url": "https://directusimmigration.com/uzbekistan-immigration/",
+      "title": "Direct US Immigration (private immigration-consultancy site) -- family reunification and marriage-based permanent residence categories, 5-year marriage-to-PR threshold",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "eimmigration_uz_residence_permit",
+      "tier": 4,
+      "url": "https://e-immigration.uz/immigration-news/270-apply-for-a-residence-permit-in-uzbekistan.html",
+      "title": "e-immigration.uz (private immigration-services site) -- corroborates family-reunification and marriage-based permanent-residence categories and the 5-year threshold",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: DRAFT -- both sources are tier-4 private immigration-consultancy sites; no Ministry of Internal Affairs/migration-agency government portal for this specific route was locatable/fetchable in this build, and both source pages were themselves described by the fetch tool as incomplete (referencing document checklists not actually listed). This route is modeled thinly as a result -- treat duration, exact documentary requirements, and work-rights details as indicative rather than confirmed. leads_to_pr/pr_after_months reflect the 5-year marriage-to-permanent-residence pathway both sources describe, distinct from Uzbekistan's general 5-year naturalization residency clock (see uz_citizenship_naturalisation.json) -- these are two different clocks measuring different things (residence permit upgrade vs. citizenship), not asserted as the same requirement."
+}

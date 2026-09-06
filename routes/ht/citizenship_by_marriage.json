@@ -1,0 +1,64 @@
+{
+  "id": "ht_citizenship_by_marriage",
+  "country": "HT",
+  "name": "Reduced-Residence Naturalization for a Spouse of a Haitian Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htcm_2yr_residence_married",
+          "attribute": "months_residence_in_haiti",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Haiti has NO standalone marriage-based citizenship-acquisition mechanism -- marrying a Haitian citizen does not itself confer or fast-track nationality as a matter of right. What marriage DOES change is the residence threshold within the ordinary naturalization process (Decree of 6 November 1984): the standard 5-year legal-residence requirement is reduced to 2 years for a foreigner married to a Haitian citizen (the same 2-year reduction also applies for rendering significant service to Haiti or demonstrating exceptional talent). The applicant still undergoes the Interior Department's morality investigation, and the President still decides by discretionary decree published in the Official Gazette, requiring an oath renouncing prior nationality.",
+          "fix_path": "Marry a Haitian citizen, accumulate 2 years of legal residence, pass the morality investigation, and apply for naturalization under the reduced-residence provision.",
+          "fix_time_months": 24,
+          "source_id": "hdit_cabinet_volmar_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residence permit (permis de sejour)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Residence certificate from municipal magistrate and justice of the peace", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath renouncing prior nationality", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "2 years (reduced from the standard 5, on account of the marriage)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hdit_cabinet_volmar_naturalisation",
+      "tier": 3,
+      "url": "https://hditcabinetvolmar.com/fr/les-conditions-pour-lobtention-de-la-nationalite-haitienne-par-naturalisation/",
+      "title": "HDIT Cabinet Volmar (Haitian law firm) -- naturalization conditions and the 2-year reduced residence for spouses of Haitians, per the Decree of 6 November 1984",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: DRAFT -- sourced to a Haitian law firm's guide, tier 3; the 1984 decree's own Official Gazette (Le Moniteur) publication was not independently fetched. GENUINE, MARQUEE STRUCTURAL FINDING: unlike Mali (automatic acquisition for foreign wives) or Niger (a symmetric one-year option since 2014), Haiti has NO automatic or optional marriage-based acquisition mechanism at all -- a dedicated search for one came back empty, and the vancecenter.org primary-text summary used for ht_citizenship_by_descent.json explicitly notes the nationality law 'contains no provisions addressing acquisition of nationality through marriage.' This file therefore models what marriage actually DOES change in Haiti: a 2-year discount off the standard naturalization residence bar, nothing more -- a real but much weaker benefit than most other countries built in this dataset offer. dual_citizenship_allowed set to FALSE here specifically because naturalization (this route's actual legal mechanism) requires an oath of renunciation -- contrast ht_citizenship_by_descent.json, where dual nationality is allowed for those who are Haitian BY BIRTH, per the 2012 constitutional reform; the two routes are not symmetric on this point."
+}

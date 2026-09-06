@@ -1,0 +1,65 @@
+{
+  "id": "ba_investor_residence",
+  "country": "BA",
+  "name": "Business Owner / Investor Residence Permit",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bair_company_and_work_permit",
+          "attribute": "owns_registered_ba_company_with_work_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "There is no dedicated 'investor visa' in Bosnia and Herzegovina -- foreign nationals obtain residence by registering a company and then securing a work permit through it, following the same sequencing as employer-sponsored work (D Visa before entry, then a work permit, then temporary residence). Minimum share capital to form a limited liability company differs by entity: approximately 1,000 BAM (~EUR 511) in the Federation of Bosnia and Herzegovina, versus a symbolic 1 BAM in Republika Srpska. Registration runs through five stages -- name reservation at the Commercial Court Register, notarized incorporation documents with capital deposited into a temporary account, court registration at the competent cantonal court (5-15 days), registration with tax administration/statistics/health and pension funds, and account activation plus a municipal business license -- typically 20-45 days end to end. All foundation documents and personal records must be notarized and translated into Bosnian/Croatian/Serbian by a sworn translator.",
+          "fix_path": "Register a limited liability company (minimum capital depends on entity: ~1,000 BAM in the Federation, ~1 BAM in Republika Srpska), complete the 5-stage registration process, then obtain a D Visa, work permit, and temporary residence through the company.",
+          "fix_time_months": 2,
+          "source_id": "sonsozpartner_ba_investor"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized passport copy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Power of attorney (if using local representation)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarized, translated company foundation documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of minimum share capital deposited", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "sonsozpartner_ba_investor",
+      "tier": 3,
+      "url": "https://sonsozpartner.com/bosna-hersek-bosnia-and-herzegovina/setting-up-a-company-in-bosnia-and-herzegovina-obtaining-a-residence-permit-comprehensive-guide-for-turkish-and-international-investors/",
+      "title": "Sonsoz Partner (law firm) -- company registration steps, minimum capital by entity, D Visa/work permit/residence sequencing for foreign investors",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bosnia and Herzegovina). STATUS: DRAFT -- sourced to a single law firm guide, tier 3; a first fetch attempt at revizor.ba (the Federation's business registry portal) failed with a DNS/resolution error, and no government-hosted primary source on company-formation-based residence was successfully reached in this build -- a genuine, disclosed research gap, not evidence the mechanism doesn't exist. GENUINE FINDING: Bosnia has no standalone 'investor visa' category -- residence via business ownership runs entirely through the same company-registration-then-work-permit pipeline as ordinary employer sponsorship (see ba_work_permit.json), just with the applicant as their own sponsor. The capital threshold split between the Federation (~1,000 BAM) and Republika Srpska (~1 BAM symbolic) reflects Bosnia's two-entity legal structure, a recurring theme across this country's files. pr_after_months/citizenship_after_months mirror the general residence-based tracks (see ba_citizenship_naturalisation.json) and are NOT independently confirmed as applying automatically from this specific permit. family_can_work left null: not addressed by the source reviewed."
+}

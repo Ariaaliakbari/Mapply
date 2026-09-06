@@ -1,0 +1,87 @@
+{
+  "id": "ni_investor_residence",
+  "country": "NI",
+  "name": "Pensionado / Rentista Residence (Ley 694, Disputed Current Status)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "pensionado",
+      "name": "Pensionado (foreign pension)",
+      "requirements": [
+        {
+          "id": "nir_pensionado_1000",
+          "attribute": "monthly_foreign_pension_usd",
+          "operator": ">=",
+          "value": 1000,
+          "hard": true,
+          "blocker_text": "Ley 694 (Ley de Promocion de Ingreso de Residentes Pensionados y Residentes Rentistas), still hosted in force by INTUR (Nicaragua's Tourism Institute): the Pensionado category requires at least USD 1,000/month from a foreign pension source. Applicants are generally expected to be 45+, with exceptions for early retirement. A Technical Committee reviews files within 10 business days, with INTUR final certification within 5 further days.",
+          "fix_path": "Document a qualifying foreign pension of USD 1,000/month and apply through INTUR or a Nicaraguan consulate abroad.",
+          "fix_time_months": null,
+          "source_id": "intur_gob_ni_ley_694_reglamento"
+        }
+      ]
+    },
+    {
+      "id": "rentista",
+      "name": "Rentista (stable foreign passive income)",
+      "requirements": [
+        {
+          "id": "nir_rentista_1250",
+          "attribute": "monthly_foreign_income_usd",
+          "operator": ">=",
+          "value": 1250,
+          "hard": true,
+          "blocker_text": "Ley 694's Rentista category requires at least USD 1,250/month in stable foreign income, typically from rental properties, dividends, or similar passive sources, with the same INTUR/Technical Committee review process as the Pensionado track.",
+          "fix_path": "Document USD 1,250/month in qualifying passive foreign income and apply through INTUR or a Nicaraguan consulate abroad.",
+          "fix_time_months": null,
+          "source_id": "intur_gob_ni_ley_694_reglamento"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Income/pension certification", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Identity documents and civil-status records", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Import declaration (for duty-free household goods, if claimed)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indeterminate/permanent per Ley 694's original text; one source disputes this is still current (see notes)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 48,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "intur_gob_ni_ley_694_reglamento",
+      "tier": 1,
+      "url": "https://www.intur.gob.ni/wp-content/uploads/2017/05/DECRETO-83-2009-REGLAMENTO-A-LA-LEY-No-694.pdf",
+      "title": "Instituto Nicaraguense de Turismo (INTUR, government tourism institute) -- Reglamento a la Ley No. 694, still hosted without any repeal notice at the time of this build's access",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "stampednomad_ni_law_694_status",
+      "tier": 4,
+      "url": "https://www.stampednomad.com/visas/nicaragua-pensionado-visa-law-694",
+      "title": "Stamped Nomad (private visa-guide site) -- claims Law 694 is now 'sin vigencia' (repealed) and that pensionado/rentista applicants currently operate under the general 1-year-renewable temporary residence system instead",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nicaragua). STATUS: DRAFT -- GENUINE CONFLICTING-SIGNAL FINDING, DISCLOSED RATHER THAN RESOLVED: a single tier-4 source claims Ley 694 has been repealed and replaced by general 1-year-renewable temporary residence, but INTUR's own government-hosted regulation page (tier 1) shows no repeal notice and was still live at the time of this build's access, and no second independent source corroborated the repeal claim. Given this direct conflict, the requirement thresholds (USD 1,000 pensionado / USD 1,250 rentista) and the original indeterminate-duration outcome are modeled from the still-live government text, with the repeal claim disclosed prominently rather than silently adopted or silently ignored -- a future session should re-verify this specific point before treating either version as settled. The historical tax-exemption package (duty-free goods up to USD 20,000, vehicle VAT relief, construction-material VAT relief) is NOT modeled in outcome fields since this dataset's schema has no dedicated tax-benefit field, and because its current validity is exactly the disputed point in this entry. citizenship_after_months set 48 per the general naturalization residency rule (see ni_citizenship_naturalisation.json), not independently confirmed as applying automatically from this specific route."
+}

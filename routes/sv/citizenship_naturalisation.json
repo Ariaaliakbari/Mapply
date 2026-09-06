@@ -1,0 +1,120 @@
+{
+  "id": "sv_citizenship_naturalisation",
+  "country": "SV",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "central_american_nationalization",
+      "name": "Central American nationals (Nacionalizacion)",
+      "requirements": [
+        {
+          "id": "svcn_1yr_central_american",
+          "attribute": "months_definitive_residence_central_american",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Nationals of Guatemala, Honduras, Nicaragua, or Costa Rica may 'nacionalizar' (a distinct, faster process from general naturalization) after 1 year of definitive (permanent) residence. Fee: USD 150, non-refundable. No requirement to renounce original nationality.",
+          "fix_path": "As a Guatemalan, Honduran, Nicaraguan, or Costa Rican national, accumulate 1 year of permanent residence in El Salvador, then apply for nacionalizacion.",
+          "fix_time_months": 12,
+          "source_id": "unhcr_help_sv_naturalization"
+        }
+      ]
+    },
+    {
+      "id": "spanish_hispanoamerican",
+      "name": "Spanish or Hispanic-American nationals (Naturalizacion)",
+      "requirements": [
+        {
+          "id": "svcn_1yr_spanish_hispanoamerican",
+          "attribute": "months_definitive_residence_hispanoamerican",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Constitution Article 92: Spanish or other Hispanic-American nationals may naturalize after 1 year of definitive (permanent) residence. Fee: USD 700, non-refundable.",
+          "fix_path": "As a Spanish or Hispanic-American national, accumulate 1 year of permanent residence in El Salvador, then apply.",
+          "fix_time_months": 12,
+          "source_id": "unhcr_help_sv_naturalization"
+        }
+      ]
+    },
+    {
+      "id": "other_foreigners",
+      "name": "Other foreign nationals",
+      "requirements": [
+        {
+          "id": "svcn_5yr_other",
+          "attribute": "months_residence_other",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Constitution Article 92: nationals of any other country may naturalize after 5 years of residence, combining temporary and definitive residence periods. Fee: USD 700, non-refundable. Processing up to 9 months if documentation is complete.",
+          "fix_path": "Accumulate 5 years of combined temporary/definitive residence in El Salvador, then apply.",
+          "fix_time_months": 60,
+          "source_id": "unhcr_help_sv_naturalization"
+        }
+      ]
+    },
+    {
+      "id": "legislative_merit",
+      "name": "Legislative grant for extraordinary service",
+      "requirements": [
+        {
+          "id": "svcn_legislative_grant",
+          "attribute": "granted_by_legislative_assembly",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Legislative Assembly may grant Salvadoran nationality by decree for noteworthy service to the country, without requiring the standard residency periods.",
+          "fix_path": "Petition the Legislative Assembly directly for a nationality grant based on extraordinary service.",
+          "fix_time_months": null,
+          "source_id": "unwomen_sv_constitution"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence (temporary and/or definitive)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled/authenticated foreign civil documents, translated to Spanish", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "1 year (Central American nacionalizacion or Spanish/Hispanic-American naturalizacion), 5 years (other nationalities)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_help_sv_naturalization",
+      "tier": 2,
+      "url": "https://help.unhcr.org/elsalvador/soluciones-duraderas/nacionalizaciones-y-naturalizaciones/",
+      "title": "UNHCR Help El Salvador -- naturalization tracks under Constitution Article 92 and Migration Law Article 156: Central American, Spanish/Hispanic-American, other-nationality, and refugee/stateless categories",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "unwomen_sv_constitution",
+      "tier": 2,
+      "url": "https://constitutions.unwomen.org/en/countries/americas/el-salvador",
+      "title": "UN Women Global Gender Equality Constitutional Database -- Article 92's legislative-grant category for extraordinary service",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: DRAFT -- both sources are intergovernmental/academic-hosted, tier 2, not El Salvador's own Official Gazette directly. GENUINELY DISTINCTIVE STRUCTURAL FINDING: El Salvador runs TWO separate legal processes with different fees -- 'nacionalizacion' for Central Americans (1 year, USD 150) and 'naturalizacion' for everyone else (1-5 years depending on origin, USD 700) -- a real bifurcation, not just a residency-period difference, corroborated by a national newspaper (tier 4, elsalvador.com, not cited here as the primary source since a tier-2 source independently confirmed the same structure). Refugees/stateless persons are also named as eligible 'in accordance with this law' in the Migration Law (Article 156) but no distinct accelerated timeline for that category was found in the sources reviewed -- disclosed as an open gap rather than assumed to mirror the 5-year general track. dual_citizenship_allowed set true: no renunciation requirement was found for any track in this build, and the Central American nacionalizacion track explicitly states none is required."
+}

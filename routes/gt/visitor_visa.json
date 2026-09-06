@@ -1,0 +1,62 @@
+{
+  "id": "gt_visitor_visa",
+  "country": "GT",
+  "name": "Tourist Entry (CA-4)",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "rolling_window",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gtvv_visa_free_nationality",
+          "attribute": "is_visa_free_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of roughly 83 countries (US, Canada, UK, EU states, Australia, New Zealand, Japan, South Korea, Israel) enter without an advance visa and receive an automatic 90-day tourist stamp. Guatemala is part of the CA-4 Border Control Agreement with El Salvador, Honduras, and Nicaragua -- the 90-day allowance is SHARED across all four countries combined, not reset by crossing between them. A single 90-day extension (to 180 days total) is available at IGM for USD 25. After 180 days (or 90 without extension), the traveler must exit the entire CA-4 zone -- only Mexico, Belize, or Costa Rica count as valid reset destinations -- typically for 72+ hours before re-entry.",
+          "fix_path": "For non-visa-exempt nationalities, apply for a visa in advance through a Guatemalan consulate.",
+          "fix_time_months": null,
+          "source_id": "atitlanvida_ca4_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "IGM extension application (if extending beyond 90 days)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "90 days (shared CA-4 allowance), extendable once to 180 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "atitlanvida_ca4_visa",
+      "tier": 4,
+      "url": "https://atitlanvida.com/plan/visa-entry/",
+      "title": "Atitlan Vida (private expat-guide site) -- CA-4 shared 90-day allowance, visa-free nationality list, extension process at IGM, and the reset-zone rule (Mexico/Belize/Costa Rica only)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Guatemala). STATUS: DRAFT -- sourced to a tier-4 private expat-guide site; IGM's own government page on tourist visa policy was not independently fetched in this build (several igm.gob.gt pages returned 403 errors when fetched directly for other routes in this build -- see gt_family_reunification.json's notes). GENUINELY DISTINCTIVE, WELL-DOCUMENTED REGIONAL MECHANISM: the CA-4 Border Control Agreement's SHARED 90-day allowance across four sovereign countries (Guatemala, El Salvador, Honduras, Nicaragua) is a real, specific structural feature not seen in this exact form elsewhere in this dataset -- a tourist cannot reset the clock by simply crossing to a CA-4 neighbor, only by leaving the whole bloc. duration_type set 'rolling_window' to reflect that the 90/180-day count is a rolling allowance across a shared four-country zone, not a fixed single-country stay."
+}

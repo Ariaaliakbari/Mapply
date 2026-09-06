@@ -1,0 +1,81 @@
+{
+  "id": "sy_citizenship_naturalisation",
+  "country": "SY",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "syna_5yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Article 4: 5 consecutive years' residence (absences under 1 year permitted without breaking continuity), full civil rights and good conduct, Arabic literacy, no communicable diseases, and either beneficial expertise or a legitimate income source.",
+          "fix_path": "Accumulate 5 years' residence while meeting the language, health, and self-sufficiency conditions.",
+          "fix_time_months": 60,
+          "source_id": "menarights_nationality_act_1969"
+        }
+      ]
+    },
+    {
+      "id": "discretionary_arab_or_noble_services",
+      "name": "Discretionary fast track (Arab nationals / noble services)",
+      "requirements": [
+        {
+          "id": "syna_arab_national_or_noble_services",
+          "attribute": "is_arab_national_or_rendered_noble_services_or_prior_syrian",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 6: nationals of Arab countries, individuals who have rendered 'noble services' to Syria, or those who previously held Arab nationality may bypass the standard Article 4 conditions entirely, at ministerial discretion. No fixed residency period or objective test is specified -- this is a wide, ministerially-controlled discretionary gate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "menarights_nationality_act_1969"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' residence (standard route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic literacy demonstration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of income/expertise", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of Arab nationality, prior Arab nationality, or noble services (discretionary route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "absences under 1 year do not break the 5-year continuity requirement",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "menarights_nationality_act_1969",
+      "tier": 2,
+      "url": "https://menarights.org/sites/default/files/2016-11/SYR_NationalAct1969_EN.pdf",
+      "title": "MENA Rights Group -- hosted English translation of Syria's Nationality Act (Legislative Decree No. 276 of 1969): Articles 4 (standard naturalisation conditions) and 6 (discretionary exceptions)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Syria). STATUS: DRAFT -- same tier-2 NGO-hosted-translation limitation as the other Syria citizenship files; no Ministry of Interior government portal for naturalisation applications was locatable/fetchable in this build. Article 6's discretionary track is genuinely wide -- 'noble services' is undefined in the text reviewed and left to ministerial judgment, a real, sourced example of executive discretion rather than a codified objective standard, distinct from Lebanon's similarly discretionary Article 3 'estimable services' track built earlier in this dataset but framed here without even Lebanon's minimum-service-years alternative. dual_citizenship_allowed set null -- no renunciation or dual-nationality clause was found in Articles 4 or 6 as reviewed; not asserted as permitted or barred. GOVERNANCE-TRANSITION CAVEAT, SAME AS THE DESCENT FILE: this 1969 Act predates the December 2024 change of government; whether and how the transitional administration is currently applying naturalisation decisions under it was not independently confirmed in this build."
+}

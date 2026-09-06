@@ -1,0 +1,62 @@
+{
+  "id": "tz_family_reunification",
+  "country": "TZ",
+  "name": "Dependent Endorsement on Residence Permit",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tzfr_dependent_of_permit_holder",
+          "attribute": "is_spouse_or_child_under_18_of_residence_permit_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouses and children under 18 of a Class A, B, or C residence permit holder may be endorsed onto that permit. A separate re-entry pass costs USD 50 per person.",
+          "fix_path": "Apply to have the spouse/child endorsed onto the principal permit holder's residence permit.",
+          "fix_time_months": null,
+          "source_id": "tzembassy_classabc"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or child's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Principal applicant's valid residence permit", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the principal permit holder's permit validity",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tzembassy_classabc",
+      "tier": 1,
+      "url": "https://www.us.tzembassy.go.tz/services/residence-and-work-permits-class-a-b-and-c",
+      "title": "Embassy of Tanzania, Washington D.C. -- confirms dependents (spouses and children under 18) may be endorsed on Class A/B/C residence permits; re-entry pass USD 50 per person",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tanzania). STATUS: DRAFT -- the tier-1 source confirms the endorsement mechanism exists but gives no procedural detail specific to it (its own application steps, fees beyond the re-entry pass, or age-18+ children's options), so this is modeled thinly and marked draft pending a dedicated dependent-permit source. family_can_join set false at this route's own level since this route describes the dependent being brought in, not the dependent themself sponsoring further family; work_rights set 'none' as no independent work right for endorsed dependents was found; study_rights set 'restricted' rather than 'full' since access for endorsed dependents specifically (as opposed to Class C students in their own right) was not detailed."
+}

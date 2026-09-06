@@ -1,0 +1,86 @@
+{
+  "id": "mk_investor_residence",
+  "country": "MK",
+  "name": "Property-Based Residence",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "non_eu_oecd_property",
+      "name": "Non-EU/OECD nationals: property purchase",
+      "requirements": [
+        {
+          "id": "mkir_property_40k",
+          "attribute": "residential_property_value_eur",
+          "operator": ">=",
+          "value": 40000,
+          "hard": true,
+          "blocker_text": "A non-EU/OECD foreigner who purchases residential property valued at least EUR 40,000 may obtain temporary residence status on that basis, renewable, typically for around 1 year at a time.",
+          "fix_path": "Purchase qualifying residential property worth at least EUR 40,000 and apply for temporary residence.",
+          "fix_time_months": null,
+          "source_id": "lawyers_antevski_mk_residence"
+        }
+      ]
+    },
+    {
+      "id": "eu_oecd_property",
+      "name": "EU/OECD nationals: property ownership",
+      "requirements": [
+        {
+          "id": "mkir_property_eu_oecd",
+          "attribute": "is_eu_oecd_property_owner",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Invest North Macedonia's own guidance separately lists EU/OECD nationals who own property in the country as a category with special eligibility for temporary residence -- without stating a minimum property value for this group, in contrast to the specific EUR 40,000 threshold stated for non-EU/OECD nationals.",
+          "fix_path": "As an EU/OECD national, own qualifying residential property in North Macedonia and apply for temporary residence on that basis.",
+          "fix_time_months": null,
+          "source_id": "invest_nm_gov_mk_work_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Property purchase deed / title", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of funds for the purchase", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "approximately 1 year, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lawyers_antevski_mk_residence",
+      "tier": 3,
+      "url": "https://lawyers-antevski.com.mk/2023/03/25/kinds-of-residence-permits-for-foreigners-in-north-macedonia/",
+      "title": "Lawyers Antevski (law firm) -- kinds of residence permits in North Macedonia, including the EUR 40,000 non-EU/OECD property-purchase threshold and the 5-year continuous-temporary-residence rule for permanent residence",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "invest_nm_gov_mk_work_visas",
+      "tier": 1,
+      "url": "https://investnorthmacedonia.gov.mk/work-visas-and-permits/",
+      "title": "Invest North Macedonia (government investment-promotion agency) -- special temporary-residence eligibility for EU/OECD nationals who own property in North Macedonia",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- the quantified EUR 40,000 threshold for non-EU/OECD nationals is sourced only to a law firm (tier 3); a government-hosted statement of this specific figure was not located, so the file stays draft even though a government source (tier 1, Invest North Macedonia) does independently confirm that property-owning EU/OECD nationals have a parallel eligibility path. GENUINE, DISCLOSED ASYMMETRY: the two sources describe two different eligibility structures for two different nationality groups (a stated EUR 40,000 minimum for non-EU/OECD nationals; an unquantified 'ownership' standard for EU/OECD nationals) -- this is disclosed as a real asymmetry in the sourcing, not smoothed into one uniform threshold. This is a passive real-estate-based route, not an active-investment/business-equity route -- modeled under 'business' as the closest available category bucket, consistent with how this dataset has modeled other countries' passive-income/property residence routes. work_rights set 'none' since property-based residence is not described as employment-authorizing."
+}

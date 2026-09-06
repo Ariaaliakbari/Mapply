@@ -1,0 +1,84 @@
+{
+  "id": "lk_citizenship_by_marriage",
+  "country": "LK",
+  "name": "Citizenship by Registration (Marriage)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lkcm_spouse_widow_widower_of_citizen",
+          "attribute": "is_spouse_widow_or_widower_of_sri_lankan_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be the spouse, widow, or widower of a Sri Lankan citizen -- the provision applies regardless of the applicant's sex.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_act_1948"
+        },
+        {
+          "id": "lkcm_1yr_residence",
+          "attribute": "months_resident_immediately_preceding_application",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "One year's residence in Ceylon/Sri Lanka immediately preceding the application, and full age and sound mind.",
+          "fix_path": "Accumulate 1 year's residence immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "refworld_citizenship_act_1948"
+        },
+        {
+          "id": "lkcm_ministerial_discretion",
+          "attribute": "minister_approves_on_public_interest_grounds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registration is discretionary: the Minister must approve the application, generally on public interest grounds -- meeting the residence and marital-status criteria does not by itself entitle the applicant to registration.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_act_1948"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 1 year's residence in Sri Lanka", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "1 year's residence immediately preceding application",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_act_1948",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1948/en/14350",
+      "title": "Refworld (UNHCR-hosted legal database) -- Sri Lanka Citizenship Act No. 18 of 1948, Section 12: a spouse, widow, or widower of a citizen may apply for registration, requiring full age and sound mind, one year's residence in Ceylon immediately preceding the application, and Ministerial approval on public interest grounds",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sri Lanka). STATUS: DRAFT -- tier-2 sourcing only (see lk_citizenship_by_descent.json's notes on lawnet.gov.lk's SSL failure). GENUINE POSITIVE FINDING: Section 12 is gender-neutral on its face ('spouse, widow, or widower'), unlike the many one-directional gendered marriage-citizenship provisions found elsewhere in this dataset (Qatar, Bahrain, Nigeria, Sudan, Somalia, Pakistan, Ghana). However, it is explicitly DISCRETIONARY -- Ministerial approval on public-interest grounds is a real, sourced precondition, not a rubber stamp, so this is a materially weaker entitlement than an automatic marriage-citizenship provision even though it applies equally regardless of the applicant's sex. This is the closest thing Sri Lanka's Act has to an ordinary path to citizenship for a long-term foreign resident short of the ultra-narrow 25-person/year 'distinguished service' quota (see lk_citizenship_distinguished_service.json) -- there is no general residence-based naturalisation category in Sri Lankan law comparable to most other countries in this dataset."
+}

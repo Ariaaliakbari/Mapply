@@ -1,0 +1,64 @@
+{
+  "id": "kw_visitor_visa",
+  "country": "KW",
+  "name": "Tourist e-Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kwvv_evisa_or_voa",
+          "attribute": "has_evisa_or_visa_on_arrival",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Eligible nationalities (many European countries, the US, Canada, Australia, New Zealand, Japan, South Korea, among others) may obtain a visa on arrival or apply in advance via the official eVisa portal (kuwaitvisa.moi.gov.kw), needing a passport valid 6+ months, proof of accommodation, a return ticket, and proof of funds.",
+          "fix_path": "Apply via kuwaitvisa.moi.gov.kw or check MOFA's eligibility list before travel.",
+          "fix_time_months": null,
+          "source_id": "tripnexus_kw_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Accommodation proof (hotel booking or host address)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return/onward ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of funds", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days from entry",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tripnexus_kw_visa_guide",
+      "tier": 4,
+      "url": "https://trip-nexus.com/visa-entry/kuwait-visa-guide/",
+      "title": "Trip Nexus (private visa-guide site) -- Kuwait tourist eVisa/visa-on-arrival requirements, referencing the official portals kuwaitvisa.moi.gov.kw and washington.mofa.gov.kw for the current eligibility list and fees",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kuwait). STATUS: DRAFT -- both the Ministry of Interior's own e-visa portal (kuwaitvisa.moi.gov.kw) and a Kuwaiti embassy's visa page (canberra.mofa.gov.kw) returned 403 errors on every fetch attempt in this build, so this route relies on a private visa-guide site (tier 4) instead. This is a genuine, disclosed fetch failure (both government URLs are named directly and consistently across multiple independent sources) rather than an assumption that no official portal exists -- worth a dedicated retry."
+}

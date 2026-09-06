@@ -1,0 +1,115 @@
+{
+  "id": "gt_citizenship_naturalisation",
+  "country": "GT",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_residence",
+      "name": "Standard residence track",
+      "requirements": [
+        {
+          "id": "gtcn_5yr_legal_residence",
+          "attribute": "months_legal_residence",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Constitution Article 146 establishes naturalization as a discretionary act of the state; Ley de Nacionalidad (Decreto 1613) Articles 32-39 set the standard track at 5 years of continuous legal residence (absences totalling under 6 months allowed), verified by Guatemala's Migration Directorate (IGM). An alternative 10-year cumulative (non-consecutive) residence track also exists. Applicants must pass a good-conduct check, a Spanish-language exam, and a civic-knowledge test (geography, history, constitutional structure), and must publish the application in the official gazette and a major newspaper at their own cost.",
+          "fix_path": "Accumulate 5 years of continuous legal residence (or 10 years cumulative), pass the language/civic requirements, and apply through IGM with the required publication.",
+          "fix_time_months": 60,
+          "source_id": "gdg_gt_naturalizacion_concesiva"
+        }
+      ]
+    },
+    {
+      "id": "accelerated_merit_or_regional",
+      "name": "Accelerated 2-year track (merit, prior Central American residence, or statelessness)",
+      "requirements": [
+        {
+          "id": "gtcn_2yr_accelerated",
+          "attribute": "qualifies_for_accelerated_naturalization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Decreto 1613 Articles 32-39 shorten the residence requirement to 2 years where the applicant has: rendered recognized scientific, artistic, or philanthropic service to Guatemala; already resided at least 3 years in another Central American country before arriving in Guatemala; or holds stateless / indeterminate-nationality status.",
+          "fix_path": "Document the qualifying basis (merit-based service, prior Central American residence, or statelessness) and apply through IGM/Ministry of Foreign Relations.",
+          "fix_time_months": 24,
+          "source_id": "acnur_gt_ley_nacionalidad"
+        }
+      ]
+    },
+    {
+      "id": "central_american_direct",
+      "name": "Central American nationals (direct recognition, not naturalization)",
+      "requirements": [
+        {
+          "id": "gtcn_central_american_national",
+          "attribute": "is_central_american_national",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 146 gives Central American, Ibero-American, and Spanish nationals preferential treatment. Decreto 1613 Chapter VII (Articles 61-64) goes further for Central Americans specifically: nationals of other Central American countries are considered 'Guatemalans of origin' upon request, without going through the naturalization procedure at all. Central Americans may apply directly through the Ministry of Foreign Relations rather than the general IGM route.",
+          "fix_path": "Apply directly to the Ministry of Foreign Relations as a Central American national; no standard naturalization procedure required.",
+          "fix_time_months": null,
+          "source_id": "acnur_gt_ley_nacionalidad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "IGM migration-status certification (proof of continuous legal residence)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate / nationality document from home country", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport with sworn Spanish translation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled criminal/police background clearance", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Income verification and tax documentation, incl. recent property tax receipt", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Two Guatemalan witnesses", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Official gazette + major-newspaper publication (applicant-funded)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years continuous legal residence (absences under 6 months total tolerated) for the standard track; 2 years for merit/regional/stateless tracks",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gdg_gt_naturalizacion_concesiva",
+      "tier": 1,
+      "url": "https://gdg.gob.gt/naturalizacion-concesiva/",
+      "title": "gdg.gob.gt (Guatemalan government domain) -- Naturalizacion Concesiva: Constitution Article 146, Decreto 1613 Articles 33-34, 5-year legal residency requirement, Central American direct-application route, required documentation",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "acnur_gt_ley_nacionalidad",
+      "tier": 2,
+      "url": "https://www.acnur.org/fileadmin/Documentos/BDL/2001/0135.pdf",
+      "title": "UNHCR (ACNUR) -- hosted primary legal text of Guatemala's Ley de Nacionalidad, Decreto 1613 (1966, as amended), Articles 3, 5 (dual nationality), 32-39 (concesive naturalization), 61-64 (Central American equiparation)",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "ecoi_gt_globalcit_report",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/2106055/RSCAS_GLOBALCIT_CR_2020_4.pdf",
+      "title": "ecoi.net -- hosted GLOBALCIT Report on Citizenship Law: Guatemala (Juan Carlos Sarazua, 2020): Central American reciprocal dual-nationality recognition, 1961 bilateral treaty with Spain, vote-from-abroad restriction",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Guatemala). STATUS: DRAFT -- the standard 5-year track's hard requirement is sourced to gdg.gob.gt, a Guatemalan government domain (tier 1), but the accelerated-track and Central-American-direct-route hard requirements are sourced only to the UNHCR-hosted statutory text (tier 2) -- the validator requires EVERY hard requirement in a published route to cite tier 1, so the whole file stays draft until a Guatemalan government source for those two groups is located. THE FULLER PICTURE on dual nationality (forward-referenced from gt_citizenship_by_descent.json's notes): Guatemala's Ley de Nacionalidad Article 5 (as amended by Decreto 86-1996) states that for dual/multiple nationals, Guatemala 'recognizes exclusively its own' nationality within its own territory -- meaning a dual national cannot invoke a foreign state's sovereignty against Guatemala domestically, but is not required to renounce the other nationality and may exercise the rights/duties of that other nationality abroad. Article 3 additionally protects Guatemalans of origin from losing their nationality except through a foreign naturalization that itself mandates renunciation -- and even then, the person may later recover Guatemalan nationality. Separately, per the GLOBALCIT report (tier 2, not independently re-confirmed against the statute's current text in this build): Guatemala has a documented Central American reciprocal dual-nationality recognition framework (consistent with Decreto 1613's own Articles 61-64 on Central American equiparation found in this build) and a 1961 bilateral treaty with Spain allowing mutual citizenship acquisition via residency with recoverable original nationality on return. Taken together, dual_citizenship_allowed is set true for naturalized citizens generally -- but dual nationals cannot vote from abroad, a real limitation affecting a large Guatemalan diaspora (roughly 1.04 million in the US per the GLOBALCIT report) that is disclosed here rather than glossed over. No accelerated track for Spanish nationals specifically was confirmed beyond the general Article 146 constitutional preference language -- disclosed as an open question, not assumed to mirror the Central American track."
+}

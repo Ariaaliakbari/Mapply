@@ -1,0 +1,63 @@
+{
+  "id": "lb_visitor_visa",
+  "country": "LB",
+  "name": "Tourist Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lbvv_documentation",
+          "attribute": "has_required_tourist_documentation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants (for nationalities requiring a visa) must provide a hotel reservation showing entry and exit dates, a return plane ticket, and financial documentation (bank statement, credit card, and proof of profession/salary). Documents must be in Arabic, French, or English. Submission does not guarantee approval -- General Security may request further documents at its discretion.",
+          "fix_path": "Prepare hotel booking, return ticket, and financial documentation for submission to Lebanese General Security or a Lebanese mission abroad.",
+          "fix_time_months": null,
+          "source_id": "gdgs_visa_page"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Hotel reservation with entry/exit dates", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return plane ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank statement / credit card / proof of profession and salary", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed precisely in this build; described only as non-renewable and not convertible to a work visa without the General Director's authorization",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gdgs_visa_page",
+      "tier": 1,
+      "url": "https://www.general-security.gov.lb/en/posts/159",
+      "title": "General Directorate of General Security (Lebanon's immigration/visa authority) -- tourist visa document requirements: hotel reservation, return ticket, financial proof; visas not renewable and not convertible to work visas without authorization",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lebanon). STATUS: PUBLISHED -- sourced directly to the Lebanese General Security (GDGS) website, the actual government authority issuing entry visas and residency permits, so this is a genuine tier-1 route. GAP, DISCLOSED NOT INVENTED: GDGS references a separate list of nationalities eligible for visa-free entry or visa-on-arrival, and the specific validity period/fee for the tourist visa, but this build could not retrieve that list's specific content from the page reviewed -- worth a dedicated follow-up rather than guessing a duration or fee. duration_length is intentionally left as a text description rather than a fabricated number of days."
+}

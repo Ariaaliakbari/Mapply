@@ -1,0 +1,97 @@
+{
+  "id": "gh_citizenship_naturalisation",
+  "country": "GH",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ghcn_12mo_immediate_residence",
+          "attribute": "months_resident_immediately_preceding_application",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "12 months' uninterrupted residence in Ghana immediately before the application.",
+          "fix_path": "Accumulate 12 months' continuous residence immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "ghanacitizenship_com_act_591"
+        },
+        {
+          "id": "ghcn_5of7yr_aggregate",
+          "attribute": "months_resident_aggregate_prior_7yr",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' aggregate residence within the 7 years immediately preceding that final 12-month period.",
+          "fix_path": "Accumulate 5 years' aggregate residence within the relevant 7-year window.",
+          "fix_time_months": 60,
+          "source_id": "ghanacitizenship_com_act_591"
+        },
+        {
+          "id": "ghcn_indigenous_language",
+          "attribute": "speaks_indigenous_ghanaian_language",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ability to speak a language indigenous to Ghana -- described as non-waivable, unlike the discretionary-waiver approach some other countries take to comparable language requirements.",
+          "fix_path": "Demonstrate proficiency in an indigenous Ghanaian language.",
+          "fix_time_months": null,
+          "source_id": "ghanacitizenship_com_act_591"
+        },
+        {
+          "id": "ghcn_national_contribution",
+          "attribute": "has_capacity_to_contribute_to_national_development",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must show substantial contribution, or capacity to contribute, to Ghana's development and progress, plus good character (supported by witness statements of two attorneys or public officials) and understanding of Ghanaian customs and traditions.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ghanacitizenship_com_act_591"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence (12 months immediately preceding + 5 of the prior 7 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Witness statements from two attorneys or public officials", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Indigenous-language proficiency assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Valid residence permit throughout the qualifying period", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "12 months immediately preceding application + 5 years aggregate within the prior 7 years, under a valid residence permit throughout",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ghanacitizenship_com_act_591",
+      "tier": 3,
+      "url": "https://ghanacitizenship.com/ghana-citizenship-act-explained/",
+      "title": "Ghana Citizenship (private legal-service site) -- Ghana Citizenship Act 2000 (Act 591), Sections 13-14: naturalisation requires 12 months' uninterrupted residence immediately before application plus 5 aggregate years in the prior 7, good character (witness statements from two attorneys or public officials), non-waivable indigenous-language ability, substantial contribution to Ghana's development, intent to permanently reside, and a valid residence permit held throughout",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). STATUS: DRAFT -- tier-3 sourcing only (private legal-service site); Ghana's own Attorney-General's Department legislative text was not fetchable in this build. Cross-checked against a second independent tier-4 source (Wikipedia), which states a rounder '6 years' residence figure -- broadly consistent with the 12-months-plus-5-of-7-years breakdown modeled here (effectively just under 6 years total), not treated as a conflict requiring separate disclosure. DISTINCTIVE REQUIREMENT, ECHOING KENYA'S NATURALISATION ROUTE BUILT EARLIER IN THIS DATASET: an explicit 'substantial contribution to national development' standard, plus indigenous-language ability described as NON-waivable -- a stricter framing than most naturalisation regimes in this dataset, which more commonly allow a hardship waiver for elderly or long-resident applicants. dual_citizenship_allowed TRUE, consistent with Ghana's general Section 16 dual-citizenship allowance (see gh_citizenship_by_descent.json notes on the narrow public-office exception)."
+}

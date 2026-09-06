@@ -1,0 +1,96 @@
+{
+  "id": "ke_citizenship_by_marriage",
+  "country": "KE",
+  "name": "Citizenship by Registration (Marriage)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kecm_7yr_marriage",
+          "attribute": "months_married_to_kenyan_citizen",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Married to a Kenyan citizen (marriage solemnized under Kenyan law, in Kenya or abroad) for at least 7 years, with the marriage subsisting at the time of application.",
+          "fix_path": "Remain validly married to the Kenyan citizen spouse for 7 years.",
+          "fix_time_months": 84,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecm_acquired_residence_status",
+          "attribute": "has_acquired_residence_status",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must have acquired residence status in Kenya.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecm_no_disqualifying_conviction",
+          "attribute": "has_disqualifying_conviction",
+          "operator": "!=",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must not be a declared prohibited immigrant or have been convicted of an offence carrying a sentence of 3 years or more.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecm_genuine_marriage",
+          "attribute": "marriage_is_genuine_not_for_immigration_purpose",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Marriage must not have been entered into for the purpose of acquiring an immigration or citizenship status or privilege.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kenyalaw_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (Kenyan law-compliant, in Kenya or abroad)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of acquired residence status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence the marriage is genuine and subsisting", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "7 years of marriage plus acquired residence status",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "kenyalaw_citizenship_act",
+      "tier": 1,
+      "url": "https://new.kenyalaw.org/akn/ke/act/2011/12/eng@2022-12-31",
+      "title": "Kenya Law (official government legal database) -- Kenya Citizenship and Immigration Act 2011, Section 11: registration for a person married to a Kenyan citizen requires the marriage to have subsisted at least 7 years, acquired residence status, no prohibited-immigrant declaration or 3+ year criminal conviction, a genuine (non-immigration-motivated) marriage still subsisting at application",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kenya). Published on tier-1 sourcing (Kenya Law, the government's own legal database). GENUINE POSITIVE FINDING, CONSISTENT WITH ke_citizenship_by_descent.json: Section 11 is gender-neutral on its face ('a person married to a Kenyan citizen'), unlike the many one-directional gendered marriage-citizenship provisions found elsewhere in this dataset (Qatar, Bahrain, Nigeria, Sudan, Somalia, Pakistan). The 7-year marriage-plus-residence requirement is long by comparative standards in this dataset (contrast e.g. Sudan's 2-year fast-track, gendered as it is), reflecting a generally more demanding standard across all of Kenya's registration/naturalisation routes (see ke_citizenship_naturalisation.json's matching 7-year figure). dual_citizenship_allowed TRUE, per Kenya's 2010 Constitution and this Act's general dual-citizenship allowance (see ke_citizenship_by_descent.json notes)."
+}

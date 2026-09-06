@@ -1,0 +1,80 @@
+{
+  "id": "sn_citizenship_by_descent",
+  "country": "SN",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_descent",
+      "name": "Paternal descent (automatic)",
+      "requirements": [
+        {
+          "id": "sncd_senegalese_father",
+          "attribute": "has_senegalese_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A legitimate child of a Senegalese father is automatically a citizen (Code de la nationalité, Article 5). An illegitimate child also qualifies if the father is the first parent with whom filiation was legally established.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_irb_nationality"
+        }
+      ]
+    },
+    {
+      "id": "maternal_descent_optional_or_widowed",
+      "name": "Maternal descent (optional declaration age 18-25, or automatic if widowed)",
+      "requirements": [
+        {
+          "id": "sncd_senegalese_mother_optional",
+          "attribute": "is_child_of_senegalese_mother_declaring_18_to_25_or_mother_widowed",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A legitimate child born to a Senegalese mother and foreign father is NOT automatically a citizen -- they may only OPT for Senegalese citizenship by declaration between ages 18 and 25 (Article 8). The exception: if the mother is widowed, her minor children acquire Senegalese citizenship automatically (Article 10).",
+          "fix_path": "File a citizenship declaration between ages 18 and 25 if the automatic widowhood exception does not apply.",
+          "fix_time_months": null,
+          "source_id": "ecoi_irb_nationality"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Senegalese citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of father's death (widowed-mother track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_irb_nationality",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/document/1339441.html",
+      "title": "ecoi.net, hosting an Immigration and Refugee Board of Canada (IRB) research response on Senegal's citizenship law -- Article 5 (automatic paternal descent, including for illegitimate children whose paternal filiation is established first), Article 8 (optional maternal-line declaration between ages 18-25), and Article 10 (automatic citizenship for minor children of a widowed Senegalese mother)",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Senegal). STATUS: DRAFT -- sourced via an intergovernmental/research-body document hosted by an NGO repository (tier 2), not Senegal's own primary legal text or government portal (both attempted fetches of official Senegalese sources failed in this build, consistent with the pattern across this country's file set). MARQUEE GENDERED FINDING: descent citizenship defaults to the father -- a child of a Senegalese mother and foreign father gets no automatic citizenship at all, only an OPTIONAL declaration window between ages 18-25, unless the mother is widowed (in which case her minor children DO get automatic citizenship). This is a narrower, more conditional maternal-transmission model than Kenya, Pakistan, India, Tunisia, Tanzania, or Kazakhstan's fully gender-neutral descent rules built elsewhere in this dataset, though notably less restrictive than Lebanon's near-total exclusion of maternal transmission. dual_citizenship_allowed set true here specifically for descent-based acquisition, reflecting the source's note that children of mixed parentage may hold multiple nationalities before choosing during the optional-acquisition period -- this is DIFFERENT from citizenship acquired by government decision (naturalization or the marriage route requiring government non-opposition), which Article 16b explicitly makes 'incompatible with any other allegiance' -- see sn_citizenship_naturalisation.json's notes for that distinction."
+}

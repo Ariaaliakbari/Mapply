@@ -1,0 +1,79 @@
+{
+  "id": "lb_citizenship_by_descent",
+  "country": "LB",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_descent",
+      "name": "Paternal descent (automatic)",
+      "requirements": [
+        {
+          "id": "lbcd_lebanese_father",
+          "attribute": "has_lebanese_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Every person born of a Lebanese father acquires Lebanese nationality at birth by operation of law (Decision No. 15/1925, Article 1), regardless of place of birth, and regardless of the mother's nationality. This applies to both legitimate and illegitimate children, provided paternal filiation is legally established.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nclw_nationality_report"
+        }
+      ]
+    },
+    {
+      "id": "maternal_descent_illegitimate",
+      "name": "Maternal descent (illegitimate children only, filiation recognized first)",
+      "requirements": [
+        {
+          "id": "lbcd_lebanese_mother_illegitimate_child",
+          "attribute": "is_illegitimate_child_of_lebanese_mother_recognized_first",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born outside marriage acquires Lebanese nationality through the mother only if she is Lebanese and her filiation is legally established before the father's (or before any other filiation is established). If the father later recognizes the child, the child keeps Lebanese nationality even if the father's own country would otherwise confer a competing nationality. A Lebanese mother has NO general ability to transmit nationality to legitimate children -- see notes.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nclw_nationality_report"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Lebanese nationality", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate establishing filiation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nclw_nationality_report",
+      "tier": 1,
+      "url": "https://nclw.gov.lb/wp-content/uploads/2022/09/2021_Nationality-not-Naturalization_Eng.pdf",
+      "title": "National Commission for Lebanese Women (NCLW), an official Lebanese government commission -- 'Nationality, Not Naturalization' report detailing Decision No. 15/1925 Article 1 (automatic paternal-line citizenship) and the narrow maternal-line exception for illegitimate children whose Lebanese mother's filiation is recognized first",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lebanon). STATUS: PUBLISHED -- sourced to an official Lebanese government commission's own report analyzing the nationality law, tier 1. MARQUEE GENDERED FINDING, ONE OF THE MOST-DOCUMENTED IN THE WORLD ON THIS TOPIC: Lebanon's descent rule is paternal by default and essentially closed to Lebanese mothers -- a Lebanese woman married to a foreign man CANNOT pass her nationality to her (legitimate) children under any circumstance modeled here; the only maternal-transmission channel is the narrow illegitimate-child-recognized-first exception, which is not a general alternative to the paternal rule. This is a starker default than Iran's (which at least allows an application-based opt-in at 18 for children of an Iranian mother) and is closer to the pre-reform state that Kenya, Pakistan, India, and Tunisia have each since moved away from in this dataset. DIASPORA-RECOVERY WINDOW NOW CLOSED, DISCLOSED HERE RATHER THAN MODELED AS A SEPARATE ROUTE: Law 41/2015 allowed descendants of Lebanese emigrants listed on Lebanon's 1920s-1932 census registers (but never themselves registered) to recover Lebanese nationality through a streamlined process; per a Lebanese law firm's guide (klfi.net, tier 3, cross-referenced but not used as this file's primary source), that window EXPIRED 26 November 2025 -- meaning, as of this build, there is no current mechanism for descendants of an UNREGISTERED Lebanese ancestor beyond the narrow, ministerial-decree, definitive-return route under a 1946 law (Article 2), which was not independently verified against a government source in this build and is not modeled as its own route here. dual_citizenship_allowed set true reflecting general reporting that Lebanon permits dual nationality without a renunciation requirement for citizenship acquired by descent -- not independently verified against primary legal text in this build."
+}

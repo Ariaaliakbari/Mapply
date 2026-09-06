@@ -1,0 +1,114 @@
+{
+  "id": "ve_citizenship_by_descent",
+  "country": "VE",
+  "name": "Citizenship by Descent / Birth",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_venezuela",
+      "name": "Born in Venezuela (jus soli)",
+      "requirements": [
+        {
+          "id": "vecd_born_in_venezuela",
+          "attribute": "born_in_venezuela",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Any person born in Venezuela acquires citizenship automatically, regardless of either parent's nationality or immigration status -- unconditional jus soli.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_ve_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_both_venezuelan_by_birth",
+      "name": "Born abroad, both parents Venezuelan by birth",
+      "requirements": [
+        {
+          "id": "vecd_both_parents_venezuelan_by_birth",
+          "attribute": "both_parents_venezuelan_by_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born abroad to two parents who are themselves Venezuelan by birth acquires citizenship automatically, no residence or declaration required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_ve_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_one_parent_by_birth",
+      "name": "Born abroad, one parent Venezuelan by birth",
+      "requirements": [
+        {
+          "id": "vecd_one_parent_by_birth_plus_residence_or_declaration",
+          "attribute": "one_parent_venezuelan_by_birth_and_resident_or_declared",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born abroad to one parent who is Venezuelan by birth acquires citizenship if the child either resides in Venezuela, or declares the intent to hold Venezuelan nationality at a Venezuelan diplomatic mission.",
+          "fix_path": "Establish residence in Venezuela, or make a declaration of nationality at a Venezuelan consulate/embassy.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_ve_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_naturalized_parent",
+      "name": "Born abroad, one parent naturalized Venezuelan",
+      "requirements": [
+        {
+          "id": "vecd_naturalized_parent_residence_before_18",
+          "attribute": "resided_in_venezuela_before_18_naturalized_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born abroad to a NATURALIZED (not birth-citizen) Venezuelan parent acquires citizenship if the child resides in Venezuela before turning 18, then formally declares the intent to hold Venezuelan nationality at the Ministry of Interior or Public Registry.",
+          "fix_path": "Reside in Venezuela before age 18, then declare nationality at the Ministry of Interior or Public Registry.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_ve_nationality_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Venezuelan nationality (by birth or naturalization, as applicable)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Declaration of nationality (where required)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_ve_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Venezuelan_nationality_law",
+      "title": "Wikipedia -- Venezuela's unconditional jus soli rule, and the tiered jus sanguinis conditions for children born abroad depending on whether the Venezuelan parent is a citizen by birth or by naturalization",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Venezuela). STATUS: DRAFT -- sourced to Wikipedia only (tier 4); Venezuela's 2004 Law of Nationality and Citizenship (Ley de Nacionalidad y Ciudadania) itself was not locatable/fetchable in this build from a government (mppre.gob.ve, saime.gob.ve) or gazette source -- worth a dedicated follow-up. GENUINE POSITIVE FINDING: unconditional jus soli (any birth in Venezuela grants citizenship, no parental-status conditions at all) is one of the most unrestricted birthright-citizenship rules built in this dataset, comparable to the U.S.'s constitutional birthright rule documented in this dataset's original 15-country build. The tiered jus sanguinis structure (full parents vs. one parent vs. naturalized parent, each with different conditions) is a genuinely more granular structure than most descent laws built elsewhere in this dataset. dual_citizenship_allowed set true per Article 34 of the Constitution (also cited in ve_citizenship_naturalisation.json)."
+}

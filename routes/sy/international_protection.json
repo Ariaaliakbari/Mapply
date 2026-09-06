@@ -1,0 +1,68 @@
+{
+  "id": "sy_international_protection",
+  "country": "SY",
+  "name": "Asylum / International Protection",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "syip_unhcr_registration",
+          "attribute": "registered_with_unhcr_syria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Syria has no domestic asylum law and is not a party to the 1951 Refugee Convention or its 1967 Protocol (unlike Iran, Israel, Egypt, and Yemen, the only regional states that are parties). Historically, Syria cooperated informally with UNHCR to host large numbers of Iraqi refugees (2003-2011) alongside its long-standing, separately-administered Palestinian refugee population under GAPAR (see sy_palestinian_registered_refugee_status.json). That informal cooperation framework, and Syria's own decades-long civil conflict, have severely disrupted asylum processing capacity.",
+          "fix_path": "Register with UNHCR Syria for whatever protection assistance remains operationally available.",
+          "fix_time_months": null,
+          "source_id": "lawgratis_immigration_syria"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "UNHCR registration", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite pending resolution; no fixed process timeline confirmed",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lawgratis_immigration_syria",
+      "tier": 4,
+      "url": "https://www.lawgratis.com/blog-detail/immigration-law-at-syria",
+      "title": "LawGratis (private legal-guide site) -- describes Syria's historical hosting of Iraqi and Palestinian refugees and cooperation with UNHCR, while noting ongoing conflict has severely disrupted procedures",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "fmreview_non_signatory_states",
+      "tier": 3,
+      "url": "https://www.fmreview.org/issue67/janmyr/",
+      "title": "Forced Migration Review -- lists Middle East states party to the 1951 Refugee Convention (Iran, Israel, Egypt, Yemen only), implying Syria (alongside Iraq, Lebanon, Jordan) is a non-signatory",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Syria). STATUS: DRAFT -- weak sourcing (tier-3/4 only); no UNHCR Syria-specific operational page on current asylum processing was successfully fetched in this build (help.unhcr.org and unhcr.org/where-we-work pages returned fetch errors). Syria's non-signatory status to the 1951 Convention is inferred from its absence in a named list of Middle East signatories, not from an explicit direct statement -- flagged as slightly less certain than this dataset's usual sourcing bar, but consistent with the well-established regional pattern (Lebanon, Iraq, Jordan are all also non-signatories, per files built earlier in this dataset). CRITICAL FRAMING POINT, NOT A GAP: as of this build, Syria is overwhelmingly a refugee-SOURCE country undergoing its own post-Assad transition, not a host country receiving meaningful new inbound asylum flows -- available reporting describes Syrians RETURNING from neighboring countries (including from Iraq) rather than new arrivals seeking protection inside Syria. This route is retained for schema completeness and to document the historical Iraqi-refugee hosting role and the separate, much more institutionally developed Palestinian-refugee framework (GAPAR), not because a live, functioning general asylum system for new arrivals was confirmed to exist today. Whether the transitional government has adopted or plans any domestic asylum law was not found in this build. family_can_join set false (not asserted true without a source) since no source addressed dependent-joining rights for whatever protection processing remains operational."
+}

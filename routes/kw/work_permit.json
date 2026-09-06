@@ -1,0 +1,75 @@
+{
+  "id": "kw_work_permit",
+  "country": "KW",
+  "name": "Foreign Employee Work Permit (Kafala Sponsorship)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kwwp_kafeel_sponsorship",
+          "attribute": "has_kuwaiti_registered_employer_sponsor",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires sponsorship (kafala) by a Kuwaiti-registered employer holding a valid commercial license and registered with the Public Authority for Manpower (PAM), in good standing with PAM, the Ministry of Social Affairs and Labour (MOSAL), and the Public Institution for Social Security (PIFSS). The employer must also have available quota under sector-specific Kuwaitization limits (minimum proportions of Kuwaiti nationals per sector).",
+          "fix_path": "Secure a job offer from a PAM-registered Kuwaiti employer with available Kuwaitization quota.",
+          "fix_time_months": null,
+          "source_id": "playroll_kw_work_permit"
+        },
+        {
+          "id": "kwwp_credential_verification",
+          "attribute": "has_attested_credentials_matching_role",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Attested educational certificates, police clearance, and a medical exam are required, and per Ministerial Circular No. 1 of 2025, the job title/qualifications must match the applicant's verified credentials at initial hiring -- post-hire changes to job title or qualifications are restricted.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "playroll_kw_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Attested educational certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical examination results", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "work permit valid up to 3 years, renewable; residency permit (Iqama) requires annual renewal",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "playroll_kw_work_permit",
+      "tier": 4,
+      "url": "https://www.playroll.com/work-permit-visas/kuwait",
+      "title": "Playroll (private global-employment/EOR guide) -- Kuwait kafala work-permit system: PAM/MOSAL/PIFSS employer registration, Kuwaitization sector quotas, work permit valid up to 3 years, Iqama annual renewal (KWD 20 fee plus KWD 130 mandatory health insurance for standard expatriates), and Ministerial Circular No. 1 of 2025 restricting post-hire job-title changes",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kuwait). STATUS: DRAFT -- Kuwait's own Public Authority for Manpower and Ministry of Interior portals were not fetchable in this build (repeated 403 errors, the same pattern as this country's visitor_visa.json), so this route relies on a private EOR-industry guide (tier 4). family_can_join/family_can_work set false at THIS route's level since dependents require a separate family visa with its own minimum-salary threshold (see kw_family_reunification.json), not an automatic feature of the work permit itself. Kuwait's kafala sponsorship structure -- where an employer's consent is generally required to change jobs or sponsors -- is a genuinely distinctive, heavily-documented feature of the Gulf labor-migration model, though the specific transferability/no-objection-certificate rules were not independently detailed in the source reviewed for this build."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "cu_investor_residence",
+  "country": "CU",
+  "name": "Investor and Business Operator Residence (Diaspora)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "diaspora",
+      "name": "Diaspora investor/business-operator route",
+      "requirements": [
+        {
+          "id": "cuir_diaspora_investor_status",
+          "attribute": "is_cuban_diaspora_investor_or_business_operator",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Cuba's new Ley de Migracion (published 5 May 2026, Gaceta Oficial Extraordinaria No. 60, taking legal effect roughly 180 days later) creates an 'Investors and Business Operators' migratory category specifically for members of the Cuban diaspora (emigrants and their descendants) -- NOT a general foreign-investor category open to any nationality. Applicants apply through a Cuban consulate abroad or an Interior Ministry office in Cuba; processing takes 30 business days and costs 3,500 Cuban pesos. Holders receive rights equivalent to national residents while in Cuba. This dataset found no confirmed, distinct investor-residence pathway for NON-diaspora foreign nationals -- they would apparently need to use the general, discretionary Visa E-2 authorization instead (see the general-authorization note in cu_family_reunification.json for the E-1/E-2 visa framework), with no investor-specific track confirmed for that group.",
+          "fix_path": "Cuban-diaspora applicants apply through a Cuban consulate or Interior Ministry office for Investor/Business Operator status; non-diaspora foreign investors would need to pursue the general Visa E-2 discretionary residence authorization instead.",
+          "fix_time_months": 1,
+          "source_id": "cibercuba_migration_law_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Cuban diaspora/descent status", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Business/investment plan or registration", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Application fee (3,500 CUP)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified precisely in the sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cibercuba_migration_law_2026",
+      "tier": 4,
+      "url": "https://www.cibercuba.com/noticias/2026-05-05-u1-e135253-s27061-nid328180-regimen-cubano-publica-nuevas-leyes-migracion",
+      "title": "CiberCuba (independent Cuba-focused press) -- new Migration Law's 'Investors and Business Operators' diaspora category, fees, processing time",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cuba). STATUS: DRAFT -- sourced to independent press, tier 4 (Cuba's own government gazette and ministry sites could not be fetched); the law itself is not yet in legal force (see cu_visitor_visa.json for the ~180-day-post-publication timeline). GENUINE, MARQUEE FINDING: unlike most other countries in this dataset, Cuba's ONLY confirmed investor-residence category is restricted to its OWN diaspora -- a direct reflection of Cuba's decades-long policy of courting emigrant capital and remittances specifically, rather than opening a general investor-visa channel to any foreign national. Diaspora response reported by the same source has been 'cautious,' citing Cuba's history of policy reversals and unfulfilled investment-related commitments -- a real, sourced note of skepticism from the very community this category targets, included here rather than omitted. family_can_work left null: not addressed by the source."
+}

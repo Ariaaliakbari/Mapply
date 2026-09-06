@@ -1,0 +1,79 @@
+{
+  "id": "hn_citizenship_by_descent",
+  "country": "HN",
+  "name": "Citizenship by Descent / Birth",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_honduras",
+      "name": "Born in Honduras (jus soli)",
+      "requirements": [
+        {
+          "id": "hncd_born_in_honduras",
+          "attribute": "born_in_honduras",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 23: anyone born in Honduran territory is a Honduran national by birth (excluding children of accredited foreign diplomats). The same article covers those born aboard Honduran-flagged military or merchant vessels in Honduran waters, and foundlings of unknown parentage found in Honduras.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "pdba_georgetown_hn_constitution"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_honduran_parent",
+      "name": "Born abroad to a Honduran-by-birth parent",
+      "requirements": [
+        {
+          "id": "hncd_honduran_parent_abroad",
+          "attribute": "has_honduran_by_birth_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 23: a person born abroad to a Honduran parent who is themselves Honduran by birth acquires Honduran nationality. The source reviewed for this build did not specify a residence or registration formality to perfect this, or whether it applies equally regardless of which parent is Honduran -- both read gender-neutral in the constitutional text itself.",
+          "fix_path": "Register the birth with a Honduran consulate or civil registry as the child of a Honduran-by-birth parent.",
+          "fix_time_months": null,
+          "source_id": "pdba_georgetown_hn_constitution"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Honduran nationality by birth", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "pdba_georgetown_hn_constitution",
+      "tier": 2,
+      "url": "https://pdba.georgetown.edu/Constitutions/Honduras/hond82.html",
+      "title": "Georgetown University Political Database of the Americas -- hosted text of Honduras's 1982 Constitution, Title II Chapter I (nationality), Articles 23-24",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: DRAFT -- sourced to an academic-hosted (Georgetown University) copy of the Constitution, tier 2, not a Honduran government domain directly; Honduras's own official gazette (La Gaceta) hosting of this text was not located in this build. GENUINE, GENDER-NEUTRAL FINDING: unlike several other countries built in this dataset (Syria, Guatemala's older descent framing), Article 23's language for both jus soli and descent reads as gender-neutral on its face -- no father/mother asymmetry found in the text reviewed. dual_citizenship_allowed set true per Article 24's treaty-dependent dual-nationality mechanism (see hn_citizenship_naturalisation.json's notes for the fuller picture, including the confirmed 1966 Spain treaty) -- disclosed as treaty-dependent rather than a universal right, since Article 24 only guarantees it 'when a double nationality treaty exists' with the other country."
+}

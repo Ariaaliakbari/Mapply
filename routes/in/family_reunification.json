@@ -1,0 +1,81 @@
+{
+  "id": "in_family_reunification",
+  "country": "IN",
+  "name": "X (Entry) Visa for Foreign Spouses",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "infr_married_to_citizen_or_oci",
+          "attribute": "is_spouse_of_indian_citizen_or_oci",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant must be the foreign spouse of an Indian citizen or an OCI cardholder, evidenced by a registered marriage certificate.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nriinformation_x_visa"
+        },
+        {
+          "id": "infr_frro_registration",
+          "attribute": "registers_with_frro_within_14_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must register with the FRRO if the continuous stay exceeds 180 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mea_foreigners_registration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Registered marriage certificate (apostilled if issued abroad)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spouse's Indian passport or OCI card with linked foreign passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Relationship evidence (cohabitation proof, photos)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "commonly up to 5 years, varying by issuing mission and documentation",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["in_ancestry_oci", "in_citizenship_by_registration"]
+  },
+  "sources": [
+    {
+      "id": "nriinformation_x_visa",
+      "tier": 4,
+      "url": "https://nriinformation.com/visa-oci/x-visa-foreign-spouse",
+      "title": "NRI Information (private information site) -- X (Entry) Visa for foreign spouse of an Indian citizen or OCI cardholder: available immediately on marriage (no waiting period, unlike OCI's 2-year requirement), typically issued up to 5 years, FRRO registration required beyond 180 days, convertible to OCI status after the marriage subsists 2 years",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "mea_foreigners_registration",
+      "tier": 1,
+      "url": "https://www.mea.gov.in/foreigners-registration.htm",
+      "title": "Ministry of External Affairs, Government of India -- Foreigners Registration: multiple-entry X-visa holders visiting for family/social reasons must register with the FRRO within 14 days if continuous stay exceeds 180 days; subsequent travels on the same visa do not require re-registration",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). STATUS: DRAFT -- the X-Visa is confirmed as a real, official category (referenced by name in the tier-1 MEA foreigners-registration page and by multiple Indian diplomatic mission sites), but every official mission page attempted in this build for its specific spousal eligibility/duration detail returned a 403 error, an SSL certificate error, or a redirect loop; the eligibility and duration detail here rests on a private information site (tier 4) rather than a government source, hence draft rather than published despite the category itself being unambiguously real. Distinct from in_ancestry_oci.json (the OCI card): the X-visa is available immediately on marriage with no waiting period, while OCI eligibility via marriage requires the registered marriage to subsist for 2 continuous years first -- this X-visa is what a newly married foreign spouse actually lives on in the interim, and the natural on-ramp to OCI (or full citizenship by registration under in_citizenship_by_registration.json) once that 2-year mark passes."
+}

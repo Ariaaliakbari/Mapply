@@ -1,0 +1,70 @@
+{
+  "id": "sn_investor_residence",
+  "country": "SN",
+  "name": "Business Owner Residence Card (Autorisation d'Établissement)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "snir_autorisation_etablissement",
+          "attribute": "has_autorisation_etablissement",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign national pursuing independent/self-employed business activity (as opposed to employer-sponsored work) must obtain an 'autorisation d'établissement', requiring business registration, a NINEA tax number, and proof of sufficient financial resources. Standard employer-sponsored work permits do not cover freelance or self-employment activity.",
+          "fix_path": "Register the business, obtain a NINEA tax number, and demonstrate sufficient financial resources to secure the autorisation d'établissement.",
+          "fix_time_months": null,
+          "source_id": "expat_com_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business registration documents", "difficulty": "hard", "typical_time_days": null },
+    { "document": "NINEA tax identification number", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of sufficient financial resources", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified precisely in the sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "expat_com_work_permit",
+      "tier": 4,
+      "url": "https://www.expat.com/en/guide/africa/senegal/37357-work-permit-in-senegal.html",
+      "title": "Expat.com (private expatriate-guide site) -- confirms the 'autorisation d'établissement' as the distinct route for self-employed/independent business activity, separate from the employer-sponsored work permit, requiring business registration, a NINEA number, and proof of financial resources",
+      "accessed_at": "2026-09-05"
+    },
+    {
+      "id": "dlapiper_sn_investment_code",
+      "tier": 3,
+      "url": "https://www.dlapiperafrica.com/en/senegal/insights/2025/new_investment-code",
+      "title": "DLA Piper Africa (GENI & KEBE Lawyers) -- describes Senegal's updated Investment Code, which reduced the eligibility threshold for small/very-small enterprises to CFA 15,000,000 (roughly USD 25,000, not independently converted/verified) to qualify for investment incentives, applied under a stated principle of equal treatment for domestic and foreign investors",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Senegal). STATUS: DRAFT -- both sources are private (tier 4 and tier 3); Senegal's own investment authority (APIX) and Investment Code text could not be fetched directly in this build (APIX's site returned a connection timeout, and UNCTAD's hosted Investment Code page returned a 403 error). IMPORTANT SCOPING CAVEAT: this route models the general 'autorisation d'établissement' residence mechanism for self-employed/business-owning foreigners, NOT a dedicated investor-visa or golden-visa product -- no source reviewed in this build confirmed that Investment Code registration (the CFA 15,000,000 threshold) itself grants or is a precondition for any residence permit; that connection was deliberately NOT asserted to avoid overstating a link the sources don't establish. The CFA 15,000,000 Investment Code threshold is included as related context on Senegal's investment-incentive regime, not as a qualifying condition of this specific route."
+}

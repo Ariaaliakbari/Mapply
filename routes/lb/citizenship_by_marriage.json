@@ -1,0 +1,79 @@
+{
+  "id": "lb_citizenship_by_marriage",
+  "country": "LB",
+  "name": "Citizenship by Marriage",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "foreign_wife_of_lebanese_man",
+      "name": "Foreign wife of a Lebanese man (automatic upon request)",
+      "requirements": [
+        {
+          "id": "lbcm_foreign_wife_1yr",
+          "attribute": "is_foreign_wife_of_lebanese_man_1yr_registered",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A non-Lebanese woman married to a Lebanese man becomes Lebanese, upon her own request, one year after the date her marriage is registered -- without needing her husband's consent, and without ministerial or presidential discretion.",
+          "fix_path": "Register the marriage, then submit a citizenship request after 1 year.",
+          "fix_time_months": 12,
+          "source_id": "nclw_nationality_report"
+        }
+      ]
+    },
+    {
+      "id": "foreign_husband_of_lebanese_woman",
+      "name": "Foreign husband of a Lebanese woman (discretionary presidential decree)",
+      "requirements": [
+        {
+          "id": "lbcm_foreign_husband_1yr_decree",
+          "attribute": "is_foreign_husband_of_lebanese_woman_1yr_presidential_decree",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign man married to a Lebanese woman may be naturalized by presidential decree (Article 3) after 1 year of residence in Lebanon since the marriage -- a reduced residency bar compared to ordinary naturalization's 5 years, but still fully discretionary state action, not an automatic entitlement like his Lebanese-man equivalent. In practice this discretion is rarely exercised in his favor; the routine outcome for a Lebanese woman's foreign husband and children is the non-citizenship 'courtesy residency' permit instead (see lb_family_reunification.json).",
+          "fix_path": "Reside in Lebanon for 1 year following the marriage, then apply for naturalization by presidential decree -- approval is discretionary and not guaranteed.",
+          "fix_time_months": 12,
+          "source_id": "nclw_nationality_report"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate registered in Lebanon", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 1 year's residence (husband's track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "1 year (both tracks)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nclw_nationality_report",
+      "tier": 1,
+      "url": "https://nclw.gov.lb/wp-content/uploads/2022/09/2021_Nationality-not-Naturalization_Eng.pdf",
+      "title": "National Commission for Lebanese Women (NCLW), official Lebanese government commission -- describes the automatic citizenship-by-request route for a foreign wife of a Lebanese man after 1 year, and the discretionary Article 3 presidential-decree route (reduced to 1 year residence) for a foreign husband of a Lebanese woman, contrasted against the practical reality that Lebanese women cannot pass nationality to spouses or (legitimate) children",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lebanon). STATUS: PUBLISHED -- sourced to an official Lebanese government commission's own analysis of the nationality law, tier 1. THE HEADLINE FINDING OF THIS COUNTRY'S FILE SET: the same 1-year residence period produces two entirely different outcomes depending on the citizen spouse's gender -- a foreign wife of a Lebanese man gets Lebanese nationality AUTOMATICALLY upon her own request, no discretion, no husband's consent required; a foreign husband of a Lebanese woman gets, at best, a DISCRETIONARY presidential-decree naturalization application with no guarantee of approval, and the source material and independent NGO reporting both indicate this discretion is essentially never exercised in practice, meaning the wife's foreign husband and children instead rely on the separate, non-citizenship 'courtesy residency' permit (lb_family_reunification.json). This is modeled here as two requirement_groups on the SAME route rather than two separate route files because both are legally 'citizenship by marriage' mechanisms under the same law, mirroring the modeling approach used for Ghana's equally asymmetric marriage-citizenship provisions elsewhere in this dataset. selection_method set 'assessed' at the route level (rather than 'automatic') because the route as a whole includes a fully discretionary path, even though the wife's track alone is automatic -- see the wife's requirement text for that specific distinction. dual_citizenship_allowed set true on general reporting that Lebanon permits dual nationality without a renunciation requirement for citizenship acquired through marriage; not independently verified against primary legal text in this build."
+}

@@ -1,0 +1,74 @@
+{
+  "id": "ir_work_permit",
+  "country": "IR",
+  "name": "Foreign Employee Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "irwp_employer_sponsorship",
+          "attribute": "has_sponsoring_employer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A sponsoring Iranian employer must apply to the Ministry of Cooperatives, Labour and Social Welfare, demonstrating a genuine need to hire the foreign national and submitting company registration documents and an employment contract; the employer runs the application on the worker's behalf.",
+          "fix_path": "Secure sponsorship from an Iranian-registered employer willing to file the work permit application.",
+          "fix_time_months": null,
+          "source_id": "rivermate_iran_work"
+        },
+        {
+          "id": "irwp_labor_market_test",
+          "attribute": "passes_labor_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Ministry conducts a labor market test to confirm no qualified Iranian citizen is available for the role before approving employment of a foreign national.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "rivermate_iran_work"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's company registration documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Educational/professional qualification proof", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable based on the employment contract",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "rivermate_iran_work",
+      "tier": 4,
+      "url": "https://rivermate.com/guides/iran/work-permits-and-visas",
+      "title": "Rivermate (private global-employment/EOR guide) -- Iran work permits issued by the Ministry of Cooperatives, Labour and Social Welfare; requires employer sponsorship, a labor-market test showing no qualified Iranian citizen is available, company registration and employment-contract documents; permit typically valid 1 year, renewable; processing roughly 2-4 months",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iran). STATUS: DRAFT -- a genuinely government-hosted source exists (en-economic.mfa.ir, an Iranian Ministry of Foreign Affairs economic-affairs subdomain hosting a PDF titled 'Employment of Foreign Nationals in Iran') and was located via search, but the fetch failed with a connection timeout in this build -- the same recurring pattern as evisa.mfa.ir and islamabad.mfa.ir elsewhere in this country's file set. Worth a dedicated retry before treating this as a permanent tier-4 ceiling. family_can_join set true on general reporting that dependents may accompany a work-permit holder; family_can_work left null since dependents' own work rights were not detailed in the source used. No minimum salary or capital threshold was found in this build -- unlike ir_investor_residence.json and tn_investor_residence.json, this is not asserted as a confirmed structural finding here, just an absence in the sources reviewed, since a work-permit route (unlike an investment license) would be an unusual place to expect one."
+}

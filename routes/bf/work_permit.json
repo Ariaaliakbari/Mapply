@@ -1,0 +1,63 @@
+{
+  "id": "bf_work_permit",
+  "country": "BF",
+  "name": "Employer-Sponsored Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bfwp_employer_sponsorship",
+          "attribute": "has_sponsored_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must demonstrate to the Ministry of Labour and Social Security that the position cannot be adequately filled by a Burkinabe national (a labor-market test), and submit the foreign applicant's passport, job description, qualifications, employment contract, company registration documents, compliance proof, and a medical certificate. Ministry review runs 4-8 weeks; the full process (sponsorship plus visa) runs roughly 8-14 weeks. Permits typically run up to 1 year.",
+          "fix_path": "Secure a job offer from a Burkinabe employer willing to justify the hire against the labor-market test, and have the employer file with the Ministry of Labour.",
+          "fix_time_months": null,
+          "source_id": "rivermate_bf_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Company registration documents (employer)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 1 year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "rivermate_bf_work_permits",
+      "tier": 4,
+      "url": "https://rivermate.com/guides/burkina-faso/work-permits-and-visas",
+      "title": "Rivermate (private global-employment guide) -- Burkina Faso work permit sponsorship process, labor market test, permit duration, dependent visa rules",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Burkina Faso). STATUS: DRAFT -- sourced to a private employer-of-record guide, tier 4; Burkina Faso's own Ministry of Labour page describing this exact process was not located in this build. family_can_work set false: the source explicitly states dependents cannot work unless they obtain their own separate work permit. pr_after_months set 60 per the general 5-year continuous-residence naturalization rule found for this country (see bf_citizenship_naturalisation.json) -- not independently confirmed as applying automatically from this specific permit type."
+}

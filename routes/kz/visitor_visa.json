@@ -1,0 +1,62 @@
+{
+  "id": "kz_visitor_visa",
+  "country": "KZ",
+  "name": "Tourist Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kzvv_visa_or_exemption",
+          "attribute": "has_visa_or_qualifies_for_exemption",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of ~50 countries (including the US, Canada, UK, Australia, Japan, EU member states) may enter visa-free for up to 30 days per entry, capped at 90 days within any 180-day period, unilaterally. Citizens of Russia, Belarus, Ukraine, Georgia, Kyrgyzstan, and Tajikistan may enter visa-free under bilateral agreements (generally up to 90 days; Uzbekistan nationals up to 30 days). All other nationalities require a tourist visa or e-visa. Foreigners 16+ must undergo fingerprinting (dactyloscopy) when obtaining a visa or residence permit, in force since 1 January 2024. Hosts must file an arrival notification with migration authorities within 3 business days of a foreigner's arrival.",
+          "fix_path": "Confirm visa-free eligibility, or apply for a tourist visa/e-visa before travel.",
+          "fix_time_months": null,
+          "source_id": "wpk_entry_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Fingerprint registration (16+, if visa/permit required)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 30 days per entry (unilateral visa-free), up to 90 days (bilateral visa-free or standard tourist visa), max 90 days per 180-day period",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wpk_entry_guide",
+      "tier": 3,
+      "url": "https://new.wpk.kz/kaz_entry_eng",
+      "title": "WPK (Kazakhstan-focused immigration/visa consultancy) -- 2026 entry rules: ~50-country unilateral visa-free list (30 days/entry, 90 days/180-day period), bilateral visa-free agreements with CIS/regional neighbors, mandatory post-2024 fingerprinting for visa/permit applicants aged 16+, and 3-business-day host arrival-notification requirement",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kazakhstan). STATUS: DRAFT -- Kazakhstan's own e-government portal (egov.kz) hosts the authoritative visa-regime pages, but its content is JavaScript-rendered and returned only page metadata (no body text) on every fetch attempt in this build -- a genuine, disclosed access limitation rather than an assumption the content doesn't exist, worth retrying with a different fetch approach. Sourced instead to a Kazakhstan-focused immigration consultancy (tier 3). The specific tourist-visa fee and full unilateral/bilateral country lists were not itemized in the source reviewed."
+}

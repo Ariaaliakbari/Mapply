@@ -1,0 +1,80 @@
+{
+  "id": "sy_citizenship_by_marriage",
+  "country": "SY",
+  "name": "Citizenship by Marriage",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "arab_or_syrian_origin_wife",
+      "name": "Foreign wife of Syrian man, Arab/Syrian-origin background",
+      "requirements": [
+        {
+          "id": "sycm_wife_arab_or_syrian_origin",
+          "attribute": "is_wife_of_syrian_man_with_arab_or_syrian_origin_background",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 18 allows a foreign wife of a Syrian man to acquire Syrian nationality if she expresses a desire to do so AND holds Arab nationality, Syrian origin, or previously held Syrian nationality herself. Article 19 extends this to non-Arab women of Syrian origin. This is NOT a general route open to any foreign wife regardless of background -- the Arab/Syrian-origin condition is a real gate, not a formality.",
+          "fix_path": "Submit a formal request expressing the desire to acquire nationality, evidencing the required Arab/Syrian-origin background.",
+          "fix_time_months": null,
+          "source_id": "menarights_nationality_act_1969"
+        }
+      ]
+    },
+    {
+      "id": "wife_of_naturalized_alien",
+      "name": "Wife of a foreign man naturalized as Syrian",
+      "requirements": [
+        {
+          "id": "sycm_2yr_marriage_naturalized_husband",
+          "attribute": "months_married_to_naturalized_syrian_husband",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Article 8: the wife of a foreign man who himself naturalized as Syrian may acquire nationality after application to the Ministry, at least 2 years of valid marriage, and legal residence, followed by ministerial decree approval. This is discretionary, not automatic.",
+          "fix_path": "Apply to the Ministry after 2 years of marriage to a naturalized-Syrian husband, maintaining legal residence throughout.",
+          "fix_time_months": 24,
+          "source_id": "menarights_nationality_act_1969"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of Arab nationality / Syrian origin / prior Syrian nationality (first group only)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of legal residence and 2 years' marriage (second group only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "menarights_nationality_act_1969",
+      "tier": 2,
+      "url": "https://menarights.org/sites/default/files/2016-11/SYR_NationalAct1969_EN.pdf",
+      "title": "MENA Rights Group -- hosted English translation of Syria's Nationality Act (Legislative Decree No. 276 of 1969): Articles 8, 18, 19 (wife-side acquisition routes) and Article 12 (Syrian women's own nationality retention when married to a foreigner)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Syria). STATUS: DRAFT -- same tier-2 NGO-hosted-translation limitation as sy_citizenship_by_descent.json. ONE OF THE MOST TOTAL GENDER ASYMMETRIES FOUND IN THIS DATASET: there is NO mechanism anywhere in the Act's marriage provisions for a foreign husband of a Syrian woman to acquire Syrian nationality through the marriage. Article 12 addresses only the Syrian wife's own nationality -- she keeps it automatically unless she affirmatively chooses to take her foreign husband's nationality instead -- but nothing in the Act reviewed gives her the power to confer Syrian nationality ON her husband, in contrast to Kazakhstan and Montenegro's genuinely gender-neutral marriage routes built elsewhere in this dataset, and even worse than Lebanon/Senegal/Tanzania's asymmetric-but-existent husband-side routes (discretionary or reduced-residency, but present). This is disclosed as a confirmed structural absence, not a gap in sourcing. Separately, even the wife-side route is NOT unconditional: Article 18/19's Arab-nationality/Syrian-origin gate means a wife with no such background has no route modeled here at all (not found in the sections reviewed). dual_citizenship_allowed set null for the same reason as the descent file -- no explicit clause found in the sections reviewed."
+}

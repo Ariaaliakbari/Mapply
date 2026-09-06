@@ -1,0 +1,63 @@
+{
+  "id": "ne_investor_residence",
+  "country": "NE",
+  "name": "Residence Card for Self-Employed / Business Owners",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "neir_specific_economic_authorization",
+          "attribute": "owns_or_operates_business_in_niger",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ordinance No. 2025-02 (13 January 2025), Article 5, requires any foreigner establishing themselves in Niger -- including for business purposes -- to obtain a residence permit or resident card within 3 months of entry. The ordinance separately states that 'certain economic activities require specific authorization,' with implementing details left to future decrees that had not been published, or at least were not found, as of this build. No minimum-capital threshold, dedicated investor-visa category, or specific business-registration-to-residence pathway was located.",
+          "fix_path": "Register the business, apply for the standard residence card, and monitor for the ordinance's still-pending implementing decree on economic-activity-specific authorization.",
+          "fix_time_months": 3,
+          "source_id": "unhcr_rimap_ne_ordinance_2025"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid travel document", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Business registration documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence-card application", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "resident card, renewable, exact validity not specified in the sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_rimap_ne_ordinance_2025",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/67460",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Ordinance No. 2025-02, Article 5 (3-month residence deadline) and the ordinance's reference to activity-specific authorization pending future decree",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Niger). STATUS: DRAFT -- sourced to a UNHCR-hosted platform's excerpt of the ordinance, tier 2; the full ordinance text, and any implementing decree on 'specific authorization' for economic activities, were not found -- a genuine, disclosed research gap, not evidence such a decree doesn't exist. GENUINE FINDING mirroring ml_investor_residence.json for Mali: Niger has no distinct investor-visa or minimum-investment-linked residence category either -- business owners use the same general residence-card regime as any other immigrant, with the ordinance itself flagging (but not yet detailing) that some economic activities will need separate authorization once implementing rules are issued. This dataset could not confirm whether that implementing decree has since been published -- worth a dedicated retry. leads_to_pr set to false and pr_after_months null for the same structural reason as ne_work_permit.json: no temporary-to-permanent distinction was found. family_can_work left null: not addressed by the source."
+}

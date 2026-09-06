@@ -1,0 +1,86 @@
+{
+  "id": "tn_citizenship_naturalisation",
+  "country": "TN",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tncn_5yr_habitual_residence",
+          "attribute": "months_resident_habitually",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' habitual residence in Tunisia immediately preceding the application (Article 20). Certain categories, including foreigners married to Tunisian nationals, are exempted from this residence requirement (Article 21) -- though see tn_citizenship_by_marriage.json for the specific, gendered marriage-based routes, which operate on their own separate terms.",
+          "fix_path": "Accumulate 5 years' habitual residence in Tunisia.",
+          "fix_time_months": 60,
+          "source_id": "ecoi_nationality_code"
+        },
+        {
+          "id": "tncn_arabic_language",
+          "attribute": "has_sufficient_arabic_knowledge",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sufficient knowledge of the Arabic language, appropriate to the applicant's circumstances (Article 23(2)).",
+          "fix_path": "Demonstrate sufficient Arabic proficiency.",
+          "fix_time_months": null,
+          "source_id": "ecoi_nationality_code"
+        },
+        {
+          "id": "tncn_good_conduct",
+          "attribute": "has_good_conduct_and_morals",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good conduct and morals ('bonnes vie et moeurs'), no conviction exceeding 1 year's imprisonment for a common-law crime, majority age, sound mind, and physical health compatible with community welfare (Article 23).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_nationality_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' habitual residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Arabic-language proficiency assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record / character certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical fitness certificate", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years' habitual residence immediately preceding application",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_nationality_code",
+      "tier": 4,
+      "url": "https://www.ecoi.net/en/file/local/1044707/1930_1384951136_527237944.pdf",
+      "title": "ecoi.net (NGO-hosted country-of-origin information repository) -- French text of Tunisia's Code de la nationalité tunisienne, Articles 20-23: naturalisation requires 5 years' habitual residence (Article 20, with exemptions under Article 21 for certain categories including foreign spouses of Tunisians), sufficient Arabic-language knowledge, good conduct and morals with no 1+ year common-law conviction, majority age, sound mind, and compatible physical health (Article 23)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tunisia). STATUS: DRAFT -- same tier-4 sourcing limitation as this dataset's other Tunisia citizenship files; see tn_citizenship_by_descent.json's notes on the unfetched Ministry of Justice Arabic-language original. LIVE LEGISLATIVE DEVELOPMENT, WORTH FLAGGING PROMINENTLY RATHER THAN BURYING IN A FOOTNOTE: as of March 2026, a parliamentary proposal (presented by Deputy Tarek Mahdi) would, if passed, raise this naturalisation residence requirement from 5 to 7 years, extend the residence period required before a child of stateless parents can claim nationality from 5 to 10 years, narrow the foundling presumption-of-Tunisian-birth window to infants aged 1-28 days (from a broader prior scope), and introduce RETROACTIVE nationality revocation where parentage is later established for a child previously presumed Tunisian as a child of unknown parents. This is a PROPOSAL, not yet enacted law, as of this build -- the 5-year figure modeled here as the current hard requirement reflects the law still in force. The proposal is explicitly framed by its sponsor as addressing irregular immigration, consistent with the Tunisian government's broader documented shift toward restrictive and, per multiple human-rights organizations, abusive treatment of sub-Saharan African migrants and asylum seekers since 2023 (see this country's summary for the international-protection finding). dual_citizenship_allowed set to TRUE per general reporting that Tunisia permits dual nationality without a renunciation requirement -- not independently verified against primary legal text in this build, flagged as provisional."
+}

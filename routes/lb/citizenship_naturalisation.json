@@ -1,0 +1,79 @@
+{
+  "id": "lb_citizenship_naturalisation",
+  "country": "LB",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_residence",
+      "name": "Standard residence route",
+      "requirements": [
+        {
+          "id": "lbcn_5yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' continuous residence in Lebanon, then naturalization by presidential decree (Article 3) -- a fully discretionary decision, not an entitlement even if the residence condition is met.",
+          "fix_path": "Accumulate 5 years' continuous residence, then apply for naturalization by presidential decree.",
+          "fix_time_months": 60,
+          "source_id": "nclw_nationality_report"
+        }
+      ]
+    },
+    {
+      "id": "estimable_services",
+      "name": "Estimable services to Lebanon",
+      "requirements": [
+        {
+          "id": "lbcn_estimable_services",
+          "attribute": "has_rendered_estimable_services_to_lebanon",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Naturalization by presidential decree may also be granted, without the standard residence requirement, for estimable services rendered to Lebanon -- including private military service exceeding 2 years. This is a discretionary state determination, not an applicant-invoked entitlement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "nclw_nationality_report"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' continuous residence (standard route)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Documentation of qualifying service (estimable-services route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years' continuous residence (standard route only)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "nclw_nationality_report",
+      "tier": 1,
+      "url": "https://nclw.gov.lb/wp-content/uploads/2022/09/2021_Nationality-not-Naturalization_Eng.pdf",
+      "title": "National Commission for Lebanese Women (NCLW), official Lebanese government commission -- Article 3 naturalization conditions (5 years' residence OR estimable services including 2+ years' private military service), all by discretionary presidential decree, plus post-naturalization restrictions (10-year bar on voting/running for parliament; extended residency requirements before practicing law, medicine, dentistry, or engineering)",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lebanon). STATUS: PUBLISHED -- sourced to an official Lebanese government commission's own report, tier 1. work_rights set 'restricted' rather than 'full' to reflect a genuinely distinctive, sourced finding: naturalized citizens face specific professional-licensing delays not applied to citizens by birth -- 10+ years of Lebanese nationality required before practicing law, and 5+ years of post-naturalization residency required before practicing medicine, dentistry, or engineering. Naturalized citizens are also barred from voting or running for parliamentary office for 10 years after naturalization, and may lose their nationality if convicted of crimes against state security -- both disclosed here rather than modeled as blocking requirements, since they are POST-acquisition restrictions on an already-naturalized citizen, not conditions for acquiring citizenship in the first place. Naturalization is explicitly discretionary throughout Lebanese law -- meeting the residence or service condition does not create an entitlement to a decree, a point the source itself emphasizes. dual_citizenship_allowed set true on general reporting, not independently verified against primary legal text in this build."
+}

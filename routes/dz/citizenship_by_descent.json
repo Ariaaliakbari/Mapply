@@ -1,0 +1,79 @@
+{
+  "id": "dz_citizenship_by_descent",
+  "country": "DZ",
+  "name": "Nationality by Descent / Birth",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "algerian_parent",
+      "name": "Child of an Algerian father or mother",
+      "requirements": [
+        {
+          "id": "dzcd_algerian_parent",
+          "attribute": "has_algerian_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Algerienne, Article 6: 'Est considere comme Algerien l'enfant ne de pere algerien ou de mere algerienne' -- a child born to either an Algerian father or an Algerian mother is Algerian, explicitly gender-neutral.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_dz_nationalite"
+        }
+      ]
+    },
+    {
+      "id": "born_in_algeria_unknown_parents",
+      "name": "Born in Algeria to unknown parents",
+      "requirements": [
+        {
+          "id": "dzcd_born_unknown_parents",
+          "attribute": "born_in_algeria_to_unknown_parents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born in Algeria to unknown parents is presumed Algerian. If paternity or maternity is later established as belonging to a foreign national, the child may instead acquire that foreign nationality and lose Algerian status -- a conditional, reversible presumption rather than an unconditional jus soli grant.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_dz_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Algerian nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_dz_nationalite",
+      "tier": 4,
+      "url": "https://fr.wikipedia.org/wiki/Nationalit%C3%A9_alg%C3%A9rienne",
+      "title": "Wikipedia (French) -- Algerian nationality, quoting Code de la Nationalite Algerienne Article 6 (descent) and the conditional jus soli rule for foundlings",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Algeria). STATUS: DRAFT -- sourced to Wikipedia (tier 4, though it directly quotes the code's article text), since a Journal Officiel or other government-hosted primary text was not successfully fetched in this build (private legal-hosting sites carrying the full code returned fetch errors). GENUINE, GENDER-NEUTRAL FINDING: Article 6's explicit 'pere algerien ou mere algerienne' phrasing carries no asymmetry -- see dz_citizenship_by_marriage.json's notes for a related but distinct finding on the marriage-acquisition provision's own gender language. DISTINCTIVE, CONDITIONAL JUS SOLI: unlike most countries in this dataset with unconditional territorial birthright citizenship for foundlings, Algeria's presumption for a child born to unknown parents can be REVERSED if a foreign parent is later identified -- a real, disclosed limitation rather than an unconditional safeguard. dual_citizenship_allowed left null: no source reviewed in this build addressed Algeria's general dual-nationality policy."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "hn_visitor_visa",
+  "country": "HN",
+  "name": "Tourist Entry (CA-4)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "rolling_window",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "hnvv_entry_authorization",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Honduras is one of the four CA-4 Border Control Agreement countries (with El Salvador, Guatemala, Nicaragua); citizens of the other three CA-4 states enter on a national ID or passport alone. Non-exempt nationalities need either a Consular Visa (issued directly by a Honduran consulate, USD 30 single-entry/30 days or USD 60 multiple-entry/90 days) or a Consulted Visa (pre-validated by the National Immigration Institute -- INM -- before consular issuance, USD 100, required for certain nationalities and all legal entities). A visa does not guarantee admission -- the border officer makes the final call. Standard stay is 90 days, extendable once by 30 days at INM. As a CA-4 member, this 90-day allowance is shared across all four member countries and is not reset by crossing between them -- exiting to a non-CA-4 country is required to reset the clock.",
+          "fix_path": "For non-visa-exempt nationalities, apply for a Consular or Consulted Visa through a Honduran consulate in advance.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Yellow fever vaccination certificate (if arriving from/departing to an endemic country)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "90 days (shared CA-4 allowance), extendable once to 120 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "inm_gob_hn_visas",
+      "tier": 1,
+      "url": "https://inm.gob.hn/visas.html",
+      "title": "Instituto Nacional de Migracion de Honduras -- visa categories (Consular, Consultada), CA-4 free-movement note, 90-day stay + 30-day extension",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: PUBLISHED -- hard requirement sourced directly to inm.gob.hn (Honduras's own migration authority), tier 1. duration_type set 'rolling_window' consistent with how this dataset modeled Guatemala's CA-4 entry (gt_visitor_visa.json) -- Honduras is a CA-4 member on the same shared allowance, not a separate 90 days. The INM page did not itself publish a full visa-exempt nationality list (unlike, e.g., Zimbabwe's or Uzbekistan's e-visa portals) -- it names only the CA-4 partner states explicitly; other visa-exempt nationalities are referenced indirectly via the consular-fee schedule rather than listed by name, so a full country list is not asserted here."
+}

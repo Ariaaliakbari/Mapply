@@ -1,0 +1,79 @@
+{
+  "id": "gt_citizenship_by_descent",
+  "country": "GT",
+  "name": "Citizenship by Descent / Birth",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_guatemala",
+      "name": "Born in Guatemala (jus soli)",
+      "requirements": [
+        {
+          "id": "gtcd_born_in_guatemala",
+          "attribute": "born_in_guatemala",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Anyone born on Guatemalan territory (including on Guatemalan-flagged ships and aircraft) acquires citizenship automatically -- unconditional jus soli.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_gt_globalcit_report"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_guatemalan_father_or_mother",
+      "name": "Born abroad to a Guatemalan parent",
+      "requirements": [
+        {
+          "id": "gtcd_guatemalan_parent_abroad",
+          "attribute": "has_guatemalan_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born abroad to a Guatemalan father, or to a Guatemalan mother in cases historically framed around 'illegitimate' children, acquires nationality upon establishing residence in Guatemala, or by exercising a choice of nationality recognized under the birth country's own laws. The GLOBALCIT report reviewed for this build does not confirm whether this asymmetric father/mother framing has been fully modernized to gender-neutral terms under later reforms -- disclosed as unconfirmed rather than assumed resolved.",
+          "fix_path": "Establish residence in Guatemala, or exercise the nationality-choice option where the birth country's law allows it.",
+          "fix_time_months": null,
+          "source_id": "ecoi_gt_globalcit_report"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Guatemalan nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_gt_globalcit_report",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/2106055/RSCAS_GLOBALCIT_CR_2020_4.pdf",
+      "title": "ecoi.net -- hosted GLOBALCIT Report on Citizenship Law: Guatemala (Juan Carlos Sarazua, 2020): unconditional jus soli, descent conditions for children born abroad, and the constitutional protection against denationalizing citizens of origin",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Guatemala). STATUS: DRAFT -- ecoi.net hosts an academic GLOBALCIT report (tier 2, not a Guatemalan government source directly); the Constitution's own text was not independently re-fetched for this specific file. GENUINE POSITIVE FINDING: unconditional jus soli, similar to Venezuela's rule built earlier in this dataset. UNRESOLVED, EXPLICITLY FLAGGED RATHER THAN ASSUMED: the source's own language for descent citizenship still uses a father/'illegitimate-child-of-a-mother' framing that reads as historically dated -- whether this has been superseded by fully gender-neutral wording in current practice was not confirmed in this build and should be treated as an open question, not resolved either way. The Constitution's protection of citizens 'of origin' against arbitrary denationalization is a real, specific constitutional safeguard worth naming. dual_citizenship_allowed set true given Guatemala's documented Central American reciprocal-nationality framework and 1961 Spain treaty (see gt_citizenship_naturalisation.json's notes for the fuller picture) -- this appears to be a general feature of Guatemalan nationality law, not route-specific."
+}

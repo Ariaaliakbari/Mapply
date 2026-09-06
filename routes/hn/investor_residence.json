@@ -1,0 +1,98 @@
+{
+  "id": "hn_investor_residence",
+  "country": "HN",
+  "name": "Rentista / Pensionado / Inversionista Residence",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "rentista",
+      "name": "Rentista (permanent income)",
+      "requirements": [
+        {
+          "id": "hnir_rentista_income",
+          "attribute": "monthly_permanent_income_usd",
+          "operator": ">=",
+          "value": 2500,
+          "hard": true,
+          "blocker_text": "INM's Rentista category requires permanent, lawful, stable income ('rentas permanentes, licitas y estables') of at least USD 2,500/month, from foreign or domestic sources, received through a Honduran financial institution.",
+          "fix_path": "Document USD 2,500/month in qualifying permanent income routed through a Honduran bank, then apply to INM.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_residencias"
+        }
+      ]
+    },
+    {
+      "id": "pensionado",
+      "name": "Pensionado (foreign pension)",
+      "requirements": [
+        {
+          "id": "hnir_pensionado_income",
+          "attribute": "monthly_foreign_pension_usd",
+          "operator": ">=",
+          "value": 1500,
+          "hard": true,
+          "blocker_text": "INM's Pensionado category requires a stable pension of at least USD 1,500/month from abroad, transferred through a Honduran bank.",
+          "fix_path": "Document a qualifying foreign pension of USD 1,500/month routed through a Honduran bank, then apply to INM.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_residencias"
+        }
+      ]
+    },
+    {
+      "id": "inversionista",
+      "name": "Inversionista (investor)",
+      "requirements": [
+        {
+          "id": "hnir_inversionista_capital",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 50000,
+          "hard": true,
+          "blocker_text": "INM's Inversionista category requires a minimum USD 50,000 investment in a lawful business area, plus a USD 5,000 guarantee deposit with the State Secretariat, a feasibility study, and an investment timeline.",
+          "fix_path": "Invest at least USD 50,000 in a qualifying business, deposit the USD 5,000 guarantee, and submit a feasibility study to INM.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_residencias"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank statements evidencing qualifying income/investment routed through a Honduran institution", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled/authenticated criminal background check", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical certificate (under 6 months old)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Investment feasibility study (Inversionista track only)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "inm_gob_hn_residencias",
+      "tier": 1,
+      "url": "https://inm.gob.hn/residencias.html",
+      "title": "Instituto Nacional de Migracion de Honduras -- Rentista, Pensionado, and Inversionista residence categories, income/investment thresholds, and dependent-family provisions",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: PUBLISHED -- all three hard requirements are sourced directly to inm.gob.hn (Honduras's own migration authority), tier 1. Three genuinely distinct alternative paths modeled together in this one file: passive-permanent-income (Rentista, USD 2,500/mo, any lawful source), foreign-pension-specific (Pensionado, lower USD 1,500/mo threshold), and active-investment (Inversionista, USD 50,000 + USD 5,000 guarantee deposit) -- work_rights set 'restricted' as a conservative default since the source did not clearly state whether Rentista/Pensionado status permits any local work, only that it does not require it. leads_to_pr and pr_after_months modeled on the 'Inmigrado' permanent category also described on this same INM page, reachable after continuous qualifying residence -- the source did not give a specific month count for this transition, so pr_after_months is set 0 to reflect that these categories are themselves treated as indefinite-duration residence rather than a fixed-term permit requiring a separate PR application; this is a modeling simplification, disclosed rather than asserted as confirmed INM policy. citizenship_after_months left null since the source did not specify a residence-to-naturalization clock for these routes specifically (see hn_citizenship_naturalisation.json for the general 3-year 'other foreigners' naturalization track, which likely applies but was not explicitly cross-confirmed)."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "ke_family_reunification",
+  "country": "KE",
+  "name": "Dependant's Pass",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kefr_dependant_relationship",
+          "attribute": "is_dependant_of_qualifying_person",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be a spouse or child (or other qualifying dependant) of a Kenyan citizen, work permit holder, permanent resident, or exempted person, with documentary evidence of the relationship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_dependants_pass"
+        },
+        {
+          "id": "kefr_support_capacity",
+          "attribute": "sponsor_has_sufficient_income",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsor must show proof of sufficient income to support the dependant, plus a sworn affidavit demonstrating the dependant's inability to self-sustain.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_dependants_pass"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Form 28", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Evidence of relationship (marriage/birth certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sworn affidavit of dependency", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's valid work permit (6+ months validity, if applicable)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source located in this build; tied to the sponsor's status validity",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_dependants_pass",
+      "tier": 1,
+      "url": "https://immigration.go.ke/dependants-pass/",
+      "title": "Directorate of Immigration Services, Republic of Kenya -- Dependant's Pass: for spouses/children of Kenyan citizens, work permit holders, permanent residents, or exempted persons; requires Form 28, relationship evidence, proof of sponsor's sufficient income, sworn affidavit of dependency; fees KSh 20,000 (dependants of citizens), KSh 10,000 (dependants of permit/PR holders), gratis for EAC nationals",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kenya). Published on tier-1 sourcing (Directorate of Immigration Services). This is the route a foreign spouse of a Kenyan citizen actually lives on day-to-day, distinct from ke_citizenship_by_marriage.json (Section 11 registration, which requires 7 years of marriage plus acquired residence status before citizenship itself can be sought). work_rights set to 'none' since no source in this build described an independent right for a Dependant's Pass holder to work; family_can_work set false as the conservative default."
+}

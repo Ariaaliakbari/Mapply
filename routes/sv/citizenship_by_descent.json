@@ -1,0 +1,96 @@
+{
+  "id": "sv_citizenship_by_descent",
+  "country": "SV",
+  "name": "Nationality by Birth / Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_el_salvador",
+      "name": "Born in El Salvador (jus soli)",
+      "requirements": [
+        {
+          "id": "svcd_born_in_country",
+          "attribute": "born_in_el_salvador",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 90: anyone born in Salvadoran territory is Salvadoran by birth (unconditional jus soli).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unwomen_sv_constitution"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_salvadoran_parent",
+      "name": "Born abroad to a Salvadoran parent",
+      "requirements": [
+        {
+          "id": "svcd_salvadoran_parent_abroad",
+          "attribute": "has_salvadoran_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 90: 'the children of a Salvadoran father or mother, born abroad' are Salvadoran by birth -- explicitly gender-neutral, transmitting equally through either parent.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "unwomen_sv_constitution"
+        }
+      ]
+    },
+    {
+      "id": "former_central_american_federation",
+      "name": "Native of a former Central American Federal Republic state, domiciled in El Salvador",
+      "requirements": [
+        {
+          "id": "svcd_ca_federation_declaration",
+          "attribute": "is_former_ca_federation_native_domiciled",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 90 also grants Salvadoran nationality by birth to natives of the other former Central American Federal Republic states (Guatemala, Honduras, Nicaragua, Costa Rica) who are domiciled in El Salvador and voluntarily declare their intent to be Salvadoran.",
+          "fix_path": "As a native of another former Central American Federation state, establish domicile in El Salvador and file a voluntary declaration of Salvadoran nationality.",
+          "fix_time_months": null,
+          "source_id": "unwomen_sv_constitution"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Salvadoran nationality (descent track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unwomen_sv_constitution",
+      "tier": 2,
+      "url": "https://constitutions.unwomen.org/en/countries/americas/el-salvador",
+      "title": "UN Women Global Gender Equality Constitutional Database -- El Salvador's Constitution, Article 90 (nationality by birth) and Article 92 (naturalization)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: DRAFT -- sourced to an academic/intergovernmental constitutional database (UN Women), tier 2, not El Salvador's own Official Gazette directly. GENUINE, EXPLICITLY GENDER-NEUTRAL FINDING: the source quotes the constitutional text directly confirming transmission through either a Salvadoran father or mother, with no asymmetry -- consistent with sv_citizenship_by_marriage.json's finding of similarly explicit gender-neutral language for spousal naturalization. DISTINCTIVE REGIONAL FEATURE: the former-Central-American-Federation declaration route (Article 90) is a real, specific historical-integration mechanism tracing to the 19th-century Federal Republic of Central America -- not seen in this exact form in this dataset's other countries. dual_citizenship_allowed set true: no source reviewed in this build (for this route or the naturalization tracks in sv_citizenship_naturalisation.json) found a renunciation requirement anywhere in the framework."
+}

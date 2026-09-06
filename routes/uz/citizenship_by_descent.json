@@ -1,0 +1,62 @@
+{
+  "id": "uz_citizenship_by_descent",
+  "country": "UZ",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uzcd_citizen_parent",
+          "attribute": "has_uzbekistan_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 14 of the Law on Citizenship applies fully gender-neutral rules: a child acquires Uzbekistan citizenship at birth if both parents (or the single parent) are citizens, or if one parent is a citizen and the other is stateless/declared absent/a foreign citizen. Establishment or recognition of paternity or maternity by an Uzbek-citizen parent confers citizenship on the child regardless of place of birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_uz_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Uzbekistan citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate or paternity/maternity recognition document", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_uz_citizenship_law",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/2027783/5e8d89964.pdf",
+      "title": "ecoi.net -- hosted text of the Law of the Republic of Uzbekistan 'On Citizenship,' Article 14 (descent-based acquisition) and Article 8 (marriage does not change citizenship)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: DRAFT -- ecoi.net hosts the primary legal text itself (the Law 'On Citizenship,' Article 14), not a secondary summary, but this dataset's validator requires tier-1 (government-hosted) sourcing for hard requirements to publish, and a lex.uz (Uzbekistan's own government legislation portal, confirmed tier-1 elsewhere in this build for the 2021 procedural decree) copy of the same Law was not directly located in this search pass -- worth a follow-up to pull it from lex.uz directly and upgrade this file. GENUINE POSITIVE FINDING: descent citizenship is fully gender-neutral on its face -- no paternal-preference asymmetry of the kind found in Iran, Kuwait, or Syria's descent laws built elsewhere in this dataset. dual_citizenship_allowed left null for a child born to one citizen and one foreign parent -- Uzbekistan is widely understood to restrict dual citizenship generally (see uz_citizenship_naturalisation.json's explicit renunciation requirement for naturalizing adults), but no source in this build directly addressed how that applies to a child acquiring citizenship by descent while also holding a foreign parent's nationality, so it is not asserted here."
+}

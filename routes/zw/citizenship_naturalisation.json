@@ -1,0 +1,69 @@
+{
+  "id": "zw_citizenship_naturalisation",
+  "country": "ZW",
+  "name": "Citizenship by Naturalisation/Registration",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "zwcn_permanent_residence_and_minister_satisfaction",
+          "attribute": "holds_permanent_residence_and_minister_approval",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Registration as a Zimbabwean citizen requires demonstrating permanent residence and satisfying the Minister on unspecified further conditions, followed by taking the oath of loyalty set out in Schedule 1 of the Citizenship Act. Exact residency-year requirements were not detailed in the source reviewed.",
+          "fix_path": "Obtain permanent residence, satisfy the Minister's conditions, and take the oath of loyalty.",
+          "fix_time_months": null,
+          "source_id": "cyber_harvard_zw_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of permanent residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Oath of loyalty (Schedule 1)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cyber_harvard_zw_citizenship_act",
+      "tier": 3,
+      "url": "https://cyber.harvard.edu/population/zimbabwe/citizenship.htm",
+      "title": "Harvard Cyberlaw Clinic-hosted text of Zimbabwe's Citizenship Act [Chapter 4:01] -- registration/naturalization conditions, Ministerial discretion, oath of loyalty, and the Part IV Section 9 dual-citizenship prohibition",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "statelesshub_zimbabwe",
+      "tier": 3,
+      "url": "https://www.statelesshub.org/country/zimbabwe",
+      "title": "Stateless Hub -- the 2013 Constitution's dual-citizenship allowance for citizens by birth, its direct conflict with the still-unamended 1984 Citizenship Act's outright ban, and reported continued administrative enforcement of the old ban",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Zimbabwe). STATUS: DRAFT -- both sources are tier-3; exact residency-year requirements and the specific 'unspecified further conditions' the Minister must be satisfied of were not detailed in either source, a genuine and disclosed sourcing gap rather than a guessed figure. THE SINGLE MOST IMPORTANT FINDING IN THIS ZIMBABWE BUILD, STATED PLAINLY: Zimbabwe's 2013 Constitution permits dual nationality for citizens BY BIRTH, but the Citizenship Act (last substantively unaligned since 1984) still bans dual citizenship outright for everyone, including naturalized citizens -- and per Stateless Hub, this constitutional-vs-statutory conflict has never been resolved. A 2018 draft Citizenship Bill was meant to fix the misalignment; as of the most recent source reviewed (dated 2023), Parliament had still not adopted it, and no source located in this build confirms passage in 2024, 2025, or 2026 either. Administrative practice is reported to continue enforcing the OLD prohibition regardless of the constitutional text, affecting what one source describes as hundreds of thousands of descendants of migrants who previously held dual nationality. dual_citizenship_allowed is set false HERE specifically because naturalization/registration is not citizenship 'by birth' -- the constitutional allowance (as sourced) does not extend to this route even on paper, unlike zw_citizenship_by_descent.json where it is set true. This is a live, unresolved legal contradiction, not a modeling inconsistency across the three files."
+}

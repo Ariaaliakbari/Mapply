@@ -1,0 +1,63 @@
+{
+  "id": "uz_citizenship_by_marriage",
+  "country": "UZ",
+  "name": "Citizenship by Marriage (Stateless Spouse Only)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "stateless_spouse_only",
+      "name": "Stateless spouse of a citizen",
+      "requirements": [
+        {
+          "id": "uzcm_stateless_spouse_3yr_residence",
+          "attribute": "months_resident_stateless_spouse_of_citizen",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Article 8 states marriage to an Uzbek citizen does NOT itself change either spouse's citizenship. The only marriage-linked reduction found: a STATELESS person married to an Uzbek citizen may apply for citizenship after 3 years' continuous residence (Article 19, second section), versus the standard 5-year residency track that applies to everyone else, married or not.",
+          "fix_path": "Accumulate 3 years' continuous residence as a stateless spouse of a citizen, then apply.",
+          "fix_time_months": 36,
+          "source_id": "ecoi_uz_citizenship_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of statelessness", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of 3 years' continuous residence", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "3 years continuous residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_uz_citizenship_law",
+      "tier": 2,
+      "url": "https://www.ecoi.net/en/file/local/2027783/5e8d89964.pdf",
+      "title": "ecoi.net -- hosted text of the Law of the Republic of Uzbekistan 'On Citizenship,' Article 8 (marriage does not change citizenship) and Article 19 (stateless-spouse 3-year reduced residency)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: DRAFT -- same tier-2-hosted-primary-text limitation as uz_citizenship_by_descent.json; this dataset's validator requires tier-1 sourcing to publish a hard requirement, so this stays draft pending a direct lex.uz citation. UNUSUAL FINDING, WORTH FLAGGING AGAINST THE DOMINANT PATTERN IN THIS DATASET: Uzbekistan's law confers NO citizenship benefit at all to an ordinary FOREIGN-NATIONAL spouse (of either gender) married to an Uzbek citizen -- Article 8 explicitly rules this out. The only marriage-adjacent reduction in the law applies exclusively to a STATELESS spouse (3 years vs. the standard 5), which is not really a 'marriage privilege' for foreign nationals generally so much as a narrow statelessness-mitigation clause that happens to require marriage to a citizen as its trigger. This is a genuinely different shape from every other country's marriage-citizenship route built in this dataset (all of which give SOME reduction, however asymmetric, to at least one gender of ordinary foreign national spouse) -- Uzbekistan gives NONE. Filed under 'settled' rather than omitted entirely because the stateless-spouse mechanism is real, sourced, and marriage-triggered, not because it functions like the marriage routes built for other countries. dual_citizenship_allowed set false given the naturalization law's general renunciation requirement (see uz_citizenship_naturalisation.json), which a stateless applicant trivially satisfies by definition (no other citizenship to renounce)."
+}

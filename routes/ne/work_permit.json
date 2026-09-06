@@ -1,0 +1,70 @@
+{
+  "id": "ne_work_permit",
+  "country": "NE",
+  "name": "Work Authorization and Residence Card (Employer-Sponsored)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "newp_labor_market_test_plus_authorization",
+          "attribute": "has_work_authorization_before_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Two separate authorizations are required: a carte de sejour (issued by the General Directorate of National Police, mandatory for stays over 90 days under Ordinance No. 2025-02, Article 5, valid 1-2 years and renewable) and a distinct work authorization from the Ministry of Employment, Labor and Social Protection, required before exercising paid employment. The employer must submit an 'attestation de non-disponibilite de competences locales' (attestation that no qualified Nigerien worker is available), an employment contract reviewed by the Labor Inspectorate, and pay an employment tax on foreign workers. Processing takes 15-30 working days. The mining sector reportedly caps foreign workers at 20% of a company's workforce with mandatory local-staff training, though this figure could not be independently confirmed against a primary legal text in this build. ECOWAS/CEDEAO citizens benefit from simplified procedures and multi-year residence permits.",
+          "fix_path": "Have the employer secure the non-availability attestation and submit the work-authorization application to the Ministry of Employment, alongside the separate residence-card application to the police.",
+          "fix_time_months": 1,
+          "source_id": "africarrieres_ne_travail_etranger"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract (Labor Inspectorate-reviewed)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's non-availability attestation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence card application (separate from work authorization)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "residence card 1-2 years, renewable; work authorization duration tied to contract",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "africarrieres_ne_travail_etranger",
+      "tier": 3,
+      "url": "https://africarrieres.com/niger/fr/guide/employeur-entreprise/travail-etranger",
+      "title": "Africarrieres (immigration/HR consultancy guide) -- dual permit system, non-availability attestation, mining-sector quota (unconfirmed), processing timeline",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "unhcr_rimap_ne_ordinance_2025",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/67460",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Ordinance No. 2025-02, Article 5 residence-card requirement underlying the carte de sejour",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Niger). STATUS: DRAFT -- best available sourcing is a consultancy guide, tier 3, for the work-authorization mechanics, corroborated by a UNHCR-hosted platform, tier 2, for the residence-card leg; no Ministry of Employment or Journal Officiel du Niger source was independently fetched -- disclosed gap. GENUINE, HONESTLY-FLAGGED UNCERTAINTY: the mining-sector 20%-foreign-worker cap is reported by the source itself as an 'unconfirmed figure' -- carried into this file with that same caveat rather than presented as settled fact. citizenship_after_months (120) reflects the STANDALONE naturalization track's general 10-year residence threshold (see ne_citizenship_naturalisation.json) -- a notably longer bar than Mali's comparable 5-year threshold (ml_citizenship_naturalisation.json) despite the two countries sharing a similar colonial-era legal lineage; not confirmed as an automatic conversion specific to this permit. leads_to_pr set to false: Ordinance 2025-02's residence-card regime, like Mali's, shows no distinct temporary-to-permanent progression in the sources reviewed -- just one ongoing, renewable status. family_can_work left null: not addressed by either source."
+}

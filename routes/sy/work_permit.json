@@ -1,0 +1,80 @@
+{
+  "id": "sy_work_permit",
+  "country": "SY",
+  "name": "Employer-Sponsored Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sywp_employment_contract",
+          "attribute": "has_syrian_employment_contract",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A work visa and a separate work permit are both required, applied for either directly through a Syrian consulate/embassy abroad or alongside the employment contract once in Syria. Permits are employer-specific and typically issued for 1 year, renewable.",
+          "fix_path": "Secure a Syrian employment contract, then apply for the work visa/permit through a Syrian consulate or with the employer in-country.",
+          "fix_time_months": null,
+          "source_id": "usemultiplier_syria"
+        },
+        {
+          "id": "sywp_labor_market_test",
+          "attribute": "no_qualified_syrian_national_available",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employers must generally demonstrate no qualified Syrian national is available for the role. Sectors reported as having more openings for foreign workers include humanitarian aid, construction, and education, reflecting current reconstruction-era demand.",
+          "fix_path": "Employer must document the absence of a qualified Syrian candidate for the role.",
+          "fix_time_months": null,
+          "source_id": "lawgratis_immigration_syria"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Signed employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's labor-market-test documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "usemultiplier_syria",
+      "tier": 4,
+      "url": "https://www.usemultiplier.com/syria",
+      "title": "Multiplier (private EOR/HR-guide site) -- work permit and work visa process, employer-specific issuance, and 1-year renewable duration",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "lawgratis_immigration_syria",
+      "tier": 4,
+      "url": "https://www.lawgratis.com/blog-detail/immigration-law-at-syria",
+      "title": "LawGratis (private legal-guide site) -- Syria's residency permit categories including employment-based temporary residence, the labor-market-test requirement, and sectors with more foreign-worker demand",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Syria). STATUS: DRAFT -- no Ministry of Labour (or equivalent transitional-government body) portal was locatable/fetchable in this build; both sources are tier-4 private guides, not government sourcing, so this cannot be published under this dataset's rules despite plausibly reflecting real current practice. work_rights set 'restricted' (employer/permit-tied, not open labor-market access) rather than 'full', reflecting the employer-specific nature of the permit. family_can_work left null since no source addressed dependents' work rights specifically. This entire category sits inside Syria's ongoing post-Assad institutional reconstruction -- ministry names, procedures, and even which body administers labor permits may not yet be stable, and this route should be treated as provisional pending clearer institutional sourcing."
+}

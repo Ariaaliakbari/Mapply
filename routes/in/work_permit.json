@@ -1,0 +1,85 @@
+{
+  "id": "in_work_permit",
+  "country": "IN",
+  "name": "Employment Visa",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "inwp_skilled_professional",
+          "attribute": "is_highly_skilled_or_qualified",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be a highly skilled and/or qualified professional engaged by an Indian company; not available for positions where qualified Indian nationals are available, or for routine/clerical/secretarial roles.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_work_visa_faq"
+        },
+        {
+          "id": "inwp_min_salary_25k",
+          "attribute": "annual_salary_usd",
+          "operator": ">=",
+          "value": 25000,
+          "hard": true,
+          "blocker_text": "Minimum annual salary of US$25,000 (exceptions: ethnic cooks, non-English language teachers/translators, staff of embassies/high commissions).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_work_visa_faq"
+        },
+        {
+          "id": "inwp_indian_sponsor",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Sponsoring entity must be registered in India or executing a project in India (need not be the applicant's direct legal employer).",
+          "fix_path": "Secure engagement by a company registered in India, or a project it is executing in India.",
+          "fix_time_months": null,
+          "source_id": "mha_work_visa_faq"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract / engagement letter showing salary", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of Indian sponsoring entity's registration/project", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "FRRO registration within 14 days if continuous stay exceeds 180 days", "difficulty": "routine", "typical_time_days": 14 }
+  ],
+  "outcome": {
+    "duration_length": "Up to 5 years for roles under a bilateral/collaboration agreement; up to 3 years for IT-sector professionals; up to 2 years for other employment -- whichever is less than the assignment term. Extendable by state governments/FRROs up to 5 years total from initial issue.",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mha_work_visa_faq",
+      "tier": 1,
+      "url": "https://www.mha.gov.in/sites/default/files/2022-08/work_visa_faq%5B1%5D.pdf",
+      "title": "Ministry of Home Affairs, Government of India -- FAQs Relating to Work Related Visas: Employment (E) Visa criteria (highly skilled/qualified professional, not for roles where qualified Indians exist or routine/clerical work), minimum salary US$25,000/year (exceptions for ethnic cooks, non-English language teachers/translators, embassy staff), duration up to 5 years (bilateral agreement roles)/3 years (IT sector)/2 years (other), tied to assignment term, extendable to 5 years total; sponsoring entity must be registered in India or executing an Indian project",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). Published on tier-1 sourcing (Ministry of Home Affairs FAQ document). work_rights set to 'restricted' since the visa is tied to a specific role/engagement, not an open Indian labour-market right. family_can_join set true (dependents typically accompany on an X visa) but family_can_work set false as the conservative default -- no source in this build confirmed work rights for accompanying dependents specifically."
+}

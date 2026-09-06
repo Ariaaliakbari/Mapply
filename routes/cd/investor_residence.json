@@ -1,0 +1,62 @@
+{
+  "id": "cd_investor_residence",
+  "country": "CD",
+  "name": "Investor Entry/Settlement Visa",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cdir_anapi_approved_project",
+          "attribute": "holds_anapi_approved_investment_project",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "ANAPI (National Investment Promotion Agency) receives and analyzes investment projects; an Approval Council validates them, and the Ministers of Planning and Finance jointly sign the inter-ministerial approval decree, issued within 30 days maximum. ANAPI also assists approved investors in obtaining an entry or settlement visa, though the source did not detail the visa's specific terms or duration. No minimum capital threshold was confirmed in any source reviewed for this build.",
+          "fix_path": "Submit an investment project to ANAPI and obtain the inter-ministerial approval decree.",
+          "fix_time_months": 1,
+          "source_id": "ambadrcusa_invest_laws"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "ANAPI-approved investment project file", "difficulty": "hard", "typical_time_days": 30 },
+    { "document": "Inter-ministerial approval decree", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in sources reviewed",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ambadrcusa_invest_laws",
+      "tier": 1,
+      "url": "https://www.ambadrcusa.org/invest-in-drc/laws/",
+      "title": "Embassy of the Democratic Republic of the Congo (Washington, DC) -- official government mission page describing ANAPI's investment-approval process and its entry/settlement visa assistance service under the Investment Code",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Democratic Republic of the Congo). STATUS: DRAFT despite tier-1 sourcing -- the embassy page confirms ANAPI's process and its visa-assistance role but does not specify the resulting visa/residence permit's duration, renewability terms, or a minimum capital threshold; the U.S. State Department's own Investment Climate Statement (which likely has the capital figure) returned a 403 error on fetch, and a Clifford Chance / HG.org legal-guide cross-reference was not successfully retrieved either. No minimum capital threshold is asserted here -- disclosed as unconfirmed, not zero. family_can_join set false (not asserted true without a source); family_can_work and duration left null/unspecified for the same reason. This is one of the thinner investor-route builds in this dataset specifically because the authoritative embassy source, while real government sourcing, describes the APPROVAL process in detail but not the RESIDENCE outcome in the same detail."
+}

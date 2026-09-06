@@ -1,0 +1,80 @@
+{
+  "id": "ir_citizenship_by_descent",
+  "country": "IR",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_descent",
+      "name": "Paternal descent (automatic)",
+      "requirements": [
+        {
+          "id": "ircd_iranian_father",
+          "attribute": "has_iranian_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Anyone whose father is Iranian is Iranian, regardless of the child's country of birth (Civil Code Article 976(2)). This is the automatic, default rule -- descent through the father alone.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        }
+      ]
+    },
+    {
+      "id": "maternal_descent_opt_in",
+      "name": "Maternal descent (2006 amendment, opt-in at age 18)",
+      "requirements": [
+        {
+          "id": "ircd_iranian_mother_opt_in",
+          "attribute": "is_child_of_iranian_mother_foreign_father_opting_in_at_18",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A person born to an Iranian mother and a non-Iranian father is not automatically Iranian at birth under the base Article 976 rule. A 2006 amendment allows such a person to apply for Iranian nationality upon reaching age 18, subject to conditions including having no criminal record and, in practice, completing renunciation or other administrative formalities; this is a discretionary, application-based opt-in, not an automatic acquisition, and does not retroactively apply to those already adult before the amendment without going through this same application process.",
+          "fix_path": "Apply for Iranian nationality after turning 18, if born to an Iranian mother and non-Iranian father.",
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Iranian nationality (Shenasnameh/national ID)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record clearance (maternal opt-in track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "irandataportal_civil_code",
+      "tier": 3,
+      "url": "https://irandataportal.syr.edu/civil-code",
+      "title": "Iran Data Portal (Syracuse University academic archive) -- English translation of Iran's Civil Code, Article 976: nationality provisions including Article 976(2)'s paternal-descent rule ('anyone whose father is Iranian'), plus the 2006 amendment permitting persons born to an Iranian mother and foreign father to apply for Iranian nationality at age 18",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iran). STATUS: DRAFT -- sourced to an academic archive (tier 3) hosting an English translation of the Civil Code rather than a fetched government original (an Iranian Parliament/Ministry of Justice source for the Civil Code was not successfully retrieved in this build). MARQUEE GENDERED FINDING: Iran's default descent rule is paternal-only -- a child of an Iranian father is automatically a citizen regardless of birth country, while a child of an Iranian mother and foreign father is NOT automatically a citizen at all under the base rule. The 2006 amendment is a narrow, application-based, age-18 opt-in exception for the maternal-line case, not a repeal of the underlying paternal rule or a route to automatic acquisition at birth -- this is a materially weaker fix than the gender-neutral descent reforms seen elsewhere in this dataset (Kenya, Pakistan post-2000, India post-1992, Tunisia post-2010). dual_citizenship_allowed deliberately left null at the route level rather than asserted either way: Iran's Civil Code Article 976(6)/Article 989 framework treats unauthorized acquisition of a second nationality by an Iranian citizen as generally invalid and subject to serious consequences (see ir_citizenship_naturalisation.json's notes on the renunciation regime), so whether a person acquiring Iranian nationality through this descent route may ALSO hold another nationality is genuinely conditional/restricted rather than a simple yes or no -- modeling it as a flat boolean here would overstate certainty either way."
+}

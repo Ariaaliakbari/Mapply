@@ -1,0 +1,63 @@
+{
+  "id": "ba_citizenship_by_marriage",
+  "country": "BA",
+  "name": "Citizenship by Marriage to a BiH Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bacm_5yr_married_plus_pr",
+          "attribute": "months_married_to_ba_citizen",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "The Law on Citizenship of Bosnia and Herzegovina requires at least 5 years of marriage to a BiH citizen combined with holding permanent residence in Bosnia and Herzegovina -- there is no separate standalone residence-duration requirement layered on top, unlike the standard naturalization track. Applicants must also renounce their prior nationality unless a bilateral treaty exempts them (see ba_citizenship_naturalisation.json for BiH's limited treaty coverage on this point).",
+          "fix_path": "Marry a BiH citizen, obtain permanent residence, remain married for at least 5 years, and renounce prior nationality unless treaty-exempt.",
+          "fix_time_months": 60,
+          "source_id": "advokat_prnjavorac_ba_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Permanent residence permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of renunciation of prior nationality (unless treaty-exempt)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "permanent residence held throughout the 5-year marriage",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "advokat_prnjavorac_ba_citizenship",
+      "tier": 3,
+      "url": "https://advokat-prnjavorac.com/",
+      "title": "Advokat Prnjavorac (Bosnian law firm/legal-text portal) -- Law on Citizenship of BiH, marriage-based acquisition, 5-year/permanent-residence requirement, renunciation and treaty exceptions",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bosnia and Herzegovina). STATUS: DRAFT -- sourced to a law firm/legal-text portal, tier 3; the Zakon o drzavljanstvu BiH's primary text and the Ministry of Civil Affairs' own guidance were not independently fetched in this build -- disclosed gap, same as this country's other citizenship files. dual_citizenship_allowed set to false as the DEFAULT case (renunciation required) since no treaty-exemption was confirmed to apply generically; this is a simplification -- treaty-exempt applicants (see ba_citizenship_naturalisation.json on BiH's limited treaty coverage) would not face this. MARQUEE STRUCTURAL DISCLOSURE (shared across this country's settled-category files): Bosnia and Herzegovina runs a dual-level citizenship system -- state-level BiH citizenship (governed by the Zakon o drzavljanstvu BiH referenced here) coexists with separate entity-level citizenship in either the Federation of Bosnia and Herzegovina or Republika Srpska, each with its own administrative procedures; every BiH citizen also holds one entity citizenship, but this file models only the state-level acquisition route, since entity-level procedural variation was not independently researched in this build."
+}

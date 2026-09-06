@@ -1,0 +1,62 @@
+{
+  "id": "ml_citizenship_by_descent",
+  "country": "ML",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mlcd_malian_parent",
+          "attribute": "has_malian_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Malienne, Article 8: a legitimate child born to a Malian father acquires Malian nationality automatically, regardless of birthplace. Since a 1995 amendment (Article 8-5), a child of a Malian mother and a foreign father also receives Malian nationality by default, with the option to repudiate it within six months of reaching majority. For a natural (non-marital) child, nationality follows whichever parent's filiation is legally established first; if the other parent is stateless or of unknown nationality, the child acquires Malian citizenship regardless.",
+          "fix_path": "Establish the parental link to a Malian-citizen parent through a birth certificate and the parent's own citizenship documentation.",
+          "fix_time_months": null,
+          "source_id": "citizenshiprightsafrica_ml_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Malian nationality", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_ml_nationalite",
+      "tier": 3,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Mali_Code_de_la_nationalite_62-18AN-RM_3-Feb-62.pdf",
+      "title": "Citizenship Rights in Africa Initiative (NGO-hosted primary legal text) -- Code de la Nationalite Malienne (1962, as amended 1995), Article 8 descent provisions",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mali). STATUS: DRAFT -- sourced to an NGO-hosted copy of the primary legal text, tier 3 (this dataset treats citizenshiprightsafrica.org as tier 3 rather than tier 2, consistent with how it was classified for other African countries built earlier in this session, e.g. Burkina Faso); Mali's own Journal Officiel publication of the code, and any current Ministry of Justice guidance, were not independently located or fetched in this build -- disclosed gap, worth a dedicated retry. GENUINE FINDING: the 1995 amendment removing the old asymmetry (previously nationality passed reliably only through fathers) is real and dated -- prior to 1995, a child of a Malian mother and foreign father did not automatically acquire citizenship the way a child of a Malian father did. citizenship_after_months set to 0 to reflect automatic acquisition at birth (or at majority for the repudiation window, which does not change the acquisition timing itself). dual_citizenship_allowed left null: this source did not address whether Mali generally tolerates or requires renunciation of a second nationality acquired this way."
+}

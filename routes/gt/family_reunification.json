@@ -1,0 +1,81 @@
+{
+  "id": "gt_family_reunification",
+  "country": "GT",
+  "name": "Permanent Residence by Family Relationship",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_or_union",
+      "name": "Spouse or common-law union",
+      "requirements": [
+        {
+          "id": "gtfr_1yr_marriage_or_union",
+          "attribute": "months_married_or_in_union_with_guatemalan",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Married to, or in a recognized common-law union (union de hecho) with, a Guatemalan citizen for at least 1 year qualifies for permanent residence via IGM's RP3 category. Requires apostilled/legalized foreign documents, a criminal record certificate, migration movement certification, and proof of income. Processing runs roughly 3-6 months.",
+          "fix_path": "Accumulate 1 year of marriage or recognized union with a Guatemalan citizen, then apply to IGM.",
+          "fix_time_months": 12,
+          "source_id": "agenciaocote_residencia_permanente"
+        }
+      ]
+    },
+    {
+      "id": "family_within_legal_degree",
+      "name": "Family relationship within legal degree",
+      "requirements": [
+        {
+          "id": "gtfr_family_within_legal_degree",
+          "attribute": "is_family_of_guatemalan_within_legal_degree",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A separate track exists for relatives of a Guatemalan citizen 'within the legally established degrees' -- IGM's own RP3 form is titled specifically for this category, but which degrees qualify (children, parents, siblings) was not detailed in the sources reviewed for this build.",
+          "fix_path": "Apply to IGM under the RP3 family-relationship category with proof of the qualifying relationship.",
+          "fix_time_months": null,
+          "source_id": "agenciaocote_residencia_permanente"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of common-law union", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled criminal record certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Migration movement certification", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of income", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (permanent residence)",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "agenciaocote_residencia_permanente",
+      "tier": 4,
+      "url": "https://www.agenciaocote.com/blog/2024/11/15/esto-debes-saber-si-quieres-solicitar-la-residencia-permanente-en-guatemala/",
+      "title": "Agencia Ocote (independent Guatemalan news/explainer outlet) -- permanent residence by marriage/union (1 year) and by family relationship within legal degrees, documentary requirements",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Guatemala). STATUS: DRAFT -- tier-4 sourcing only; IGM's own RP3 form and its 'Reglamento de Residencias Guatemaltecas' regulation (both located by URL at igm.gob.gt, including a September 2025 update, Acuerdo IGM-016-2025) were identified but returned 403 errors on every direct fetch attempt in this build -- worth a dedicated retry in a follow-up session, since these would very likely upgrade this file to tier-1/published. citizenship_after_months left null since the specific residency-to-citizenship timeline for this route specifically was not detailed (see gt_citizenship_naturalisation.json for the general naturalization clock, which likely applies here too but was not explicitly cross-confirmed). family_can_work left null since dependents' independent work rights were not addressed in the source."
+}

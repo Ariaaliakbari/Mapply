@@ -1,0 +1,79 @@
+{
+  "id": "mk_citizenship_by_descent",
+  "country": "MK",
+  "name": "Citizenship by Descent / Birth",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents_or_born_in_country",
+      "name": "Both parents citizens, or one parent citizen + born in country",
+      "requirements": [
+        {
+          "id": "mkcd_parent_or_birth",
+          "attribute": "has_citizen_parent_or_born_in_country",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Law on Citizenship, Article 4: a child acquires citizenship automatically when both parents are Macedonian citizens, or when one parent is a citizen and the child is born in North Macedonia. Adopted children are treated identically to biological children.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_born_abroad",
+      "name": "One citizen parent, born abroad",
+      "requirements": [
+        {
+          "id": "mkcd_one_parent_abroad",
+          "attribute": "has_one_citizen_parent_born_abroad",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 5: a child born abroad to one Macedonian-citizen parent acquires citizenship if registered as a citizen before turning 18, or if the child becomes a permanent resident of North Macedonia before turning 18.",
+          "fix_path": "Register the child as a Macedonian citizen with a consulate, or establish permanent residence in North Macedonia, before the child turns 18.",
+          "fix_time_months": null,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Macedonian citizenship", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_mk_law_citizenship",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2024-05/1_law_on_citizenship_2022_consolidated_eng.pdf",
+      "title": "Refworld (UNHCR-affiliated) -- hosted consolidated English text of North Macedonia's Law on Citizenship (2022 consolidation), Articles 2, 4-6 (birth/descent) and 7-11 (naturalization)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- sourced to Refworld's hosted consolidated text, tier 2, not a North Macedonian government domain (Official Gazette) directly. GENUINE, GENDER-NEUTRAL FINDING: the law refers generically to 'parents' throughout Articles 4-6 with no father/mother asymmetry found -- consistent with Venezuela and Honduras built earlier in this dataset, and a contrast to Syria's and Guatemala's older gendered descent framing. Article 6 also grants citizenship to a child found or born in the country to unknown/stateless parents, lost only if a foreign parent is later identified before age 15 AND the child holds another nationality -- a real statelessness safeguard, disclosed as a distinctive feature. dual_citizenship_allowed set true per Article 2 (citizens may hold another state's citizenship) -- but see mk_citizenship_naturalisation.json's notes for the fuller, more conditional picture on renunciation requirements at naturalization."
+}

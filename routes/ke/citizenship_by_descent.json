@@ -1,0 +1,79 @@
+{
+  "id": "ke_citizenship_by_descent",
+  "country": "KE",
+  "name": "Citizenship by Birth and Presumption",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "by_birth",
+      "name": "Citizenship by birth (parent is a citizen)",
+      "requirements": [
+        {
+          "id": "kecd_citizen_parent",
+          "attribute": "has_kenyan_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Either the mother or the father is or was, at the date of the applicant's birth, a citizen of Kenya -- applies regardless of where the child is born.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_citizenship_section"
+        }
+      ]
+    },
+    {
+      "id": "presumption",
+      "name": "Citizenship by presumption (foundlings)",
+      "requirements": [
+        {
+          "id": "kecd_foundling_under_8",
+          "attribute": "is_foundling_under_8_unknown_parentage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child found in Kenya who is, or appears to be, under 8 years of age, and whose nationality and parents are not known, is presumed to be a citizen by birth.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_citizenship_section"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Kenyan citizenship (birth track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_citizenship_section",
+      "tier": 1,
+      "url": "https://immigration.go.ke/citizenship-section/",
+      "title": "Directorate of Immigration Services, Republic of Kenya -- Citizenship: birth citizenship where either parent is a Kenyan citizen at the time of birth (gender-neutral, regardless of birth location); a child found in Kenya under 8 years old with unknown nationality and parents is presumed a citizen by birth",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kenya). Published on tier-1 sourcing (Directorate of Immigration Services). GENUINE POSITIVE FINDING: birth citizenship is explicitly gender-neutral ('either the mother or father'), consistent with Kenya's 2010 Constitution's broader gender-equality provisions -- unlike the many one-directional gendered citizenship provisions found elsewhere in this dataset (Qatar, Bahrain, Nigeria, Sudan, Somalia, and Pakistan's marriage route specifically). dual_citizenship_allowed set to TRUE -- Kenya's 2010 Constitution and the Kenya Citizenship and Immigration Act 2011 affirmatively permit dual citizenship (with a disclosure obligation: a Kenyan who acquires another nationality must disclose it within 3 months), a marked contrast to India, Somalia's 1962 statute, and several other countries built in this dataset that prohibit or heavily restrict it."
+}

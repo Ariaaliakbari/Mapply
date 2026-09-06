@@ -1,0 +1,62 @@
+{
+  "id": "ba_international_protection",
+  "country": "BA",
+  "name": "International Protection (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "baip_asylum_application",
+          "attribute": "meets_refugee_or_subsidiary_protection_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Asylum in Bosnia and Herzegovina runs through a three-body structure: intent to seek asylum is first registered with the Service for Foreigners' Affairs (Sluzba za poslove sa strancima), the substantive application and refugee-status determination is handled by the Sector for Asylum within the Ministry of Security, and post-recognition integration support falls to the Ministry for Human Rights and Refugees. No source reviewed in this build could confirm the statutory processing timeline, detailed rights attached to each protection status, or appeal procedure -- a genuine, disclosed gap rather than an assumed 'standard' process.",
+          "fix_path": "Register intent to seek asylum with the Service for Foreigners' Affairs, then pursue the application through the Sector for Asylum, Ministry of Security.",
+          "fix_time_months": null,
+          "source_id": "unhcr_help_ba_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in this build",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_help_ba_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/bosniaandherzegovina/",
+      "title": "UNHCR Help Bosnia and Herzegovina -- three-body asylum structure (Service for Foreigners' Affairs, Sector for Asylum/Ministry of Security, Ministry of Human Rights and Refugees)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bosnia and Herzegovina). STATUS: DRAFT -- sourced to UNHCR's country help page, tier 2; no processing timeline, appeal procedure, or detailed rights list attached to recognition was found in this build, and the underlying Zakon o azilu (Law on Asylum) was not independently fetched -- disclosed as a genuine, specific gap rather than modeled with an invented timeline. work_rights and study_rights set to 'restricted' and family_can_join to false as conservative defaults given the absence of confirmed detail, consistent with how this dataset treats other under-sourced humanitarian routes (see dz_international_protection.json for the comparable Algeria case, though the structural gap there -- no domestic asylum law at all -- is more severe than Bosnia's, where a domestic three-body process does exist but its operational detail could not be confirmed here). family_can_work left null: not addressed by the source reviewed."
+}

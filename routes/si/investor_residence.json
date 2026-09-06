@@ -1,0 +1,79 @@
+{
+  "id": "si_investor_residence",
+  "country": "SI",
+  "name": "Self-Employment / Business Residence Permit",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "self_employment",
+      "name": "Personal work permit for self-employment",
+      "requirements": [
+        {
+          "id": "sibr_10k_self_employment",
+          "attribute": "personal_financial_resources_eur",
+          "operator": ">=",
+          "value": 10000,
+          "hard": true,
+          "blocker_text": "A personal work permit for self-employment requires EUR 10,000 in personal financial resources, plus ownership or rental of business premises. Processing takes 30-60 days, costs roughly EUR 90, and the permit is issued for 1 year, renewable.",
+          "fix_path": "Register as self-employed in Slovenia, document EUR 10,000 in personal financial resources and business premises, and apply for the personal work permit.",
+          "fix_time_months": null,
+          "source_id": "spot_gov_si_business"
+        }
+      ]
+    },
+    {
+      "id": "foreign_representative",
+      "name": "Work permit for foreign company representative",
+      "requirements": [
+        {
+          "id": "sibr_30k_representative",
+          "attribute": "company_investment_eur",
+          "operator": ">=",
+          "value": 30000,
+          "hard": true,
+          "blocker_text": "A work permit for a foreign company's representative requires a EUR 30,000 investment if the Slovenian company has been registered for less than 6 months. The permit runs up to 2 years and can be extended.",
+          "fix_path": "Register or invest in a Slovenian company (EUR 30,000 if registered under 6 months) and apply for the representative work permit.",
+          "fix_time_months": null,
+          "source_id": "spot_gov_si_business"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of financial resources or company investment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Business premises ownership/rental documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year (self-employment, renewable) or up to 2 years (foreign representative, extendable)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "spot_gov_si_business",
+      "tier": 1,
+      "url": "https://spot.gov.si/en/info/how-can-non-eu-nationals-start-a-business-in-slovenia",
+      "title": "SPOT (Slovenska poslovna tocka, Slovenia's government business portal) -- self-employment personal work permit (EUR 10,000) and foreign-representative work permit (EUR 30,000) requirements and durations",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovenia). STATUS: PUBLISHED -- both hard requirements sourced directly to spot.gov.si, Slovenia's own government business portal, tier 1 (the page itself notes some content 'is still being edited', disclosed for transparency though the cited figures are stated plainly). Two genuinely distinct thresholds modeled as alternative paths: a comparatively modest EUR 10,000 personal-resources bar for self-employment versus a EUR 30,000 investment bar for representing an under-6-month-old foreign company -- both far lower than typical 'golden visa' investor thresholds seen elsewhere in this dataset. pr_after_months and citizenship_after_months mirror the general Slovenian residence-to-PR and PR-to-citizenship rules (see si_citizenship_naturalisation.json), not independently confirmed as applying automatically from these specific permits."
+}

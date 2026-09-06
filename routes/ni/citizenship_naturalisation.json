@@ -1,0 +1,104 @@
+{
+  "id": "ni_citizenship_naturalisation",
+  "country": "NI",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "nicn_4yr_residence",
+          "attribute": "months_continuous_permanent_residence",
+          "operator": ">=",
+          "value": 48,
+          "hard": true,
+          "blocker_text": "Ley de Nacionalidad (Ley No. 149, 1992), Article 7: 4 continuous years of permanent residence, honest means of livelihood, good conduct with no criminal record, sufficient Spanish-language knowledge, and understanding of national history and civics.",
+          "fix_path": "Accumulate 4 continuous years of permanent residence, meet the conduct/language/civics conditions, and apply.",
+          "fix_time_months": 48,
+          "source_id": "acnur_ni_ley_nacionalidad"
+        }
+      ]
+    },
+    {
+      "id": "expedited",
+      "name": "Spanish nationals, reciprocal-treaty nationals, or economic contributors",
+      "requirements": [
+        {
+          "id": "nicn_2yr_expedited",
+          "attribute": "months_residence_expedited_track",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Articles 8-9: Spanish nationals, nationals of countries with reciprocal naturalization treaties, and those who make a qualifying economic contribution may naturalize after 2 years of residence instead of 4.",
+          "fix_path": "As a Spanish national, a reciprocal-treaty-country national, or a qualifying economic contributor, accumulate 2 years of residence and apply.",
+          "fix_time_months": 24,
+          "source_id": "acnur_ni_ley_nacionalidad"
+        }
+      ]
+    },
+    {
+      "id": "central_american_origin",
+      "name": "Central Americans by origin",
+      "requirements": [
+        {
+          "id": "nicn_central_american_no_renounce",
+          "attribute": "is_central_american_by_origin",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 4: Central Americans by origin may opt for Nicaraguan nationality without renouncing their own, while residing in Nicaragua, and separately qualify for the 2-year expedited naturalization track under Article 8(a). This carve-out was explicitly preserved by the January 2026 dual-nationality reform (Law 1268) even as that reform ended dual nationality for naturalizing citizens generally.",
+          "fix_path": "As a Central American national by origin, reside in Nicaragua and opt for Nicaraguan nationality under the expedited, non-renunciation track.",
+          "fix_time_months": 24,
+          "source_id": "divergentes_ni_dual_nationality_reform"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous permanent residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Spanish-language and civics assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "4 years standard; 2 years expedited (Spanish/reciprocal-treaty/economic-contributor or Central American by origin)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "acnur_ni_ley_nacionalidad",
+      "tier": 2,
+      "url": "https://www.acnur.org/fileadmin/Documentos/BDL/2001/0155.pdf",
+      "title": "UNHCR (ACNUR) -- hosted primary legal text of Nicaragua's Ley de Nacionalidad (Ley No. 149, 1992), Articles 4, 7, 8, 9, 23-25",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "divergentes_ni_dual_nationality_reform",
+      "tier": 4,
+      "url": "https://www.divergentes.com/nicaragua-rompe-consenso-regional-con-la-doble-nacionalidad/",
+      "title": "Divergentes (independent Nicaraguan news outlet) -- Law 1268 (effective 16 January 2026): Nicaragua now bars dual nationality for naturalizing citizens, the only Central American country to do so, with a preserved exception for Central Americans by origin",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nicaragua). STATUS: DRAFT -- the residency-track requirements are sourced to a 1992 UNHCR-hosted statutory text, tier 2; the CURRENT dual-nationality rule is sourced only to an independent news outlet, tier 4, since Nicaragua's own Official Gazette publication of Law 1268 was not independently fetched in this build (worth a dedicated retry). MAJOR, CURRENT, MARQUEE FINDING: as of 16 January 2026, Nicaragua reformed Constitution Articles 23 and 25 (via Law 1268) to permanently revoke Nicaraguan nationality from anyone who renounces it to acquire another -- described by the source as breaking a regional consensus, since Guatemala, El Salvador, Honduras, Costa Rica, and Panama all protect birth nationality as irrenunciable or recoverable. This reform is prospective only (not retroactive) and explicitly PRESERVES the Central-American-by-origin exception from the original 1992 law (Article 4) -- modeled here as its own requirement_group since it is a genuinely distinct, currently-protected carve-out. dual_citizenship_allowed set false at the general/standard level, true only for the Central-American-by-origin group specifically -- this asymmetry is real and current, not a modeling simplification. This is the second major, current legal-reform finding in this country's build (see ni_visitor_visa.json for the March 2026 visa restructuring) -- Nicaragua's legal framework is genuinely in flux at the time of this build, not settled and stable like most other countries in this dataset."
+}

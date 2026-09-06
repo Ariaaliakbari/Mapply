@@ -1,0 +1,80 @@
+{
+  "id": "lk_citizenship_by_descent",
+  "country": "LK",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "legitimate_paternal",
+      "name": "Legitimate child -- paternal line",
+      "requirements": [
+        {
+          "id": "lkcd_father_citizen_at_birth",
+          "attribute": "father_is_sri_lankan_citizen_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born in Sri Lanka (Ceylon) with the father a citizen at the time of birth; or born abroad with the father a citizen at birth and the birth registered at a Sri Lankan consular office or with the Minister within one year (or an extended period).",
+          "fix_path": "Register the birth at a Sri Lankan consular office or with the Minister within the required window (descent-abroad track).",
+          "fix_time_months": 12,
+          "source_id": "refworld_citizenship_act_1948"
+        }
+      ]
+    },
+    {
+      "id": "illegitimate_or_unmarried_maternal",
+      "name": "Unmarried/illegitimate child -- maternal line",
+      "requirements": [
+        {
+          "id": "lkcd_mother_citizen_illegitimate",
+          "attribute": "mother_is_sri_lankan_citizen_at_birth_illegitimate_child",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "For a child born outside marriage (illegitimate), the Act substitutes the mother, maternal grandfather, and maternal great-grandfather wherever the ordinary paternal-line text refers to father, paternal grandfather, and paternal great-grandfather.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_act_1948"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Sri Lankan citizenship (and grandparent's/great-grandparent's, for pre-1948 birth claims)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Consular birth registration (descent-abroad track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_act_1948",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1948/en/14350",
+      "title": "Refworld (UNHCR-hosted legal database) -- Sri Lanka Citizenship Act No. 18 of 1948 (as amended through 2 April 1993): descent citizenship runs through the father and paternal line for legitimate children (with detailed multi-generational rules for persons born before 15 November 1948); for an unmarried/illegitimate child, the Act substitutes mother/maternal grandfather/maternal great-grandfather wherever the ordinary text names the paternal line",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sri Lanka). STATUS: DRAFT -- tier-2 UNHCR-hosted text only; Sri Lanka's own government legal database (lawnet.gov.lk) returned a certificate/SSL error on every fetch attempt in this build, and the Ministry of Justice's own hosting was not independently located. STRUCTURALLY DISTINCTIVE GENDERED FINDING, WORTH STATING PRECISELY RATHER THAN SIMPLIFIED INTO A GENERIC 'GENDERED' OR 'GENDER-NEUTRAL' LABEL: this is not a simple father-only rule (like Somalia's) nor a genuinely reformed either-parent rule (like Kenya's or Pakistan's post-2000 rule) -- it is father-only for a LEGITIMATE child and mother-only for an ILLEGITIMATE/unmarried child, meaning which parent's citizenship matters is determined by the parents' marital status at birth, not by choice or equal availability of both lines. A child of unmarried parents where only the father is Sri Lankan (and the mother is not) would, on this reading, have no automatic descent claim through the father at all -- a genuine, disclosed open question this build could not resolve with the source available. The document retrieved explicitly notes it only reflects amendments through 2 April 1993, so any more recent reform (if one exists) is not reflected here. dual_citizenship_allowed set to FALSE by default, since ordinary citizenship acquisition under the 1948 Act does not itself confer a right to hold a second nationality -- see lk_citizenship_dual_resumption.json for the specific mechanism by which a Sri Lankan citizen may separately apply to retain or resume citizenship alongside a foreign one."
+}

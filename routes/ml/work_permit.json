@@ -1,0 +1,64 @@
+{
+  "id": "ml_work_permit",
+  "country": "ML",
+  "name": "Work Permit and Resident Card (Employer-Sponsored)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mlwp_labor_market_test_plus_permit",
+          "attribute": "has_work_permit_before_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Journal Officiel de la Republique du Mali: the employer must apply to the National Labor Directorate (Direction Nationale du Travail) for a work permit (permis de travail) before the foreign worker can legally begin employment -- exempt only for missions under 3 months with proper documentation. The permit is granted only if the position cannot be filled by a national worker ('le poste de travail a occuper ne peut, en aucun cas, etre pourvu par un travailleur national') and the worker holds the required professional qualifications. The employer submits a stamped request (200 FCFA), a motivated report, 4 copies of the employment contract, ID photos, and the worker's residence authorization; the Directorate decides within 15 days (1 month if further investigation is needed). No numerical quota on foreign workers is set. The permit's maximum validity is 2 years for a worker's first 2 years of residence in Mali, and renewal tracks the employment contract's own duration; renewal must be requested at least 1 month before expiry.",
+          "fix_path": "Have the employer file the work-permit application with the National Labor Directorate, including the labor-market-test justification and employment contract, before the worker starts work.",
+          "fix_time_months": 1,
+          "source_id": "jo_mali_travail_etrangers"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract (4 copies)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer's motivated report justifying the hire", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Worker's residence authorization", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of professional qualifications", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years initially, renewal tied to the employment contract's duration",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "jo_mali_travail_etrangers",
+      "tier": 1,
+      "url": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/117562/MLI-117562.pdf",
+      "title": "Journal Officiel de la Republique du Mali (hosted via ILO NATLEX) -- work-permit sequencing, labor-market test, fees, timelines, 2-year validity cap",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mali). STATUS: PUBLISHED -- hard requirement sourced directly to Mali's own official gazette, tier 1 (accessed via ILO's NATLEX legal database, which mirrors the primary text rather than summarizing it). GENUINE STRUCTURAL FINDING, shared across this country's residence-based files (see ml_investor_residence.json, ml_family_reunification.json): Mali's foreigners' regime, per Decret 05-322 P-RM, does not appear to distinguish a temporary-residence tier from a separate permanent-residence tier the way many other countries in this dataset do -- there is one ongoing status, the carte de resident, renewed periodically, with no formal graduated pathway from temporary to permanent found in this build. leads_to_pr is accordingly set to false, not because Mali denies long-term settlement, but because this dataset found no distinct 'permanent residence' status layered on top of the resident card itself. citizenship_after_months (60) reflects the STANDALONE naturalization track's general 5-year residence threshold (see ml_citizenship_naturalisation.json), not a permit-specific automatic conversion -- residence accrued while holding this permit is expected to count toward it, but this was not independently confirmed. family_can_work left null: not addressed by the source reviewed."
+}

@@ -1,0 +1,103 @@
+{
+  "id": "in_citizenship_naturalisation",
+  "country": "IN",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "incn_12mo_immediate_residence",
+          "attribute": "months_resident_immediately_preceding_application",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Resided in India (or been in Indian government service) throughout the 12 months immediately preceding the application.",
+          "fix_path": "Accumulate 12 months' continuous residence immediately before applying.",
+          "fix_time_months": 12,
+          "source_id": "refworld_citizenship_act"
+        },
+        {
+          "id": "incn_9of14yr_aggregate",
+          "attribute": "months_resident_aggregate_prior_14yr",
+          "operator": ">=",
+          "value": 108,
+          "hard": true,
+          "blocker_text": "Resided in India (or been in relevant government/international service) for 9 of the 14 years immediately preceding that final 12-month period -- effectively close to 12 years' total residence.",
+          "fix_path": "Accumulate 9 years' aggregate residence within the relevant 14-year window.",
+          "fix_time_months": 108,
+          "source_id": "refworld_citizenship_act"
+        },
+        {
+          "id": "incn_renounce_foreign",
+          "attribute": "willing_to_renounce_foreign_citizenship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must renounce any foreign citizenship -- India's Constitution and Citizenship Act do not permit dual citizenship for any category of citizen.",
+          "fix_path": "Renounce all foreign citizenship.",
+          "fix_time_months": null,
+          "source_id": "cgisf_dual_citizenship_notice"
+        },
+        {
+          "id": "incn_good_character",
+          "attribute": "has_good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Good character, adequate knowledge of a language listed in the Eighth Schedule of the Constitution, and intent to reside in India or serve a government/international body.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence (12 months immediately preceding + 9 of the prior 14 years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Declaration of renunciation of foreign citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character references / proof of language knowledge", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "12 months immediately preceding application + 9 years aggregate within the prior 14 years",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_act",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1955/en/19544",
+      "title": "Refworld (UNHCR-hosted legal database) -- India: Citizenship Act, 1955, Section 6 and Third Schedule: naturalisation for non-Commonwealth nationals not being illegal migrants, requiring renunciation of prior citizenship, 12 months' continuous residence immediately preceding application, 9 of the preceding 14 years' residence, good character, knowledge of an Eighth Schedule constitutional language, and intent to reside in India or serve government/international bodies; residence requirements waivable for persons of distinguished service to science, philosophy, art, literature, or world peace",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "cgisf_dual_citizenship_notice",
+      "tier": 1,
+      "url": "https://www.cgisf.gov.in/page/notice-regarding-dual-citizenship/",
+      "title": "Consulate General of India, San Francisco (official mission page) -- Notice Regarding Dual Citizenship: 'The Constitution of India does not allow holding Indian citizenship and Citizenship of a foreign country simultaneously'; explicitly clarifies that holding an OCI card 'in no way entitles its holders to claim the status of dual citizenship'",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). STATUS: DRAFT -- India's own indiacode.nic.in legislative repository returned an error page on direct fetch in this build; the Act's operative naturalisation text here rests on Refworld (UNHCR-hosted, tier 2). The dual-citizenship prohibition itself IS tier-1 sourced directly from an Indian consulate's own notice. NOTABLY LONG RESIDENCE REQUIREMENT: 12 months immediately preceding application plus 9 of the prior 14 years -- effectively requiring close to 12 total years of residence, among the longest naturalisation residence tests found in this dataset to date (compare Sudan and Pakistan's roughly 10 years, or Uganda's 10-year track). STRUCTURAL CONTEXT WORTH STATING PLAINLY: India's constitutional ban on dual citizenship is precisely why the OCI scheme (in_ancestry_oci.json) exists as a separate, deliberately-not-citizenship instrument -- India's large global diaspora created enormous political pressure for a 'dual citizenship-like' status, and OCI is the government's explicit compromise, repeatedly and explicitly stated NOT to be dual citizenship rather than an accidental omission. Section 6 also grants a residence-requirement WAIVER for applicants of distinguished service to science, philosophy, art, literature, or world peace -- disclosed here rather than modeled as a separate route, consistent with this dataset's treatment of similar broad discretionary-grant provisions elsewhere (e.g. Qatar's Article 6, Sudan's Article 9 presidential discretion)."
+}

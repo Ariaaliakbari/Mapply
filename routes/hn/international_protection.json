@@ -1,0 +1,87 @@
+{
+  "id": "hn_international_protection",
+  "country": "HN",
+  "name": "Refugee Status / Political Asylum",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status determination",
+      "requirements": [
+        {
+          "id": "hnip_refugee_criteria",
+          "attribute": "meets_refugee_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ley de Migracion y Extranjeria (Decreto 208-2003), Article 42: refugee criteria cover both classic 1951-Convention grounds (persecution based on race, religion, nationality, social group, or political opinion) and a broader Cartagena-style ground of threats from 'generalized, grave and continuous violence.' Article 8(20) assigns recognition authority to the migration authority (INM). Practical process (per UNHCR's Honduras guidance): file at any INM delegation or Migrant Care Center (CAMI); confidential interview with an INM human-rights officer; biometric registration; a free, renewable 90-day 'Autorizacion de Permanencia Temporal' while the case is pending; INM's human-rights unit analyzes the case and presents it to the Refugee Commission; decision notified by phone/email with a 10-day appeal window on denial; approved applicants register in the National Registry of Foreigners for refugee identification. Article 46 bars deportation of asylum seekers or recognized refugees except for security/public-order reasons.",
+          "fix_path": "File a refugee claim at an INM delegation or CAMI and complete the interview/biometric/Refugee Commission review process.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_ley_migracion_refugee"
+        }
+      ]
+    },
+    {
+      "id": "territorial_asylum",
+      "name": "Territorial political asylum (separate track)",
+      "requirements": [
+        {
+          "id": "hnip_asylum_criteria",
+          "attribute": "meets_political_asylum_criteria",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 52 provides a separate territorial-asylum track for political persecution, human rights violations, or politically-natured crimes, decided by the Secretary of State for Governance and Justice rather than INM's refugee process.",
+          "fix_path": "Apply for territorial asylum through the Secretariat of Governance and Justice.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_ley_migracion_refugee"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Biometric registration (photograph, fingerprints)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, temporary permit renewable 90 days at a time pending resolution",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "inm_gob_hn_ley_migracion_refugee",
+      "tier": 1,
+      "url": "https://inm.gob.hn/Ley_de_Migraciones_y_extranjeria_Honduras%5B1%5D.pdf",
+      "title": "Instituto Nacional de Migracion de Honduras -- hosted primary legal text of Decreto 208-2003, Articles 8(20), 42, 46, 47 and 52 (refugee criteria, recognition authority, non-refoulement, family reunification, and separate territorial-asylum track)",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "unhcr_help_honduras_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/honduras/como-solicitar-asilo/",
+      "title": "UNHCR Help Honduras -- practical 7-step asylum procedure, 90-day renewable temporary permit, 10-day appeal window, free of charge",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: PUBLISHED -- the hard requirements (both refugee-status criteria and the separate territorial-asylum track) are sourced directly to the government-hosted primary statutory text, tier 1, corroborated by UNHCR's own country guidance (tier 2) for the practical process and timelines. GENUINE, DISTINCTIVE STRUCTURAL FINDING: Honduras runs TWO parallel protection tracks under one law -- ordinary refugee status (broader Cartagena-style 'generalized violence' ground included, decided by INM with Refugee Commission input) and a separate territorial political-asylum track decided directly by the Secretariat of Governance and Justice (Article 52) -- a bifurcation not seen in this exact form in this dataset's other asylum files. work_rights set 'restricted': the sources describe the temporary permanence authorization and identity/travel documentation but did not confirm automatic open work rights for either track. leads_to_pr and leads_to_citizenship set false: no source reviewed described a defined conversion path from refugee/asylum status to permanent residence or citizenship -- disclosed as an open gap rather than assumed to follow the standard 3-year 'other foreigners' naturalization track. family_can_work left null since Article 47's family-reunification right was confirmed but independent work authorization for joining relatives was not addressed."
+}

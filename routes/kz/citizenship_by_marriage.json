@@ -1,0 +1,63 @@
+{
+  "id": "kz_citizenship_by_marriage",
+  "country": "KZ",
+  "name": "Citizenship by Marriage (Simplified Naturalisation)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kzcm_3yr_marriage_residence",
+          "attribute": "is_permanent_resident_married_to_kazakhstani_citizen_3yr",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign spouse (either gender -- the law applies without gender distinction) of a Kazakhstani citizen may apply for a simplified naturalization after being married for at least 3 years and permanently residing in Kazakhstan, in place of the standard 5-year residence requirement. Requires a notarized renunciation of any prior citizenship (Kazakhstan does not permit dual citizenship for this route), plus security screening, marriage certificate, and spouse's identity document.",
+          "fix_path": "Accumulate 3 years of marriage and permanent residence, then apply with a notarized renunciation of prior citizenship.",
+          "fix_time_months": 36,
+          "source_id": "egov_become_citizen"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's Kazakhstani identity card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarized renunciation of prior citizenship", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "permanent residence for the 3-year marriage period",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "egov_become_citizen",
+      "tier": 1,
+      "url": "https://egov.kz/cms/en/articles/for_foreigners/how_to_become_kz_citizen",
+      "title": "Electronic Government of the Republic of Kazakhstan (egov.kz) -- describes the simplified marriage-based naturalization track: 3 years' marriage/permanent residence (vs. the standard 5-year requirement), marriage certificate, spouse's ID, and notarized renunciation of prior citizenship",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kazakhstan). STATUS: PUBLISHED -- direct e-government sourcing, tier 1. GENUINE POSITIVE FINDING, WORTH FLAGGING AGAINST THE PATTERN SEEN REPEATEDLY THIS SESSION: unlike Iran, Lebanon, Tunisia, Pakistan, Somalia, Ghana, and Tanzania's marriage-citizenship routes elsewhere in this dataset -- all of which are gendered, granting an automatic or streamlined path to a foreign WIFE only -- Kazakhstan's provision (Citizenship Law Article 16(1), cross-referenced via an NGO-hosted English translation at ecoi.net, tier 2) is written and applied without gender distinction: 'persons ... married to citizens of the Republic of Kazakhstan for at least three years,' with no separate or lesser treatment for a foreign husband of a Kazakhstani woman. This is still a naturalization application requiring security screening and mandatory renunciation of prior citizenship, not automatic acquisition -- Kazakhstan's own citizenship law states explicitly that 'marriage ... shall not entail the change of citizenship' on its own. dual_citizenship_allowed set false per the same strict prohibition and 3-day reporting/surrender rule noted in kz_citizenship_by_descent.json."
+}

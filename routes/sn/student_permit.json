@@ -1,0 +1,81 @@
+{
+  "id": "sn_student_permit",
+  "country": "SN",
+  "name": "Student Visa and Residence Card",
+  "category": "study",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "non_ecowas",
+      "name": "Non-ECOWAS nationals",
+      "requirements": [
+        {
+          "id": "snsp_biometric_long_stay_visa",
+          "attribute": "has_admission_letter_and_biometric_long_stay_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Non-ECOWAS nationals must obtain a biometric long-stay student visa before departure, requiring an official admission letter from a state-recognized institution, proof of accommodation, a return ticket, comprehensive health insurance, a yellow-fever vaccination certificate, and financial proof of EUR 2,000-4,000/year. After arrival, registration with local police within 3 months is required to obtain a Foreigner's Identity Card.",
+          "fix_path": "Secure university admission, then apply for the long-stay student visa at a Senegalese consulate before travel.",
+          "fix_time_months": null,
+          "source_id": "expat_com_study_senegal"
+        }
+      ]
+    },
+    {
+      "id": "ecowas",
+      "name": "ECOWAS nationals",
+      "requirements": [
+        {
+          "id": "snsp_ecowas_student_residence_card",
+          "attribute": "is_ecowas_national_with_admission_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "ECOWAS citizens do not need an entry visa but must apply for a student residence card once in Senegal if staying beyond 90 days.",
+          "fix_path": "Apply for the student residence card in-country after enrollment.",
+          "fix_time_months": null,
+          "source_id": "expat_com_study_senegal"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Official university admission letter", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance (hospitalization, routine care, medical repatriation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Yellow fever vaccination certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Financial proof (EUR 2,000-4,000/year)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to academic enrollment, renewable",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "expat_com_study_senegal",
+      "tier": 4,
+      "url": "https://www.expat.com/en/guide/africa/senegal/12200-study-in-senegal.html",
+      "title": "Expat.com (private expatriate-guide site) -- Senegal student visa/residence process for ECOWAS vs non-ECOWAS nationals, required documents, financial proof thresholds, and post-arrival police registration for the Foreigner's Identity Card",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Senegal). STATUS: DRAFT -- sourced to a private expatriate guide (tier 4); a Senegalese consulate's own student-visa checklist (found via search at a visa-outsourcing company's site) was not independently fetched/verified in this build. GENUINE STRUCTURAL FINDING: the ECOWAS/non-ECOWAS distinction determines whether a visa is needed at all before travel -- ECOWAS nationals only need to formalize residence status after arrival, while others must secure the visa before departure."
+}

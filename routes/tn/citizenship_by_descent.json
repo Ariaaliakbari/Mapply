@@ -1,0 +1,79 @@
+{
+  "id": "tn_citizenship_by_descent",
+  "country": "TN",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tncd_citizen_parent",
+          "attribute": "has_tunisian_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born to a Tunisian father OR a Tunisian mother (Article 6, as amended in 2010) -- applies without gender distinction, regardless of where the child is born.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_nationality_code"
+        }
+      ]
+    },
+    {
+      "id": "transitional_declaration",
+      "name": "Transitional declaration for adults born before the 2010 reform",
+      "requirements": [
+        {
+          "id": "tncd_transitional_declaration_1yr",
+          "attribute": "is_adult_born_to_tunisian_mother_before_2010_registered_within_1yr",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An adult born abroad to a Tunisian mother and a foreign father, before the 2010 reform, may claim nationality by declaration if registered within one year of the amendment -- a closing, historically-bounded window rather than an ongoing route for new cases.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_nationality_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Tunisian citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_nationality_code",
+      "tier": 4,
+      "url": "https://www.ecoi.net/en/file/local/1044707/1930_1384951136_527237944.pdf",
+      "title": "ecoi.net (NGO-hosted country-of-origin information repository) -- French text of Tunisia's Code de la nationalité tunisienne: Article 6 (as modified in 2010) grants nationality to a child born to a Tunisian father OR mother without gender distinction; a transitional provision allowed adults born abroad to a Tunisian mother and foreign father before the reform to claim nationality by declaration if registered within one year of the 2010 amendment",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tunisia). STATUS: DRAFT -- only an NGO-hosted (ecoi.net) copy of the Code was fetchable in this build; Tunisia's own Ministry of Justice hosts an Arabic-language PDF of the Code (justice.gov.tn) that was located via search but not independently translated/verified in this build -- a genuine follow-up opportunity to upgrade this file's sourcing tier, since the primary text does appear to be government-hosted, just not in a form this build could process within the time available. GENUINE POSITIVE FINDING: descent citizenship has been fully gender-neutral since a 2010 reform -- either a Tunisian mother or father transmits citizenship on equal terms, joining Kenya, Pakistan (post-2000), and India (post-1992) as countries in this dataset with a genuinely reformed, equal descent rule. dual_citizenship_allowed set to TRUE -- Tunisia is broadly reported to permit dual nationality with no general renunciation requirement, though this specific point was not independently verified against a primary legal source in this build and should be treated as provisional."
+}

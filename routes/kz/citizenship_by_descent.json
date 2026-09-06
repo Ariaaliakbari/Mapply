@@ -1,0 +1,80 @@
+{
+  "id": "kz_citizenship_by_descent",
+  "country": "KZ",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "both_parents_citizens",
+      "name": "Both parents Kazakhstani citizens (automatic, any birth country)",
+      "requirements": [
+        {
+          "id": "kzcd_both_parents_citizens",
+          "attribute": "both_parents_are_kazakhstani_citizens",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child is a citizen of Kazakhstan by descent if both parents were Kazakhstani citizens at the time of the child's birth, regardless of the child's country of birth (Citizenship Law, Article 11).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "egov_become_citizen"
+        }
+      ]
+    },
+    {
+      "id": "one_parent_citizen",
+      "name": "One parent a citizen (conditional on birth location or parental residence)",
+      "requirements": [
+        {
+          "id": "kzcd_one_parent_citizen_conditional",
+          "attribute": "one_parent_citizen_born_in_kz_or_parents_resident_in_kz",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Where only one parent is a Kazakhstani citizen (the other being a foreign national or stateless), the child acquires citizenship if born in Kazakhstan, OR if the parents maintain permanent residence in Kazakhstan regardless of birth country (Article 12) -- applied equally regardless of which parent holds Kazakhstani citizenship.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "egov_become_citizen"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parents' proof of Kazakhstani citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parental permanent residence in Kazakhstan (one-parent-citizen track, if born abroad)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "egov_become_citizen",
+      "tier": 1,
+      "url": "https://egov.kz/cms/en/articles/for_foreigners/how_to_become_kz_citizen",
+      "title": "Electronic Government of the Republic of Kazakhstan (egov.kz) -- official summary of citizenship-by-descent rules: automatic citizenship when both parents are Kazakhstani citizens regardless of birth country, and conditional citizenship (birth in Kazakhstan or parents' permanent residence there) when only one parent is a citizen",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kazakhstan). STATUS: PUBLISHED -- direct e-government sourcing, tier 1, cross-referenced against an NGO-hosted (ecoi.net, tier 2) English translation of the underlying 1991 Citizenship Law (as amended 2013) confirming Articles 11-12 apply without any paternal/maternal distinction. GENUINE POSITIVE FINDING: descent citizenship is fully gender-neutral on its face, with no different treatment based on which parent holds Kazakhstani citizenship -- joining Kenya, Pakistan, India, Tunisia, and Tanzania in this dataset as having a reformed, equal descent rule, in contrast to Iran's paternal-default and Lebanon's paternal-only systems built earlier in this dataset. dual_citizenship_allowed set false: Kazakhstan's citizenship law contains an explicit, strict dual-citizenship ban -- 'a citizen of the Republic of Kazakhstan is not recognized as a citizen of another country' -- with a genuinely distinctive enforcement mechanism (Article 21(5)) requiring anyone who acquires a foreign citizenship to report it and surrender their Kazakhstani passport/ID within 3 working days, or lose citizenship automatically."
+}

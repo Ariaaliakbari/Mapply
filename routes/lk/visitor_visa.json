@@ -1,0 +1,99 @@
+{
+  "id": "lk_visitor_visa",
+  "country": "LK",
+  "name": "Tourist Visa and Business Visa (ETA)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "tourist",
+      "name": "Tourist visa",
+      "requirements": [
+        {
+          "id": "lkvv_eta_or_visa",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires an approved Electronic Travel Authorization (ETA) or visa for sightseeing, holidays, family visits, medical treatment, or cultural/sports events; single or double entry.",
+          "fix_path": "Apply for an ETA online via eta.gov.lk before travel.",
+          "fix_time_months": null,
+          "source_id": "immigration_visa_overview"
+        }
+      ]
+    },
+    {
+      "id": "short_term_business",
+      "name": "Short-term Business Visa",
+      "requirements": [
+        {
+          "id": "lkvv_business_purpose",
+          "attribute": "has_qualifying_business_purpose",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Purpose must be a qualifying business activity: meetings/negotiations, conferences/workshops/seminars, short-term training, or religious/art/symposium events -- not employment.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "un_int_business_visa"
+        },
+        {
+          "id": "lkvv_host_invitation",
+          "attribute": "has_host_invitation_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a host company invitation letter, return ticket, and bank statement.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "un_int_business_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Return ticket", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Host company invitation letter (business track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank statement", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "Tourist: not specified precisely in the source located. Short-term Business Visa: 30 days, multiple entries. Long-term Business Visa: up to 90 days, single/double/multiple entries. Reciprocal Visa for US nationals: up to 5 years, multiple entries.",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_visa_overview",
+      "tier": 1,
+      "url": "https://www.immigration.gov.lk/pages_e.php?id=14",
+      "title": "Department of Immigration & Emigration, Sri Lanka -- General Information on Visa: Tourist Visa (sightseeing, holidays, family visits, medical treatment, cultural/sports events, single or double entry) and Business Visa (single/double/multiple journeys) as the two main Visit Visa categories; passport valid 6+ months, adequate financial resources, return travel documentation required generally",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "un_int_business_visa",
+      "tier": 1,
+      "url": "https://www.un.int/srilanka/srilanka/business-visa",
+      "title": "Permanent Mission of Sri Lanka to the United Nations (official mission page) -- Business Visa: Short-term (30 days multiple entry, $30 processing + $55 reciprocal for non-SAARC, SAARC exempt from reciprocal fee, 2-4 day processing, online via eta.gov.lk or Consular Division), Long-term (up to 90 days, Consular Division only), and a 5-year Reciprocal Visa for US nationals ($140)",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sri Lanka). Published on tier-1 sourcing (Department of Immigration & Emigration and an official mission page). SAARC (South Asian Association for Regional Cooperation) member-state nationals are exempt from the reciprocal fee component -- a regional preference consistent with the EAC/ECOWAS preferences found in Kenya, Uganda, and Ghana built earlier in this dataset. GENUINE GAP: the plain Tourist Visa's exact duration was not specified precisely in the sources retrieved (only the Business Visa sub-durations were), disclosed rather than guessed."
+}

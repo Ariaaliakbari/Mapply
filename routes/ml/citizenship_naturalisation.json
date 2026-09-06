@@ -1,0 +1,81 @@
+{
+  "id": "ml_citizenship_naturalisation",
+  "country": "ML",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mlcn_5yr_residence",
+          "attribute": "months_residence_in_mali",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Malienne, Articles 29-30: at least 5 years of habitual residence in Mali at the time of application, minimum age 18, 'bonnes vie et moeurs' (good character) with no disqualifying convictions, and demonstrated assimilation into Malian society. Naturalization is granted by presidential decree 'sur demande' (Article 28); a decision is required within one year of application, with silence treated as rejection -- the decree itself is unmotivated and rejections carry no right of appeal.",
+          "fix_path": "Accumulate 5 years of habitual residence, demonstrate good character and assimilation, and apply -- noting the decree is discretionary and unappealable regardless of meeting the formal conditions.",
+          "fix_time_months": 60,
+          "source_id": "citizenshiprightsafrica_ml_nationalite"
+        }
+      ]
+    },
+    {
+      "id": "married_to_malian_woman_reduced",
+      "name": "Reduced-residence route for a foreign man married to a Malian woman",
+      "requirements": [
+        {
+          "id": "mlcn_2yr_residence_married",
+          "attribute": "months_residence_in_mali",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Malienne, Article 29: the 5-year residence threshold is reduced to 2 years for a foreign man married to a Malian woman (the article also allows the same reduction for having rendered 'exceptional services' to Mali). This is a NATURALIZATION application with reduced residence, not automatic acquisition -- it remains a discretionary presidential decree under Article 28, unmotivated and unappealable, unlike the automatic acquisition a foreign wife of a Malian husband receives under Article 23 (see ml_citizenship_by_marriage.json).",
+          "fix_path": "Marry a Malian woman, accumulate 2 years of residence, and apply for naturalization under the reduced-residence provision.",
+          "fix_time_months": 24,
+          "source_id": "citizenshiprightsafrica_ml_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of residence duration", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of assimilation into Malian society", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Marriage certificate (reduced-residence route only)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "5 years (2 years if married to a Malian woman, per Article 29)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_ml_nationalite",
+      "tier": 3,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Mali_Code_de_la_nationalite_62-18AN-RM_3-Feb-62.pdf",
+      "title": "Citizenship Rights in Africa Initiative (NGO-hosted primary legal text) -- Code de la Nationalite Malienne, Articles 28-30 (naturalization conditions, presidential decree, discretion)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mali). STATUS: DRAFT -- sourced to an NGO-hosted copy of the primary legal text, tier 3; the code's own Journal Officiel publication and current Ministry of Justice guidance were not independently fetched -- disclosed gap, consistent across this country's settled-category files. GENUINE FINDING: naturalization is framed as a matter of presidential grace, not right -- the decree is explicitly unmotivated and unappealable even where the formal conditions (residence, age, character, assimilation) are met, similar in spirit to Algeria's ministerial-discretion naturalization track (dz_citizenship_naturalisation.json) built earlier in this dataset. The SECOND requirement group here (2-year reduced residence for a foreign man married to a Malian woman) is the deliberate counterpart to ml_citizenship_by_marriage.json's automatic-acquisition route for foreign wives -- read together, the two files show Mali treats the two directions of cross-national marriage very differently: automatic and immediate for wives, a discretionary and merely-accelerated naturalization for husbands. dual_citizenship_allowed left null: not addressed by the source for either group."
+}

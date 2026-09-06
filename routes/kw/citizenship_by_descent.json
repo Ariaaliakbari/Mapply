@@ -1,0 +1,80 @@
+{
+  "id": "kw_citizenship_by_descent",
+  "country": "KW",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_descent",
+      "name": "Paternal descent (automatic)",
+      "requirements": [
+        {
+          "id": "kwcd_kuwaiti_father",
+          "attribute": "has_kuwaiti_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A person born to a Kuwaiti father is Kuwaiti by origin, whether born inside or outside Kuwait, per the 2026 nationality-law amendments (Decree-Law No. 52 of 2026) confirming and restating this rule.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fragomen_nationality_revisions"
+        }
+      ]
+    },
+    {
+      "id": "maternal_descent_conditional",
+      "name": "Maternal descent (conditional, father deceased/imprisoned/divorced, under 21)",
+      "requirements": [
+        {
+          "id": "kwcd_kuwaiti_mother_conditional",
+          "attribute": "is_child_of_kuwaiti_mother_qualifying_condition_under_21",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born to a Kuwaiti mother and a foreign father qualifies as Kuwaiti until age 21 if the father is deceased, imprisoned as a POW, or has divorced the mother -- a provision that, per the law firm alert reviewed, did not exist under the prior law. This is not a general gender-neutral descent rule: a child of a Kuwaiti mother and foreign father whose father is alive, not imprisoned, and still married to the mother does not qualify under this provision.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "fragomen_nationality_revisions"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Kuwaiti nationality", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of qualifying condition (maternal track): father's death certificate, POW status, or divorce decree", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "fragomen_nationality_revisions",
+      "tier": 3,
+      "url": "https://www.fragomen.com/insights/kuwait-nationality-law-revisions-implemented.html",
+      "title": "Fragomen (global immigration law firm) -- summary of Kuwait's implemented 2025 nationality-law revisions: paternal descent restated for birth inside or outside Kuwait, and a new conditional maternal-descent provision (father deceased, POW, or divorced) for children under 21 that did not exist under the prior law",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kuwait). STATUS: DRAFT -- Kuwait's government gazette and the Ministry of Interior's own nationality pages were not fetchable in this build (403 errors, consistent with this country's other routes); sourced instead to a global immigration law firm's client alert (tier 3) describing the law AS IMPLEMENTED following 2024 cabinet approval and 2025-2026 enactment via Decree-Law No. 52 of 2026. LIVE LEGAL CONTEXT: Kuwait's nationality law has been under active, significant revision across 2024-2026 -- not a stable, long-settled framework like most other countries built in this dataset. The maternal-descent provision modeled here is a genuine partial improvement (it did not exist before) but remains narrow and conditional, not a general gender-neutral rule like Kenya, Pakistan, India, Tunisia, or Tanzania's reformed descent rules elsewhere in this dataset -- a child of a Kuwaiti mother whose foreign father is alive, free, and still married to her has no descent-based claim modeled here. dual_citizenship_allowed set false: Kuwait's nationality law has long barred dual citizenship for citizens by origin, and the 2026 amendments reportedly expand (rather than relax) revocation grounds tied to voluntary foreign-citizenship acquisition -- see kw_citizenship_naturalisation.json's notes for the fuller revocation picture, which was not modeled as blocking requirements here since revocation is a POST-acquisition risk, not an acquisition condition."
+}

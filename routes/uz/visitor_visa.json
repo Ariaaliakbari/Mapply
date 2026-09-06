@@ -1,0 +1,79 @@
+{
+  "id": "uz_visitor_visa",
+  "country": "UZ",
+  "name": "Tourist / e-Visa",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_free",
+      "name": "Visa-free entry",
+      "requirements": [
+        {
+          "id": "uzvv_visa_free_nationality",
+          "attribute": "is_visa_free_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of 7 neighboring states (Russia, Kazakhstan, Belarus, Azerbaijan, Georgia, Armenia, Ukraine) enter visa-free with no time limit. Citizens of 76 further countries (including Germany, France, the UK, Canada, Brazil, Mexico, Japan, South Korea, Australia) enter visa-free for tourism for up to 30 days. Kyrgyzstan gets 60 days; Tajikistan 30 days; Bahrain/Kuwait/Oman 10 days with a return ticket required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gov_uz_mfa_visa"
+        }
+      ]
+    },
+    {
+      "id": "evisa",
+      "name": "e-Visa",
+      "requirements": [
+        {
+          "id": "uzvv_evisa_eligible",
+          "attribute": "is_evisa_eligible_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of 56 further designated countries (including the US, China, India, Vietnam, and most Middle Eastern and African countries) can obtain an e-visa via e-visa.gov.uz. Tourist e-visas (T) run up to 1 month. Fees range roughly $40-160 for single-entry, $150-350 for multiple-entry, depending on duration.",
+          "fix_path": "Apply for the e-visa online with a passport valid at least 3 months beyond the visa's expiry.",
+          "fix_time_months": null,
+          "source_id": "gov_uz_mfa_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 3+ months beyond visa expiry", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Completed application form and photograph", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 30 days (tourist); no limit for the 7 unrestricted-neighbor nationalities",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_uz_mfa_visa",
+      "tier": 1,
+      "url": "https://gov.uz/en/mfa/activity_page/o-zbekiston-respublikasi-vizasi",
+      "title": "Ministry of Foreign Affairs of the Republic of Uzbekistan (gov.uz) -- official visa-free country lists, e-visa eligible countries via e-visa.gov.uz, visa categories, and consular fee schedule",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: PUBLISHED -- direct government sourcing (gov.uz, tier 1). e-visa.gov.uz itself returned only page metadata on direct fetch (a JS-rendered single-page app, not fetchable as static content), so the gov.uz Ministry of Foreign Affairs page was used as the authoritative source instead and confirms the same e-visa system by name. Uzbekistan's visa regime is notably liberal for a Central Asian state -- 83 countries combined get visa-free access, a marked contrast to several more restrictive countries built elsewhere in this dataset. dual_citizenship_allowed left null here since visitor status doesn't engage citizenship questions."
+}

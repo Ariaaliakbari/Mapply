@@ -1,0 +1,98 @@
+{
+  "id": "sy_visitor_visa",
+  "country": "SY",
+  "name": "Visitor Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard visa on arrival / advance visa",
+      "requirements": [
+        {
+          "id": "syvv_not_israeli",
+          "attribute": "is_israeli_citizen",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Israeli citizens are completely barred from entry and transit under the transitional government's current policy.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "wikipedia_visa_policy_syria"
+        },
+        {
+          "id": "syvv_fee_paid",
+          "attribute": "visa_fee_paid_usd_cash",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Most nationalities can obtain a visa on arrival at land borders (from Lebanon/Jordan) or airports (Damascus/Aleppo), paying in USD cash only (cards not accepted). Fees vary by nationality: roughly $75 (EU citizens, 1 month) up to $150-200 (UK/US citizens). Since July 2025, fees apply at all entry points, including land borders that were previously fee-exempt.",
+          "fix_path": "Arrive with sufficient USD cash to pay the visa-on-arrival fee.",
+          "fix_time_months": null,
+          "source_id": "syrianguides_visa_2026"
+        }
+      ]
+    },
+    {
+      "id": "restricted_nationality",
+      "name": "Restricted-nationality security clearance",
+      "requirements": [
+        {
+          "id": "syvv_security_clearance",
+          "attribute": "obtained_prior_security_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of at least 29 listed nationalities (including India, China, Pakistan, Afghanistan, Philippines, Sri Lanka, Vietnam, Nepal, Egypt, Yemen, Sudan, Libya, Iran, Iraq, Bangladesh, Myanmar, Russia, North Korea, and others) must obtain security clearance in advance regardless of entry point, typically taking 3-4 weeks, versus a few working days for other nationalities. All air travelers of any nationality must also secure pre-approval documentation before flying.",
+          "fix_path": "Apply for security clearance well in advance of travel through a Syrian embassy/consulate or the Ministry of Foreign Affairs.",
+          "fix_time_months": 1,
+          "source_id": "syrianguides_visa_2026"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for onward travel", "difficulty": "routine", "typical_time_days": null },
+    { "document": "USD cash for visa fee", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Security clearance approval (restricted nationalities and all air travelers)", "difficulty": "hard", "typical_time_days": 28 }
+  ],
+  "outcome": {
+    "duration_length": "15-30 days depending on nationality and visa type",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "syrianguides_visa_2026",
+      "tier": 4,
+      "url": "https://syrianguides.com/visa-requirements-for-syria-essential-information-for-travelers/",
+      "title": "Syrian Guides (private travel-guide site) -- 2026 visa-on-arrival process, USD-cash-only fee structure, the July 2025 fee change at land borders, and the 29-nationality security-clearance list",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "wikipedia_visa_policy_syria",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Syria",
+      "title": "Wikipedia -- Visa policy of Syria, cross-referenced for the post-January-2025 transitional government's reciprocity-based policy, the Israeli entry ban, Iranian prior-authorization requirement, and the e-visa platform's uncertain operational status",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Syria). STATUS: DRAFT -- no functioning Syrian government visa portal was locatable/fetchable in this build (mofaex.gov.sy's e-services page covers only consular appointment booking, not visa rules; an e-visa platform reportedly launched April 2024 is described by multiple sources as non-operational as of 2026). Both sources used are tier-4 (private travel-guide sites and Wikipedia), so this route cannot be published under this dataset's sourcing rules despite being a real, currently-applied policy. HIGH POLITICAL VOLATILITY, EXPLICITLY FLAGGED: Syria's visa regime changed fundamentally after the fall of the Assad government in December 2024/January 2025 and is described by every source reviewed as actively unstable -- fees changed again as recently as July 2025, the e-visa system's status is unconfirmed, and land-border rules are described in one source as 'currently unclear... conditions change frequently.' This route should be re-verified far more frequently than this dataset's standard cadence given the pace of change. The Israeli entry ban and Iranian special-authorization requirement are both distinctly tied to the post-Assad transitional government's foreign-policy posture, not legacy Assad-era rules."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "gt_international_protection",
+  "country": "GT",
+  "name": "Refugee Status / International Protection",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status_determination",
+      "name": "Refugee status determination",
+      "requirements": [
+        {
+          "id": "gtip_rsd_process",
+          "attribute": "meets_1951_convention_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Guatemala is party to the 1951 UN Refugee Convention, its 1967 Protocol, the 1984 Cartagena Declaration, and the American Convention on Human Rights. Acuerdo Gubernativo 2-2019 (Reglamento para la Proteccion y Determinacion del Estatuto de Refugiado) sets the process: (1) a verbal or written request filed at a migration post or the Protection Directorate; (2) a personal interview scheduled within 15 days of the formal submission; (3) CONARE (an advisory body -- its staff conduct the interview and a psychological evaluation, then analyze the case and submit a recommendation) reports within 30 days; (4) final resolution is made by the National Migration Authority (AMN), which holds sole decision-making power under Article 11 -- CONARE's role is advisory only. A 10-day window is available to appeal an AMN denial.",
+          "fix_path": "File a request at a migration post or the Protection Directorate and complete the interview/CONARE-recommendation/AMN-resolution process.",
+          "fix_time_months": 2,
+          "source_id": "igm_gt_acuerdo_2_2019"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Supporting evidence of persecution risk (if available)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, work authorization renewable annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "igm_gt_acuerdo_2_2019",
+      "tier": 1,
+      "url": "https://igm.gob.gt/",
+      "title": "Instituto Guatemalteco de Migracion (IGM) -- Acuerdo Gubernativo 2-2019, Reglamento para la Proteccion y Determinacion del Estatuto de Refugiado: AMN decision authority (Art. 11), CONARE's advisory role, 15-day interview / 30-day recommendation / 10-day appeal timeline, confirmed party status to the 1951 Convention, 1967 Protocol, 1984 Cartagena Declaration and American Convention on Human Rights",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "unhcr_help_guatemala",
+      "tier": 2,
+      "url": "https://help.unhcr.org/guatemala/",
+      "title": "UNHCR Help Guatemala -- Department for the Recognition of Refugee Status (DRER), work permits (1 year, renewable, free of charge), free pre-primary/primary/basic education, free public health-center and hospital access, DPI-E special identity document and travel document, driver's-license eligibility, freedom of movement",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Guatemala). STATUS: PUBLISHED -- the hard requirement (the RSD process itself) is sourced to igm.gob.gt, a Guatemalan government domain (tier 1), corroborated by UNHCR's own country help page (tier 2). This is a genuinely well-documented, functioning asylum system with specific timelines and a real appeal mechanism -- comparable in quality to the DR Congo and Venezuela asylum files built earlier in this dataset, and notably more concrete than Zimbabwe's (which has real law but only tier-2 sourcing) or Syria's/Uzbekistan's (thin or effectively absent). work_rights set 'restricted' since work authorization requires separate Ministry of Labor approval per the UNHCR source, not automatic with refugee status itself. leads_to_pr and leads_to_citizenship set false: no source reviewed in this build described a defined pathway from refugee status to permanent residence or citizenship -- this is disclosed as an open gap rather than assumed to default to the standard 5-year naturalization track in gt_citizenship_naturalisation.json. family_can_work set false since the UNHCR source described family reunification protections and the principal applicant's own work permit, but did not confirm independent work authorization for joining family members. Guatemala functions overwhelmingly as a transit and, to a lesser extent, host country in the region -- it is not a major source country for outbound refugees at the scale seen in this dataset's Syria or Venezuela files."
+}

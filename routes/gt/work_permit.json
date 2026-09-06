@@ -1,0 +1,64 @@
+{
+  "id": "gt_work_permit",
+  "country": "GT",
+  "name": "Employer-Sponsored Work Residence",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "gtwp_mintrab_clearance",
+          "attribute": "obtained_mintrab_labor_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A two-step process: the employer first files with MINTRAB (Ministry of Labor and Social Welfare) for labor clearance, providing business registration/tax filings, job description and salary, and proof the hire fits within the labor code's proportionality rule requiring 90% of overall payroll to go to Guatemalan nationals. MINTRAB approves foreign hires more readily for roles requiring specialized skills, certifications, or languages not readily available locally. Once MINTRAB clears the role, the worker applies to IGM (Instituto Guatemalteco de Migracion) for temporary residence. Total timeline runs 60-120 days (MINTRAB 30-60 days, IGM 30-90 days); IGM fee is USD 25.",
+          "fix_path": "Have the employer obtain MINTRAB labor clearance (justifying the hire against the 90% Guatemalan-payroll rule), then apply to IGM for temporary residence.",
+          "fix_time_months": 2,
+          "source_id": "livinginguatemala_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "MINTRAB labor clearance", "difficulty": "hard", "typical_time_days": 45 },
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled criminal background check", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "renewable up to 5 years total",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "livinginguatemala_work_permit",
+      "tier": 4,
+      "url": "https://livinginguatemala.com/visas-to-guatemala/work-permit-foreigners-guatemala/",
+      "title": "Living in Guatemala (private expat-guide site) -- the MINTRAB/IGM two-step process, the 90% Guatemalan-payroll proportionality rule, fees, and the 5-year-to-permanent-residence pathway",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Guatemala). STATUS: DRAFT -- sourced to a single tier-4 private expat-guide site; MINTRAB's and IGM's own government pages describing this exact process were not successfully fetched in this build (igm.gob.gt returned 403 on direct fetch attempts made for other routes in this build). GENUINE, SPECIFIC FINDING: the 90%-of-payroll-must-go-to-Guatemalan-nationals proportionality rule is a real, codified labor-market-protection mechanism -- a quantified quota rather than a vague 'no qualified local candidate' test, worth flagging as more concrete than most labor-market tests built elsewhere in this dataset. work_rights set 'restricted' since the permit is tied to the specific cleared role. family_can_join and family_can_work set false (conservative default, not asserted true without a source) since this source did not address dependents at all (see gt_family_reunification.json for the separate family-based residence route)."
+}

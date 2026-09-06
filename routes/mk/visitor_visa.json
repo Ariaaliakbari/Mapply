@@ -1,0 +1,63 @@
+{
+  "id": "mk_visitor_visa",
+  "country": "MK",
+  "name": "Tourist / Short-Stay Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "rolling_window",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mkvv_entry_eligibility",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ministry of Foreign Affairs: EU Member State and Schengen Agreement nationals need no visa and may enter on a valid national ID card. Holders of UN travel documents are also exempt. Certain other third-country nationals (temporary/permanent EU or Schengen residents, holders of a multiple-entry Schengen Type C visa valid 5+ days beyond the stay, and -- as a temporary policy through 31 Dec 2025 -- holders of valid multiple-entry UK/US/Canadian visas) may enter visa-free but are capped at 15 days per entry within a 90-day/180-day rolling window. Non-exempt nationalities need a Short-Stay/Transit ('C') visa: valid travel document (3+ months beyond the stay), travel/health insurance from a home-country insurer, a notarized invitation letter from a Macedonian individual or organization, proof of sufficient funds, and photos.",
+          "fix_path": "For non-visa-exempt nationalities without a qualifying prior visa, apply for a Short-Stay ('C') visa at a Macedonian diplomatic or consular mission.",
+          "fix_time_months": null,
+          "source_id": "mfa_gov_mk_visa_info"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 3+ months beyond the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Travel/health insurance from a home-country insurer", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Notarized invitation letter (if applying for a C visa)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within a 180-day period (visa-exempt third-country categories capped at 15 days per entry)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mfa_gov_mk_visa_info",
+      "tier": 1,
+      "url": "https://mfa.gov.mk/en-GB/konzularni-uslugi/informacii-za-vlez-vo-rsm",
+      "title": "Ministry of Foreign Affairs and Foreign Trade, Republic of North Macedonia -- visa requirements for entry, EU/Schengen/UN exemptions, third-country visa-free stay caps, Short-Stay ('C') visa requirements",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: PUBLISHED -- hard requirement sourced directly to mfa.gov.mk, North Macedonia's own Foreign Ministry, tier 1. duration_type set 'rolling_window' to reflect the EU-style 90-days-in-any-180-days framing the ministry itself uses, distinct from the visa-exempt third-country 15-day-per-entry cap layered on top of it. The source did not publish a full named list of ordinary visa-exempt third countries beyond EU/Schengen/UN -- that fuller list was not confirmed in this build and is not asserted here."
+}

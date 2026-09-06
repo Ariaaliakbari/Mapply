@@ -1,0 +1,63 @@
+{
+  "id": "sn_family_reunification",
+  "country": "SN",
+  "name": "Family Residence Card (Dependents of a CIE Holder)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "snfr_dependent_of_cie_holder",
+          "attribute": "is_spouse_or_child_of_cie_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouses and children of a foreign resident holding a Carte d'Identité d'Étranger (CIE) may apply for their own residence card as dependents, following a broadly similar registration process at the Division de la Police des Étrangers (DPETV) -- proof of the family relationship, the sponsor's valid CIE or receipt, and (per general CIE practice) a medical exam and repatriation deposit.",
+          "fix_path": "Apply at DPETV with proof of the family relationship and the sponsor's valid residence documentation.",
+          "fix_time_months": null,
+          "source_id": "openshores_family_immigration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or child's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's valid CIE or residence receipt", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's CIE validity",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "openshores_family_immigration",
+      "tier": 4,
+      "url": "https://www.openshores.co/blog/immigrer-en-senegal-avec-une-famille",
+      "title": "OpenShores (private relocation/immigration guide) -- general description of bringing family to Senegal alongside a foreign resident, referencing the same CIE-based residence framework used for work permits",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Senegal). STATUS: DRAFT -- this route is modeled thinly and cautiously. This build could not locate a Senegalese government page (the official 'Sénégal Services' e-government portal returned a connection error, consistent with the pattern seen across this country's other routes) or a detailed private guide specifically dedicated to dependent/family residence procedure -- the process described here is inferred from general CIE practice (see sn_work_permit.json) rather than confirmed against a source dedicated to the family-reunification mechanism itself. This should be treated as a priority follow-up rather than a settled description. work_rights and family_can_join both set false/restricted conservatively given the absence of a source confirming otherwise."
+}

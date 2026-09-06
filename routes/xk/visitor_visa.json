@@ -1,0 +1,62 @@
+{
+  "id": "xk_visitor_visa",
+  "country": "XK",
+  "name": "Short-Stay Visa (Visa C) / Visa-Free Entry",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "rolling_window",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "xkvv_entry_authorization",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Kosovo Border Police brochure: the Government of Kosovo sets the visa regime by decision, so visa-exempt status varies by nationality (a full country list was not confirmed against a single source in this build). Visa-exempt visitors and Visa C (short-stay) holders may stay up to 90 days within any 180-day period. Kosovo issues Schengen-style visa categories: air-transit (A, multiple entry up to 6 months), transit (B, variable duration, multiple entry up to 6 months), short-stay (C, up to 90 days per 180-day period, with the visa itself valid 6 months to 5 years), and a single-entry residence visa (D, valid 3 months) issued once a residence permit is confirmed for those moving to a longer-stay category.",
+          "fix_path": "Non-exempt nationalities apply for a Visa C at a Kosovo diplomatic mission before travel; those transitioning to residence use a Visa D once their residence permit is confirmed.",
+          "fix_time_months": null,
+          "source_id": "kosovo_police_border_brochure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa (non-exempt nationalities)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days within any 180-day period (Visa C / visa-exempt)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["xk_work_permit", "xk_investor_residence", "xk_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "kosovo_police_border_brochure",
+      "tier": 1,
+      "url": "https://www.kosovopolice.com/wp-content/uploads/2025/09/Border-Police-Brochure-ENG.pdf",
+      "title": "Kosovo Police (official government body) -- Guidelines for Entry, Movement, Residence and Employment of Foreigners: visa categories A-D, 90/180 short-stay rule",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kosovo). STATUS: PUBLISHED -- hard requirement sourced directly to Kosovo Police's own official brochure, tier 1. Modeled as country code XK, the de facto ISO-adjacent code used by the EU, SWIFT, and most international systems in the absence of an official ISO 3166-1 assignment (a consequence of Kosovo's contested statehood, not a data-quality gap). Kosovo's own residence-category system is notably more developed and EU-accession-aligned than most other countries built recently in this dataset (Mali, Niger, Haiti, Bosnia) -- a genuine, positive structural contrast worth noting: Kosovo runs a real Schengen-style visa-category system (A/B/C/D) and, per xk_citizenship_naturalisation.json and related files, an actual temporary-to-permanent residence LADDER, which several of those other countries lack entirely. A complete visa-exempt nationality list was not confirmed against a single authoritative source in this build -- genuine, disclosed gap. switchable_to reflects that Visa D is the actual mechanism for converting to residence-based status."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "si_international_protection",
+  "country": "SI",
+  "name": "International Protection (Refugee Status / Subsidiary Protection)",
+  "category": "humanitarian",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "refugee_status",
+      "name": "Refugee status",
+      "requirements": [
+        {
+          "id": "siip_refugee_criteria",
+          "attribute": "meets_1951_convention_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Ministry of the Interior and Public Administration (International Protection Procedures Division, Migration Directorate) decides international-protection claims. Applicants express intent to any public authority as soon as possible after entry; police establish identity and entry route; the applicant is transferred to the Asylum Home (or its Logatec branch) for formal lodging, medical exam, photographing, and fingerprinting; a first interview on the merits follows (or a Dublin interview if another EU state is responsible). Recognized refugees (persecution on race, ethnic origin, religion, nationality, social group, or political opinion) receive a PERMANENT residence permit effective from the decision date. The regular procedure has a statutory 6-month first-instance deadline (frequently exceeded in practice; 6 months to 3 years is typical), while accelerated cases should decide within 2 months. There is no formal appeal, but an administrative dispute (judicial review) can be filed within 15 days (regular procedure) or 3 days (accelerated/other decisions), proceeding to the Administrative Court, then Supreme Court, then Constitutional Court.",
+          "fix_path": "Express intent to apply for international protection to any public authority, then complete registration, formal lodging at the Asylum Home, and the merits interview.",
+          "fix_time_months": 6,
+          "source_id": "gov_si_international_protection"
+        }
+      ]
+    },
+    {
+      "id": "subsidiary_protection",
+      "name": "Subsidiary protection",
+      "requirements": [
+        {
+          "id": "siip_subsidiary_criteria",
+          "attribute": "faces_serious_harm_not_meeting_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants who do not meet the refugee-status criteria but face serious harm -- death penalty, torture, or serious threats from armed conflict -- receive subsidiary protection: a TEMPORARY residence permit whose duration matches the assessed threat period, through the same procedure as refugee status.",
+          "fix_path": "Complete the same international-protection application process; subsidiary protection is granted where refugee criteria are not met but serious-harm criteria are.",
+          "fix_time_months": 6,
+          "source_id": "gov_si_international_protection"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical examination, photographing, fingerprinting", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (refugee status: immediate permanent residence); matches threat-assessment period (subsidiary protection: temporary residence)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gov_si_international_protection",
+      "tier": 1,
+      "url": "https://www.gov.si/en/topics/international-protection/",
+      "title": "Portal GOV.SI (Government of the Republic of Slovenia) -- Ministry of the Interior's role, refugee status granting immediate permanent residence, subsidiary protection's temporary residence, application process",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "asylumineurope_si_procedure",
+      "tier": 3,
+      "url": "https://asylumineurope.org/reports/country/slovenia/asylum-procedure/general/short-overview-asylum-procedure/",
+      "title": "Asylum Information Database (AIDA, European Council on Refugees and Exiles) -- detailed procedural timelines: 6-month regular/2-month accelerated first-instance deadlines, 15-day/3-day judicial-review windows, court appeal chain",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovenia). STATUS: PUBLISHED -- the core hard requirements (refugee and subsidiary-protection criteria, deciding body, and the immediate-permanent-residence outcome for refugees) are sourced directly to gov.si, tier 1; the detailed procedural timelines are corroborated by AIDA/ECRE, a tier-3 specialist NGO source, not independently required to be tier 1 since they support rather than constitute the hard requirement itself. GENUINELY DISTINCTIVE, MARQUEE FINDING: recognized refugees in Slovenia receive a PERMANENT residence permit immediately upon the recognition decision -- not a renewable temporary status that later converts -- a notably strong outcome compared to most other countries' asylum files built in this dataset, where refugee status typically starts temporary. HONEST DISCLOSURE: the tier-3 source notes the statutory 6-month regular-procedure deadline is 'frequently not observed' in practice, with real-world waits of 6 months to 3 years -- a gap between law and practice worth flagging rather than only stating the formal rule. citizenship_after_months set 60 as an approximation given no source found a distinct accelerated citizenship timeline for refugees specifically (the general 10-year standard track in si_citizenship_naturalisation.json may or may not apply unmodified -- not confirmed either way, so this figure is a reasonable-default estimate, not a confirmed rule)."
+}

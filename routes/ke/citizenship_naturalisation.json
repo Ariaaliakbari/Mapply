@@ -1,0 +1,107 @@
+{
+  "id": "ke_citizenship_naturalisation",
+  "country": "KE",
+  "name": "Citizenship by Registration (Continuous Lawful Residence)",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kecn_7yr_lawful_residence",
+          "attribute": "months_resident_lawfully",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "7 years of continuous lawful residence in Kenya immediately preceding the application, holding a valid permit throughout.",
+          "fix_path": "Accumulate 7 years of continuous lawful residence under a valid permit.",
+          "fix_time_months": 84,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecn_12mo_immediate_presence",
+          "attribute": "months_resident_immediately_preceding_application",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Physically resided in Kenya for the 12 months immediately preceding the application.",
+          "fix_path": null,
+          "fix_time_months": 12,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecn_kiswahili_or_local_language",
+          "attribute": "understands_kiswahili_or_local_dialect",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must understand and speak Kiswahili or a local dialect.",
+          "fix_path": "Demonstrate proficiency in Kiswahili or a recognized local dialect.",
+          "fix_time_months": null,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecn_national_development_contribution",
+          "attribute": "has_contributed_to_national_development",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must demonstrate a substantive contribution to the progress or advancement of Kenya in some area of national development.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kenyalaw_citizenship_act"
+        },
+        {
+          "id": "kecn_no_disqualifying_conviction",
+          "attribute": "has_disqualifying_conviction",
+          "operator": "!=",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must not have been convicted of an offence and sentenced to imprisonment for 3 years or longer.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "kenyalaw_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous lawful residence (7 years) under a valid permit", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of substantive contribution to national development", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Kiswahili/local-dialect proficiency assessment", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "7 years' continuous lawful residence under a valid permit, including the 12 months immediately preceding application",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "kenyalaw_citizenship_act",
+      "tier": 1,
+      "url": "https://new.kenyalaw.org/akn/ke/act/2011/12/eng@2022-12-31",
+      "title": "Kenya Law (official government legal database) -- Kenya Citizenship and Immigration Act 2011, Section 13: registration after continuous lawful residence requires 7 years' residence under a valid permit (including the 12 months immediately preceding application), Kiswahili or local-dialect proficiency, knowledge of Kenya and citizens' rights/duties, no 3+ year criminal conviction, and a substantive demonstrated contribution to Kenya's national development",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kenya). Published on tier-1 sourcing (Kenya Law). The Act itself does not use the word 'naturalisation' -- this route is legally 'registration after continuous lawful residence' under Section 13, distinct from Section 11's marriage-based registration (see ke_citizenship_by_marriage.json), though both share the same 7-year figure. DISTINCTIVE REQUIREMENT NOT SEEN ELSEWHERE IN THIS DATASET IN THIS EXPLICIT A FORM: an applicant must demonstrate a substantive contribution to Kenya's national development, not merely reside lawfully and behave well -- a more affirmatively merit-oriented standard than the largely passive residence/character/language tests used by most other countries built in this dataset. dual_citizenship_allowed TRUE, consistent with Kenya's constitutional and statutory dual-citizenship allowance (see ke_citizenship_by_descent.json notes)."
+}

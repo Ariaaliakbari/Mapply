@@ -1,0 +1,62 @@
+{
+  "id": "ml_citizenship_by_marriage",
+  "country": "ML",
+  "name": "Citizenship by Marriage (Foreign Wife of a Malian Husband)",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mlcm_foreign_wife_automatic",
+          "attribute": "is_foreign_wife_of_malian_husband",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Malienne, Article 23: a foreign woman who marries a Malian man acquires Malian nationality automatically upon the marriage -- she may decline this before the marriage takes place if her own national law lets her retain her original nationality. Article 24 gives the government a one-year window after the marriage to formally oppose the acquisition. There is NO symmetric automatic-acquisition route for a foreign man marrying a Malian woman -- see ml_citizenship_naturalisation.json for the reduced-residence (not automatic) naturalization track that applies instead in that case.",
+          "fix_path": "Marry a Malian man; nationality is acquired automatically unless declined before the marriage or opposed by the government within one year after.",
+          "fix_time_months": 0,
+          "source_id": "citizenshiprightsafrica_ml_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Spouse's proof of Malian nationality", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_ml_nationalite",
+      "tier": 3,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/01/Mali_Code_de_la_nationalite_62-18AN-RM_3-Feb-62.pdf",
+      "title": "Citizenship Rights in Africa Initiative (NGO-hosted primary legal text) -- Code de la Nationalite Malienne, Article 23 (foreign wife's automatic acquisition) and Article 24 (one-year government opposition window)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mali). STATUS: DRAFT -- sourced to an NGO-hosted copy of the primary legal text, tier 3; the code's own Journal Officiel publication was not independently fetched -- disclosed gap. MARQUEE, CONFIRMED GENDER ASYMMETRY (not an open question like Algeria's comparable case, dz_citizenship_by_marriage.json -- this one is directly sourced and explicit): a foreign woman marrying a Malian man acquires citizenship automatically and immediately (subject only to a pre-marriage opt-out and a one-year government opposition window); a foreign man marrying a Malian woman gets NO automatic acquisition at all -- his only route is the ordinary naturalization process with a reduced 2-year residence threshold instead of the standard 5 years (Article 29, see ml_citizenship_naturalisation.json), still subject to full ministerial discretion and an unmotivated, unappealable decree. This is a real, sourced, structural difference in how the two directions of marriage are treated, not a modeling simplification. dual_citizenship_allowed left null: the source did not address whether the foreign wife must renounce her prior nationality upon automatic acquisition."
+}

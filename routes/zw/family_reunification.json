@@ -1,0 +1,65 @@
+{
+  "id": "zw_family_reunification",
+  "country": "ZW",
+  "name": "Spouse Residence Permit",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "zwfr_spouse_of_citizen_or_permit_holder",
+          "attribute": "is_spouse_of_citizen_or_work_permit_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Spouses of Zimbabwean citizens, or spouses accompanying a long-term work permit holder, may apply for a Spouse Residence Permit valid up to 12 months and renewable in-country -- renewal for the second category is tied to the sponsoring spouse's own work permit remaining valid. Work authorization can be requested alongside the application if separately qualifying. Requires a support letter from the sponsor, a guarantee form from a close relative, proof of accommodation/funds from the guarantor, a certified marriage certificate, a radiology certificate, and police clearance.",
+          "fix_path": "Apply with the sponsor's support letter, a relative's guarantee, marriage certificate, radiology certificate, and police clearance.",
+          "fix_time_months": null,
+          "source_id": "workpermitzimbabwe_spouse_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Certified marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's support letter", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Guarantee form from a close relative, with proof of accommodation/funds", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Radiology certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 12 months",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "workpermitzimbabwe_spouse_permit",
+      "tier": 4,
+      "url": "https://www.workpermitzimbabwe.com/spouse-residence-permit/",
+      "title": "Work Permit Zimbabwe (private immigration-services site) -- Spouse Residence Permit eligibility, 12-month renewable duration, and documentary requirements including the relative's guarantee form",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Zimbabwe). STATUS: DRAFT -- tier-4 sourcing only; the government's own Department of Immigration page describing this exact permit (zimimmigration.gov.zw/?p=7343) returned a 500 server error on fetch in this build, worth a retry in a follow-up session. work_rights set 'restricted' since work authorization is described as a separate, conditional add-on rather than automatic. GENUINE, SPECIFIC FINDING WORTH NAMING: the 'guarantee form from a close relative' requirement -- a named third party formally vouching for the applicant's accommodation and financial support -- is a more socially-embedded documentary requirement than most family routes built in this dataset, worth flagging as distinctive rather than a generic omission."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "ni_work_permit",
+  "country": "NI",
+  "name": "Employer-Sponsored Work and Residence Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "niwp_dual_authorization",
+          "attribute": "has_dual_labor_and_migration_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "MITRAB (Ministry of Labor) issues the work authorization while DGME (Direccion General de Migracion y Extranjeria) handles the residency/visa side -- a dual-authorization structure. Nicaraguan labor law requires at least 90% of a company's workforce to be Nicaraguan nationals, with exceptions for technical and 'trusted' personnel that employers must specifically justify to authorities. Required documentation includes employment contracts, apostilled technical-skill certifications, and apostilled background-check documents.",
+          "fix_path": "Secure a Nicaraguan job offer, have the employer justify the hire against the 90% national-workforce quota (or qualify under the technical/trusted-personnel exception), and obtain both MITRAB work authorization and DGME temporary work residence.",
+          "fix_time_months": null,
+          "source_id": "gch_nicaragua_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled technical-skill certifications", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled background-check documents", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gch_nicaragua_work_permit",
+      "tier": 3,
+      "url": "https://www.gchnicaragua.com/visa-de-trabajo-extranjeros/",
+      "title": "GCH Law Firm Nicaragua -- MITRAB/DGME dual-authorization work permit process, 90% national-workforce quota, technical/trusted-personnel exception",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nicaragua). STATUS: DRAFT -- sourced to a law firm, tier 3; Nicaragua's own Labor Ministry or migration authority page detailing this exact process was not successfully fetched in this build (the general Ley de Migracion was located at oas.org and cepal.org but returned a 403 error / was not fetched directly). GENUINE, QUANTIFIED FINDING: the 90%-national-workforce quota mirrors the same regional pattern found in Guatemala (90% payroll) and El Salvador (90% personnel/85% salary) built earlier in this dataset -- a recurring Central American labor-protection mechanism, not a one-off. pr_after_months set 48 per the general 4-year naturalization residency rule (see ni_citizenship_naturalisation.json), not independently confirmed as applying automatically from this specific permit."
+}

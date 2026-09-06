@@ -1,0 +1,87 @@
+{
+  "id": "gh_work_permit",
+  "country": "GH",
+  "name": "Work and Residence Permit (Companies)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ghwp_employer_letter",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must submit a letter of application on the applicant's behalf.",
+          "fix_path": "Secure a job offer from a Ghana-registered employer willing to sponsor the application.",
+          "fix_time_months": null,
+          "source_id": "gis_work_permit_companies"
+        },
+        {
+          "id": "ghwp_business_registration_tax",
+          "attribute": "employer_has_business_registration_and_tax_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must hold business registration certificates and tax clearance.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_work_permit_companies"
+        },
+        {
+          "id": "ghwp_medical_police",
+          "attribute": "has_medical_and_police_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Medical report from the Ghana Immigration Service clinic and a police report from the applicant's home country are required.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gis_work_permit_companies"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's letter of application", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Business registration and tax clearance (employer)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical report (GIS clinic)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police report from home country", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Professional credentials and employment contract", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source located in this build",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gis_work_permit_companies",
+      "tier": 1,
+      "url": "https://gis.gov.gh/service/work-and-residence-permit-companies/",
+      "title": "Ghana Immigration Service -- Work and Residence Permit (Companies): requires employer letter of application, business registration certificates, tax clearance, medical report (GIS clinic), police report from home country, professional credentials, employment contract, passport bio-data page -- 21 documents total across the full checklist",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). Published on tier-1 sourcing (Ghana Immigration Service). Duration/validity and fees were not specified on the pages retrieved in this build -- flagged as a gap rather than guessed. family_can_join set true per the general Dependant Permit mechanism (see gh_family_reunification.json); family_can_work left null since no source in this build addressed dependents' work rights specifically."
+}

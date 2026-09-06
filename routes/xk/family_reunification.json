@@ -1,0 +1,62 @@
+{
+  "id": "xk_family_reunification",
+  "country": "XK",
+  "name": "Temporary Residence Permit (Family Reunification)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "xkfr_qualifying_family_relationship",
+          "attribute": "has_qualifying_family_relationship",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Kosovo Border Police brochure: family reunification (including cohabitation-based relationships, not only marriage) is one of the named grounds for a Temporary Residence Permit, valid 1 year and renewable. A joining spouse who marries a Kosovo citizen or permanent resident, and who accumulates the residence period, qualifies for Permanent Residence after only 3 years instead of the standard 5.",
+          "fix_path": "Have the sponsor (a Kosovo citizen, resident, or permit holder) support the application; the joining family member applies for a Temporary Residence Permit on family-reunification/cohabitation grounds.",
+          "fix_time_months": null,
+          "source_id": "kosovo_police_border_brochure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying family relationship (marriage/birth certificate or proof of cohabitation)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's proof of status in Kosovo", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 36,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "kosovo_police_border_brochure",
+      "tier": 1,
+      "url": "https://www.kosovopolice.com/wp-content/uploads/2025/09/Border-Police-Brochure-ENG.pdf",
+      "title": "Kosovo Police (official government body) -- Temporary Residence Permit categories including family reunification/cohabitation, and the reduced 3-year permanent-residence threshold for marriage to a citizen or resident",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kosovo). STATUS: PUBLISHED -- hard requirement sourced directly to Kosovo Police's own official brochure, tier 1. GENUINE FINDING: Kosovo explicitly recognizes cohabitation, not only formal marriage, as a family-reunification ground for temporary residence -- a more permissive framing than most other countries built in this dataset. pr_after_months set to 36 (not 60) since this file specifically models the marriage/family route, which the source confirms gets the reduced 3-year permanent-residence threshold rather than the general 5-year one (see xk_work_permit.json for the general case). family_can_work left null: not addressed by the source."
+}

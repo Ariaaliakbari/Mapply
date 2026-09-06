@@ -1,0 +1,63 @@
+{
+  "id": "si_family_reunification",
+  "country": "SI",
+  "name": "Family Reunification Residence Permit",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "sifr_sponsor_1yr_residence",
+          "attribute": "months_sponsor_temporary_residence",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Zakon o tujcih (ZTuj-2), Article 47: the sponsoring resident must have held Slovenian temporary residence for at least 1 year (time on a pending application counts) before initiating family reunification for a spouse/registered partner, unmarried minor children (including a partner's), or -- narrowly -- parents or adult dependent children/parents needing support under home-country law. The sponsor must show sufficient means for themselves and all family members for the prior 6 months plus the application month, measured against Slovenia's social-assistance scale (e.g. a spouse weighted at 0.57, a child at 0.59 of the basic amount). Family members' permits run for the sponsor's permit duration, capped at 2 years initially and 3 years per extension. Adult family members must demonstrate survival-level Slovene at extension, with limited exceptions (students, over-60s, certain employment categories).",
+          "fix_path": "As a temporary resident of at least 1 year, document sufficient means against the social-assistance scale and apply for family reunification for the qualifying relative.",
+          "fix_time_months": 12,
+          "source_id": "infotujci_si_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage/partnership certificate or proof of filiation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of sufficient financial means (social-assistance-scale calculation)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Survival-level Slovene language proof (adult members, at extension)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "matches sponsor's permit, capped at 2 years initially, 3 years per extension",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "sponsor must hold 1 year of prior temporary residence",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "infotujci_si_family_reunification",
+      "tier": 3,
+      "url": "https://infotujci.si/vsebina/drzavljani-izven-eu/dovoljenje-za-prebivanje/na-podlagi-zdruzevanja-druzine/zdruzitev-druzine-in-pravica-do-celovitosti-druzine/",
+      "title": "InfoTujci (third-country-national information portal, citing ZTuj-2 Article 47) -- family reunification eligible relatives, 1-year sponsor-residence prerequisite, social-assistance-scale financial thresholds, permit durations, survival-level language requirement at extension",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovenia). STATUS: DRAFT -- sourced to a third-country-national information portal that cites the underlying statute (ZTuj-2, Zakon o tujcih) by article number but is not itself a .gov.si domain, tier 3; the statute's own primary text on a government or official-gazette domain was not independently re-fetched in this build. GENUINE, QUANTIFIED FINDING: the social-assistance-scale weighting (spouse 0.57, child 0.59 of the basic amount) is a real, specific formula-style threshold, more precise than most family-reunification financial tests built elsewhere in this dataset. DISTINCTIVE, DISCLOSED REQUIREMENT: adult family members must prove 'survival-level' Slovene at extension (with narrow exceptions) -- a genuine integration-linked condition not seen in this exact form in this dataset's other family-reunification files. A separate, narrower provision (ZTuj-2 Article 47b, referenced but not independently fetched in this build) reportedly governs family reunification specifically for holders of subsidiary protection -- not modeled separately here; see si_international_protection.json."
+}

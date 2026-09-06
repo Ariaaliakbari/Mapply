@@ -1,0 +1,109 @@
+{
+  "id": "gh_investor_residence",
+  "country": "GH",
+  "name": "Foreign Investor Registration and Automatic Immigrant Quota (GIPC Act)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "joint_venture",
+      "name": "Joint venture with a Ghanaian partner",
+      "requirements": [
+        {
+          "id": "ghir_jv_capital_200k",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 200000,
+          "hard": true,
+          "blocker_text": "Minimum US$200,000 in cash or capital goods by way of equity participation, with the Ghanaian partner holding at least 10% equity.",
+          "fix_path": "Invest at least US$200,000 in equity in a joint venture where a Ghanaian partner holds 10%+.",
+          "fix_time_months": null,
+          "source_id": "gipc_act_865"
+        }
+      ]
+    },
+    {
+      "id": "wholly_foreign_owned",
+      "name": "Wholly foreign-owned enterprise",
+      "requirements": [
+        {
+          "id": "ghir_wfo_capital_500k",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 500000,
+          "hard": true,
+          "blocker_text": "Minimum US$500,000 in cash or capital goods by way of equity capital, with no Ghanaian equity partner required.",
+          "fix_path": "Invest at least US$500,000 in equity capital.",
+          "fix_time_months": null,
+          "source_id": "gipc_act_865"
+        }
+      ]
+    },
+    {
+      "id": "trading",
+      "name": "Trading enterprise",
+      "requirements": [
+        {
+          "id": "ghir_trading_capital_1m",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "Minimum US$1,000,000 in cash or goods/services relevant to the investment.",
+          "fix_path": "Invest at least US$1,000,000 in the trading enterprise.",
+          "fix_time_months": null,
+          "source_id": "gipc_act_865"
+        },
+        {
+          "id": "ghir_trading_20_ghanaian_employees",
+          "attribute": "employs_min_skilled_local_staff",
+          "operator": ">=",
+          "value": 20,
+          "hard": true,
+          "blocker_text": "Must employ at least 20 skilled Ghanaians.",
+          "fix_path": "Hire at least 20 skilled Ghanaian employees.",
+          "fix_time_months": null,
+          "source_id": "gipc_act_865"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of equity capital transfer (cash or capital goods)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "GIPC registration certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of Ghanaian equity partner (joint venture track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Payroll/employment records for 20+ skilled Ghanaians (trading track)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the source located in this build; tied to work/residence permit issued under the GIPC shareholder category",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gipc_act_865",
+      "tier": 1,
+      "url": "https://www.gipc.gov.gh/wp-content/uploads/2023/04/GHANA-INVESTMENT-PROMOTION-CENTRE-GIPC-ACT-865.pdf",
+      "title": "Ghana Investment Promotion Centre -- Ghana Investment Promotion Centre Act, 2013 (Act 865): joint venture with a Ghanaian partner requires minimum US$200,000 equity (Ghanaian partner holding 10%+); wholly foreign-owned enterprise requires minimum US$500,000 equity capital; trading enterprises (purchasing/selling imported goods and services) require minimum US$1,000,000 and at least 20 skilled Ghanaian employees",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Ghana). Published on tier-1 sourcing directly from the Ghana Investment Promotion Centre's own hosted copy of the Act. Registration under the GIPC Act is the gateway to the 'GIPC Shareholder' work-and-residence permit category referenced on the Ghana Immigration Service's own site (see gh_work_permit.json's sibling permit family) -- this file models the underlying capital thresholds; the immigration paperwork itself is processed through the same Work and Residence Permit channel used for missionaries/NGOs/immigrant quota. Cleanly tiered by structure (joint venture cheapest, wholly-owned enterprise mid-tier, trading most expensive plus a mandatory local-hiring floor) -- a distinctive, clearly-legislated three-tier capital structure not seen in exactly this form elsewhere in this dataset."
+}

@@ -1,0 +1,80 @@
+{
+  "id": "lk_investor_residence_rgs_legacy",
+  "country": "LK",
+  "name": "Resident Guest Scheme (RGS) Visa -- Legacy",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "investor",
+      "name": "Investor category (existing holders, extension only)",
+      "requirements": [
+        {
+          "id": "lkrgs_investor_deposit_250k",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 250000,
+          "hard": true,
+          "blocker_text": "Initial deposit of US$250,000 (or equivalent convertible foreign currency), with monthly remittance for personal upkeep and a minimum US$35,000 special-account deposit per dependent. As of this build, the Department of Immigration & Emigration's own page states this scheme is available only to holders already granted this visa seeking an EXTENSION -- not to new applicants.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_rgs"
+        }
+      ]
+    },
+    {
+      "id": "professional",
+      "name": "Professional category (existing holders, extension only)",
+      "requirements": [
+        {
+          "id": "lkrgs_professional_remittance",
+          "attribute": "monthly_remittance_usd",
+          "operator": ">=",
+          "value": 2000,
+          "hard": true,
+          "blocker_text": "Monthly remittance of US$2,000 for the principal applicant plus US$1,000 per dependent, in lieu of the investor deposit. Extension-only, per the same restriction as the investor category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "immigration_rgs"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank statements confirming remittances", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Evidence of satisfactory investment-project performance (investor category)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Educational credentials and work experience (professional category)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years from issuing date, annual renewal fee US$200/person",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_rgs",
+      "tier": 1,
+      "url": "https://www.immigration.gov.lk/pages_e.php?id=20",
+      "title": "Department of Immigration & Emigration, Sri Lanka -- Resident Guest Scheme (RGS) Visa: the page itself states the program is now restricted to 'foreigners those who are already obtained this visa (extension only)' -- i.e. closed to new applicants as of this build; investor category required US$250,000 initial deposit plus US$35,000/dependent, professional category required US$2,000/month remittance plus US$1,000/month per dependent; 5-year validity, US$200/person annual renewal",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Sri Lanka). STATUS: PUBLISHED, BUT READ THE CAVEAT BEFORE TREATING THIS AS OPEN TO NEW APPLICANTS -- the government's own page states the scheme is now restricted to 'foreigners those who are already obtained this visa (extension only)', meaning this route is EFFECTIVELY CLOSED to brand-new applicants even though it remains real and currently operative for existing holders. This dataset's schema has a formal 'closed' status for exactly this situation, but that status requires a closed_date, and no formal closure announcement or effective date was located anywhere in this build -- inventing one would violate this dataset's 'never invent specifics' rule, so this route is kept as 'published' (all of its hard requirements ARE tier-1 sourced and currently accurate for the population it still serves) with the extension-only restriction stated prominently in the requirement text itself rather than in a status field. A user evaluating this as a NEW application path should treat it as closed in practice; an existing RGS holder should treat it as fully live. See lk_investor_residence.json (the Golden Paradise Residence Visa) for the program new investors should look at instead -- lower deposit (US$200,000 vs RGS's US$250,000), longer validity (10 years vs 5), and a different foreign-currency-account mechanism."
+}

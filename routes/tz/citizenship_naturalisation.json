@@ -1,0 +1,98 @@
+{
+  "id": "tz_citizenship_naturalisation",
+  "country": "TZ",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tzcn_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "12 months' continuous residence immediately preceding the application, plus at least 7 years' total residence within the preceding 10 years.",
+          "fix_path": "Accumulate 12 months' immediate residence and 7 of the preceding 10 years in Tanzania.",
+          "fix_time_months": 84,
+          "source_id": "tzembassy_citizenship_category"
+        },
+        {
+          "id": "tzcn_language",
+          "attribute": "has_kiswahili_or_english_proficiency",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Adequate knowledge of Kiswahili or English.",
+          "fix_path": "Demonstrate Kiswahili or English proficiency.",
+          "fix_time_months": null,
+          "source_id": "tzembassy_citizenship_category"
+        },
+        {
+          "id": "tzcn_good_character",
+          "attribute": "has_good_character",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must be of good character.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "tzembassy_citizenship_category"
+        },
+        {
+          "id": "tzcn_renounce_other_nationality",
+          "attribute": "has_renounced_other_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Naturalization is barred unless the applicant renounces any other nationality beforehand (Section 7(5)) -- Tanzania does not permit dual citizenship.",
+          "fix_path": "Renounce prior nationality before or as part of the naturalization process.",
+          "fix_time_months": null,
+          "source_id": "tzembassy_citizenship_category"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 12 months' immediate + 7/10 years' residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Kiswahili/English proficiency evidence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Character reference / police clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Newspaper notice of naturalization intent (2 consecutive issues)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Renunciation of other nationality", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "12 months immediately preceding application, plus 7 of the preceding 10 years",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tzembassy_citizenship_category",
+      "tier": 1,
+      "url": "https://www.us.tzembassy.go.tz/services/category/tanzania-citizenship",
+      "title": "Embassy of Tanzania, Washington D.C. -- general naturalization requirements: 12 months immediate + 7 of preceding 10 years' residence, Kiswahili/English proficiency, good character, demonstrated contribution, newspaper notice, district/regional security-committee interviews, USD 1,500 fee, and Section 7(5)'s bar on naturalization without prior renunciation of other nationality",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tanzania). STATUS: PUBLISHED -- direct official-embassy sourcing, tier 1. DISTINCTIVE PROCEDURAL FINDINGS: applicants must publish notice of their naturalization intent in two consecutive issues of a registered Tanzanian newspaper, AND undergo interviews with defense and security committees at both district and regional levels -- a heavier vetting apparatus than most other naturalization routes in this dataset. The USD 1,500 non-refundable fee is also high relative to comparable routes built elsewhere in this dataset. dual_citizenship_allowed set false per Section 7/7(5) -- Tanzania requires renunciation of other nationalities both to retain citizenship acquired otherwise and as a precondition for naturalization itself."
+}

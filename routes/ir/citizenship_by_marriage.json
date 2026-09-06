@@ -1,0 +1,61 @@
+{
+  "id": "ir_citizenship_by_marriage",
+  "country": "IR",
+  "name": "Citizenship by Marriage to an Iranian Man",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ircm_foreign_wife_of_iranian_man",
+          "attribute": "is_foreign_woman_married_to_iranian_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign woman who marries an Iranian man becomes an Iranian citizen (Civil Code Article 976(6)). No equivalent provision grants Iranian citizenship to a foreign man who marries an Iranian woman -- he would instead need to pursue ordinary naturalisation (see ir_citizenship_naturalisation.json), on the same terms as any other foreign national, with no marriage-based advantage.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate registered in Iran", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "irandataportal_civil_code",
+      "tier": 3,
+      "url": "https://irandataportal.syr.edu/civil-code",
+      "title": "Iran Data Portal (Syracuse University academic archive) -- English translation of Iran's Civil Code, Article 976(6): a foreign woman married to an Iranian man acquires Iranian nationality",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iran). STATUS: DRAFT -- same academic-archive sourcing limitation as ir_citizenship_by_descent.json; no government-hosted original of this Civil Code article was fetchable in this build. MARQUEE GENDERED FINDING, THE MOST SEVERE OF THIS TYPE IN THIS DATASET: this route is one-directional -- automatic citizenship for a foreign wife of an Iranian man, with no equivalent for a foreign husband of an Iranian woman (a pattern also seen in Qatar, Bahrain, Nigeria, Sudan, Somalia, Pakistan, Ghana, and Tunisia). Iran adds a second, more severe layer not modeled as a requirement here because it does not fit this route's schema (it gates the marriage itself, not citizenship acquisition after marriage): under Civil Code Article 1060, an IRANIAN WOMAN who wishes to marry a foreign national must first obtain permission from the Iranian government (in practice, from the Ministry of Interior/Ministry of Foreign Affairs) before the marriage can be legally registered at all -- no equivalent permission requirement applies to an Iranian man marrying a foreign woman. This is a prior restraint on whether the marriage can happen, not a rule about what citizenship results from it, so it has deliberately not been shoehorned into a fabricated requirement_group on this route; it belongs on record as one of the most direct instances of state control over a personal/family-law decision found anywhere in this dataset and should be treated as a standalone finding, not folded quietly into the marriage-citizenship mechanics above."
+}

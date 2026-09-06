@@ -1,0 +1,79 @@
+{
+  "id": "mk_citizenship_by_marriage",
+  "country": "MK",
+  "name": "Citizenship by Marriage to a Macedonian Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "married_resident_in_country",
+      "name": "Married and resident in North Macedonia",
+      "requirements": [
+        {
+          "id": "mkcm_3yr_married_1yr_resident",
+          "attribute": "months_married_and_resident",
+          "operator": ">=",
+          "value": 12,
+          "hard": true,
+          "blocker_text": "Law on Citizenship, Article 9: a foreigner married to a Macedonian citizen for at least 3 years, with at least 1 year of continuous residence in North Macedonia, may naturalize with exemptions from the standard residency (7 years), income/housing, and language requirements, and from the renunciation-of-prior-nationality requirement. The law's own text is gender-neutral, referring simply to a spouse of a citizen.",
+          "fix_path": "Marry a Macedonian citizen, remain married for 3 years, and establish 1 year of continuous residence in North Macedonia, then apply with the standard exemptions.",
+          "fix_time_months": 12,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "married_abroad_with_ties",
+      "name": "Married and resident abroad, with demonstrated ties",
+      "requirements": [
+        {
+          "id": "mkcm_8yr_married_abroad",
+          "attribute": "months_married_abroad_with_ties",
+          "operator": ">=",
+          "value": 96,
+          "hard": true,
+          "blocker_text": "Article 9's alternative track: a foreigner married to a Macedonian citizen for at least 8 years while living abroad, who can demonstrate firm ongoing ties to North Macedonia, qualifies for the same exemptions (residency, income, language, renunciation) without ever having resided in the country.",
+          "fix_path": "Remain married to a Macedonian citizen for 8 years while documenting maintained ties to North Macedonia, then apply.",
+          "fix_time_months": 96,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of continuous residence (domestic track) or documented ties to North Macedonia (abroad track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 12,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "1 year continuous residence (domestic track only; the abroad track requires none)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_mk_law_citizenship",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2024-05/1_law_on_citizenship_2022_consolidated_eng.pdf",
+      "title": "Refworld (UNHCR-affiliated) -- hosted consolidated English text of North Macedonia's Law on Citizenship (2022 consolidation), Article 9 (marriage-based naturalization, domestic and abroad tracks)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- sourced to Refworld's hosted consolidated text, tier 2, not North Macedonia's own Official Gazette directly. GENUINE POSITIVE FINDING: gender-neutral text, and genuinely exempts applicants from renunciation of prior nationality specifically for this route (unlike the general naturalization track, which normally requires renunciation -- see mk_citizenship_naturalisation.json), so dual_citizenship_allowed is set true with more confidence for this specific route than the general one. DISTINCTIVE STRUCTURAL FINDING: an 8-year married-abroad track that requires zero physical residence in North Macedonia, only demonstrated ongoing ties -- a genuinely unusual accommodation for a diaspora-heavy country, not seen in this exact form elsewhere in this dataset."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "hn_family_reunification",
+  "country": "HN",
+  "name": "Residence by Family Relationship",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_or_child_of_honduran",
+      "name": "Spouse or child of a Honduran citizen",
+      "requirements": [
+        {
+          "id": "hnfr_spouse_or_child",
+          "attribute": "is_spouse_or_child_of_honduran_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ley de Migracion y Extranjeria (Decreto 208-2003), Article 21: spouses of Honduran citizens, and children of Honduran nationals by birth (plus their relatives), may obtain residency on that basis.",
+          "fix_path": "Apply to INM as the spouse or child of a Honduran citizen, providing marriage/birth certificates and standard background documentation.",
+          "fix_time_months": null,
+          "source_id": "inm_gob_hn_ley_migracion_fam"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of filiation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled criminal background check", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "inm_gob_hn_ley_migracion_fam",
+      "tier": 1,
+      "url": "https://inm.gob.hn/Ley_de_Migraciones_y_extranjeria_Honduras%5B1%5D.pdf",
+      "title": "Instituto Nacional de Migracion de Honduras -- hosted primary legal text of Decreto 208-2003, Article 21 (residence for spouses/children of Honduran citizens and their relatives)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Honduras). STATUS: PUBLISHED -- hard requirement sourced directly to the government-hosted primary statutory text, tier 1. This is a separate route from hn_citizenship_by_marriage.json: this file covers RESIDENCE by family relationship, the other covers the specific path to Honduran CITIZENSHIP via marriage. citizenship_after_months left null since Article 21 grants residence, not citizenship directly -- the naturalization clock (see hn_citizenship_naturalisation.json and hn_citizenship_by_marriage.json) is a separate, subsequent step. The same statute (Article 39(12)) separately extends family permits to relatives of contracted foreign workers -- see hn_work_permit.json."
+}

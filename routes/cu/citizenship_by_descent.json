@@ -1,0 +1,70 @@
+{
+  "id": "cu_citizenship_by_descent",
+  "country": "CU",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cucd_cuban_parent",
+          "attribute": "has_cuban_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Under Cuba's new Ley de Ciudadania (approved by the National Assembly 19 July 2024, published in the Official Gazette 5 May 2026, taking legal effect roughly 180 days after publication), a child of a Cuban father AND/OR mother acquires Cuban citizenship with no gender distinction. The law ELIMINATED the previous requirement of 3 months' 'avecindamiento' (residency/settling) in Cuba for children born abroad. Grandchildren -- those born abroad to a parent who acquired (rather than was born with) Cuban citizenship -- may apply upon reaching adulthood if they demonstrate 'permanent ties and a stable relationship' with Cuba over a minimum of 2 years. Adult applicants (18+) must pass a Cuban citizenship exam (language, constitutional rules, national symbols, rights/duties, history, geography, current events); minors do not. Decisions are due within 90 business days.",
+          "fix_path": "Establish the parental link to a Cuban citizen; adults must additionally pass the citizenship exam. Grandchildren of Cuban-acquired (not Cuban-born) parents must show 2 years of demonstrated ties to Cuba.",
+          "fix_time_months": null,
+          "source_id": "cubatramite_hijos_cubanos_exterior"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Cuban citizenship", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Citizenship exam (applicants 18+)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cubatramite_hijos_cubanos_exterior",
+      "tier": 3,
+      "url": "https://cubatramite.com/solicitud-de-ciudadania-cubana-para-hijos-de-cubanos-nacidos-en-el-exterior/",
+      "title": "CubaTramite (immigration-consultancy guide) -- new citizenship law's descent rules, exam requirement, grandchildren provision, processing time",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "diariodecuba_citizenship_ambiguity",
+      "tier": 4,
+      "url": "https://diariodecuba.com/cuba/1779102140_66880.html",
+      "title": "Diario de Cuba (independent press) -- reports genuine, unresolved legal ambiguity over whether the new law grants citizenship automatically at birth or only through an administrative process",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cuba). STATUS: DRAFT -- for two independent reasons, both disclosed rather than glossed over. First, this entire law is NOT YET IN LEGAL FORCE: published in the Gaceta Oficial on 5 May 2026, it takes effect roughly 180 days later (around early November 2026) -- as of this build's verified_at date, the OLD framework remains technically operative, and this file describes the incoming one. Second, GENUINE, LIVE INTERNATIONAL LEGAL AMBIGUITY: Diario de Cuba reports that it remains unclear whether the new law grants citizenship AUTOMATICALLY at birth to a child born abroad to a Cuban parent, or only through the administrative 'formalidades' process described by CubaTramite -- this distinction matters concretely because Spain's civil registries have historically granted Spanish nationality 'by simple presumption' to children whose country of origin does not automatically confer citizenship at birth (to prevent statelessness); if Cuba's law is read as automatic, Spain could stop applying that presumption to Cuban-parentage children born there, creating real, practical uncertainty for affected families. This dataset presents this as an open, disclosed question, not a resolved fact. dual_citizenship_allowed set to true per the new law's 'ciudadania efectiva' concept, which explicitly permits dual nationality (though a citizen must use only their Cuban citizenship for legal acts within Cuba) -- see cu_citizenship_naturalisation.json for the one exception to this."
+}

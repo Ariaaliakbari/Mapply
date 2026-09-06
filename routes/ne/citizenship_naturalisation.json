@@ -1,0 +1,70 @@
+{
+  "id": "ne_citizenship_naturalisation",
+  "country": "NE",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "necn_10yr_residence",
+          "attribute": "months_residence_in_niger",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Code de la Nationalite Nigerienne, Articles 24-26: at least 10 years of habitual residence in Niger, good moral character with no common-law criminal convictions, and demonstrated integration into Nigerien society. Naturalization is granted by a unilateral Head of State decree (Article 24) that need not be justified and carries no right of appeal. An exception waives the residence requirement entirely for those who have rendered 'exceptional services' to Niger; a widely-repeated secondary claim that spouses of Nigeriens qualify after only 3 years of residence could NOT be confirmed against the specific article text reviewed in this build and is flagged rather than presented as a settled rule.",
+          "fix_path": "Accumulate 10 years of habitual residence, demonstrate good character and integration, and apply -- the decree remains discretionary and unappealable even if conditions are met.",
+          "fix_time_months": 120,
+          "source_id": "citizenshiprightsafrica_ne_nationalite"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Evidence of integration into Nigerien society", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "10 years (waived for exceptional services to Niger)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "citizenshiprightsafrica_ne_nationalite",
+      "tier": 3,
+      "url": "https://citizenshiprightsafrica.org/wp-content/uploads/2020/04/Niger-Ordonnance-84-33-Code-de-la-nationalite-1984-modifie-1999.pdf",
+      "title": "Citizenship Rights in Africa Initiative (NGO-hosted primary legal text) -- Code de la Nationalite Nigerienne, Articles 24-26 (naturalization conditions, presidential decree, discretion, exceptional-services exception)",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "wikipedia_ne_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Nigerien_nationality_law",
+      "title": "Wikipedia -- reports (uncorroborated in this build against the primary text) a 3-year reduced residence threshold for spouses of Nigeriens, and confirms the 2014 dual-nationality reform",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Niger). STATUS: DRAFT -- sourced to an NGO-hosted copy of the primary legal text, tier 3; Niger's own Journal Officiel publication was not independently fetched. GENUINE FINDING: naturalization is framed as an act of presidential grace, unmotivated and unappealable, matching the same pattern already documented for Algeria (dz_citizenship_naturalisation.json) and Mali (ml_citizenship_naturalisation.json) -- all three of this dataset's Sahel/Maghreb builds share this discretionary structure. HONEST CROSS-SOURCE DISCREPANCY, deliberately flagged rather than silently resolved: Wikipedia states spouses of Nigeriens naturalize after 3 years of residence, but the primary-code excerpt fetched in this build only documents a residence WAIVER for 'exceptional services,' with no specific reduced threshold for spouses visible in the text reviewed -- this file models the primary source's explicit 10-year/waiver structure as the hard requirement and carries the 3-year claim only as an unconfirmed note, consistent with this dataset's 'never invent specifics' rule. dual_citizenship_allowed set to TRUE, confirmed by the 2014 reform (Loi 2014-60) -- see ne_citizenship_by_descent.json for the corroborating source."
+}

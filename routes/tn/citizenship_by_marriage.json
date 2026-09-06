@@ -1,0 +1,79 @@
+{
+  "id": "tn_citizenship_by_marriage",
+  "country": "TN",
+  "name": "Citizenship by Acquisition Through Marriage to a Tunisian Man",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "automatic_loss_of_origin",
+      "name": "Automatic acquisition (foreign wife whose own law strips her nationality on marriage)",
+      "requirements": [
+        {
+          "id": "tncm_automatic_if_loses_origin_nationality",
+          "attribute": "is_foreign_woman_married_to_tunisian_man_losing_origin_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign woman marrying a Tunisian man acquires Tunisian nationality automatically (Article 13) if her own country's law causes her to lose her original nationality upon marrying a foreigner. No equivalent provision addresses a foreign man marrying a Tunisian woman.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ecoi_nationality_code"
+        }
+      ]
+    },
+    {
+      "id": "declaration_after_2yr",
+      "name": "Declaration after 2 years' residence (foreign wife retaining her origin nationality)",
+      "requirements": [
+        {
+          "id": "tncm_declaration_2yr_residence",
+          "attribute": "is_foreign_woman_married_to_tunisian_man_2yr_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign woman married to a Tunisian man who retains her original nationality may acquire Tunisian nationality by declaration (Article 14) after the couple has resided in Tunisia together for at least 2 years.",
+          "fix_path": "Reside in Tunisia with the Tunisian husband for 2 years, then submit a declaration.",
+          "fix_time_months": 24,
+          "source_id": "ecoi_nationality_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of origin-nationality loss (automatic track) or 2 years' joint residence (declaration track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_nationality_code",
+      "tier": 4,
+      "url": "https://www.ecoi.net/en/file/local/1044707/1930_1384951136_527237944.pdf",
+      "title": "ecoi.net (NGO-hosted country-of-origin information repository) -- French text of Tunisia's Code de la nationalité tunisienne, Articles 13-14: framed exclusively around 'la femme étrangère' (the foreign woman) married to a Tunisian citizen -- Article 13 automatic acquisition where her own law strips her original nationality on marriage; Article 14 optional acquisition by declaration after 2 years' joint residence in Tunisia where she retains her original nationality",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tunisia). STATUS: DRAFT -- same sourcing limitation as tn_citizenship_by_descent.json. MARQUEE GENDERED FINDING, CONSISTENT WITH A PATTERN SEEN REPEATEDLY IN THIS DATASET (Qatar, Bahrain, Nigeria, Sudan, Somalia, Pakistan, Ghana): both Articles 13 and 14 are framed exclusively around the foreign WIFE of a Tunisian man; no equivalent provision addressing a foreign man married to a Tunisian woman was located in this build -- he would need to pursue ordinary naturalisation instead (tn_citizenship_naturalisation.json), with no marriage-based fast-track or exemption. GENUINELY DISTINCTIVE DUAL-TRACK STRUCTURE WITHIN THE GENDERED PROVISION ITSELF: unlike most countries' single gendered marriage-fast-track, Tunisia's law splits into two different mechanisms depending on whether the wife's OWN country's law happens to strip her of her original nationality upon marrying a foreigner -- if so, she gets automatic Tunisian nationality immediately; if her own law lets her keep her original nationality, she must instead wait 2 years and file a declaration. This makes the wife's path to Tunisian citizenship contingent on a THIRD country's nationality law, a structural dependency not seen in this exact form elsewhere in this dataset."
+}

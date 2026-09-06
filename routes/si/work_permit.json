@@ -1,0 +1,62 @@
+{
+  "id": "si_work_permit",
+  "country": "SI",
+  "name": "Single Permit (Enotno Dovoljenje) for Employment",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "siwp_labor_market_test",
+          "attribute": "passed_labor_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Employment Service of Slovenia (ESS) requires a labor-market test before an employer files the single-permit (enotno dovoljenje) application, which covers both work authorization and residence in one procedure. ESS must issue its consent within 15 days of receiving the application if statutory conditions are met. The employer must have the worker start within 10 days (if the permit is issued in Slovenia) or 15 days (if issued abroad), and register them for mandatory social insurance within 30 days of consent.",
+          "fix_path": "Secure a Slovenian job offer, have the employer pass the labor-market test, and apply for the single permit through an administrative unit or Slovenian consulate abroad.",
+          "fix_time_months": null,
+          "source_id": "ess_gov_si_enotno_dovoljenje"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Documentation proving statutory employer conditions are met", "difficulty": "moderate", "typical_time_days": 15 }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years initially, renewable up to 3 years per renewal",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ess_gov_si_enotno_dovoljenje",
+      "tier": 1,
+      "url": "https://www.ess.gov.si/delodajalci/zaposlovanje-tujcev-iz-tretjih-drzav/enotno-dovoljenje/",
+      "title": "Zavod Republike Slovenije za zaposlovanje (Employment Service of Slovenia) -- single permit (enotno dovoljenje) process: labor market test, 15-day consent deadline, permit duration, employer obligations",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Slovenia). STATUS: PUBLISHED -- hard requirement sourced directly to ess.gov.si, Slovenia's own Employment Service, tier 1. pr_after_months (60) and citizenship_after_months (120) reflect the general Slovenian permanent-residence (5-year continuous legal residence, standard EU long-term residence norm) and standard naturalization (10-year residence, see si_citizenship_naturalisation.json) rules -- not independently confirmed in this build as applying automatically from this specific permit type. family_can_work left null since the source did not address dependents' independent work rights (see si_family_reunification.json for the separate family-reunification route)."
+}

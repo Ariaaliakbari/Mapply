@@ -1,0 +1,103 @@
+{
+  "id": "in_ancestry_oci",
+  "country": "IN",
+  "name": "Overseas Citizen of India (OCI) Cardholder",
+  "category": "ancestry",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "indian_origin",
+      "name": "Former citizenship or Indian-origin lineage",
+      "requirements": [
+        {
+          "id": "inoci_indian_origin_lineage",
+          "attribute": "has_indian_citizenship_history_or_lineage",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicant was an Indian citizen on or after 26 January 1950, was eligible to become an Indian citizen on that date, belonged to territory that became part of India after 15 August 1947, or is a child/grandchild/great-grandchild of a person meeting one of those criteria.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_oci_brochure"
+        },
+        {
+          "id": "inoci_not_pakistan_bangladesh_origin",
+          "attribute": "has_pakistan_or_bangladesh_ancestry",
+          "operator": "!=",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Excluded if the applicant, or either parent, grandparent, or great-grandparent, is or has been a citizen of Pakistan, Bangladesh, or another country notified by the government.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_oci_brochure"
+        }
+      ]
+    },
+    {
+      "id": "spouse",
+      "name": "Spouse of an Indian citizen or OCI cardholder",
+      "requirements": [
+        {
+          "id": "inoci_2yr_marriage",
+          "attribute": "months_married_to_indian_citizen_or_oci",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Married to an Indian citizen or OCI cardholder, with the registered marriage subsisting continuously for at least 2 years before applying.",
+          "fix_path": "Maintain the registered marriage for 2 continuous years.",
+          "fix_time_months": 24,
+          "source_id": "mha_oci_brochure"
+        },
+        {
+          "id": "inoci_spouse_not_pakistan_bangladesh",
+          "attribute": "has_pakistan_or_bangladesh_ancestry",
+          "operator": "!=",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The same Pakistan/Bangladesh-origin exclusion applies to the spousal category.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mha_oci_brochure"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of Indian origin (passport, domicile certificate, or nativity certificate)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificates showing both parents' names (lineage claims)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Registered marriage certificate plus citizenship proof (spousal claims)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid 6+ months, specific photo format", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (multiple-entry lifelong visa)",
+    "renewable": false,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "mha_oci_brochure",
+      "tier": 1,
+      "url": "https://www.mha.gov.in/PDF_Other/BROCHURE_OCI_25042017.pdf",
+      "title": "Ministry of Home Affairs, Government of India -- OCI Cardholder Brochure: eligibility (Indian citizen at any time from 26 Jan 1950, eligible to become one on that date, territory incorporated after 15 Aug 1947, or lineal descendant within 3 generations, or spouse of an Indian citizen/OCI holder for 2+ continuous years); excludes anyone with Pakistan or Bangladesh citizenship in their own or a parent's/grandparent's/great-grandparent's history; application fee US$275 (international) or INR 15,000 (in India); security clearance within 20 days, registration within 30 days if clean, up to 120 days if flagged; multiple-entry lifelong visa, exemption from Foreigners registration, NRI-equivalent financial/educational/professional-licensing parity (excluding agricultural land); cannot vote, hold constitutional office, or (generally) take public-service employment",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). Published on tier-1 sourcing (Ministry of Home Affairs). India's flagship diaspora instrument and, by scale, likely the largest such scheme in this dataset -- OCI functions as a permanent, work-restricted, non-political-rights status for the global Indian diaspora (estimated in the tens of millions), explicitly NOT dual citizenship (the government's own notices are emphatic on this point -- see in_citizenship_naturalisation.json's notes on India's constitutional dual-citizenship ban). DISTINCTIVE, DELIBERATE EXCLUSION: unlike Pakistan's or Nigeria's origin/diaspora cards, India's OCI scheme explicitly writes out anyone with Pakistani or Bangladeshi citizenship anywhere in their own or their parents'/grandparents'/great-grandparents' history -- a geopolitically pointed carve-out naming India's Partition-era neighbors specifically, not present in any comparably structured scheme built elsewhere in this dataset. work_rights set to 'restricted' (professional licensing under NRI terms for specific regulated professions -- medicine, law, architecture, chartered accountancy -- rather than an open right to work any job); agricultural/plantation land acquisition is explicitly barred."
+}

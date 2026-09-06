@@ -1,0 +1,64 @@
+{
+  "id": "cu_citizenship_by_marriage",
+  "country": "CU",
+  "name": "Reduced-Residence Naturalization for a Spouse of a Cuban Citizen",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cucm_2yr_pr_spouse",
+          "attribute": "months_permanent_residence_as_spouse_of_cuban",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Cuba's new Ley de Ciudadania reduces the naturalization residence requirement from the standard 5 years to 2 years for the spouse, parent, or child of a Cuban citizen by birth, provided the applicant holds Permanent Resident classification for that period. There is no automatic acquisition of citizenship purely from the marriage itself -- this is a reduced-threshold NATURALIZATION, not a distinct marriage-based route. The same age, character (no convictions for terrorism, trafficking, money laundering, or related offenses), social-integration, and citizenship-exam conditions apply as for standard naturalization.",
+          "fix_path": "Marry a Cuban citizen, obtain Permanent Resident classification, hold it for 2 years, pass the citizenship exam, and apply.",
+          "fix_time_months": 24,
+          "source_id": "cubatramite_naturalizacion"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Permanent Resident classification (2+ years)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Citizenship exam", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "2 years Permanent Resident classification (reduced from the standard 5)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cubatramite_naturalizacion",
+      "tier": 3,
+      "url": "https://cubatramite.com/ciudadania-cubana-por-naturalizacion-para-extranjeros/",
+      "title": "CubaTramite (immigration-consultancy guide) -- naturalization thresholds, the 2-year spousal reduction, character conditions, dual-citizenship policy",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cuba). STATUS: DRAFT -- same two caveats as cu_citizenship_by_descent.json: the law is not yet in legal force (effective ~November 2026), and the source is a consultancy guide, tier 3, not a fetched government text (Cuba's Gaceta Oficial and ministry sites were systematically unreachable in this build). GENUINE FINDING: like Kosovo and Mali built earlier in this dataset, Cuba's marriage 'route' is a reduced-residence naturalization variant, not an automatic or optional acquisition mechanism. dual_citizenship_allowed set to true, matching the standard naturalization case -- see cu_citizenship_naturalisation.json for the one confirmed exception (the discretionary 'exceptional interest' track, which does require surrendering the prior nationality's documents)."
+}

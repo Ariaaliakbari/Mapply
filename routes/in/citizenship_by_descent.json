@@ -1,0 +1,74 @@
+{
+  "id": "in_citizenship_by_descent",
+  "country": "IN",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "incd_citizen_parent",
+          "attribute": "has_indian_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Born outside India on or after 26 January 1950: if born before 10 December 1992, the father must have been an Indian citizen at the time of birth; if born on or after 10 December 1992, either parent being an Indian citizen suffices.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "refworld_citizenship_act"
+        },
+        {
+          "id": "incd_consular_registration",
+          "attribute": "birth_registered_at_indian_mission_within_1yr",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Where citizenship is acquired by descent only (parent not physically present in India), the birth must generally be registered at an Indian consulate within one year, unless the parent was in Indian government service at the time.",
+          "fix_path": "Register the birth at an Indian Consulate or Mission within the required window.",
+          "fix_time_months": 12,
+          "source_id": "refworld_citizenship_act"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Indian citizenship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Applicant's birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Consular birth registration", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_citizenship_act",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1955/en/19544",
+      "title": "Refworld (UNHCR-hosted legal database) -- India: Citizenship Act, 1955, Section 4: a person born outside India is a citizen by descent if either parent is an Indian citizen at the time of birth (from 10 December 1992; before that date, the father's citizenship alone determined it); descent-only citizenship requires consular registration of the birth within one year, waived if the parent was in Indian government service",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). STATUS: DRAFT -- attempts to fetch the Act's text directly from indiacode.nic.in (India's own official legislative repository) failed in this build (the PDF returned an error page rather than content); the operative text used here comes from Refworld, a UNHCR-hosted legal database, tier 2 under this dataset's convention. GENUINE POSITIVE FINDING, STATED PLAINLY: since a 10 December 1992 amendment, descent citizenship transmits equally through an Indian mother or father -- before that date it was father-only, mirroring a pattern (pre-reform paternal-only descent law) seen in several other countries in this dataset (Sudan pre-2006, Somalia's still-unreformed provision), but India's reform is older and more settled than most. dual_citizenship_allowed FALSE, consistent with India's constitutional prohibition (see in_citizenship_naturalisation.json notes) -- this applies regardless of acquisition method, including descent."
+}

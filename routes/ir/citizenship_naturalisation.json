@@ -1,0 +1,113 @@
+{
+  "id": "ir_citizenship_naturalisation",
+  "country": "IR",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "ircn_5yr_residence",
+          "attribute": "months_resident",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years' residence in Iran, whether continuous or with intermittent absences, immediately preceding the application (Civil Code Article 979).",
+          "fix_path": "Accumulate 5 years' residence in Iran.",
+          "fix_time_months": 60,
+          "source_id": "irandataportal_civil_code"
+        },
+        {
+          "id": "ircn_age_18",
+          "attribute": "age_years",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must have reached the age of majority (18) under Iranian law (Article 979).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        },
+        {
+          "id": "ircn_no_military_desertion",
+          "attribute": "has_deserted_iranian_military",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Applicant must not be a deserter from Iranian military service, if otherwise subject to it (Article 979).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        },
+        {
+          "id": "ircn_no_serious_conviction",
+          "attribute": "has_serious_criminal_conviction",
+          "operator": "==",
+          "value": false,
+          "hard": true,
+          "blocker_text": "Applicant must not be considered a criminal by the Iranian government or have been convicted of a serious offence (Article 979).",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        }
+      ]
+    },
+    {
+      "id": "discretionary_waiver",
+      "name": "Discretionary waiver (public interest, spouse of Iranian, or notable service)",
+      "requirements": [
+        {
+          "id": "ircn_discretionary_waiver_qualifying",
+          "attribute": "qualifies_for_article_980_waiver",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Council of Ministers may waive the ordinary residence requirement, at its discretion, for applicants rendering important service to Iran in science, industry, or the arts, or found by the government to have provided a valuable service to the public interest (Article 980). This is a discretionary, government-initiated exception, not an ordinary application track a person can invoke on demand.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "irandataportal_civil_code"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record / character clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Military service record (if applicable)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 years' residence (continuous or intermittent) immediately preceding application",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "irandataportal_civil_code",
+      "tier": 3,
+      "url": "https://irandataportal.syr.edu/civil-code",
+      "title": "Iran Data Portal (Syracuse University academic archive) -- English translation of Iran's Civil Code, Articles 979-980: naturalisation requires 5 years' residence, majority age, no military desertion, and no serious criminal conviction; Article 980 permits Council of Ministers discretion to waive the residence requirement for applicants of notable scientific, industrial, artistic, or public-interest service",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iran). STATUS: DRAFT -- same academic-archive sourcing limitation as this country's other citizenship files; no government-hosted original of the Civil Code was fetchable in this build (a Farsi original is understood to exist via Iran's own legal-publication channels but was not located/fetched here). dual_citizenship_allowed set to FALSE at the route level (unlike the null left on the descent and marriage routes) because naturalisation is the one route in this dataset where Iran's restriction is least ambiguous: a foreign national naturalising as Iranian is understood to be required to renounce their prior nationality as part of this specific process, distinct from the murkier question of whether an Iranian-by-birth may separately hold a second nationality. EXTRAORDINARILY RESTRICTIVE RENUNCIATION/DUAL-NATIONALITY REGIME, DISCLOSED HERE RATHER THAN MODELED AS A SEPARATE ROUTE (the schema models routes TO acquiring status, not away from it): per a U.S. Library of Congress legal report (July 1999) on Iran's nationality law, an Iranian citizen wishing to RENOUNCE Iranian nationality must be at least 25 years old, obtain Council of Ministers approval, have completed compulsory military service (or be exempted), and -- if approved -- must transfer any Iranian real property to an Iranian national within a limited window (historically reported as around one year) and leave the country within roughly 3 months of renunciation being granted. Separately, an Iranian citizen who acquires a FOREIGN nationality without this prior government authorization does not thereby lose Iranian nationality -- Iran does not recognize the foreign nationality for most legal purposes, and the same report describes consequences that can include forced sale/transfer of Iranian real property. These are genuine, serious, and distinctive findings for this dataset but do not fit the route/requirement_group model of 'how to acquire a status' -- they describe barriers to LEAVING Iranian nationality and penalties for holding an unauthorized second one, and are recorded here in prose rather than invented into a fabricated route."
+}

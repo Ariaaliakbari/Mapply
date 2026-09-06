@@ -1,0 +1,66 @@
+{
+  "id": "ht_work_permit",
+  "country": "HT",
+  "name": "Permis de Sejour (Employer-Sponsored)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htwp_employer_letter_and_sejour",
+          "attribute": "has_employer_sponsor_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Direction de l'Immigration et de l'Emigration (DIE): a foreigner working in Haiti applies for the SAME general permis de sejour that covers all non-tourist foreign residents -- Haiti does not run a separate labor-ministry work-permit process layered on top, unlike several other countries in this dataset. The application requires an employment letter from the employer/sponsor guaranteeing the worker's support and repatriation, the employer's business license (or an NGO's operating authorization), a passport photocopy, a medical certificate under 30 days old, two color photos, a copy of the most recent entry boarding pass, a French-translated birth certificate, a criminal record from the country of origin, and a Haitian bank attestation showing at least 7,500 gourdes (~$200). A 5,000-gourde fee is paid to the public treasury after an interview and completed application form. The DIE page does not specify the permit's validity period or renewal cycle.",
+          "fix_path": "Have the employer issue a support/repatriation guarantee letter and provide its business license, then file the permis de sejour application with the DIE, including the medical certificate, bank attestation, and criminal record.",
+          "fix_time_months": null,
+          "source_id": "die_mict_gouv_ht_permis_sejour"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer/sponsor letter guaranteeing support and repatriation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's business license or NGO authorization", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (under 30 days old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record from country of origin", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Haitian bank attestation (minimum 7,500 gourdes / ~$200)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate with French translation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified by the source; permis de sejour, presumed renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "die_mict_gouv_ht_permis_sejour",
+      "tier": 1,
+      "url": "https://immigration.mict.gouv.ht/informations-utiles/obtention-dun-permis-de-sejour-en-haiti/",
+      "title": "Direction de l'Immigration et de l'Emigration, Ministere de l'Interieur et des Collectivites Territoriales (official government portal) -- permis de sejour requirements, documents, fee",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: PUBLISHED -- hard requirement sourced directly to Haiti's own immigration authority, tier 1 -- a genuinely solid government-hosted source despite Haiti's severe current instability (extensive gang control of Port-au-Prince and a transitional government as of this build), worth noting since several other countries in this dataset had far worse government-fetch failure rates than Haiti did. MARQUEE STRUCTURAL FINDING for this country's residence-based files (see ht_investor_residence.json, ht_family_reunification.json): Haiti runs ONE unified permis de sejour process for essentially all non-tourist foreign residents -- there is no separate labor-ministry work-authorization step, no distinct investor-visa category, and no distinct family-reunification track; the SAME document checklist applies, varying only in which 'purpose' document is substituted (an employer's letter here; a business owner's own registration for ht_investor_residence.json; a family sponsor's guarantee for ht_family_reunification.json). This is a more consolidated system than either Mali or Niger, both built earlier in this dataset, which at least layered a separate labor-ministry step on top of the residence card. citizenship_after_months (60) reflects the standalone naturalization track's standard 5-year threshold (see ht_citizenship_naturalisation.json), not a permit-specific automatic conversion. family_can_work left null: not addressed by the source."
+}

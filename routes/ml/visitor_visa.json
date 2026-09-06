@@ -1,0 +1,70 @@
+{
+  "id": "ml_visitor_visa",
+  "country": "ML",
+  "name": "Short-Stay Visa / Visa-Free Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mlvv_entry_authorization",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizens of ECOWAS/CEDEAO member states (Benin, Burkina Faso, Cape Verde, Gambia, Ghana, Guinea, Guinea-Bissau, Ivory Coast, Liberia, Niger, Nigeria, Senegal, Sierra Leone, Togo) enter without a visa, as do Algeria, Cameroon, Chad, Mauritania, Morocco, Tunisia, UAE, Andorra, Monaco, and (since July 2025) Hong Kong. Everyone else needs a visa in advance -- there is no visa-on-arrival (the option that existed for some nationalities was cancelled before March 2015). A standard single-entry visa runs 30 days from the travel date; a multiple-entry visa runs 90 days from issuance with a 90-day stay cap, and 6/9/12-month multiple-entry options exist. Mali formally withdrew from ECOWAS on 29 January 2025 alongside Burkina Faso and Niger, forming the Alliance of Sahel States (AES/Confederation AES) -- but ECOWAS issued a formal communique confirming ECOWAS nationals continue to enjoy visa-free entry, residence, and establishment 'until further order,' and this has held in practice. Separately, Mali has not issued visas to French citizens since 10 August 2023, 'until further notice,' following a bilateral diplomatic dispute -- a standing exception unrelated to the general visa regime.",
+          "fix_path": "Non-exempt nationalities must apply for a visa at a Malian diplomatic mission before travel; no visa-on-arrival option exists.",
+          "fix_time_months": null,
+          "source_id": "action_visas_ml"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months beyond visa expiry, with blank facing pages", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of accommodation and return travel", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Two passport photos", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days (single entry) or up to 90 days per stay within a 6-12 month multiple-entry visa",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "action_visas_ml",
+      "tier": 4,
+      "url": "https://www.action-visas.com/visa/Mali",
+      "title": "Action Visas (private visa-agency site) -- visa types, validity periods, CEDEAO exemption, suspension of visas to French citizens since August 2023",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "wikipedia_ml_visa_policy",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Mali",
+      "title": "Wikipedia -- full list of visa-exempt nationalities, visa-on-arrival history, diplomatic-passport exceptions",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mali). STATUS: DRAFT -- sourced to a private visa agency and Wikipedia, tier 4; diplomatie.gouv.ml (Ministry of Foreign Affairs) could not be fetched in this build -- its TLS certificate has expired, a hard, disclosed access failure rather than a content gap, and no Malian embassy site (tried: Belgium, Canada, Italy) returned a fetchable page (robots-disallowed or timeout on all three). GENUINE, CURRENT FINDING: Mali formally left ECOWAS on 29 January 2025 with Burkina Faso and Niger (forming the AES) -- the same three-country bloc whose Burkina Faso citizenship-law reform was flagged elsewhere in this dataset -- but a formal ECOWAS communique confirmed visa-free treatment continues for ECOWAS nationals 'until further order,' so this dataset models the pre-withdrawal exemption list as still operative, corroborated by an independent fact-check (Africa Check, Feb 2025) rather than assumed. The August 2023 suspension of visa issuance to French nationals is a separate, real, standing bilateral anomaly disclosed for completeness, not modeled as a route-level rule since it is nationality-specific and not part of the general regime."
+}

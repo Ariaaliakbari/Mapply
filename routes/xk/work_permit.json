@@ -1,0 +1,63 @@
+{
+  "id": "xk_work_permit",
+  "country": "XK",
+  "name": "Work and Employment Permit (Employer-Sponsored)",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "xkwp_quota_and_labor_market_test",
+          "attribute": "has_work_permit_before_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Law on Granting Permit for Work and Employment of Foreign Citizens: the employer submits the application (Article 16), which must include certification from the Employment Office that no jobseeker registered in Kosovo meets the position's requirements (Article 16.1.5, the labor-market test). Separately, the Government sets an annual quota of employment permits for foreign nationals by 15 December of the preceding year (Article 4) -- meaning the permit is unavailable outside the quota regardless of individual merit. A decision issues within 30 days of a complete submission (Article 20); the employer must then sign the employment contract within 15 days of the permit being issued (Article 18). Permit type B (the standard employment permit) is issued yearly and is renewable; Type A (minimum 6 months) and Type C (5 years, for those who already held a Type B) also exist. A refused applicant may appeal within 8 days (Article 21).",
+          "fix_path": "Have the employer obtain the Employment Office's no-local-candidate certification and file within the annual government quota; sign the employment contract within 15 days of permit issuance.",
+          "fix_time_months": 1,
+          "source_id": "cps_ks_work_permit_law"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employer's written request with supporting documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment Office certification (no qualified local jobseeker available)", "difficulty": "moderate", "typical_time_days": 30 },
+    { "document": "Signed employment contract (within 15 days of permit issuance)", "difficulty": "routine", "typical_time_days": 15 }
+  ],
+  "outcome": {
+    "duration_length": "6 months (Type A) to 1 year renewable (Type B) to 5 years for prior Type B holders (Type C)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cps_ks_work_permit_law",
+      "tier": 1,
+      "url": "https://cps.rks-gov.net/wp-content/uploads/2020/09/LAW-ON-GRANTING-PERMIT-FOR-WORK-AND-EMPLOYMENT-OF-FOREIGN-CITIZENS-IN-REPUBLIC-OF-KOSOVO.pdf",
+      "title": "Republic of Kosovo (official government-hosted primary legal text) -- Law on Granting Permit for Work and Employment of Foreign Citizens, Articles 4, 7, 16, 18, 20-21",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kosovo). STATUS: PUBLISHED -- hard requirement sourced directly to Kosovo's own government-hosted primary legal text, tier 1. GENUINE FINDING: Kosovo runs BOTH a labor-market test AND a hard annual government quota set by mid-December for the following year -- meaning even a fully-qualified applicant can be blocked simply because the year's quota is exhausted, a double gate not seen in most other countries built in this dataset. leads_to_pr set to true and pr_after_months to 60, reflecting the general permanent-residence threshold confirmed by Kosovo Police's border brochure (5 years of uninterrupted temporary residence, reduced to 3 if married to a Kosovo citizen or permanent resident -- see xk_family_reunification.json) -- Kosovo is one of the few countries in this recent run of builds (after Bosnia, Mali, Niger, Haiti) with an actual, confirmed temporary-to-permanent residence ladder rather than a single undifferentiated status. dual_citizenship_allowed set to true per Article 3 of Kosovo's (2008-vintage) citizenship law -- see xk_citizenship_naturalisation.json for the fuller picture and the disclosed uncertainty about whether this specific provision survived the law's two subsequent replacements. family_can_work left null: not addressed by the source."
+}

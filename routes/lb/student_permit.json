@@ -1,0 +1,84 @@
+{
+  "id": "lb_student_permit",
+  "country": "LB",
+  "name": "Student Visa and Residency Permit",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lbsp_age_18",
+          "attribute": "age_years",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Applicant must be 18 years or older.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gdgs_student_page"
+        },
+        {
+          "id": "lbsp_university_enrollment",
+          "attribute": "has_accredited_university_enrollment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must provide an attestation of enrollment in an accredited university or accredited religious institution in Lebanon, specifying degree type, duration, and semesters; the university or institution -- not the student -- submits the pre-approval request to General Security, and the student must enter Lebanon from their country of nationality within one month of the academic year starting.",
+          "fix_path": "Secure enrollment and have the institution file the General Security pre-authorization request one month before the academic year begins.",
+          "fix_time_months": null,
+          "source_id": "gdgs_student_page"
+        },
+        {
+          "id": "lbsp_passing_grades",
+          "attribute": "has_passing_grades_previous_year",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Residency permit renewal requires demonstrating passing grades from the previous academic year; students cannot repeat a year and failure requires departure from Lebanon.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gdgs_student_page"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "University/institution enrollment attestation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Academic transcripts showing passing grades (for renewal)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 academic year, renewable annually subject to passing grades",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gdgs_student_page",
+      "tier": 1,
+      "url": "https://www.general-security.gov.lb/en/posts/239",
+      "title": "General Directorate of General Security (Lebanon) -- student visa/residency requirements: age 18+, accredited university/religious-institution enrollment attestation filed by the institution, one-month pre-arrival timing, passing-grade renewal condition, no year repetition, married students' children barred from residency alongside them",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lebanon). STATUS: PUBLISHED -- direct General Security (GDGS) sourcing, tier 1. GENUINE, DISTINCTIVE FINDINGS: (1) the university/institution files the pre-authorization request with General Security, not the student, and not through a Lebanese mission abroad; (2) the same GDGS page lists 14 nationalities (including Pakistan, Afghanistan, Bangladesh, India, Philippines, Sudan, Egypt, Algeria, Somalia, Iraq, among others named in this build's source) as temporarily excluded from this student-visa category at time of publication -- not modeled as a per-nationality requirement here since the excluded list is described as time-limited/subject to change, but worth flagging as a real, currently-operative restriction rather than a universal route; (3) family_can_join set false because the source explicitly states a married student's children cannot obtain residency permits and cannot reside with them under this permit. work_rights set 'none' since no student work authorization was described in the reviewed source."
+}

@@ -1,0 +1,69 @@
+{
+  "id": "uz_investor_residence",
+  "country": "UZ",
+  "name": "Investor Residence Permit",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "uzir_investment_threshold",
+          "attribute": "investment_amount_usd",
+          "operator": ">=",
+          "value": 200000,
+          "hard": true,
+          "blocker_text": "Under a presidential decree signed 18 April 2025 (effective 1 June 2025), foreign nationals and stateless persons can obtain a 5-year residence permit against a qualifying investment. Two different figures are reported for the same program by independent outlets covering the same decree: $200,000 (plus $100,000 per accompanying family member) per one source, versus $250,000 (plus $150,000 per family member) per another. Neither figure has been confirmed against the decree's own text in this build, so the lower, more-conservative figure is used as the modeled threshold; treat both as unverified pending the primary source.",
+          "fix_path": "Invest the qualifying amount and apply through the Ministry of Justice.",
+          "fix_time_months": null,
+          "source_id": "uzdaily_investor_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Application to Ministry of Justice", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uzdaily_investor_residence",
+      "tier": 3,
+      "url": "https://www.uzdaily.uz/en/uzbekistan-introduces-a-five-year-residence-permit-for-foreigners-for-us200000/",
+      "title": "UzDaily (Uzbekistan news outlet) -- reports the $200,000 threshold plus $100,000 per family member, 5-year duration, 18 April 2025 decree, effective 1 June 2025",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "astanatimes_investor_residence",
+      "tier": 3,
+      "url": "https://astanatimes.com/2025/04/uzbekistan-to-offer-five-year-residence-permits-to-foreign-investors-starting-june/",
+      "title": "The Astana Times -- reports a conflicting $250,000 threshold plus $150,000 per family member for the same decree, administered by Uzbekistan's Justice Ministry",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Uzbekistan). STATUS: DRAFT -- both sources are tier-3 news coverage of the same presidential decree, not the decree's own official text (not locatable via lex.uz in this build, and the Justice Ministry's own announcement page was not fetched directly). LIVE, UNRESOLVED FIGURE DISCREPANCY, DISCLOSED RATHER THAN PICKED: UzDaily reports $200,000 (+$100,000/family member); The Astana Times reports $250,000 (+$150,000/family member) for the identical 18 April 2025 decree, effective 1 June 2025. This is the same kind of two-figures-for-one-program situation flagged for Tanzania's investor visa and Italy's digital nomad visa elsewhere in this dataset -- not resolved here, disclosed openly, with the lower figure modeled as the conservative hard-requirement threshold. family_can_join set true (both sources describe a family-inclusive fee structure implying dependents are meant to join), but family_can_work left null since neither source addressed dependent work rights."
+}

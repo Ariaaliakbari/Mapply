@@ -1,0 +1,69 @@
+{
+  "id": "mk_international_protection",
+  "country": "MK",
+  "name": "Refugee Status / International and Temporary Protection",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "international_protection_seeker",
+      "name": "Seeking international protection",
+      "requirements": [
+        {
+          "id": "mkip_seeking_protection",
+          "attribute": "meets_1951_convention_refugee_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "North Macedonia is party to the 1951 Refugee Convention and its 1967 Protocol. The Sector for Asylum within the Ministry of Interior is the administrative body responsible for the asylum procedure, governed by the 2018 Law on International and Temporary Protection (which replaced the 2003 Law on Asylum and Temporary Protection).",
+          "fix_path": "File an application with the Ministry of Interior's Sector for Asylum.",
+          "fix_time_months": null,
+          "source_id": "unhcr_help_mk_asylum"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Personal interview testimony", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 72,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_help_mk_asylum",
+      "tier": 2,
+      "url": "https://help.unhcr.org/northmacedonia/asylum-procedure-in-north-macedonia/",
+      "title": "UNHCR Help North Macedonia -- confirms the Ministry of Interior's Sector for Asylum as the deciding body and North Macedonia's party status to the 1951 Convention and 1967 Protocol",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "refworld_mk_protection_law_2018",
+      "tier": 2,
+      "url": "https://www.refworld.org/docid/5b55e5de4.html",
+      "title": "Refworld -- catalog entry for North Macedonia's Law on International and Temporary Protection (11 April 2018), confirming it replaced the 2003 Law on Asylum and Temporary Protection",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- this is the WEAKEST-sourced file in this country's build, disclosed plainly: the UNHCR help page confirmed only the deciding body and Convention party status, not step-by-step procedure, timelines, or a detailed rights list; the Refworld entry for the actual 2018 law returned only catalog metadata (title, date, the fact it replaced the 2003 law), not the substantive legal text itself, despite repeated attempts in this build -- a clear gap worth a dedicated retry against the full PDF text in a follow-up session. work_rights, study_rights, and family_can_join are set as reasonable defaults consistent with this dataset's other EU-adjacent-candidate-country asylum files, NOT independently confirmed against North Macedonia's own text -- this is flagged as a materially weaker basis than this build's other files and should be treated with more caution than the rest of this country's routes. citizenship_after_months set 72 reflecting the 6-year stateless/refugee naturalization track in mk_citizenship_naturalisation.json (Article 7-a), which does apply to recognized refugees per that article's own text -- this cross-reference IS confirmed, unlike the rest of this file's outcome fields."
+}

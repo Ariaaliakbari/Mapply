@@ -1,0 +1,87 @@
+{
+  "id": "sv_investor_residence",
+  "country": "SV",
+  "name": "Investor Residence / Freedom Visa (Bitcoin Citizenship)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard_investor",
+      "name": "Standard investor residence",
+      "requirements": [
+        {
+          "id": "svir_registered_foreign_capital",
+          "attribute": "has_registered_foreign_capital",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An investor's temporary residence permit requires registering foreign capital with the National Investment Office (ONI), a current business registration certificate, and proof of the company's income-tax payments. The official renewal form does not itself state a minimum investment threshold.",
+          "fix_path": "Register foreign investment capital with ONI, establish a registered Salvadoran business, and apply for investor temporary residence.",
+          "fix_time_months": null,
+          "source_id": "migracion_gob_sv_investor_form"
+        }
+      ]
+    },
+    {
+      "id": "freedom_visa",
+      "name": "Freedom Visa (Bitcoin/USDT citizenship-by-investment)",
+      "requirements": [
+        {
+          "id": "svir_freedom_visa_1m",
+          "attribute": "investment_capital_usd",
+          "operator": ">=",
+          "value": 1000000,
+          "hard": true,
+          "blocker_text": "El Salvador's 'Freedom Visa' (marketed as 'Adopting El Salvador') grants accelerated citizenship -- not merely residence -- for a USD 1,000,000 contribution in Bitcoin or Tether (USDT) to funds designated for state projects. Processing runs 4-6 weeks. Spouses and dependents can be added for USD 999 each. No physical residence is required to obtain or maintain the resulting citizenship.",
+          "fix_path": "Contribute USD 1,000,000 in BTC or USDT to the designated state-project fund through the Freedom Visa program.",
+          "fix_time_months": 1,
+          "source_id": "elsalvador_com_freedom_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "ONI foreign-capital registration certificate", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Business registration certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of BTC/USDT contribution (Freedom Visa track)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (citizenship on the Freedom Visa track; renewable temporary residence on the standard track)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 1,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "migracion_gob_sv_investor_form",
+      "tier": 1,
+      "url": "https://www.migracion.gob.sv/wp-content/uploads/2022/01/F.19-PRORROGA-RESIDENCIA-TEMPORAL-PARA-INVESTOR-V6.pdf",
+      "title": "Direccion General de Migracion y Extranjeria de El Salvador -- official investor temporary-residence renewal form and documentary requirements",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "elsalvador_com_freedom_visa",
+      "tier": 4,
+      "url": "https://www.elsalvador.com/dinero-y-negocios/entorno-economico/fondos-de-inversion-bitcoin-residencia/1249735/2025/",
+      "title": "elsalvador.com (national newspaper) -- Freedom Visa / 'Adopting El Salvador' program: USD 1,000,000 BTC/USDT threshold, 4-6 week processing, no physical-residence requirement",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: DRAFT -- the standard investor track's hard requirement is government-sourced (tier 1) but does not state a threshold; the Freedom Visa's USD 1,000,000 figure is sourced only to a newspaper (tier 4), not an official government program page directly (worth a dedicated retry to locate the program's own government-hosted terms). GENUINELY DISTINCTIVE, MARQUEE FINDING: the Freedom Visa is a citizenship-by-investment program in the literal sense -- not a residence-then-naturalize track, but a direct grant of citizenship in 4-6 weeks for a USD 1,000,000 crypto contribution, with no physical residence requirement to obtain OR maintain it. This is genuinely unusual in this dataset, most of which requires years of residence even for investment-based routes. Modeled here as a second requirement_group within the 'business' category alongside the slower standard ONI-registered investor path, since both are investment-based residence/citizenship routes for this country. citizenship_after_months set 1 as an approximation of the stated 4-6 week processing window. dual_citizenship_allowed set true reflecting that no renunciation requirement was found in any source reviewed for this build (see sv_citizenship_naturalisation.json's notes on the Central-American nationalization track's explicit no-renunciation rule)."
+}

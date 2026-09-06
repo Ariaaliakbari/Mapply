@@ -1,0 +1,63 @@
+{
+  "id": "sv_work_permit",
+  "country": "SV",
+  "name": "Employer-Sponsored Work and Residence Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "svwp_dual_authorization",
+          "attribute": "has_dual_migration_and_labor_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Non-Central American foreigners need both temporary residence with work authorization from the migration authority (Direccion General de Migracion y Extranjeria) AND a separate labor permit from the Ministry of Labor and Social Welfare validating that the employer meets Salvadoran labor-code hiring quotas: at least 90% of hired personnel and at least 85% of total salaries paid must go to Salvadoran nationals. Central American nationals (Costa Rica, Guatemala, Honduras, Nicaragua) count toward the Salvadoran side of this quota rather than against it. Required documentation includes academic credentials (apostilled/legalized) and recent company payroll records.",
+          "fix_path": "Secure a job offer from a Salvadoran employer able to justify the hire against the 90%-personnel/85%-salary quota, then obtain both the migration work-authorization residence permit and the separate Labor Ministry permit.",
+          "fix_time_months": null,
+          "source_id": "consortium_legal_sv_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Apostilled/legalized academic credentials", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's recent payroll records", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed in sources reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "consortium_legal_sv_work_permits",
+      "tier": 3,
+      "url": "https://consortiumlegal.com/2025/07/29/permisos-de-trabajo-para-extranjeros-en-el-salvador-requisitos-y-consideraciones-legales/",
+      "title": "Consortium Legal (law firm) -- El Salvador's dual migration/labor work-authorization process, the 90%-personnel/85%-salary Salvadoran hiring quota, and the Central-American quota-counting rule",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: DRAFT -- sourced to a law firm, tier 3; El Salvador's own Labor Ministry page detailing this exact quota was not located in this build. GENUINE, QUANTIFIED FINDING: a two-part 90%-of-personnel/85%-of-salary Salvadoran quota is more specific than most labor-market tests built elsewhere in this dataset (compare Guatemala's single 90%-payroll rule) -- and the rule that Central Americans count TOWARD the Salvadoran side of the quota (rather than against it) is a genuinely distinctive regional-integration detail not seen in this exact form elsewhere. pr_after_months set 60 per the general 5-year naturalization residency rule (see sv_citizenship_naturalisation.json), not independently confirmed as applying automatically from this specific permit."
+}

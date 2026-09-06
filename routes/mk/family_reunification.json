@@ -1,0 +1,69 @@
+{
+  "id": "mk_family_reunification",
+  "country": "MK",
+  "name": "Temporary Residence for Family Reunification",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "immediate_family_of_citizen",
+      "name": "Immediate family member of a Macedonian citizen or resident",
+      "requirements": [
+        {
+          "id": "mkfr_immediate_family",
+          "attribute": "is_immediate_family_of_citizen_or_resident",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Immediate family members of North Macedonian citizens (and, per Invest North Macedonia's own listing of temporary-residence purposes, family members of resident foreigners more broadly) qualify for temporary residence on reunification grounds. Under 2025 amendments, family-of-citizen applicants are exempted from the financial-means and health-insurance requirements otherwise applied to other temporary-residence categories. Temporary residence for this purpose is typically granted for around 1 year, renewable, converting to permanent residence after 5 continuous years on temporary status.",
+          "fix_path": "Apply for temporary residence as the immediate family member of a Macedonian citizen or lawfully resident foreigner.",
+          "fix_time_months": null,
+          "source_id": "lawyers_antevski_mk_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate or proof of filiation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate (country of residence, within 12 months)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "approximately 1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lawyers_antevski_mk_residence",
+      "tier": 3,
+      "url": "https://lawyers-antevski.com.mk/2023/03/25/kinds-of-residence-permits-for-foreigners-in-north-macedonia/",
+      "title": "Lawyers Antevski (law firm) -- kinds of residence permits in North Macedonia including family reunification, and the 5-year continuous-temporary-residence rule for permanent residence",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "invest_nm_gov_mk_work_visas",
+      "tier": 1,
+      "url": "https://investnorthmacedonia.gov.mk/work-visas-and-permits/",
+      "title": "Invest North Macedonia (government investment-promotion agency) -- lists family reunification among the recognized purposes for temporary residence",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- the specific documentary requirements and exemptions are sourced to a law firm (tier 3); the government source (tier 1, Invest North Macedonia) confirms family reunification as a recognized purpose but does not detail the requirements itself, so the hard requirement's substantive citation stays tier-3 and the file stays draft. This is a separate route from mk_citizenship_by_marriage.json: this file covers RESIDENCE by family relationship, the other covers the specific path to Macedonian CITIZENSHIP via marriage (3 years married + 1 year resident, or 8 years married abroad -- see that file). leads_to_citizenship set true reflecting that continued residence here can feed into the naturalization tracks in mk_citizenship_naturalisation.json and mk_citizenship_by_marriage.json, but citizenship_after_months is left null since this file's own timeline to citizenship was not independently confirmed."
+}

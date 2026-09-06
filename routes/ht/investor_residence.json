@@ -1,0 +1,64 @@
+{
+  "id": "ht_investor_residence",
+  "country": "HT",
+  "name": "Permis de Sejour (Business Owner / Self-Employed)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htir_business_registration_and_sejour",
+          "attribute": "owns_or_operates_business_in_haiti",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Haiti's DIE does not publish a distinct investor-visa or minimum-capital-linked residence category. This file models the same general permis de sejour process documented in ht_work_permit.json, with a business owner substituting their OWN company's registration/business license for the 'employer' documentation the DIE page describes -- a reasonable, disclosed inference from the source's own wording ('employer/sponsor'), not an independently confirmed distinct provision for investors specifically. The same supporting documents apply: passport photocopy, medical certificate under 30 days old, two photos, a French-translated birth certificate, a criminal record, and a Haitian bank attestation of at least 7,500 gourdes (~$200), plus a 5,000-gourde application fee.",
+          "fix_path": "Register the business in Haiti and provide its registration/license in place of an employer letter when filing the general permis de sejour application with the DIE.",
+          "fix_time_months": null,
+          "source_id": "die_mict_gouv_ht_permis_sejour"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Business registration/license (in place of an employer letter)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate (under 30 days old)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record from country of origin", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Haitian bank attestation (minimum 7,500 gourdes / ~$200)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified by the source; permis de sejour, presumed renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "die_mict_gouv_ht_permis_sejour",
+      "tier": 1,
+      "url": "https://immigration.mict.gouv.ht/informations-utiles/obtention-dun-permis-de-sejour-en-haiti/",
+      "title": "Direction de l'Immigration et de l'Emigration (official government portal) -- general permis de sejour requirements; no distinct investor category found",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: DRAFT -- despite citing the same tier-1 government source as ht_work_permit.json, this file is marked draft rather than published because the specific application of that source to a self-employed/business-owner case is this dataset's OWN inference, not something the DIE page states explicitly -- consistent with how this dataset distinguishes a directly-stated hard requirement from a reasonable extrapolation. A dedicated search for a Haitian investment-promotion agency or minimum-capital investor category returned nothing -- genuine, disclosed absence rather than a fetch failure. Shares the structural finding documented fully in ht_work_permit.json: Haiti has one general residence-permit track, not a purpose-specific set of visa categories the way many other countries in this dataset do. family_can_work left null: not addressed by the source."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "ve_investor_residence",
+  "country": "VE",
+  "name": "Investor / Rentista Residence Visa",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "inversionista",
+      "name": "Investor (Inversionista) route",
+      "requirements": [
+        {
+          "id": "veir_20pct_business_share",
+          "attribute": "owns_20pct_or_more_of_venezuelan_business",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires acquiring at least a 20% share in a Venezuelan business. No fixed minimum investment amount is specified -- eligibility is assessed case by case. Grants a 3-year renewable visa, converting to permanent residency after 2 years and to citizenship after 10 years of continuous residence.",
+          "fix_path": "Acquire a 20%+ share in a qualifying Venezuelan business.",
+          "fix_time_months": null,
+          "source_id": "imidaily_ve_residency_post_maduro"
+        }
+      ]
+    },
+    {
+      "id": "rentista",
+      "name": "Passive-Income (Rentista) route",
+      "requirements": [
+        {
+          "id": "veir_1200_monthly_foreign_income",
+          "attribute": "monthly_foreign_source_income_usd",
+          "operator": ">=",
+          "value": 1200,
+          "hard": true,
+          "blocker_text": "Requires at least USD 1,200/month in foreign-source income (pension or other legal income), plus USD 500/month per accompanying dependent. Grants a 1-year renewable visa, with residency and citizenship pathways similar to the investor route but a lower entry barrier.",
+          "fix_path": "Demonstrate USD 1,200/month in qualifying foreign-source income, plus USD 500/month per dependent.",
+          "fix_time_months": null,
+          "source_id": "imidaily_ve_residency_post_maduro"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 20% business ownership (Inversionista)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of foreign-source income (Rentista)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3 years (Inversionista) or 1 year (Rentista), both renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "imidaily_ve_residency_post_maduro",
+      "tier": 3,
+      "url": "https://www.imidaily.com/latin-america/venezuelas-residency-options-as-the-maduro-era-ends/",
+      "title": "IMI Daily -- Venezuela's Inversionista and Rentista residence visa options in the post-Maduro transitional period: thresholds, durations, and the PR/citizenship pathway",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Venezuela). STATUS: DRAFT -- sourced to a single tier-3 investment-migration trade outlet; no SAIME or Ministry of Foreign Affairs government page describing these two visa categories was locatable/fetchable in this build, and this article itself is explicitly framed around the SAME political transition disclosed in ve_visitor_visa.json's notes (Maduro's January 2026 capture, the Rodriguez-led acting government) -- these visa terms may reflect very recent, possibly still-settling policy rather than a long-established program, and should be treated as provisional. dual_citizenship_allowed set true per Venezuela's constitutional Article 34 (see ve_citizenship_naturalisation.json), which appears to apply to naturalized citizens generally rather than being visa-specific. family_can_work left null since the source did not address dependents' independent work rights."
+}

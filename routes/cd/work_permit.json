@@ -1,0 +1,74 @@
+{
+  "id": "cd_work_permit",
+  "country": "CD",
+  "name": "Long-Term Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cdwp_local_employer",
+          "attribute": "has_employment_with_registered_local_company",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Applicants need secured employment with a locally registered company. The process runs through two separate government bodies: the Ministry of Labor issues a work card, and the DRC Migration Authority issues the long-term work permit itself, described by the source as a 'multi-step and complex process.'",
+          "fix_path": "Secure local employment, obtain the Ministry of Labor work card, then apply to the Migration Authority for the long-term work permit.",
+          "fix_time_months": null,
+          "source_id": "workpermitdrc_long_term"
+        },
+        {
+          "id": "cdwp_entry_exit_visa",
+          "attribute": "holds_valid_entry_exit_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A separate entry-exit visa, valid for 7 months after first use, is required in addition to the work permit itself.",
+          "fix_path": "Obtain the entry-exit visa alongside the work permit application.",
+          "fix_time_months": null,
+          "source_id": "workpermitdrc_long_term"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract with a registered local company", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Ministry of Labor work card", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Entry-exit visa", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "workpermitdrc_long_term",
+      "tier": 4,
+      "url": "https://www.workpermitdrc.com/long-term-work-permit/",
+      "title": "Work Permit DRC (private immigration-services site) -- the two-body Ministry of Labor / Migration Authority process, 2-year renewable permit duration, and the separate 7-month entry-exit visa requirement",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Democratic Republic of the Congo). STATUS: DRAFT -- sourced to a single tier-4 private immigration-services site; no direct Ministry of Labor or Migration Authority (Direction Generale de Migration, DGM) government portal was locatable/fetchable in this build. No labor-market test or quota was mentioned in the source reviewed -- disclosed as not found rather than asserted absent. family_can_join set false (not asserted true without a source) and family_can_work left null since no source addressed dependents for this specific route."
+}

@@ -1,0 +1,66 @@
+{
+  "id": "ba_citizenship_by_descent",
+  "country": "BA",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": {
+    "description": "Being born to at least one BiH-citizen parent, either in Bosnia and Herzegovina or abroad. If born abroad, the child acquires BiH citizenship automatically if born on or before the applicable cutoff established in the Law on Citizenship of BiH, or must be registered with a BiH diplomatic/consular mission before age 23 in later cases; jus soli (birth on BiH territory to non-citizen parents) applies only where the child would otherwise be stateless.",
+    "evidence_hint": "Parent's BiH citizenship certificate and the applicant's birth certificate showing the parental link; for birth-abroad cases, proof of registration with a BiH mission before age 23."
+  },
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bacd_parent_citizen",
+          "attribute": "has_ba_citizen_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Law on Citizenship of Bosnia and Herzegovina grants citizenship by descent through either parent, gender-neutral, regardless of the child's place of birth. A child born abroad to a BiH-citizen parent acquires citizenship automatically in some cases, or must be registered with a BiH diplomatic/consular mission before turning 23 in others, depending on when the birth occurred relative to the law's post-1998 framework. Birth on BiH territory to non-citizen parents (jus soli) confers citizenship only where the child would otherwise be left stateless.",
+          "fix_path": "Register the birth-abroad child with a BiH diplomatic/consular mission before age 23, providing proof of the parent's BiH citizenship.",
+          "fix_time_months": null,
+          "source_id": "advokat_prnjavorac_ba_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's BiH citizenship certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Applicant's birth certificate showing parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of registration with a BiH mission before age 23 (birth-abroad cases)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "advokat_prnjavorac_ba_citizenship",
+      "tier": 3,
+      "url": "https://advokat-prnjavorac.com/",
+      "title": "Advokat Prnjavorac (Bosnian law firm/legal-text portal) -- Law on Citizenship of BiH, descent provisions, pre/post-1998 birth-abroad rules, age-23 registration cutoff, statelessness-prevention jus soli",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bosnia and Herzegovina). STATUS: DRAFT -- sourced to a law firm/legal-text portal, tier 3; the underlying Zakon o drzavljanstvu BiH itself, and the Ministry of Civil Affairs' own citizenship guidance, were not independently fetched in this build -- a genuine, disclosed gap worth a dedicated retry, since a primary-text or ministry source would likely upgrade this file to published. GENUINE FINDING: descent is confirmed gender-neutral through either parent (no marriage-track-style asymmetry question here, unlike ba_citizenship_by_marriage.json), and the pre-1998/post-1998 birth-abroad distinction plus the age-23 registration cutoff are real, disclosed structural details rather than a single flat rule. dual_citizenship_allowed left null: not resolved in this build -- see ba_citizenship_naturalisation.json for the fuller renunciation-and-treaty-exception picture that likely also governs descent cases retaining a second nationality."
+}

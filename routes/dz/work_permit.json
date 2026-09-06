@@ -1,0 +1,80 @@
+{
+  "id": "dz_work_permit",
+  "country": "DZ",
+  "name": "Work Permit / Temporary Work Authorization",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "work_permit",
+      "name": "Work Permit (longer-term)",
+      "requirements": [
+        {
+          "id": "dzwp_labor_market_test",
+          "attribute": "passed_labor_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must demonstrate the position cannot be filled by a national worker, submitting recruitment forecasts for both national and foreign positions to employment services. Foreign workers must hold at least technician-level qualifications. The Work Permit runs up to 2 years, renewable. Employers pay a 5,000 DA fiscal stamp fee per authorization and must notify employment services within 48 hours of contract termination, returning the permit within 15 days.",
+          "fix_path": "Secure an Algerian job offer, have the employer justify the hire against the labor-market test, and obtain the Work Permit.",
+          "fix_time_months": null,
+          "source_id": "jeuneafrique_dz_work_permit"
+        }
+      ]
+    },
+    {
+      "id": "temporary_authorization",
+      "name": "Temporary Work Authorization (APT, short assignments)",
+      "requirements": [
+        {
+          "id": "dzwp_apt_short_assignment",
+          "attribute": "is_short_term_assignment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "For assignments of 3 months or less, the Temporary Work Authorization (Autorisation Provisoire de Travail, APT) applies instead, renewable once per year.",
+          "fix_path": "For a short-term (under 3 months) assignment, apply for the APT instead of the standard Work Permit.",
+          "fix_time_months": null,
+          "source_id": "jeuneafrique_dz_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of technician-level or higher qualification", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer's labor-market-test filing", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 2 years (Work Permit), renewable; up to 3 months, renewable annually (APT)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "jeuneafrique_dz_work_permit",
+      "tier": 4,
+      "url": "https://www.jeuneafrique.com/emploi-formation/529331/comment-recruter-un-travailleur-etranger-en-algerie/",
+      "title": "Jeune Afrique (pan-African news outlet) -- Algeria's dual APT/Work Permit structure, labor-market test, qualification minimum, fees, employer obligations",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Algeria). STATUS: DRAFT -- sourced to a news outlet, tier 4; Algeria's own Ministry of Labor (mtess.gov.dz) and Foreign Affairs (mfa.gov.dz) each host their own procedural guides, located by URL, but both returned certificate/SSL errors on fetch in this build -- worth a dedicated retry, since these would likely upgrade this file to tier 1. GENUINE, SPECIFIC FINDING: the APT/Work-Permit bifurcation by assignment length (3 months vs. up to 2 years) is a real structural distinction, and the requirement that foreign hires meet at least technician-level qualification is a more specific bar than a generic labor-market test. pr_after_months and citizenship_after_months mirror the general Algerian naturalization residency rule (see dz_citizenship_naturalisation.json), not independently confirmed as applying automatically from this permit."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "ni_family_reunification",
+  "country": "NI",
+  "name": "Residencia por Vinculo (Residence by Family Bond)",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "married_to_nicaraguan",
+      "name": "Married to a Nicaraguan citizen",
+      "requirements": [
+        {
+          "id": "nifr_2yr_married",
+          "attribute": "months_married_to_nicaraguan",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "DGME's 'Residencia por Vinculo' requires the marriage to a Nicaraguan citizen to have existed for at least 2 years before application. Required documents: application form, motivation letter, passport copy, apostilled birth certificate, police record (home country or INTERPOL), marriage certificate, health certificate, and proof of income. Authorization is valid for 5 years; the fee for employed applicants is USD 610 for the full 5-year period.",
+          "fix_path": "Maintain the marriage to a Nicaraguan citizen for at least 2 years, then apply to DGME with the required documentation.",
+          "fix_time_months": 24,
+          "source_id": "canal4_ni_residencia_vinculo"
+        }
+      ]
+    },
+    {
+      "id": "parent_of_nicaraguan_born_child",
+      "name": "Parent of a child born in Nicaragua",
+      "requirements": [
+        {
+          "id": "nifr_child_born_in_country",
+          "attribute": "has_child_born_in_nicaragua",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "DGME's 'Residencia por Vinculo' also covers foreign parents of children born in Nicaragua, requiring the child's birth certificate in place of a marriage certificate, with the same other documentation and 5-year validity.",
+          "fix_path": "Document parentage of a child born in Nicaragua and apply to DGME with the required documentation.",
+          "fix_time_months": null,
+          "source_id": "canal4_ni_residencia_vinculo"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Apostilled birth certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Police record (home country or INTERPOL)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Marriage certificate or child's Nicaraguan birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Health certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "5 years",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 48,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 24,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "2 years married (spouse track only)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "canal4_ni_residencia_vinculo",
+      "tier": 4,
+      "url": "https://www.canal4.com.ni/residencia-por-vinculo-migracion-y-extranjeria-detalla-requisitos-para-extranjeros-en-nicaragua/",
+      "title": "Canal 4 Nicaragua (state-aligned broadcaster, reporting DGME's own published guidance) -- Residencia por Vinculo requirements, documentation, 5-year validity, USD 610 fee",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nicaragua). STATUS: DRAFT -- sourced to a state-aligned broadcaster reporting DGME's own guidance rather than a .gob.ni page directly (mint.gob.ni returned 403 on every direct fetch attempt in this build), tier 4. dual_citizenship_allowed set false here reflecting the January 2026 Law 1268 reform (see ni_citizenship_naturalisation.json's notes) which now bars most naturalizing Nicaraguans from holding another nationality -- disclosed as the CURRENT rule as of this build, a genuine and recent tightening. citizenship_after_months set 24 mirroring the marriage-based naturalization track in ni_citizenship_by_marriage.json, since this residence route and that citizenship route both hinge on the same 2-year marriage duration -- not independently confirmed as an automatic conversion, only a plausible parallel."
+}

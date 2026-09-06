@@ -1,0 +1,92 @@
+{
+  "id": "in_student_permit",
+  "country": "IN",
+  "name": "Student Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "insp_admission_letter",
+          "attribute": "has_admission_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Original admission letter from the institution on official letterhead, specifying the program's nature, terms, and duration.",
+          "fix_path": "Secure admission at a recognized Indian institution.",
+          "fix_time_months": null,
+          "source_id": "eoi_paris_student_visa"
+        },
+        {
+          "id": "insp_financial_proof",
+          "attribute": "has_proof_of_funds",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Bank guarantee letter demonstrating capacity to cover a minimum of EUR 500/month for tuition, housing, and living expenses (self-funded or sponsor-supported).",
+          "fix_path": "Obtain a bank guarantee letter meeting the minimum monthly amount.",
+          "fix_time_months": null,
+          "source_id": "eoi_paris_student_visa"
+        },
+        {
+          "id": "insp_frro_registration",
+          "attribute": "registers_with_frro_within_14_days",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Must register with the Foreigners Regional Registration Office (FRRO) within 14 days of first arrival if the continuous stay will exceed 180 days.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "mea_foreigners_registration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Institutional admission letter (original, official letterhead)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Bank guarantee letter (minimum EUR 500/month equivalent)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "FRRO registration (if stay exceeds 180 days)", "difficulty": "routine", "typical_time_days": 14 }
+  ],
+  "outcome": {
+    "duration_length": "tied to course duration, typically issued and extended annually via FRRO",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["in_work_permit"]
+  },
+  "sources": [
+    {
+      "id": "eoi_paris_student_visa",
+      "tier": 1,
+      "url": "https://www.eoiparis.gov.in/content/STUDENT%20VISA.pdf",
+      "title": "Embassy of India, Paris (official mission page) -- Student Visa document requirements: original admission letter on institutional letterhead specifying program nature/terms/duration; bank guarantee letter for minimum EUR 500/month; applications must be submitted more than 30 days before course start; passport valid 6+ months with 3+ blank pages; additional requirements for internship (company sponsorship, minimum salary Rs. 3.60 lakh/year), exchange programs, and medical studies (Ministry of Health NOC)",
+      "accessed_at": "2026-09-04"
+    },
+    {
+      "id": "mea_foreigners_registration",
+      "tier": 1,
+      "url": "https://www.mea.gov.in/foreigners-registration.htm",
+      "title": "Ministry of External Affairs, Government of India -- Foreigners Registration: multiple-entry visa holders (including students) staying continuously beyond 180 days must register with the FRRO within 14 days of first arrival; children under 16 exempted",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (India). Published on tier-1 sourcing (an Indian diplomatic mission page plus the Ministry of External Affairs). The specific financial/admission figures (EUR 500/month, Rs. 3.60 lakh internship salary) come from the Paris mission's own published checklist -- exact figures may vary slightly by issuing mission, which is disclosed rather than smoothed over. FRRO registration is a general obligation shared with other long-stay visa categories (see in_work_permit.json), not unique to students."
+}

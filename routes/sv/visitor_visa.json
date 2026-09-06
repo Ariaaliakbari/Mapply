@@ -1,0 +1,62 @@
+{
+  "id": "sv_visitor_visa",
+  "country": "SV",
+  "name": "Tourist Entry (CA-4)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "rolling_window",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "svvv_entry_category",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "El Salvador's Ministry of Foreign Affairs classifies nationalities into three visa categories: (A) visa-exempt (e.g. Germany, Australia, Argentina, Austria), (B) consular visa required, (C) requiring prior consultation/review before approval. Classification depends on both nationality and passport type (ordinary, diplomatic, official, service); the same country can fall into a different category in each of the four CA-4 states. El Salvador has been part of the CA-4 Border Control Agreement with Guatemala, Honduras, and Nicaragua since 2005, sharing a single visa classification framework and free movement across the bloc -- the standard 90-day tourist allowance is shared across all four countries, not reset by crossing between them.",
+          "fix_path": "For Category B/C nationalities, apply for a consular or consulted visa through a Salvadoran diplomatic mission before travel.",
+          "fix_time_months": null,
+          "source_id": "rree_gob_sv_visas"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Tourism card (required for some visa-exempt nationalities, e.g. Australia)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "90 days (shared CA-4 allowance)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "rree_gob_sv_visas",
+      "tier": 1,
+      "url": "https://rree.gob.sv/visas-para-extranjeros/",
+      "title": "Ministerio de Relaciones Exteriores de El Salvador -- visa categories (A/B/C), CA-4 free-movement framework, nationality- and passport-type-based classification",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (El Salvador). STATUS: PUBLISHED -- hard requirement sourced directly to rree.gob.sv, El Salvador's own Foreign Ministry, tier 1. duration_type set 'rolling_window' consistent with how this dataset modeled the same CA-4 mechanism for Guatemala and Honduras (both built earlier). El Salvador's own migration authority hosts a downloadable visa-exempt/visa-required country list, but the list itself is an external file this build could not access directly -- so a full named nationality list is not asserted here, only the category structure and CA-4 framework, which are confirmed."
+}

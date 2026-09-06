@@ -1,0 +1,62 @@
+{
+  "id": "ke_visitor_visa",
+  "country": "KE",
+  "name": "Electronic Travel Authorization (eTA)",
+  "category": "visit",
+  "status": "published",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kevv_eta_required",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "All visitors, including infants and children, must have an approved eTA before starting their journey to Kenya -- applications go through the official eTA platform (etakenya.go.ke).",
+          "fix_path": "Apply for an eTA online before departure.",
+          "fix_time_months": null,
+          "source_id": "immigration_eta"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "eTA application", "difficulty": "routine", "typical_time_days": 3 }
+  ],
+  "outcome": {
+    "duration_length": "not specified in the sources located in this build -- validity/stay-length figures were not published on the Directorate of Immigration Services' own eTA page as retrieved",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "immigration_eta",
+      "tier": 1,
+      "url": "https://immigration.go.ke/eta/",
+      "title": "Directorate of Immigration Services, Republic of Kenya -- Electronic Travel Authorisation (eTA): mandatory for all visitors including infants and children before travel; applications processed within 3 working days via etakenya.go.ke",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kenya). Published on tier-1 sourcing (the Directorate of Immigration Services' own site). Kenya replaced its prior visa-on-arrival/e-visa system with a universal eTA requirement for essentially all visitors -- a stricter, more uniform model than several other countries built in this dataset that still run tiered visa-free/VOA/e-visa lists by nationality. GENUINE GAP, NOT FABRICATED: neither the eTA fee nor the stay-length/validity period was published on the government's own page as retrieved in this build -- flagged for follow-up rather than filled with a plausible-sounding figure."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "zw_work_permit",
+  "country": "ZW",
+  "name": "Employer-Sponsored Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "zwwp_job_offer",
+          "attribute": "has_zimbabwean_job_offer_letter",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Department of Immigration, under the Immigration Act [Chapter 4:02], issues work permits requiring a job offer letter from a Zimbabwean company, proof of qualifications and work experience (documented in English), and a valid radiological certificate confirming freedom from active pulmonary tuberculosis. Different classes of work permit exist for different circumstances, though the specific class distinctions were not detailed in the source reviewed. Applications can also be submitted via the e-Permits online platform (epermits.zimimmigration.gov.zw).",
+          "fix_path": "Secure a job offer from a Zimbabwean employer and submit the application with qualification proof and a TB clearance certificate.",
+          "fix_time_months": null,
+          "source_id": "cliffedekkerhofmeyr_zw_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer letter from a Zimbabwean company", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of qualifications and work experience (in English)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Radiological certificate (TB clearance)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified in source reviewed",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "cliffedekkerhofmeyr_zw_work_permits",
+      "tier": 3,
+      "url": "https://www.cliffedekkerhofmeyr.com/en/guides/africa-corporate/zimbabwe/work-permits/what-are-the-requirements-for-obtaining-a-work-permit-please-provide-the-requirements-for-each-class-of-work-permit-if-applicable.html",
+      "title": "Cliffe Dekker Hofmeyr (Africa-corporate law firm guide) -- Department of Immigration's work permit process under the Immigration Act [Chapter 4:02], job-offer requirement, and documentary requirements",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Zimbabwe). STATUS: DRAFT -- sourced to a tier-3 law-firm guide; the government's own e-Permits portal (epermits.zimimmigration.gov.zw) is referenced by name in a government page (zimimmigration.gov.zw) but its own content was not directly fetchable in this build, and the parent Department of Immigration page itself returned mostly navigational content with no substantive permit-class detail. Specific work-permit classes and permit duration were not confirmed -- disclosed as unconfirmed rather than guessed. family_can_join set true given the documents list requires passport photos and certificates for 'spouse, children under 18' alongside the main applicant, implying dependents are meant to accompany the worker; family_can_work left null since no source confirmed independent dependent work rights (see zw_family_reunification.json for the separate Spouse Residence Permit, which does address this more directly)."
+}

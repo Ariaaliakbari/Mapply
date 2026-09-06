@@ -1,0 +1,81 @@
+{
+  "id": "me_citizenship_naturalisation",
+  "country": "ME",
+  "name": "Citizenship by Naturalisation",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-05",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "long_term_residence",
+      "name": "5 years on long-term residence permit",
+      "requirements": [
+        {
+          "id": "mecn_5yr_longterm_residence",
+          "attribute": "months_on_longterm_residence_permit",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "5 years on a long-term residence permit, no single absence exceeding 6 months or cumulative absence exceeding 10 months across the 5-year period. Applicant must be 18+, hold health insurance accepted in Montenegro, and pass a Montenegrin language test.",
+          "fix_path": "Accumulate 5 years on a long-term residence permit, then apply, passing the language test.",
+          "fix_time_months": 60,
+          "source_id": "lawyersmontenegro_citizenship_guide"
+        }
+      ]
+    },
+    {
+      "id": "permanent_residence",
+      "name": "10 years on permanent residence permit",
+      "requirements": [
+        {
+          "id": "mecn_10yr_permanent_residence",
+          "attribute": "months_on_permanent_residence_permit",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Alternatively, 10 years on a permanent residence permit, with the same age, health-insurance, and language-test conditions.",
+          "fix_path": "Accumulate 10 years on a permanent residence permit, then apply, passing the language test.",
+          "fix_time_months": 120,
+          "source_id": "lawyersmontenegro_citizenship_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 (long-term) or 10 (permanent) years' residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Montenegrin language test result", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Health insurance policy accepted in Montenegro", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport copy, birth certificate, medical clearance", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "no single absence over 6 months, cumulative absence capped at 10 months across the qualifying period",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lawyersmontenegro_citizenship_guide",
+      "tier": 3,
+      "url": "https://lawyersmontenegro.eu/montenegro-citizenship/",
+      "title": "Lawyers Montenegro (private legal-guide site) -- naturalization requirements: 5 years on a long-term residence permit OR 10 years on a permanent residence permit, age 18+, language test, accepted health insurance, absence limits, and mandatory renunciation of prior citizenship within 2 years",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Montenegro). STATUS: DRAFT -- sourced to a private legal-guide site (tier 3); Montenegro's own government portal (gov.me/psc.gov.me) likely hosts the primary naturalization regulation, but it was not located/fetched specifically for this route in this build (only the general temporary-residence categories page was retrieved, cited in me_family_reunification.json and me_student_permit.json). CLOSED CITIZENSHIP-BY-INVESTMENT PROGRAM, DISCLOSED HERE: Montenegro's 2019-2022 Citizenship by Investment scheme (EUR 450,000/250,000 plus a government donation) was discontinued at the end of 2022 under EU pressure -- see me_investor_residence.json's notes for the fuller picture; no separate citizenship_by_investment file was built since the route no longer exists. DUAL CITIZENSHIP: Montenegro generally does not accept it -- naturalization applicants must renounce their prior citizenship within 2 years of naturalizing. Narrow, specifically-named exceptions exist: individuals who acquired citizenship under the now-abolished Citizenship by Investment scheme, individuals who already held dual citizenship as of Montenegro's 2006 independence, and possible future bilateral treaty arrangements with Serbia -- none of these exceptions apply to this standard naturalization route and are disclosed here as context rather than modeled as alternate requirement groups, since none currently constitutes an open, general-purpose route of its own."
+}

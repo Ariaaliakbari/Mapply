@@ -1,0 +1,74 @@
+{
+  "id": "tn_work_permit",
+  "country": "TN",
+  "name": "Work Permit (Carte de Séjour Portant Autorisation de Travail)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-04",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "tnwp_employer_offer_and_authorization",
+          "attribute": "has_job_offer",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Requires a Tunisian employer's job offer and a work-authorization component attached to the residence card (carte de séjour portant la mention 'autorisation de travail'), issued after Ministry of Employment review.",
+          "fix_path": "Secure a job offer from a Tunisian employer willing to sponsor the work-authorization process.",
+          "fix_time_months": null,
+          "source_id": "ccitf_carte_sejour"
+        },
+        {
+          "id": "tnwp_local_labor_market_test",
+          "attribute": "employer_shows_no_suitable_local_candidate",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Employer must generally demonstrate no suitable Tunisian candidate was available for the role.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "ccitf_carte_sejour"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of unsuccessful local recruitment", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Passport and medical documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified precisely in the sources located in this build; typically renewed annually alongside the residence card",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ccitf_carte_sejour",
+      "tier": 4,
+      "url": "https://www.ccitf.org/actualites/detail-dune-actualite/news/obtention-de-la-carte-de-sejour-pour-un-investisseur-etranger-ce-quil-faut-savoir.html",
+      "title": "Chambre de Commerce et d'Industrie Tuniso-Française (bilateral trade chamber, private) -- process overview for the carte de séjour and attached work authorization: employer-sponsored, subject to Ministry of Employment review and a general local-recruitment test",
+      "accessed_at": "2026-09-04"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Tunisia). STATUS: DRAFT -- no Tunisian government page (Ministry of Employment, Ministry of Interior, or ANETI, the national employment agency) was successfully located and fetched with requirement-level detail in this build; the only workable source was a bilateral trade chamber's overview (tier 4). This is a genuine, disclosed sourcing gap -- see tn_visitor_visa.json's notes on Tunisia's government web presence being unusually hard to reach in this build. Duration, fees, and precise document lists were not confirmed against a primary source."
+}

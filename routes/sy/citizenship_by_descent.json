@@ -1,0 +1,79 @@
+{
+  "id": "sy_citizenship_by_descent",
+  "country": "SY",
+  "name": "Citizenship by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "paternal_descent",
+      "name": "Paternal descent (automatic)",
+      "requirements": [
+        {
+          "id": "sycd_syrian_arab_father",
+          "attribute": "has_syrian_arab_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Anyone born inside or outside Syria to a Syrian Arab father acquires Syrian nationality automatically (Article 3(A), reinforced by Article 30: 'children shall have the nationality of the father').",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "menarights_nationality_act_1969"
+        }
+      ]
+    },
+    {
+      "id": "maternal_descent_narrow",
+      "name": "Maternal descent (father unknown only)",
+      "requirements": [
+        {
+          "id": "sycd_syrian_arab_mother_unknown_father",
+          "attribute": "born_in_syria_to_syrian_mother_unknown_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 3(B) permits acquisition only when the child is born IN Syria to a Syrian Arab mother AND the father is unknown -- a narrow exception, not a general right of mothers to transmit nationality the way fathers can.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "menarights_nationality_act_1969"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Parent's proof of Syrian nationality", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "menarights_nationality_act_1969",
+      "tier": 2,
+      "url": "https://menarights.org/sites/default/files/2016-11/SYR_NationalAct1969_EN.pdf",
+      "title": "MENA Rights Group -- hosted English translation of Syria's Nationality Act (Legislative Decree No. 276 of 1969): Articles 3, 30 governing descent-based acquisition",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Syria). STATUS: DRAFT -- sourced to a human-rights NGO's hosted translation of the primary legal text (tier 2), not a Syrian government portal directly, so a hard requirement citing it cannot support 'published' status under this dataset's rules even though the underlying law itself is a real, current government-enacted statute. STARK GENDER ASYMMETRY, WORSE THAN MOST COUNTRIES BUILT IN THIS DATASET: a Syrian father transmits nationality unconditionally to his children born anywhere in the world; a Syrian mother can only transmit it if the birth occurs INSIDE Syria AND the father is unknown -- there is no general maternal-descent right at all, not even a reduced or conditional one, unlike Kuwait's narrow-but-real maternal exception or Kazakhstan/Tanzania's full gender-neutral descent rules built elsewhere in this dataset. dual_citizenship_allowed set null: no explicit renunciation or dual-citizenship clause was found in the sections of the 1969 Act reviewed for this build; this is disclosed as unconfirmed, not asserted as permitted. This Act predates the December 2024 change of government -- whether and how it continues to be applied by the transitional administration was not independently confirmed in this build."
+}

@@ -1,0 +1,86 @@
+{
+  "id": "lb_work_permit",
+  "country": "LB",
+  "name": "Foreign Employee Work Permit",
+  "category": "work_sponsored",
+  "status": "published",
+  "verified_at": "2026-09-05",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lbwp_labor_ministry_authorization",
+          "attribute": "has_labor_ministry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer must first obtain authorization from the Ministry of Labour, submitting a certified passport copy, identity card copy, and a bank guarantee, before General Security will process an entry visa.",
+          "fix_path": "Have the sponsoring employer secure Ministry of Labour authorization.",
+          "fix_time_months": null,
+          "source_id": "gdgs_work_page"
+        },
+        {
+          "id": "lbwp_general_security_visa",
+          "attribute": "has_general_security_work_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Following Ministry of Labour authorization, a General Security visa is required, supported by the ministry authorization, passport/ID copies, a notarized guarantee, and a profession attestation.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gdgs_work_page"
+        },
+        {
+          "id": "lbwp_labor_permit",
+          "attribute": "has_labor_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A labor permit requires the passport and visa copies, insurance documentation, medical test results, and a notarized work contract.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "gdgs_work_page"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Notarized employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Bank guarantee (employer)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Medical test results", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Insurance documentation", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not confirmed precisely in this build; described as renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "gdgs_work_page",
+      "tier": 1,
+      "url": "https://www.general-security.gov.lb/en/posts/23",
+      "title": "General Directorate of General Security (Lebanon) -- three-stage foreign work authorization process: Ministry of Labour authorization, General Security visa, then labor permit, each with its own document set",
+      "accessed_at": "2026-09-05"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Lebanon). STATUS: PUBLISHED -- direct General Security sourcing, tier 1. The reviewed page is titled around domestic-worker hiring specifically but describes the same three-stage Ministry of Labour / General Security / labor-permit structure reported elsewhere as Lebanon's general foreign-worker authorization process; it was not cross-verified in this build against a separate non-domestic-worker-specific government page, so treat the domestic-worker-specific details (if any diverge for other professions) with some caution even though the route is marked published on the strength of the tier-1 source for the core three-stage process. family_can_join set false (not asserted true without a source) and family_can_work left null -- dependents' rights under this specific permit type were not detailed in the source reviewed; a general family/dependent residency path may exist through a separate application but was not confirmed for this route in this build. work_rights set 'restricted' since Lebanon operates reserved/closed professions for non-Lebanese nationals in numerous fields (law, several other licensed professions), not independently enumerated in full in this build."
+}

@@ -1,0 +1,115 @@
+{
+  "id": "mk_citizenship_naturalisation",
+  "country": "MK",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard residence track",
+      "requirements": [
+        {
+          "id": "mkcn_7yr_residence",
+          "attribute": "months_legal_continuous_residence",
+          "operator": ">=",
+          "value": 84,
+          "hard": true,
+          "blocker_text": "Law on Citizenship, Article 7: 18+, at least 7 years of legal and continuous residence, secured housing and permanent income, no sentence of 1+ year for a serious crime and no pending criminal proceedings, no residence ban, national-security clearance, communicative knowledge of the Macedonian language, an oath of loyalty, and renunciation of prior citizenship (with a limited exception if the other country refuses to release it).",
+          "fix_path": "Accumulate 7 years of continuous legal residence, meet the housing/income/language/conduct requirements, and apply.",
+          "fix_time_months": 84,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "stateless_or_refugee",
+      "name": "Stateless persons and refugees",
+      "requirements": [
+        {
+          "id": "mkcn_6yr_stateless_refugee",
+          "attribute": "months_residence_stateless_or_refugee",
+          "operator": ">=",
+          "value": 72,
+          "hard": true,
+          "blocker_text": "Article 7-a reduces the residence requirement to 6 years for stateless persons and recognized refugees, with the other Article 7 conditions otherwise applying.",
+          "fix_path": "As a stateless person or recognized refugee, accumulate 6 years of residence and apply.",
+          "fix_time_months": 72,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "emigrant_descendant",
+      "name": "Emigrants and their first-line descendants",
+      "requirements": [
+        {
+          "id": "mkcn_emigrant_descendant",
+          "attribute": "is_emigrant_or_first_line_descendant",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 8: an 'emigrant' (defined as a former Macedonian citizen who moved abroad) and their descendants up to the first line can acquire citizenship even without meeting the standard residency, language, or renunciation requirements.",
+          "fix_path": "Document status as an emigrant (or first-line descendant of one) and apply through the exempted diaspora track.",
+          "fix_time_months": null,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    },
+    {
+      "id": "special_merit",
+      "name": "Special interest / merit",
+      "requirements": [
+        {
+          "id": "mkcn_special_merit",
+          "attribute": "qualifies_for_special_interest_naturalization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 11 allows naturalization for special-interest cases in science, economy, culture, or sport, at the state's discretion, without necessarily meeting the standard residency requirement.",
+          "fix_path": "Document special-interest qualifications (science, economy, culture, or sport) and apply through this discretionary track.",
+          "fix_time_months": null,
+          "source_id": "refworld_mk_law_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of secured housing and permanent income", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Macedonian-language communication assessment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal record and national-security clearance", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 84,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "7 years standard, 6 years for stateless persons/refugees, none for the emigrant-descendant or special-merit tracks",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_mk_law_citizenship",
+      "tier": 2,
+      "url": "https://www.refworld.org/sites/default/files/2024-05/1_law_on_citizenship_2022_consolidated_eng.pdf",
+      "title": "Refworld (UNHCR-affiliated) -- hosted consolidated English text of North Macedonia's Law on Citizenship (2022 consolidation), Articles 2, 7, 7-a, 8, 11",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (North Macedonia). STATUS: DRAFT -- sourced to Refworld's hosted consolidated text, tier 2, not North Macedonia's own Official Gazette directly. THE FULLER PICTURE on dual nationality (forward-referenced from mk_citizenship_by_descent.json's notes): Article 2 lets a Macedonian citizen also hold another state's citizenship, but domestically 'a citizen of the Republic of North Macedonia... shall be considered exclusively as a citizen of the Republic of North Macedonia,' unless an international agreement provides otherwise -- structurally similar to the Guatemala/Honduras pattern built earlier in this dataset (a state that tolerates dual nationality abroad but only recognizes its own nationality at home). Separately, the STANDARD naturalization track (this file, Article 7) generally requires renouncing prior citizenship except where the other country refuses to release it -- a real friction that does NOT apply to the marriage-based track (see mk_citizenship_by_marriage.json, Article 9, which is explicitly renunciation-exempt). dual_citizenship_allowed is set true at the country-general level per Article 2, with this renunciation nuance disclosed rather than smoothed over. GENUINELY DISTINCTIVE, MARQUEE FINDING: Article 8's 'emigrant and first-line descendant' track grants full exemption from residency, language, AND renunciation requirements -- among the most generous diaspora-citizenship provisions found in this dataset so far, consistent with North Macedonia's large emigrant population. A transitional provision (Official Gazette 174/21, not modeled as its own route here since it is time-limited and historical) also let former co-Yugoslav-republic citizens resident in North Macedonia before independence (8 Sept 1991) naturalize within 3 years using minimal documentation -- noted for completeness, not built as a live route since that window has passed."
+}

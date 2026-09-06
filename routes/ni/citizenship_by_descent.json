@@ -1,0 +1,79 @@
+{
+  "id": "ni_citizenship_by_descent",
+  "country": "NI",
+  "name": "Nationality by Birth / Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_nicaragua",
+      "name": "Born in Nicaragua (jus soli)",
+      "requirements": [
+        {
+          "id": "nicd_born_in_country",
+          "attribute": "born_in_nicaragua",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Ley de Nacionalidad (Ley No. 149, 1992), Article 3.1: a child born in Nicaragua acquires nationality, except children of accredited diplomats or international-organization officials, who may elect Nicaraguan nationality if they wish.",
+          "fix_path": null,
+          "fix_time_months": null,
+          "source_id": "acnur_ni_ley_nacionalidad"
+        }
+      ]
+    },
+    {
+      "id": "nicaraguan_parent",
+      "name": "Child of a Nicaraguan parent",
+      "requirements": [
+        {
+          "id": "nicd_nicaraguan_parent",
+          "attribute": "has_nicaraguan_parent",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 3.2: a child with a Nicaraguan father or mother acquires nationality -- explicitly gender-neutral ('padre o madre'). Article 3.3: those born abroad to parents who were formerly Nicaraguan may claim nationality upon reaching majority, by request.",
+          "fix_path": "Register the child's Nicaraguan nationality, or, for the Article 3.3 case, file a claim upon reaching majority.",
+          "fix_time_months": null,
+          "source_id": "acnur_ni_ley_nacionalidad"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Parent's proof of Nicaraguan nationality", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "acnur_ni_ley_nacionalidad",
+      "tier": 2,
+      "url": "https://www.acnur.org/fileadmin/Documentos/BDL/2001/0155.pdf",
+      "title": "UNHCR (ACNUR) -- hosted primary legal text of Nicaragua's Ley de Nacionalidad (Ley No. 149, 30 June 1992), Article 3 (birth/descent), Articles 23-25 (dual nationality, as originally enacted)",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Nicaragua). STATUS: DRAFT -- sourced to UNHCR-hosted text of the 1992 law, tier 2, not Nicaragua's own Official Gazette (La Gaceta) directly. IMPORTANT, EXPLICITLY DISCLOSED CAVEAT: this 1992 text's own Articles 23-25 (dual-nationality rules, including a 2-year post-majority election requirement for those with dual status by birth) were significantly reformed by Law 1268 (effective 16 January 2026), which now bars most naturalizing Nicaraguans from holding another nationality (see ni_citizenship_naturalisation.json's notes for the fuller, current picture) -- it is NOT confirmed in this build whether or how that 2026 reform altered this file's own birth/descent-based dual-status mechanic specifically, since the reporting found described the reform as targeting people who renounce Nicaraguan nationality to ACQUIRE another, not people who acquire dual status automatically by birth. dual_citizenship_allowed is therefore left null for THIS route rather than guessed either way -- a genuine, disclosed gap. GENUINE, GENDER-NEUTRAL FINDING otherwise: Article 3's 'padre o madre' phrasing carries no asymmetry."
+}

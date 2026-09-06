@@ -1,0 +1,71 @@
+{
+  "id": "ht_citizenship_naturalisation",
+  "country": "HT",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "htcn_5yr_residence",
+          "attribute": "months_residence_in_haiti",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Decree of 6 November 1984, Articles 15-19: a foreigner must first legally reside in Haiti for 5 years (reduced to 2 for marriage to a Haitian, significant service, or exceptional talent -- see ht_citizenship_by_marriage.json). The Interior Department investigates the applicant's morality, and the President makes the final decision by decree, published in the Official Gazette -- a discretionary act, not a right that automatically follows from meeting the formal conditions. The applicant must take an oath renouncing any other nationality. Even after naturalization is granted, the new citizen cannot exercise political rights (voting, holding office) for 10 years from the date of naturalization -- a specific, disclosed restriction not found in most other countries in this dataset.",
+          "fix_path": "Accumulate 5 years of legal residence (or 2 if married to a Haitian, per exceptional service, or exceptional talent), pass the morality investigation, and apply -- expect a 10-year wait after naturalization before political rights vest.",
+          "fix_time_months": 60,
+          "source_id": "hdit_cabinet_volmar_naturalisation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Residence permit (permis de sejour)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "National identity card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Residence certificate from municipal magistrate and justice of the peace", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Oath renouncing prior nationality", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 years (2 years for marriage to a Haitian, significant service, or exceptional talent)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "hdit_cabinet_volmar_naturalisation",
+      "tier": 3,
+      "url": "https://hditcabinetvolmar.com/fr/les-conditions-pour-lobtention-de-la-nationalite-haitienne-par-naturalisation/",
+      "title": "HDIT Cabinet Volmar (Haitian law firm) -- naturalization conditions, residence thresholds, oath of renunciation, 10-year political-rights restriction, per the Decree of 6 November 1984",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "vancecenter_ht_nationality_laws",
+      "tier": 3,
+      "url": "https://www.vancecenter.org/wp-content/uploads/Haitian_Laws_on_Statelessness.pdf",
+      "title": "Vance Center (NGO legal-analysis document) -- corroborates the 1984 decree's Articles 15-19 document requirements",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Haiti). STATUS: DRAFT -- sourced to a Haitian law firm's guide and an NGO legal analysis, both tier 3; the decree's own Official Gazette publication was not independently fetched. GENUINE, SPECIFIC FINDING not seen elsewhere in this dataset: naturalized Haitian citizens face a flat 10-year bar on exercising political rights after naturalization -- a concrete, sourced restriction distinct from (and in addition to) the naturalization decision's own unmotivated discretion. dual_citizenship_allowed set to FALSE, confirmed by the sourced oath-of-renunciation requirement -- this is the one dual-citizenship value in this file that is directly confirmed rather than left null, though it applies only to naturalized citizens; see ht_citizenship_by_descent.json for the contrasting TRUE value that applies to Haitians by birth since the 2012 constitutional reform."
+}
