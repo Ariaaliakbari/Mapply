@@ -1,0 +1,80 @@
+{
+  "id": "ly_citizenship_naturalisation",
+  "country": "LY",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lycn_10yr_residence_under50",
+          "attribute": "months_lawful_residence_and_under_age_50_at_application",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Law No. 24 of 2010, Article 9: a fully competent adult who entered Libya lawfully, has 10 consecutive years of lawful residence with a legitimate income, has sound conduct and no criminal convictions, is disease-free, and is UNDER 50 YEARS OLD at the time of application may naturalize. The explicit upper age ceiling at application is unusual -- most naturalization tracks in this dataset carry no maximum-age condition at all.",
+          "fix_path": "Accumulate 10 consecutive years of lawful residence with legitimate income while under 50 years old, meeting the conduct and health conditions.",
+          "fix_time_months": 120,
+          "source_id": "globalcit_ly_nationality_law_24_2010"
+        }
+      ]
+    },
+    {
+      "id": "foreign_wife_of_libyan",
+      "name": "Foreign woman married to a Libyan national (or his widow/divorcée)",
+      "requirements": [
+        {
+          "id": "lycn_foreign_wife_2yr_marriage",
+          "attribute": "months_married_to_libyan_national_as_foreign_wife",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Article 10(2): a foreign woman married to a Libyan national is exempted from the standard Article 9 conditions after at least 2 years of marriage -- materially faster than the 10-year standard track, and without the age-50 ceiling implied by Article 9. Article 10(3) extends the same exemption to a widow or divorcée of a Libyan national. This dataset found NO equivalent exemption for a foreign man married to a Libyan woman -- he remains confined to the standard 10-year/under-50 track. This marriage-based asymmetry exists ALONGSIDE the separate descent-based asymmetry documented in ly_citizenship_by_descent.json -- Libya is the only country built in this dataset to date with both forms of gender asymmetry simultaneously.",
+          "fix_path": "As a foreign woman, marry a Libyan national and maintain the marriage for at least 2 years (or qualify as his widow or divorcée).",
+          "fix_time_months": 24,
+          "source_id": "globalcit_ly_nationality_law_24_2010"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' lawful residence and legitimate income (standard track)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record and health clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate and proof of 2 years' marriage, or widowhood/divorce documentation (marriage-based track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "10 years lawful residence, under 50 at application (standard track); 2 years of marriage for a foreign wife of a Libyan national, or his widow/divorcée",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_ly_nationality_law_24_2010",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Libya-Nationality-Law-No-24-2010%20%5BENGLISH%5D.pdf",
+      "title": "GLOBALCIT -- English translation of Libya's Law No. 24 of 2010: naturalization conditions and age ceiling (Art. 9), marriage-based exemption (Art. 10), voluntary foreign-nationality deprivation rule (Art. 5), retraction of nationality (Art. 12/13)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Libya). STATUS: DRAFT -- tier 2 (academic/research-consortium host of an unofficial translation, not a .gov.ly domain); correctly modeled as draft from the outset given the validator's tier-1-for-published rule. GENUINE, CONFIRMED GENDER ASYMMETRY in the marriage-based track (foreign wife of a Libyan man, or his widow/divorcée, only), consistent with the broader pattern found across this dataset (Cameroon, Congo-Brazzaville, Iraq) but here paired with an ADDITIONAL, rarer asymmetry -- Article 9's explicit under-50 age ceiling on the standard track, which this dataset has not seen elsewhere. dual_citizenship_allowed set to false per Article 5's clear rule that voluntarily obtaining a foreign nationality without prior government approval results in deprivation of Libyan nationality -- one of the more unambiguous 'no' findings in this dataset, comparable in clarity to Angola's Article 32. Article 13 additionally permits the government to retract nationality within 10 years for actions 'infringing upon Libya's security' or for 2+ consecutive years of unjustified residence abroad -- a real, disclosed revocation power beyond the ordinary loss-on-foreign-acquisition rule."
+}

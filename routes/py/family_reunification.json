@@ -1,0 +1,64 @@
+{
+  "id": "py_family_reunification",
+  "country": "PY",
+  "name": "Family Residency for Spouses and Children of Paraguayan Citizens",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_or_child_of_citizen",
+      "name": "Spouse or child of a Paraguayan citizen (Ley 2193/2003)",
+      "requirements": [
+        {
+          "id": "pyfr_spouse_or_child",
+          "attribute": "is_spouse_or_child_of_paraguayan_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Under Ley 2193/2003, a foreign spouse or foreign child (of any age, including adults) of a Paraguayan citizen qualifies for a distinct family-based residency pathway, processed via SEDERREC (the repatriation-support agency) rather than the standard economic-solvency track: obtain a SEDERREC repatriation certificate, receive a national ID card from the National Police, then apply for Permanent Residency at Migraciones within a strict 90-day deadline from receiving the cedula. Required: valid passport, apostilled birth/marriage certificates, apostilled criminal background check, and the Paraguayan family member's own cedula. No provision was found covering PARENTS or GRANDPARENTS of a Paraguayan citizen as qualifying relatives -- a real, disclosed absence, not this dataset's assumption.",
+          "fix_path": "Obtain a SEDERREC repatriation certificate, get a national ID card, and file for Permanent Residency at Migraciones within 90 days of receiving the cedula.",
+          "fix_time_months": 3,
+          "source_id": "planbexpat_py_family_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "SEDERREC repatriation certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled birth/marriage certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Apostilled criminal background check", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Paraguayan family member's cedula", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (permanent residency granted directly)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["py_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "planbexpat_py_family_visa",
+      "tier": 3,
+      "url": "https://www.planbexpat.com/blog/paraguay-family-visa",
+      "title": "Plan B Expat -- Ley 2193/2003 spouse/child pathway and Ley 6984/22 Article 48 repatriated-national family pathway, with the 90-day filing deadline",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: DRAFT -- migraciones.gov.py could not be fetched (systemic block across this entire build, see py_mercosur_residence.json), so this rests on a tier-3 relocation-blog source, though one that names two specific law numbers and an article citation, a stronger sourcing signal than most tier-3 sites in this build. GENUINE, DISCLOSED ABSENCE: no route was found for PARENTS or GRANDPARENTS of a Paraguayan citizen to join them in Paraguay -- only spouses and children (any age) under Ley 2193/2003, and separately spouses/children/grandchildren-under-18 of REPATRIATED Paraguayan nationals specifically under Ley 6984/22 Article 48 (a narrower category this dataset did not model as its own file, since it is a subset of the same general family-residency mechanism rather than a structurally distinct route). This grants Permanent Residency directly (pr_after_months: 0), distinct from every other Paraguay route in this build, which requires a temporary-to-permanent conversion first. family_can_join set to false at the outcome level: this route IS the family-joining mechanism itself, so it has no further dependent-of-the-applicant provision to report."
+}

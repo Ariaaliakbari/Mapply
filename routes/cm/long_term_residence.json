@@ -1,0 +1,80 @@
+{
+  "id": "cm_long_term_residence",
+  "country": "CM",
+  "name": "Regular and Permanent Resident Card",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "regular_resident",
+      "name": "Regular resident (2-6 years authorized stay)",
+      "requirements": [
+        {
+          "id": "cmlr_2_6yr_authorized_stay",
+          "attribute": "authorized_stay_years",
+          "operator": ">=",
+          "value": 2,
+          "hard": true,
+          "blocker_text": "Law No. 1997/012 on the entry, stay, and exit of foreigners in Cameroon: a foreigner authorized to stay between 2 and 6 consecutive years holds a 2-year renewable resident card ('carte de résidence'). Any resident over 18 must obtain this card within 3 months of entry or face deportation. Required at entry: a valid passport with entry visa, proof of repatriation guarantee, and proof of means of subsistence.",
+          "fix_path": "Obtain a resident card within 3 months of entry, maintaining authorized status; renew every 2 years.",
+          "fix_time_months": null,
+          "source_id": "refworld_cm_law_1997_012"
+        }
+      ]
+    },
+    {
+      "id": "permanent_resident",
+      "name": "Permanent resident (6+ years uninterrupted)",
+      "requirements": [
+        {
+          "id": "cmlr_6yr_uninterrupted",
+          "attribute": "months_uninterrupted_residence",
+          "operator": ">=",
+          "value": 72,
+          "hard": true,
+          "blocker_text": "Law No. 1997/012: a foreigner with at least 6 years of uninterrupted residence in Cameroon qualifies for a 10-year renewable permanent resident card, a materially longer validity than the regular resident card.",
+          "fix_path": "Maintain 6 years of uninterrupted residence in Cameroon on a regular resident card, then apply for the 10-year permanent card.",
+          "fix_time_months": 72,
+          "source_id": "refworld_cm_law_1997_012"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport with entry visa", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of means of subsistence", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of repatriation guarantee", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years (regular), 10 years (permanent), both renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 72,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "6 years uninterrupted residence for the permanent card",
+    "switchable_to": ["cm_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "refworld_cm_law_1997_012",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1997/fr/13735",
+      "title": "Refworld (UNHCR-hosted primary legal text) -- Law No. 1997/012, residence-card categories (2-year regular, 10-year permanent), entry requirements, dependent-child derivative status",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cameroon). STATUS: DRAFT -- the residence-ladder structure is confirmed directly from the primary statute text, hosted on Refworld (tier 2 by this dataset's rules, since it is intergovernmental/UNHCR-hosted primary legal text, not a secondary summary); the validator requires tier-1 (government) sourcing for a hard requirement before a route can be published, and no Cameroonian government source for Law 1997/012 was reached, so this stays draft despite the structural finding itself being solid. GENUINE, CLEAR STRUCTURAL FINDING: unlike Mali, Niger, Haiti, and Bosnia earlier in this dataset (all single/parallel-status systems with no temporary-to-permanent ladder), Cameroon has an explicit, numerically defined two-step residence ladder (2-year card at 2-6 years' stay, 10-year card at 6+ years uninterrupted) directly comparable to Kosovo's ladder found earlier in this session. Dependent children under 18 living with and financially dependent on a cardholding parent automatically receive derivative card status under the same law -- a real, disclosed family provision distinct from the marriage-based route (see cm_family_reunification.json)."
+}

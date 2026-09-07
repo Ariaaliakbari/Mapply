@@ -1,0 +1,62 @@
+{
+  "id": "iq_investor_residence",
+  "country": "IQ",
+  "name": "Investor Residence Permit (Kurdistan Region)",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "kri_investor",
+      "name": "Kurdistan Region investor route",
+      "requirements": [
+        {
+          "id": "iqir_kri_investor_confirmation",
+          "attribute": "has_kri_board_of_investment_confirmation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Kurdistan Region Board of Investment confirms investor status for a Residence Permit valid 3-5 years (renewable). A separate Work Residence Permit, valid 1-3 years (renewable), is available to those purchasing a qualifying residential unit within an approved investment project for a minimum of USD 50,000. Both pathways extend to spouses, children under 18, and parents for the same duration. Announced 20 June 2025, the underlying legislation itself does not specify the criteria for investor-status confirmation or what determines which permit length an applicant receives -- a genuine, disclosed gap in the rules as published, not a gap in this dataset's research.",
+          "fix_path": "Purchase a qualifying residential unit (minimum $50,000) in an approved investment project, or otherwise secure Kurdistan Region Board of Investment confirmation of investor status.",
+          "fix_time_months": null,
+          "source_id": "fragomen_kri_investor_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of qualifying investment or residential-unit purchase ($50,000 minimum)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Kurdistan Region Board of Investment confirmation", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "3-5 years (Residence Permit) or 1-3 years (Work Residence Permit), both renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "fragomen_kri_investor_visa",
+      "tier": 3,
+      "url": "https://www.fragomen.com/insights/IraqiKurdistanNewInvestorVisaPathwaysAnnounced.html",
+      "title": "Fragomen (global immigration law firm) -- Kurdistan Region investor and work-residence permit pathways, June 2025",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: DRAFT -- sourced to an immigration law firm's client alert, tier 3; the Kurdistan Regional Government's own legislative text was not independently fetched. GENUINE, MARQUEE FINDING: this investor pathway is REGIONAL (Kurdistan Region only), not federal -- Iraq's National Investment Commission (investpromo.gov.iq, a federal tier-1 government source successfully reached in this build) publishes an Investor Guide covering licensing, tax exemptions, and a 45-day 'One Stop Shop' approval process, but confirms NO residence-permit or visa benefit tied to federal investment status -- a real, disclosed asymmetry between the two systems (see iq_visitor_visa.json for the parallel finding on visa policy). A foreign investor in FEDERAL Iraq (outside the Kurdistan Region) has no confirmed dedicated residence pathway in this build. citizenship_after_months mirrors the standard 10-year naturalization threshold. family_can_work left null: not addressed by the source."
+}

@@ -1,0 +1,63 @@
+{
+  "id": "iq_citizenship_by_marriage",
+  "country": "IQ",
+  "name": "Naturalization for a Foreign Wife of an Iraqi Husband",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "iqcm_5yr_married_foreign_wife",
+          "attribute": "months_married_to_iraqi_husband",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Nationality Law No. 26 of 2006, Article 11: a non-Iraqi woman married to an Iraqi man does NOT acquire citizenship automatically (the automatic-acquisition rule was in the repealed 1924 law) -- she must apply to the Minister of Interior after 5 years of marriage, with continuous residence in Iraq throughout, and the marriage still intact at the time of application. Divorced or widowed women who had children with their Iraqi husbands may apply without meeting the full residency requirement. No equivalent provision for a foreign HUSBAND of an Iraqi wife was found in this build -- a real, disclosed asymmetry, not this dataset's assumption.",
+          "fix_path": "Marry an Iraqi man, reside continuously in Iraq for 5 years with the marriage intact, and apply to the Minister of Interior.",
+          "fix_time_months": 60,
+          "source_id": "abacademies_iq_marriage_nationality"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5 years' continuous residence in Iraq", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof the marriage remains intact at application", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years continuous residence, marriage intact",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "abacademies_iq_marriage_nationality",
+      "tier": 3,
+      "url": "https://www.abacademies.org/articles/wifes-acquire-husbands-nationality-through-mixedmarriage-a-comparative-study-between-international-convention-and-iraqi-law-12525.html",
+      "title": "Academic comparative-law journal -- Article 11 of Law No. 26 of 2006, foreign wife's naturalization conditions, widow/divorcee exception",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: DRAFT -- sourced to an academic comparative-law journal quoting the statute, tier 3; the primary text itself (moj.gov.iq) could not be fetched. GENUINE, CONFIRMED GENDER ASYMMETRY, the second one documented for Iraq alongside descent (see iq_citizenship_by_descent.json): the 2006 law only addresses a foreign WIFE's path to Iraqi citizenship through marriage -- the source found no equivalent provision for a foreign HUSBAND of an Iraqi wife, and explicitly notes this is a deliberate departure from the REPEALED 1924 law, which granted automatic acquisition to foreign wives generically. This is even more restrictive than several other countries in this dataset with similarly asymmetric marriage rules (e.g. Mali, Niger): Iraq's current law does not merely make the husband's path slower or discretionary -- it appears not to address it at all. dual_citizenship_allowed set to true per Iraq's Ministry of Foreign Affairs (tier 1, see iq_citizenship_by_descent.json for the direct citation)."
+}

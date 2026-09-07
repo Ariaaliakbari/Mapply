@@ -1,0 +1,87 @@
+{
+  "id": "af_visitor_visa",
+  "country": "AF",
+  "name": "Tourist e-Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "afvv_evisa_eligible_nationality",
+          "attribute": "nationality_not_restricted_and_residence_not_restricted",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Afghanistan launched an online e-Visa system in March 2026, issuing single-entry tourist visas valid for stays up to 30 days (expiring 90 days from issuance). E-visas are currently accepted only at Kabul International Airport. Eligibility depends on nationality AND residence not being on a restricted list -- most UN member states qualify, along with residents of Kosovo, Palestine, Taiwan, and Vatican City, but neighboring China and several other named nations are ineligible, and Israeli citizens are refused any visa category outright. People of confirmed Afghan heritage (born in Afghanistan, or with an Afghan parent) enter visa-free instead of using this route. Required: e-passport valid 6+ months, a 45x35mm photo, and a national ID/residence-permit copy. Fees: a non-refundable USD 8.25 application fee (due within 48 hours), then a further USD 123.71 (non-US) or USD 206.19 (US nationals) for standard processing, or USD 175.26/257.73 for express. Standard processing takes 1-4 weeks; express up to 1 business day.",
+          "fix_path": "Check eligibility on the e-visa portal, submit the application with passport, photo, and ID within 48 hours of paying the initial fee, then pay the balance once approved.",
+          "fix_time_months": null,
+          "source_id": "eafghans_evisa_requirements"
+        }
+      ]
+    },
+    {
+      "id": "investor_desk",
+      "name": "Investor / VIP arrival lane",
+      "requirements": [
+        {
+          "id": "afvv_investor_desk_voa",
+          "attribute": "is_business_investor_or_un_interpol_official",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An 'Afghanistan Investment Desk' has operated at Kabul International Airport since December 2022, facilitating visa-on-arrival handling for foreign business investors. Separately, holders of UN and Interpol travel/laissez-passer documents receive visas on arrival at Kabul airport. No published fee schedule, capital threshold, or formal eligibility criteria for the Investment Desk lane was found in this build.",
+          "fix_path": "Arrive at Kabul International Airport as a business investor or UN/Interpol document holder and present at the relevant desk.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_af_visa_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months (electronic passport for e-visa)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Passport-style photo (45x35mm, white background)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "National ID or residence permit copy", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 30 days per entry, e-visa expires 90 days after issuance if unused",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["af_work_permit", "af_investor_residence"]
+  },
+  "sources": [
+    {
+      "id": "eafghans_evisa_requirements",
+      "tier": 1,
+      "url": "https://eafghans.com/e-visa/visa-requirements.html",
+      "title": "E-Afghans Visa Portal -- officially authorized technology provider for the Consulate General of the Islamic Emirate of Afghanistan in Dubai, content reviewed by the Consulate; e-visa requirements, fees, processing times",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "wikipedia_af_visa_policy",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Afghanistan",
+      "title": "Wikipedia -- visa-free heritage entry, Investment Desk, UN/Interpol visa-on-arrival, restricted-nationality summary",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Afghanistan). STATUS: DRAFT -- the e-visa requirements source is the Taliban-authorized consulate portal itself (treated as tier 1 since it is the government's own designated issuing channel, per the Consulate General in Dubai), but this dataset flags plainly that the Islamic Emirate of Afghanistan is NOT internationally recognized as of this build, so 'tier 1' here means 'the de facto administration's own channel,' not endorsement of its legitimacy. The e-visa system itself is brand new (launched March 2026, six months old at build time) and airport-limited (Kabul only). The Investment Desk lane (source: Wikipedia, tier 4) has zero published criteria -- no fee, no threshold, no formal process -- a genuine information gap, not an omission. No family_can_join/work rights confirmed for a pure tourist visa, set to false as the conservative default for a short-stay non-work visa category."
+}

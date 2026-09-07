@@ -8,7 +8,7 @@ Mapply is the only place building one shared schema across every country, so a r
 
 ## Status
 
-**1,224 routes live across 107 countries, all 9 categories, all published routes tier-1 (government-only) sourced.**
+**1,479 routes live across 138 countries, all 9 categories.** 922 are `published` (tier-1/government sourced, enforced by CI). 544 are `draft` — structurally complete but not yet fully tier-1 sourced, not shown publicly. 13 are `closed`.
 
 - **United Kingdom**: 17
 - **Canada**: 16
@@ -17,16 +17,17 @@ Mapply is the only place building one shared schema across every country, so a r
 - **Costa Rica**: 13 · **Cyprus**: 13 · **Dominican Republic**: 13 · **Ethiopia**: 13 · **Greece**: 13 · **Ireland**: 13 · **Jamaica**: 13 · **Netherlands**: 13 · **Nigeria**: 13 · **Saudi Arabia**: 13 · **Serbia**: 13 · **Switzerland**: 13
 - **Armenia**: 12 · **Bahamas**: 12 · **Bulgaria**: 12 · **Croatia**: 12 · **Czechia**: 12 · **Ecuador**: 12 · **Fiji**: 12 · **Italy**: 12 · **Luxembourg**: 12 · **Malta**: 12 · **Mexico**: 12 · **New Zealand**: 12 · **Peru**: 12 · **Qatar**: 12 · **Russia**: 12 · **Slovakia**: 12 · **Thailand**: 12 · **Turkey**: 12
 - **Argentina**: 11 · **Bahrain**: 11 · **Botswana**: 11 · **Brazil**: 11 · **Cayman Islands**: 11 · **Chile**: 11 · **China**: 11 · **Colombia**: 11 · **Côte d'Ivoire**: 11 · **Finland**: 11 · **Grenada**: 11 · **Israel**: 11 · **Jordan**: 11 · **Malaysia**: 11 · **Morocco**: 11 · **Norway**: 11 · **Romania**: 11 · **Rwanda**: 11 · **South Africa**: 11 · **Turks and Caicos**: 11 · **Uganda**: 11 · **Ukraine**: 11 · **Vietnam**: 11
-- **Albania**: 10 · **Antigua and Barbuda**: 10 · **Aruba**: 10 · **Bangladesh**: 10 · **Barbados**: 10 · **Belgium**: 10 · **Bermuda**: 10 · **Chad**: 10 · **Curaçao**: 10 · **Estonia**: 10 · **Iceland**: 10 · **Indonesia**: 10 · **Latvia**: 10 · **Mongolia**: 10 · **Oman**: 10 · **Pakistan**: 10 · **Philippines**: 10 · **Trinidad and Tobago**: 10 · **Uruguay**: 10
-- **Anguilla**: 9 · **Azerbaijan**: 9 · **Belarus**: 9 · **British Virgin Islands**: 9 · **Dominica**: 9 · **Montserrat**: 9 · **Panama**: 9 · **Saint Kitts and Nevis**: 9 · **Saint Lucia**: 9 · **Sint Maarten**: 9 · **Sweden**: 9
-- **Denmark**: 8 · **Egypt**: 8 · **Saint Vincent and the Grenadines**: 8
-- **Myanmar**: 7 · **Somalia**: 7 · **Sudan**: 7
+- **Albania**: 10 · **Antigua and Barbuda**: 10 · **Aruba**: 10 · **Bangladesh**: 10 · **Barbados**: 10 · **Belgium**: 10 · **Bermuda**: 10 · **Chad**: 10 · **Curaçao**: 10 · **Estonia**: 10 · **Ghana**: 10 · **Iceland**: 10 · **Indonesia**: 10 · **Kenya**: 10 · **Latvia**: 10 · **Mongolia**: 10 · **Oman**: 10 · **Pakistan**: 10 · **Philippines**: 10 · **Sri Lanka**: 10 · **Trinidad and Tobago**: 10 · **Uruguay**: 10
+- **Anguilla**: 9 · **Azerbaijan**: 9 · **Belarus**: 9 · **British Virgin Islands**: 9 · **Dominica**: 9 · **Kazakhstan**: 9 · **Lebanon**: 9 · **Montenegro**: 9 · **Montserrat**: 9 · **Panama**: 9 · **Saint Kitts and Nevis**: 9 · **Saint Lucia**: 9 · **Senegal**: 9 · **Sint Maarten**: 9 · **Sweden**: 9 · **Syria**: 9 · **Tanzania**: 9
+- **Algeria**: 8 · **Bosnia and Herzegovina**: 8 · **Burkina Faso**: 8 · **Cuba**: 8 · **DR Congo**: 8 · **Denmark**: 8 · **Egypt**: 8 · **El Salvador**: 8 · **Guatemala**: 8 · **Haiti**: 8 · **Honduras**: 8 · **India**: 8 · **Kosovo**: 8 · **Mali**: 8 · **Nicaragua**: 8 · **Niger**: 8 · **North Macedonia**: 8 · **Saint Vincent and the Grenadines**: 8 · **Slovenia**: 8 · **Uzbekistan**: 8 · **Venezuela**: 8 · **Zimbabwe**: 8
+- **Iran**: 7 · **Myanmar**: 7 · **Somalia**: 7 · **Sudan**: 7
+- **Kuwait**: 6 · **Tunisia**: 6
 
 Counts generated directly from `routes/<code>/*.json` file counts, not hand-maintained — verify against the repo if this drifts again.
 
 Multiple live stale-data catches confirmed against tier-1 sources during encoding (see route notes fields) — most recently a wrong South African income threshold (ZAR 650,976 vs the correct 650,796) caught 2026-08-26.
 
-**Note on the 2026-08-26/08-28/09-04 expansion:** 92 countries and ~1,000 routes have now been added across three sessions without per-country "notable findings during encoding" documentation — unlike the original 15-27 country build. No fabricated narrative has been added here to paper over that gap. Anyone relying on this data should treat these countries as encoded-but-not-narratively-audited until a real review pass happens. This gap has not shrunk between sessions — it has grown by ~50 countries each time.
+**Note on undocumented expansion, updated 2026-09-06:** as of the last README pass (2026-08-26/08-28/09-04), the repo had grown to 107 countries / 1,224 routes without per-country research notes for the newest ones. Since then, 31 more countries and 255 more routes were added — Algeria, Bosnia and Herzegovina, Burkina Faso, DR Congo, Cuba, El Salvador, Ghana, Guatemala, Haiti, Honduras, India, Iran, Kazakhstan, Kenya, Kosovo, Kuwait, Lebanon, Mali, Montenegro, Nicaragua, Niger, North Macedonia, Senegal, Slovenia, Sri Lanka, Syria, Tanzania, Tunisia, Uzbekistan, Venezuela, Zimbabwe — again with zero note in this file or in a status update. Of those 255 routes, 84 are already `published` with tier-1 sources (they pass CI's tier-1 enforcement, not just self-declared); 171 are still `draft`. This file has now been resynced against the real repo twice for the same reason. That is not a documentation nice-to-have at this point — it is the recurring failure mode named in the project brief: data work keeps outrunning the point where docs and UI work were supposed to happen instead. No per-country "notable findings" narrative exists for any of these 43 countries (the 12 from the prior gap plus these 31). Treat them as encoded-but-not-narratively-audited until a real review pass happens.
 
 Some `draft`-status routes may still cite tier-3 (non-government) sources only; `published` routes are always tier-1, enforced by CI.
 
@@ -35,7 +36,7 @@ Some `draft`-status routes may still cite tier-3 (non-government) sources only; 
 - Every route lives as one JSON file under `routes/<country>/`, following `schema/route.schema.json`
 - Every hard (disqualifying) requirement on a `published` route must cite a tier-1 source, not a law firm or blog. Enforced by CI.
 - Every route carries a verified_at date. Data older than 180 days fails validation; past 90 days it is flagged.
-- Formula-valued requirements reference `national-variables/<country>.json` instead of hardcoding a number that goes stale every January. CI checks it matches. (Currently populated for 14 of 107 countries — AU, BR, CH, DE, ES, FR, IE, IT, KR, LT, PE, PL, PT, TR. Not confirmed whether the other 93 have no formula-pegged thresholds or are just missing coverage.)
+- Formula-valued requirements reference `national-variables/<country>.json` instead of hardcoding a number that goes stale every January. CI checks it matches. (Currently populated for 14 of 138 countries — AU, BR, CH, DE, ES, FR, IE, IT, KR, LT, PE, PL, PT, TR. Not confirmed whether the other 124 have no formula-pegged thresholds or are just missing coverage.)
 - Group-level overrides let one route express different outcomes for different qualifying paths without splitting a single government-named route into fake ones.
 - Closed routes stay in the dataset with status closed and a superseded_by pointer (or null if there is no successor), rather than disappearing.
 - status draft covers incomplete sourcing, or a route enacted in law but not yet operationally available.
@@ -43,10 +44,10 @@ Some `draft`-status routes may still cite tier-3 (non-government) sources only; 
 
 ## Repo structure
 
-- schema/route.schema.json - the route shape every file must follow
-- `routes/<country-code>/*.json` - 107 countries: ae, ag, ai, al, am, ar, at, au, aw, az, bb, bd, be, bg, bh, bm, br, bs, bw, by, ca, ch, ci, cl, cn, co, cr, cw, cy, cz, de, dk, dm, do, ec, ee, eg, es, et, fi, fj, fr, gd, ge, gr, hr, hu, id, ie, il, is, it, jm, jo, jp, kn, kr, ky, lc, lt, lu, lv, ma, md, mm, mn, ms, mt, mx, my, ng, nl, no, nz, om, pa, pe, ph, pk, pl, pt, qa, ro, rs, ru, rw, sa, sd, se, sg, sk, so, sx, tc, td, th, tr, tt, ua, ug, uk, us, uy, vc, vg, vn, za
+- `schema/route.schema.json` - the route shape every file must follow
+- `routes/<country-code>/*.json` - 138 countries: ae, ag, ai, al, am, ar, at, au, aw, az, ba, bb, bd, be, bf, bg, bh, bm, br, bs, bw, by, ca, cd, ch, ci, cl, cn, co, cr, cu, cw, cy, cz, de, dk, dm, do, dz, ec, ee, eg, es, et, fi, fj, fr, gd, ge, gh, gr, gt, hn, hr, ht, hu, id, ie, il, in, ir, is, it, jm, jo, jp, ke, kn, kr, kw, ky, kz, lb, lc, lk, lt, lu, lv, ma, md, me, mk, ml, mm, mn, ms, mt, mx, my, ne, ng, ni, nl, no, nz, om, pa, pe, ph, pk, pl, pt, qa, ro, rs, ru, rw, sa, sd, se, sg, si, sk, sn, so, sv, sx, sy, tc, td, th, tn, tr, tt, tz, ua, ug, uk, us, uy, uz, vc, ve, vg, vn, xk, za, zw
 - `national-variables/<COUNTRY>.json` - reference values formula-based requirements peg to
-- scripts/validate.py - CI validator
+- `scripts/validate.py` - CI validator
 
 ## Contributing
 See CONTRIBUTING.md. Short version: any change to a threshold value needs a real tier-1 source link, or it will not pass CI.

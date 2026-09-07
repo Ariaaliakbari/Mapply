@@ -1,0 +1,97 @@
+{
+  "id": "cg_long_term_residence",
+  "country": "CG",
+  "name": "Temporary, Ordinary, and Privileged Resident Cards",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "temporary_resident",
+      "name": "Temporary Resident (up to 1 year)",
+      "requirements": [
+        {
+          "id": "cglr_temporary_card",
+          "attribute": "is_foreign_national_staying_beyond_3_months",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreigners staying beyond 3 months (classified as 'immigrants' rather than 'visitors' under Congo's residence framework) must hold a residence card. The entry-level Temporary Resident card is valid up to 1 year, reported at a fee of 106,000 F CFA -- this dataset could not independently confirm this fee against a government tariff decree.",
+          "fix_path": "Apply for the Temporary Resident card once staying beyond 3 months.",
+          "fix_time_months": null,
+          "source_id": "legavox_cg_entry_residence"
+        }
+      ]
+    },
+    {
+      "id": "ordinary_resident",
+      "name": "Ordinary Resident (up to 3 years)",
+      "requirements": [
+        {
+          "id": "cglr_ordinary_card",
+          "attribute": "holds_ordinary_resident_card",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Ordinary Resident card is valid up to 3 years, reported at a fee of 206,000 F CFA.",
+          "fix_path": "Upgrade from the Temporary to the Ordinary Resident card.",
+          "fix_time_months": null,
+          "source_id": "legavox_cg_entry_residence"
+        }
+      ]
+    },
+    {
+      "id": "privileged_resident",
+      "name": "Privileged Resident (up to 5 years, 10-year residence gate)",
+      "requirements": [
+        {
+          "id": "cglr_privileged_10yr_under35",
+          "attribute": "months_continuous_residence",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "The Privileged Resident card is valid up to 5 years and requires 10 years of continuous residence in Congo, with the applicant under 35 years old at initial entry -- extended to 40 if married to a Congolese spouse or parent of a legally recognized Congolese child. Reported fee: 106,000 F CFA.",
+          "fix_path": "Accumulate 10 years of continuous residence while meeting the applicable age ceiling at initial entry (35, or 40 with a qualifying Congolese family tie).",
+          "fix_time_months": 120,
+          "source_id": "legavox_cg_entry_residence"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport photocopy", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Two identity photos", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Housing certificate signed by a municipal authority", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year (temporary) -> 3 years (ordinary) -> 5 years (privileged), each renewable within its own tier",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "10 years continuous residence for the Privileged Resident tier",
+    "switchable_to": ["cg_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "legavox_cg_entry_residence",
+      "tier": 3,
+      "url": "https://www.legavox.fr/blog/yav-associates/conditions-pour-entrer-regulierement-republique-33839.htm",
+      "title": "Legavox (Yav & Associates law firm) -- Congo's three-tier resident card system: Temporary (1yr), Ordinary (3yr), Privileged (5yr, 10yr-residence + age gate), fees, required documents",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Congo-Brazzaville). STATUS: DRAFT -- tier-3 sourced (a law-firm legal-advice blog; detailed and internally consistent, but not a primary government text). This dataset attempted direct fetches of Congo's own Ministry of Interior (interieur.gouv.cg) and Ministry of Public Security (securite-publique.gouv.cg), both of which have a dedicated 'Titre de Séjour' page per search results, but every fetch attempt failed (SSL certificate error on one, DNS resolution failure on the other) -- a genuine, disclosed fetch failure, not a claim the pages are wrong or don't exist. GENUINE STRUCTURAL FINDING, distinct from every other country built in this dataset to date: a real 3-tier numeric residence ladder (1yr/3yr/5yr) PLUS an unusual AGE-based eligibility ceiling stacked on top of the residence-duration gate for the top tier (under 35 at entry, extended to 40 for a Congolese family tie) -- this age-ceiling mechanic has not appeared in any other country built in this session, including Cameroon's comparable 2-tier ladder (2yr/10yr) which has no age condition."
+}

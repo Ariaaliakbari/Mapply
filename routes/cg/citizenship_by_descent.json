@@ -1,0 +1,103 @@
+{
+  "id": "cg_citizenship_by_descent",
+  "country": "CG",
+  "name": "Citizenship by Descent or Birth in Territory",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "descent",
+      "name": "Child of a Congolese parent",
+      "requirements": [
+        {
+          "id": "cgcd_congolese_parent",
+          "attribute": "has_congolese_father_or_mother",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Loi n° 35-1961 (Nationality Code), Articles 7 and 9: a child born to two Congolese parents is Congolese; a child with at least one Congolese parent (father OR mother) also qualifies, provided filiation is established -- explicitly gender-neutral on descent, and confirmed still gender-neutral in current practice per a CEDAW Committee note.",
+          "fix_path": "Establish a parental link to a Congolese father or mother via a birth certificate.",
+          "fix_time_months": null,
+          "source_id": "refworld_cg_nationality_code_1961"
+        }
+      ]
+    },
+    {
+      "id": "birth_in_territory",
+      "name": "Born in Congo with a parent also born there",
+      "requirements": [
+        {
+          "id": "cgcd_born_in_congo_parent_born_there",
+          "attribute": "born_in_congo_with_parent_born_in_congo_or_both_parents_congolese",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 8: a child born in Congo acquires nationality if either parent was also born in Congo, or if both parents are Congolese nationals born in the country.",
+          "fix_path": "Establish birth in Congo together with a parent's own Congo birth (or both parents' Congolese nationality and Congo birth).",
+          "fix_time_months": null,
+          "source_id": "refworld_cg_nationality_code_1961"
+        }
+      ]
+    },
+    {
+      "id": "majority_acquisition",
+      "name": "Born in Congo to foreign parents, habitually resident since 16",
+      "requirements": [
+        {
+          "id": "cgcd_21yo_habitual_residence_since_16",
+          "attribute": "born_in_congo_foreign_parents_habitual_residence_since_age_16",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 20: a person born in Congo to foreign parents acquires Congolese nationality upon reaching 21 years old, provided they are residing in Congo and have maintained habitual residence there since age 16.",
+          "fix_path": "Maintain habitual residence in Congo from age 16 to 21 after being born there to foreign parents.",
+          "fix_time_months": 60,
+          "source_id": "refworld_cg_nationality_code_1961"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link or place of birth", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of continuous habitual residence (majority-acquisition path only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_cg_nationality_code_1961",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1962/19977",
+      "title": "Refworld -- Loi n° 35-1961 du 20 juin 1961 portant le Code de la nationalité congolaise: descent (Art. 7/9), birth-in-territory (Art. 8), majority acquisition (Art. 20)",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "loi32_2011_dual_nationality",
+      "tier": 2,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/06/Congo-Loi-n%C2%B0-32-2011-modifiant-certaines-dispositions.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- official gazette ('PARTIE OFFICIELLE') text of Loi n° 32-2011 modifying the 1961 Nationality Code: repeals the 7th paragraph of Art. 32, adds new Art. 47 on voluntary renunciation after acquiring a foreign nationality",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Republic of Congo / Congo-Brazzaville, ISO CG). STATUS: DRAFT -- both sources are tier 2 (intergovernmental/NGO-hosted primary legal text, not .gouv.cg government domains) by this dataset's own tiering rules, and the validator requires tier-1 sourcing for a hard requirement before a route can be published; this file is correctly modeled as draft from the outset rather than requiring a later correction (unlike Cameroon's equivalent files earlier in this session, which were initially mis-marked published and had to be downgraded). GENUINE, POSITIVE STRUCTURAL FINDING: descent is explicitly gender-neutral ('father OR mother'), contrasting with Iraq's asymmetric Articles 3/4 found earlier in this dataset. dual_citizenship_allowed set to true based on the 2015 Constitution's Article 19 ('all Congolese persons have the right to change nationality or to acquire a second one') and Loi 32-2011's voluntary-renunciation-only framework, corroborated by 2019 Canadian IRB research citing an honorary consul stating dual nationality has been permitted 'without any restrictions' since 2002 -- a clear, current-practice finding. GENUINE, DISCLOSED AMBIGUITY: Loi 32-2011 repeals the 7th paragraph of the old Article 32 without this build being able to confirm what that paragraph actually said (it may have been a renunciation requirement specifically for NATURALIZING foreigners, which would be a distinct question from whether BORN Congolese citizens can hold dual nationality) -- this dataset does not resolve that ambiguity by assumption."
+}

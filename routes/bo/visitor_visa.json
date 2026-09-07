@@ -1,0 +1,104 @@
+{
+  "id": "bo_visitor_visa",
+  "country": "BO",
+  "name": "Tourism Visa / E-Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "group1_exempt",
+      "name": "Group I -- visa-exempt nationalities",
+      "requirements": [
+        {
+          "id": "bovv_group1_exempt",
+          "attribute": "nationality_in_group1",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Bolivia's official consular visa taxonomy (Ministry of Foreign Affairs, cancilleria.gob.bo) groups nationalities into three tiers: Group I does not require a Tourism Visa at all (primarily South American and other agreement-partner countries). All entrants must complete SIGEMIG online registration within 7 days of arrival (accommodation and emergency-contact details) as part of the 2026 digital-processing overhaul, and carry a yellow fever certificate if arriving from an endemic-risk area.",
+          "fix_path": "Confirm Group I status for your nationality, then complete SIGEMIG registration within 7 days of arrival.",
+          "fix_time_months": null,
+          "source_id": "cancilleria_gob_bo_visa_categories"
+        }
+      ]
+    },
+    {
+      "id": "group2_arrival",
+      "name": "Group II -- visa on arrival",
+      "requirements": [
+        {
+          "id": "bovv_group2_voa",
+          "attribute": "nationality_in_group2",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Group II nationalities (per a tier-4 travel-industry source, including China, Taiwan, and Iran) can obtain a Tourism Visa on arrival. A 2026 e-visa system was also introduced: a single-entry online visa valid for a 90-day stay, extendable once for another 90 days, applied for in advance with passport details, flight itinerary, and hotel reservation.",
+          "fix_path": "Apply for the e-visa online in advance, or obtain the visa on arrival if eligible, then complete SIGEMIG registration within 7 days.",
+          "fix_time_months": null,
+          "source_id": "travelandtourworld_bo_2026_overhaul"
+        }
+      ]
+    },
+    {
+      "id": "group3_advance",
+      "name": "Group III -- advance visa required",
+      "requirements": [
+        {
+          "id": "bovv_group3_advance",
+          "attribute": "nationality_in_group3_and_prior_digemig_consultation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Group III nationalities require a Tourism Visa obtained in advance, with prior consultation required from DIGEMIG (the national migration authority) before issuance. Reported cost around USD 160 per a tier-4 source; not independently confirmed against a fee schedule.",
+          "fix_path": "Apply through a Bolivian consulate, allowing time for DIGEMIG's prior consultation before the visa is issued.",
+          "fix_time_months": null,
+          "source_id": "travelandtourworld_bo_2026_overhaul"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Yellow fever certificate (if arriving from endemic-risk area)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "SIGEMIG registration within 7 days of arrival", "difficulty": "routine", "typical_time_days": 7 }
+  ],
+  "outcome": {
+    "duration_length": "up to 90 days, extendable once for another 90 days (e-visa); shorter for some on-arrival categories",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bo_work_permit", "bo_investor_residence", "bo_independent_means_residence", "bo_mercosur_residence"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_gob_bo_visa_categories",
+      "tier": 1,
+      "url": "https://consulados.cancilleria.gob.bo/lima/visas/",
+      "title": "Ministerio de Relaciones Exteriores del Estado Plurinacional de Bolivia (official consular portal) -- full visa-category taxonomy including Tourism Visa group structure and common document requirements",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "travelandtourworld_bo_2026_overhaul",
+      "tier": 4,
+      "url": "https://www.travelandtourworld.com/news/article/bolivia-to-effectuate-surprising-2026-visa-overhaul-e-visa-system-harsh-new-restrictions-and-what-you-need-to-know/",
+      "title": "Travel and Tour World (trade press) -- 2026 e-visa system rollout, SIGEMIG registration requirement, Group I/II/III nationality tiers",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bolivia). STATUS: DRAFT -- the visa-category taxonomy itself is tier-1 confirmed directly from Bolivia's own Foreign Ministry consular portal, but the 2026 e-visa overhaul specifics (SIGEMIG, the three nationality groups' exact country lists, fees) rest on a single tier-4 trade-press article not independently cross-confirmed against a primary decree, since migracion.gob.bo itself could not be reached (see py-style notes on py_mercosur_residence.json for the equivalent Paraguay problem -- here the failure was a certificate/hostname-mismatch SSL error specifically, not a robots block, across every attempt on that domain in this build)."
+}

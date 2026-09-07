@@ -1,0 +1,94 @@
+{
+  "id": "iq_citizenship_naturalisation",
+  "country": "IQ",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "iqcn_10yr_residence",
+          "attribute": "months_residence_in_iraq",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Nationality Law No. 26 of 2006: 10 consecutive years of residence in Iraq, age 18+, 'good repute,' and a clean criminal record. Within 90 days of approval, the applicant must take an oath of allegiance before an authorized official. Naturalized citizens are barred from holding a Parliament seat or ministerial position for 10 years after naturalization, and are PERMANENTLY barred from serving as Prime Minister or President of Iraq, regardless of how long they have held citizenship.",
+          "fix_path": "Accumulate 10 years of residence, maintain a clean record, and take the oath of allegiance within 90 days of approval.",
+          "fix_time_months": 120,
+          "source_id": "uscisguide_iq_naturalization"
+        }
+      ]
+    },
+    {
+      "id": "married_to_iraqi_man_reduced",
+      "name": "Reduced-residence route for a foreign wife married to an Iraqi man",
+      "requirements": [
+        {
+          "id": "iqcn_5yr_married_wife",
+          "attribute": "months_married_to_iraqi_husband",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "The standard 10-year residence requirement is reduced to 5 years of marriage plus residence for a foreign woman married to an Iraqi man (see iq_citizenship_by_marriage.json for the full Article 11 conditions, including the widow/divorcee exception). No equivalent reduced route is confirmed for a foreign man married to an Iraqi woman.",
+          "fix_path": "Marry an Iraqi man, reside in Iraq for 5 years with the marriage intact, and apply.",
+          "fix_time_months": 60,
+          "source_id": "abacademies_iq_marriage_nationality"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' residence (or 5 for a qualifying foreign wife)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal background check", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Oath of allegiance (within 90 days of approval)", "difficulty": "routine", "typical_time_days": 90 }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "10 years (5 years for a foreign wife of an Iraqi man)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "uscisguide_iq_naturalization",
+      "tier": 4,
+      "url": "https://www.uscisguide.com/dual-citizenship/citizenship-eligibility-requirements-in-iraq/",
+      "title": "USCIS Guide (private immigration-information site) -- standard naturalization thresholds, oath requirement, post-naturalization political-office restrictions",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "abacademies_iq_marriage_nationality",
+      "tier": 3,
+      "url": "https://www.abacademies.org/articles/wifes-acquire-husbands-nationality-through-mixedmarriage-a-comparative-study-between-international-convention-and-iraqi-law-12525.html",
+      "title": "Academic comparative-law journal -- Article 11's reduced-residence marriage route",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "mofa_gov_iq_nationality_cert",
+      "tier": 1,
+      "url": "https://mofa.gov.iq/nationality-cert/",
+      "title": "Ministry of Foreign Affairs of the Republic of Iraq (official government source) -- confirms dual citizenship is generally retained unless expressly renounced",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: DRAFT -- the standard-track numbers come from a private information site, tier 4, not independently cross-confirmed against the primary statute (moj.gov.iq timed out); the dual-citizenship confirmation IS tier 1, directly from Iraq's own MOFA. GENUINE, SPECIFIC FINDING: naturalized Iraqi citizens face a 10-year bar from Parliament/ministerial office and a PERMANENT bar from the Prime Minister or President roles -- a real, named restriction distinct from (and stricter in one respect than) Haiti's comparable 10-year political-rights bar (ht_citizenship_naturalisation.json), since Iraq's presidential/PM bar never lifts. dual_citizenship_allowed set to true, tier-1 confirmed."
+}

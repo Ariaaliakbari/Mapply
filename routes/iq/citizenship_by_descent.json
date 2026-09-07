@@ -1,0 +1,87 @@
+{
+  "id": "iq_citizenship_by_descent",
+  "country": "IQ",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "iraqi_father",
+      "name": "Child of an Iraqi father",
+      "requirements": [
+        {
+          "id": "iqcd_iraqi_father_automatic",
+          "attribute": "has_iraqi_citizen_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Nationality Law No. 26 of 2006, Article 3: a child born to an Iraqi father acquires Iraqi nationality automatically at birth, regardless of where the birth occurs.",
+          "fix_path": "Establish the parental link to an Iraqi-citizen father via a birth certificate.",
+          "fix_time_months": null,
+          "source_id": "ecoi_iq_nationality_descent"
+        }
+      ]
+    },
+    {
+      "id": "iraqi_mother_restricted",
+      "name": "Child of an Iraqi mother (restricted route)",
+      "requirements": [
+        {
+          "id": "iqcd_iraqi_mother_discretionary",
+          "attribute": "has_iraqi_citizen_mother_and_stateless_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Nationality Law No. 26 of 2006, Article 4: a person born outside Iraq to an Iraqi mother AND an unknown or stateless father may be considered Iraqi at the Minister's discretion, only if the person elects Iraqi nationality within one year of reaching the age of majority. This is markedly narrower than the father's automatic route (Article 3) -- an Iraqi mother married to a foreign father whose nationality is known cannot pass on citizenship to a child born abroad under this provision. A cited legal analysis notes this arrangement conflicts with the Iraqi Constitution's own gender-equality provisions, and that the procedural burden of proving the father's statelessness is difficult to meet in practice.",
+          "fix_path": "For a child born abroad to an Iraqi mother and a stateless/unknown-nationality father: elect Iraqi nationality within one year of reaching the age of majority, and satisfy the Minister's discretionary review.",
+          "fix_time_months": null,
+          "source_id": "ecoi_iq_nationality_descent"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of father's statelessness or unknown nationality (mother's route only)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Written election of Iraqi nationality within 1 year of majority (mother's route only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "ecoi_iq_nationality_descent",
+      "tier": 3,
+      "url": "https://www.ecoi.net/en/file/local/2007917/5cd198ad7.pdf",
+      "title": "ecoi.net (European country-of-origin-information platform, hosting legal analysis with direct quotations of Law No. 26 of 2006) -- Articles 3-4, descent asymmetry between father and mother",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "mofa_gov_iq_nationality_cert",
+      "tier": 1,
+      "url": "https://mofa.gov.iq/nationality-cert/",
+      "title": "Ministry of Foreign Affairs of the Republic of Iraq (official government source) -- confirms Law No. 26 of 2006 permits retaining Iraqi nationality alongside a foreign one",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: DRAFT -- the descent-specific articles are sourced to an analytical document quoting the primary text, tier 3 (not the raw statute itself, which was attempted via moj.gov.iq but timed out); the general dual-citizenship confirmation IS tier 1, directly from Iraq's own Ministry of Foreign Affairs. MARQUEE, CLEARLY DOCUMENTED GENDER ASYMMETRY: unlike Niger (symmetric since 1999) or Mali (partially equalized since 1995), Iraq's 2006 nationality law still treats fathers and mothers very differently for descent -- automatic for an Iraqi father regardless of birthplace, but for an Iraqi mother only available where the foreign father is STATELESS OR UNKNOWN, discretionary, and requiring an affirmative election within a year of majority. The cited source itself flags this as being in tension with Iraq's own constitutional gender-equality guarantee -- this dataset presents that observation as the source's own conclusion, not this dataset's editorializing. dual_citizenship_allowed set to true per the tier-1 MOFA source."
+}

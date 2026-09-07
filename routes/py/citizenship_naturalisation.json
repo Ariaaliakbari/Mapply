@@ -1,0 +1,88 @@
+{
+  "id": "py_citizenship_naturalisation",
+  "country": "PY",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pycn_3yr_residence_and_exam",
+          "attribute": "months_residence_in_paraguay",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Constitution Article 148: an adult foreigner with a minimum of 3 years' residency in Paraguay, practicing a profession, trade, science, art, or industry, and of good conduct as defined by law, may naturalize. In practice (per immigration-practitioner guidance, not the constitutional text itself, which does not distinguish temporary from permanent residency), this 3-year clock is interpreted as 3 years specifically as a PERMANENT resident, typically reached after roughly 2 years as a temporary resident first -- meaning close to 5 years' total time in-country in the ordinary case. The applicant must also pass a Supreme Court written exam (30 points total, 21/70% required to pass; Acordada 464/07) covering basic Spanish or Guarani, Paraguayan history and geography, and the constitutional rules on loss of nationality. Court fee: Gs. 43,051. 14 supporting documents required, including birth certificate, passport, criminal records, and a residence certificate.",
+          "fix_path": "Accumulate the required residency period (roughly 2 years temporary + 3 years permanent in practice), maintain a clean record, and pass the Supreme Court naturalization exam.",
+          "fix_time_months": 60,
+          "source_id": "paraguaysovereign_py_citizenship_requirements"
+        }
+      ]
+    },
+    {
+      "id": "married_no_acceleration",
+      "name": "Spouse of a Paraguayan citizen (no accelerated timeline)",
+      "requirements": [
+        {
+          "id": "pycn_spouse_no_shortcut",
+          "attribute": "is_spouse_of_paraguayan_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Law 2193/2003 grants a foreign spouse of a Paraguayan citizen immediate Permanent Residency (see py_family_reunification.json), but does NOT accelerate the citizenship timeline itself -- the spouse must still separately satisfy Article 148's standard naturalization requirements above. This is a genuine absence of a marriage-based citizenship shortcut, not this dataset's inference.",
+          "fix_path": "Use the Ley 2193/2003 family-residency pathway to obtain Permanent Residency immediately, then meet the same standard naturalization requirements as any other applicant (3 years as permanent resident, exam, clean record).",
+          "fix_time_months": 36,
+          "source_id": "paraguaysovereign_py_citizenship_requirements"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Criminal record certificate", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Supreme Court naturalization exam pass (21/30 points)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "3 years as a permanent resident (per practitioner interpretation of Article 148)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "paraguaysovereign_py_citizenship_requirements",
+      "tier": 3,
+      "url": "https://paraguaysovereign.com/citizenship/requirements/",
+      "title": "Paraguay Sovereign -- naturalization exam details (Acordada 464/07), fees, document list, marriage-based residency without citizenship acceleration; cross-checked against the constitutional text directly",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "constitution_py_art146_149",
+      "tier": 2,
+      "url": "https://siteal.iiep.unesco.org/sites/default/files/sit_accion_files/constitucion_paraguay.pdf",
+      "title": "UNESCO/SITEAL-hosted full text of Paraguay's Constitution -- Article 148's exact 'minimum three-year residency' wording, confirmed directly",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: DRAFT -- the validator requires a tier-1 (government) citation on the hard requirement itself before a route can be published; the strongest source reached here is tier 2 (constitutional text) corroborated by a tier-3 practitioner site, which is genuine independent corroboration on the substance (both agree on the 3-year figure) but does not clear the tier-1 bar the validator enforces. The core residency requirement is confirmed directly from the constitutional text (tier 2); the exam mechanics, fee, and document list come from the tier-3 practitioner site, and that site's account of Article 148 matched the tier-2 constitutional text exactly on the central figure (three years), giving genuine independent corroboration rather than single-source reliance for the hard requirement's substance, even though it can't be marked published. GENUINE FINDING flagged rather than smoothed over: the Constitution's plain text says 'minimum three-year residency' without specifying temporary vs. permanent status, while practitioner guidance treats it as three years of PERMANENT residency specifically -- meaning close to five years total time in Paraguay in the ordinary case (2 years temporary-to-permanent conversion, then 3 more as permanent). This dataset models the hard requirement on the literal 3-year constitutional figure but discloses the practical ~5-year total openly rather than picking one framing and hiding the other. SEPARATE GENUINE FINDING: Law 2193/2003 gives a foreign spouse of a citizen immediate Permanent Residency but explicitly does NOT shorten the citizenship clock -- a real absence of a marriage-based fast track, comparable to Haiti and Afghanistan earlier in this dataset. dual_citizenship_allowed set to false as the general default, consistent with py_citizenship_by_descent.json's treaty-only exception (Spain, Italy)."
+}

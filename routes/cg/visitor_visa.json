@@ -1,0 +1,71 @@
+{
+  "id": "cg_visitor_visa",
+  "country": "CG",
+  "name": "Tourist / Short-Stay Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cgvv_visa_or_cemac_exemption",
+          "attribute": "holds_valid_congo_entry_visa_or_cemac_nationality",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Foreigners need a valid entry visa obtained from the nearest Congolese embassy/consulate before travel (processing reported as not exceeding 15 days), a round-trip or circular ticket, a housing certificate signed by a municipal authority, and a vaccination record. CEMAC (Central African Economic and Monetary Community) nationals reportedly move visa-free, though this dataset did not independently verify that against a treaty text.",
+          "fix_path": "Apply for an entry visa at a Congolese embassy/consulate with the required supporting documents, or travel on a CEMAC-member passport.",
+          "fix_time_months": null,
+          "source_id": "openshores_cg_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport (6+ months validity)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Round-trip or circular transport ticket (non-transferable)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Housing certificate signed by a municipal authority", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Vaccination record", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30-90 days",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cg_work_permit", "cg_investor_residence", "cg_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "openshores_cg_visa_guide",
+      "tier": 3,
+      "url": "https://www.openshores.co/blog/visa-congo-brazzaville-toutes-les-options-expliquees",
+      "title": "Openshores -- Republic of Congo (Brazzaville) visa types: tourist, transit, business, work, student, investor, family reunification",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "legavox_cg_entry_residence",
+      "tier": 3,
+      "url": "https://www.legavox.fr/blog/yav-associates/conditions-pour-entrer-regulierement-republique-33839.htm",
+      "title": "Legavox (Yav & Associates) -- legal conditions for entering and residing in Republic of Congo: entry visa, housing certificate, vaccination record",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Republic of Congo / Congo-Brazzaville, ISO CG -- distinct from DR Congo [CD], already covered in this dataset). STATUS: DRAFT -- tier-3 sourced (an immigration-consultancy blog and a law-firm legal-advice blog). Republic of Congo's own government domains (interieur.gouv.cg, securite-publique.gouv.cg, economie.gouv.cg) were located via search -- each has a relevant page (e.g. a dedicated 'Titre de Séjour' page on two separate ministry sites) -- but every direct fetch attempt failed in this build: one gave an expired-SSL-certificate error, another a DNS resolution failure, another a connection timeout. This is a genuine, disclosed fetch failure, not a claim that these pages don't exist or are wrong -- but unlike Bolivia/Angola earlier in this session, NO tier-1 government source could be reached at all for this country, a real gap."
+}

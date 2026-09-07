@@ -1,0 +1,93 @@
+{
+  "id": "bo_citizenship_naturalisation",
+  "country": "BO",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bocn_3yr_residence",
+          "attribute": "months_continuous_legal_residence",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Article 142 of Bolivia's 2009 Constitution: a foreigner in legal status with more than 3 years of continuous, uninterrupted residence in Bolivia may pursue naturalization, subject to expressing intent and meeting further requirements set by law. Per secondary practitioner guidance (not independently confirmed in the primary constitutional text reached in this build), naturalization is approved by PRESIDENTIAL RESOLUTION and is explicitly NOT automatic even once the residency period is met -- a discretionary final step layered on top of the objective residency test.",
+          "fix_path": "Accumulate more than 3 years of continuous legal residence, maintain legal status throughout, and formally apply -- final approval rests on a presidential resolution, not automatic grant.",
+          "fix_time_months": 36,
+          "source_id": "lexivox_bo_constitution_2009"
+        }
+      ]
+    },
+    {
+      "id": "married_or_children_reduced",
+      "name": "Married to a Bolivian citizen, or with Bolivian children (reduced timeline)",
+      "requirements": [
+        {
+          "id": "bocn_2yr_married_or_children",
+          "attribute": "months_residence_married_to_bolivian_or_with_bolivian_children",
+          "operator": ">=",
+          "value": 24,
+          "hard": true,
+          "blocker_text": "Per secondary practitioner guidance, the 3-year standard residency requirement reduces to 2 years for a foreigner married to a Bolivian citizen or with Bolivian children -- applied on its face as gender-neutral under the 2009 Constitution, a contrast with Bolivia's own 1947 nationality law, which granted automatic nationality only to a foreign WOMAN marrying a Bolivian man (with no equivalent for a foreign man marrying a Bolivian woman) -- that older, gender-asymmetric provision appears superseded by the 2009 constitutional framework, though this build could not independently confirm the exact repeal mechanism or date.",
+          "fix_path": "Marry a Bolivian citizen or have Bolivian children, accumulate 2 years of continuous legal residence, and apply -- subject to the same presidential-resolution approval step as the standard route.",
+          "fix_time_months": 24,
+          "source_id": "goresident_bo_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous legal residence (3 years standard, 2 years if married to a citizen or with Bolivian children)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Formal declaration of intent", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "3 years continuous legal residence (2 years if married to a Bolivian citizen or with Bolivian children)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lexivox_bo_constitution_2009",
+      "tier": 2,
+      "url": "https://www.lexivox.org/norms/BO-CPE-20090207.html",
+      "title": "Lexivox -- Article 142 of the 2009 Constitution, exact 'more than three years of continuous residence' wording",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "goresident_bo_residency",
+      "tier": 3,
+      "url": "https://goresident.com/residency/bolivia",
+      "title": "GoResident -- 2-year marriage/children-reduced timeline, presidential-resolution approval mechanism, 'one of the shortest in Latin America' framing",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "lexivox_bo_1947_nationality_law",
+      "tier": 2,
+      "url": "https://www.lexivox.org/norms/BO-L-19471126-5.xhtml",
+      "title": "Lexivox -- 1947 Bolivian nationality law, historical marriage/expedited-naturalization provisions, now likely superseded",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bolivia). STATUS: DRAFT -- the core 3-year figure is confirmed directly from the 2009 constitutional text (tier 2); the marriage-reduction figure, and the fact that naturalization requires a discretionary presidential resolution rather than being automatic, come only from a tier-3 practitioner source not independently verified against implementing legislation (which this build could not locate or fetch). GENUINE, POSITIVE FINDING: Bolivia's 1947 nationality law gave automatic citizenship only to a foreign WOMAN marrying a Bolivian man (with residency and consent) -- a gender-asymmetric provision from that era. The 2009 Constitution's marriage-reduction rule, as described by the tier-3 source, applies to marriage to a Bolivian citizen of either gender, a genuine positive change in the same direction as Niger's 2014 reform found earlier in this dataset -- though this build could not confirm exactly when or how the 1947 law's gendered provision was formally superseded, so this is presented as an inference from the 2009 text's plain gender-neutral wording, not a confirmed repeal. GENUINE ABSENCE, consistent with the pattern found in Haiti, Afghanistan, and Paraguay earlier in this dataset: no distinct family-reunification residency route (separate from this citizenship-by-marriage mechanism) was found for a foreign spouse or child of a Bolivian citizen -- Bolivia's Foreign Ministry visa list does mention 'family reasons' as one purpose under the general Specific Purpose Visa, but no separate legal criteria distinct from ordinary residency-then-naturalization were found, so no standalone family_reunification.json was built for this country."
+}

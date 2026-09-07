@@ -1,0 +1,62 @@
+{
+  "id": "ly_visitor_visa",
+  "country": "LY",
+  "name": "Tourist / Entry Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "lyvv_evisa_or_visa",
+          "attribute": "holds_valid_libya_entry_visa",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An entry visa (single, multiple-entry, or collective) is issued by the competent Libyan authority with a specified expiry date. This dataset could not identify a single unified official e-visa portal -- Libya has had rival, competing administrations (Tripoli-based and eastern) since 2014, and consultancy/travel-agency sites describing an e-visa process do not agree on a single authoritative government domain, so this build relies on third-party visa-agency guides rather than a confirmed government source.",
+          "fix_path": "Apply for an entry visa through the process described by the relevant consular authority or an accredited visa agency; requirements and portals reportedly vary depending on point of entry and which administration controls it.",
+          "fix_time_months": null,
+          "source_id": "dovisa_ly_evisa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Visa application per issuing authority's requirements", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "approximately 30 days (reported by consultancy sources, not independently confirmed against a government tariff/validity schedule)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ly_work_permit", "ly_investor_residence", "ly_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "dovisa_ly_evisa_guide",
+      "tier": 4,
+      "url": "https://dovisa.com/blog/libya-e-visa-guide",
+      "title": "DoVisa -- Libya e-Visa Guide 2026: application requirements (generic visa-agency guide, not a government source)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Libya). STATUS: DRAFT -- tier-4 sourced only (a generic visa-agency guide site); no Libyan government domain could be confirmed or fetched in this build, consistent with the country's fragmented governance since 2014 (rival Tripoli-based Government of National Unity and an eastern-based administration) rather than a simple fetch-timeout as seen elsewhere in this dataset -- here the underlying question of which government's portal is authoritative is itself genuinely unresolved from open sources, not just unreachable."
+}

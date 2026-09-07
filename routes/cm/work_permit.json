@@ -1,0 +1,64 @@
+{
+  "id": "cm_work_permit",
+  "country": "CM",
+  "name": "Employer-Sponsored Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cmwp_employer_sponsorship",
+          "attribute": "has_cameroonian_employer_sponsor_and_ministry_approval",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A Cameroonian employer must initiate and sponsor the work-permit application with the Ministry of Labor and Social Security. Once approved, the foreign worker applies for a long-stay visa at a Cameroonian embassy or consulate to enter and begin employment. Required: employment contract, job description, certified qualifications, company registration documents, medical certificate, and CV. No quota or labor-market-test procedure was found described in the sources reached. Processing commonly takes 4-6 months end to end. A short-stay (tourist) visa explicitly does not permit local employment.",
+          "fix_path": "Secure a job offer from a Cameroonian employer willing to sponsor the Ministry of Labor application, then apply for the long-stay visa once approved.",
+          "fix_time_months": null,
+          "source_id": "rivermate_cm_work_permit"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract and job description", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Certified professional qualifications", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Company registration documents (employer)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cm_long_term_residence", "cm_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "rivermate_cm_work_permit",
+      "tier": 3,
+      "url": "https://rivermate.com/guides/cameroon/work-permits-and-visas",
+      "title": "Rivermate -- Ministry of Labor and Social Security process, document requirements, timeline, employer-sponsorship structure",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cameroon). STATUS: DRAFT -- no primary Ministry of Labor decree text could be located and fetched in this build, so this rests on a tier-3 relocation-services guide. pr_after_months (24) and citizenship_after_months (60) modeled from Cameroon's general residence-card ladder and naturalization framework (see cm_long_term_residence.json and cm_citizenship_naturalisation.json, both tier-2 confirmed directly from the 1997 Foreigners Law and 1968 Nationality Code respectively), not from a work-permit-specific accelerated provision -- flagged as this dataset's own inference rather than a directly stated rule for this route specifically. family_can_join set to true since Cameroon's Foreigners Law (Loi 1997/012) grants dependent children of a resident-card holder automatic derivative card status while living with and dependent on that parent (see cm_long_term_residence.json for the direct citation)."
+}

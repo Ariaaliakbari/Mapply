@@ -1,0 +1,79 @@
+{
+  "id": "py_citizenship_by_descent",
+  "country": "PY",
+  "name": "Citizenship by Birth in Territory or by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "born_in_paraguay",
+      "name": "Born in Paraguayan territory (jus soli)",
+      "requirements": [
+        {
+          "id": "pycd_born_in_paraguay",
+          "attribute": "born_in_paraguay",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 146: any person born in Paraguayan territory acquires natural Paraguayan nationality automatically, regardless of the parents' nationality.",
+          "fix_path": "Birth in Paraguayan territory confers nationality automatically; obtain a Paraguayan birth certificate as proof.",
+          "fix_time_months": null,
+          "source_id": "constitution_py_art146_149"
+        }
+      ]
+    },
+    {
+      "id": "born_abroad_paraguayan_parent",
+      "name": "Born abroad to a Paraguayan parent (jus sanguinis)",
+      "requirements": [
+        {
+          "id": "pycd_paraguayan_parent_option_at_18",
+          "attribute": "has_paraguayan_parent_and_establishes_residence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Constitution Article 146: a person born abroad to a Paraguayan parent acquires nationality either automatically (if the parent was serving the Paraguayan state abroad at the time) or, in the general case, by establishing permanent residence in Paraguay and formally exercising the nationality option from age 18 onward.",
+          "fix_path": "Establish permanent residence in Paraguay and formally elect Paraguayan nationality (from age 18) via a parental birth-certificate link.",
+          "fix_time_months": null,
+          "source_id": "constitution_py_art146_149"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parental nationality (descent route)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "constitution_py_art146_149",
+      "tier": 2,
+      "url": "https://siteal.iiep.unesco.org/sites/default/files/sit_accion_files/constitucion_paraguay.pdf",
+      "title": "UNESCO/SITEAL-hosted full text of Paraguay's Constitution -- Articles 146 (nationality by birth/descent), 147 (protection against statelessness), 148 (naturalization), 149 (dual nationality)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: DRAFT -- the validator requires tier-1 (government) sourcing for a hard requirement before a route can be published; this dataset's best-reached source is tier 2 (UNESCO/SITEAL-hosted constitutional text), not a .gov.py-hosted original, since Paraguay's own government legal-text portals (bacn.gov.py) returned 403 errors on every attempt in this build. Still a stronger footing than most descent files in this dataset's recent country builds, which have mostly relied on secondary analysis of unreachable primary texts, but tier 2 keeps this at draft by the validator's own rule. dual_citizenship_allowed set to false as the general default: Article 149 recognizes dual nationality ONLY through a reciprocal international treaty of constitutional rank (confirmed bilateral examples found: Spain, Italy) -- so this is a genuinely conditional, not blanket, allowance, modeled here as false with the treaty exception documented in this note rather than in the boolean itself, since the schema has no way to express 'true only for specific treaty-partner countries.' Article 147 separately guarantees a natural-born Paraguayan can never be stripped of nationality outright, though voluntary renunciation is permitted."
+}

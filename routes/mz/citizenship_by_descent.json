@@ -1,0 +1,79 @@
+{
+  "id": "mz_citizenship_by_descent",
+  "country": "MZ",
+  "name": "Citizenship by Descent or Birth in Territory",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "birth_in_territory",
+      "name": "Born in Mozambique",
+      "requirements": [
+        {
+          "id": "mzcd_born_in_mozambique",
+          "attribute": "born_in_mozambique_after_independence",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The 1990 Constitution makes ius soli explicit and unconditional: all individuals born in Mozambique after independence (25 June 1975) acquire citizenship automatically, with the sole exception of children of foreign diplomatic personnel.",
+          "fix_path": "Establish birth in Mozambique after 25 June 1975 (excluding children of accredited foreign diplomats).",
+          "fix_time_months": null,
+          "source_id": "globalcit_mz_citizenship_report_2019"
+        }
+      ]
+    },
+    {
+      "id": "descent",
+      "name": "Child of a Mozambican parent (born abroad)",
+      "requirements": [
+        {
+          "id": "mzcd_mozambican_parent_abroad",
+          "attribute": "has_mozambican_parent_and_born_abroad",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born abroad to a Mozambican parent (father or mother -- gender-neutral since Law 16/87 of 1987 eliminated the earlier discrimination) acquires nationality automatically if a parent was abroad in state service, or otherwise by expressly renouncing any foreign citizenship. Historically (1975-1987), the original 1975 Nationality Act only granted this via a Mozambican MOTHER if she had personally participated in the FRELIMO liberation struggle, while a Mozambican father's children were automatic citizens regardless -- this asymmetry was repealed by Law 16/87 and does not apply to anyone born after that reform.",
+          "fix_path": "Establish a parental link to a Mozambican father or mother; if born abroad and the parent was not in state service, expressly renounce any foreign citizenship to complete acquisition.",
+          "fix_time_months": null,
+          "source_id": "globalcit_mz_citizenship_report_2019"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing place of birth or parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Formal renunciation of foreign citizenship (descent-abroad route, where the parent was not in state service)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_mz_citizenship_report_2019",
+      "tier": 3,
+      "url": "https://www.ecoi.net/en/file/local/2106245/RSCAS_GLOBALCIT_CR_2019_06.pdf",
+      "title": "GLOBALCIT Country Report on Citizenship Law: Mozambique (Patrícia Jerónimo, 2019, an academic research report analysing the 1975 Nationality Act, Law 16/87, and the 1990/2004 Constitutions) -- ius soli, descent rules, historical gender asymmetry and its 1987 repeal",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mozambique). STATUS: DRAFT -- the primary source here is an ACADEMIC research report (tier 3 by this dataset's convention -- an academic institution's analysis of a law is tier 3 even when detailed and well-cited, distinct from tier 2 which is reserved for a government/intergovernmental body's own hosted text of the law itself). This dataset attempted to fetch the actual 1982 Nationality Act text directly from Refworld but the fetched page contained only two articles on nationality REACQUISITION after loss, not the substantive descent/birth/marriage/naturalization provisions -- a genuine content-access gap, not a claim the law doesn't exist. GENUINE, IMPORTANT FINDING: the report itself states that as of 2019, NO new comprehensive Nationality Act had replaced the 'outdated' 1975 legislation (as amended by Law 16/87), despite UNHCR recommendations and ministerial announcements dating back to 2012 -- this dataset could not confirm whether that remains true as of 2026, a genuinely unresolved multi-year legislative gap. dual_citizenship_allowed set to false reflecting the base rule (see mz_citizenship_naturalisation.json for the fuller, disclosed contradiction between the 1975 Act's renunciation requirement and the 2004 Constitution's technical dual-citizenship allowance)."
+}

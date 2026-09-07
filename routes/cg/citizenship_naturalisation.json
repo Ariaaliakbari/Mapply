@@ -1,0 +1,94 @@
+{
+  "id": "cg_citizenship_naturalisation",
+  "country": "CG",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cgcn_10yr_residence",
+          "attribute": "months_habitual_residence_in_congo",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Loi n° 35-1961, Articles 29 and 32: an applicant must have 10 years of habitual residence in Congo before applying, be at least 18 years old, of sound mind and physical health, of good character (excludes serious criminal convictions), demonstrate 'assimilation à la communauté congolaise,' take an oath before a competent magistrate, and explicitly renounce their former nationality. Loi n° 32-2011 later repealed the 7th paragraph of Article 32 without this dataset being able to confirm what that paragraph contained -- it may have altered this renunciation requirement specifically for naturalizing foreigners, a genuine unresolved ambiguity in the source material.",
+          "fix_path": "Accumulate 10 years of habitual residence in Congo, meet the age/character/assimilation conditions, and take the naturalization oath.",
+          "fix_time_months": 120,
+          "source_id": "refworld_cg_nationality_code_1961"
+        }
+      ]
+    },
+    {
+      "id": "foreign_wife_of_congolese",
+      "name": "Foreign woman marrying a Congolese man",
+      "requirements": [
+        {
+          "id": "cgcn_foreign_wife_5yr_marriage",
+          "attribute": "months_common_residence_married_to_congolese_man",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Article 18: a foreign woman who marries a Congolese man acquires Congolese nationality after 5 years of common residence with him in Congo -- materially faster than the 10-year standard track. This dataset found NO equivalent automatic-acquisition provision for a foreign man marrying a Congolese woman; he would need to use the standard naturalization track. This is a real, disclosed gender asymmetry, not this dataset's assumption -- it joins the same pattern found for Cameroon, Mali, Niger, and Iraq earlier in this dataset.",
+          "fix_path": "As a foreign woman, marry a Congolese man and maintain 5 years of common residence with him in Congo.",
+          "fix_time_months": 60,
+          "source_id": "refworld_cg_nationality_code_1961"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' habitual residence (standard track)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate and proof of 5 years' common residence (marriage-based track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "10 years habitual residence (standard track), or 5 years common residence for a foreign wife of a Congolese man",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_cg_nationality_code_1961",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1962/19977",
+      "title": "Refworld -- Loi n° 35-1961 du 20 juin 1961 portant le Code de la nationalité congolaise: naturalization conditions (Art. 29/32), marriage-based acquisition for a foreign wife (Art. 18)",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "loi32_2011_dual_nationality",
+      "tier": 2,
+      "url": "http://citizenshiprightsafrica.org/wp-content/uploads/2016/06/Congo-Loi-n%C2%B0-32-2011-modifiant-certaines-dispositions.pdf",
+      "title": "Citizenship Rights in Africa Initiative -- official gazette text of Loi n° 32-2011: repeal of Art. 32 para. 7, new Art. 47 on voluntary renunciation",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "ecoi_irb_cg_dual_nationality_2019",
+      "tier": 3,
+      "url": "https://www.ecoi.net/en/document/2028581.html",
+      "title": "ecoi.net (hosting a Canadian Immigration and Refugee Board Response to Information Request) -- dual nationality recognized without restriction in Republic of Congo since 2002; voluntary renunciation process via consulate",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Congo-Brazzaville). STATUS: DRAFT -- primary sources are tier 2 (Refworld, citizenshiprightsafrica.org, both hosting genuine primary/official-gazette legal text but not .gouv.cg domains); the validator requires tier-1 sourcing for a hard requirement before a route can be published, so this stays draft, correctly modeled from the start rather than needing a later correction. GENUINE, CONFIRMED GENDER ASYMMETRY in the marriage-based track (foreign wife of a Congolese man only), disclosed rather than resolved by assumption. dual_citizenship_allowed set to true per the 2015 Constitution's Article 19 and the 2019 IRB finding that dual nationality has been permitted 'without any restrictions' since 2002 -- but the standard naturalization track's own text (Art. 32) still explicitly requires an oath and 'renunciation of former nationality,' and this dataset could not confirm whether the 2011 repeal of Art. 32's 7th paragraph changed that renunciation requirement specifically for naturalizing foreigners (as opposed to born-Congolese citizens acquiring a second nationality, which is clearly permitted). This tension in the source material is disclosed, not resolved by assumption."
+}

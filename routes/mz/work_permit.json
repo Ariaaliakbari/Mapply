@@ -1,0 +1,62 @@
+{
+  "id": "mz_work_permit",
+  "country": "MZ",
+  "name": "Work Permit (Quota-Based Authorization)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mzwp_employer_within_quota_or_labour_market_test",
+          "attribute": "employer_hire_falls_within_foreign_worker_quota_or_clears_labour_market_test",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Mozambique's quota system caps the share of foreign workers by company size: 5% of the workforce for large companies (100+ workers), 8% for medium companies (10-99 workers), and 10% for small companies (fewer than 10 workers). Hiring outside these quotas requires an Authorization Regime application, where the employer must demonstrate that no qualified Mozambican national is available or that there are insufficient qualified nationals. A separate Short-Term Work Permit exists for work not exceeding 90 days per year involving 'scientific or highly specialised professional technical knowledge,' requiring employer notification with identification documents, company license, and proof of payment of one minimum wage for the relevant sector. The oil and mining sector follows separate rules under Decree No. 63/2011.",
+          "fix_path": "Secure employer sponsorship within the applicable company-size quota, or have the employer clear the labour-market test for an out-of-quota hire.",
+          "fix_time_months": null,
+          "source_id": "cdh_mz_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer quota-availability or labour-market-test clearance", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the residence authorization obtained; a separate short-term permit covers up to 90 days/year",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mz_long_term_residence", "mz_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cdh_mz_work_permits",
+      "tier": 3,
+      "url": "https://www.cliffedekkerhofmeyr.com/en/guides/africa-corporate/mozambique/work-permits/what-are-the-requirements-for-obtaining-a-work-permit-please-provide-the-requirements-for-each-class-of-work-permit-if-applicable.html",
+      "title": "Cliffe Dekker Hofmeyr (law firm) -- Mozambique work permit classes: quota system by company size, short-term permit, authorization regime",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mozambique). STATUS: DRAFT -- tier 3 sourced (a corporate law firm's Africa guide); no Mozambican government labour-ministry text could be fetched directly in this build. GENUINE, GRANULAR QUOTA FINDING: unlike Bolivia's flat 15% foreign-worker cap or Angola's flat 30% cap (both found earlier in this dataset), Mozambique tiers its cap by COMPANY SIZE (5%/8%/10% for large/medium/small companies respectively) -- the most granular foreign-labour quota structure found in this dataset to date. pr_after_months/citizenship_after_months are tied to the general 10-year residence/naturalization figures found in mz_long_term_residence.json and mz_citizenship_naturalisation.json, not a work-permit-specific accelerated path."
+}

@@ -1,0 +1,96 @@
+{
+  "id": "ly_citizenship_by_descent",
+  "country": "LY",
+  "name": "Citizenship by Descent or Birth in Territory",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "descent_via_father",
+      "name": "Child of a Libyan father",
+      "requirements": [
+        {
+          "id": "lycd_libyan_father",
+          "attribute": "has_libyan_father",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Law No. 24 of 2010, Article 3(a): any person born in Libya to a Libyan father is Libyan. Article 3(b) extends this to a person born OUTSIDE Libya to a Libyan father, provided the birth is registered within one year. This transmission is automatic and unconditional.",
+          "fix_path": "Establish paternal filiation to a Libyan father via a birth certificate (registered within 1 year of birth if born abroad).",
+          "fix_time_months": null,
+          "source_id": "globalcit_ly_nationality_law_24_2010"
+        }
+      ]
+    },
+    {
+      "id": "descent_via_mother_exceptional",
+      "name": "Child of a Libyan mother, father unknown or stateless",
+      "requirements": [
+        {
+          "id": "lycd_libyan_mother_father_unknown_or_stateless",
+          "attribute": "has_libyan_mother_and_father_unknown_stateless_or_parents_unknown",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 3(c): nationality passes through a Libyan mother only in limited circumstances -- where the father's nationality is unknown, the father was without a nationality, or both parents are unknown (a foundling-type case). This is NOT a general mother-to-child transmission right equivalent to Article 3(a)'s father-based rule -- a materially starker gender asymmetry than the marriage-based asymmetries found in other countries this dataset (e.g. Cameroon, Congo-Brazzaville, Iraq), because here the asymmetry sits in the DESCENT rule itself, not only in a marriage-based acquisition track.",
+          "fix_path": "Establish maternal filiation to a Libyan mother where the father's nationality is unknown, the father is stateless, or both parents are unknown.",
+          "fix_time_months": null,
+          "source_id": "globalcit_ly_nationality_law_24_2010"
+        }
+      ]
+    },
+    {
+      "id": "libyan_mother_foreign_father_discretionary",
+      "name": "Child of a Libyan mother married to a non-Libyan father (discretionary)",
+      "requirements": [
+        {
+          "id": "lycd_libyan_mother_foreign_father_discretionary",
+          "attribute": "has_libyan_mother_married_to_non_libyan_father_and_granted_by_regulation",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 11: a child of a Libyan mother married to a non-Libyan father 'may be granted' Libyan nationality through a regulatory procedure -- this is explicitly discretionary, not an automatic entitlement, and this dataset could not locate the implementing regulation describing the actual criteria or approval rate.",
+          "fix_path": "Apply through the regulatory procedure referenced in Article 11; the specific implementing criteria could not be confirmed in this build.",
+          "fix_time_months": null,
+          "source_id": "globalcit_ly_nationality_law_24_2010"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing paternal or (exceptional) maternal filiation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of father's unknown nationality or statelessness (exceptional maternal route only)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_ly_nationality_law_24_2010",
+      "tier": 2,
+      "url": "https://data.globalcit.eu/NationalDB/docs/Libya-Nationality-Law-No-24-2010%20%5BENGLISH%5D.pdf",
+      "title": "Global Citizenship Observatory (GLOBALCIT, an EU-affiliated academic research consortium) -- English translation of Libya's Law No. 24 of 2010 on Libyan Nationality: descent (Art. 3), discretionary maternal transmission (Art. 11), naturalization (Art. 9/10), dual nationality restrictions (Art. 5)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Libya). STATUS: DRAFT -- tier 2 (an academic/research-consortium host of an unofficial English translation, not a .gov.ly domain); the validator requires tier-1 sourcing for a hard requirement before publishing, so this is correctly modeled as draft from the outset. GENUINE, SEVERE GENDER ASYMMETRY -- the starkest found in this dataset to date: unlike every other country built this session (where descent itself is gender-neutral and only marriage-based citizenship acquisition is asymmetric), Libya's DESCENT rule itself favors the father -- a Libyan father transmits nationality automatically and unconditionally, while a Libyan mother only transmits it in narrow exceptional circumstances (father unknown/stateless, or both parents unknown), with the broader case of a Libyan mother married to a known foreign father left to full government discretion (Article 11) rather than any entitlement. dual_citizenship_allowed set to false per Article 5 (voluntary acquisition of a foreign nationality without prior government approval triggers deprivation of Libyan nationality) -- though Article 3(b) creates a narrow, disclosed exception for a minor child born abroad to a Libyan father, who is not automatically deprived and may choose the foreign nationality only upon reaching adulthood."
+}

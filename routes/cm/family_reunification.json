@@ -1,0 +1,62 @@
+{
+  "id": "cm_family_reunification",
+  "country": "CM",
+  "name": "Resident Card for Spouse of a Cameroonian Citizen",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cmfr_18mo_married_to_citizen",
+          "attribute": "months_married_to_cameroonian_citizen",
+          "operator": ">=",
+          "value": 18,
+          "hard": true,
+          "blocker_text": "Law No. 1997/012: a foreigner married for at least 18 months to a Cameroonian citizen is automatically eligible for a resident card, a materially faster and more certain route than the general residence-authorization ladder. The law separately mandates a decree to detail full family-reunification procedures for other family members (parents, adult children, etc.) beyond this direct spousal provision, but this dataset could not locate or fetch that implementing decree's text to confirm what it covers.",
+          "fix_path": "Marry a Cameroonian citizen and maintain the marriage for at least 18 months, then apply for the resident card.",
+          "fix_time_months": 18,
+          "source_id": "refworld_cm_law_1997_012"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 18 months' marriage duration", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years, renewable (regular resident card)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 72,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "18 months of marriage to a Cameroonian citizen",
+    "switchable_to": ["cm_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "refworld_cm_law_1997_012",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1997/fr/13735",
+      "title": "Refworld -- Law No. 1997/012's automatic resident-card eligibility for a foreigner married 18+ months to a Cameroonian citizen",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cameroon). STATUS: DRAFT -- confirmed directly from the primary statute text, but hosted on Refworld (tier 2 by this dataset's rules); the validator requires tier-1 (government) sourcing for a hard requirement before a route can be published, and no Cameroonian government source for Law 1997/012 was reached, so this stays draft despite the finding itself being solid. citizenship_after_months set to 0 here because the Nationality Code's marriage-based citizenship provision (see cm_citizenship_naturalisation.json) applies WITHOUT the 5-year naturalization residency requirement for a qualifying foreign spouse, per Refworld's summary of the 1968 Nationality Code -- but that provision is explicitly gender-asymmetric (available to a foreign WOMAN marrying a Cameroonian man, with no equivalent found for a foreign man marrying a Cameroonian woman), a real, disclosed asymmetry carried over into this route's citizenship_after_months figure with that caveat: it applies as described only to the gender-qualifying case. GENUINE, DISCLOSED GAP: the underlying law mandates a further decree to cover family reunification for relatives beyond a direct spouse (parents, adult children), which this build could not locate or fetch -- so this dataset does not claim broader family-reunification coverage than the spousal provision it could actually confirm."
+}

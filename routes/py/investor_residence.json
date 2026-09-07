@@ -1,0 +1,78 @@
+{
+  "id": "py_investor_residence",
+  "country": "PY",
+  "name": "Foreign Investor Permanent Residency (SUACE)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pyir_70k_investment_5_jobs",
+          "attribute": "usd_invested_and_local_jobs_created",
+          "operator": ">=",
+          "value": 70000,
+          "hard": true,
+          "blocker_text": "To obtain the Constancia de Inversionista Extranjero from the Vice-Ministry of Industry and Commerce (via the SUACE one-stop business window), the applicant must commit to investing a minimum of USD 70,000 in the Paraguayan economy AND create at least 5 professional/technical-level local jobs, both completed within a maximum of 24 months. (A widely-republished tier-3 summary claims the USD 70,000 can be spread over 10 years -- this build's tier-1 source directly contradicts that, stating a 24-month completion window for both the investment and the job-creation commitment; this dataset follows the tier-1 figure.) The Constancia then supports a Permanent Residency application at the Dirección Nacional de Migraciones (DNM), requiring apostilled/legalized birth and civil-status certificates, criminal background checks (home country, country of residence, INTERPOL, and Paraguayan police), a local police life-and-residence certificate, and a sworn constitutional-compliance declaration. The resulting Cedula is permanent but must be physically renewed every 10 years. Fees confirmed directly from the official document: approximately Gs. 2,783,457-2,905,929 total (residency plus radicacion certificate).",
+          "fix_path": "Apply for the Constancia de Inversionista Extranjero through SUACE, commit USD 70,000 and 5 local jobs within 24 months, then file the Permanent Residency application at DNM with the required apostilled documents.",
+          "fix_time_months": 24,
+          "source_id": "suace_gov_py_constancia_requisitos"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Constancia de Inversionista Extranjero (MIC/SUACE)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Apostilled birth and civil-status certificates", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Criminal background checks (origin country, residence country, INTERPOL, Paraguayan police)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Local police life-and-residence certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite (Cedula renewed every 10 years)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 0,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "6 months per year during the 3-year permanent-residency clock before naturalization eligibility (per tier-3 summary; not independently confirmed in the tier-1 requirements document)",
+    "switchable_to": ["py_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "suace_gov_py_constancia_requisitos",
+      "tier": 1,
+      "url": "https://suace.gov.py/wp-content/uploads/2025/09/REQUISITOS-CONSTANCIA-DEFINITIVO.pdf",
+      "title": "SUACE (Sistema Unificado de Apertura y Cierre de Empresas, Vice-Ministry of Industry and Commerce) -- official Constancia de Inversionista Extranjero requirements: USD 70,000 minimum investment, 5-job creation, 24-month completion window",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "suace_gov_py_permanent_residency_docs",
+      "tier": 1,
+      "url": "https://www.suace.gov.py/wp-content/uploads/2025/05/REQUISITOS_2024.pdf",
+      "title": "SUACE -- official permanent residency document checklist and fees for foreign investors under Ley 6984/22",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "goparaguay_py_suace_program",
+      "tier": 3,
+      "url": "https://goparaguay.co/en/blog/paraguay-residency-by-investment-suace-program",
+      "title": "GoParaguay -- SUACE program walkthrough, process timeline, naturalization pathway (used only for the disputed 10-year framing and the 3-year/6-month-presence naturalization claim, both flagged as unconfirmed against the tier-1 source)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: PUBLISHED -- this is the strongest-sourced Paraguay route in this build: the hard requirement's core figures (USD 70,000, 5 jobs, 24-month window) were read directly from an official suace.gov.py PDF, not paraphrased from a tier-3 site. GENUINE, CONFIRMED STALE/WRONG-FIGURE CATCH, consistent with this dataset's recurring thesis: a widely-syndicated tier-3 summary (goparaguay.co, and mirrored on other tier-3/4 investor-migration sites found during this build) describes the USD 70,000 as payable 'spread over 10 years,' but the primary SUACE document states both the investment and the job-creation commitment must be completed within 24 months -- a materially different and stricter timeline. This dataset follows the tier-1 figure and flags the discrepancy rather than picking whichever number appeared more often. pr_after_months set to 0 since the SUACE track grants Permanent Residency directly (no separate temporary-residency period), unlike the general work-permit route. citizenship_after_months (36) and the 6-months-per-year presence requirement come only from the tier-3 source and were NOT independently confirmed in the tier-1 documents reached, which covered residency mechanics but not the onward citizenship timeline -- disclosed as a gap rather than presented as tier-1-confirmed."
+}

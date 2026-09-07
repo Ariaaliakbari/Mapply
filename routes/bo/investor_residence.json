@@ -1,0 +1,69 @@
+{
+  "id": "bo_investor_residence",
+  "country": "BO",
+  "name": "Multiple Visa -- Investment and Business Activity",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "boir_investment_or_business_activity",
+          "attribute": "engaged_in_investment_or_business_activity_in_bolivia",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Per Bolivia's own Foreign Ministry consular portal, the 'Visa Múltiple' authorizes repeated entry/exit for investment and business activities, valid 1 year, with stays not exceeding 90 consecutive days per entry. NO minimum investment amount is specified anywhere this dataset could find -- one tier-4 legal-services source states explicitly that 'Bolivia doesn't require a minimum investment amount' for this category, a genuine and disclosed absence rather than an unresearched gap. This is a materially different structure from Paraguay's SUACE program (a fixed USD 70,000 threshold with a named job-creation requirement) -- Bolivia's investor route appears to rest on demonstrating genuine business/investment activity rather than a quantified capital bar.",
+          "fix_path": "Demonstrate genuine investment or business activity in Bolivia and apply for the Visa Múltiple at a consulate.",
+          "fix_time_months": null,
+          "source_id": "cancilleria_gob_bo_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Evidence of investment or business activity", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable (90 consecutive days per entry)",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "max 90 consecutive days per entry",
+    "switchable_to": ["bo_independent_means_residence"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_gob_bo_visa_categories",
+      "tier": 1,
+      "url": "https://consulados.cancilleria.gob.bo/lima/visas/",
+      "title": "Bolivian Foreign Ministry consular portal -- confirms the Visa Múltiple category for investment/business, its 1-year/90-day structure",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "armenianlawyer_bo_investor_visa",
+      "tier": 4,
+      "url": "https://armenian-lawyer.com/business-immigration/bolivias-specific-purpose-visa-the-gateway-to-residency-for-investors-and-retirees/",
+      "title": "Armenian Lawyer (immigration-law blog) -- explicit statement that Bolivia requires no minimum investment amount for investor entry",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bolivia). STATUS: DRAFT -- the visa category's existence and basic terms are tier-1 confirmed, but this route does not lead anywhere: it is a repeat-entry business/investment visa capped at 90 days per stay per year, NOT a residency track (unlike bo_independent_means_residence.json, which does convert to permanent residency and eventual citizenship). This dataset found no evidence of an investor-specific path to permanent residency or citizenship in Bolivia comparable to Paraguay's SUACE program -- an investor who wants actual residency appears to use the general independent-means/passive-income route instead (see bo_independent_means_residence.json), not this one. leads_to_pr/leads_to_citizenship set to false accordingly, and switchable_to points to the residency-track route rather than to naturalization directly. This is a genuinely different market position from every other 'business' category file built earlier in this session (Iraq's KRG investor confirmation, Paraguay's SUACE, Afghanistan's not-yet-implemented proposal) -- Bolivia's is a real, currently operative visa with essentially no investment bar, but also with no residency payoff attached to it."
+}

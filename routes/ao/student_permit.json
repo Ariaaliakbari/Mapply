@@ -1,0 +1,62 @@
+{
+  "id": "ao_student_permit",
+  "country": "AO",
+  "name": "Study Visa",
+  "category": "study",
+  "status": "published",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aosp_enrolled_academic_or_professional_program",
+          "attribute": "enrolled_in_academic_or_professional_training_program",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Per Angola's Migration and Foreigners Service (SME), the Study Visa is issued for academic programs or professional training, valid 60 days before use, and permits a one-year stay (renewable) with multiple entries. It allows internship-related work only, no general employment.",
+          "fix_path": "Secure enrollment in an academic program or professional training course in Angola, then apply for the Study Visa at a consulate.",
+          "fix_time_months": null,
+          "source_id": "sme_gov_ao_vistos"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of enrollment", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid 1+ year with 4+ blank pages", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ao_work_permit", "ao_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "sme_gov_ao_vistos",
+      "tier": 1,
+      "url": "https://www.sme.gov.ao/ao/perguntas-frequentes/vistos/",
+      "title": "Serviço de Migração e Estrangeiros (SME) -- official Study Visa category: purpose, validity, renewal, internship-only work rights",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Angola). STATUS: PUBLISHED -- read directly from Angola's own migration authority. work_rights set to 'restricted' since only internship-related work tied to the study program is permitted, not general employment. family_can_join set to false at this file's outcome level since a student's family joins through the separate Visto de Permanência Temporária mechanism (ao_family_reunification.json), which explicitly lists family accompaniment of study-visa holders as one of its qualifying categories."
+}

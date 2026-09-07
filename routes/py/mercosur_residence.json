@@ -1,0 +1,70 @@
+{
+  "id": "py_mercosur_residence",
+  "country": "PY",
+  "name": "MERCOSUR Residence Agreement Residency",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pymr_nationality_of_member_state",
+          "attribute": "is_national_of_mercosur_member_or_associate_state",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Under the MERCOSUR Residence Agreement (ratified by Paraguay as Ley 3565/08), nationals of member states (Argentina, Brazil, Bolivia, Paraguay, Uruguay) and associated states (Chile, Colombia, Ecuador, Peru) can obtain temporary residence in Paraguay with 'no requirement other than nationality' -- a valid passport, birth certificate, and negative criminal-record certificate. This gives an initial 2-year temporary residence, convertible to permanent status before it expires. Migraciones runs a dedicated MERCOSUR permanent-residency track separate from the general permanent-residency process, confirming this is treated as a distinct legal route domestically, not just an informal shortcut.",
+          "fix_path": "Present a valid passport, birth certificate, and clean criminal record as a national of a MERCOSUR member or associated state to obtain temporary residence, then convert to permanent status before the 2-year period expires.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_mercosur_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Negative criminal record certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years temporary, convertible to permanent before expiry",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["py_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "wikipedia_mercosur_citizenship",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Citizenship_of_the_Mercosur",
+      "title": "Wikipedia -- MERCOSUR Residence Agreement member/associated states, rights granted, application requirements, 2-year-to-permanent conversion",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "migraciones_gov_py_mercosur_page_reference",
+      "tier": 3,
+      "url": "https://migraciones.gov.py/residencia-permanente-mercosur/",
+      "title": "Dirección General de Migraciones -- dedicated MERCOSUR permanent-residency page (URL and existence confirmed via search indexing; full page content could not be fetched due to a persistent robots/timeout block on the migraciones.gov.py domain across this entire build)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: DRAFT -- the migraciones.gov.py domain returned robots/connection-timeout errors on every single attempt across this entire Paraguay build (temporary residency, general permanent residency, and this MERCOSUR-specific page all failed identically), a systemic access problem distinct from the SUACE subdomain (suace.gov.py), which loaded successfully and let py_investor_residence.json reach published status. This dataset confirms the MERCOSUR page's URL and existence via search indexing but was not able to read its content, so this route rests on a tier-4 encyclopedic summary of the underlying international agreement instead. GENUINE, SIGNIFICANT FINDING: this is arguably Paraguay's most consequential single route by volume -- it applies automatically to citizens of 4 other full member states and 4 associated states (effectively most of South America) with no other qualifying condition, a scale of automatic reciprocal access not seen elsewhere in this dataset. citizenship_after_months (60) modeled from the general naturalization framework, not a MERCOSUR-specific accelerated citizenship provision -- none was found."
+}

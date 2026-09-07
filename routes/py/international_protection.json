@@ -1,0 +1,62 @@
+{
+  "id": "py_international_protection",
+  "country": "PY",
+  "name": "Refugee Status Determination (CONARE)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "pyip_conare_determination",
+          "attribute": "meets_refugee_or_cartagena_definition",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Paraguay has a genuine domestic refugee law -- Refugee Law No. 1938 (2002) -- administered by CONARE (the National Commission for Refugees), a real, named government eligibility body, not an outside-the-law UNHCR-only process as found for several other countries in this dataset. The law applies both the 1951 Refugee Convention's traditional persecution-based definition AND the broader 1984 Cartagena Declaration definition (covering generalized violence, foreign aggression, internal conflict, and massive human rights violations, common in Latin American refugee law but stricter/absent elsewhere in this dataset). Guaranteed protections include non-refoulement, confidentiality, and family unity. Paraguay ratified the 1951 Convention and 1967 Protocol in 1970, and acceded to the 1954 and 1961 Statelessness Conventions in 2012 -- notably becoming, in 2018, the first South American country to adopt a dedicated statelessness-determination framework, addressing possible statelessness in children born abroad to Paraguayan parents.",
+          "fix_path": "File a refugee status claim with CONARE, which determines eligibility under either the 1951 Convention definition or the broader 1984 Cartagena Declaration definition.",
+          "fix_time_months": null,
+          "source_id": "unhcr_rimap_py_country_page"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "CONARE registration record", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, tied to continued protection needs",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["py_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "unhcr_rimap_py_country_page",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/countries/paraguay",
+      "title": "UNHCR RIMAP -- Paraguay's Refugee Law 1938 (2002), CONARE, 1951 Convention + 1984 Cartagena Declaration standards, 2018 statelessness framework (first in South America)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: DRAFT -- source is tier 2 (UNHCR-hosted), not the primary statute text itself (Refugee Law 1938/2002 could not be located and fetched directly in this build). GENUINE, POSITIVE STRUCTURAL FINDING, a real contrast with several countries built earlier in this dataset (Algeria, Haiti, Cuba, Afghanistan): Paraguay has an actual named domestic refugee law and a real government eligibility body (CONARE), applying both the standard 1951 Convention definition and the broader, region-specific 1984 Cartagena Declaration definition -- not a UNHCR-only process running outside state law. Paraguay's 2018 statelessness-determination framework is also confirmed as a genuine regional first (per the source), not this dataset's characterization. work_rights/study_rights set to 'full' as the general expectation for a recognized refugee under a functioning domestic framework, though this specific detail was not independently itemized in the source and should be treated as this dataset's reasonable inference from the framework's overall description, not a directly quoted provision. citizenship_after_months modeled on the general naturalization framework (see py_citizenship_naturalisation.json), not a refugee-specific accelerated provision -- none was found."
+}

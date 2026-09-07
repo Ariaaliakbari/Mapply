@@ -1,0 +1,64 @@
+{
+  "id": "iq_family_reunification",
+  "country": "IQ",
+  "name": "Family Reunification Residency Card (Kurdistan Region)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "kri_spouse",
+      "name": "Kurdistan Region spousal route",
+      "requirements": [
+        {
+          "id": "iqfr_kri_spouse_residency_card",
+          "attribute": "is_spouse_of_iraqi_citizen_krg",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Kurdistan Regional Government e-services (khzmat.gov.krd): a family-reunification residency card is available where one spouse is Iraqi and resides in the Kurdistan Region with residency support, and the other is a foreign national. Required: the Iraqi spouse's National Identity Card, Information Card, and residency-support documentation; the foreign spouse's passport (6+ months validity) and two photos; and a marriage contract from an Iraqi court, or a foreign marriage contract authenticated by the Iraqi Embassy and Ministry of Foreign Affairs. The foreign spouse must pass medical testing for HIV, hepatitis B/C, malaria, and bilharzia. If the foreign spouse is outside Iraq, a pre-entry visa is required first, and the Iraqi spouse must verify the foreign spouse's identity through the Immigration Administration's legal department. Processing takes 2 days. Fees: 25,000 IQD annual residency fee plus 10,000 IQD administrative fee. The card is valid 1-3 years.",
+          "fix_path": "Gather the Iraqi spouse's ID documents and the authenticated marriage contract, complete the foreign spouse's medical tests, and file with the Kurdistan Region immigration authority -- a pre-entry visa is needed first if the foreign spouse is still abroad.",
+          "fix_time_months": null,
+          "source_id": "khzmat_krg_family_reunification"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Iraqi spouse's National Identity Card and Information Card", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Marriage contract (Iraqi-court or authenticated foreign contract)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical test results (HIV, hepatitis B/C, malaria, bilharzia)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid 6+ months plus two photos", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years from issuance",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "khzmat_krg_family_reunification",
+      "tier": 1,
+      "url": "https://services.gov.krd/en/service/moi-54-en",
+      "title": "Kurdistan Regional Government official e-services portal (khzmat) -- family-reunification residency card requirements, fees, processing time, validity",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: PUBLISHED -- hard requirement sourced directly to the Kurdistan Regional Government's own official services portal, tier 1. GENUINE FINDING: this is a REGIONAL (Kurdistan Region), not federal, process -- federal Iraq's equivalent family-reunification mechanism for foreign spouses of Iraqi citizens was not independently confirmed with comparable specificity in this build (see iq_citizenship_by_marriage.json for the separate, federal, citizenship-track spousal naturalization process under Law No. 26 of 2006, which is a different mechanism from this residency card). citizenship_after_months set to 60, reflecting the reduced 5-year marriage-based naturalization track (see iq_citizenship_by_marriage.json), not an automatic conversion from this card specifically. The 2-day processing time is unusually fast compared to most other countries in this dataset. dual_citizenship_allowed set to true per Iraq's Ministry of Foreign Affairs (tier 1, cited fully in the citizenship files). family_can_work left null: not addressed by the source."
+}

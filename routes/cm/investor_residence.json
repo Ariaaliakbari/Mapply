@@ -1,0 +1,63 @@
+{
+  "id": "cm_investor_residence",
+  "country": "CM",
+  "name": "Business Owner Residence Permit",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cmir_business_registration_and_taxpayer_card",
+          "attribute": "operates_registered_cameroonian_business_with_taxpayer_card",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign business owner applies with a residence certificate (issued by local administrative/police authority), a 3-month entry visa, the company's taxpayer card, and a company profile. Initial approval grants a temporary resident card; the (renewable) permanent-track permit follows roughly 3 months later, valid 2 years. No minimum capital or investment threshold was found in the sources reached -- the requirement appears to rest on operating a genuinely registered Cameroonian business rather than a quantified capital bar.",
+          "fix_path": "Register a business in Cameroon with a taxpayer card, obtain a residence certificate and 3-month entry visa, then apply for the business-owner residence card.",
+          "fix_time_months": 3,
+          "source_id": "cameroonvisainfo_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company taxpayer card and profile", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Residence certificate from local authority", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Proof of tax/revenue payment", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years, renewable",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 72,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "6 years uninterrupted residence for permanent-resident card eligibility",
+    "switchable_to": ["cm_long_term_residence", "cm_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cameroonvisainfo_residency",
+      "tier": 3,
+      "url": "https://cameroon-visa.info/residency-in-cameroon/",
+      "title": "Cameroon Visa Info -- business-owner residence-card process, document requirements, no stated capital threshold",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cameroon). STATUS: DRAFT -- tier-3 sourced only; no Ministry of Commerce or investment-promotion-agency primary text was located and fetched in this build (unlike, say, Bolivia's or Angola's investor routes, which had at least partial tier-1 confirmation). GENUINE, DISCLOSED GAP: no minimum investment/capital threshold was found anywhere in this build -- the qualifying condition appears to be genuine business registration and tax standing rather than a quantified bar, but this dataset cannot rule out that a threshold exists in a primary text it could not reach. pr_after_months (72) reflects Cameroon's general 6-year uninterrupted-residence rule for permanent-resident status under the 1997 Foreigners Law (see cm_long_term_residence.json), applied here as the general framework this route would feed into, not a business-specific accelerated path."
+}

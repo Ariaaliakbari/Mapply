@@ -1,0 +1,79 @@
+{
+  "id": "ao_family_reunification",
+  "country": "AO",
+  "name": "Temporary Stay Visa for Family Accompaniment (Visto de Permanência Temporária)",
+  "category": "family",
+  "status": "published",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "spouse_of_citizen",
+      "name": "Spouse of an Angolan citizen",
+      "requirements": [
+        {
+          "id": "aofr_spouse_of_angolan_citizen",
+          "attribute": "is_spouse_of_angolan_citizen",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Per Angola's own consulate in Lisbon, the Visto de Permanência Temporária explicitly covers spouses of Angolan citizens as a qualifying category, alongside family members of valid residency-authorization holders and family members accompanying holders of study, medical-treatment, investor, or work visas. The visa must be used within 60 days of issuance, permits stays of up to 365 days (renewable until the underlying sponsoring reason concludes), and allows multiple entries.",
+          "fix_path": "Apply at an Angolan consulate as the spouse of an Angolan citizen, submitting the marriage certificate and standard supporting documents.",
+          "fix_time_months": null,
+          "source_id": "consuladogeral_angola_pt_permanencia_temporaria"
+        }
+      ]
+    },
+    {
+      "id": "family_of_resident",
+      "name": "Family member of a residency-authorization or sponsoring-visa holder",
+      "requirements": [
+        {
+          "id": "aofr_family_of_resident_or_visa_holder",
+          "attribute": "is_family_member_of_resident_or_sponsoring_visa_holder",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The same Visto de Permanência Temporária category also covers family members accompanying a holder of a study, medical-treatment, investor, or work visa, and family members of anyone holding a valid Angolan residency authorization -- confirmed directly on the same official consular page as the spouse-of-citizen route above.",
+          "fix_path": "Apply at an Angolan consulate as a qualifying family member of a residency-authorization holder or of a study/medical/investor/work visa holder.",
+          "fix_time_months": null,
+          "source_id": "consuladogeral_angola_pt_permanencia_temporaria"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Marriage certificate (spouse route) or proof of family relationship", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Sponsor's Angolan citizenship or residency/visa documentation", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "up to 365 days, renewable until the sponsoring reason concludes",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": ["ao_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "consuladogeral_angola_pt_permanencia_temporaria",
+      "tier": 1,
+      "url": "https://consuladogeral-angola.pt/servicos/visto/visto-de-permanencia-temporaria/",
+      "title": "Consulado Geral da República de Angola em Lisboa (official Angolan government consulate) -- Visto de Permanência Temporária eligibility categories including spouse-of-citizen and family-accompaniment provisions, validity, and process",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Angola). STATUS: PUBLISHED -- read directly from Angola's own consulate (a genuine government source, tier 1), confirming both qualifying groups explicitly rather than inferring them. citizenship_after_months (60) reflects the reduced 5-year marriage-based naturalization track under Lei 2/16 Article 13 (see ao_citizenship_naturalisation.json) for the spouse-of-citizen group specifically -- the family-of-resident group has no comparably fast citizenship path and would instead follow the standard 10-year naturalization track; this dataset models the faster of the two group-level outcomes at the file level for simplicity, with the distinction documented here rather than silently averaged. dual_citizenship_allowed set to false per Article 32 of the Nationality Law, which applies uniformly regardless of the route taken to citizenship."
+}

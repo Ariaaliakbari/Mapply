@@ -1,0 +1,62 @@
+{
+  "id": "cg_work_permit",
+  "country": "CG",
+  "name": "Salaried Employment Card (Carte de Séjour -- Salarié)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cgwp_employer_sponsorship_and_labor_market_test",
+          "attribute": "has_employer_sponsored_offer_with_labor_ministry_clearance",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "An employer applies on the foreign worker's behalf for the salaried employment card; the labour ministry reportedly verifies no local candidate is available before granting it. Total timeline reported at 8+ weeks. No specific foreign-staff quota or percentage cap could be confirmed for Congo in this build (contrast Bolivia's 15% cap and Angola's 30% cap found earlier in this dataset) -- only a general 'labor market test' description, without a stated ratio.",
+          "fix_path": "Secure a job offer from a Congo-registered employer willing to sponsor the salaried employment card and clear the labour ministry's local-candidate check.",
+          "fix_time_months": 2,
+          "source_id": "openshores_cg_visa_guide"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Employer sponsorship / labour ministry clearance", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cg_long_term_residence", "cg_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "openshores_cg_visa_guide",
+      "tier": 3,
+      "url": "https://www.openshores.co/blog/visa-congo-brazzaville-toutes-les-options-expliquees",
+      "title": "Openshores -- Republic of Congo work visas and employment cards: employer sponsorship, labour ministry local-candidate check, timeline",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Congo-Brazzaville). STATUS: DRAFT -- tier-3 sourced only (openshores.co); no Congolese government labour-ministry text could be fetched in this build (see visitor_visa.json notes on gov.cg fetch failures). work_rights set to 'restricted' since the card is employer-tied, not a general work authorization. pr_after_months/citizenship_after_months (120) are tied to the general 10-year continuous-residence gate found in the residence-card ladder (cg_long_term_residence.json) and the 10-year naturalization residency requirement (cg_citizenship_naturalisation.json), not a work-permit-specific accelerated rule -- this dataset found no separate, faster path from work permit to residency/citizenship."
+}

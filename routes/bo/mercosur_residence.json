@@ -1,0 +1,70 @@
+{
+  "id": "bo_mercosur_residence",
+  "country": "BO",
+  "name": "MERCOSUR Residence Agreement Residency",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bomr_nationality_of_member_state",
+          "attribute": "is_national_of_mercosur_member_or_associate_state",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Bolivia is a full MERCOSUR member state (alongside Argentina, Brazil, Paraguay, Uruguay), with Chile, Colombia, Ecuador, and Peru as associated states. Under the MERCOSUR Residence Agreement, nationals of these states can obtain temporary residence in Bolivia with 'no requirement other than nationality' -- a valid passport, birth certificate, and negative criminal-record certificate -- for an initial 2-year period, convertible to permanent status before expiry. Bolivia's own migration authority (Dirección General de Migración) hosts a dedicated page for this exact category, confirming it is treated as a distinct domestic legal route, not just an informal application of the general agreement, though this dataset could not read that page directly due to a persistent SSL certificate/hostname-mismatch error on the migracion.gob.bo domain across every attempt in this build.",
+          "fix_path": "Present a valid passport, birth certificate, and clean criminal record as a national of a MERCOSUR member or associated state to obtain temporary residence, then convert to permanent status before the 2-year period expires.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_mercosur_citizenship"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Birth certificate", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Negative criminal record certificate", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "2 years temporary, convertible to permanent before expiry",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bo_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "wikipedia_mercosur_citizenship",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Citizenship_of_the_Mercosur",
+      "title": "Wikipedia -- MERCOSUR Residence Agreement member/associated states, rights granted, 2-year-to-permanent conversion",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "migracion_gob_bo_mercosur_page_reference",
+      "tier": 3,
+      "url": "https://www.migracion.gob.bo/index.php?r=page/detail&id=120",
+      "title": "Dirección General de Migración de Bolivia -- dedicated MERCOSUR permanent-residency page (URL and existence confirmed via search indexing; content could not be fetched due to a persistent SSL hostname-mismatch certificate error on this domain across this entire build)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bolivia). STATUS: DRAFT -- same access pattern as Paraguay's equivalent MERCOSUR file: the national migration authority's own domain is unreachable (here due to a certificate/hostname mismatch specifically, not a robots block), so this route rests on a tier-4 encyclopedic summary. GENUINE, SIGNIFICANT FINDING, mirroring Paraguay: this is very likely Bolivia's highest-volume single route, since it applies automatically to nationals of 4 fellow full member states and 4 associated states with no qualifying condition beyond nationality -- a scale of reciprocal automatic access most bilateral routes in this dataset do not approach. Bolivia acceded to full MERCOSUR membership in 2015 (ratified in stages through the 2020s), a more recent and more complete membership than some other South American economies in this dataset."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "mz_family_reunification",
+  "country": "MZ",
+  "name": "Dependent Family Members of a Resident",
+  "category": "family",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mzfr_dependent_of_resident_or_sponsor_declaration",
+          "attribute": "is_dependent_of_resident_or_covered_by_sponsor_declaration",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Law No. 23/2022 allows a sponsor's signed responsibility declaration (proving financial capacity) to substitute for a dependent's own proof of means of subsistence, and provisional refugee residence permits explicitly extend to family members. This dataset could NOT locate a separate, dedicated family-reunification visa category with its own numeric income/wait-time thresholds distinct from the general residence-authorization framework (see mz_long_term_residence.json) -- unlike some other countries built in this dataset, Mozambique's foreign-citizens law does not appear to spell out a standalone family-reunification track in the text this build could access.",
+          "fix_path": "Obtain a sponsor's responsibility declaration from the Mozambique-resident family member, or apply as a dependent alongside their residence/refugee application.",
+          "fix_time_months": null,
+          "source_id": "rimap_unhcr_mz_law_23_2022"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of family relationship (marriage or birth certificate)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Sponsor's signed responsibility declaration", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to the sponsor's own residence status",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["mz_long_term_residence"]
+  },
+  "sources": [
+    {
+      "id": "rimap_unhcr_mz_law_23_2022",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/3127",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Law no. 23/2022: sponsor's responsibility declaration mechanism, family inclusion in provisional refugee permits",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mozambique). STATUS: DRAFT -- tier 2, but this route rests on a thinner finding than most of this dataset's family_reunification files: no dedicated numeric family-reunification category (income threshold, minimum marriage duration, wait time) could be confirmed for Mozambique specifically -- this dataset found only the general sponsor-declaration mechanism and refugee-specific family inclusion. This is a genuine, disclosed gap in what this build could confirm, not a claim that no such dedicated track exists at all."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "kg_citizenship_by_descent",
+  "country": "KG",
+  "name": "Citizenship by Descent or Birth in Territory",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "descent",
+      "name": "Child of a Kyrgyz citizen parent",
+      "requirements": [
+        {
+          "id": "kgcd_kyrgyz_parent",
+          "attribute": "has_kyrgyz_citizen_parent_at_birth",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Citizenship Law of the Kyrgyz Republic (2007, as amended through 2023), Article 12(1): a child whose parent(s) were Kyrgyz citizens at the time of birth is a Kyrgyz citizen regardless of place of birth. Article 12(2): a single Kyrgyz-citizen parent is sufficient, unless both parents jointly renounce it when the child acquires a foreign citizenship at birth. Explicitly gender-neutral -- no distinction between maternal and paternal transmission.",
+          "fix_path": "Establish a parental link to a Kyrgyz citizen (either parent) via a birth certificate.",
+          "fix_time_months": null,
+          "source_id": "refworld_kg_citizenship_law_2007"
+        }
+      ]
+    },
+    {
+      "id": "birth_in_territory_stateless_or_unknown",
+      "name": "Born in Kyrgyzstan to stateless or unknown parents",
+      "requirements": [
+        {
+          "id": "kgcd_born_stateless_parents_or_unknown",
+          "attribute": "born_in_kyrgyzstan_stateless_parents_or_unknown_parents",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 12(4): a child born in Kyrgyz territory to stateless parents acquires citizenship. Article 12(5): a child born domestically to two foreign-national parents becomes a citizen if neither parent's state grants the child citizenship. Article 12(6): a child found in Kyrgyz territory whose parents are both unknown is a citizen.",
+          "fix_path": "Establish birth in Kyrgyzstan to stateless parents, to two foreign parents whose states would not grant the child citizenship, or as a foundling with both parents unknown.",
+          "fix_time_months": null,
+          "source_id": "refworld_kg_citizenship_law_2007"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link or place of birth", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of parents' statelessness or foreign nationality (birth-in-territory route only)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_kg_citizenship_law_2007",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/2007/72655",
+      "title": "Refworld -- Law of the Kyrgyz Republic on Citizenship (2007, amended through 22 February 2023): descent (Art. 12(1)-(2)), birth-in-territory/statelessness (Art. 12(4)-(6)), dual citizenship rules (Art. 6, 22)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kyrgyzstan). STATUS: DRAFT -- tier 2 (Refworld hosting an unofficial English translation, not a .kg government domain); the validator requires tier-1 sourcing for a hard requirement before publishing. GENUINE, POSITIVE STRUCTURAL FINDING: descent is explicitly and unambiguously gender-neutral (no distinction found anywhere in Article 12 between maternal and paternal transmission), joining Congo-Brazzaville and Cameroon as clean findings in this dataset, in contrast to Libya's severe father-favoring asymmetry found earlier this session. dual_citizenship_allowed set to true as the general/default rule (Article 6(2): acquiring another citizenship does not automatically terminate Kyrgyz citizenship) -- but see kg_citizenship_naturalisation.json for the significant, unusual carve-out restricting dual citizenship specifically with Kyrgyzstan's bordering states."
+}

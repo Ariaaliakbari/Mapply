@@ -1,0 +1,80 @@
+{
+  "id": "cm_citizenship_naturalisation",
+  "country": "CM",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cmcn_5yr_residence",
+          "attribute": "months_habitual_residence_in_cameroon",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Law No. 1968-LF-3 (Cameroon Nationality Code): an applicant must be at least 21 years old, have habitual residence in Cameroon for 5 consecutive years immediately preceding the application, have their main interests based in Cameroon, be of good character and health, and have no disqualifying criminal convictions. No probationary residence period is required for anyone born in Cameroon, married to a Cameroonian, or rendering exceptional service to the state -- these categories can apply without first accumulating the 5 years.",
+          "fix_path": "Accumulate 5 consecutive years of habitual residence in Cameroon (waived if born in Cameroon, married to a Cameroonian, or rendering exceptional service), maintain a clean record, and apply.",
+          "fix_time_months": 60,
+          "source_id": "refworld_cm_nationality_code_1968"
+        }
+      ]
+    },
+    {
+      "id": "foreign_wife_of_cameroonian",
+      "name": "Foreign woman marrying a Cameroonian man",
+      "requirements": [
+        {
+          "id": "cmcn_foreign_wife_no_residency_wait",
+          "attribute": "is_foreign_wife_of_cameroonian_man",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A foreign woman marrying a Cameroonian man may acquire Cameroonian nationality upon request AT MARRIAGE, without the standard 5-year residency wait. She may decline this acquisition if her country of origin allows her to retain her original nationality on marriage to a foreigner. The government retains decree authority to block such an acquisition in specific cases. This dataset found NO equivalent automatic-at-marriage provision for a foreign man marrying a Cameroonian woman -- a real, disclosed gender asymmetry, not this dataset's assumption.",
+          "fix_path": "As a foreign woman, marry a Cameroonian man and request nationality at marriage, subject to government decree authority to block the acquisition in specific cases.",
+          "fix_time_months": 0,
+          "source_id": "refworld_cm_nationality_code_1968"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 5 years' habitual residence (waived for qualifying categories)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate (marriage-based route)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "5 years habitual residence (waived if born in Cameroon, married to a Cameroonian, or rendering exceptional service)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_cm_nationality_code_1968",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1968/en/13868",
+      "title": "Refworld -- Law No. 1968-LF-3, naturalization conditions, marriage-based acquisition for a foreign wife, dual-nationality limits",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cameroon). STATUS: DRAFT -- read directly from a genuine English-translation primary text (Refworld), but the validator requires tier-1 (government) sourcing for a hard requirement before a route can be published, and Refworld is tier 2 by this dataset's own rules; no Cameroonian government-hosted copy of the Nationality Code was reached, so this stays draft despite the finding itself being solid. GENUINE, CONFIRMED GENDER ASYMMETRY, joining the pattern found for Mali, Niger, and Iraq earlier in this dataset: a foreign woman marrying a Cameroonian man can acquire nationality immediately at marriage (with an opt-out if her home country allows dual retention), while no equivalent automatic-at-marriage provision was found for a foreign man marrying a Cameroonian woman -- he would instead need to use the standard naturalization track, though the source does note the general exception waiving the 5-year wait for 'those married to Cameroonians' without specifying gender for that particular exception, creating a genuine tension in the source material between the marriage-based acquisition clause (women only) and the naturalization-waiver clause (gender-unspecified) that this dataset discloses rather than resolves by assumption. dual_citizenship_allowed set to false: the code's dual-citizenship allowances are described as limited to a temporary automatic extension for minor children during a parent's own naturalization, not a general allowance for adult naturalized citizens."
+}

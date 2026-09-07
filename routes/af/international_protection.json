@@ -1,0 +1,61 @@
+{
+  "id": "af_international_protection",
+  "country": "AF",
+  "name": "Refugee / Asylum Seeker Registration (UNHCR, Outside Domestic Law)",
+  "category": "humanitarian",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "afip_unhcr_registration",
+          "attribute": "registered_with_unhcr_afghanistan",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Afghanistan has no confirmed domestic legal or constitutional basis for asylum -- UNHCR's own Afghanistan help portal states foreigners seeking protection inside Afghanistan should email UNHCR with contact details and await follow-up, or register in person at the ICON Compound in Kabul (Mondays and Wednesdays, 8:30am-12:30pm). No refugee-status-determination procedure, timeline, or legal criteria are published; the only confirmed benefit of registration is that a UNHCR refugee/asylum-seeker certificate unlocks free care at designated public hospitals (with case-by-case help for private healthcare costs) plus access to referenced legal-assistance services. This is Afghanistan's version of the pattern seen elsewhere in this dataset (Algeria, Haiti, Cuba) where UNHCR runs protection entirely outside state law -- but thinner than any of those: Afghanistan is overwhelmingly a REFUGEE-PRODUCING country (2.6 million registered Afghan refugees worldwide per UNHCR), and no evidence was found of any non-Afghan refugee population or dedicated domestic government protection body operating inside the country.",
+          "fix_path": "Email UNHCR Afghanistan with contact details, or register in person at the ICON Compound in Kabul during posted hours, to obtain a refugee/asylum-seeker certificate.",
+          "fix_time_months": null,
+          "source_id": "unhcr_help_af_registration"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Identity documentation (if available)", "difficulty": "routine", "typical_time_days": null },
+    { "document": "UNHCR registration email or in-person appointment record", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite, tied to continued registration",
+    "renewable": true,
+    "work_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "unhcr_help_af_registration",
+      "tier": 2,
+      "url": "https://help.unhcr.org/afghanistan/support/help-for-refugees-and-asylum-seekers/",
+      "title": "UNHCR Help Afghanistan -- registration process (email / ICON Compound Kabul walk-in hours) and healthcare access for refugees and asylum seekers inside Afghanistan",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Afghanistan). STATUS: DRAFT -- best sourcing reached tier 2 (UNHCR's own portal); no Afghan government body, decree, or constitutional asylum provision was found, and none is claimed to exist. GENUINE, SEVERE FINDING: this is the thinnest domestic-protection framework found in this dataset to date -- not merely 'no domestic law, UNHCR fills the gap' (as with Algeria, Haiti, Cuba), but a country that is itself the dominant SOURCE of refugees globally (2.6 million registered Afghan refugees worldwide, per UNHCR's own Afghanistan reporting), with no confirmed evidence that a parallel inbound-protection system for non-Afghans has any real operational depth beyond an email inbox and two weekly walk-in windows in Kabul. family_can_join set to false (schema requires a boolean) -- no derivative-family provision was found, not a confirmed denial. family_can_work left null and study_rights omitted (not a required field): not addressed by the source. work_rights set to 'none' since no work authorization was mentioned anywhere in the registration process description, only healthcare and legal-assistance access."
+}

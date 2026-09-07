@@ -1,0 +1,97 @@
+{
+  "id": "kg_citizenship_naturalisation",
+  "country": "KG",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kgcn_5yr_residence",
+          "attribute": "months_continuous_residence_in_kyrgyzstan",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Citizenship Law, Article 13(1): 5 years of continuous residence (absences under 3 months per year permitted), adequate knowledge of the state/official language, an undertaking to comply with the Constitution, a livelihood source, and no domestic or foreign criminal record.",
+          "fix_path": "Accumulate 5 years of continuous residence (short absences permitted), demonstrate language ability, a livelihood source, and a clean criminal record.",
+          "fix_time_months": 60,
+          "source_id": "refworld_kg_citizenship_law_2007"
+        }
+      ]
+    },
+    {
+      "id": "reduced_3yr",
+      "name": "Reduced 3-year track (spouse of a citizen, refugee, high achievement, priority investment)",
+      "requirements": [
+        {
+          "id": "kgcn_3yr_reduced",
+          "attribute": "months_continuous_residence_qualifying_category",
+          "operator": ">=",
+          "value": 36,
+          "hard": true,
+          "blocker_text": "Article 13(2): the residency requirement is reduced to 3 years for applicants with high achievements in science, culture, or sports; those making 'priority' economic investments (this dataset could not confirm the specific investment threshold that qualifies as 'priority' under this clause); recognized refugees; and spouses of Kyrgyz citizens. Notably, this track is available EQUALLY regardless of the applicant's or spouse's gender -- Kyrgyzstan has no automatic marriage-based citizenship acquisition at all (Article 8(1) explicitly states that marrying or divorcing a Kyrgyz citizen does not itself change either spouse's citizenship); the spousal benefit here is only this reduced RESIDENCY requirement within the ordinary naturalization process, not an automatic grant. This is a materially more gender-equal marriage-related provision than found in most other countries built in this dataset (Cameroon, Congo-Brazzaville, Libya all have some female-only or male-favoring automatic acquisition rule; Kyrgyzstan has neither).",
+          "fix_path": "Accumulate 3 years of continuous residence while qualifying under one of the listed categories (spouse of a citizen, refugee status, high achievement, or priority investment).",
+          "fix_time_months": 36,
+          "source_id": "refworld_kg_citizenship_law_2007"
+        }
+      ]
+    },
+    {
+      "id": "simplified_1yr_or_bypass",
+      "name": "Simplified 1-year track or full bypass (ethnic Kyrgyz, citizen's child, former USSR citizen)",
+      "requirements": [
+        {
+          "id": "kgcn_1yr_simplified_or_ethnic_bypass",
+          "attribute": "qualifies_for_simplified_or_bypass_naturalization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Article 14: a 1-year residency requirement applies to applicants with a citizen parent, former USSR citizenship, or restoration eligibility. Persons of Kyrgyz ETHNICITY bypass the residency requirement entirely under this same article -- an ethnicity-based fast track distinct from the general descent/naturalization rules.",
+          "fix_path": "Establish Kyrgyz ethnicity (full bypass), a citizen parent, former USSR citizenship, or nationality-restoration eligibility, then accumulate 1 year of residence where applicable.",
+          "fix_time_months": 12,
+          "source_id": "refworld_kg_citizenship_law_2007"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of continuous residence for the applicable track's duration", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Language proficiency assessment (standard track)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Marriage certificate, refugee status confirmation, or ethnicity/parentage documentation (qualifying-category tracks)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "5 years continuous residence (standard); 3 years for qualifying categories; 1 year or full bypass for ethnic Kyrgyz/citizen's child/former USSR citizens",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_kg_citizenship_law_2007",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/2007/72655",
+      "title": "Refworld -- Law of the Kyrgyz Republic on Citizenship (2007, amended through 2023): naturalization tracks (Art. 13-14), no automatic marriage-based acquisition (Art. 8), dual citizenship and bordering-state restriction (Art. 6, 22)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kyrgyzstan). STATUS: DRAFT -- tier 2 (Refworld, unofficial translation, not a .kg government domain); correctly modeled as draft from the outset given the validator's tier-1-for-published rule. dual_citizenship_allowed set to TRUE as the general rule (Article 6(2)), but with a GENUINE, UNUSUAL, GEOPOLITICALLY SPECIFIC RESTRICTION not seen anywhere else in this dataset: Article 22(2) explicitly does NOT recognize dual citizenship with Kyrgyzstan's bordering states -- Kazakhstan, Uzbekistan, Tajikistan, and China by name -- while Article 22(3) allows dual citizenship generally where a bilateral treaty with the Kyrgyz Republic permits it. Article 22(4) additionally bars dual citizens from serving as President, as parliamentary deputies, as judges, in law enforcement, or in senior state positions -- a real, disclosed restriction on dual citizens' civic participation beyond the nationality question itself. GENUINE, POSITIVE STRUCTURAL FINDING: Kyrgyzstan has NO automatic marriage-based citizenship acquisition for either spouse's gender (Article 8(1) is explicit that marriage/divorce does not change citizenship) -- only a reduced 3-year RESIDENCY requirement within ordinary naturalization for a citizen's spouse, applied equally regardless of gender. This is a cleaner, more gender-equal marriage-related rule than found in Cameroon, Congo-Brazzaville, or Libya earlier in this dataset, none of which extend their marriage-based benefit to both spouses' genders equally."
+}

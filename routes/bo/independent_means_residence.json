@@ -1,0 +1,70 @@
+{
+  "id": "bo_independent_means_residence",
+  "country": "BO",
+  "name": "Specific Purpose Visa -- Independent Means / Retiree Residency",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "boim_300_monthly_solvency",
+          "attribute": "monthly_demonstrable_income_usd",
+          "operator": ">=",
+          "value": 300,
+          "hard": true,
+          "blocker_text": "Bolivia's Visa de Objeto Determinado (Specific Purpose Visa) covers non-tourism, non-work purposes including retirement, passive income, academic exchange, volunteering, religious activity, health, and family reasons, per Bolivia's own Foreign Ministry consular portal. For the independent-means/retiree purpose specifically, secondary sources converge on roughly USD 300/month in demonstrable financial means (bank statements or pension documentation) as the commonly-applied baseline, though this dataset found no officially codified minimum figure -- higher amounts reportedly strengthen the application. The visa itself is obtained at a consulate (valid 30 days for entry), then converted to Temporary Residency (1-2 years) at the Dirección General de Migración, requiring no absence exceeding 90 consecutive days.",
+          "fix_path": "Document stable monthly income of at least USD 300 (pension, rental, or investment income), obtain the Specific Purpose Visa at a consulate, then convert to Temporary Residency on arrival.",
+          "fix_time_months": null,
+          "source_id": "goresident_bo_residency"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Bank statements or pension documentation", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Clean criminal record", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Passport valid 6+ months", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-2 years temporary, then convertible to permanent",
+    "renewable": true,
+    "work_rights": "none",
+    "study_rights": "restricted",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": "no absence exceeding 90 consecutive days as a temporary resident; up to 2 consecutive years' absence permitted once permanent",
+    "switchable_to": ["bo_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "cancilleria_gob_bo_visa_categories",
+      "tier": 1,
+      "url": "https://consulados.cancilleria.gob.bo/lima/visas/",
+      "title": "Bolivian Foreign Ministry consular portal -- confirms the Visa de Objeto Determinado's purpose list (including retirement/passive-income and family reasons), but not a specific income threshold",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "goresident_bo_residency",
+      "tier": 3,
+      "url": "https://goresident.com/residency/bolivia",
+      "title": "GoResident -- USD 300/month solvency baseline, temporary-to-permanent residency conversion timeline, absence limits, naturalization timeline",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bolivia). STATUS: DRAFT -- the existence of this visa purpose is tier-1 confirmed, but the actual income figure is not: no officially published minimum was found anywhere in this build, consistent with the same 'no codified minimum' finding this dataset made for Paraguay's equivalent route. GENUINE FINDING: Bolivia's own Foreign Ministry groups retiree/passive-income, investor, academic, religious, and family purposes all under the SAME 'Objeto Determinado' visa category rather than issuing separate named routes for each -- this dataset modeled the retiree/independent-means purpose here specifically, and modeled the investor purpose as its own separate file (see bo_investor_residence.json) because Bolivia's own visa list additionally names a genuinely distinct 'Visa Múltiple' specifically for investment/business, giving that purpose its own real legal category unlike this one."
+}

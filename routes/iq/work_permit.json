@@ -1,0 +1,63 @@
+{
+  "id": "iq_work_permit",
+  "country": "IQ",
+  "name": "Work Permit (Employer-Sponsored)",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "iqwp_quota_and_permit",
+          "attribute": "has_work_permit_before_employment",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The employer, through an attorney holding power of attorney, submits immigration documents to the Ministry of Labour before the foreign employee travels to Iraq. Iraqi law caps foreign staff at 50% of an incorporated company's total workforce -- the other 50% must be Iraqi nationals -- though no separate labor-market test (e.g. a specific vacancy-advertising requirement) is described beyond this quota. Once the Ministry approves, the attorney obtains the entry visa from the Directorate of Residence Affairs; after the employee arrives, the attorney must submit the actual work-permit request to the Ministry of Labour within 7 days. The permit is valid 1 year, renewable annually on request at least 1 month before expiry. Exemptions apply to international-organization staff, diplomats, government appointees, and short assignments under 30 working days.",
+          "fix_path": "Have the employer's attorney secure Ministry of Labour approval and a Directorate of Residence Affairs visa before arrival, then file the work-permit request within 7 days of the employee's entry.",
+          "fix_time_months": 1,
+          "source_id": "tamimi_iq_work_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Power of attorney for the employer's representing attorney", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employment contract", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Work-permit request (filed within 7 days of arrival)", "difficulty": "moderate", "typical_time_days": 7 }
+  ],
+  "outcome": {
+    "duration_length": "1 year, renewable annually",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "tamimi_iq_work_permits",
+      "tier": 3,
+      "url": "https://www.tamimi.com/law-update-articles/work-permits-and-foreign-employment-in-iraq/",
+      "title": "Al Tamimi & Company (regional law firm) -- work-permit process, 50% foreign-staff cap, 7-day post-arrival filing window, exemptions",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: DRAFT -- sourced to a regional law firm, tier 3; Iraq's Ministry of Labour own regulations were not independently fetched in this build. GENUINE FINDING: the 50% foreign-staff cap is a hard, company-wide quota, distinct from and blunter than the labor-market TESTS used elsewhere in this dataset (e.g. Kosovo's Employment Office certification, Niger's non-availability attestation) -- it caps foreign hiring regardless of whether a qualified local candidate actually exists for the specific role. citizenship_after_months (120) reflects the standard 10-year naturalization threshold (see iq_citizenship_naturalisation.json). dual_citizenship_allowed set to true per mofa.gov.iq (Iraq's own Ministry of Foreign Affairs, tier 1 -- see the citizenship files for the direct citation). family_can_work left null: not addressed by the source. This file describes the FEDERAL system; the Kurdistan Region may have its own distinct work-authorization process not independently confirmed in this build."
+}

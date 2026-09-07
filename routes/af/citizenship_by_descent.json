@@ -1,0 +1,86 @@
+{
+  "id": "af_citizenship_by_descent",
+  "country": "AF",
+  "name": "Citizenship by Descent (Jus Sanguinis)",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "afghan_father",
+      "name": "Child of an Afghan father",
+      "requirements": [
+        {
+          "id": "afcd_afghan_father_automatic",
+          "attribute": "has_afghan_citizen_father_known_identity",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Afghan nationality law has consistently based descent-based citizenship on paternal lineage since the 1923 law: a child born anywhere to an Afghan father acquires Afghan nationality automatically. A cited legal expert notes that under Afghanistan's Civil Code, a child whose parents were not married under Islamic law, or who is otherwise deemed illegitimate, may be unable to obtain nationality through this route regardless of the father's citizenship -- a real internal conflict between the nationality law and the Civil Code, not this dataset's inference.",
+          "fix_path": "Establish paternity to an Afghan-citizen father via a birth certificate and (per the Civil Code conflict noted above) a marriage recognized under Islamic law.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_af_nationality_law"
+        }
+      ]
+    },
+    {
+      "id": "afghan_mother_disputed",
+      "name": "Child of an Afghan mother (contested / unconfirmed)",
+      "requirements": [
+        {
+          "id": "afcd_afghan_mother_disputed",
+          "attribute": "has_afghan_citizen_mother_only",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Whether a child can acquire Afghan nationality through the mother alone is genuinely disputed among the EU member states that formally queried this in 2020: Germany's authorities indicated a child born to an Afghan parent acquires that parent's nationality if the father's identity is known, but that no nationality transfers if the father is unknown or stateless -- implying the mother's nationality alone, with a known but non-Afghan father, does NOT transfer under this interpretation. Other EU states gave conflicting answers in the same review. This dataset presents this as an open, unresolved question rather than picking a side, because no single authoritative post-2021 Afghan source was found to settle it.",
+          "fix_path": "No settled, confirmed path exists via the mother alone where the father is a known non-Afghan national. Consult a specialist on current interpretation before relying on this route.",
+          "fix_time_months": null,
+          "source_id": "emn_af_nationality_interpretation"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of marriage recognized under Islamic law (paternal route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "wikipedia_af_nationality_law",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Afghan_nationality_law",
+      "title": "Wikipedia -- history of Afghan nationality law, paternal-descent rule, Civil Code legitimacy conflict, dual citizenship timeline",
+      "accessed_at": "2026-09-06"
+    },
+    {
+      "id": "emn_af_nationality_interpretation",
+      "tier": 3,
+      "url": "https://emn.gov.hr/UserDocsImages/ad_hoc_upiti/2020/202078_interpretation_of_afghan_nationality_passing_citizenship_from_parent_to_child.pdf",
+      "title": "European Migration Network ad-hoc query -- conflicting EU member-state interpretations of maternal nationality transmission under Afghan law",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Afghanistan). STATUS: DRAFT -- no tier-1 Afghan government source was reachable for descent rules at all; the Justice Ministry announced in September 2021 that Afghanistan would operate provisionally under the 1964 Constitution's Sharia-compliant provisions, discarding anything non-compliant, but no post-2021 Afghan government text on nationality specifically was found, and a promised new constitution has not been confirmed complete as of this build. GENUINE, LIVE FINDING: unlike most countries in this dataset where father-vs-mother descent asymmetry is at least clearly codified (compare Iraq, Mali), Afghanistan's maternal-descent question is disputed even among European immigration authorities interpreting the same underlying law -- this dataset deliberately models it as an open, unresolved requirement group rather than asserting an answer. dual_citizenship_allowed left null: Afghanistan allowed dual nationality from 2001, but the 1986 law technically prohibited it and no post-2021 confirmation either way was found."
+}

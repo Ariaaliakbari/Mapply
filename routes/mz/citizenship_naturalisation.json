@@ -1,0 +1,80 @@
+{
+  "id": "mz_citizenship_naturalisation",
+  "country": "MZ",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "mzcn_10yr_residence",
+          "attribute": "months_habitual_legal_residence_in_mozambique",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Per the 1990 Constitution's naturalization framework: 10 years of habitual and legal residence in Mozambique, age 18 or older, renunciation of previous citizenship, and 'political and moral guarantees' of integration into society. Applicants cannot have been leading colonial-era officials, foreign police informants, or convicted of crimes against the Mozambican people -- historically specific exclusions rooted in the post-independence context that this dataset could not confirm are still actively applied in current practice.",
+          "fix_path": "Accumulate 10 years of habitual, legal residence in Mozambique, meet the age and integration conditions, and renounce any prior citizenship.",
+          "fix_time_months": 120,
+          "source_id": "globalcit_mz_citizenship_report_2019"
+        }
+      ]
+    },
+    {
+      "id": "foreign_wife_of_mozambican",
+      "name": "Foreign woman marrying a Mozambican man",
+      "requirements": [
+        {
+          "id": "mzcn_foreign_wife_marriage_based",
+          "attribute": "is_foreign_wife_of_mozambican_man_meeting_integration_conditions",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Historically, only a foreign woman could acquire Mozambican nationality through marriage to a Mozambican man, subject to renunciation of her previous citizenship, a declaration of intent, establishing domicile in Mozambique, and integration guarantees -- this dataset's source describes this as the historical rule and does NOT state it was repealed (unlike the separate, confirmed repeal of the 1975 rule that automatically stripped a Mozambican WOMAN of her own nationality upon marrying a foreigner, repealed by Law 16/87). This dataset could not confirm whether the foreign-wife marriage-based acquisition track is still current law in 2026 or has since been reformed, and found no equivalent provision for a foreign man marrying a Mozambican woman.",
+          "fix_path": "As a foreign woman, marry a Mozambican man, renounce prior citizenship, establish domicile in Mozambique, and meet integration guarantees; this dataset could not confirm the current minimum marriage duration or residency period required.",
+          "fix_time_months": null,
+          "source_id": "globalcit_mz_citizenship_report_2019"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' habitual legal residence (standard track)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Renunciation of prior citizenship", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Marriage certificate and proof of domicile in Mozambique (marriage-based track)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "10 years habitual legal residence (standard track)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "globalcit_mz_citizenship_report_2019",
+      "tier": 3,
+      "url": "https://www.ecoi.net/en/file/local/2106245/RSCAS_GLOBALCIT_CR_2019_06.pdf",
+      "title": "GLOBALCIT Country Report on Citizenship Law: Mozambique (2019) -- naturalization conditions, historical marriage-based track, dual-citizenship contradiction between the 1975 Act and the 2004 Constitution",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mozambique). STATUS: DRAFT -- tier 3 (an academic research report analysing the law, not a government-hosted primary text; a direct Refworld fetch of the underlying 1982 Nationality Act returned only its reacquisition-after-loss articles, not the substantive naturalization provisions -- see mz_citizenship_by_descent.json's note on this same gap). GENUINE, UNRESOLVED LEGAL CONTRADICTION, disclosed rather than resolved by assumption: Mozambique 'formally rejects dual citizenship' per the 1975 Nationality Act's renunciation requirement, but the report states the 2004 Constitution 'technically' permits dual citizenship, with 'lingering provisions from the 1975 Act' creating open contradictions about whether a dual citizen's Mozambican nationality can still be withdrawn. dual_citizenship_allowed is set to false here reflecting the base/dominant rule the report describes, but this is a live, disputed area of Mozambican law, not a settled fact -- the report itself notes that as of 2019 no comprehensive replacement Nationality Act had been passed despite UNHCR recommendations and ministerial announcements since 2012, so this contradiction may still be unresolved as of 2026. GENUINE ADDITIONAL GAP: the historical foreign-wife marriage-based acquisition track's CURRENT status (still law vs. repealed/reformed) could not be confirmed in this build, and is flagged as such rather than assumed to still apply unchanged."
+}

@@ -1,0 +1,79 @@
+{
+  "id": "iq_visitor_visa",
+  "country": "IQ",
+  "name": "Electronic Visa (e-Visa) / Visa-Free Entry",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-06",
+  "duration_type": "fixed",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route (federal Iraq)",
+      "requirements": [
+        {
+          "id": "iqvv_evisa_or_exemption",
+          "attribute": "has_valid_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Arab League member-state nationals may enter federal Iraq visa-free for 30 days with an ordinary passport; select diplomatic/service passport holders get exemptions up to 6 months. As of 1 March 2025, Iraq discontinued visa-on-arrival for most other nationalities -- they must obtain an e-Visa in advance, costing approximately $160. Journalists and NGO workers cannot use the e-Visa system at all and must apply through an embassy instead. Israeli nationals are banned outright, including transit and layovers.",
+          "fix_path": "Arab League nationals enter visa-free for 30 days; others must obtain an e-Visa (~$160) before travel, except journalists/NGO workers, who must apply through a diplomatic mission.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_iq_visa_policy"
+        }
+      ]
+    },
+    {
+      "id": "kurdistan_region",
+      "name": "Kurdistan Region (separate regional system)",
+      "requirements": [
+        {
+          "id": "iqvv_krg_evisa_or_voa",
+          "attribute": "has_valid_krg_entry_authorization",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Kurdistan Region of Iraq (KRI) runs its OWN e-visa platform, separate from federal Iraq's. Citizens of certain countries can get a visa on arrival at Erbil or Sulaymaniyah airports (30 days) or Kirkuk airport (60 days for some nationalities); others must use a local sponsor to obtain a KRI e-visa, priced at 100,000 IQD (slightly cheaper than federal Iraq's e-Visa). A specific list of nationalities (including Afghanistan, Bangladesh, Egypt, Ethiopia, Guatemala, Kenya, Nigeria, Somalia, Uganda, Yemen) cannot obtain KRI e-visas independently and need a sponsor.",
+          "fix_path": "Check eligibility for KRI visa-on-arrival at Erbil/Sulaymaniyah/Kirkuk; otherwise apply for the KRI e-visa (100,000 IQD), arranging a local sponsor if required by nationality.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_iq_visa_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the stay", "difficulty": "routine", "typical_time_days": null },
+    { "document": "e-Visa (federal) or KRI e-visa/visa-on-arrival (regional)", "difficulty": "moderate", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "30 days (Arab League visa-free, KRI visa-on-arrival) or 60 days (Kirkuk, select nationalities)",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["iq_work_permit", "iq_investor_residence", "iq_family_reunification"]
+  },
+  "sources": [
+    {
+      "id": "wikipedia_iq_visa_policy",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Iraq",
+      "title": "Wikipedia -- federal e-Visa system (since March 2025), Arab League exemption, separate Kurdistan Region e-visa/visa-on-arrival system",
+      "accessed_at": "2026-09-06"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Iraq). STATUS: DRAFT -- sourced to Wikipedia, tier 4; Iraq's Ministry of Foreign Affairs (mofa.gov.iq, reached successfully for the citizenship files in this same build) does not appear to publish a full visa-policy page, and the Ministry of Justice's own PDF hosting (moj.gov.iq) timed out on this specific document. MARQUEE STRUCTURAL FINDING, the central theme of this country's build: Iraq runs TWO PARALLEL immigration systems -- the federal government's (Baghdad) and the Kurdistan Regional Government's (Erbil) -- with separate e-visa platforms, separate visa-on-arrival rules, and, as this country's other files show, a separate KRG investor-visa pathway with no clear federal equivalent found. This dual-track structure is comparable in spirit to Bosnia's state/entity duality (ba_citizenship_naturalisation.json) but here it runs through the ENTIRE immigration system, not just citizenship. GENUINE, CURRENT FINDING: federal Iraq eliminated visa-on-arrival for most nationalities as of March 2025, a relatively recent tightening."
+}

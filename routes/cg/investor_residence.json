@@ -1,0 +1,62 @@
+{
+  "id": "cg_investor_residence",
+  "country": "CG",
+  "name": "Business Registration and Investor Resident Card",
+  "category": "business",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "cgir_company_agrement_and_resident_card",
+          "attribute": "has_approved_company_registration_and_holds_resident_card",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Republic of Congo's Investment Charter (Loi n° 2003-06 du 18 janvier 2003) lets a National Investment Commission approve ('agrément') a company for charter tax/customs benefits (Article 15), but the charter's own text sets NO minimum capital threshold and contains NO provision granting a residence permit or visa benefit to the investor -- 'agrément' is a business-registration status, not an immigration status. This dataset could not confirm any dedicated investor-residency track separate from the general resident-card ladder (see cg_long_term_residence.json); a foreign business owner would need to separately qualify for an ordinary or privileged resident card like any other foreign resident.",
+          "fix_path": "Register the company and obtain agrément under the Investment Charter (no minimum capital specified in the charter text itself; implementing regulations exist but were not located), then separately apply for a resident card as a foreign business owner.",
+          "fix_time_months": null,
+          "source_id": "droitafrique_cg_investment_charter_2003"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Company registration documents", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Investment Commission agrément application (implementing regulation referenced in the charter but not located in this build)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "tied to whichever resident card tier is obtained (1-5 years)",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["cg_long_term_residence", "cg_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "droitafrique_cg_investment_charter_2003",
+      "tier": 2,
+      "url": "https://www.droit-afrique.com/upload/doc/congo/Congo-Loi-2003-06-Charte-investissements.pdf",
+      "title": "Droit-Afrique (hosting the official Journal Officiel text) -- Loi n° 2003-06 du 18 janvier 2003 portant Charte des investissements: agrément process (Art. 15), no stated capital minimum, no residence-permit provision",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Congo-Brazzaville). STATUS: DRAFT -- the charter text itself is tier 2 (a legal-database host reproducing the official gazette text, not a .gouv.cg domain, consistent with how this dataset treats Lexivox for Bolivia), but the hard requirement's residency-linkage component relies on the tier-3 residence-card-ladder finding (legavox), which caps this file at draft. GENUINE, DISCLOSED ABSENCE (joining the Bolivia/Angola/Cameroon pattern): no confirmed minimum investment threshold, and here additionally no confirmed investor-specific residence benefit at all -- the Investment Charter is purely a business-incentive instrument, not an immigration one, as far as this build could confirm. Openshores mentions a vague 'Investor/Special Economic Zone (Pointe-Noire)' program for energy/forestry/agriculture with 'accelerated processing available,' but gives no threshold or legal basis, so it is not modeled as a separate route here -- it is not distinguishable from ordinary business registration on the evidence found."
+}

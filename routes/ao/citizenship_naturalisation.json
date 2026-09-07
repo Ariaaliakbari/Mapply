@@ -1,0 +1,88 @@
+{
+  "id": "ao_citizenship_naturalisation",
+  "country": "AO",
+  "name": "Citizenship by Naturalization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "aocn_10yr_residence_and_integration",
+          "attribute": "months_legal_residence_in_angola",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Lei n. 2/16 (Nationality Law): a foreign citizen must accumulate at least 10 years of legal residence in Angola, demonstrate moral and civic integration, show proof of regular income for the past 3 years, pass a Portuguese-language exam, demonstrate an 'effective connection to the national community' (tested knowledge of the people and nation), understand constitutional rights and duties, and have no conviction carrying a sentence of 3+ years' imprisonment. Naturalization is granted by the President of the Republic, per secondary reporting -- not an automatic administrative grant once conditions are met.",
+          "fix_path": "Accumulate 10 years of legal residence, document 3 years of regular income, pass the Portuguese-language and civic-integration assessments, and maintain a clean record, before Presidential grant of naturalization.",
+          "fix_time_months": 120,
+          "source_id": "lex_ao_lei_2_16"
+        }
+      ]
+    },
+    {
+      "id": "married_5yr_community_property",
+      "name": "Married to an Angolan citizen under a community-property regime",
+      "requirements": [
+        {
+          "id": "aocn_5yr_married_community_property",
+          "attribute": "months_married_to_angolan_under_community_property",
+          "operator": ">=",
+          "value": 60,
+          "hard": true,
+          "blocker_text": "Lei n. 2/16, Article 13: a foreigner married to an Angolan citizen for over 5 years under a community-property marital regime may request citizenship. Separately, a foreign spouse who acquires Angolan nationality through marriage and loses their prior nationality in the process also acquires Angolan nationality under this article -- a specific mechanic tying the marriage-based route to loss of the original nationality.",
+          "fix_path": "Marry an Angolan citizen under a community-property regime, maintain the marriage for over 5 years, and apply.",
+          "fix_time_months": 60,
+          "source_id": "lex_ao_lei_2_16"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of 10 years' legal residence (or 5 years' qualifying marriage)", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Proof of 3 years' regular income", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Portuguese-language exam pass", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Civic-integration assessment pass", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": "10 years continuous legal residence (5 years if married to an Angolan citizen under a community-property regime)",
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "lex_ao_lei_2_16",
+      "tier": 3,
+      "url": "https://lex.ao/docs/assembleia-nacional/2016/lei-n-o-2-16-de-15-de-abril/",
+      "title": "LEX.AO -- Lei n. 2/16, naturalization conditions (Article on naturalization requirements) and Article 13's marriage-based route and Article 32's dual-citizenship prohibition",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "expansao_ao_presidential_grant",
+      "tier": 4,
+      "url": "https://expansao.co.ao/angola/detalhe/pr-pode-conceder-nacionalidade-angolana-por-naturalizacao-48385.html",
+      "title": "Expansão (Angolan press) -- confirms naturalization is granted by Presidential decision, not an automatic administrative process",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Angola). STATUS: DRAFT -- LEX.AO hosts the law's text directly but is a private database (tier 3), not a .gov.ao original; the official gazette copy (via SAFLII) returned a 403 error on every attempt. GENUINE FINDING: at 10 years, Angola's standard naturalization residency requirement is more than triple Paraguay's and Bolivia's (both 3 years, built earlier in this session) -- one of the longer standard residency bars found in this dataset. GENUINE, EXPLICIT FINDING: Article 32 states plainly that 'no other nationality attributed to Angolan citizens is recognized or produces effects in Angolan legal order' -- an unambiguous rejection of dual citizenship, applied here as false with high confidence relative to several other countries in this dataset where the answer is genuinely unclear or conditional. The marriage-based route requires the marriage be under a COMMUNITY-PROPERTY regime specifically -- a real, disclosed condition, not automatic for any marriage to a citizen regardless of matrimonial regime chosen."
+}

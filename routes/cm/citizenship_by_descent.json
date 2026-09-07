@@ -1,0 +1,78 @@
+{
+  "id": "cm_citizenship_by_descent",
+  "country": "CM",
+  "name": "Citizenship by Birth in Territory or by Descent",
+  "category": "ancestry",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "automatic",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "descent",
+      "name": "Child of a Cameroonian parent",
+      "requirements": [
+        {
+          "id": "cmcd_cameroonian_parent",
+          "attribute": "has_cameroonian_father_or_mother",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Law No. 1968-LF-3 (Cameroon Nationality Code): a legitimate child born of a Cameroonian father OR a Cameroonian mother acquires Cameroonian nationality automatically -- explicitly gender-symmetric on descent. A right to renounce exists within 6 months before reaching majority in certain mixed-parentage cases.",
+          "fix_path": "Establish a parental link to a Cameroonian father or mother via a birth certificate.",
+          "fix_time_months": null,
+          "source_id": "refworld_cm_nationality_code_1968"
+        }
+      ]
+    },
+    {
+      "id": "birth_in_territory",
+      "name": "Born in Cameroon to unknown parents, or foreign-born with a Cameroon-born parent",
+      "requirements": [
+        {
+          "id": "cmcd_born_unknown_or_foundling",
+          "attribute": "born_in_cameroon_unknown_parents_or_foundling",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "A child born in Cameroon to unknown parents acquires nationality, and a found infant discovered in Cameroon is presumed born there. Separately, a foreign-born child may claim nationality if both the child AND at least one parent were themselves born in Cameroon, subject to the same renunciation rights as the standard descent route.",
+          "fix_path": "Establish birth in Cameroon to unknown parents (or foundling status), or the two-generation Cameroon-birth link for a foreign-born applicant.",
+          "fix_time_months": null,
+          "source_id": "refworld_cm_nationality_code_1968"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Birth certificate showing parental link or place of birth", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "indefinite",
+    "renewable": false,
+    "work_rights": "full",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": true,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 0,
+    "dual_citizenship_allowed": false,
+    "physical_presence_requirement": null,
+    "switchable_to": []
+  },
+  "sources": [
+    {
+      "id": "refworld_cm_nationality_code_1968",
+      "tier": 2,
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/1968/en/13868",
+      "title": "Refworld (UNHCR-hosted primary legal text, English translation) -- Law No. 1968-LF-3, Cameroon Nationality Code: descent rule, birth-in-territory rule, foundling presumption",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Cameroon). STATUS: DRAFT -- read directly from a genuine primary legal text (an English translation of the 1968 Nationality Code, hosted on Refworld), but Refworld is tier 2 by this dataset's own tiering rules, and the validator requires tier-1 (government) sourcing for a hard requirement before a route can be published. No Cameroonian government-hosted copy of the Nationality Code text could be reached in this build, so this file stays draft despite the underlying legal finding being solid. GENUINE, POSITIVE STRUCTURAL FINDING: descent is explicitly gender-symmetric ('a Cameroonian father or a Cameroonian mother'), unlike Iraq's asymmetric Articles 3/4 found earlier in this dataset. dual_citizenship_allowed set to false as the general default: the source describes only 'limited provisions favoring dual citizenship,' mainly a temporary automatic extension to minor children during a parent's naturalization process, with renunciation expected otherwise -- not a general allowance, so this dataset does not present it as a blanket yes."
+}

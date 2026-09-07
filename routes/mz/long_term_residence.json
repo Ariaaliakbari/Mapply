@@ -1,0 +1,79 @@
+{
+  "id": "mz_long_term_residence",
+  "country": "MZ",
+  "name": "Temporary and Permanent Residence Authorization",
+  "category": "settled",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "temporary_to_permanent_conversion",
+      "name": "10+ years consecutive Temporary Residence renewal (automatic conversion)",
+      "requirements": [
+        {
+          "id": "mzlr_10yr_consecutive_temporary_renewal",
+          "attribute": "months_consecutive_temporary_residence_renewal",
+          "operator": ">=",
+          "value": 120,
+          "hard": true,
+          "blocker_text": "Law No. 23/2022: the Temporary Residence Authorization (Autorização de Residência Temporária) is valid 1 year, renewable for equal periods as long as the original grounds for issuance persist. After 10+ consecutive years of such renewal, the holder gains the RIGHT to permanent residence if the underlying conditions remain unchanged -- an explicit, numeric automatic-conversion rule.",
+          "fix_path": "Maintain 10 consecutive years of Temporary Residence Authorization renewals under unchanged qualifying conditions.",
+          "fix_time_months": 120,
+          "source_id": "rimap_unhcr_mz_law_23_2022"
+        }
+      ]
+    },
+    {
+      "id": "direct_permanent_request",
+      "name": "Direct Permanent Residence Authorization (upon request)",
+      "requirements": [
+        {
+          "id": "mzlr_permanent_authorization_direct_request",
+          "attribute": "granted_permanent_residence_authorization_upon_request",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The Permanent Residence Authorization (Autorização de Residência Permanente) is valid 5 years, renewable for equal periods, and can reportedly be granted directly upon a foreign citizen's request rather than only through the 10-year conversion route -- this dataset could not confirm the specific eligibility criteria for a DIRECT grant (as opposed to the 10-year automatic-conversion path), since the fetched text described the permit's existence and duration but not the standalone qualifying conditions.",
+          "fix_path": "Apply directly for Permanent Residence Authorization; this dataset could not confirm the standalone qualifying criteria beyond the 10-year conversion path.",
+          "fix_time_months": null,
+          "source_id": "rimap_unhcr_mz_law_23_2022"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Valid passport with updated identification details", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of unchanged qualifying conditions across renewal history (10-year conversion route)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1 year (temporary), renewable; 5 years (permanent), renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 120,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 120,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "10 years of consecutive Temporary Residence renewal for the automatic-conversion route",
+    "switchable_to": ["mz_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "rimap_unhcr_mz_law_23_2022",
+      "tier": 2,
+      "url": "https://rimap.unhcr.org/node/3127",
+      "title": "UNHCR Rights Mapping and Analysis Platform -- Law no. 23/2022: Temporary Residence Authorization (1yr, renewable, 10-year automatic conversion to permanent residence right), Permanent Residence Authorization (5yr, renewable, grantable upon request)",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Mozambique). STATUS: DRAFT -- tier 2 (a UNHCR-run legal-text platform, not a .gov.mz domain); the validator requires tier-1 sourcing for a hard requirement before a route can be published. GENUINE, POSITIVE STRUCTURAL FINDING: an explicit, numeric 10-year automatic-conversion rule from temporary to permanent residence -- comparable in spirit to Cameroon's 2-year/10-year card ladder and Congo-Brazzaville's 1/3/5-year ladder, but structured differently: Mozambique's temporary permit itself stays a flat 1-year renewable term, with the RIGHT to convert triggering only after the 10-year mark, rather than an intermediate card tier. This dataset also found that Permanent Residence can apparently be granted directly upon request without waiting 10 years, but could not confirm what criteria govern that direct-grant path -- a genuine, disclosed gap rather than an assumption that it works identically to the conversion route."
+}

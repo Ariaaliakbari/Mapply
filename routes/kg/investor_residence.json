@@ -1,0 +1,68 @@
+{
+  "id": "kg_investor_residence",
+  "country": "KG",
+  "name": "Investment Visa (I)",
+  "category": "business",
+  "status": "published",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kgir_10m_som_investment",
+          "attribute": "investment_amount_soms",
+          "operator": ">=",
+          "value": 10000000,
+          "hard": true,
+          "blocker_text": "The Ministry of Foreign Affairs' own visa schedule specifies an Investment (I) visa for a foreign investor contributing a minimum of 10 million Kyrgyz soms, issued multiple-entry only, valid 12-36 months. Separately, the government's own e-visa portal describes an Investment (I) category valid 5-10 years 'based on contribution amount' -- a genuine discrepancy between two official government sources on visa duration (the capital threshold itself is not disputed between the two).",
+          "fix_path": "Make a qualifying investment of at least 10 million Kyrgyz soms and apply for the Investment visa.",
+          "fix_time_months": null,
+          "source_id": "mfa_gov_kg_visa_categories"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Proof of investment (10 million soms minimum)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "12-36 months per the MFA's consular schedule; 5-10 years per the e-visa portal's own description, scaled to contribution size -- this dataset does not resolve the discrepancy",
+    "renewable": true,
+    "work_rights": "full",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["kg_long_term_residence", "kg_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "mfa_gov_kg_visa_categories",
+      "tier": 1,
+      "url": "https://mfa.gov.kg/en/menyu---inostrannoe/konsulskie-voprosy/vizovye-voprosy/vizovye-voprosy-6229fc6ad2285",
+      "title": "Ministry of Foreign Affairs of the Kyrgyz Republic -- Investment (I) visa: 10 million som minimum contribution, multiple-entry, 12-36 months",
+      "accessed_at": "2026-09-07"
+    },
+    {
+      "id": "evisa_egov_kg_categories",
+      "tier": 1,
+      "url": "https://www.evisa.e-gov.kg/get_information.php?lng=en",
+      "title": "Kyrgyz Republic e-Visa government portal -- Investment (I) visa: 5-10 years validity based on contribution amount",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kyrgyzstan). STATUS: PUBLISHED -- this is a genuine, positive standout finding: unlike Bolivia, Angola, Cameroon, Congo-Brazzaville, Libya, and Mozambique earlier in this dataset (all of which had NO confirmed minimum investment threshold), Kyrgyzstan's own Ministry of Foreign Affairs publishes a concrete, numeric figure -- 10 million Kyrgyz soms -- directly in its own consular visa schedule. GENUINE, DISCLOSED DISCREPANCY: the MFA's page and the government's own e-visa portal disagree on the visa's validity period (12-36 months vs. 5-10 years) -- both being tier-1 government sources, this is presented as an open discrepancy between two official pages rather than resolved by picking one. citizenship_after_months (36) reflects Article 13(2)'s reduced 3-year naturalization track for 'priority economic investments' (see kg_citizenship_naturalisation.json), which this dataset judges likely applicable to a qualifying investor, though the exact threshold for what counts as a 'priority' investment under that clause was not separately confirmed."
+}

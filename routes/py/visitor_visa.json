@@ -1,0 +1,61 @@
+{
+  "id": "py_visitor_visa",
+  "country": "PY",
+  "name": "Tourist Entry / Visitor Visa",
+  "category": "visit",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "visa_exempt",
+      "name": "Visa-exempt nationalities",
+      "requirements": [
+        {
+          "id": "pyvv_visa_exempt_nationality",
+          "attribute": "nationality_on_visa_exempt_list",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Paraguay grants visa-free entry based on bilateral/unilateral agreements dating to 1959. 90 days: Argentina, Brazil, Chile, Uruguay, most EU states, Australia, Canada, Japan, New Zealand, Russia, South Korea, Taiwan, Turkey, the US. 60 days: Dominican Republic. 30 days: Bolivia, Colombia, Costa Rica, Ecuador, El Salvador, Finland, Guatemala, Honduras, Mexico, Nicaragua, Panama, Peru, among others. All other nationalities need a visa issued by a Paraguayan diplomatic mission before travel; some nationalities can get a 15- or 30-day visa on arrival instead. An online application exists for visa-required nationalities, but it still requires an in-person visit to a Paraguayan embassy/consulate to complete.",
+          "fix_path": "If not on the visa-exempt list, apply through a Paraguayan embassy/consulate (with the option to start the process online) before traveling, or check on-arrival visa eligibility for your nationality.",
+          "fix_time_months": null,
+          "source_id": "wikipedia_py_visa_policy"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Passport valid for the intended stay", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "15-90 days depending on nationality and entry type",
+    "renewable": false,
+    "work_rights": "none",
+    "study_rights": "none",
+    "family_can_join": false,
+    "family_can_work": false,
+    "leads_to_pr": false,
+    "pr_after_months": null,
+    "leads_to_citizenship": false,
+    "citizenship_after_months": null,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": null,
+    "switchable_to": ["py_work_permit", "py_investor_residence", "py_independent_means_residence", "py_mercosur_residence"]
+  },
+  "sources": [
+    {
+      "id": "wikipedia_py_visa_policy",
+      "tier": 4,
+      "url": "https://en.wikipedia.org/wiki/Visa_policy_of_Paraguay",
+      "title": "Wikipedia -- visa-exempt nationality list and stay durations, visa-on-arrival, e-visa process",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Paraguay). STATUS: DRAFT -- Paraguay's Ministry of Foreign Affairs site (mre.gov.py) could not be fetched (403/robots errors across multiple attempts), so this route relies on a tier-4 encyclopedic summary rather than the primary visa-exemption decree list. Cross-referenced against several tier-3/4 travel-guide sites in this build, which were broadly consistent on the major nationality groupings, but no tier-1 confirmation was reached for the exact country-by-country list."
+}

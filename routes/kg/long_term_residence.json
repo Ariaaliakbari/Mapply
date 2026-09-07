@@ -1,0 +1,65 @@
+{
+  "id": "kg_long_term_residence",
+  "country": "KG",
+  "name": "Temporary and Permanent Residence Permit",
+  "category": "settled",
+  "status": "published",
+  "verified_at": "2026-09-07",
+  "duration_type": "indefinite",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "kglr_residence_permit_documents",
+          "attribute": "holds_temporary_or_permanent_residence_permit",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "The State Migration Service (Государственная служба миграции) processes both Temporary and Permanent Residence Permit applications free of charge. Required documents for both include a national passport (with Russian translation), proof of 5+ years' residence, birth certificate, autobiography, employment verification, a residence certificate, and criminal record clearance (Permanent applications submit documents in duplicate; Temporary in single copy). Married applicants add marriage/spouse documents; property owners add sale contracts; pensioners add pension certificates; the unemployed add custodial obligations or bank statements. All applicants undergo AIDS, mental health, and narcological medical screening. Non-CIS citizens face additional requirements: employer application letters, company charters/licenses, tax certificates, a Migration Service work permit, and (for property owners) Ministry of Justice authorization. Foreign-issued documents must be legalized at a diplomatic/consular office. This dataset could not confirm from the source whether the '5+ years' residence' document requirement is a genuine prior-residence DURATION gate applying to the Temporary permit itself, or simply proof of registered residence status -- a real ambiguity in the source, disclosed rather than resolved by assumption.",
+          "fix_path": "Assemble the required document set (passport, residence proof, employment/financial documents, criminal record clearance, medical screening) and apply to the State Migration Service; non-CIS citizens must additionally secure employer documentation and a work permit.",
+          "fix_time_months": 60,
+          "source_id": "ssm_gov_kg_residence_permits"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "National passport with Russian translation", "difficulty": "routine", "typical_time_days": null },
+    { "document": "Proof of 5+ years' residence", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Criminal record clearance", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Medical screening (AIDS, mental health, narcological services)", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Employer documentation and work permit (non-CIS citizens only)", "difficulty": "hard", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "not specified by the source as a fixed term for either category -- see notes",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "none",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 60,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 60,
+    "dual_citizenship_allowed": null,
+    "physical_presence_requirement": "5+ years' residence documentation (exact meaning of this requirement disclosed as ambiguous in the source)",
+    "switchable_to": ["kg_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "ssm_gov_kg_residence_permits",
+      "tier": 1,
+      "url": "http://ssm.gov.kg/en/%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8-%D0%BD%D0%B0%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E/%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%BD%D0%BE%D0%B5-%D0%B6%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE/",
+      "title": "State Migration Service under the Government of the Kyrgyz Republic -- Temporary and Permanent Residence Permit documentation requirements (free of charge), non-CIS additional requirements, medical screening",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Kyrgyzstan). STATUS: PUBLISHED -- the source is ssm.gov.kg, the Kyrgyz Republic's own State Migration Service, a genuine tier-1 government source. This is a materially stronger result than most residence-permit routes built earlier in this dataset (Congo-Brazzaville, Libya, Mozambique), where no equivalent government migration-authority page could be reached at all. GENUINE, DISCLOSED AMBIGUITY: the source lists 'proof of 5+ years' residence' as a required document for BOTH the temporary and permanent permit categories, without clarifying whether this is a genuine prior-residence duration gate (unusual for a 'temporary' permit) or simply documentation of registered residence status -- this dataset does not resolve that ambiguity by assumption, and models it as the file's sole hard requirement pending clearer text. The source also does not specify fixed validity periods for either permit category -- a genuine gap in an otherwise detailed, tier-1 document checklist."
+}

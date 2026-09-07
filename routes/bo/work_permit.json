@@ -1,0 +1,63 @@
+{
+  "id": "bo_work_permit",
+  "country": "BO",
+  "name": "Employer-Sponsored Work Permit",
+  "category": "work_sponsored",
+  "status": "draft",
+  "verified_at": "2026-09-07",
+  "duration_type": "fixed",
+  "selection_method": "assessed",
+  "selection_odds": null,
+  "application_window": null,
+  "qualifying_event": null,
+  "prerequisites": null,
+  "requirement_groups": [
+    {
+      "id": "standard",
+      "name": "Standard route",
+      "requirements": [
+        {
+          "id": "bowp_ministry_of_labor_permit_within_quota",
+          "attribute": "has_job_offer_and_employer_within_foreign_staff_quota",
+          "operator": "==",
+          "value": true,
+          "hard": true,
+          "blocker_text": "Under the General Law of Migration (Ley 370), an employer must first obtain Ministry of Labour approval for the work permit, which requires demonstrating the position cannot be filled by a local candidate (a labor-market test). Bolivian labor law caps foreign staff at 15% of any company's workforce (equivalently, at least 85% Bolivian nationals). The employee separately obtains a Specific Purpose Visa (valid 30 days for entry) at a Bolivian consulate, then registers with DIGEMIG for biometric processing and obtains a Foreigner's Identity Card. The employer must also register the employee with the public health system (Caja Nacional de Salud) and pension system.",
+          "fix_path": "Secure a job offer from an employer that has not exceeded its 15% foreign-staff cap, obtain Ministry of Labour approval, then apply for the Specific Purpose Visa and complete DIGEMIG registration on arrival.",
+          "fix_time_months": null,
+          "source_id": "goresident_bo_work_visa"
+        }
+      ]
+    }
+  ],
+  "evidence_required": [
+    { "document": "Job offer / employment contract", "difficulty": "moderate", "typical_time_days": null },
+    { "document": "Ministry of Labour work-permit approval", "difficulty": "hard", "typical_time_days": null },
+    { "document": "Foreigner's Identity Card (post-arrival, via DIGEMIG)", "difficulty": "routine", "typical_time_days": null }
+  ],
+  "outcome": {
+    "duration_length": "1-3 years, renewable",
+    "renewable": true,
+    "work_rights": "restricted",
+    "study_rights": "full",
+    "family_can_join": true,
+    "family_can_work": null,
+    "leads_to_pr": true,
+    "pr_after_months": 24,
+    "leads_to_citizenship": true,
+    "citizenship_after_months": 36,
+    "dual_citizenship_allowed": true,
+    "physical_presence_requirement": null,
+    "switchable_to": ["bo_citizenship_naturalisation"]
+  },
+  "sources": [
+    {
+      "id": "goresident_bo_work_visa",
+      "tier": 3,
+      "url": "https://goresident.com/working-visa/bolivia",
+      "title": "GoResident -- Ley 370, Ministry of Labour labor-market test, 15% foreign-staff cap, process steps, fees, validity",
+      "accessed_at": "2026-09-07"
+    }
+  ],
+  "notes": "NEW COUNTRY BUILD (Bolivia). STATUS: DRAFT -- migracion.gob.bo returned a certificate/hostname-mismatch SSL error on every attempt in this build (a distinct failure mode from the usual robots-block or timeout seen elsewhere in this dataset), so this rests on a tier-3 relocation-services summary. GENUINE FINDING, a real structural feature not seen in most countries built so far in this dataset: a hard, numeric foreign-staff quota (85% Bolivian / 15% foreign) combined with a labor-market test -- a stricter double-gate similar to Kosovo's quota-plus-labor-market-test combination found earlier in this dataset. work_rights set to 'restricted' since the permit is tied to the sponsoring employer and position. dual_citizenship_allowed set to true here per Article 143 of the 2009 Constitution (confirmed via a tier-3 secondary source in this build; the primary constitutional text fetch for this specific article was incomplete, see py_citizenship_naturalisation.json's Bolivia-equivalent file for the full citation discussion)."
+}
