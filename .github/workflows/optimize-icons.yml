@@ -1,0 +1,41 @@
+name: Optimize icons
+
+# Runs automatically whenever icons/ or atlas.html change on main.
+# Resizes/compresses any oversized icon, fixes filenames with spaces,
+# and fails the build if atlas.html points at an icon that doesn't exist.
+# If it makes changes, it commits them back to main automatically —
+# no manual step needed.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "icons/**"
+      - "atlas.html"
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Pillow
+        run: pip install Pillow
+
+      - name: Optimize icons and check references
+        id: optimize
+        run: python3 scripts/optimize_icons.py
+
+      - name: Commit optimized icons, if any changed
+        if: always() && steps.optimize.outcome == 'success'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-optimize icons"
+          file_pattern: "icons/** atlas.html"
